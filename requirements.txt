@@ -13,4 +13,3 @@ pgvector
 httpx
 pytest
 ruff
-
