@@ -41,6 +41,28 @@ Invoke-RestMethod "http://127.0.0.1:8000/search?q=keyword&limit=5"
 
 The index is intentionally temporary at this stage and is cleared whenever the server restarts.
 
+## Step 2: Semantic and hybrid retrieval
+
+The search endpoint supports three methods:
+
+- `bm25`: exact keyword retrieval.
+- `semantic`: meaning-based retrieval with multilingual sentence embeddings.
+- `hybrid`: combines both rankings with Reciprocal Rank Fusion (default).
+
+The embedding model is loaded lazily on CPU when semantic or hybrid search is used for the first
+time. The first request can therefore take longer while the model is downloaded and initialized.
+
+```powershell
+# Keyword search
+Invoke-RestMethod "http://127.0.0.1:8000/search?q=BM25&method=bm25&limit=5"
+
+# Meaning-based search
+Invoke-RestMethod "http://127.0.0.1:8000/search?q=tim%20kiem%20theo%20y%20nghia&method=semantic&limit=5"
+
+# Combined search (recommended)
+Invoke-RestMethod "http://127.0.0.1:8000/search?q=tim%20kiem%20tai%20lieu&method=hybrid&limit=5"
+```
+
 ## Checks
 
 ```powershell

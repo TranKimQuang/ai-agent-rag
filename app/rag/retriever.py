@@ -1,11 +1,19 @@
 import re
 from threading import RLock
+from typing import Protocol
 
+import numpy as np
+from numpy.typing import NDArray
 from rank_bm25 import BM25Okapi
 
-from app.models import Chunk, SearchResult
+from app.models import Chunk, SearchMethod, SearchResult
 
 _TOKEN = re.compile(r"\w+", re.UNICODE)
+DEFAULT_EMBEDDING_MODEL = "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2"
+
+
+class SemanticModelError(RuntimeError):
+    pass
 
 
 def tokenize(text: str) -> list[str]:
@@ -54,7 +62,150 @@ class InMemoryBM25Retriever:
                         filename=chunk.filename,
                         page=chunk.page,
                         text=chunk.text,
+                        method=SearchMethod.BM25,
                         score=max(float(score), 0.0),
+                        bm25_score=max(float(score), 0.0),
                     )
                 )
             return results
+
+
+class TextEncoder(Protocol):
+    def encode(self, texts: list[str]) -> NDArray[np.float32]: ...
+
+
+class SentenceTransformerEncoder:
+    """Loads the multilingual embedding model only when semantic search is first used."""
+
+    def __init__(self, model_name: str = DEFAULT_EMBEDDING_MODEL) -> None:
+        self.model_name = model_name
+        self._model: object | None = None
+
+    def encode(self, texts: list[str]) -> NDArray[np.float32]:
+        try:
+            if self._model is None:
+                from sentence_transformers import SentenceTransformer
+
+                self._model = SentenceTransformer(self.model_name, device="cpu")
+
+            vectors = self._model.encode(  # type: ignore[attr-defined]
+                texts,
+                batch_size=32,
+                show_progress_bar=False,
+                convert_to_numpy=True,
+                normalize_embeddings=True,
+            )
+        except Exception as exc:
+            raise SemanticModelError(
+                f"Could not load or run embedding model '{self.model_name}'"
+            ) from exc
+        return np.asarray(vectors, dtype=np.float32)
+
+
+class InMemorySemanticRetriever:
+    """Cosine-similarity retrieval using normalized sentence embeddings."""
+
+    def __init__(self, encoder: TextEncoder | None = None) -> None:
+        self._chunks: list[Chunk] = []
+        self._embeddings: NDArray[np.float32] | None = None
+        self._encoder = encoder or SentenceTransformerEncoder()
+        self._lock = RLock()
+
+    def add(self, chunks: list[Chunk]) -> None:
+        if not chunks:
+            return
+        with self._lock:
+            self._chunks.extend(chunks)
+            self._embeddings = None
+
+    def _ensure_index(self) -> None:
+        if self._embeddings is None and self._chunks:
+            self._embeddings = self._encoder.encode([chunk.text for chunk in self._chunks])
+
+    def search(self, query: str, limit: int = 5) -> list[SearchResult]:
+        if not query.strip() or not self._chunks:
+            return []
+
+        with self._lock:
+            self._ensure_index()
+            if self._embeddings is None:
+                return []
+
+            query_vector = self._encoder.encode([query])[0]
+            scores = self._embeddings @ query_vector
+            ranked = np.argsort(scores)[::-1][:limit]
+
+            results: list[SearchResult] = []
+            for index in ranked:
+                score = min(max(float(scores[index]), 0.0), 1.0)
+                results.append(
+                    SearchResult(
+                        chunk_id=self._chunks[index].id,
+                        document_id=self._chunks[index].document_id,
+                        filename=self._chunks[index].filename,
+                        page=self._chunks[index].page,
+                        text=self._chunks[index].text,
+                        method=SearchMethod.SEMANTIC,
+                        score=score,
+                        semantic_score=score,
+                    )
+                )
+            return results
+
+
+class InMemoryHybridRetriever:
+    """Combines BM25 and semantic ranks with Reciprocal Rank Fusion (RRF)."""
+
+    def __init__(
+        self,
+        *,
+        semantic_encoder: TextEncoder | None = None,
+        rrf_k: int = 60,
+    ) -> None:
+        self.bm25 = InMemoryBM25Retriever()
+        self.semantic = InMemorySemanticRetriever(semantic_encoder)
+        self.rrf_k = rrf_k
+
+    def add(self, chunks: list[Chunk]) -> None:
+        self.bm25.add(chunks)
+        self.semantic.add(chunks)
+
+    def search(
+        self,
+        query: str,
+        limit: int = 5,
+        method: SearchMethod = SearchMethod.HYBRID,
+    ) -> list[SearchResult]:
+        if method == SearchMethod.BM25:
+            return self.bm25.search(query, limit)
+        if method == SearchMethod.SEMANTIC:
+            return self.semantic.search(query, limit)
+
+        candidate_limit = max(limit * 4, 20)
+        bm25_results = self.bm25.search(query, candidate_limit)
+        semantic_results = self.semantic.search(query, candidate_limit)
+
+        by_id: dict[str, SearchResult] = {}
+        fused_scores: dict[str, float] = {}
+        bm25_scores = {result.chunk_id: result.score for result in bm25_results}
+        semantic_scores = {result.chunk_id: result.score for result in semantic_results}
+
+        for results in (bm25_results, semantic_results):
+            for rank, result in enumerate(results, start=1):
+                by_id.setdefault(result.chunk_id, result)
+                fused_scores[result.chunk_id] = fused_scores.get(result.chunk_id, 0.0) + (
+                    1.0 / (self.rrf_k + rank)
+                )
+
+        ranked_ids = sorted(fused_scores, key=fused_scores.get, reverse=True)[:limit]
+        return [
+            by_id[chunk_id].model_copy(
+                update={
+                    "method": SearchMethod.HYBRID,
+                    "score": fused_scores[chunk_id],
+                    "bm25_score": bm25_scores.get(chunk_id),
+                    "semantic_score": semantic_scores.get(chunk_id),
+                }
+            )
+            for chunk_id in ranked_ids
+        ]

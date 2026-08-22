@@ -3,13 +3,13 @@ from uuid import uuid4
 
 from fastapi import Body, FastAPI, Header, HTTPException, Query
 
-from app.models import IngestResponse, SearchResponse
+from app.models import IngestResponse, SearchMethod, SearchResponse
 from app.rag.chunking import chunk_pages
 from app.rag.pdf_reader import PdfReadError, extract_pdf_pages
-from app.rag.retriever import InMemoryBM25Retriever
+from app.rag.retriever import InMemoryHybridRetriever, SemanticModelError
 
 app = FastAPI(title="AI Agent + RAG")
-retriever = InMemoryBM25Retriever()
+retriever = InMemoryHybridRetriever()
 
 
 @app.get("/health")
@@ -52,5 +52,18 @@ async def ingest_document(
 def search(
     q: str = Query(min_length=2, description="Question or keywords to search for"),
     limit: int = Query(default=5, ge=1, le=20),
+    method: SearchMethod = SearchMethod.HYBRID,
 ) -> SearchResponse:
-    return SearchResponse(query=q, results=retriever.search(q, limit))
+    try:
+        results = retriever.search(q, limit, method)
+    except SemanticModelError as exc:
+        raise HTTPException(
+            status_code=503,
+            detail="Embedding model is unavailable. Check the model download and try again.",
+        ) from exc
+
+    return SearchResponse(
+        query=q,
+        method=method,
+        results=results,
+    )

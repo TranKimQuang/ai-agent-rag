@@ -26,8 +26,12 @@ def test_ingest_and_search_pdf() -> None:
     assert response.json()["pages"] == 1
     assert response.json()["chunks"] == 1
 
-    search_response = client.get("/search", params={"q": "BM25 keyword"})
+    search_response = client.get(
+        "/search",
+        params={"q": "BM25 keyword", "method": "bm25"},
+    )
     assert search_response.status_code == 200
+    assert search_response.json()["method"] == "bm25"
     assert search_response.json()["results"][0]["page"] == 1
 
 
