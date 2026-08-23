@@ -1,4 +1,5 @@
 import re
+import unicodedata
 from threading import RLock
 from typing import Protocol
 
@@ -17,7 +18,13 @@ class SemanticModelError(RuntimeError):
 
 
 def tokenize(text: str) -> list[str]:
-    return _TOKEN.findall(text.lower())
+    lowered = text.lower().replace("đ", "d")
+    without_accents = "".join(
+        character
+        for character in unicodedata.normalize("NFD", lowered)
+        if unicodedata.category(character) != "Mn"
+    )
+    return _TOKEN.findall(without_accents)
 
 
 class InMemoryBM25Retriever:

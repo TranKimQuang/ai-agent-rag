@@ -5,6 +5,7 @@ from app.rag.retriever import (
     InMemoryBM25Retriever,
     InMemoryHybridRetriever,
     InMemorySemanticRetriever,
+    tokenize,
 )
 
 
@@ -62,6 +63,10 @@ def test_search_returns_relevant_chunk() -> None:
 
 def test_empty_query_has_no_results() -> None:
     assert InMemoryBM25Retriever().search("anything") == []
+
+
+def test_tokenize_matches_vietnamese_with_or_without_accents() -> None:
+    assert tokenize("Thuật toán tìm tài liệu") == tokenize("thuat toan tim tai lieu")
 
 
 def test_semantic_search_matches_different_wording() -> None:
