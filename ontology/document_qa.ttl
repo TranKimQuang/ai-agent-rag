@@ -1,0 +1,57 @@
+@prefix qa: <https://example.org/document-qa#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+qa:DocumentQAOntology a owl:Ontology ;
+    rdfs:label "Document QA ontology"@en .
+
+qa:Document a owl:Class .
+qa:Paper a owl:Class ; rdfs:subClassOf qa:Document .
+qa:Section a owl:Class .
+qa:Chunk a owl:Class .
+qa:Author a owl:Class .
+qa:Concept a owl:Class .
+qa:ResearchTask a owl:Class ; rdfs:subClassOf qa:Concept .
+qa:Method a owl:Class ; rdfs:subClassOf qa:Concept .
+qa:Model a owl:Class ; rdfs:subClassOf qa:Method .
+qa:Dataset a owl:Class ; rdfs:subClassOf qa:Concept .
+qa:Metric a owl:Class ; rdfs:subClassOf qa:Concept .
+qa:Result a owl:Class .
+qa:Citation a owl:Class .
+
+qa:hasSection a owl:ObjectProperty ; rdfs:domain qa:Document ; rdfs:range qa:Section .
+qa:hasChunk a owl:ObjectProperty ; rdfs:domain qa:Section ; rdfs:range qa:Chunk .
+qa:mentionsConcept a owl:ObjectProperty ; rdfs:domain qa:Chunk ; rdfs:range qa:Concept .
+qa:usesMethod a owl:ObjectProperty ; rdfs:domain qa:Paper ; rdfs:range qa:Method .
+qa:usesDataset a owl:ObjectProperty ; rdfs:domain qa:Paper ; rdfs:range qa:Dataset .
+qa:evaluatesWithMetric a owl:ObjectProperty ; rdfs:domain qa:Paper ; rdfs:range qa:Metric .
+qa:addressesTask a owl:ObjectProperty ; rdfs:domain qa:Method ; rdfs:range qa:ResearchTask .
+qa:hasEvidence a owl:ObjectProperty ; rdfs:domain qa:Result ; rdfs:range qa:Chunk .
+qa:relatedConcept a owl:ObjectProperty ; rdfs:domain qa:Concept ; rdfs:range qa:Concept .
+
+qa:title a owl:DatatypeProperty ; rdfs:domain qa:Document ; rdfs:range xsd:string .
+qa:pageNumber a owl:DatatypeProperty ; rdfs:domain qa:Chunk ; rdfs:range xsd:integer .
+qa:chunkText a owl:DatatypeProperty ; rdfs:domain qa:Chunk ; rdfs:range xsd:string .
+qa:sourceFile a owl:DatatypeProperty ; rdfs:domain qa:Document ; rdfs:range xsd:string .
+
+qa:SamplePaper a qa:Paper ;
+    qa:title "A sample paper about retrieval-augmented generation" ;
+    qa:hasSection qa:MethodsSection ;
+    qa:usesMethod qa:RetrievalAugmentedGeneration ;
+    qa:usesDataset qa:QASPER ;
+    qa:evaluatesWithMetric qa:EvidenceF1 .
+
+qa:MethodsSection a qa:Section ; qa:hasChunk qa:SampleChunk .
+qa:SampleChunk a qa:Chunk ;
+    qa:pageNumber 2 ;
+    qa:chunkText "RAG retrieves evidence before generating an answer." ;
+    qa:mentionsConcept qa:RetrievalAugmentedGeneration .
+qa:RetrievalAugmentedGeneration a qa:Method ;
+    qa:addressesTask qa:QuestionAnswering ;
+    qa:relatedConcept qa:InformationRetrieval .
+qa:QuestionAnswering a qa:ResearchTask .
+qa:InformationRetrieval a qa:ResearchTask .
+qa:QASPER a qa:Dataset .
+qa:EvidenceF1 a qa:Metric .

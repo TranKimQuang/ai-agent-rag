@@ -40,3 +40,21 @@ class SearchResponse(BaseModel):
     query: str
     method: SearchMethod
     results: list[SearchResult]
+
+
+class OntologySummary(BaseModel):
+    classes: int
+    object_properties: int
+    data_properties: int
+    individuals: int
+
+
+class OntologyRelation(BaseModel):
+    subject: str
+    predicate: str
+    object: str
+
+
+class OntologyQueryResponse(BaseModel):
+    concept: str
+    relations: list[OntologyRelation]

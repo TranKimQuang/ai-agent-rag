@@ -10,6 +10,7 @@ rank-bm25
 sqlalchemy
 psycopg[binary]
 pgvector
+rdflib
 httpx
 pytest
 ruff

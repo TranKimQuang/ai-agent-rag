@@ -3,13 +3,21 @@ from uuid import uuid4
 
 from fastapi import Body, FastAPI, Header, HTTPException, Query
 
-from app.models import IngestResponse, SearchMethod, SearchResponse
+from app.models import (
+    IngestResponse,
+    OntologyQueryResponse,
+    OntologySummary,
+    SearchMethod,
+    SearchResponse,
+)
+from app.ontology.service import OntologyService
 from app.rag.chunking import chunk_pages
 from app.rag.pdf_reader import PdfReadError, extract_pdf_pages
 from app.rag.retriever import InMemoryHybridRetriever, SemanticModelError
 
 app = FastAPI(title="AI Agent + RAG")
 retriever = InMemoryHybridRetriever()
+ontology = OntologyService()
 
 
 @app.get("/health")
@@ -67,3 +75,16 @@ def search(
         method=method,
         results=results,
     )
+
+
+@app.get("/ontology/summary", response_model=OntologySummary)
+def ontology_summary() -> OntologySummary:
+    return ontology.summary()
+
+
+@app.get("/ontology/concepts/{concept}", response_model=OntologyQueryResponse)
+def ontology_concept(concept: str) -> OntologyQueryResponse:
+    relations = ontology.find_relations(concept)
+    if not relations:
+        raise HTTPException(status_code=404, detail="Concept not found in ontology")
+    return OntologyQueryResponse(concept=concept, relations=relations)

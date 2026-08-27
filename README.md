@@ -63,6 +63,26 @@ Invoke-RestMethod "http://127.0.0.1:8000/search?q=tim%20kiem%20theo%20y%20nghia&
 Invoke-RestMethod "http://127.0.0.1:8000/search?q=tim%20kiem%20tai%20lieu&method=hybrid&limit=5"
 ```
 
+## Step 3: Ontology foundation
+
+The first ontology version is stored in `ontology/document_qa.ttl`. It defines core AI/NLP
+resources such as papers, chunks, research tasks, methods, datasets, and metrics. Sample
+individuals and relations make the model executable before automatic extraction is added.
+
+The API currently exposes read-only inspection endpoints:
+
+```powershell
+# Count classes, properties, and sample individuals
+Invoke-RestMethod "http://127.0.0.1:8000/ontology/summary"
+
+# Inspect incoming and outgoing relations for a named concept
+Invoke-RestMethod "http://127.0.0.1:8000/ontology/concepts/QASPER" |
+  ConvertTo-Json -Depth 5
+```
+
+This stage validates the knowledge model independently. The next stage will recognize ontology
+concepts in document chunks and use those relations to expand and re-rank hybrid-search results.
+
 ## Checks
 
 ```powershell
