@@ -110,6 +110,24 @@ The ontology schema is available in both Turtle (`ontology/document_qa.ttl`) and
 same directory. This remains a small proof of concept; the next step is to create concept links
 from real PDF chunks and prepare a labelled evaluation set.
 
+## Step 5: Chunk concept indexing and benchmark
+
+When a PDF is uploaded, detected concepts are now attached to each chunk and written into the
+in-memory knowledge graph as `Chunk -> mentionsConcept -> Concept` triples. The ingest response
+includes `concept_links`, which reports how many links were created.
+
+A reproducible benchmark runner compares BM25, Semantic, Hybrid, and Hybrid + Ontology with
+Precision@k, Recall@k, MRR, and nDCG@k:
+
+```powershell
+python -m scripts.run_benchmark --dataset evaluation/sample_benchmark.json --k 5
+```
+
+Results are written to `results/retrieval_benchmark.json` and
+`results/retrieval_benchmark.csv`. The included dataset is only a development fixture; do not
+use its scores as thesis evidence. Replace it with questions and gold chunk IDs from real PDFs
+before preparing the progress report.
+
 ## Checks
 
 ```powershell

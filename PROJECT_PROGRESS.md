@@ -49,7 +49,14 @@ trang và đoạn bằng chứng. Nếu tài liệu không có đủ bằng ch�
 - [x] Mở rộng truy vấn bằng synonym và quan hệ Ontology.
 - [x] Tính OntoScore và chạy thử Ontology-aware re-ranking.
 - [x] Trả về giải thích concept và lý do tăng hạng trong kết quả tìm kiếm.
-- [x] Kiểm thử gần nhất: 24 test passed; Ruff không phát hiện lỗi.
+- [x] Tự động gán concept vào chunk khi tải PDF.
+- [x] Tạo triple Chunk -> mentionsConcept -> Concept trong Knowledge Graph ở RAM.
+- [x] Trả về số lượng concept_links sau khi ingest PDF.
+- [x] Viết công cụ benchmark bốn phương pháp retrieval.
+- [x] Tính tự động Precision@k, Recall@k, MRR và nDCG@k.
+- [x] Tạo bộ dữ liệu benchmark mẫu gồm 8 chunk và 10 câu hỏi.
+- [x] Xuất kết quả benchmark thành JSON và CSV.
+- [x] Kiểm thử gần nhất: 27 test passed; Ruff không phát hiện lỗi.
 - [x] Đồng bộ source code với GitHub.
 
 ### Đang ở trạng thái nền móng
@@ -61,8 +68,7 @@ trang và đoạn bằng chứng. Nếu tài liệu không có đủ bằng ch�
 ### Chưa hoàn thành
 
 - [ ] Tìm hiểu và ánh xạ một phần Computer Science Ontology (CSO).
-- [ ] Nhận diện và gán concept cho các chunk của PDF thật.
-- [ ] Lưu quan hệ Chunk-Concept thành instance trong Knowledge Graph.
+- [~] Cơ chế gán concept cho chunk đã có; còn cần chạy trên tập PDF thật.
 - [ ] Ghi log thứ hạng trước/sau để tạo ví dụ báo cáo từ dữ liệu thật.
 - [ ] Tạo tập câu hỏi và gold evidence để đánh giá.
 - [ ] So sánh BM25, Semantic, Hybrid và Hybrid + Ontology.
@@ -92,11 +98,10 @@ PDF
 Milestone tiếp theo: Hoàn thành Ontology-aware retrieval trên dữ liệu nhỏ.
 
 1. Chọn một tập PDF thật nhỏ và xác định vocabulary phù hợp.
-2. Tự động gán concept vào từng chunk và tạo triple Chunk-Concept.
-3. Kiểm tra thủ công độ chính xác của các concept được gán.
-4. Tạo 10-20 câu hỏi thử nghiệm có đáp án/chunk đúng.
-5. Chạy và lập bảng so sánh bốn phương pháp retrieval.
-6. Tạo ví dụ thật cho thấy Ontology làm thay đổi thứ hạng chunk.
+2. Kiểm tra thủ công độ chính xác của các concept được gán.
+3. Tạo 10-20 câu hỏi thử nghiệm có đáp án/chunk đúng từ PDF thật.
+4. Chạy và lập bảng so sánh bốn phương pháp retrieval.
+5. Tạo ví dụ thật cho thấy Ontology làm thay đổi thứ hạng chunk.
 
 Chưa ưu tiên trong milestone này: giao diện đẹp, PostgreSQL, pgvector và OCR.
 

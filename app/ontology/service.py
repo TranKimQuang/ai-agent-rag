@@ -3,10 +3,10 @@ import unicodedata
 from dataclasses import dataclass
 from pathlib import Path
 
-from rdflib import OWL, RDF, RDFS, Graph, Literal, Namespace, URIRef
+from rdflib import OWL, RDF, RDFS, XSD, Graph, Literal, Namespace, URIRef
 from rdflib.namespace import SKOS
 
-from app.models import OntologyRelation, OntologySummary
+from app.models import Chunk, OntologyRelation, OntologySummary
 
 DEFAULT_ONTOLOGY_PATH = Path(__file__).parents[2] / "ontology" / "document_qa.ttl"
 QA = Namespace("https://example.org/document-qa#")
@@ -84,6 +84,38 @@ class OntologyService:
             if any(f" {alias} " in normalized for alias in aliases)
         ]
         return sorted(matches, key=local_name)
+
+    def index_chunks(self, chunks: list[Chunk]) -> tuple[list[Chunk], int]:
+        """Annotate chunks and add document/page/chunk facts to the in-memory graph."""
+        annotated: list[Chunk] = []
+        concept_links = 0
+
+        for chunk in chunks:
+            document = URIRef(f"{QA}document-{chunk.document_id}")
+            section = URIRef(f"{QA}section-{chunk.document_id}-page-{chunk.page}")
+            chunk_resource = URIRef(f"{QA}chunk-{chunk.id}")
+            concepts = self.identify_concepts(chunk.text)
+
+            self.graph.add((document, RDF.type, QA.Document))
+            self.graph.add((document, QA.sourceFile, Literal(chunk.filename)))
+            self.graph.add((document, QA.hasSection, section))
+            self.graph.add((section, RDF.type, QA.Section))
+            self.graph.add((section, QA.hasChunk, chunk_resource))
+            self.graph.add((chunk_resource, RDF.type, QA.Chunk))
+            self.graph.add(
+                (chunk_resource, QA.pageNumber, Literal(chunk.page, datatype=XSD.integer))
+            )
+            self.graph.add((chunk_resource, QA.chunkText, Literal(chunk.text)))
+
+            for concept in concepts:
+                self.graph.add((chunk_resource, QA.mentionsConcept, concept))
+                concept_links += 1
+
+            annotated.append(
+                chunk.model_copy(update={"concepts": [local_name(value) for value in concepts]})
+            )
+
+        return annotated, concept_links
 
     def _neighbors(self, concept: URIRef) -> set[URIRef]:
         predicates = {SKOS.broader, SKOS.narrower, SKOS.related, QA.relatedTo}

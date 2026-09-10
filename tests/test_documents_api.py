@@ -25,6 +25,7 @@ def test_ingest_and_search_pdf() -> None:
     assert response.json()["filename"] == "rag-guide.pdf"
     assert response.json()["pages"] == 1
     assert response.json()["chunks"] == 1
+    assert response.json()["concept_links"] >= 2
 
     search_response = client.get(
         "/search",
@@ -33,6 +34,7 @@ def test_ingest_and_search_pdf() -> None:
     assert search_response.status_code == 200
     assert search_response.json()["method"] == "bm25"
     assert search_response.json()["results"][0]["page"] == 1
+    assert "KeywordSearch" in search_response.json()["results"][0]["chunk_concepts"]
 
 
 def test_rejects_non_pdf_filename() -> None:

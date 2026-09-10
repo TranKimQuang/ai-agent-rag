@@ -1,6 +1,9 @@
 from pathlib import Path
 
-from app.ontology.service import OntologyService
+from rdflib import RDF
+
+from app.models import Chunk
+from app.ontology.service import QA, OntologyService
 
 
 def test_ontology_has_core_schema_and_sample_individuals() -> None:
@@ -62,6 +65,27 @@ def test_example_sparql_queries_are_valid() -> None:
 
     assert len(results) == 5
     assert all(result for result in results)
+
+
+def test_index_chunks_creates_knowledge_graph_links() -> None:
+    service = OntologyService()
+    chunks, link_count = service.index_chunks(
+        [
+            Chunk(
+                id="doc:p1:c1",
+                document_id="doc",
+                filename="paper.pdf",
+                page=1,
+                text="RAG combines information retrieval with answer generation.",
+            )
+        ]
+    )
+
+    assert "RetrievalAugmentedGeneration" in chunks[0].concepts
+    assert link_count >= 2
+    chunk_resource = QA["chunk-doc:p1:c1"]
+    assert (chunk_resource, RDF.type, QA.Chunk) in service.graph
+    assert (chunk_resource, QA.mentionsConcept, QA.RetrievalAugmentedGeneration) in service.graph
 
 
 def test_custom_ontology_path_can_be_loaded(tmp_path: Path) -> None:

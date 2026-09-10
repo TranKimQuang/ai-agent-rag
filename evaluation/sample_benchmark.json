@@ -1,0 +1,73 @@
+{
+  "description": "Small development fixture. Replace with questions and gold chunks from real PDFs before reporting results.",
+  "chunks": [
+    {
+      "id": "sample:p1:c1",
+      "document_id": "sample",
+      "filename": "sample-ai-paper.pdf",
+      "page": 1,
+      "text": "BM25 is a keyword search method that ranks passages using term frequency and document length."
+    },
+    {
+      "id": "sample:p1:c2",
+      "document_id": "sample",
+      "filename": "sample-ai-paper.pdf",
+      "page": 1,
+      "text": "Semantic search, also called dense retrieval, compares vector embeddings to find passages with similar meaning."
+    },
+    {
+      "id": "sample:p2:c1",
+      "document_id": "sample",
+      "filename": "sample-ai-paper.pdf",
+      "page": 2,
+      "text": "Hybrid search combines BM25 and semantic search. Reciprocal rank fusion, or RRF, merges their rankings."
+    },
+    {
+      "id": "sample:p2:c2",
+      "document_id": "sample",
+      "filename": "sample-ai-paper.pdf",
+      "page": 2,
+      "text": "Retrieval-augmented generation retrieves evidence before an LLM creates an answer with citations."
+    },
+    {
+      "id": "sample:p3:c1",
+      "document_id": "sample",
+      "filename": "sample-ai-paper.pdf",
+      "page": 3,
+      "text": "QASPER is a dataset for question answering over scientific research papers."
+    },
+    {
+      "id": "sample:p3:c2",
+      "document_id": "sample",
+      "filename": "sample-ai-paper.pdf",
+      "page": 3,
+      "text": "Evidence F1 measures whether a system selects the correct supporting evidence."
+    },
+    {
+      "id": "sample:p4:c1",
+      "document_id": "sample",
+      "filename": "sample-ai-paper.pdf",
+      "page": 4,
+      "text": "Natural language processing studies computational methods for understanding and generating human language."
+    },
+    {
+      "id": "sample:p4:c2",
+      "document_id": "sample",
+      "filename": "sample-ai-paper.pdf",
+      "page": 4,
+      "text": "The user interface displays uploaded files and application settings."
+    }
+  ],
+  "questions": [
+    {"id": "q01", "query": "How does BM25 rank passages?", "relevant_chunk_ids": ["sample:p1:c1"]},
+    {"id": "q02", "query": "What is keyword search?", "relevant_chunk_ids": ["sample:p1:c1"]},
+    {"id": "q03", "query": "How are vector embeddings used for retrieval?", "relevant_chunk_ids": ["sample:p1:c2"]},
+    {"id": "q04", "query": "What is semantic search?", "relevant_chunk_ids": ["sample:p1:c2"]},
+    {"id": "q05", "query": "How does hybrid search combine rankings?", "relevant_chunk_ids": ["sample:p2:c1"]},
+    {"id": "q06", "query": "What is RRF?", "relevant_chunk_ids": ["sample:p2:c1"]},
+    {"id": "q07", "query": "How does RAG create grounded answers?", "relevant_chunk_ids": ["sample:p2:c2"]},
+    {"id": "q08", "query": "Which dataset supports scientific paper question answering?", "relevant_chunk_ids": ["sample:p3:c1"]},
+    {"id": "q09", "query": "Which metric evaluates supporting evidence?", "relevant_chunk_ids": ["sample:p3:c2"]},
+    {"id": "q10", "query": "What does NLP study?", "relevant_chunk_ids": ["sample:p4:c1"]}
+  ]
+}

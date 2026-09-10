@@ -73,6 +73,7 @@ class InMemoryBM25Retriever:
                         method=SearchMethod.BM25,
                         score=max(float(score), 0.0),
                         bm25_score=max(float(score), 0.0),
+                        chunk_concepts=chunk.concepts,
                     )
                 )
             return results
@@ -156,6 +157,7 @@ class InMemorySemanticRetriever:
                         method=SearchMethod.SEMANTIC,
                         score=score,
                         semantic_score=score,
+                        chunk_concepts=self._chunks[index].concepts,
                     )
                 )
             return results

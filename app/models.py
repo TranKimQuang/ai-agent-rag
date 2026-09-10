@@ -16,6 +16,7 @@ class Chunk(BaseModel):
     filename: str
     page: int
     text: str
+    concepts: list[str] = Field(default_factory=list)
 
 
 class IngestResponse(BaseModel):
@@ -23,6 +24,7 @@ class IngestResponse(BaseModel):
     filename: str
     pages: int
     chunks: int
+    concept_links: int = 0
 
 
 class SearchResult(BaseModel):

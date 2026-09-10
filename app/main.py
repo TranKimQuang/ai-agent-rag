@@ -48,12 +48,14 @@ async def ingest_document(
             detail="The PDF contains no extractable text; it may be a scanned image",
         )
 
+    chunks, concept_links = ontology.index_chunks(chunks)
     retriever.add(chunks)
     return IngestResponse(
         document_id=document_id,
         filename=filename,
         pages=len(pages),
         chunks=len(chunks),
+        concept_links=concept_links,
     )
 
 
