@@ -83,6 +83,33 @@ Invoke-RestMethod "http://127.0.0.1:8000/ontology/concepts/QASPER" |
 This stage validates the knowledge model independently. The next stage will recognize ontology
 concepts in document chunks and use those relations to expand and re-rank hybrid-search results.
 
+## Step 4: Ontology-aware retrieval
+
+The experimental `hybrid_ontology` method now connects the ontology to retrieval:
+
+1. Recognize concepts and aliases in the question.
+2. Expand the query with synonyms and directly related/broader/narrower concepts.
+3. Run BM25 and semantic retrieval, then combine them with RRF.
+4. Calculate an Ontology score from concepts found in each candidate chunk.
+5. Re-rank candidates and return an explanation of the ontology signal.
+
+```powershell
+# Inspect query expansion without running retrieval
+Invoke-RestMethod `
+  "http://127.0.0.1:8000/ontology/expand?q=hoi%20dap" |
+  ConvertTo-Json -Depth 5
+
+# Run Hybrid + Ontology retrieval
+Invoke-RestMethod `
+  "http://127.0.0.1:8000/search?q=information%20retrieval&method=hybrid_ontology&limit=5" |
+  ConvertTo-Json -Depth 5
+```
+
+The ontology schema is available in both Turtle (`ontology/document_qa.ttl`) and RDF/XML
+(`ontology/document_qa.owl`). Example competency questions and SPARQL queries are stored in the
+same directory. This remains a small proof of concept; the next step is to create concept links
+from real PDF chunks and prepare a labelled evaluation set.
+
 ## Checks
 
 ```powershell

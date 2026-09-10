@@ -1,0 +1,7 @@
+PREFIX qa: <https://example.org/document-qa#>
+
+SELECT ?paper ?dataset
+WHERE {
+  ?paper a qa:Paper ;
+         qa:usesDataset ?dataset .
+}

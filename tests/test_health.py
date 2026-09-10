@@ -22,10 +22,23 @@ def test_ontology_concept_relations() -> None:
     response = client.get("/ontology/concepts/QASPER")
 
     assert response.status_code == 200
-    assert response.json()["relations"][0]["object"] == "QASPER"
+    assert any(
+        relation["subject"] == "SamplePaper"
+        and relation["predicate"] == "usesDataset"
+        and relation["object"] == "QASPER"
+        for relation in response.json()["relations"]
+    )
 
 
 def test_unknown_ontology_concept_returns_404() -> None:
     response = client.get("/ontology/concepts/unknown")
 
     assert response.status_code == 404
+
+
+def test_ontology_query_expansion_api() -> None:
+    response = client.get("/ontology/expand", params={"q": "hỏi đáp"})
+
+    assert response.status_code == 200
+    assert response.json()["query_concepts"] == ["QuestionAnswering"]
+    assert "QASPER" in response.json()["expansion_terms"]

@@ -1,0 +1,7 @@
+PREFIX qa: <https://example.org/document-qa#>
+
+SELECT ?method ?task
+WHERE {
+  ?method a qa:Method ;
+          qa:solvesTask ?task .
+}

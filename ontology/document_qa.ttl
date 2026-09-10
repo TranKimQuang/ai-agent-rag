@@ -2,6 +2,7 @@
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 qa:DocumentQAOntology a owl:Ontology ;
@@ -13,7 +14,8 @@ qa:Section a owl:Class .
 qa:Chunk a owl:Class .
 qa:Author a owl:Class .
 qa:Concept a owl:Class .
-qa:ResearchTask a owl:Class ; rdfs:subClassOf qa:Concept .
+qa:ResearchTopic a owl:Class ; rdfs:subClassOf qa:Concept .
+qa:Task a owl:Class ; rdfs:subClassOf qa:Concept .
 qa:Method a owl:Class ; rdfs:subClassOf qa:Concept .
 qa:Model a owl:Class ; rdfs:subClassOf qa:Method .
 qa:Dataset a owl:Class ; rdfs:subClassOf qa:Concept .
@@ -26,10 +28,12 @@ qa:hasChunk a owl:ObjectProperty ; rdfs:domain qa:Section ; rdfs:range qa:Chunk 
 qa:mentionsConcept a owl:ObjectProperty ; rdfs:domain qa:Chunk ; rdfs:range qa:Concept .
 qa:usesMethod a owl:ObjectProperty ; rdfs:domain qa:Paper ; rdfs:range qa:Method .
 qa:usesDataset a owl:ObjectProperty ; rdfs:domain qa:Paper ; rdfs:range qa:Dataset .
-qa:evaluatesWithMetric a owl:ObjectProperty ; rdfs:domain qa:Paper ; rdfs:range qa:Metric .
-qa:addressesTask a owl:ObjectProperty ; rdfs:domain qa:Method ; rdfs:range qa:ResearchTask .
+qa:evaluatedBy a owl:ObjectProperty ; rdfs:domain qa:Paper ; rdfs:range qa:Metric .
+qa:solvesTask a owl:ObjectProperty ; rdfs:domain qa:Method ; rdfs:range qa:Task .
 qa:hasEvidence a owl:ObjectProperty ; rdfs:domain qa:Result ; rdfs:range qa:Chunk .
-qa:relatedConcept a owl:ObjectProperty ; rdfs:domain qa:Concept ; rdfs:range qa:Concept .
+qa:relatedTo a owl:ObjectProperty, owl:SymmetricProperty ;
+    rdfs:domain qa:Concept ;
+    rdfs:range qa:Concept .
 
 qa:title a owl:DatatypeProperty ; rdfs:domain qa:Document ; rdfs:range xsd:string .
 qa:pageNumber a owl:DatatypeProperty ; rdfs:domain qa:Chunk ; rdfs:range xsd:integer .
@@ -41,7 +45,7 @@ qa:SamplePaper a qa:Paper ;
     qa:hasSection qa:MethodsSection ;
     qa:usesMethod qa:RetrievalAugmentedGeneration ;
     qa:usesDataset qa:QASPER ;
-    qa:evaluatesWithMetric qa:EvidenceF1 .
+    qa:evaluatedBy qa:EvidenceF1 .
 
 qa:MethodsSection a qa:Section ; qa:hasChunk qa:SampleChunk .
 qa:SampleChunk a qa:Chunk ;
@@ -49,9 +53,50 @@ qa:SampleChunk a qa:Chunk ;
     qa:chunkText "RAG retrieves evidence before generating an answer." ;
     qa:mentionsConcept qa:RetrievalAugmentedGeneration .
 qa:RetrievalAugmentedGeneration a qa:Method ;
-    qa:addressesTask qa:QuestionAnswering ;
-    qa:relatedConcept qa:InformationRetrieval .
-qa:QuestionAnswering a qa:ResearchTask .
-qa:InformationRetrieval a qa:ResearchTask .
-qa:QASPER a qa:Dataset .
-qa:EvidenceF1 a qa:Metric .
+    skos:prefLabel "retrieval augmented generation"@en ;
+    skos:altLabel "RAG"@en, "retrieval-augmented generation"@en ;
+    qa:solvesTask qa:QuestionAnswering ;
+    qa:relatedTo qa:InformationRetrieval .
+
+qa:QuestionAnswering a qa:Task ;
+    skos:prefLabel "question answering"@en ;
+    skos:altLabel "QA"@en, "hỏi đáp"@vi ;
+    skos:broader qa:NaturalLanguageProcessing .
+
+qa:InformationRetrieval a qa:ResearchTopic ;
+    skos:prefLabel "information retrieval"@en ;
+    skos:altLabel "IR"@en, "truy hồi thông tin"@vi ;
+    skos:narrower qa:KeywordSearch, qa:SemanticSearch, qa:HybridSearch .
+
+qa:NaturalLanguageProcessing a qa:ResearchTopic ;
+    skos:prefLabel "natural language processing"@en ;
+    skos:altLabel "NLP"@en, "xử lý ngôn ngữ tự nhiên"@vi .
+
+qa:KeywordSearch a qa:Method ;
+    skos:prefLabel "keyword search"@en ;
+    skos:altLabel "tìm kiếm từ khóa"@vi, "BM25"@en ;
+    qa:relatedTo qa:InformationRetrieval .
+
+qa:SemanticSearch a qa:Method ;
+    skos:prefLabel "semantic search"@en ;
+    skos:altLabel "tìm kiếm ngữ nghĩa"@vi, "dense retrieval"@en ;
+    qa:relatedTo qa:InformationRetrieval .
+
+qa:HybridSearch a qa:Method ;
+    skos:prefLabel "hybrid search"@en ;
+    skos:altLabel "tìm kiếm kết hợp"@vi, "hybrid retrieval"@en ;
+    qa:relatedTo qa:KeywordSearch, qa:SemanticSearch, qa:ReciprocalRankFusion .
+
+qa:ReciprocalRankFusion a qa:Method ;
+    skos:prefLabel "reciprocal rank fusion"@en ;
+    skos:altLabel "RRF"@en ;
+    qa:relatedTo qa:HybridSearch .
+
+qa:QASPER a qa:Dataset ;
+    skos:prefLabel "QASPER"@en ;
+    skos:altLabel "QASPER dataset"@en ;
+    qa:relatedTo qa:QuestionAnswering .
+
+qa:EvidenceF1 a qa:Metric ;
+    skos:prefLabel "evidence F1"@en ;
+    skos:altLabel "Evidence F1 score"@en .

@@ -7,6 +7,7 @@ class SearchMethod(str, Enum):
     BM25 = "bm25"
     SEMANTIC = "semantic"
     HYBRID = "hybrid"
+    HYBRID_ONTOLOGY = "hybrid_ontology"
 
 
 class Chunk(BaseModel):
@@ -34,6 +35,11 @@ class SearchResult(BaseModel):
     score: float = Field(ge=0)
     bm25_score: float | None = Field(default=None, ge=0)
     semantic_score: float | None = Field(default=None, ge=0, le=1)
+    ontology_score: float | None = Field(default=None, ge=0, le=1)
+    query_concepts: list[str] = Field(default_factory=list)
+    chunk_concepts: list[str] = Field(default_factory=list)
+    expanded_query: str | None = None
+    ontology_explanation: str | None = None
 
 
 class SearchResponse(BaseModel):
@@ -58,3 +64,10 @@ class OntologyRelation(BaseModel):
 class OntologyQueryResponse(BaseModel):
     concept: str
     relations: list[OntologyRelation]
+
+
+class OntologyExpansionResponse(BaseModel):
+    original_query: str
+    expanded_query: str
+    query_concepts: list[str]
+    expansion_terms: list[str]

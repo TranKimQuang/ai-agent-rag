@@ -5,6 +5,7 @@ from fastapi import Body, FastAPI, Header, HTTPException, Query
 
 from app.models import (
     IngestResponse,
+    OntologyExpansionResponse,
     OntologyQueryResponse,
     OntologySummary,
     SearchMethod,
@@ -15,9 +16,9 @@ from app.rag.chunking import chunk_pages
 from app.rag.pdf_reader import PdfReadError, extract_pdf_pages
 from app.rag.retriever import InMemoryHybridRetriever, SemanticModelError
 
-app = FastAPI(title="AI Agent + RAG")
-retriever = InMemoryHybridRetriever()
 ontology = OntologyService()
+app = FastAPI(title="AI Agent + RAG")
+retriever = InMemoryHybridRetriever(ontology_service=ontology)
 
 
 @app.get("/health")
@@ -88,3 +89,16 @@ def ontology_concept(concept: str) -> OntologyQueryResponse:
     if not relations:
         raise HTTPException(status_code=404, detail="Concept not found in ontology")
     return OntologyQueryResponse(concept=concept, relations=relations)
+
+
+@app.get("/ontology/expand", response_model=OntologyExpansionResponse)
+def ontology_expand(
+    q: str = Query(min_length=2, description="Question to expand with ontology concepts"),
+) -> OntologyExpansionResponse:
+    expansion = ontology.expand_query(q)
+    return OntologyExpansionResponse(
+        original_query=expansion.original_query,
+        expanded_query=expansion.expanded_query,
+        query_concepts=expansion.query_concepts,
+        expansion_terms=expansion.expansion_terms,
+    )

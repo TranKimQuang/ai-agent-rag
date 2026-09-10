@@ -1,6 +1,7 @@
 import numpy as np
 
 from app.models import Chunk, SearchMethod
+from app.ontology.service import OntologyService
 from app.rag.retriever import (
     InMemoryBM25Retriever,
     InMemoryHybridRetriever,
@@ -123,3 +124,55 @@ def test_hybrid_search_fuses_keyword_and_semantic_ranks() -> None:
     assert results[0].method == SearchMethod.HYBRID
     assert results[0].bm25_score is not None
     assert results[0].semantic_score is not None
+
+
+class OntologyRerankEncoder:
+    """Ranks a distractor first so Ontology can demonstrate re-ranking."""
+
+    def encode(self, texts: list[str]) -> np.ndarray:
+        vectors = []
+        for text in texts:
+            lowered = text.lower()
+            if "unrelated surface match" in lowered or lowered.startswith(
+                "information retrieval"
+            ):
+                vectors.append([1.0, 0.0])
+            else:
+                vectors.append([0.0, 1.0])
+        return np.asarray(vectors, dtype=np.float32)
+
+
+def test_ontology_aware_search_expands_and_reranks() -> None:
+    retriever = InMemoryHybridRetriever(
+        semantic_encoder=OntologyRerankEncoder(),
+        ontology_service=OntologyService(),
+    )
+    retriever.add(
+        [
+            Chunk(
+                id="distractor",
+                document_id="doc",
+                filename="paper.pdf",
+                page=1,
+                text="An unrelated surface match used only by the fake encoder.",
+            ),
+            Chunk(
+                id="rag",
+                document_id="doc",
+                filename="paper.pdf",
+                page=2,
+                text="RAG retrieves evidence before generating an answer.",
+            ),
+        ]
+    )
+
+    results = retriever.search(
+        "information retrieval",
+        method=SearchMethod.HYBRID_ONTOLOGY,
+    )
+
+    assert results[0].chunk_id == "rag"
+    assert results[0].ontology_score == 0.65
+    assert results[0].query_concepts == ["InformationRetrieval"]
+    assert results[0].chunk_concepts == ["RetrievalAugmentedGeneration"]
+    assert "retrieval augmented generation" in (results[0].expanded_query or "")

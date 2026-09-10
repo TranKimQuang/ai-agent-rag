@@ -8,6 +8,7 @@ from numpy.typing import NDArray
 from rank_bm25 import BM25Okapi
 
 from app.models import Chunk, SearchMethod, SearchResult
+from app.ontology.service import OntologyService
 
 _TOKEN = re.compile(r"\w+", re.UNICODE)
 DEFAULT_EMBEDDING_MODEL = "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2"
@@ -167,11 +168,15 @@ class InMemoryHybridRetriever:
         self,
         *,
         semantic_encoder: TextEncoder | None = None,
+        ontology_service: OntologyService | None = None,
         rrf_k: int = 60,
+        ontology_weight: float = 0.35,
     ) -> None:
         self.bm25 = InMemoryBM25Retriever()
         self.semantic = InMemorySemanticRetriever(semantic_encoder)
+        self.ontology = ontology_service
         self.rrf_k = rrf_k
+        self.ontology_weight = ontology_weight
 
     def add(self, chunks: list[Chunk]) -> None:
         self.bm25.add(chunks)
@@ -187,6 +192,13 @@ class InMemoryHybridRetriever:
             return self.bm25.search(query, limit)
         if method == SearchMethod.SEMANTIC:
             return self.semantic.search(query, limit)
+
+        if method == SearchMethod.HYBRID_ONTOLOGY:
+            return self._search_with_ontology(query, limit)
+
+        return self._search_hybrid(query, limit)
+
+    def _search_hybrid(self, query: str, limit: int) -> list[SearchResult]:
 
         candidate_limit = max(limit * 4, 20)
         bm25_results = self.bm25.search(query, candidate_limit)
@@ -216,3 +228,37 @@ class InMemoryHybridRetriever:
             )
             for chunk_id in ranked_ids
         ]
+
+    def _search_with_ontology(self, query: str, limit: int) -> list[SearchResult]:
+        if self.ontology is None:
+            return self._search_hybrid(query, limit)
+
+        expansion = self.ontology.expand_query(query)
+        candidates = self._search_hybrid(expansion.expanded_query, max(limit * 4, 20))
+        if not candidates:
+            return []
+
+        max_rrf = max(candidate.score for candidate in candidates) or 1.0
+        reranked: list[SearchResult] = []
+        for candidate in candidates:
+            match = self.ontology.score_text(query, candidate.text)
+            normalized_rrf = candidate.score / max_rrf
+            final_score = (
+                (1.0 - self.ontology_weight) * normalized_rrf
+                + self.ontology_weight * match.score
+            )
+            reranked.append(
+                candidate.model_copy(
+                    update={
+                        "method": SearchMethod.HYBRID_ONTOLOGY,
+                        "score": final_score,
+                        "ontology_score": match.score,
+                        "query_concepts": match.query_concepts,
+                        "chunk_concepts": match.chunk_concepts,
+                        "expanded_query": expansion.expanded_query,
+                        "ontology_explanation": match.explanation,
+                    }
+                )
+            )
+
+        return sorted(reranked, key=lambda result: result.score, reverse=True)[:limit]

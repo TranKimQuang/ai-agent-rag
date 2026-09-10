@@ -1,0 +1,8 @@
+PREFIX qa: <https://example.org/document-qa#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+
+SELECT ?concept ?related
+WHERE {
+  VALUES ?relation { qa:relatedTo skos:broader skos:narrower }
+  ?concept ?relation ?related .
+}

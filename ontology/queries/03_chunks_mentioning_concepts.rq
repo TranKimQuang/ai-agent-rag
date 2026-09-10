@@ -1,0 +1,7 @@
+PREFIX qa: <https://example.org/document-qa#>
+
+SELECT ?chunk ?concept
+WHERE {
+  ?chunk a qa:Chunk ;
+         qa:mentionsConcept ?concept .
+}
