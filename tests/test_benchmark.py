@@ -1,6 +1,11 @@
 import numpy as np
 
-from app.evaluation.benchmark import BenchmarkQuestion, evaluate_ranking, run_benchmark
+from app.evaluation.benchmark import (
+    BenchmarkQuestion,
+    evaluate_ranking,
+    run_benchmark,
+    run_detailed_benchmark,
+)
 from app.models import Chunk, SearchMethod
 from app.ontology.service import OntologyService
 from app.rag.retriever import InMemoryHybridRetriever
@@ -62,3 +67,35 @@ def test_run_benchmark_compares_retrieval_methods() -> None:
 
     assert report["bm25"]["recall@1"] == 1.0
     assert report["hybrid_ontology"]["mrr"] == 1.0
+
+
+def test_detailed_benchmark_reports_each_question_rank_and_multiple_k_values() -> None:
+    ontology = OntologyService()
+    chunks, _ = ontology.index_chunks(
+        [
+            Chunk(id="wrong", document_id="doc", filename="paper.pdf", page=1, text="Other"),
+            Chunk(
+                id="correct",
+                document_id="doc",
+                filename="paper.pdf",
+                page=2,
+                text="BM25 performs keyword search.",
+            ),
+        ]
+    )
+    retriever = InMemoryHybridRetriever(
+        semantic_encoder=BenchmarkEncoder(), ontology_service=ontology
+    )
+    retriever.add(chunks)
+
+    summary, details = run_detailed_benchmark(
+        retriever,
+        [BenchmarkQuestion("q1", "BM25 keyword", {"correct"}, "keyword")],
+        methods=[SearchMethod.BM25],
+        k_values=(1, 3),
+    )
+
+    assert summary["bm25"]["recall@1"] == 1.0
+    assert summary["bm25"]["recall@3"] == 1.0
+    assert details[0]["gold_rank"] == 1
+    assert details[0]["category"] == "keyword"

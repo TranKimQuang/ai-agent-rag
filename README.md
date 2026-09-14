@@ -120,15 +120,16 @@ A reproducible benchmark runner compares BM25, Semantic, Hybrid, and Hybrid + On
 Precision@k, Recall@k, MRR, and nDCG@k:
 
 ```powershell
-python -m scripts.run_benchmark --dataset evaluation/sample_benchmark.json --k 5
+python -m scripts.run_benchmark --dataset evaluation/sample_benchmark.json --k-values 1 3 5
 ```
 
-Results are written to `results/retrieval_benchmark.json` and
-`results/retrieval_benchmark.csv`. The included dataset is only a development fixture; do not
-use its scores as thesis evidence. Replace it with questions and gold chunk IDs from real PDFs
-before preparing the progress report.
+Summary results are written to `results/retrieval_benchmark.json` and
+`results/retrieval_benchmark.csv`. The runner also creates a per-question result file and
+`results/ontology_rank_changes.csv`, which directly compares the gold-evidence rank before and
+after Ontology re-ranking. The included dataset is only a development fixture; do not use its
+scores as final thesis evidence.
 
-Generate the controlled eight-page PDF fixture and its twelve-question benchmark with:
+Generate the controlled sixteen-page PDF fixture and its twenty-four-question benchmark with:
 
 ```powershell
 python -m scripts.create_benchmark_pdf

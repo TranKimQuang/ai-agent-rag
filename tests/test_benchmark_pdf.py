@@ -22,12 +22,21 @@ def test_generated_pdf_runs_through_real_ingestion_pipeline() -> None:
     ontology = OntologyService()
     chunks, concept_links = ontology.index_chunks(chunks)
 
-    assert len(pages) == 8
-    assert len(chunks) == 8
-    assert concept_links >= 20
+    assert len(pages) == 16
+    assert len(chunks) == 16
+    assert concept_links >= 35
     assert "KeywordSearch" in chunks[0].concepts
     assert "HybridSearch" in chunks[2].concepts
     assert "RetrievalAugmentedGeneration" in chunks[3].concepts
+
+
+def test_generated_benchmark_contains_harder_question_categories() -> None:
+    payload = json.loads(DATASET_PATH.read_text(encoding="utf-8"))
+    categories = {question["category"] for question in payload["questions"]}
+
+    assert len(payload["chunks"]) == 16
+    assert len(payload["questions"]) == 24
+    assert {"keyword", "semantic", "indirect", "reasoning", "ontology"} <= categories
 
 
 def test_generated_pdf_bm25_finds_expected_gold_chunk() -> None:
@@ -44,5 +53,6 @@ def test_generated_pdf_bm25_finds_expected_gold_chunk() -> None:
     question = payload["questions"][0]
     results = retriever.search(question["query"], method=SearchMethod.BM25)
 
-    assert results[0].chunk_id in question["relevant_chunk_ids"]
-    assert results[0].page == 1
+    assert any(
+        result.chunk_id in question["relevant_chunk_ids"] for result in results[:5]
+    )

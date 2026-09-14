@@ -10,6 +10,7 @@ class BenchmarkQuestion:
     question_id: str
     query: str
     relevant_chunk_ids: set[str]
+    category: str = "unspecified"
 
 
 @dataclass(frozen=True)
@@ -89,3 +90,65 @@ def run_benchmark(
         }
 
     return report
+
+
+def run_detailed_benchmark(
+    retriever: InMemoryHybridRetriever,
+    questions: list[BenchmarkQuestion],
+    *,
+    methods: list[SearchMethod],
+    k_values: tuple[int, ...] = (1, 3, 5),
+) -> tuple[dict[str, dict[str, float]], list[dict[str, object]]]:
+    """Return multi-k summary metrics and inspectable ranks for every question."""
+    if not questions:
+        raise ValueError("Benchmark requires at least one question")
+    if not k_values or any(k <= 0 for k in k_values):
+        raise ValueError("k values must be greater than zero")
+
+    max_k = max(k_values)
+    summary: dict[str, dict[str, float]] = {}
+    details: list[dict[str, object]] = []
+
+    for method in methods:
+        metric_rows: dict[int, list[RetrievalMetrics]] = {k: [] for k in k_values}
+        for question in questions:
+            results = retriever.search(question.query, limit=max_k, method=method)
+            retrieved_ids = [result.chunk_id for result in results]
+            gold_rank = next(
+                (
+                    rank
+                    for rank, chunk_id in enumerate(retrieved_ids, start=1)
+                    if chunk_id in question.relevant_chunk_ids
+                ),
+                None,
+            )
+            details.append(
+                {
+                    "question_id": question.question_id,
+                    "category": question.category,
+                    "query": question.query,
+                    "method": method.value,
+                    "gold_chunk_ids": sorted(question.relevant_chunk_ids),
+                    "gold_rank": gold_rank,
+                    "top_chunk_id": retrieved_ids[0] if retrieved_ids else None,
+                    "retrieved_chunk_ids": retrieved_ids,
+                }
+            )
+            for k in k_values:
+                metric_rows[k].append(
+                    evaluate_ranking(retrieved_ids, question.relevant_chunk_ids, k=k)
+                )
+
+        count = len(questions)
+        method_summary: dict[str, float] = {"questions": float(count)}
+        for k in k_values:
+            scores = metric_rows[k]
+            method_summary[f"precision@{k}"] = (
+                sum(value.precision_at_k for value in scores) / count
+            )
+            method_summary[f"recall@{k}"] = sum(value.recall_at_k for value in scores) / count
+            method_summary[f"mrr@{k}"] = sum(value.reciprocal_rank for value in scores) / count
+            method_summary[f"ndcg@{k}"] = sum(value.ndcg_at_k for value in scores) / count
+        summary[method.value] = method_summary
+
+    return summary, details

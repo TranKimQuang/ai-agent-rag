@@ -56,10 +56,12 @@ trang và đoạn bằng chứng. Nếu tài liệu không có đủ bằng ch�
 - [x] Tính tự động Precision@k, Recall@k, MRR và nDCG@k.
 - [x] Tạo bộ dữ liệu benchmark mẫu gồm 8 chunk và 10 câu hỏi.
 - [x] Xuất kết quả benchmark thành JSON và CSV.
-- [x] Tạo PDF kiểm thử có kiểm soát gồm 8 trang và 8 chủ đề.
-- [x] Tạo 12 câu hỏi có gold chunk tương ứng từ PDF kiểm thử.
+- [x] Mở rộng PDF kiểm thử có kiểm soát lên 16 trang, gồm 8 trang đáp án và 8 trang gây nhiễu gần nghĩa.
+- [x] Mở rộng benchmark lên 24 câu hỏi: trực tiếp, đồng nghĩa, gián tiếp, suy luận và Ontology.
+- [x] Xuất chỉ số tại k=1, k=3, k=5 và thứ hạng chi tiết của từng câu hỏi.
+- [x] Xuất bảng ontology_rank_changes.csv so sánh Hybrid với Hybrid + Ontology.
 - [x] Kiểm tra PDF qua pipeline thật: trích xuất, chunking, gán concept và BM25.
-- [x] Kiểm thử gần nhất: 29 test passed; Ruff không phát hiện lỗi.
+- [x] Kiểm thử gần nhất: 31 test passed; Ruff không phát hiện lỗi.
 - [x] Đồng bộ source code với GitHub.
 
 ### Đang ở trạng thái nền móng
@@ -72,7 +74,7 @@ trang và đoạn bằng chứng. Nếu tài liệu không có đủ bằng ch�
 
 - [ ] Tìm hiểu và ánh xạ một phần Computer Science Ontology (CSO).
 - [~] Cơ chế gán concept cho chunk đã có; còn cần chạy trên tập PDF thật.
-- [ ] Ghi log thứ hạng trước/sau để tạo ví dụ báo cáo từ dữ liệu thật.
+- [x] Đã có công cụ ghi thứ hạng trước/sau cho từng câu; còn cần chạy và chọn ví dụ tốt.
 - [ ] Tạo tập câu hỏi và gold evidence để đánh giá.
 - [ ] So sánh BM25, Semantic, Hybrid và Hybrid + Ontology.
 - [ ] Tính Precision@k, Recall@k, MRR hoặc nDCG@k.
@@ -102,9 +104,9 @@ Milestone tiếp theo: Hoàn thành Ontology-aware retrieval trên dữ liệu n
 
 1. Chọn một tập PDF thật nhỏ và xác định vocabulary phù hợp.
 2. Kiểm tra thủ công độ chính xác của các concept được gán.
-3. Tạo 10-20 câu hỏi thử nghiệm có đáp án/chunk đúng từ PDF thật.
-4. Chạy và lập bảng so sánh bốn phương pháp retrieval.
-5. Tạo ví dụ thật cho thấy Ontology làm thay đổi thứ hạng chunk.
+3. Chạy benchmark 24 câu hỏi mới và kiểm tra thủ công các gold chunk.
+4. Phân tích bảng so sánh bốn phương pháp tại k=1, k=3 và k=5.
+5. Chọn ví dụ cho thấy Ontology cải thiện, không đổi hoặc làm giảm thứ hạng.
 
 Chưa ưu tiên trong milestone này: giao diện đẹp, PostgreSQL, pgvector và OCR.
 

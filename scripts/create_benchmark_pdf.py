@@ -26,7 +26,8 @@ SECTIONS = [
             "BM25 là một thuật toán xếp hạng tài liệu dựa trên từ khóa. Thuật toán xem xét "
             "tần suất xuất hiện của từ trong đoạn văn, độ hiếm của từ trong toàn bộ tập tài "
             "liệu và độ dài của đoạn. Những từ hiếm nhưng xuất hiện đúng trong truy vấn thường "
-            "đóng góp nhiều hơn vào điểm xếp hạng.",
+            "đóng góp nhiều hơn vào điểm xếp hạng. Đây là một mô hình lexical retrieval có "
+            "cơ sở xác suất.",
             "Ưu điểm của BM25 là nhanh, nhẹ và dễ giải thích. Hạn chế chính là phương pháp này "
             "không hiểu tốt từ đồng nghĩa hoặc những cách diễn đạt khác nhau. Ví dụ, truy vấn "
             "'xe hơi' có thể không khớp với đoạn chỉ dùng từ 'ô tô'.",
@@ -86,7 +87,9 @@ SECTIONS = [
             "Ontology hỗ trợ query expansion bằng synonym, superclass, subclass và related "
             "concept. Sau Hybrid Search, Ontology-aware re-ranking tăng điểm cho chunk chứa "
             "concept có quan hệ gần với concept của câu hỏi. OntoScore ghi nhận mức phù hợp ngữ "
-            "nghĩa có cấu trúc này.",
+            "nghĩa có cấu trúc này. Trong ontology mẫu, Question Answering là một nhánh của "
+            "Natural Language Processing; Information Retrieval có các nhánh Keyword Search, "
+            "Semantic Search và Hybrid Search.",
         ],
     ),
     (
@@ -113,19 +116,124 @@ SECTIONS = [
     ),
 ]
 
+# Related pages deliberately repeat vocabulary from the eight gold pages. They make the
+# benchmark less trivial and test whether a retriever can distinguish nearby concepts.
+SECTIONS += [
+    (
+        "9. TF-IDF và so khớp từ vựng",
+        [
+            "TF-IDF cũng xếp hạng văn bản từ tần suất và độ hiếm của từ. Khác với BM25, "
+            "công thức TF-IDF cơ bản không có cùng cơ chế bão hòa tần suất và chuẩn hóa độ dài. "
+            "Vì cùng thuộc nhóm lexical retrieval, hai phương pháp thường trả về các đoạn có "
+            "nhiều từ giống câu hỏi.",
+            "So khớp từ vựng rất hữu ích với mã sản phẩm, tên riêng và thuật ngữ chính xác, "
+            "nhưng dễ bỏ sót một câu diễn đạt cùng ý bằng từ khác. Trang này là dữ liệu gây "
+            "nhiễu cho các câu hỏi về BM25 và tìm kiếm theo từ khóa.",
+        ],
+    ),
+    (
+        "10. Phân cụm vector",
+        [
+            "Phân cụm vector nhóm các điểm gần nhau trong không gian embedding mà không cần "
+            "nhãn có sẵn. K-means có thể được dùng để khám phá chủ đề hoặc tổ chức kho tài liệu, "
+            "nhưng bản thân việc phân cụm không phải là thao tác truy xuất một chunk cho câu hỏi.",
+            "Khoảng cách cosine xuất hiện trong cả phân cụm và tìm kiếm ngữ nghĩa. Việc cùng dùng "
+            "vector và cosine có thể khiến một hệ thống chọn nhầm trang này khi câu hỏi thực sự "
+            "hỏi cách Semantic Search truy hồi nội dung tương đồng.",
+        ],
+    ),
+    (
+        "11. Hợp nhất điểm số tuyến tính",
+        [
+            "Một cách kết hợp kết quả là chuẩn hóa điểm BM25 và điểm semantic rồi cộng theo trọng "
+            "số. Phương pháp weighted score fusion nhạy với cách chuẩn hóa vì hai bộ tìm kiếm có "
+            "thang điểm khác nhau.",
+            "Cách này không phải Reciprocal Rank Fusion. RRF chỉ sử dụng vị trí trong từng bảng "
+            "xếp hạng, còn hợp nhất tuyến tính sử dụng trực tiếp giá trị điểm. Trang này tạo một "
+            "đối chứng gần nghĩa cho chủ đề Hybrid Search.",
+        ],
+    ),
+    (
+        "12. Mô hình ngôn ngữ không có truy hồi",
+        [
+            "Một mô hình ngôn ngữ có thể tạo câu trả lời chỉ từ tham số đã học mà không đọc tài "
+            "liệu của người dùng. Cách làm này tạo văn bản trôi chảy nhưng nguồn kiến thức khó "
+            "kiểm soát và có nguy cơ tạo thông tin không có căn cứ.",
+            "Khác với RAG, quy trình này không lấy evidence trước khi sinh câu trả lời và không thể "
+            "gắn citation đến filename, page, chunk ID trong kho tài liệu. Đây là trang gây nhiễu "
+            "cho câu hỏi về tạo sinh và hallucination.",
+        ],
+    ),
+    (
+        "13. Bộ dữ liệu SQuAD",
+        [
+            "SQuAD là bộ dữ liệu hỏi đáp đọc hiểu gồm câu hỏi và đoạn văn từ Wikipedia. Dữ liệu "
+            "được dùng rộng rãi để đánh giá khả năng trích xuất câu trả lời từ một ngữ cảnh cho "
+            "trước.",
+            "SQuAD cũng thuộc bài toán question answering nhưng không phải QASPER. QASPER tập "
+            "trung vào bài báo khoa học và gắn câu hỏi với evidence trong tài liệu nghiên cứu. "
+            "Hai bộ dữ liệu gần nhau về nhiệm vụ nhưng khác miền và cấu trúc bằng chứng.",
+        ],
+    ),
+    (
+        "14. Taxonomy và danh sách nhãn",
+        [
+            "Taxonomy sắp xếp thuật ngữ theo cấu trúc cha con để hỗ trợ phân loại. Một danh sách "
+            "nhãn phẳng chỉ ghi tên các chủ đề mà không mô tả đầy đủ ngữ nghĩa giữa chúng.",
+            "Ontology rộng hơn taxonomy vì có thể định nghĩa class, property, instance và nhiều "
+            "loại quan hệ như synonym hoặc related concept. Knowledge Graph dùng cấu trúc đó để "
+            "lưu các sự kiện cụ thể về tài liệu và chunk.",
+        ],
+    ),
+    (
+        "15. Chatbot theo kịch bản",
+        [
+            "Chatbot theo kịch bản chọn câu trả lời từ các luật if-then hoặc một cây hội thoại "
+            "được viết trước. Nó có thể điều hướng người dùng nhưng không tự lập kế hoạch dùng các "
+            "công cụ retrieval, Ontology và mô hình ngôn ngữ.",
+            "AI Agent khác chatbot luật ở khả năng điều phối nhiều bước, quan sát kết quả công cụ "
+            "và quyết định có đủ evidence hay chưa. Hai hệ thống đều nhận câu hỏi nên dễ bị nhầm "
+            "nếu truy vấn chỉ nói chung về trợ lý hỏi đáp.",
+        ],
+    ),
+    (
+        "16. Độ chính xác của câu trả lời",
+        [
+            "Answer accuracy đánh giá nội dung câu trả lời cuối cùng có đúng hay không. Chỉ số này "
+            "thuộc giai đoạn generation và không trực tiếp cho biết gold chunk được xếp ở vị trí "
+            "nào trong danh sách retrieval.",
+            "Đánh giá retrieval cần các chỉ số riêng như Precision at k, Recall at k, MRR và nDCG. "
+            "Một hệ thống có thể tìm đúng evidence nhưng vẫn tạo câu trả lời sai, hoặc trả lời hợp "
+            "lý dù citation không thực sự hỗ trợ kết luận.",
+        ],
+    ),
+]
+
 QUESTIONS = [
-    ("q01", "BM25 xếp hạng đoạn văn dựa trên yếu tố nào?", 1),
-    ("q02", "Hạn chế của tìm kiếm từ khóa là gì?", 1),
-    ("q03", "Vector embedding được sử dụng như thế nào?", 2),
-    ("q04", "Phương pháp nào tìm kiếm dựa trên ý nghĩa?", 2),
-    ("q05", "RRF kết hợp các bảng xếp hạng như thế nào?", 3),
-    ("q06", "Vì sao Hybrid Search kết hợp BM25 và Semantic Search?", 3),
-    ("q07", "Khi nào hệ thống RAG phải từ chối trả lời?", 4),
-    ("q08", "QASPER được dùng để đánh giá nội dung gì?", 5),
-    ("q09", "Ontology hỗ trợ mở rộng truy vấn bằng những quan hệ nào?", 6),
-    ("q10", "AI Agent làm gì trước khi tạo câu trả lời cuối cùng?", 7),
-    ("q11", "Recall at k thể hiện điều gì?", 8),
-    ("q12", "Chỉ số nào đánh giá vị trí của kết quả đúng đầu tiên?", 8),
+    ("q01", "BM25 xếp hạng đoạn văn dựa trên yếu tố nào?", 1, "keyword"),
+    ("q02", "Hạn chế của tìm kiếm từ khóa là gì?", 1, "keyword"),
+    ("q03", "Vector embedding được sử dụng như thế nào?", 2, "semantic"),
+    ("q04", "Phương pháp nào tìm kiếm dựa trên ý nghĩa?", 2, "semantic"),
+    ("q05", "RRF kết hợp các bảng xếp hạng như thế nào?", 3, "keyword"),
+    ("q06", "Vì sao Hybrid Search kết hợp BM25 và Semantic Search?", 3, "keyword"),
+    ("q07", "Khi nào hệ thống RAG phải từ chối trả lời?", 4, "reasoning"),
+    ("q08", "QASPER được dùng để đánh giá nội dung gì?", 5, "keyword"),
+    ("q09", "Ontology hỗ trợ mở rộng truy vấn bằng những quan hệ nào?", 6, "keyword"),
+    ("q10", "AI Agent làm gì trước khi tạo câu trả lời cuối cùng?", 7, "reasoning"),
+    ("q11", "Recall at k thể hiện điều gì?", 8, "keyword"),
+    ("q12", "Chỉ số nào đánh giá vị trí của kết quả đúng đầu tiên?", 8, "indirect"),
+    ("q13", "Cách dò tài liệu nào bão hòa tần suất từ và xét độ dài đoạn?", 1, "indirect"),
+    ("q14", "Tôi viết khác chữ nhưng cùng ý thì cơ chế truy hồi nào phù hợp?", 2, "semantic"),
+    ("q15", "Cách trộn thứ hạng nào không cần chuẩn hóa hai thang điểm?", 3, "indirect"),
+    ("q16", "Làm sao buộc mô hình chỉ trả lời từ bằng chứng của tài liệu?", 4, "reasoning"),
+    ("q17", "Bộ dữ liệu QA nào chuyên cho bài báo nghiên cứu và có evidence?", 5, "ontology"),
+    ("q18", "Cấu trúc tri thức nào mô tả class, property và instance?", 6, "indirect"),
+    ("q19", "Truy hồi thông tin có các phương pháp con nào trong mô hình tri thức?", 6, "ontology"),
+    ("q20", "Trợ lý nào tự gọi công cụ rồi kiểm tra chứng cứ trước khi đáp?", 7, "reasoning"),
+    ("q21", "Thước đo nào thưởng cho bằng chứng đúng xuất hiện càng sớm càng tốt?", 8, "indirect"),
+    ("q22", "QA có quan hệ phân cấp với lĩnh vực NLP như thế nào?", 6, "ontology"),
+    ("q23", "Phương pháp lexical retrieval nào dùng xác suất để xếp hạng?", 1, "ontology"),
+    ("q24", "Cách tìm kiếm kết hợp có liên hệ với những phương pháp nào?", 3, "ontology"),
 ]
 
 
@@ -207,7 +315,7 @@ def create_pdf() -> None:
             story.append(Paragraph("TÀI LIỆU KIỂM THỬ ONTOLOGY-AWARE RAG", title_style))
             story.append(
                 Paragraph(
-                    "Tài liệu tổng hợp do project tạo để kiểm tra PDF ingestion, chunking, "
+                    "Tài liệu do project tạo để kiểm tra PDF ingestion, chunking, "
                     "retrieval, query expansion, Ontology-aware re-ranking và citation. "
                     "Không sử dụng số liệu từ tài liệu này làm kết quả nghiên cứu chính thức.",
                     note_style,
@@ -253,9 +361,10 @@ def create_dataset() -> None:
             {
                 "id": question_id,
                 "query": query,
+                "category": category,
                 "relevant_chunk_ids": [page_to_chunk[page]],
             }
-            for question_id, query, page in QUESTIONS
+            for question_id, query, page, category in QUESTIONS
         ],
     }
     DATASET_PATH.parent.mkdir(parents=True, exist_ok=True)
