@@ -1,6 +1,6 @@
 # THEO DÕI TIẾN ĐỘ ĐỒ ÁN AI AGENT + RAG
 
-Cập nhật gần nhất: 14/09/2026
+Cập nhật gần nhất: 15/09/2026
 
 ## 1. Tên đề tài
 
@@ -60,8 +60,12 @@ trang và đoạn bằng chứng. Nếu tài liệu không có đủ bằng ch�
 - [x] Mở rộng benchmark lên 24 câu hỏi: trực tiếp, đồng nghĩa, gián tiếp, suy luận và Ontology.
 - [x] Xuất chỉ số tại k=1, k=3, k=5 và thứ hạng chi tiết của từng câu hỏi.
 - [x] Xuất bảng ontology_rank_changes.csv so sánh Hybrid với Hybrid + Ontology.
+- [x] Chạy benchmark 24 câu hỏi: Hybrid + Ontology đạt Recall@1 0,583; Recall@3 0,917; Recall@5 0,958.
+- [x] Ghi nhận q19 và q24 được Ontology đưa từ ngoài top 5 lên hạng 1.
+- [x] Sửa nhãn thay đổi thứ hạng thành rescued, lost và missed_by_both.
+- [x] Soạn file Word báo cáo tiến độ gồm kiến trúc, Ontology, SPARQL và kết quả thử nghiệm.
 - [x] Kiểm tra PDF qua pipeline thật: trích xuất, chunking, gán concept và BM25.
-- [x] Kiểm thử gần nhất: 31 test passed; Ruff không phát hiện lỗi.
+- [x] Kiểm thử gần nhất: 32 test passed; Ruff không phát hiện lỗi.
 - [x] Đồng bộ source code với GitHub.
 
 ### Đang ở trạng thái nền móng
@@ -100,26 +104,26 @@ PDF
 
 ## 5. Bước tiếp theo ưu tiên
 
-Milestone tiếp theo: Hoàn thành Ontology-aware retrieval trên dữ liệu nhỏ.
+Milestone tiếp theo: Kiểm chứng trên dữ liệu thực và bắt đầu answer generation.
 
-1. Chọn một tập PDF thật nhỏ và xác định vocabulary phù hợp.
-2. Kiểm tra thủ công độ chính xác của các concept được gán.
-3. Chạy benchmark 24 câu hỏi mới và kiểm tra thủ công các gold chunk.
-4. Phân tích bảng so sánh bốn phương pháp tại k=1, k=3 và k=5.
-5. Chọn ví dụ cho thấy Ontology cải thiện, không đổi hoặc làm giảm thứ hạng.
+1. Chọn một tập PDF khoa học thực tế nhỏ và xác định vocabulary phù hợp.
+2. Kiểm tra thủ công độ chính xác của concept và gold evidence.
+3. Mở rộng tập đánh giá lên khoảng 30-50 câu hỏi.
+4. Tìm hiểu và ánh xạ một phần Computer Science Ontology.
+5. Tích hợp LLM tạo câu trả lời từ evidence và kiểm tra citation.
 
 Chưa ưu tiên trong milestone này: giao diện đẹp, PostgreSQL, pgvector và OCR.
 
 ## 6. Nội dung cần có trong lần báo cáo tiếp theo
 
-- [ ] File Word báo cáo tiến độ.
-- [ ] Sơ đồ kiến trúc hệ thống hoàn chỉnh.
-- [ ] Sơ đồ Ontology và danh sách class/property.
+- [x] File Word báo cáo tiến độ.
+- [x] Sơ đồ kiến trúc hệ thống hoàn chỉnh.
+- [x] Sơ đồ Ontology và danh sách class/property.
 - [x] 5-10 competency questions.
-- [ ] Instance mẫu tạo từ tài liệu.
+- [x] Instance mẫu tạo từ tài liệu.
 - [x] 3-5 câu SPARQL minh họa.
-- [~] Đã có ví dụ tự động trong test; còn thiếu ví dụ trên PDF thật.
-- [ ] Bảng kết quả BM25, Semantic, Hybrid và Hybrid + Ontology.
+- [x] Có ví dụ q19, q22 và q24 cho thấy Ontology thay đổi thứ hạng.
+- [x] Bảng kết quả BM25, Semantic, Hybrid và Hybrid + Ontology tại k=1, 3, 5.
 - [x] File ontology .owl và .ttl.
 - [x] Source code và GitHub repository.
 
@@ -128,11 +132,10 @@ Chưa ưu tiên trong milestone này: giao diện đẹp, PostgreSQL, pgvector v
 - Nền tảng RAG cơ bản: đã hoàn thành.
 - Hybrid Search: đã hoàn thành.
 - Ontology nền tảng: đã hoàn thành.
-- Ontology-aware retrieval: đã có bản thử nghiệm, chưa đánh giá trên PDF thật.
+- Ontology-aware retrieval: đã có kết quả kiểm soát ban đầu, chưa đánh giá trên PDF khoa học thực tế.
 - AI Agent và answer generation: chưa hoàn thành.
-- Mức độ hoàn thành ước lượng của toàn đồ án: khoảng 40%.
-- Chưa đủ cho gói báo cáo chính thức lần tiếp theo; cần hoàn thành milestone
-  Ontology-aware retrieval và bảng đánh giá ban đầu.
+- Mức độ hoàn thành ước lượng của toàn đồ án: khoảng 50%.
+- Đã đủ cho báo cáo tiến độ về Ontology-aware retrieval; chưa phải kết quả thực nghiệm cuối cùng.
 
 ## 8. Lệnh kiểm tra nhanh
 

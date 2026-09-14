@@ -9,6 +9,7 @@ from app.evaluation.benchmark import (
 from app.models import Chunk, SearchMethod
 from app.ontology.service import OntologyService
 from app.rag.retriever import InMemoryHybridRetriever
+from scripts.run_benchmark import write_ontology_rank_changes
 
 
 class BenchmarkEncoder:
@@ -99,3 +100,43 @@ def test_detailed_benchmark_reports_each_question_rank_and_multiple_k_values() -
     assert summary["bm25"]["recall@3"] == 1.0
     assert details[0]["gold_rank"] == 1
     assert details[0]["category"] == "keyword"
+
+
+def test_rank_change_export_labels_rescued_and_missed_questions(tmp_path) -> None:
+    details = [
+        {
+            "question_id": "rescued",
+            "category": "ontology",
+            "query": "related concept",
+            "method": "hybrid",
+            "gold_rank": None,
+        },
+        {
+            "question_id": "rescued",
+            "category": "ontology",
+            "query": "related concept",
+            "method": "hybrid_ontology",
+            "gold_rank": 1,
+        },
+        {
+            "question_id": "missed",
+            "category": "indirect",
+            "query": "hard question",
+            "method": "hybrid",
+            "gold_rank": None,
+        },
+        {
+            "question_id": "missed",
+            "category": "indirect",
+            "query": "hard question",
+            "method": "hybrid_ontology",
+            "gold_rank": None,
+        },
+    ]
+    output = tmp_path / "changes.csv"
+
+    write_ontology_rank_changes(details, output)
+
+    text = output.read_text(encoding="utf-8-sig")
+    assert "rescued" in text
+    assert "missed_by_both" in text

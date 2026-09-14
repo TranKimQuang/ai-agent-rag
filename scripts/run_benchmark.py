@@ -88,12 +88,18 @@ def write_ontology_rank_changes(details: list[dict[str, object]], path: Path) ->
             continue
         hybrid_rank = hybrid["gold_rank"]
         ontology_rank = ontology["gold_rank"]
-        if isinstance(hybrid_rank, int) and isinstance(ontology_rank, int):
+        if hybrid_rank is None and isinstance(ontology_rank, int):
+            change = None
+            outcome = "rescued"
+        elif isinstance(hybrid_rank, int) and ontology_rank is None:
+            change = None
+            outcome = "lost"
+        elif isinstance(hybrid_rank, int) and isinstance(ontology_rank, int):
             change = hybrid_rank - ontology_rank
             outcome = "improved" if change > 0 else "worsened" if change < 0 else "unchanged"
         else:
             change = None
-            outcome = "not_found"
+            outcome = "missed_by_both"
         rows.append(
             {
                 "question_id": question_id,
