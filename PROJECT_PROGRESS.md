@@ -1,6 +1,6 @@
 # THEO DÕI TIẾN ĐỘ ĐỒ ÁN AI AGENT + RAG
 
-Cập nhật gần nhất: 11/09/2026
+Cập nhật gần nhất: 14/09/2026
 
 ## 1. Tên đề tài
 
@@ -56,7 +56,10 @@ trang và đoạn bằng chứng. Nếu tài liệu không có đủ bằng ch�
 - [x] Tính tự động Precision@k, Recall@k, MRR và nDCG@k.
 - [x] Tạo bộ dữ liệu benchmark mẫu gồm 8 chunk và 10 câu hỏi.
 - [x] Xuất kết quả benchmark thành JSON và CSV.
-- [x] Kiểm thử gần nhất: 27 test passed; Ruff không phát hiện lỗi.
+- [x] Tạo PDF kiểm thử có kiểm soát gồm 8 trang và 8 chủ đề.
+- [x] Tạo 12 câu hỏi có gold chunk tương ứng từ PDF kiểm thử.
+- [x] Kiểm tra PDF qua pipeline thật: trích xuất, chunking, gán concept và BM25.
+- [x] Kiểm thử gần nhất: 29 test passed; Ruff không phát hiện lỗi.
 - [x] Đồng bộ source code với GitHub.
 
 ### Đang ở trạng thái nền móng

@@ -1,0 +1,148 @@
+{
+  "description": "Benchmark generated from the controlled PDF fixture. Use it for pipeline testing, not as final thesis evidence.",
+  "source_pdf": "output\\pdf\\tai-lieu-kiem-thu-ontology-rag.pdf",
+  "chunks": [
+    {
+      "id": "ontology-rag-test:p1:c1",
+      "document_id": "ontology-rag-test",
+      "filename": "tai-lieu-kiem-thu-ontology-rag.pdf",
+      "page": 1,
+      "text": "Tài liệu kiểm thử AI Agent + RAG + Ontology Trang 1 TÀI LIỆU KIỂM THỬ ONTOLOGY-AWARE RAG Tài liệu tổng hợp do project tạo để kiểm tra PDF ingestion, chunking, retrieval, query expansion, Ontology-aware re-ranking và citation. Không sử dụng số liệu từ tài liệu này làm kết quả nghiên cứu chính thức. 1. BM25 và tìm kiếm từ khóa BM25 là một thuật toán xếp hạng tài liệu dựa trên từ khóa. Thuật toán xem xét tần suất xuất hiện của từ trong đoạn văn, độ hiếm của từ trong toàn bộ tập tài liệu và độ dài của đoạn. Những từ hiếm nhưng xuất hiện đúng trong truy vấn thường đóng góp nhiều hơn vào điểm xếp hạng. Ưu điểm của BM25 là nhanh, nhẹ và dễ giải thích. Hạn chế chính là phương pháp này không hiểu tốt từ đồng nghĩa hoặc những cách diễn đạt khác nhau. Ví dụ, truy vấn 'xe hơi' có thể không khớp với đoạn chỉ dùng từ 'ô tô'."
+    },
+    {
+      "id": "ontology-rag-test:p2:c1",
+      "document_id": "ontology-rag-test",
+      "filename": "tai-lieu-kiem-thu-ontology-rag.pdf",
+      "page": 2,
+      "text": "Tài liệu kiểm thử AI Agent + RAG + Ontology Trang 2 2. Semantic Search và embedding Semantic Search tìm kiếm theo ý nghĩa thay vì chỉ so sánh từ khóa. Câu hỏi và các chunk được chuyển thành vector embedding bằng một mô hình Sentence Transformers. Các vector gần nhau thể hiện nội dung có ý nghĩa tương tự. Cosine similarity được dùng để đo độ gần giữa vector câu hỏi và vector chunk. Nhờ đó, hệ thống có thể tìm được một đoạn nói về ô tô khi người dùng hỏi về xe hơi. Hạn chế là semantic search đôi khi chọn đoạn có ý nghĩa chung gần giống nhưng thiếu thuật ngữ chính xác cần thiết."
+    },
+    {
+      "id": "ontology-rag-test:p3:c1",
+      "document_id": "ontology-rag-test",
+      "filename": "tai-lieu-kiem-thu-ontology-rag.pdf",
+      "page": 3,
+      "text": "Tài liệu kiểm thử AI Agent + RAG + Ontology Trang 3 3. Hybrid Search và Reciprocal Rank Fusion Hybrid Search kết hợp BM25 với Semantic Search để tận dụng cả từ khóa chính xác và sự tương đồng về ý nghĩa. Mỗi bộ tìm kiếm tạo ra một bảng xếp hạng chunk độc lập. Reciprocal Rank Fusion, viết tắt là RRF, kết hợp các bảng xếp hạng dựa trên vị trí của từng chunk. Một chunk đứng cao ở cả BM25 và Semantic Search sẽ nhận điểm RRF tốt. RRF không yêu cầu điểm BM25 và cosine similarity phải có cùng thang đo."
+    },
+    {
+      "id": "ontology-rag-test:p4:c1",
+      "document_id": "ontology-rag-test",
+      "filename": "tai-lieu-kiem-thu-ontology-rag.pdf",
+      "page": 4,
+      "text": "Tài liệu kiểm thử AI Agent + RAG + Ontology Trang 4 4. Retrieval-Augmented Generation Retrieval-Augmented Generation, viết tắt là RAG, tìm các đoạn bằng chứng trước khi mô hình ngôn ngữ tạo câu trả lời. Các chunk liên quan cùng metadata nguồn được đưa vào prompt để giới hạn ngữ cảnh của mô hình. Một hệ thống RAG có kiểm soát phải trả lời dựa trên evidence được cung cấp và kèm citation gồm tên tài liệu, số trang và chunk ID. Nếu evidence không đủ để kết luận, hệ thống phải thông báo chưa đủ thông tin thay vì tự suy đoán."
+    },
+    {
+      "id": "ontology-rag-test:p5:c1",
+      "document_id": "ontology-rag-test",
+      "filename": "tai-lieu-kiem-thu-ontology-rag.pdf",
+      "page": 5,
+      "text": "Tài liệu kiểm thử AI Agent + RAG + Ontology Trang 5 5. QASPER và đánh giá evidence QASPER là một bộ dữ liệu hỏi đáp trên các bài báo khoa học. Mỗi câu hỏi được liên kết với câu trả lời và các đoạn bằng chứng trong bài báo, vì vậy dữ liệu này phù hợp để đánh giá retrieval và question answering. Evidence F1 đo mức độ trùng khớp giữa bằng chứng hệ thống chọn và bằng chứng chuẩn. Citation Precision đo tỷ lệ citation thực sự chứa thông tin hỗ trợ cho câu trả lời. Hai chỉ số giúp phân biệt câu trả lời có căn cứ với câu trả lời chỉ nghe hợp lý."
+    },
+    {
+      "id": "ontology-rag-test:p6:c1",
+      "document_id": "ontology-rag-test",
+      "filename": "tai-lieu-kiem-thu-ontology-rag.pdf",
+      "page": 6,
+      "text": "Tài liệu kiểm thử AI Agent + RAG + Ontology Trang 6 6. Ontology và Knowledge Graph Ontology định nghĩa các lớp khái niệm và quan hệ trong miền tri thức. Trong hệ thống hỏi đáp tài liệu, các lớp chính có thể gồm Paper, Section, Chunk, Task, Method, Dataset và Metric. Knowledge Graph chứa các instance và liên kết thực tế được tạo theo cấu trúc Ontology. Ontology hỗ trợ query expansion bằng synonym, superclass, subclass và related concept. Sau Hybrid Search, Ontology-aware re-ranking tăng điểm cho chunk chứa concept có quan hệ gần với concept của câu hỏi. OntoScore ghi nhận mức phù hợp ngữ nghĩa có cấu trúc này."
+    },
+    {
+      "id": "ontology-rag-test:p7:c1",
+      "document_id": "ontology-rag-test",
+      "filename": "tai-lieu-kiem-thu-ontology-rag.pdf",
+      "page": 7,
+      "text": "Tài liệu kiểm thử AI Agent + RAG + Ontology Trang 7 7. AI Agent và kiểm tra bằng chứng AI Agent điều phối các công cụ của hệ thống. Agent nhận câu hỏi, xác định truy vấn, gọi retrieval, yêu cầu Ontology mở rộng hoặc xếp hạng lại, rồi chuyển evidence phù hợp cho mô hình ngôn ngữ. Trước khi trả lời, Agent phải kiểm tra evidence có hỗ trợ kết luận hay không. Câu trả lời cuối cùng phải kèm filename, page và chunk ID. Nếu không tìm được evidence đủ tốt, Agent từ chối trả lời để hạn chế hallucination."
+    },
+    {
+      "id": "ontology-rag-test:p8:c1",
+      "document_id": "ontology-rag-test",
+      "filename": "tai-lieu-kiem-thu-ontology-rag.pdf",
+      "page": 8,
+      "text": "Tài liệu kiểm thử AI Agent + RAG + Ontology Trang 8 8. Các chỉ số đánh giá retrieval Precision at k đo tỷ lệ kết quả đúng trong k chunk đầu tiên. Recall at k đo tỷ lệ bằng chứng đúng đã được tìm thấy trong k kết quả đầu tiên. Mean Reciprocal Rank, viết tắt là MRR, đánh giá vị trí của kết quả đúng đầu tiên. Normalized Discounted Cumulative Gain, hay nDCG, đánh giá chất lượng của toàn bộ thứ tự xếp hạng và ưu tiên kết quả đúng ở vị trí cao. Đồ án so sánh BM25, Semantic, Hybrid và Hybrid kết hợp Ontology trên cùng một tập câu hỏi và gold evidence."
+    }
+  ],
+  "questions": [
+    {
+      "id": "q01",
+      "query": "BM25 xếp hạng đoạn văn dựa trên yếu tố nào?",
+      "relevant_chunk_ids": [
+        "ontology-rag-test:p1:c1"
+      ]
+    },
+    {
+      "id": "q02",
+      "query": "Hạn chế của tìm kiếm từ khóa là gì?",
+      "relevant_chunk_ids": [
+        "ontology-rag-test:p1:c1"
+      ]
+    },
+    {
+      "id": "q03",
+      "query": "Vector embedding được sử dụng như thế nào?",
+      "relevant_chunk_ids": [
+        "ontology-rag-test:p2:c1"
+      ]
+    },
+    {
+      "id": "q04",
+      "query": "Phương pháp nào tìm kiếm dựa trên ý nghĩa?",
+      "relevant_chunk_ids": [
+        "ontology-rag-test:p2:c1"
+      ]
+    },
+    {
+      "id": "q05",
+      "query": "RRF kết hợp các bảng xếp hạng như thế nào?",
+      "relevant_chunk_ids": [
+        "ontology-rag-test:p3:c1"
+      ]
+    },
+    {
+      "id": "q06",
+      "query": "Vì sao Hybrid Search kết hợp BM25 và Semantic Search?",
+      "relevant_chunk_ids": [
+        "ontology-rag-test:p3:c1"
+      ]
+    },
+    {
+      "id": "q07",
+      "query": "Khi nào hệ thống RAG phải từ chối trả lời?",
+      "relevant_chunk_ids": [
+        "ontology-rag-test:p4:c1"
+      ]
+    },
+    {
+      "id": "q08",
+      "query": "QASPER được dùng để đánh giá nội dung gì?",
+      "relevant_chunk_ids": [
+        "ontology-rag-test:p5:c1"
+      ]
+    },
+    {
+      "id": "q09",
+      "query": "Ontology hỗ trợ mở rộng truy vấn bằng những quan hệ nào?",
+      "relevant_chunk_ids": [
+        "ontology-rag-test:p6:c1"
+      ]
+    },
+    {
+      "id": "q10",
+      "query": "AI Agent làm gì trước khi tạo câu trả lời cuối cùng?",
+      "relevant_chunk_ids": [
+        "ontology-rag-test:p7:c1"
+      ]
+    },
+    {
+      "id": "q11",
+      "query": "Recall at k thể hiện điều gì?",
+      "relevant_chunk_ids": [
+        "ontology-rag-test:p8:c1"
+      ]
+    },
+    {
+      "id": "q12",
+      "query": "Chỉ số nào đánh giá vị trí của kết quả đúng đầu tiên?",
+      "relevant_chunk_ids": [
+        "ontology-rag-test:p8:c1"
+      ]
+    }
+  ]
+}

@@ -128,6 +128,15 @@ Results are written to `results/retrieval_benchmark.json` and
 use its scores as thesis evidence. Replace it with questions and gold chunk IDs from real PDFs
 before preparing the progress report.
 
+Generate the controlled eight-page PDF fixture and its twelve-question benchmark with:
+
+```powershell
+python -m scripts.create_benchmark_pdf
+```
+
+The PDF is saved to `output/pdf/tai-lieu-kiem-thu-ontology-rag.pdf`, and its labelled benchmark
+is saved to `evaluation/pdf_benchmark.json`.
+
 ## Checks
 
 ```powershell
