@@ -11,6 +11,14 @@ def test_health() -> None:
     assert response.json() == {"status": "ok"}
 
 
+def test_user_interface() -> None:
+    response = client.get("/")
+
+    assert response.status_code == 200
+    assert "OntoRAG Workspace" in response.text
+    assert "/static/styles.css" in response.text
+
+
 def test_ontology_summary() -> None:
     response = client.get("/ontology/summary")
 

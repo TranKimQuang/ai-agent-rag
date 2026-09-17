@@ -1,7 +1,10 @@
 from pathlib import Path
+from urllib.parse import unquote
 from uuid import uuid4
 
 from fastapi import Body, FastAPI, Header, HTTPException, Query
+from fastapi.responses import FileResponse
+from fastapi.staticfiles import StaticFiles
 
 from app.models import (
     IngestResponse,
@@ -19,6 +22,13 @@ from app.rag.retriever import InMemoryHybridRetriever, SemanticModelError
 ontology = OntologyService()
 app = FastAPI(title="AI Agent + RAG")
 retriever = InMemoryHybridRetriever(ontology_service=ontology)
+static_dir = Path(__file__).parent / "static"
+app.mount("/static", StaticFiles(directory=static_dir), name="static")
+
+
+@app.get("/", include_in_schema=False)
+def user_interface() -> FileResponse:
+    return FileResponse(static_dir / "index.html")
 
 
 @app.get("/health")
@@ -31,7 +41,7 @@ async def ingest_document(
     content: bytes = Body(media_type="application/pdf"),
     x_filename: str = Header(default="document.pdf"),
 ) -> IngestResponse:
-    filename = Path(x_filename).name
+    filename = Path(unquote(x_filename)).name
     if Path(filename).suffix.lower() != ".pdf":
         raise HTTPException(status_code=415, detail="Only PDF files are supported")
 

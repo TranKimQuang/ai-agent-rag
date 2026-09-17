@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Giao diện thử nghiệm Ontology-aware RAG" />
+    <title>OntoRAG Workspace</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/static/styles.css" />
+  </head>
+  <body>
+    <div class="ambient ambient-one"></div>
+    <div class="ambient ambient-two"></div>
+
+    <header class="topbar">
+      <a class="brand" href="/" aria-label="Trang chủ OntoRAG">
+        <span class="brand-mark" aria-hidden="true">
+          <span></span><span></span><span></span>
+        </span>
+        <span>OntoRAG</span>
+      </a>
+      <div class="topbar-actions">
+        <span class="server-status"><i></i> API đang hoạt động</span>
+        <a class="ghost-link" href="/docs" target="_blank" rel="noreferrer">Mở API Docs ↗</a>
+      </div>
+    </header>
+
+    <main class="shell">
+      <section class="hero">
+        <div>
+          <span class="eyebrow">AI Agent · RAG · Knowledge Graph</span>
+          <h1>Hỏi tài liệu.<br /><em>Hiểu cả mối liên hệ.</em></h1>
+          <p>
+            Tìm bằng chứng trong PDF bằng tìm kiếm từ khóa, ngữ nghĩa và Ontology.
+            Mỗi kết quả đều giữ lại tài liệu, số trang và lý do được xếp hạng.
+          </p>
+        </div>
+        <div class="hero-stat" aria-label="Trạng thái pipeline">
+          <span>Pipeline hiện tại</span>
+          <strong>Ontology-aware Retrieval</strong>
+          <div class="pipeline-dots" aria-hidden="true">
+            <i class="done"></i><i class="done"></i><i class="done"></i><i class="done"></i><i></i>
+          </div>
+          <small>PDF → Chunk → Retrieval → Re-ranking → <b>Agent</b></small>
+        </div>
+      </section>
+
+      <section class="workspace-grid">
+        <aside class="panel upload-panel">
+          <div class="panel-heading">
+            <span class="step">01</span>
+            <div>
+              <h2>Nguồn tài liệu</h2>
+              <p>Tải PDF để tạo chỉ mục tìm kiếm.</p>
+            </div>
+          </div>
+
+          <label class="drop-zone" id="dropZone" for="pdfInput">
+            <input id="pdfInput" type="file" accept="application/pdf,.pdf" />
+            <span class="upload-icon" aria-hidden="true">↥</span>
+            <strong id="fileLabel">Chọn hoặc thả tệp PDF</strong>
+            <small>Tệp PDF có văn bản, không phải bản scan ảnh</small>
+          </label>
+
+          <button class="primary-button" id="uploadButton" type="button" disabled>
+            <span>Tạo chỉ mục tài liệu</span><i aria-hidden="true">→</i>
+          </button>
+
+          <div class="upload-result hidden" id="uploadResult" aria-live="polite"></div>
+
+          <div class="mini-guide">
+            <span>Quy trình</span>
+            <ol>
+              <li><b>Trích xuất</b> văn bản và số trang</li>
+              <li><b>Chia chunk</b> có phần chồng lấn</li>
+              <li><b>Gắn concept</b> từ Ontology</li>
+            </ol>
+          </div>
+        </aside>
+
+        <section class="panel search-panel">
+          <div class="panel-heading search-heading">
+            <span class="step">02</span>
+            <div>
+              <h2>Khám phá bằng chứng</h2>
+              <p>Đặt câu hỏi và chọn cách hệ thống truy hồi.</p>
+            </div>
+          </div>
+
+          <form id="searchForm" class="search-form">
+            <label for="question">Câu hỏi của bạn</label>
+            <div class="question-box">
+              <textarea
+                id="question"
+                rows="3"
+                minlength="2"
+                placeholder="Ví dụ: Truy hồi thông tin có các phương pháp con nào?"
+                required
+              ></textarea>
+              <button class="ask-button" type="submit" aria-label="Tìm kiếm">
+                <span>Tìm bằng chứng</span><i aria-hidden="true">↗</i>
+              </button>
+            </div>
+
+            <fieldset class="method-picker">
+              <legend>Phương pháp truy hồi</legend>
+              <label><input type="radio" name="method" value="bm25" /><span>BM25<small>Từ khóa</small></span></label>
+              <label><input type="radio" name="method" value="semantic" /><span>Semantic<small>Ngữ nghĩa</small></span></label>
+              <label><input type="radio" name="method" value="hybrid" /><span>Hybrid<small>Kết hợp RRF</small></span></label>
+              <label class="recommended"><input type="radio" name="method" value="hybrid_ontology" checked /><span>Hybrid + Ontology<small>Khuyên dùng</small></span></label>
+            </fieldset>
+          </form>
+
+          <div class="empty-state" id="emptyState">
+            <span class="empty-orbit" aria-hidden="true"><i></i></span>
+            <h3>Kết quả sẽ xuất hiện ở đây</h3>
+            <p>Tải một tài liệu, đặt câu hỏi rồi hệ thống sẽ hiển thị các đoạn bằng chứng phù hợp nhất.</p>
+          </div>
+
+          <div class="results hidden" id="results" aria-live="polite">
+            <div class="results-toolbar">
+              <div><span>Kết quả truy hồi</span><strong id="resultCount"></strong></div>
+              <span class="method-badge" id="activeMethod"></span>
+            </div>
+            <div class="ontology-strip hidden" id="ontologyStrip"></div>
+            <div class="result-list" id="resultList"></div>
+          </div>
+        </section>
+      </section>
+    </main>
+
+    <template id="resultTemplate">
+      <article class="result-card">
+        <div class="rank"></div>
+        <div class="result-content">
+          <div class="result-meta">
+            <span class="source"></span>
+            <span class="page"></span>
+            <span class="score"></span>
+          </div>
+          <p class="evidence"></p>
+          <div class="concepts"></div>
+          <details>
+            <summary>Xem cách tính điểm</summary>
+            <div class="score-grid"></div>
+            <p class="explanation"></p>
+          </details>
+        </div>
+      </article>
+    </template>
+
+    <div class="toast hidden" id="toast" role="status"></div>
+    <script src="/static/app.js" defer></script>
+  </body>
+</html>
