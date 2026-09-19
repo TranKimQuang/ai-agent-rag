@@ -23,14 +23,38 @@ qa:Metric a owl:Class ; rdfs:subClassOf qa:Concept .
 qa:Result a owl:Class .
 qa:Citation a owl:Class .
 
-qa:hasSection a owl:ObjectProperty ; rdfs:domain qa:Document ; rdfs:range qa:Section .
-qa:hasChunk a owl:ObjectProperty ; rdfs:domain qa:Section ; rdfs:range qa:Chunk .
-qa:mentionsConcept a owl:ObjectProperty ; rdfs:domain qa:Chunk ; rdfs:range qa:Concept .
+qa:hasSection a owl:ObjectProperty ;
+    owl:inverseOf qa:isSectionOf ; rdfs:domain qa:Document ; rdfs:range qa:Section .
+qa:isSectionOf a owl:ObjectProperty ; rdfs:domain qa:Section ; rdfs:range qa:Document .
+qa:hasChunk a owl:ObjectProperty ;
+    owl:inverseOf qa:isChunkOf ; rdfs:domain qa:Section ; rdfs:range qa:Chunk .
+qa:isChunkOf a owl:ObjectProperty ; rdfs:domain qa:Chunk ; rdfs:range qa:Section .
+qa:mentionsConcept a owl:ObjectProperty ;
+    owl:inverseOf qa:isMentionedIn ; rdfs:domain qa:Chunk ; rdfs:range qa:Concept .
+qa:isMentionedIn a owl:ObjectProperty ; rdfs:domain qa:Concept ; rdfs:range qa:Chunk .
+qa:hasAuthor a owl:ObjectProperty ;
+    owl:inverseOf qa:authorOf ; rdfs:domain qa:Paper ; rdfs:range qa:Author .
+qa:authorOf a owl:ObjectProperty ; rdfs:domain qa:Author ; rdfs:range qa:Paper .
+qa:hasCitation a owl:ObjectProperty ;
+    owl:inverseOf qa:citationOf ; rdfs:domain qa:Paper ; rdfs:range qa:Citation .
+qa:citationOf a owl:ObjectProperty ; rdfs:domain qa:Citation ; rdfs:range qa:Paper .
+qa:citesPaper a owl:ObjectProperty ;
+    owl:inverseOf qa:citedBy ; rdfs:domain qa:Citation ; rdfs:range qa:Paper .
+qa:citedBy a owl:ObjectProperty ; rdfs:domain qa:Paper ; rdfs:range qa:Citation .
+qa:hasResult a owl:ObjectProperty ;
+    owl:inverseOf qa:resultOf ; rdfs:domain qa:Paper ; rdfs:range qa:Result .
+qa:resultOf a owl:ObjectProperty ; rdfs:domain qa:Result ; rdfs:range qa:Paper .
 qa:usesMethod a owl:ObjectProperty ; rdfs:domain qa:Paper ; rdfs:range qa:Method .
 qa:usesDataset a owl:ObjectProperty ; rdfs:domain qa:Paper ; rdfs:range qa:Dataset .
 qa:evaluatedBy a owl:ObjectProperty ; rdfs:domain qa:Paper ; rdfs:range qa:Metric .
 qa:solvesTask a owl:ObjectProperty ; rdfs:domain qa:Method ; rdfs:range qa:Task .
-qa:hasEvidence a owl:ObjectProperty ; rdfs:domain qa:Result ; rdfs:range qa:Chunk .
+qa:resultUsesMethod a owl:ObjectProperty ; rdfs:domain qa:Result ; rdfs:range qa:Method .
+qa:resultUsesModel a owl:ObjectProperty ; rdfs:domain qa:Result ; rdfs:range qa:Model .
+qa:resultUsesDataset a owl:ObjectProperty ; rdfs:domain qa:Result ; rdfs:range qa:Dataset .
+qa:measuredBy a owl:ObjectProperty ; rdfs:domain qa:Result ; rdfs:range qa:Metric .
+qa:hasEvidence a owl:ObjectProperty ;
+    owl:inverseOf qa:isEvidenceFor ; rdfs:domain qa:Result ; rdfs:range qa:Chunk .
+qa:isEvidenceFor a owl:ObjectProperty ; rdfs:domain qa:Chunk ; rdfs:range qa:Result .
 qa:relatedTo a owl:ObjectProperty, owl:SymmetricProperty ;
     rdfs:domain qa:Concept ;
     rdfs:range qa:Concept .
@@ -39,13 +63,44 @@ qa:title a owl:DatatypeProperty ; rdfs:domain qa:Document ; rdfs:range xsd:strin
 qa:pageNumber a owl:DatatypeProperty ; rdfs:domain qa:Chunk ; rdfs:range xsd:integer .
 qa:chunkText a owl:DatatypeProperty ; rdfs:domain qa:Chunk ; rdfs:range xsd:string .
 qa:sourceFile a owl:DatatypeProperty ; rdfs:domain qa:Document ; rdfs:range xsd:string .
+qa:authorName a owl:DatatypeProperty ; rdfs:domain qa:Author ; rdfs:range xsd:string .
+qa:citationText a owl:DatatypeProperty ; rdfs:domain qa:Citation ; rdfs:range xsd:string .
+qa:doi a owl:DatatypeProperty ; rdfs:domain qa:Paper ; rdfs:range xsd:string .
+qa:metricValue a owl:DatatypeProperty ; rdfs:domain qa:Result ; rdfs:range xsd:decimal .
+qa:resultNote a owl:DatatypeProperty ; rdfs:domain qa:Result ; rdfs:range xsd:string .
 
 qa:SamplePaper a qa:Paper ;
     qa:title "A sample paper about retrieval-augmented generation" ;
     qa:hasSection qa:MethodsSection ;
+    qa:hasAuthor qa:SampleAuthor ;
+    qa:hasCitation qa:SampleCitation ;
+    qa:hasResult qa:SampleResult ;
     qa:usesMethod qa:RetrievalAugmentedGeneration ;
     qa:usesDataset qa:QASPER ;
     qa:evaluatedBy qa:EvidenceF1 .
+
+qa:SampleAuthor a qa:Author ;
+    qa:authorName "Nguyen Van A" .
+
+qa:CitedPaper a qa:Paper ;
+    qa:title "QASPER: A Dataset for Question Answering over Scientific Papers" .
+
+qa:SampleCitation a qa:Citation ;
+    qa:citationText "Dasigi et al. QASPER, 2021." ;
+    qa:citesPaper qa:CitedPaper .
+
+qa:SampleResult a qa:Result ;
+    qa:resultUsesMethod qa:RetrievalAugmentedGeneration ;
+    qa:resultUsesModel qa:SampleRAGModel ;
+    qa:resultUsesDataset qa:QASPER ;
+    qa:measuredBy qa:EvidenceF1 ;
+    qa:metricValue 0.72 ;
+    qa:resultNote "Illustrative result used to validate the ontology structure." ;
+    qa:hasEvidence qa:SampleChunk .
+
+qa:SampleRAGModel a qa:Model ;
+    skos:prefLabel "sample RAG model"@en ;
+    qa:relatedTo qa:RetrievalAugmentedGeneration .
 
 qa:MethodsSection a qa:Section ; qa:hasChunk qa:SampleChunk .
 qa:SampleChunk a qa:Chunk ;

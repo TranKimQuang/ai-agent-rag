@@ -63,11 +63,14 @@ Invoke-RestMethod "http://127.0.0.1:8000/search?q=tim%20kiem%20theo%20y%20nghia&
 Invoke-RestMethod "http://127.0.0.1:8000/search?q=tim%20kiem%20tai%20lieu&method=hybrid&limit=5"
 ```
 
-## Step 3: Ontology foundation
+## Step 3: Ontology foundation and v2 research model
 
 The first ontology version is stored in `ontology/document_qa.ttl`. It defines core AI/NLP
-resources such as papers, chunks, research tasks, methods, datasets, and metrics. Sample
-individuals and relations make the model executable before automatic extraction is added.
+resources such as papers, chunks, research tasks, methods, datasets, and metrics. Ontology v2
+also models authorship, structured citations, and experiment results. A `Result` connects the
+evaluated method/model, dataset, metric, numeric value, and supporting evidence instead of
+attaching a metric directly to a paper. Inverse properties and explicit domain/range constraints
+make these relations usable for inference and validation.
 
 The API currently exposes read-only inspection endpoints:
 

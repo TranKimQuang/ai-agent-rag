@@ -65,7 +65,7 @@ trang và đoạn bằng chứng. Nếu tài liệu không có đủ bằng ch�
 - [x] Sửa nhãn thay đổi thứ hạng thành rescued, lost và missed_by_both.
 - [x] Soạn file Word báo cáo tiến độ gồm kiến trúc, Ontology, SPARQL và kết quả thử nghiệm.
 - [x] Kiểm tra PDF qua pipeline thật: trích xuất, chunking, gán concept và BM25.
-- [x] Kiểm thử gần nhất: 32 test passed; Ruff không phát hiện lỗi.
+- [x] Kiểm thử gần nhất: 37 test passed; Ruff không phát hiện lỗi.
 - [x] Đồng bộ source code với GitHub.
 - [x] Tạo giao diện demo OntoRAG tại trang chủ.
 - [x] Tạo API POST /ask và AI Agent phiên bản đầu điều phối retrieval, evidence gate,
@@ -73,6 +73,9 @@ trang và đoạn bằng chứng. Nếu tài liệu không có đủ bằng ch�
 - [x] Thêm cơ chế từ chối trả lời khi evidence không đủ mạnh.
 - [x] Kiểm thử tích hợp: câu hỏi về QA/NLP được trả lời kèm trang nguồn; câu hỏi ngoài
   phạm vi về giá vàng bị từ chối.
+- [x] Mở rộng Ontology v2 với Paper-Author, Paper-Citation và Paper-Result.
+- [x] Mô hình hóa Result liên kết Method/Model-Dataset-Metric-Value và evidence.
+- [x] Bổ sung inverse property cùng domain/range cho các quan hệ cấu trúc chính.
 
 ### Đang ở trạng thái nền móng
 
@@ -85,9 +88,9 @@ trang và đoạn bằng chứng. Nếu tài liệu không có đủ bằng ch�
 ### Chưa hoàn thành
 
 - [ ] Tìm hiểu và ánh xạ một phần Computer Science Ontology (CSO).
-- [ ] Mở rộng liên kết Paper-Author, Paper-Citation và Paper-Result.
-- [ ] Mô hình hóa Result liên kết Method/Model-Dataset-Metric-Value.
-- [ ] Bổ sung inverse property, domain/range và các quan hệ suy luận cần thiết.
+- [x] Mở rộng liên kết Paper-Author, Paper-Citation và Paper-Result.
+- [x] Mô hình hóa Result liên kết Method/Model-Dataset-Metric-Value.
+- [x] Bổ sung inverse property, domain/range và các quan hệ suy luận cần thiết.
 - [~] Cơ chế gán concept cho chunk đã có; còn cần chạy trên tập PDF thật.
 - [ ] Thử semantic concept linking bằng embedding và so sánh với alias-based linking.
 - [x] Đã có công cụ ghi thứ hạng trước/sau cho từng câu; còn cần chạy và chọn ví dụ tốt.
@@ -121,12 +124,11 @@ PDF
 
 Milestone tiếp theo: Ontology v2 và thực nghiệm retrieval trên dữ liệu thật.
 
-1. Mở rộng mô hình Author, Citation và Result cùng inverse property/domain/range.
-2. Ánh xạ nhánh IR/NLP/QA/RAG/Semantic Search với một phần CSO.
-3. Bổ sung semantic concept linking và đánh giá so với alias-based baseline.
-4. Tách bốn cấu hình ablation của Ontology và chọn trọng số bằng validation set.
-5. Chuẩn bị 20-30 bài QASPER cùng 50-100 câu hỏi/evidence thật để đánh giá.
-6. Chỉ sau khi retrieval ổn định mới tiếp tục tích hợp LLM và hoàn thiện Agent.
+1. Ánh xạ nhánh IR/NLP/QA/RAG/Semantic Search với một phần CSO.
+2. Bổ sung semantic concept linking và đánh giá so với alias-based baseline.
+3. Tách bốn cấu hình ablation của Ontology và chọn trọng số bằng validation set.
+4. Chuẩn bị 20-30 bài QASPER cùng 50-100 câu hỏi/evidence thật để đánh giá.
+5. Chỉ sau khi retrieval ổn định mới tiếp tục tích hợp LLM và hoàn thiện Agent.
 
 Chưa ưu tiên trong milestone này: mở rộng giao diện, PostgreSQL, pgvector, OCR và
 framework Agent phức tạp.

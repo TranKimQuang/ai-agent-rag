@@ -1,6 +1,6 @@
 import numpy as np
 
-from app.agent.service import DocumentQuestionAgent, INSUFFICIENT_EVIDENCE_MESSAGE
+from app.agent.service import INSUFFICIENT_EVIDENCE_MESSAGE, DocumentQuestionAgent
 from app.models import AgentStatus, Chunk
 from app.ontology.service import OntologyService
 from app.rag.retriever import InMemoryHybridRetriever

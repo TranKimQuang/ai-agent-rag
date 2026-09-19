@@ -1,6 +1,6 @@
 from pathlib import Path
 
-from rdflib import RDF
+from rdflib import OWL, RDF, RDFS, XSD, Literal
 
 from app.models import Chunk
 from app.ontology.service import QA, OntologyService
@@ -12,9 +12,44 @@ def test_ontology_has_core_schema_and_sample_individuals() -> None:
     summary = service.summary()
 
     assert summary.classes >= 13
-    assert summary.object_properties >= 9
-    assert summary.data_properties >= 4
-    assert summary.individuals >= 8
+    assert summary.object_properties >= 25
+    assert summary.data_properties >= 9
+    assert summary.individuals >= 13
+
+
+def test_ontology_v2_models_authorship_citations_and_results() -> None:
+    graph = OntologyService().graph
+
+    assert (QA.SamplePaper, QA.hasAuthor, QA.SampleAuthor) in graph
+    assert (QA.SamplePaper, QA.hasCitation, QA.SampleCitation) in graph
+    assert (QA.SampleCitation, QA.citesPaper, QA.CitedPaper) in graph
+    assert (QA.SamplePaper, QA.hasResult, QA.SampleResult) in graph
+    assert (
+        QA.SampleResult,
+        QA.resultUsesMethod,
+        QA.RetrievalAugmentedGeneration,
+    ) in graph
+    assert (QA.SampleResult, QA.resultUsesModel, QA.SampleRAGModel) in graph
+    assert (QA.SampleResult, QA.resultUsesDataset, QA.QASPER) in graph
+    assert (QA.SampleResult, QA.measuredBy, QA.EvidenceF1) in graph
+    assert (
+        QA.SampleResult,
+        QA.metricValue,
+        Literal("0.72", datatype=XSD.decimal),
+    ) in graph
+
+
+def test_ontology_v2_defines_inverse_properties_and_constraints() -> None:
+    graph = OntologyService().graph
+
+    assert (QA.hasAuthor, OWL.inverseOf, QA.authorOf) in graph
+    assert (QA.hasCitation, OWL.inverseOf, QA.citationOf) in graph
+    assert (QA.hasResult, OWL.inverseOf, QA.resultOf) in graph
+    assert (QA.hasEvidence, OWL.inverseOf, QA.isEvidenceFor) in graph
+    assert (QA.resultUsesDataset, RDFS.domain, QA.Result) in graph
+    assert (QA.resultUsesDataset, RDFS.range, QA.Dataset) in graph
+    assert (QA.metricValue, RDFS.domain, QA.Result) in graph
+    assert (QA.metricValue, RDFS.range, XSD.decimal) in graph
 
 
 def test_find_relations_answers_sample_competency_question() -> None:
