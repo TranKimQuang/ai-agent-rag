@@ -6,7 +6,10 @@ from fastapi import Body, FastAPI, Header, HTTPException, Query
 from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
 
+from app.agent.service import DocumentQuestionAgent
 from app.models import (
+    AskRequest,
+    AskResponse,
     IngestResponse,
     OntologyExpansionResponse,
     OntologyQueryResponse,
@@ -22,6 +25,7 @@ from app.rag.retriever import InMemoryHybridRetriever, SemanticModelError
 ontology = OntologyService()
 app = FastAPI(title="AI Agent + RAG")
 retriever = InMemoryHybridRetriever(ontology_service=ontology)
+question_agent = DocumentQuestionAgent(retriever)
 static_dir = Path(__file__).parent / "static"
 app.mount("/static", StaticFiles(directory=static_dir), name="static")
 
@@ -88,6 +92,17 @@ def search(
         method=method,
         results=results,
     )
+
+
+@app.post("/ask", response_model=AskResponse)
+def ask(request: AskRequest) -> AskResponse:
+    try:
+        return question_agent.ask(request.question, request.limit)
+    except SemanticModelError as exc:
+        raise HTTPException(
+            status_code=503,
+            detail="Embedding model is unavailable. Check the model download and try again.",
+        ) from exc
 
 
 @app.get("/ontology/summary", response_model=OntologySummary)

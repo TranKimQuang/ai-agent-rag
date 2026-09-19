@@ -1,6 +1,6 @@
 # THEO DÕI TIẾN ĐỘ ĐỒ ÁN AI AGENT + RAG
 
-Cập nhật gần nhất: 15/09/2026
+Cập nhật gần nhất: 19/09/2026
 
 ## 1. Tên đề tài
 
@@ -67,26 +67,41 @@ trang và đoạn bằng chứng. Nếu tài liệu không có đủ bằng ch�
 - [x] Kiểm tra PDF qua pipeline thật: trích xuất, chunking, gán concept và BM25.
 - [x] Kiểm thử gần nhất: 32 test passed; Ruff không phát hiện lỗi.
 - [x] Đồng bộ source code với GitHub.
+- [x] Tạo giao diện demo OntoRAG tại trang chủ.
+- [x] Tạo API POST /ask và AI Agent phiên bản đầu điều phối retrieval, evidence gate,
+  answer generation và kiểm tra citation.
+- [x] Thêm cơ chế từ chối trả lời khi evidence không đủ mạnh.
+- [x] Kiểm thử tích hợp: câu hỏi về QA/NLP được trả lời kèm trang nguồn; câu hỏi ngoài
+  phạm vi về giá vàng bị từ chối.
 
 ### Đang ở trạng thái nền móng
 
 - [~] Ontology đã tồn tại và truy vấn được, nhưng hiện mới là dữ liệu mẫu.
-- [~] Ontology và Hybrid Search vẫn là hai khối riêng, chưa ảnh hưởng lẫn nhau.
+- [x] Ontology đã tham gia mở rộng truy vấn và re-ranking của Hybrid Search.
 - [~] Dữ liệu và chỉ mục đang lưu trong RAM, sẽ mất khi khởi động lại server.
+- [~] AI Agent đã có prototype điều phối và evidence gate, nhưng tạm dừng mở rộng cho
+  tới khi retrieval trên dữ liệu thực ổn định.
 
 ### Chưa hoàn thành
 
 - [ ] Tìm hiểu và ánh xạ một phần Computer Science Ontology (CSO).
+- [ ] Mở rộng liên kết Paper-Author, Paper-Citation và Paper-Result.
+- [ ] Mô hình hóa Result liên kết Method/Model-Dataset-Metric-Value.
+- [ ] Bổ sung inverse property, domain/range và các quan hệ suy luận cần thiết.
 - [~] Cơ chế gán concept cho chunk đã có; còn cần chạy trên tập PDF thật.
+- [ ] Thử semantic concept linking bằng embedding và so sánh với alias-based linking.
 - [x] Đã có công cụ ghi thứ hạng trước/sau cho từng câu; còn cần chạy và chọn ví dụ tốt.
-- [ ] Tạo tập câu hỏi và gold evidence để đánh giá.
-- [ ] So sánh BM25, Semantic, Hybrid và Hybrid + Ontology.
-- [ ] Tính Precision@k, Recall@k, MRR hoặc nDCG@k.
+- [x] Tạo tập câu hỏi kiểm soát và gold evidence để đánh giá.
+- [x] So sánh BM25, Semantic, Hybrid và Hybrid + Ontology.
+- [x] Tính Precision@k, Recall@k, MRR và nDCG@k.
+- [ ] Tách ablation: Hybrid, +Expansion, +Re-ranking và +Expansion+Re-ranking.
+- [ ] Chọn trọng số Ontology trên validation set, chỉ đánh giá cuối trên test set.
+- [ ] Xây dựng tập dữ liệu thực từ 20-30 bài QASPER và tối thiểu 50-100 câu hỏi.
 - [ ] Đánh giá độ chính xác của câu trả lời và citation.
 - [ ] Tích hợp LLM để tạo câu trả lời dựa trên evidence.
-- [ ] Xây dựng AI Agent điều phối retrieval, Ontology và LLM.
-- [ ] Thêm cơ chế từ chối khi không đủ evidence.
-- [ ] Tạo giao diện demo.
+- [~] Đã có AI Agent điều phối retrieval, Ontology, evidence và citation; chưa tích hợp LLM.
+- [x] Thêm cơ chế từ chối khi không đủ evidence.
+- [x] Tạo giao diện demo.
 - [ ] Chuyển sang PostgreSQL + pgvector sau khi pipeline Ontology chạy đúng.
 
 ## 4. Pipeline mục tiêu
@@ -104,15 +119,17 @@ PDF
 
 ## 5. Bước tiếp theo ưu tiên
 
-Milestone tiếp theo: Kiểm chứng trên dữ liệu thực và bắt đầu answer generation.
+Milestone tiếp theo: Ontology v2 và thực nghiệm retrieval trên dữ liệu thật.
 
-1. Chọn một tập PDF khoa học thực tế nhỏ và xác định vocabulary phù hợp.
-2. Kiểm tra thủ công độ chính xác của concept và gold evidence.
-3. Mở rộng tập đánh giá lên khoảng 30-50 câu hỏi.
-4. Tìm hiểu và ánh xạ một phần Computer Science Ontology.
-5. Tích hợp LLM tạo câu trả lời từ evidence và kiểm tra citation.
+1. Mở rộng mô hình Author, Citation và Result cùng inverse property/domain/range.
+2. Ánh xạ nhánh IR/NLP/QA/RAG/Semantic Search với một phần CSO.
+3. Bổ sung semantic concept linking và đánh giá so với alias-based baseline.
+4. Tách bốn cấu hình ablation của Ontology và chọn trọng số bằng validation set.
+5. Chuẩn bị 20-30 bài QASPER cùng 50-100 câu hỏi/evidence thật để đánh giá.
+6. Chỉ sau khi retrieval ổn định mới tiếp tục tích hợp LLM và hoàn thiện Agent.
 
-Chưa ưu tiên trong milestone này: giao diện đẹp, PostgreSQL, pgvector và OCR.
+Chưa ưu tiên trong milestone này: mở rộng giao diện, PostgreSQL, pgvector, OCR và
+framework Agent phức tạp.
 
 ## 6. Nội dung cần có trong lần báo cáo tiếp theo
 
@@ -133,9 +150,10 @@ Chưa ưu tiên trong milestone này: giao diện đẹp, PostgreSQL, pgvector v
 - Hybrid Search: đã hoàn thành.
 - Ontology nền tảng: đã hoàn thành.
 - Ontology-aware retrieval: đã có kết quả kiểm soát ban đầu, chưa đánh giá trên PDF khoa học thực tế.
-- AI Agent và answer generation: chưa hoàn thành.
-- Mức độ hoàn thành ước lượng của toàn đồ án: khoảng 50%.
+- AI Agent và answer generation: đã có prototype an toàn dùng câu trích xuất; chưa gọi LLM.
+- Mức độ hoàn thành ước lượng của toàn đồ án: khoảng 60%.
 - Đã đủ cho báo cáo tiến độ về Ontology-aware retrieval; chưa phải kết quả thực nghiệm cuối cùng.
+- Bộ PDF 16 trang/24 câu chỉ dùng để debug pipeline, không dùng làm kết quả chính thức.
 
 ## 8. Lệnh kiểm tra nhanh
 

@@ -10,6 +10,11 @@ class SearchMethod(str, Enum):
     HYBRID_ONTOLOGY = "hybrid_ontology"
 
 
+class AgentStatus(str, Enum):
+    ANSWERED = "answered"
+    INSUFFICIENT_EVIDENCE = "insufficient_evidence"
+
+
 class Chunk(BaseModel):
     id: str
     document_id: str
@@ -73,3 +78,32 @@ class OntologyExpansionResponse(BaseModel):
     expanded_query: str
     query_concepts: list[str]
     expansion_terms: list[str]
+
+
+class AskRequest(BaseModel):
+    question: str = Field(min_length=2)
+    limit: int = Field(default=5, ge=1, le=10)
+
+
+class Citation(BaseModel):
+    filename: str
+    page: int = Field(ge=1)
+    chunk_id: str
+    quote: str
+
+
+class AgentStep(BaseModel):
+    name: str
+    status: str
+    detail: str
+
+
+class AskResponse(BaseModel):
+    question: str
+    status: AgentStatus
+    answer: str
+    confidence: float = Field(ge=0, le=1)
+    citations: list[Citation] = Field(default_factory=list)
+    query_concepts: list[str] = Field(default_factory=list)
+    expanded_query: str | None = None
+    trace: list[AgentStep] = Field(default_factory=list)

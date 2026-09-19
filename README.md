@@ -144,3 +144,22 @@ is saved to `evaluation/pdf_benchmark.json`.
 ruff check .
 pytest -q
 ```
+
+## Step 6: Agent orchestration and evidence gate
+
+`POST /ask` now coordinates Ontology-aware retrieval, evidence validation, answer generation,
+and citation validation. The first implementation intentionally uses a deterministic extractive
+generator so the control flow can be tested without an API key or network call.
+
+```powershell
+Invoke-RestMethod `
+  -Uri "http://127.0.0.1:8000/ask" `
+  -Method Post `
+  -ContentType "application/json" `
+  -Body '{"question":"QA thuộc lĩnh vực NLP như thế nào?","limit":5}' |
+  ConvertTo-Json -Depth 6
+```
+
+If evidence is weak, the Agent returns `insufficient_evidence` and does not call the answer
+generator. The next iteration will replace the extractive generator with an LLM provider while
+keeping the same evidence gate, citations, and orchestration trace.
