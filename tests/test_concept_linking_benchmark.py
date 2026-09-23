@@ -10,7 +10,11 @@ class BenchmarkEncoder:
         vectors = []
         for text in texts:
             lowered = text.lower()
-            if "retrieval augmented generation" in lowered or "external evidence" in lowered:
+            if (
+                "retrieval augmented generation" in lowered
+                or "external evidence" in lowered
+                or "rag retrieves evidence" in lowered
+            ):
                 vectors.append([1.0, 0.0])
             else:
                 vectors.append([0.0, 1.0])

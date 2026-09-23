@@ -1,0 +1,47 @@
+{
+  "dataset": "QASPER v0.3 validation subset",
+  "papers": 10,
+  "questions": 42,
+  "chunks": 605,
+  "concept_links_before": 22,
+  "concept_links_after": 171,
+  "status": "validation_only",
+  "test_split_evaluated": false,
+  "methods": {
+    "hybrid": {
+      "recall@1": 0.15476190476190477,
+      "recall@3": 0.24603174603174605,
+      "recall@5": 0.30158730158730157,
+      "mrr@5": 0.23809523809523808,
+      "ndcg@5": 0.24750255941012375
+    },
+    "hybrid_ontology_expansion": {
+      "recall@1": 0.15476190476190477,
+      "recall@3": 0.23809523809523808,
+      "recall@5": 0.30952380952380953,
+      "mrr@5": 0.23214285714285715,
+      "ndcg@5": 0.24589511418648044
+    },
+    "hybrid_ontology_rerank": {
+      "recall@1": 0.1626984126984127,
+      "recall@3": 0.25396825396825395,
+      "recall@5": 0.3253968253968254,
+      "mrr@5": 0.25595238095238093,
+      "ndcg@5": 0.26265506868729316
+    },
+    "hybrid_ontology": {
+      "recall@1": 0.15476190476190477,
+      "recall@3": 0.2698412698412699,
+      "recall@5": 0.3174603174603175,
+      "mrr@5": 0.24206349206349204,
+      "ndcg@5": 0.25313232382786105
+    }
+  },
+  "rank_change_vs_hybrid": {
+    "rescued": 1,
+    "worsened": 1,
+    "unchanged": 13,
+    "missed_by_both": 27
+  },
+  "finding": "Vocabulary coverage improved substantially. Ontology re-ranking improved validation retrieval, while query expansion introduced some query drift and requires further tuning."
+}

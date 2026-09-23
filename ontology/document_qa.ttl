@@ -172,3 +172,110 @@ qa:QASPER a qa:Dataset ;
 qa:EvidenceF1 a qa:Metric ;
     skos:prefLabel "evidence F1"@en ;
     skos:altLabel "Evidence F1 score"@en .
+
+# Validation-driven vocabulary extension. These concepts occur in the real
+# QASPER validation papers and questions; the held-out test split was not used.
+qa:MachineLearning a qa:ResearchTopic ;
+    skos:prefLabel "machine learning"@en ;
+    skos:altLabel "ML"@en ;
+    skos:definition "The study of algorithms that learn patterns from data."@en ;
+    qa:relatedTo qa:NaturalLanguageProcessing .
+
+qa:ArgumentMining a qa:Task ;
+    skos:prefLabel "argument mining"@en ;
+    skos:altLabel "argument component identification"@en,
+        "argument component classification"@en ;
+    skos:definition "The task of identifying argumentative structures and components in text."@en ;
+    skos:broader qa:NaturalLanguageProcessing ;
+    qa:relatedTo qa:MachineLearning .
+
+qa:SemanticRoleInduction a qa:Task ;
+    skos:prefLabel "semantic role induction"@en ;
+    skos:altLabel "semantic role labeling"@en, "semantic role labelling"@en,
+        "SRL"@en ;
+    skos:definition "The task of discovering or assigning semantic roles to sentence arguments."@en ;
+    skos:broader qa:NaturalLanguageProcessing .
+
+qa:TextSummarization a qa:Task ;
+    skos:prefLabel "text summarization"@en ;
+    skos:altLabel "automatic summarization"@en, "summarization"@en,
+        "summary generation"@en ;
+    skos:definition "The task of producing a shorter representation of a source text."@en ;
+    skos:broader qa:NaturalLanguageProcessing ;
+    qa:relatedTo qa:ROUGE, qa:PyramidMethod .
+
+qa:ROUGE a qa:Metric ;
+    skos:prefLabel "ROUGE"@en ;
+    skos:altLabel "ROUGE score"@en, "Recall-Oriented Understudy for Gisting Evaluation"@en ;
+    skos:definition "A family of overlap-based metrics for evaluating generated summaries."@en ;
+    qa:relatedTo qa:TextSummarization, qa:PyramidMethod .
+
+qa:PyramidMethod a qa:Metric ;
+    skos:prefLabel "Pyramid method"@en ;
+    skos:altLabel "Pyramid score"@en, "Pyramid evaluation"@en ;
+    skos:definition "A content-unit based method for evaluating summaries."@en ;
+    qa:relatedTo qa:TextSummarization, qa:ROUGE .
+
+qa:SpamDetection a qa:Task ;
+    skos:prefLabel "spam detection"@en ;
+    skos:altLabel "spam classification"@en, "spam filtering"@en ;
+    skos:definition "The task of detecting unwanted or deceptive messages."@en ;
+    skos:broader qa:NaturalLanguageProcessing ;
+    qa:relatedTo qa:LatentDirichletAllocation .
+
+qa:LatentDirichletAllocation a qa:Model ;
+    skos:prefLabel "latent Dirichlet allocation"@en ;
+    skos:altLabel "LDA"@en, "LDA topic model"@en ;
+    skos:definition "A probabilistic latent-topic model for collections of documents."@en ;
+    qa:relatedTo qa:MachineLearning, qa:SpamDetection .
+
+qa:HashtagPrediction a qa:Task ;
+    skos:prefLabel "hashtag prediction"@en ;
+    skos:altLabel "hashtag recommendation"@en, "hashtag generation"@en ;
+    skos:definition "The task of predicting relevant hashtags for social-media text."@en ;
+    skos:broader qa:NaturalLanguageProcessing .
+
+qa:NaturalLanguageInference a qa:Task ;
+    skos:prefLabel "natural language inference"@en ;
+    skos:altLabel "NLI"@en, "textual entailment"@en ;
+    skos:definition "The task of determining whether one text entails, contradicts, or is neutral toward another."@en ;
+    skos:broader qa:NaturalLanguageProcessing ;
+    qa:relatedTo qa:DatasetBias .
+
+qa:DatasetBias a qa:ResearchTopic ;
+    skos:prefLabel "dataset bias"@en ;
+    skos:altLabel "data bias"@en, "annotation artifacts"@en,
+        "unwarranted inference"@en ;
+    skos:definition "Systematic patterns in a dataset that can distort evaluation or model behavior."@en ;
+    qa:relatedTo qa:NaturalLanguageInference, qa:MachineLearning .
+
+qa:RecurrentNeuralNetwork a qa:Model ;
+    skos:prefLabel "recurrent neural network"@en ;
+    skos:altLabel "RNN"@en, "recurrent neural networks"@en ;
+    skos:definition "A neural network architecture for processing sequential data."@en ;
+    qa:relatedTo qa:MachineLearning, qa:NaturalLanguageProcessing .
+
+qa:WordEmbedding a qa:Method ;
+    skos:prefLabel "word embedding"@en ;
+    skos:altLabel "word embeddings"@en, "word vector"@en,
+        "distributed word representation"@en ;
+    skos:definition "A dense vector representation of a word learned from language data."@en ;
+    qa:relatedTo qa:DistributionalSemantics, qa:NaturalLanguageProcessing .
+
+qa:DistributionalSemantics a qa:ResearchTopic ;
+    skos:prefLabel "distributional semantics"@en ;
+    skos:altLabel "distributional semantic model"@en ;
+    skos:definition "An approach that represents meaning through patterns of linguistic co-occurrence."@en ;
+    qa:relatedTo qa:WordEmbedding, qa:CooccurrenceMatrix .
+
+qa:CooccurrenceMatrix a qa:Method ;
+    skos:prefLabel "co-occurrence matrix"@en ;
+    skos:altLabel "cooccurrence matrix"@en, "second-order co-occurrence matrix"@en ;
+    skos:definition "A matrix recording how frequently linguistic units occur in shared contexts."@en ;
+    qa:relatedTo qa:DistributionalSemantics .
+
+qa:ParallelCorpus a qa:Dataset ;
+    skos:prefLabel "parallel corpus"@en ;
+    skos:altLabel "parallel corpora"@en, "multilingual parallel corpus"@en ;
+    skos:definition "A collection containing aligned texts in two or more languages."@en ;
+    qa:relatedTo qa:NaturalLanguageProcessing, qa:SemanticRoleInduction .

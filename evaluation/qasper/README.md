@@ -48,3 +48,20 @@ validation, and Ontology-weight selection are complete.
 The compact summary used for version control is stored in `validation_ablation_results.json`.
 Full per-question output is generated locally under `results/qasper_validation/` and remains
 ignored by Git because it is reproducible.
+
+## Vocabulary expansion finding
+
+The vocabulary was then extended using research concepts observed only in validation questions
+and evidence, including argument mining, semantic-role induction, summarization evaluation,
+spam detection, natural-language inference, recurrent neural networks, and word embeddings. The
+held-out test split was not inspected or benchmarked during this iteration.
+
+- Concept links increased from 22 to 171 across the same 605 validation chunks.
+- Ontology re-ranking improved Recall@5 from 0.3016 to 0.3254 and MRR@5 from 0.2381 to 0.2560.
+- Expansion alone slightly reduced MRR@5 to 0.2321, showing that adding related terms can also
+  introduce query drift.
+- The combined method reached Recall@5 0.3175 and MRR@5 0.2421; re-ranking alone was better on
+  this validation set.
+
+These remain validation results for vocabulary and weight development, not final test results.
+The compact second-iteration summary is stored in `validation_vocabulary_results.json`.

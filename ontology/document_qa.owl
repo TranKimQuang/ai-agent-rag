@@ -7,68 +7,157 @@
    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
 >
-  <rdf:Description rdf:about="https://example.org/document-qa#QASPER">
-    <rdf:type rdf:resource="https://example.org/document-qa#Dataset"/>
-    <skos:prefLabel xml:lang="en">QASPER</skos:prefLabel>
-    <skos:altLabel xml:lang="en">QASPER dataset</skos:altLabel>
-    <qa:relatedTo rdf:resource="https://example.org/document-qa#QuestionAnswering"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://example.org/document-qa#Method">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:subClassOf rdf:resource="https://example.org/document-qa#Concept"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://example.org/document-qa#resultUsesMethod">
+  <rdf:Description rdf:about="https://example.org/document-qa#hasSection">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-    <rdfs:domain rdf:resource="https://example.org/document-qa#Result"/>
-    <rdfs:range rdf:resource="https://example.org/document-qa#Method"/>
+    <owl:inverseOf rdf:resource="https://example.org/document-qa#isSectionOf"/>
+    <rdfs:domain rdf:resource="https://example.org/document-qa#Document"/>
+    <rdfs:range rdf:resource="https://example.org/document-qa#Section"/>
   </rdf:Description>
-  <rdf:Description rdf:about="https://example.org/document-qa#pageNumber">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
-    <rdfs:domain rdf:resource="https://example.org/document-qa#Chunk"/>
-    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://example.org/document-qa#NaturalLanguageProcessing">
+  <rdf:Description rdf:about="https://example.org/document-qa#DatasetBias">
     <rdf:type rdf:resource="https://example.org/document-qa#ResearchTopic"/>
-    <skos:prefLabel xml:lang="en">natural language processing</skos:prefLabel>
-    <skos:altLabel xml:lang="en">NLP</skos:altLabel>
-    <skos:altLabel xml:lang="vi">xử lý ngôn ngữ tự nhiên</skos:altLabel>
-    <skos:definition xml:lang="en">The field concerned with computers processing and understanding human language.</skos:definition>
-    <skos:exactMatch rdf:resource="https://cso.kmi.open.ac.uk/topics/natural_language_processing"/>
+    <skos:prefLabel xml:lang="en">dataset bias</skos:prefLabel>
+    <skos:altLabel xml:lang="en">data bias</skos:altLabel>
+    <skos:altLabel xml:lang="en">annotation artifacts</skos:altLabel>
+    <skos:altLabel xml:lang="en">unwarranted inference</skos:altLabel>
+    <skos:definition xml:lang="en">Systematic patterns in a dataset that can distort evaluation or model behavior.</skos:definition>
+    <qa:relatedTo rdf:resource="https://example.org/document-qa#NaturalLanguageInference"/>
+    <qa:relatedTo rdf:resource="https://example.org/document-qa#MachineLearning"/>
   </rdf:Description>
-  <rdf:Description rdf:about="https://example.org/document-qa#citesPaper">
+  <rdf:Description rdf:about="https://example.org/document-qa#PyramidMethod">
+    <rdf:type rdf:resource="https://example.org/document-qa#Metric"/>
+    <skos:prefLabel xml:lang="en">Pyramid method</skos:prefLabel>
+    <skos:altLabel xml:lang="en">Pyramid score</skos:altLabel>
+    <skos:altLabel xml:lang="en">Pyramid evaluation</skos:altLabel>
+    <skos:definition xml:lang="en">A content-unit based method for evaluating summaries.</skos:definition>
+    <qa:relatedTo rdf:resource="https://example.org/document-qa#TextSummarization"/>
+    <qa:relatedTo rdf:resource="https://example.org/document-qa#ROUGE"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://example.org/document-qa#citationOf">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-    <owl:inverseOf rdf:resource="https://example.org/document-qa#citedBy"/>
     <rdfs:domain rdf:resource="https://example.org/document-qa#Citation"/>
     <rdfs:range rdf:resource="https://example.org/document-qa#Paper"/>
   </rdf:Description>
-  <rdf:Description rdf:about="https://example.org/document-qa#resultUsesDataset">
+  <rdf:Description rdf:about="https://example.org/document-qa#ParallelCorpus">
+    <rdf:type rdf:resource="https://example.org/document-qa#Dataset"/>
+    <skos:prefLabel xml:lang="en">parallel corpus</skos:prefLabel>
+    <skos:altLabel xml:lang="en">parallel corpora</skos:altLabel>
+    <skos:altLabel xml:lang="en">multilingual parallel corpus</skos:altLabel>
+    <skos:definition xml:lang="en">A collection containing aligned texts in two or more languages.</skos:definition>
+    <qa:relatedTo rdf:resource="https://example.org/document-qa#NaturalLanguageProcessing"/>
+    <qa:relatedTo rdf:resource="https://example.org/document-qa#SemanticRoleInduction"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://example.org/document-qa#isChunkOf">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-    <rdfs:domain rdf:resource="https://example.org/document-qa#Result"/>
-    <rdfs:range rdf:resource="https://example.org/document-qa#Dataset"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://example.org/document-qa#sourceFile">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
-    <rdfs:domain rdf:resource="https://example.org/document-qa#Document"/>
-    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://example.org/document-qa#CitedPaper">
-    <rdf:type rdf:resource="https://example.org/document-qa#Paper"/>
-    <qa:title>QASPER: A Dataset for Question Answering over Scientific Papers</qa:title>
+    <rdfs:domain rdf:resource="https://example.org/document-qa#Chunk"/>
+    <rdfs:range rdf:resource="https://example.org/document-qa#Section"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://example.org/document-qa#measuredBy">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
     <rdfs:domain rdf:resource="https://example.org/document-qa#Result"/>
     <rdfs:range rdf:resource="https://example.org/document-qa#Metric"/>
   </rdf:Description>
-  <rdf:Description rdf:about="https://example.org/document-qa#Task">
+  <rdf:Description rdf:about="https://example.org/document-qa#WordEmbedding">
+    <rdf:type rdf:resource="https://example.org/document-qa#Method"/>
+    <skos:prefLabel xml:lang="en">word embedding</skos:prefLabel>
+    <skos:altLabel xml:lang="en">word embeddings</skos:altLabel>
+    <skos:altLabel xml:lang="en">word vector</skos:altLabel>
+    <skos:altLabel xml:lang="en">distributed word representation</skos:altLabel>
+    <skos:definition xml:lang="en">A dense vector representation of a word learned from language data.</skos:definition>
+    <qa:relatedTo rdf:resource="https://example.org/document-qa#DistributionalSemantics"/>
+    <qa:relatedTo rdf:resource="https://example.org/document-qa#NaturalLanguageProcessing"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://example.org/document-qa#CitedPaper">
+    <rdf:type rdf:resource="https://example.org/document-qa#Paper"/>
+    <qa:title>QASPER: A Dataset for Question Answering over Scientific Papers</qa:title>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://example.org/document-qa#resultUsesModel">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="https://example.org/document-qa#Result"/>
+    <rdfs:range rdf:resource="https://example.org/document-qa#Model"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://example.org/document-qa#HybridSearch">
+    <rdf:type rdf:resource="https://example.org/document-qa#Method"/>
+    <skos:prefLabel xml:lang="en">hybrid search</skos:prefLabel>
+    <skos:altLabel xml:lang="vi">tìm kiếm kết hợp</skos:altLabel>
+    <skos:altLabel xml:lang="en">hybrid retrieval</skos:altLabel>
+    <skos:definition xml:lang="en">A retrieval method that combines lexical keyword search and semantic search.</skos:definition>
+    <qa:relatedTo rdf:resource="https://example.org/document-qa#KeywordSearch"/>
+    <qa:relatedTo rdf:resource="https://example.org/document-qa#SemanticSearch"/>
+    <qa:relatedTo rdf:resource="https://example.org/document-qa#ReciprocalRankFusion"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://example.org/document-qa#RecurrentNeuralNetwork">
+    <rdf:type rdf:resource="https://example.org/document-qa#Model"/>
+    <skos:prefLabel xml:lang="en">recurrent neural network</skos:prefLabel>
+    <skos:altLabel xml:lang="en">RNN</skos:altLabel>
+    <skos:altLabel xml:lang="en">recurrent neural networks</skos:altLabel>
+    <skos:definition xml:lang="en">A neural network architecture for processing sequential data.</skos:definition>
+    <qa:relatedTo rdf:resource="https://example.org/document-qa#MachineLearning"/>
+    <qa:relatedTo rdf:resource="https://example.org/document-qa#NaturalLanguageProcessing"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://example.org/document-qa#Dataset">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
     <rdfs:subClassOf rdf:resource="https://example.org/document-qa#Concept"/>
   </rdf:Description>
-  <rdf:Description rdf:about="https://example.org/document-qa#relatedTo">
+  <rdf:Description rdf:about="https://example.org/document-qa#hasAuthor">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#SymmetricProperty"/>
-    <rdfs:domain rdf:resource="https://example.org/document-qa#Concept"/>
+    <owl:inverseOf rdf:resource="https://example.org/document-qa#authorOf"/>
+    <rdfs:domain rdf:resource="https://example.org/document-qa#Paper"/>
+    <rdfs:range rdf:resource="https://example.org/document-qa#Author"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://example.org/document-qa#ArgumentMining">
+    <rdf:type rdf:resource="https://example.org/document-qa#Task"/>
+    <skos:prefLabel xml:lang="en">argument mining</skos:prefLabel>
+    <skos:altLabel xml:lang="en">argument component identification</skos:altLabel>
+    <skos:altLabel xml:lang="en">argument component classification</skos:altLabel>
+    <skos:definition xml:lang="en">The task of identifying argumentative structures and components in text.</skos:definition>
+    <skos:broader rdf:resource="https://example.org/document-qa#NaturalLanguageProcessing"/>
+    <qa:relatedTo rdf:resource="https://example.org/document-qa#MachineLearning"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://example.org/document-qa#MachineLearning">
+    <rdf:type rdf:resource="https://example.org/document-qa#ResearchTopic"/>
+    <skos:prefLabel xml:lang="en">machine learning</skos:prefLabel>
+    <skos:altLabel xml:lang="en">ML</skos:altLabel>
+    <skos:definition xml:lang="en">The study of algorithms that learn patterns from data.</skos:definition>
+    <qa:relatedTo rdf:resource="https://example.org/document-qa#NaturalLanguageProcessing"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://example.org/document-qa#MethodsSection">
+    <rdf:type rdf:resource="https://example.org/document-qa#Section"/>
+    <qa:hasChunk rdf:resource="https://example.org/document-qa#SampleChunk"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://example.org/document-qa#mentionsConcept">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <owl:inverseOf rdf:resource="https://example.org/document-qa#isMentionedIn"/>
+    <rdfs:domain rdf:resource="https://example.org/document-qa#Chunk"/>
     <rdfs:range rdf:resource="https://example.org/document-qa#Concept"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://example.org/document-qa#NaturalLanguageInference">
+    <rdf:type rdf:resource="https://example.org/document-qa#Task"/>
+    <skos:prefLabel xml:lang="en">natural language inference</skos:prefLabel>
+    <skos:altLabel xml:lang="en">NLI</skos:altLabel>
+    <skos:altLabel xml:lang="en">textual entailment</skos:altLabel>
+    <skos:definition xml:lang="en">The task of determining whether one text entails, contradicts, or is neutral toward another.</skos:definition>
+    <skos:broader rdf:resource="https://example.org/document-qa#NaturalLanguageProcessing"/>
+    <qa:relatedTo rdf:resource="https://example.org/document-qa#DatasetBias"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://example.org/document-qa#hasEvidence">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <owl:inverseOf rdf:resource="https://example.org/document-qa#isEvidenceFor"/>
+    <rdfs:domain rdf:resource="https://example.org/document-qa#Result"/>
+    <rdfs:range rdf:resource="https://example.org/document-qa#Chunk"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://example.org/document-qa#hasCitation">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <owl:inverseOf rdf:resource="https://example.org/document-qa#citationOf"/>
+    <rdfs:domain rdf:resource="https://example.org/document-qa#Paper"/>
+    <rdfs:range rdf:resource="https://example.org/document-qa#Citation"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://example.org/document-qa#HashtagPrediction">
+    <rdf:type rdf:resource="https://example.org/document-qa#Task"/>
+    <skos:prefLabel xml:lang="en">hashtag prediction</skos:prefLabel>
+    <skos:altLabel xml:lang="en">hashtag recommendation</skos:altLabel>
+    <skos:altLabel xml:lang="en">hashtag generation</skos:altLabel>
+    <skos:definition xml:lang="en">The task of predicting relevant hashtags for social-media text.</skos:definition>
+    <skos:broader rdf:resource="https://example.org/document-qa#NaturalLanguageProcessing"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://example.org/document-qa#DocumentQAOntology">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Ontology"/>
@@ -77,15 +166,34 @@
     <dcterms:license rdf:resource="https://creativecommons.org/licenses/by/4.0/"/>
     <owl:versionInfo>CSO v3.5 subset mapping</owl:versionInfo>
   </rdf:Description>
-  <rdf:Description rdf:about="https://example.org/document-qa#title">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
-    <rdfs:domain rdf:resource="https://example.org/document-qa#Document"/>
-    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  <rdf:Description rdf:about="https://example.org/document-qa#SpamDetection">
+    <rdf:type rdf:resource="https://example.org/document-qa#Task"/>
+    <skos:prefLabel xml:lang="en">spam detection</skos:prefLabel>
+    <skos:altLabel xml:lang="en">spam classification</skos:altLabel>
+    <skos:altLabel xml:lang="en">spam filtering</skos:altLabel>
+    <skos:definition xml:lang="en">The task of detecting unwanted or deceptive messages.</skos:definition>
+    <skos:broader rdf:resource="https://example.org/document-qa#NaturalLanguageProcessing"/>
+    <qa:relatedTo rdf:resource="https://example.org/document-qa#LatentDirichletAllocation"/>
   </rdf:Description>
-  <rdf:Description rdf:about="https://example.org/document-qa#evaluatedBy">
+  <rdf:Description rdf:about="https://example.org/document-qa#Method">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="https://example.org/document-qa#Concept"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://example.org/document-qa#pageNumber">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:domain rdf:resource="https://example.org/document-qa#Chunk"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://example.org/document-qa#SampleRAGModel">
+    <rdf:type rdf:resource="https://example.org/document-qa#Model"/>
+    <skos:prefLabel xml:lang="en">sample RAG model</skos:prefLabel>
+    <qa:relatedTo rdf:resource="https://example.org/document-qa#RetrievalAugmentedGeneration"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://example.org/document-qa#citesPaper">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-    <rdfs:domain rdf:resource="https://example.org/document-qa#Paper"/>
-    <rdfs:range rdf:resource="https://example.org/document-qa#Metric"/>
+    <owl:inverseOf rdf:resource="https://example.org/document-qa#citedBy"/>
+    <rdfs:domain rdf:resource="https://example.org/document-qa#Citation"/>
+    <rdfs:range rdf:resource="https://example.org/document-qa#Paper"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://example.org/document-qa#hasResult">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
@@ -93,103 +201,16 @@
     <rdfs:domain rdf:resource="https://example.org/document-qa#Paper"/>
     <rdfs:range rdf:resource="https://example.org/document-qa#Result"/>
   </rdf:Description>
-  <rdf:Description rdf:about="https://example.org/document-qa#usesMethod">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-    <rdfs:domain rdf:resource="https://example.org/document-qa#Paper"/>
-    <rdfs:range rdf:resource="https://example.org/document-qa#Method"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://example.org/document-qa#SemanticSearch">
-    <rdf:type rdf:resource="https://example.org/document-qa#Method"/>
-    <skos:prefLabel xml:lang="en">semantic search</skos:prefLabel>
-    <skos:altLabel xml:lang="vi">tìm kiếm ngữ nghĩa</skos:altLabel>
-    <skos:altLabel xml:lang="en">dense retrieval</skos:altLabel>
-    <skos:definition xml:lang="en">A retrieval method that matches the meaning of a query and documents using semantic representations.</skos:definition>
-    <skos:exactMatch rdf:resource="https://cso.kmi.open.ac.uk/topics/semantic_search"/>
-    <qa:relatedTo rdf:resource="https://example.org/document-qa#InformationRetrieval"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://example.org/document-qa#doi">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
-    <rdfs:domain rdf:resource="https://example.org/document-qa#Paper"/>
-    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://example.org/document-qa#authorOf">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-    <rdfs:domain rdf:resource="https://example.org/document-qa#Author"/>
-    <rdfs:range rdf:resource="https://example.org/document-qa#Paper"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://example.org/document-qa#chunkText">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
-    <rdfs:domain rdf:resource="https://example.org/document-qa#Chunk"/>
-    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://example.org/document-qa#citationText">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
-    <rdfs:domain rdf:resource="https://example.org/document-qa#Citation"/>
-    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://example.org/document-qa#SampleRAGModel">
-    <rdf:type rdf:resource="https://example.org/document-qa#Model"/>
-    <skos:prefLabel xml:lang="en">sample RAG model</skos:prefLabel>
-    <qa:relatedTo rdf:resource="https://example.org/document-qa#RetrievalAugmentedGeneration"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://example.org/document-qa#hasEvidence">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-    <owl:inverseOf rdf:resource="https://example.org/document-qa#isEvidenceFor"/>
-    <rdfs:domain rdf:resource="https://example.org/document-qa#Result"/>
-    <rdfs:range rdf:resource="https://example.org/document-qa#Chunk"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://example.org/document-qa#citationOf">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-    <rdfs:domain rdf:resource="https://example.org/document-qa#Citation"/>
-    <rdfs:range rdf:resource="https://example.org/document-qa#Paper"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://example.org/document-qa#Dataset">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:subClassOf rdf:resource="https://example.org/document-qa#Concept"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://example.org/document-qa#SampleChunk">
-    <rdf:type rdf:resource="https://example.org/document-qa#Chunk"/>
-    <qa:pageNumber rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</qa:pageNumber>
-    <qa:chunkText>RAG retrieves evidence before generating an answer.</qa:chunkText>
-    <qa:mentionsConcept rdf:resource="https://example.org/document-qa#RetrievalAugmentedGeneration"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://example.org/document-qa#resultUsesModel">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-    <rdfs:domain rdf:resource="https://example.org/document-qa#Result"/>
-    <rdfs:range rdf:resource="https://example.org/document-qa#Model"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://example.org/document-qa#hasSection">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-    <owl:inverseOf rdf:resource="https://example.org/document-qa#isSectionOf"/>
-    <rdfs:domain rdf:resource="https://example.org/document-qa#Document"/>
-    <rdfs:range rdf:resource="https://example.org/document-qa#Section"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://example.org/document-qa#SamplePaper">
-    <rdf:type rdf:resource="https://example.org/document-qa#Paper"/>
-    <qa:title>A sample paper about retrieval-augmented generation</qa:title>
-    <qa:hasSection rdf:resource="https://example.org/document-qa#MethodsSection"/>
-    <qa:hasAuthor rdf:resource="https://example.org/document-qa#SampleAuthor"/>
-    <qa:hasCitation rdf:resource="https://example.org/document-qa#SampleCitation"/>
-    <qa:hasResult rdf:resource="https://example.org/document-qa#SampleResult"/>
-    <qa:usesMethod rdf:resource="https://example.org/document-qa#RetrievalAugmentedGeneration"/>
-    <qa:usesDataset rdf:resource="https://example.org/document-qa#QASPER"/>
-    <qa:evaluatedBy rdf:resource="https://example.org/document-qa#EvidenceF1"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://example.org/document-qa#hasAuthor">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-    <owl:inverseOf rdf:resource="https://example.org/document-qa#authorOf"/>
-    <rdfs:domain rdf:resource="https://example.org/document-qa#Paper"/>
-    <rdfs:range rdf:resource="https://example.org/document-qa#Author"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://example.org/document-qa#citedBy">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-    <rdfs:domain rdf:resource="https://example.org/document-qa#Paper"/>
-    <rdfs:range rdf:resource="https://example.org/document-qa#Citation"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://example.org/document-qa#isMentionedIn">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-    <rdfs:domain rdf:resource="https://example.org/document-qa#Concept"/>
-    <rdfs:range rdf:resource="https://example.org/document-qa#Chunk"/>
+  <rdf:Description rdf:about="https://example.org/document-qa#TextSummarization">
+    <rdf:type rdf:resource="https://example.org/document-qa#Task"/>
+    <skos:prefLabel xml:lang="en">text summarization</skos:prefLabel>
+    <skos:altLabel xml:lang="en">automatic summarization</skos:altLabel>
+    <skos:altLabel xml:lang="en">summarization</skos:altLabel>
+    <skos:altLabel xml:lang="en">summary generation</skos:altLabel>
+    <skos:definition xml:lang="en">The task of producing a shorter representation of a source text.</skos:definition>
+    <skos:broader rdf:resource="https://example.org/document-qa#NaturalLanguageProcessing"/>
+    <qa:relatedTo rdf:resource="https://example.org/document-qa#ROUGE"/>
+    <qa:relatedTo rdf:resource="https://example.org/document-qa#PyramidMethod"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://example.org/document-qa#InformationRetrieval">
     <rdf:type rdf:resource="https://example.org/document-qa#ResearchTopic"/>
@@ -202,109 +223,11 @@
     <skos:narrower rdf:resource="https://example.org/document-qa#SemanticSearch"/>
     <skos:narrower rdf:resource="https://example.org/document-qa#HybridSearch"/>
   </rdf:Description>
-  <rdf:Description rdf:about="https://example.org/document-qa#SampleAuthor">
-    <rdf:type rdf:resource="https://example.org/document-qa#Author"/>
-    <qa:authorName>Nguyen Van A</qa:authorName>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://example.org/document-qa#mentionsConcept">
+  <rdf:Description rdf:about="https://example.org/document-qa#relatedTo">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-    <owl:inverseOf rdf:resource="https://example.org/document-qa#isMentionedIn"/>
-    <rdfs:domain rdf:resource="https://example.org/document-qa#Chunk"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#SymmetricProperty"/>
+    <rdfs:domain rdf:resource="https://example.org/document-qa#Concept"/>
     <rdfs:range rdf:resource="https://example.org/document-qa#Concept"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://example.org/document-qa#isEvidenceFor">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-    <rdfs:domain rdf:resource="https://example.org/document-qa#Chunk"/>
-    <rdfs:range rdf:resource="https://example.org/document-qa#Result"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://example.org/document-qa#HybridSearch">
-    <rdf:type rdf:resource="https://example.org/document-qa#Method"/>
-    <skos:prefLabel xml:lang="en">hybrid search</skos:prefLabel>
-    <skos:altLabel xml:lang="vi">tìm kiếm kết hợp</skos:altLabel>
-    <skos:altLabel xml:lang="en">hybrid retrieval</skos:altLabel>
-    <skos:definition xml:lang="en">A retrieval method that combines lexical keyword search and semantic search.</skos:definition>
-    <qa:relatedTo rdf:resource="https://example.org/document-qa#KeywordSearch"/>
-    <qa:relatedTo rdf:resource="https://example.org/document-qa#SemanticSearch"/>
-    <qa:relatedTo rdf:resource="https://example.org/document-qa#ReciprocalRankFusion"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://example.org/document-qa#SampleCitation">
-    <rdf:type rdf:resource="https://example.org/document-qa#Citation"/>
-    <qa:citationText>Dasigi et al. QASPER, 2021.</qa:citationText>
-    <qa:citesPaper rdf:resource="https://example.org/document-qa#CitedPaper"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://example.org/document-qa#solvesTask">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-    <rdfs:domain rdf:resource="https://example.org/document-qa#Method"/>
-    <rdfs:range rdf:resource="https://example.org/document-qa#Task"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://example.org/document-qa#isChunkOf">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-    <rdfs:domain rdf:resource="https://example.org/document-qa#Chunk"/>
-    <rdfs:range rdf:resource="https://example.org/document-qa#Section"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://example.org/document-qa#Chunk">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://example.org/document-qa#metricValue">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
-    <rdfs:domain rdf:resource="https://example.org/document-qa#Result"/>
-    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://example.org/document-qa#isSectionOf">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-    <rdfs:domain rdf:resource="https://example.org/document-qa#Section"/>
-    <rdfs:range rdf:resource="https://example.org/document-qa#Document"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://example.org/document-qa#resultOf">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-    <rdfs:domain rdf:resource="https://example.org/document-qa#Result"/>
-    <rdfs:range rdf:resource="https://example.org/document-qa#Paper"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://example.org/document-qa#hasCitation">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-    <owl:inverseOf rdf:resource="https://example.org/document-qa#citationOf"/>
-    <rdfs:domain rdf:resource="https://example.org/document-qa#Paper"/>
-    <rdfs:range rdf:resource="https://example.org/document-qa#Citation"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://example.org/document-qa#usesDataset">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-    <rdfs:domain rdf:resource="https://example.org/document-qa#Paper"/>
-    <rdfs:range rdf:resource="https://example.org/document-qa#Dataset"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://example.org/document-qa#RetrievalAugmentedGeneration">
-    <rdf:type rdf:resource="https://example.org/document-qa#Method"/>
-    <skos:prefLabel xml:lang="en">retrieval augmented generation</skos:prefLabel>
-    <skos:altLabel xml:lang="en">RAG</skos:altLabel>
-    <skos:altLabel xml:lang="en">retrieval-augmented generation</skos:altLabel>
-    <skos:definition xml:lang="en">A method that retrieves external evidence before generating a grounded answer.</skos:definition>
-    <qa:solvesTask rdf:resource="https://example.org/document-qa#QuestionAnswering"/>
-    <skos:exactMatch rdf:resource="https://cso.kmi.open.ac.uk/topics/retrieval_augmented_generation"/>
-    <qa:relatedTo rdf:resource="https://example.org/document-qa#InformationRetrieval"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://example.org/document-qa#EvidenceF1">
-    <rdf:type rdf:resource="https://example.org/document-qa#Metric"/>
-    <skos:prefLabel xml:lang="en">evidence F1</skos:prefLabel>
-    <skos:altLabel xml:lang="en">Evidence F1 score</skos:altLabel>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://example.org/document-qa#Concept">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://example.org/document-qa#Document">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://example.org/document-qa#hasChunk">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-    <owl:inverseOf rdf:resource="https://example.org/document-qa#isChunkOf"/>
-    <rdfs:domain rdf:resource="https://example.org/document-qa#Section"/>
-    <rdfs:range rdf:resource="https://example.org/document-qa#Chunk"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://example.org/document-qa#KeywordSearch">
-    <rdf:type rdf:resource="https://example.org/document-qa#Method"/>
-    <skos:prefLabel xml:lang="en">keyword search</skos:prefLabel>
-    <skos:altLabel xml:lang="vi">tìm kiếm từ khóa</skos:altLabel>
-    <skos:altLabel xml:lang="en">BM25</skos:altLabel>
-    <skos:definition xml:lang="en">A lexical retrieval method that matches query terms with words in documents.</skos:definition>
-    <qa:relatedTo rdf:resource="https://example.org/document-qa#InformationRetrieval"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://example.org/document-qa#SampleResult">
     <rdf:type rdf:resource="https://example.org/document-qa#Result"/>
@@ -316,13 +239,227 @@
     <qa:resultNote>Illustrative result used to validate the ontology structure.</qa:resultNote>
     <qa:hasEvidence rdf:resource="https://example.org/document-qa#SampleChunk"/>
   </rdf:Description>
-  <rdf:Description rdf:about="https://example.org/document-qa#Paper">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:subClassOf rdf:resource="https://example.org/document-qa#Document"/>
+  <rdf:Description rdf:about="https://example.org/document-qa#NaturalLanguageProcessing">
+    <rdf:type rdf:resource="https://example.org/document-qa#ResearchTopic"/>
+    <skos:prefLabel xml:lang="en">natural language processing</skos:prefLabel>
+    <skos:altLabel xml:lang="en">NLP</skos:altLabel>
+    <skos:altLabel xml:lang="vi">xử lý ngôn ngữ tự nhiên</skos:altLabel>
+    <skos:definition xml:lang="en">The field concerned with computers processing and understanding human language.</skos:definition>
+    <skos:exactMatch rdf:resource="https://cso.kmi.open.ac.uk/topics/natural_language_processing"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://example.org/document-qa#RetrievalAugmentedGeneration">
+    <rdf:type rdf:resource="https://example.org/document-qa#Method"/>
+    <skos:prefLabel xml:lang="en">retrieval augmented generation</skos:prefLabel>
+    <skos:altLabel xml:lang="en">RAG</skos:altLabel>
+    <skos:altLabel xml:lang="en">retrieval-augmented generation</skos:altLabel>
+    <skos:definition xml:lang="en">A method that retrieves external evidence before generating a grounded answer.</skos:definition>
+    <qa:solvesTask rdf:resource="https://example.org/document-qa#QuestionAnswering"/>
+    <skos:exactMatch rdf:resource="https://cso.kmi.open.ac.uk/topics/retrieval_augmented_generation"/>
+    <qa:relatedTo rdf:resource="https://example.org/document-qa#InformationRetrieval"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://example.org/document-qa#Metric">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
     <rdfs:subClassOf rdf:resource="https://example.org/document-qa#Concept"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://example.org/document-qa#evaluatedBy">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="https://example.org/document-qa#Paper"/>
+    <rdfs:range rdf:resource="https://example.org/document-qa#Metric"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://example.org/document-qa#chunkText">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:domain rdf:resource="https://example.org/document-qa#Chunk"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://example.org/document-qa#KeywordSearch">
+    <rdf:type rdf:resource="https://example.org/document-qa#Method"/>
+    <skos:prefLabel xml:lang="en">keyword search</skos:prefLabel>
+    <skos:altLabel xml:lang="vi">tìm kiếm từ khóa</skos:altLabel>
+    <skos:altLabel xml:lang="en">BM25</skos:altLabel>
+    <skos:definition xml:lang="en">A lexical retrieval method that matches query terms with words in documents.</skos:definition>
+    <qa:relatedTo rdf:resource="https://example.org/document-qa#InformationRetrieval"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://example.org/document-qa#ROUGE">
+    <rdf:type rdf:resource="https://example.org/document-qa#Metric"/>
+    <skos:prefLabel xml:lang="en">ROUGE</skos:prefLabel>
+    <skos:altLabel xml:lang="en">ROUGE score</skos:altLabel>
+    <skos:altLabel xml:lang="en">Recall-Oriented Understudy for Gisting Evaluation</skos:altLabel>
+    <skos:definition xml:lang="en">A family of overlap-based metrics for evaluating generated summaries.</skos:definition>
+    <qa:relatedTo rdf:resource="https://example.org/document-qa#TextSummarization"/>
+    <qa:relatedTo rdf:resource="https://example.org/document-qa#PyramidMethod"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://example.org/document-qa#usesDataset">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="https://example.org/document-qa#Paper"/>
+    <rdfs:range rdf:resource="https://example.org/document-qa#Dataset"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://example.org/document-qa#resultNote">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:domain rdf:resource="https://example.org/document-qa#Result"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://example.org/document-qa#citedBy">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="https://example.org/document-qa#Paper"/>
+    <rdfs:range rdf:resource="https://example.org/document-qa#Citation"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://example.org/document-qa#doi">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:domain rdf:resource="https://example.org/document-qa#Paper"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://example.org/document-qa#Task">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="https://example.org/document-qa#Concept"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://example.org/document-qa#SamplePaper">
+    <rdf:type rdf:resource="https://example.org/document-qa#Paper"/>
+    <qa:title>A sample paper about retrieval-augmented generation</qa:title>
+    <qa:hasSection rdf:resource="https://example.org/document-qa#MethodsSection"/>
+    <qa:hasAuthor rdf:resource="https://example.org/document-qa#SampleAuthor"/>
+    <qa:hasCitation rdf:resource="https://example.org/document-qa#SampleCitation"/>
+    <qa:hasResult rdf:resource="https://example.org/document-qa#SampleResult"/>
+    <qa:usesMethod rdf:resource="https://example.org/document-qa#RetrievalAugmentedGeneration"/>
+    <qa:usesDataset rdf:resource="https://example.org/document-qa#QASPER"/>
+    <qa:evaluatedBy rdf:resource="https://example.org/document-qa#EvidenceF1"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://example.org/document-qa#sourceFile">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:domain rdf:resource="https://example.org/document-qa#Document"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://example.org/document-qa#usesMethod">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="https://example.org/document-qa#Paper"/>
+    <rdfs:range rdf:resource="https://example.org/document-qa#Method"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://example.org/document-qa#resultUsesDataset">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="https://example.org/document-qa#Result"/>
+    <rdfs:range rdf:resource="https://example.org/document-qa#Dataset"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://example.org/document-qa#DistributionalSemantics">
+    <rdf:type rdf:resource="https://example.org/document-qa#ResearchTopic"/>
+    <skos:prefLabel xml:lang="en">distributional semantics</skos:prefLabel>
+    <skos:altLabel xml:lang="en">distributional semantic model</skos:altLabel>
+    <skos:definition xml:lang="en">An approach that represents meaning through patterns of linguistic co-occurrence.</skos:definition>
+    <qa:relatedTo rdf:resource="https://example.org/document-qa#WordEmbedding"/>
+    <qa:relatedTo rdf:resource="https://example.org/document-qa#CooccurrenceMatrix"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://example.org/document-qa#resultUsesMethod">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="https://example.org/document-qa#Result"/>
+    <rdfs:range rdf:resource="https://example.org/document-qa#Method"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://example.org/document-qa#Model">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="https://example.org/document-qa#Method"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://example.org/document-qa#ReciprocalRankFusion">
+    <rdf:type rdf:resource="https://example.org/document-qa#Method"/>
+    <skos:prefLabel xml:lang="en">reciprocal rank fusion</skos:prefLabel>
+    <skos:altLabel xml:lang="en">RRF</skos:altLabel>
+    <qa:relatedTo rdf:resource="https://example.org/document-qa#HybridSearch"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://example.org/document-qa#SampleCitation">
+    <rdf:type rdf:resource="https://example.org/document-qa#Citation"/>
+    <qa:citationText>Dasigi et al. QASPER, 2021.</qa:citationText>
+    <qa:citesPaper rdf:resource="https://example.org/document-qa#CitedPaper"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://example.org/document-qa#SemanticSearch">
+    <rdf:type rdf:resource="https://example.org/document-qa#Method"/>
+    <skos:prefLabel xml:lang="en">semantic search</skos:prefLabel>
+    <skos:altLabel xml:lang="vi">tìm kiếm ngữ nghĩa</skos:altLabel>
+    <skos:altLabel xml:lang="en">dense retrieval</skos:altLabel>
+    <skos:definition xml:lang="en">A retrieval method that matches the meaning of a query and documents using semantic representations.</skos:definition>
+    <skos:exactMatch rdf:resource="https://cso.kmi.open.ac.uk/topics/semantic_search"/>
+    <qa:relatedTo rdf:resource="https://example.org/document-qa#InformationRetrieval"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://example.org/document-qa#EvidenceF1">
+    <rdf:type rdf:resource="https://example.org/document-qa#Metric"/>
+    <skos:prefLabel xml:lang="en">evidence F1</skos:prefLabel>
+    <skos:altLabel xml:lang="en">Evidence F1 score</skos:altLabel>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://example.org/document-qa#CooccurrenceMatrix">
+    <rdf:type rdf:resource="https://example.org/document-qa#Method"/>
+    <skos:prefLabel xml:lang="en">co-occurrence matrix</skos:prefLabel>
+    <skos:altLabel xml:lang="en">cooccurrence matrix</skos:altLabel>
+    <skos:altLabel xml:lang="en">second-order co-occurrence matrix</skos:altLabel>
+    <skos:definition xml:lang="en">A matrix recording how frequently linguistic units occur in shared contexts.</skos:definition>
+    <qa:relatedTo rdf:resource="https://example.org/document-qa#DistributionalSemantics"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://example.org/document-qa#isSectionOf">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="https://example.org/document-qa#Section"/>
+    <rdfs:range rdf:resource="https://example.org/document-qa#Document"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://example.org/document-qa#LatentDirichletAllocation">
+    <rdf:type rdf:resource="https://example.org/document-qa#Model"/>
+    <skos:prefLabel xml:lang="en">latent Dirichlet allocation</skos:prefLabel>
+    <skos:altLabel xml:lang="en">LDA</skos:altLabel>
+    <skos:altLabel xml:lang="en">LDA topic model</skos:altLabel>
+    <skos:definition xml:lang="en">A probabilistic latent-topic model for collections of documents.</skos:definition>
+    <qa:relatedTo rdf:resource="https://example.org/document-qa#MachineLearning"/>
+    <qa:relatedTo rdf:resource="https://example.org/document-qa#SpamDetection"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://example.org/document-qa#SemanticRoleInduction">
+    <rdf:type rdf:resource="https://example.org/document-qa#Task"/>
+    <skos:prefLabel xml:lang="en">semantic role induction</skos:prefLabel>
+    <skos:altLabel xml:lang="en">semantic role labeling</skos:altLabel>
+    <skos:altLabel xml:lang="en">semantic role labelling</skos:altLabel>
+    <skos:altLabel xml:lang="en">SRL</skos:altLabel>
+    <skos:definition xml:lang="en">The task of discovering or assigning semantic roles to sentence arguments.</skos:definition>
+    <skos:broader rdf:resource="https://example.org/document-qa#NaturalLanguageProcessing"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://example.org/document-qa#metricValue">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:domain rdf:resource="https://example.org/document-qa#Result"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://example.org/document-qa#ResearchTopic">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="https://example.org/document-qa#Concept"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://example.org/document-qa#Document">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://example.org/document-qa#QASPER">
+    <rdf:type rdf:resource="https://example.org/document-qa#Dataset"/>
+    <skos:prefLabel xml:lang="en">QASPER</skos:prefLabel>
+    <skos:altLabel xml:lang="en">QASPER dataset</skos:altLabel>
+    <qa:relatedTo rdf:resource="https://example.org/document-qa#QuestionAnswering"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://example.org/document-qa#solvesTask">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="https://example.org/document-qa#Method"/>
+    <rdfs:range rdf:resource="https://example.org/document-qa#Task"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://example.org/document-qa#isMentionedIn">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="https://example.org/document-qa#Concept"/>
+    <rdfs:range rdf:resource="https://example.org/document-qa#Chunk"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://example.org/document-qa#citationText">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:domain rdf:resource="https://example.org/document-qa#Citation"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://example.org/document-qa#Concept">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://example.org/document-qa#SampleChunk">
+    <rdf:type rdf:resource="https://example.org/document-qa#Chunk"/>
+    <qa:pageNumber rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</qa:pageNumber>
+    <qa:chunkText>RAG retrieves evidence before generating an answer.</qa:chunkText>
+    <qa:mentionsConcept rdf:resource="https://example.org/document-qa#RetrievalAugmentedGeneration"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://example.org/document-qa#Chunk">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://example.org/document-qa#isEvidenceFor">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="https://example.org/document-qa#Chunk"/>
+    <rdfs:range rdf:resource="https://example.org/document-qa#Result"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://example.org/document-qa#QuestionAnswering">
     <rdf:type rdf:resource="https://example.org/document-qa#Task"/>
@@ -333,44 +470,50 @@
     <skos:exactMatch rdf:resource="https://cso.kmi.open.ac.uk/topics/question_answering"/>
     <skos:broader rdf:resource="https://example.org/document-qa#NaturalLanguageProcessing"/>
   </rdf:Description>
-  <rdf:Description rdf:about="https://example.org/document-qa#MethodsSection">
-    <rdf:type rdf:resource="https://example.org/document-qa#Section"/>
-    <qa:hasChunk rdf:resource="https://example.org/document-qa#SampleChunk"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://example.org/document-qa#resultNote">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
-    <rdfs:domain rdf:resource="https://example.org/document-qa#Result"/>
-    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://example.org/document-qa#Section">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-  </rdf:Description>
   <rdf:Description rdf:about="https://example.org/document-qa#authorName">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
     <rdfs:domain rdf:resource="https://example.org/document-qa#Author"/>
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
   </rdf:Description>
-  <rdf:Description rdf:about="https://example.org/document-qa#ReciprocalRankFusion">
-    <rdf:type rdf:resource="https://example.org/document-qa#Method"/>
-    <skos:prefLabel xml:lang="en">reciprocal rank fusion</skos:prefLabel>
-    <skos:altLabel xml:lang="en">RRF</skos:altLabel>
-    <qa:relatedTo rdf:resource="https://example.org/document-qa#HybridSearch"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://example.org/document-qa#Result">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://example.org/document-qa#Model">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:subClassOf rdf:resource="https://example.org/document-qa#Method"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://example.org/document-qa#ResearchTopic">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:subClassOf rdf:resource="https://example.org/document-qa#Concept"/>
+  <rdf:Description rdf:about="https://example.org/document-qa#authorOf">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="https://example.org/document-qa#Author"/>
+    <rdfs:range rdf:resource="https://example.org/document-qa#Paper"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://example.org/document-qa#Author">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
   </rdf:Description>
+  <rdf:Description rdf:about="https://example.org/document-qa#resultOf">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="https://example.org/document-qa#Result"/>
+    <rdfs:range rdf:resource="https://example.org/document-qa#Paper"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://example.org/document-qa#Section">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://example.org/document-qa#hasChunk">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <owl:inverseOf rdf:resource="https://example.org/document-qa#isChunkOf"/>
+    <rdfs:domain rdf:resource="https://example.org/document-qa#Section"/>
+    <rdfs:range rdf:resource="https://example.org/document-qa#Chunk"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://example.org/document-qa#Paper">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="https://example.org/document-qa#Document"/>
+  </rdf:Description>
   <rdf:Description rdf:about="https://example.org/document-qa#Citation">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://example.org/document-qa#Result">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://example.org/document-qa#SampleAuthor">
+    <rdf:type rdf:resource="https://example.org/document-qa#Author"/>
+    <qa:authorName>Nguyen Van A</qa:authorName>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://example.org/document-qa#title">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:domain rdf:resource="https://example.org/document-qa#Document"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
   </rdf:Description>
 </rdf:RDF>

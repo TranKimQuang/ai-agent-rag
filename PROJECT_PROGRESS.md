@@ -1,6 +1,6 @@
 # THEO DÕI TIẾN ĐỘ ĐỒ ÁN AI AGENT + RAG
 
-Cập nhật gần nhất: 19/09/2026
+Cập nhật gần nhất: 23/09/2026
 
 ## 1. Tên đề tài
 
@@ -116,6 +116,12 @@ trang và đoạn bằng chứng. Nếu tài liệu không có đủ bằng ch�
 - [x] Tách ablation: Hybrid, +Expansion, +Re-ranking và +Expansion+Re-ranking.
 - [ ] Chọn trọng số Ontology trên validation set, chỉ đánh giá cuối trên test set.
 - [x] Xây dựng tập dữ liệu thực từ 20 bài QASPER và 75 câu hỏi có gold evidence.
+- [x] Chạy ablation đầu tiên trên 42 câu validation và ghi nhận vocabulary ban đầu chỉ
+  tạo 22 concept-link, chưa làm thay đổi kết quả Hybrid.
+- [x] Mở rộng vocabulary theo validation (không xem test), tăng độ phủ lên 171
+  concept-link trên 605 chunk.
+- [x] Chạy lại ablation: Ontology re-ranking tăng Recall@5 từ 0,3016 lên 0,3254 và
+  MRR@5 từ 0,2381 lên 0,2560; query expansion còn gây query drift nhẹ.
 - [ ] Đánh giá độ chính xác của câu trả lời và citation.
 - [ ] Tích hợp LLM để tạo câu trả lời dựa trên evidence.
 - [~] Đã có AI Agent điều phối retrieval, Ontology, evidence và citation; chưa tích hợp LLM.
@@ -140,10 +146,11 @@ PDF
 
 Milestone tiếp theo: Ontology v2 và thực nghiệm retrieval trên dữ liệu thật.
 
-1. Phân tích concept thiếu trên validation và mở rộng vocabulary/CSO mapping có chọn lọc.
-2. Gán nhãn concept thủ công trên validation QASPER để đánh giá concept linking thực tế.
-3. Chọn threshold và trọng số Ontology chỉ trên validation; chưa chạy test trong giai đoạn này.
-4. Chỉ sau khi retrieval ổn định mới tiếp tục tích hợp LLM và hoàn thiện Agent.
+1. Gán nhãn concept thủ công trên validation QASPER để đánh giá alias/semantic linking.
+2. Chọn threshold và trọng số Ontology chỉ trên validation; chưa chạy test trong giai đoạn này.
+3. Kiểm soát query drift của query expansion và xác định cấu hình tốt nhất trên validation.
+4. Khóa cấu hình rồi mới chạy đúng một lần trên test set.
+5. Chỉ sau khi retrieval ổn định mới tiếp tục tích hợp LLM và hoàn thiện Agent.
 
 Chưa ưu tiên trong milestone này: mở rộng giao diện, PostgreSQL, pgvector, OCR và
 framework Agent phức tạp.
@@ -166,7 +173,8 @@ framework Agent phức tạp.
 - Nền tảng RAG cơ bản: đã hoàn thành.
 - Hybrid Search: đã hoàn thành.
 - Ontology nền tảng: đã hoàn thành.
-- Ontology-aware retrieval: đã có kết quả kiểm soát ban đầu, chưa đánh giá trên PDF khoa học thực tế.
+- Ontology-aware retrieval: đã có ablation trên QASPER validation thật; re-ranking có cải thiện
+  bước đầu nhưng expansion cần tiếp tục kiểm soát query drift. Test set vẫn chưa được dùng.
 - AI Agent và answer generation: đã có prototype an toàn dùng câu trích xuất; chưa gọi LLM.
 - Mức độ hoàn thành ước lượng của toàn đồ án: khoảng 60%.
 - Đã đủ cho báo cáo tiến độ về Ontology-aware retrieval; chưa phải kết quả thực nghiệm cuối cùng.

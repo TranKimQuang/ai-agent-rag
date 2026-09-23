@@ -151,6 +151,34 @@ def test_query_expansion_uses_alias_and_related_concept() -> None:
     assert "natural language processing" in expansion.expansion_terms
 
 
+def test_validation_driven_vocabulary_links_real_research_phrases() -> None:
+    service = OntologyService()
+
+    concepts = {
+        link.concept
+        for link in service.link_concepts(
+            "We compare RNN word embeddings using ROUGE for text summarization.",
+            ConceptLinkingMethod.ALIAS,
+        )
+    }
+
+    assert {
+        "ROUGE",
+        "RecurrentNeuralNetwork",
+        "TextSummarization",
+        "WordEmbedding",
+    } <= concepts
+
+
+def test_validation_driven_query_expansion_uses_domain_relations() -> None:
+    expansion = OntologyService().expand_query(
+        "How is semantic role induction evaluated on a parallel corpus?"
+    )
+
+    assert expansion.query_concepts == ["ParallelCorpus", "SemanticRoleInduction"]
+    assert "natural language processing" in expansion.expansion_terms
+
+
 def test_ontology_scores_directly_related_concepts() -> None:
     match = OntologyService().score_text(
         "Nghiên cứu về information retrieval",
