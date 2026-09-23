@@ -114,7 +114,7 @@ trang và đoạn bằng chứng. Nếu tài liệu không có đủ bằng ch�
 - [x] So sánh BM25, Semantic, Hybrid và Hybrid + Ontology.
 - [x] Tính Precision@k, Recall@k, MRR và nDCG@k.
 - [x] Tách ablation: Hybrid, +Expansion, +Re-ranking và +Expansion+Re-ranking.
-- [ ] Chọn trọng số Ontology trên validation set, chỉ đánh giá cuối trên test set.
+- [x] Quét trọng số Ontology trên validation và chọn 0,10 cho re-ranking; test set chưa chạy.
 - [x] Xây dựng tập dữ liệu thực từ 20 bài QASPER và 75 câu hỏi có gold evidence.
 - [x] Chạy ablation đầu tiên trên 42 câu validation và ghi nhận vocabulary ban đầu chỉ
   tạo 22 concept-link, chưa làm thay đổi kết quả Hybrid.
@@ -146,10 +146,9 @@ PDF
 
 Milestone tiếp theo: Ontology v2 và thực nghiệm retrieval trên dữ liệu thật.
 
-1. Chọn trọng số Ontology re-ranking chỉ trên validation; chưa chạy test trong giai đoạn này.
-2. Kiểm soát query drift của query expansion và xác định cấu hình tốt nhất trên validation.
-3. Khóa threshold concept linking và trọng số retrieval rồi mới chạy đúng một lần trên test set.
-4. Chỉ sau khi retrieval ổn định mới tiếp tục tích hợp LLM và hoàn thiện Agent.
+1. Cấu hình đã khóa: Hybrid + Ontology re-ranking, trọng số 0,10; concept threshold 0,55.
+2. Chạy đúng một lần trên QASPER test set và lưu kết quả cuối không điều chỉnh lại tham số.
+3. Sau kết quả test, tiếp tục tích hợp LLM và hoàn thiện đánh giá Agent/citation.
 
 Chưa ưu tiên trong milestone này: mở rộng giao diện, PostgreSQL, pgvector, OCR và
 framework Agent phức tạp.

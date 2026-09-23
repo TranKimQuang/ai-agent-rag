@@ -76,3 +76,13 @@ linking without using the held-out test split. Thresholds from 0.35 through 0.60
 At threshold 0.55, alias linking achieved F1 0.7143, semantic linking F1 0.7586, and hybrid
 linking F1 0.9412. The labelled input and complete threshold sweep are stored in
 `concept_linking_validation.json` and `concept_linking_validation_results.json`.
+
+## Locked retrieval configuration
+
+Ontology weights from 0.05 to 0.50 were compared on validation. Weight 0.10 was selected for
+Ontology re-ranking using nDCG@5, then MRR@5 and Recall@5. It improved one question, rescued one
+question into the top five, and lost no questions relative to Hybrid. Query expansion remains an
+ablation rather than part of the primary configuration because it showed query drift.
+
+The configuration in `locked_retrieval_config.json` is frozen before the one-time held-out test
+run. Complete validation results are stored in `ontology_weight_validation_results.json`.

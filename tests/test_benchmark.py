@@ -10,6 +10,7 @@ from app.models import Chunk, SearchMethod
 from app.ontology.service import OntologyService
 from app.rag.retriever import InMemoryHybridRetriever
 from scripts.run_benchmark import write_ontology_rank_changes
+from scripts.tune_ontology_weight import compare_ranks
 
 
 class BenchmarkEncoder:
@@ -178,3 +179,26 @@ def test_rank_change_export_labels_rescued_and_missed_questions(tmp_path) -> Non
     text = output.read_text(encoding="utf-8-sig")
     assert "rescued" in text
     assert "missed_by_both" in text
+
+
+def test_weight_tuning_counts_rank_changes() -> None:
+    baseline = [
+        {"question_id": "better", "gold_rank": 3},
+        {"question_id": "rescued", "gold_rank": None},
+        {"question_id": "lost", "gold_rank": 2},
+    ]
+    candidate = [
+        {"question_id": "better", "gold_rank": 1},
+        {"question_id": "rescued", "gold_rank": 5},
+        {"question_id": "lost", "gold_rank": None},
+    ]
+
+    changes = compare_ranks(baseline, candidate)
+
+    assert changes == {
+        "improved": 1,
+        "unchanged": 0,
+        "worsened": 0,
+        "rescued": 1,
+        "lost": 1,
+    }

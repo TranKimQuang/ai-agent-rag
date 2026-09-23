@@ -1,0 +1,12 @@
+{
+  "selection_split": "validation",
+  "test_split_evaluated": false,
+  "primary_method": "hybrid_ontology_rerank",
+  "ontology_weight": 0.1,
+  "concept_linking_method": "hybrid",
+  "concept_linking_threshold": 0.55,
+  "k_values": [1, 3, 5],
+  "selection_metric": "nDCG@5, then MRR@5 and Recall@5",
+  "query_expansion_primary": false,
+  "reason": "Expansion showed query drift on validation; re-ranking improved retrieval without lost questions."
+}
