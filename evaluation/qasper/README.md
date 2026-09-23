@@ -65,3 +65,14 @@ held-out test split was not inspected or benchmarked during this iteration.
 
 These remain validation results for vocabulary and weight development, not final test results.
 The compact second-iteration summary is stored in `validation_vocabulary_results.json`.
+
+## Concept-linking validation
+
+Sixteen validation questions were manually labelled with applicable local concepts, including
+one negative example. This small diagnostic set compares alias, semantic, and hybrid concept
+linking without using the held-out test split. Thresholds from 0.35 through 0.60 were compared;
+0.55 was selected by Hybrid F1, with Semantic F1 used to break ties.
+
+At threshold 0.55, alias linking achieved F1 0.7143, semantic linking F1 0.7586, and hybrid
+linking F1 0.9412. The labelled input and complete threshold sweep are stored in
+`concept_linking_validation.json` and `concept_linking_validation_results.json`.

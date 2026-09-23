@@ -1,0 +1,82 @@
+[
+  {
+    "source_question_id": "50be4a737dc0951b35d139f51075011095d77f2a",
+    "text": "What background knowledge do they leverage?",
+    "gold_concepts": []
+  },
+  {
+    "source_question_id": "76121e359dfe3f16c2a352bd35f28005f2a40da3",
+    "text": "What NLP tasks do they consider?",
+    "gold_concepts": ["NaturalLanguageProcessing"]
+  },
+  {
+    "source_question_id": "eac9dae3492e17bc49c842fb566f464ff18c049b",
+    "text": "What argument components do the ML methods aim to identify?",
+    "gold_concepts": ["ArgumentMining", "MachineLearning"]
+  },
+  {
+    "source_question_id": "7697baf8d8d582c1f664a614f6332121061f87db",
+    "text": "Which machine learning methods are used in experiments?",
+    "gold_concepts": ["MachineLearning"]
+  },
+  {
+    "source_question_id": "747b847d687f703cc20a87877c5b138f26ff137d",
+    "text": "Which parallel corpora are used?",
+    "gold_concepts": ["ParallelCorpus"]
+  },
+  {
+    "source_question_id": "111afb77cfbf4c98e0458606378fa63a0e965e36",
+    "text": "Overall, does having parallel data improve semantic role induction across multiple languages?",
+    "gold_concepts": ["ParallelCorpus", "SemanticRoleInduction"]
+  },
+  {
+    "source_question_id": "bf52c01bf82612d0c7bbf2e6a5bb2570c322936f",
+    "text": "What different correlations result when using different variants of ROUGE scores?",
+    "gold_concepts": ["ROUGE"]
+  },
+  {
+    "source_question_id": "74e866137b3452ec50fb6feaf5753c8637459e62",
+    "text": "What manual Pyramid scores are used?",
+    "gold_concepts": ["PyramidMethod"]
+  },
+  {
+    "source_question_id": "dac087e1328e65ca08f66d8b5307d6624bf3943f",
+    "text": "LDA is an unsupervised method; is this paper introducing an unsupervised approach to spam detection?",
+    "gold_concepts": ["LatentDirichletAllocation", "SpamDetection"]
+  },
+  {
+    "source_question_id": "3cd185b7adc835e1c4449eff81222f5fc15c8500",
+    "text": "How do they detect spammers?",
+    "gold_concepts": ["SpamDetection"]
+  },
+  {
+    "source_question_id": "792f6d76d2befba2af07198584aac1b189583ae4",
+    "text": "Is this hashtag prediction task an established task, or something new?",
+    "gold_concepts": ["HashtagPrediction"]
+  },
+  {
+    "source_question_id": "6d4400f45bd97b812e946b8a682b018826e841f1",
+    "text": "Which methods are considered to find examples of biases and unwarranted inferences?",
+    "gold_concepts": ["DatasetBias"]
+  },
+  {
+    "source_question_id": "26c2e1eb12143d985e4fb50543cf0d1eb4395e67",
+    "text": "What biases are found in the dataset?",
+    "gold_concepts": ["DatasetBias"]
+  },
+  {
+    "source_question_id": "e2e977d7222654ee8d983fd8ba63b930e9a5a691",
+    "text": "Which variant of the recurrent neural network do they use?",
+    "gold_concepts": ["RecurrentNeuralNetwork"]
+  },
+  {
+    "source_question_id": "88e62ea7a4d1d2921624b8480b5c6b50cfa5ad42",
+    "text": "What is a second order co-ocurrence matrix?",
+    "gold_concepts": ["CooccurrenceMatrix"]
+  },
+  {
+    "source_question_id": "8b3d3953454c88bde88181897a7a2c0c8dd87e23",
+    "text": "What embedding techniques are explored in the paper?",
+    "gold_concepts": ["WordEmbedding"]
+  }
+]

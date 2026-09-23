@@ -107,8 +107,8 @@ trang và đoạn bằng chứng. Nếu tài liệu không có đủ bằng ch�
 - [x] Mô hình hóa Result liên kết Method/Model-Dataset-Metric-Value.
 - [x] Bổ sung inverse property, domain/range và các quan hệ suy luận cần thiết.
 - [~] Cơ chế gán concept cho chunk đã có; còn cần chạy trên tập PDF thật.
-- [~] Đã có semantic concept linking và công cụ so sánh alias/semantic/hybrid; còn cần
-  đánh giá trên nhãn thủ công từ dữ liệu QASPER thật.
+- [x] Gán nhãn thủ công 16 câu QASPER validation để so sánh concept linking; threshold 0,55
+  cho Hybrid F1 0,9412, cao hơn Alias F1 0,7143 và Semantic F1 0,7586.
 - [x] Đã có công cụ ghi thứ hạng trước/sau cho từng câu; còn cần chạy và chọn ví dụ tốt.
 - [x] Tạo tập câu hỏi kiểm soát và gold evidence để đánh giá.
 - [x] So sánh BM25, Semantic, Hybrid và Hybrid + Ontology.
@@ -146,11 +146,10 @@ PDF
 
 Milestone tiếp theo: Ontology v2 và thực nghiệm retrieval trên dữ liệu thật.
 
-1. Gán nhãn concept thủ công trên validation QASPER để đánh giá alias/semantic linking.
-2. Chọn threshold và trọng số Ontology chỉ trên validation; chưa chạy test trong giai đoạn này.
-3. Kiểm soát query drift của query expansion và xác định cấu hình tốt nhất trên validation.
-4. Khóa cấu hình rồi mới chạy đúng một lần trên test set.
-5. Chỉ sau khi retrieval ổn định mới tiếp tục tích hợp LLM và hoàn thiện Agent.
+1. Chọn trọng số Ontology re-ranking chỉ trên validation; chưa chạy test trong giai đoạn này.
+2. Kiểm soát query drift của query expansion và xác định cấu hình tốt nhất trên validation.
+3. Khóa threshold concept linking và trọng số retrieval rồi mới chạy đúng một lần trên test set.
+4. Chỉ sau khi retrieval ổn định mới tiếp tục tích hợp LLM và hoàn thiện Agent.
 
 Chưa ưu tiên trong milestone này: mở rộng giao diện, PostgreSQL, pgvector, OCR và
 framework Agent phức tạp.
