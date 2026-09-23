@@ -195,8 +195,30 @@ class InMemoryHybridRetriever:
         if method == SearchMethod.SEMANTIC:
             return self.semantic.search(query, limit)
 
+        if method == SearchMethod.HYBRID_ONTOLOGY_EXPANSION:
+            return self._search_with_ontology(
+                query,
+                limit,
+                method=method,
+                use_expansion=True,
+                use_reranking=False,
+            )
+        if method == SearchMethod.HYBRID_ONTOLOGY_RERANK:
+            return self._search_with_ontology(
+                query,
+                limit,
+                method=method,
+                use_expansion=False,
+                use_reranking=True,
+            )
         if method == SearchMethod.HYBRID_ONTOLOGY:
-            return self._search_with_ontology(query, limit)
+            return self._search_with_ontology(
+                query,
+                limit,
+                method=method,
+                use_expansion=True,
+                use_reranking=True,
+            )
 
         return self._search_hybrid(query, limit)
 
@@ -231,14 +253,36 @@ class InMemoryHybridRetriever:
             for chunk_id in ranked_ids
         ]
 
-    def _search_with_ontology(self, query: str, limit: int) -> list[SearchResult]:
+    def _search_with_ontology(
+        self,
+        query: str,
+        limit: int,
+        *,
+        method: SearchMethod,
+        use_expansion: bool,
+        use_reranking: bool,
+    ) -> list[SearchResult]:
         if self.ontology is None:
             return self._search_hybrid(query, limit)
 
         expansion = self.ontology.expand_query(query)
-        candidates = self._search_hybrid(expansion.expanded_query, max(limit * 4, 20))
+        retrieval_query = expansion.expanded_query if use_expansion else query
+        candidates = self._search_hybrid(retrieval_query, max(limit * 4, 20))
         if not candidates:
             return []
+
+        if not use_reranking:
+            return [
+                candidate.model_copy(
+                    update={
+                        "method": method,
+                        "query_concepts": expansion.query_concepts,
+                        "expanded_query": expansion.expanded_query,
+                        "ontology_explanation": "Ontology query expansion only.",
+                    }
+                )
+                for candidate in candidates[:limit]
+            ]
 
         max_rrf = max(candidate.score for candidate in candidates) or 1.0
         reranked: list[SearchResult] = []
@@ -252,12 +296,12 @@ class InMemoryHybridRetriever:
             reranked.append(
                 candidate.model_copy(
                     update={
-                        "method": SearchMethod.HYBRID_ONTOLOGY,
+                        "method": method,
                         "score": final_score,
                         "ontology_score": match.score,
                         "query_concepts": match.query_concepts,
                         "chunk_concepts": match.chunk_concepts,
-                        "expanded_query": expansion.expanded_query,
+                        "expanded_query": expansion.expanded_query if use_expansion else None,
                         "ontology_explanation": match.explanation,
                     }
                 )

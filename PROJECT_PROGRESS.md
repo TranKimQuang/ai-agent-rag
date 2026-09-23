@@ -65,7 +65,7 @@ trang và đoạn bằng chứng. Nếu tài liệu không có đủ bằng ch�
 - [x] Sửa nhãn thay đổi thứ hạng thành rescued, lost và missed_by_both.
 - [x] Soạn file Word báo cáo tiến độ gồm kiến trúc, Ontology, SPARQL và kết quả thử nghiệm.
 - [x] Kiểm tra PDF qua pipeline thật: trích xuất, chunking, gán concept và BM25.
-- [x] Kiểm thử gần nhất: 42 test passed; Ruff không phát hiện lỗi.
+- [x] Kiểm thử gần nhất: 46 test passed; Ruff không phát hiện lỗi.
 - [x] Đồng bộ source code với GitHub.
 - [x] Tạo giao diện demo OntoRAG tại trang chủ.
 - [x] Tạo API POST /ask và AI Agent phiên bản đầu điều phối retrieval, evidence gate,
@@ -82,6 +82,14 @@ trang và đoạn bằng chứng. Nếu tài liệu không có đủ bằng ch�
 - [x] Thêm skos:definition cho các concept lõi và hiệu chỉnh ngưỡng semantic ban đầu 0,40.
 - [x] Chạy benchmark concept-linking mẫu: alias Precision 1,00/Recall 0,50; semantic và
   hybrid Precision 0,462/Recall 1,00. Chỉ dùng để debug, chưa phải kết quả luận văn.
+- [x] Tách ablation thành Hybrid, Hybrid + Expansion, Hybrid + Re-ranking và Hybrid + cả hai.
+- [x] Chạy ablation trên bộ debug 24 câu: Recall@1 lần lượt 0,458; 0,542; 0,542;
+  0,583. Kết quả chỉ kiểm tra pipeline, không dùng làm thực nghiệm chính thức.
+- [x] Tải và xác minh QASPER v0.3 chính thức bằng SHA-256.
+- [x] Tạo subset QASPER thật: 20 paper, 1.009 paragraph chunk và 75 câu hỏi có evidence;
+  chia validation 10 paper/42 câu và test 10 paper/33 câu không trùng paper.
+- [x] Chạy ablation trên validation thật: Hybrid và các nhánh Ontology hiện cho cùng kết
+  quả; chỉ có 22 concept link/605 chunk, cho thấy vocabulary hiện chưa đủ độ phủ.
 
 ### Đang ở trạng thái nền móng
 
@@ -105,9 +113,9 @@ trang và đoạn bằng chứng. Nếu tài liệu không có đủ bằng ch�
 - [x] Tạo tập câu hỏi kiểm soát và gold evidence để đánh giá.
 - [x] So sánh BM25, Semantic, Hybrid và Hybrid + Ontology.
 - [x] Tính Precision@k, Recall@k, MRR và nDCG@k.
-- [ ] Tách ablation: Hybrid, +Expansion, +Re-ranking và +Expansion+Re-ranking.
+- [x] Tách ablation: Hybrid, +Expansion, +Re-ranking và +Expansion+Re-ranking.
 - [ ] Chọn trọng số Ontology trên validation set, chỉ đánh giá cuối trên test set.
-- [ ] Xây dựng tập dữ liệu thực từ 20-30 bài QASPER và tối thiểu 50-100 câu hỏi.
+- [x] Xây dựng tập dữ liệu thực từ 20 bài QASPER và 75 câu hỏi có gold evidence.
 - [ ] Đánh giá độ chính xác của câu trả lời và citation.
 - [ ] Tích hợp LLM để tạo câu trả lời dựa trên evidence.
 - [~] Đã có AI Agent điều phối retrieval, Ontology, evidence và citation; chưa tích hợp LLM.
@@ -132,9 +140,9 @@ PDF
 
 Milestone tiếp theo: Ontology v2 và thực nghiệm retrieval trên dữ liệu thật.
 
-1. Tách bốn cấu hình ablation của Ontology và chọn trọng số bằng validation set.
-2. Chuẩn bị 20-30 bài QASPER cùng 50-100 câu hỏi/evidence thật để đánh giá.
-3. Gán nhãn concept thủ công trên tập QASPER để đánh giá concept linking thực tế.
+1. Phân tích concept thiếu trên validation và mở rộng vocabulary/CSO mapping có chọn lọc.
+2. Gán nhãn concept thủ công trên validation QASPER để đánh giá concept linking thực tế.
+3. Chọn threshold và trọng số Ontology chỉ trên validation; chưa chạy test trong giai đoạn này.
 4. Chỉ sau khi retrieval ổn định mới tiếp tục tích hợp LLM và hoàn thiện Agent.
 
 Chưa ưu tiên trong milestone này: mở rộng giao diện, PostgreSQL, pgvector, OCR và

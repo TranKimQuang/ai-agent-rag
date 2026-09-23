@@ -176,3 +176,45 @@ def test_ontology_aware_search_expands_and_reranks() -> None:
     assert results[0].query_concepts == ["InformationRetrieval"]
     assert results[0].chunk_concepts == ["RetrievalAugmentedGeneration"]
     assert "retrieval augmented generation" in (results[0].expanded_query or "")
+
+
+def test_ontology_ablation_separates_expansion_and_reranking() -> None:
+    retriever = InMemoryHybridRetriever(
+        semantic_encoder=OntologyRerankEncoder(),
+        ontology_service=OntologyService(),
+    )
+    retriever.add(
+        [
+            Chunk(
+                id="distractor",
+                document_id="doc",
+                filename="paper.pdf",
+                page=1,
+                text="An unrelated surface match used only by the fake encoder.",
+            ),
+            Chunk(
+                id="rag",
+                document_id="doc",
+                filename="paper.pdf",
+                page=2,
+                text="RAG retrieves evidence before generating an answer.",
+            ),
+        ]
+    )
+
+    expansion_only = retriever.search(
+        "information retrieval",
+        method=SearchMethod.HYBRID_ONTOLOGY_EXPANSION,
+    )
+    rerank_only = retriever.search(
+        "information retrieval",
+        method=SearchMethod.HYBRID_ONTOLOGY_RERANK,
+    )
+
+    assert expansion_only[0].method == SearchMethod.HYBRID_ONTOLOGY_EXPANSION
+    assert "retrieval augmented generation" in (expansion_only[0].expanded_query or "")
+    assert expansion_only[0].ontology_score is None
+    assert rerank_only[0].method == SearchMethod.HYBRID_ONTOLOGY_RERANK
+    assert rerank_only[0].expanded_query is None
+    assert rerank_only[0].ontology_score == 0.65
+    assert rerank_only[0].chunk_id == "rag"

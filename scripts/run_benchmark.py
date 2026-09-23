@@ -12,6 +12,8 @@ METHODS = [
     SearchMethod.BM25,
     SearchMethod.SEMANTIC,
     SearchMethod.HYBRID,
+    SearchMethod.HYBRID_ONTOLOGY_EXPANSION,
+    SearchMethod.HYBRID_ONTOLOGY_RERANK,
     SearchMethod.HYBRID_ONTOLOGY,
 ]
 

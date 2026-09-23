@@ -7,6 +7,8 @@ class SearchMethod(str, Enum):
     BM25 = "bm25"
     SEMANTIC = "semantic"
     HYBRID = "hybrid"
+    HYBRID_ONTOLOGY_EXPANSION = "hybrid_ontology_expansion"
+    HYBRID_ONTOLOGY_RERANK = "hybrid_ontology_rerank"
     HYBRID_ONTOLOGY = "hybrid_ontology"
 
 

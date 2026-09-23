@@ -1,0 +1,38 @@
+{
+  "dataset": "QASPER v0.3 validation subset",
+  "papers": 10,
+  "questions": 42,
+  "concept_links": 22,
+  "status": "diagnostic_only",
+  "methods": {
+    "hybrid": {
+      "recall@1": 0.15476190476190477,
+      "recall@3": 0.24603174603174605,
+      "recall@5": 0.30158730158730157,
+      "mrr@5": 0.23809523809523808,
+      "ndcg@5": 0.24750255941012375
+    },
+    "hybrid_ontology_expansion": {
+      "recall@1": 0.15476190476190477,
+      "recall@3": 0.24603174603174605,
+      "recall@5": 0.30158730158730157,
+      "mrr@5": 0.23809523809523808,
+      "ndcg@5": 0.24750255941012375
+    },
+    "hybrid_ontology_rerank": {
+      "recall@1": 0.15476190476190477,
+      "recall@3": 0.24603174603174605,
+      "recall@5": 0.30158730158730157,
+      "mrr@5": 0.23809523809523808,
+      "ndcg@5": 0.24750255941012375
+    },
+    "hybrid_ontology": {
+      "recall@1": 0.15476190476190477,
+      "recall@3": 0.24603174603174605,
+      "recall@5": 0.30158730158730157,
+      "mrr@5": 0.23809523809523808,
+      "ndcg@5": 0.24750255941012375
+    }
+  },
+  "finding": "The current ontology has insufficient coverage of real QASPER papers; all ontology ablations match the Hybrid baseline."
+}

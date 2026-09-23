@@ -43,11 +43,14 @@ The index is intentionally temporary at this stage and is cleared whenever the s
 
 ## Step 2: Semantic and hybrid retrieval
 
-The search endpoint supports three methods:
+The search endpoint supports six methods:
 
 - `bm25`: exact keyword retrieval.
 - `semantic`: meaning-based retrieval with multilingual sentence embeddings.
 - `hybrid`: combines both rankings with Reciprocal Rank Fusion (default).
+- `hybrid_ontology_expansion`: Hybrid with Ontology query expansion only.
+- `hybrid_ontology_rerank`: Hybrid with Ontology re-ranking only.
+- `hybrid_ontology`: Hybrid with both query expansion and Ontology re-ranking.
 
 The embedding model is loaded lazily on CPU when semantic or hybrid search is used for the first
 time. The first request can therefore take longer while the model is downloaded and initialized.
@@ -143,8 +146,9 @@ When a PDF is uploaded, detected concepts are now attached to each chunk and wri
 in-memory knowledge graph as `Chunk -> mentionsConcept -> Concept` triples. The ingest response
 includes `concept_links`, which reports how many links were created.
 
-A reproducible benchmark runner compares BM25, Semantic, Hybrid, and Hybrid + Ontology with
-Precision@k, Recall@k, MRR, and nDCG@k:
+A reproducible benchmark runner compares BM25 and Semantic retrieval plus the four ablation
+configurations Hybrid, Hybrid + Expansion, Hybrid + Re-ranking, and Hybrid + both Ontology
+components. It reports Precision@k, Recall@k, MRR, and nDCG@k:
 
 ```powershell
 python -m scripts.run_benchmark --dataset evaluation/sample_benchmark.json --k-values 1 3 5
@@ -155,6 +159,10 @@ Summary results are written to `results/retrieval_benchmark.json` and
 `results/ontology_rank_changes.csv`, which directly compares the gold-evidence rank before and
 after Ontology re-ranking. The included dataset is only a development fixture; do not use its
 scores as final thesis evidence.
+
+A deterministic real-data subset of official QASPER v0.3 is stored under `evaluation/qasper`.
+It contains 20 papers and 75 evidence-labelled questions split by paper into validation and test.
+See `evaluation/qasper/README.md` for provenance, checksum, limitations, and reproduction steps.
 
 Generate the controlled sixteen-page PDF fixture and its twenty-four-question benchmark with:
 

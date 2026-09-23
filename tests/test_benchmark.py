@@ -102,6 +102,44 @@ def test_detailed_benchmark_reports_each_question_rank_and_multiple_k_values() -
     assert details[0]["category"] == "keyword"
 
 
+def test_benchmark_reports_all_ontology_ablation_variants() -> None:
+    ontology = OntologyService()
+    chunks, _ = ontology.index_chunks(
+        [
+            Chunk(
+                id="rag",
+                document_id="doc",
+                filename="paper.pdf",
+                page=1,
+                text="RAG retrieves evidence before answering.",
+            )
+        ]
+    )
+    retriever = InMemoryHybridRetriever(
+        semantic_encoder=BenchmarkEncoder(),
+        ontology_service=ontology,
+    )
+    retriever.add(chunks)
+    methods = [
+        SearchMethod.HYBRID,
+        SearchMethod.HYBRID_ONTOLOGY_EXPANSION,
+        SearchMethod.HYBRID_ONTOLOGY_RERANK,
+        SearchMethod.HYBRID_ONTOLOGY,
+    ]
+
+    summary, details = run_detailed_benchmark(
+        retriever,
+        [BenchmarkQuestion("q1", "information retrieval", {"rag"})],
+        methods=methods,
+        k_values=(1,),
+    )
+
+    assert set(summary) == {method.value for method in methods}
+    assert {str(row["method"]) for row in details} == {
+        method.value for method in methods
+    }
+
+
 def test_rank_change_export_labels_rescued_and_missed_questions(tmp_path) -> None:
     details = [
         {
