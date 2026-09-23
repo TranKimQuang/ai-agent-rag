@@ -10,6 +10,8 @@ from app.agent.service import DocumentQuestionAgent
 from app.models import (
     AskRequest,
     AskResponse,
+    ConceptLinkingMethod,
+    ConceptLinkingResponse,
     IngestResponse,
     OntologyExpansionResponse,
     OntologyQueryResponse,
@@ -20,11 +22,19 @@ from app.models import (
 from app.ontology.service import OntologyService
 from app.rag.chunking import chunk_pages
 from app.rag.pdf_reader import PdfReadError, extract_pdf_pages
-from app.rag.retriever import InMemoryHybridRetriever, SemanticModelError
+from app.rag.retriever import (
+    InMemoryHybridRetriever,
+    SemanticModelError,
+    SentenceTransformerEncoder,
+)
 
-ontology = OntologyService()
+embedding_encoder = SentenceTransformerEncoder()
+ontology = OntologyService(semantic_encoder=embedding_encoder)
 app = FastAPI(title="AI Agent + RAG")
-retriever = InMemoryHybridRetriever(ontology_service=ontology)
+retriever = InMemoryHybridRetriever(
+    semantic_encoder=embedding_encoder,
+    ontology_service=ontology,
+)
 question_agent = DocumentQuestionAgent(retriever)
 static_dir = Path(__file__).parent / "static"
 app.mount("/static", StaticFiles(directory=static_dir), name="static")
@@ -128,4 +138,31 @@ def ontology_expand(
         expanded_query=expansion.expanded_query,
         query_concepts=expansion.query_concepts,
         expansion_terms=expansion.expansion_terms,
+    )
+
+
+@app.get("/ontology/concept-linking", response_model=ConceptLinkingResponse)
+def ontology_link(
+    q: str = Query(min_length=2, description="Text to link to ontology concepts"),
+    method: ConceptLinkingMethod = ConceptLinkingMethod.HYBRID,
+    threshold: float = Query(default=0.40, ge=0, le=1),
+    limit: int = Query(default=5, ge=1, le=20),
+) -> ConceptLinkingResponse:
+    try:
+        links = ontology.link_concepts(
+            q,
+            method,
+            threshold=threshold,
+            limit=limit,
+        )
+    except SemanticModelError as exc:
+        raise HTTPException(
+            status_code=503,
+            detail="Embedding model is unavailable. Check the model download and try again.",
+        ) from exc
+    return ConceptLinkingResponse(
+        text=q,
+        method=method,
+        threshold=threshold,
+        links=links,
     )

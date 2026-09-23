@@ -113,6 +113,30 @@ The ontology schema is available in both Turtle (`ontology/document_qa.ttl`) and
 same directory. This remains a small proof of concept; the next step is to create concept links
 from real PDF chunks and prepare a labelled evaluation set.
 
+The project also maps a deliberately small subset of local topics to Computer Science Ontology
+v3.5 resources with `skos:exactMatch`: Information Retrieval, Natural Language Processing,
+Question Answering, Retrieval-Augmented Generation, and Semantic Search. Mapping decisions and
+official sources are documented in `ontology/CSO_MAPPING.md`; the full CSO is not imported.
+
+Concept linking can be inspected with three explicit strategies: `alias` (exact aliases),
+`semantic` (embedding similarity), and `hybrid` (the union, with exact aliases taking priority):
+
+```powershell
+Invoke-RestMethod `
+  "http://127.0.0.1:8000/ontology/concept-linking?q=retrieves%20external%20evidence%20before%20answering&method=semantic&threshold=0.40" |
+  ConvertTo-Json -Depth 5
+```
+
+Run the development comparison with:
+
+```powershell
+python -m scripts.run_concept_linking_benchmark
+```
+
+This writes Precision, Recall, F1, and exact-match scores to
+`results/concept_linking_benchmark.json`. The included six-example dataset is a pipeline fixture,
+not final thesis evidence; it must later be replaced with manually labelled QASPER text.
+
 ## Step 5: Chunk concept indexing and benchmark
 
 When a PDF is uploaded, detected concepts are now attached to each chunk and written into the

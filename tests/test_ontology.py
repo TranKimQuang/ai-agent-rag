@@ -1,9 +1,30 @@
 from pathlib import Path
 
-from rdflib import OWL, RDF, RDFS, XSD, Literal
+import numpy as np
+from rdflib import OWL, RDF, RDFS, XSD, Literal, Namespace, URIRef
+from rdflib.namespace import DCTERMS, SKOS
 
-from app.models import Chunk
+from app.models import Chunk, ConceptLinkingMethod
 from app.ontology.service import QA, OntologyService
+
+CSO = Namespace("https://cso.kmi.open.ac.uk/topics/")
+
+
+class ConceptLinkingEncoder:
+    """Deterministic semantic space for concept-linking tests."""
+
+    def encode(self, texts: list[str]) -> np.ndarray:
+        vectors = []
+        for text in texts:
+            normalized = text.lower()
+            if (
+                "retrieval augmented generation" in normalized
+                or "retrieves external evidence" in normalized
+            ):
+                vectors.append([1.0, 0.0])
+            else:
+                vectors.append([0.0, 1.0])
+        return np.asarray(vectors, dtype=np.float32)
 
 
 def test_ontology_has_core_schema_and_sample_individuals() -> None:
@@ -50,6 +71,59 @@ def test_ontology_v2_defines_inverse_properties_and_constraints() -> None:
     assert (QA.resultUsesDataset, RDFS.range, QA.Dataset) in graph
     assert (QA.metricValue, RDFS.domain, QA.Result) in graph
     assert (QA.metricValue, RDFS.range, XSD.decimal) in graph
+
+
+def test_selected_topics_are_mapped_to_cso_v35() -> None:
+    graph = OntologyService().graph
+    expected_mappings = {
+        QA.InformationRetrieval: CSO.information_retrieval,
+        QA.NaturalLanguageProcessing: CSO.natural_language_processing,
+        QA.QuestionAnswering: CSO.question_answering,
+        QA.RetrievalAugmentedGeneration: CSO.retrieval_augmented_generation,
+        QA.SemanticSearch: CSO.semantic_search,
+    }
+
+    for local_concept, cso_concept in expected_mappings.items():
+        assert (local_concept, SKOS.exactMatch, cso_concept) in graph
+
+    ontology = QA.DocumentQAOntology
+    assert (ontology, DCTERMS.source, URIRef("https://cso.kmi.open.ac.uk/")) in graph
+    assert (
+        ontology,
+        DCTERMS.license,
+        URIRef("https://creativecommons.org/licenses/by/4.0/"),
+    ) in graph
+
+
+def test_semantic_concept_linking_finds_paraphrase_missing_from_aliases() -> None:
+    service = OntologyService(semantic_encoder=ConceptLinkingEncoder())
+    paraphrase = "The system retrieves external evidence before producing answers."
+
+    alias_links = service.link_concepts(paraphrase, ConceptLinkingMethod.ALIAS)
+    semantic_links = service.link_concepts(
+        paraphrase,
+        ConceptLinkingMethod.SEMANTIC,
+        threshold=0.8,
+    )
+
+    assert alias_links == []
+    assert semantic_links[0].concept == "RetrievalAugmentedGeneration"
+    assert semantic_links[0].source == ConceptLinkingMethod.SEMANTIC
+    assert semantic_links[0].score == 1.0
+
+
+def test_hybrid_concept_linking_keeps_exact_alias_as_strongest_signal() -> None:
+    service = OntologyService(semantic_encoder=ConceptLinkingEncoder())
+
+    links = service.link_concepts(
+        "RAG retrieves external evidence",
+        ConceptLinkingMethod.HYBRID,
+        threshold=0.8,
+    )
+
+    assert links[0].concept == "RetrievalAugmentedGeneration"
+    assert links[0].source == ConceptLinkingMethod.ALIAS
+    assert links[0].score == 1.0
 
 
 def test_find_relations_answers_sample_competency_question() -> None:

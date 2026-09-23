@@ -1,0 +1,32 @@
+[
+  {
+    "id": "cl01",
+    "text": "The study uses retrieval-augmented generation.",
+    "gold_concepts": ["RetrievalAugmentedGeneration"]
+  },
+  {
+    "id": "cl02",
+    "text": "The system retrieves external evidence before producing an answer.",
+    "gold_concepts": ["RetrievalAugmentedGeneration"]
+  },
+  {
+    "id": "cl03",
+    "text": "Nghiên cứu tập trung vào việc máy tính hiểu ngôn ngữ của con người.",
+    "gold_concepts": ["NaturalLanguageProcessing"]
+  },
+  {
+    "id": "cl04",
+    "text": "Question answering returns an answer to a user's question.",
+    "gold_concepts": ["QuestionAnswering"]
+  },
+  {
+    "id": "cl05",
+    "text": "Relevant documents are located for an information need.",
+    "gold_concepts": ["InformationRetrieval"]
+  },
+  {
+    "id": "cl06",
+    "text": "Semantic search compares meaning rather than exact keywords.",
+    "gold_concepts": ["SemanticSearch"]
+  }
+]

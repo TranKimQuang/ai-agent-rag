@@ -50,3 +50,17 @@ def test_ontology_query_expansion_api() -> None:
     assert response.status_code == 200
     assert response.json()["query_concepts"] == ["QuestionAnswering"]
     assert "QASPER" in response.json()["expansion_terms"]
+
+
+def test_alias_concept_linking_api() -> None:
+    response = client.get(
+        "/ontology/concept-linking",
+        params={"q": "Hệ thống dùng RAG để hỏi đáp", "method": "alias"},
+    )
+
+    assert response.status_code == 200
+    assert response.json()["method"] == "alias"
+    assert any(
+        link["concept"] == "RetrievalAugmentedGeneration" and link["source"] == "alias"
+        for link in response.json()["links"]
+    )

@@ -15,6 +15,12 @@ class AgentStatus(str, Enum):
     INSUFFICIENT_EVIDENCE = "insufficient_evidence"
 
 
+class ConceptLinkingMethod(str, Enum):
+    ALIAS = "alias"
+    SEMANTIC = "semantic"
+    HYBRID = "hybrid"
+
+
 class Chunk(BaseModel):
     id: str
     document_id: str
@@ -78,6 +84,20 @@ class OntologyExpansionResponse(BaseModel):
     expanded_query: str
     query_concepts: list[str]
     expansion_terms: list[str]
+
+
+class ConceptLink(BaseModel):
+    concept: str
+    label: str
+    score: float = Field(ge=0, le=1)
+    source: ConceptLinkingMethod
+
+
+class ConceptLinkingResponse(BaseModel):
+    text: str
+    method: ConceptLinkingMethod
+    threshold: float = Field(ge=0, le=1)
+    links: list[ConceptLink]
 
 
 class AskRequest(BaseModel):

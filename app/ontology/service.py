@@ -2,11 +2,20 @@ import re
 import unicodedata
 from dataclasses import dataclass
 from pathlib import Path
+from typing import Protocol
 
+import numpy as np
+from numpy.typing import NDArray
 from rdflib import OWL, RDF, RDFS, XSD, Graph, Literal, Namespace, URIRef
 from rdflib.namespace import SKOS
 
-from app.models import Chunk, OntologyRelation, OntologySummary
+from app.models import (
+    Chunk,
+    ConceptLink,
+    ConceptLinkingMethod,
+    OntologyRelation,
+    OntologySummary,
+)
 
 DEFAULT_ONTOLOGY_PATH = Path(__file__).parents[2] / "ontology" / "document_qa.ttl"
 QA = Namespace("https://example.org/document-qa#")
@@ -39,6 +48,10 @@ class OntologyMatch:
     explanation: str
 
 
+class SemanticTextEncoder(Protocol):
+    def encode(self, texts: list[str]) -> NDArray[np.float32]: ...
+
+
 def local_name(value: URIRef) -> str:
     """Return the readable last component of an RDF URI."""
     text = str(value)
@@ -48,9 +61,15 @@ def local_name(value: URIRef) -> str:
 class OntologyService:
     """Loads the small AI/NLP ontology and exposes read-only queries."""
 
-    def __init__(self, ontology_path: Path = DEFAULT_ONTOLOGY_PATH) -> None:
+    def __init__(
+        self,
+        ontology_path: Path = DEFAULT_ONTOLOGY_PATH,
+        semantic_encoder: SemanticTextEncoder | None = None,
+    ) -> None:
         self.graph = Graph()
         self.graph.parse(ontology_path, format="turtle")
+        self._semantic_encoder = semantic_encoder
+        self._concept_embeddings: NDArray[np.float32] | None = None
         self._concept_aliases = self._load_concept_aliases()
 
     def _load_concept_aliases(self) -> dict[URIRef, set[str]]:
@@ -84,6 +103,68 @@ class OntologyService:
             if any(f" {alias} " in normalized for alias in aliases)
         ]
         return sorted(matches, key=local_name)
+
+    def _concept_documents(self) -> tuple[list[URIRef], list[str]]:
+        concepts = sorted(self._concept_aliases, key=local_name)
+        documents = []
+        for concept in concepts:
+            definitions = [str(value) for value in self.graph.objects(concept, SKOS.definition)]
+            documents.append(
+                " ".join(
+                    [
+                        self.preferred_label(concept),
+                        local_name(concept),
+                        *sorted(self._concept_aliases[concept]),
+                        *definitions,
+                    ]
+                )
+            )
+        return concepts, documents
+
+    def link_concepts(
+        self,
+        text: str,
+        method: ConceptLinkingMethod = ConceptLinkingMethod.ALIAS,
+        *,
+        threshold: float = 0.55,
+        limit: int = 5,
+    ) -> list[ConceptLink]:
+        """Link text to concepts with an explicit, comparable strategy."""
+        links: dict[URIRef, ConceptLink] = {}
+        if method in {ConceptLinkingMethod.ALIAS, ConceptLinkingMethod.HYBRID}:
+            for concept in self.identify_concepts(text):
+                links[concept] = ConceptLink(
+                    concept=local_name(concept),
+                    label=self.preferred_label(concept),
+                    score=1.0,
+                    source=ConceptLinkingMethod.ALIAS,
+                )
+
+        if method in {ConceptLinkingMethod.SEMANTIC, ConceptLinkingMethod.HYBRID}:
+            if self._semantic_encoder is None or not text.strip():
+                return sorted(links.values(), key=lambda link: (-link.score, link.concept))
+
+            concepts, documents = self._concept_documents()
+            if self._concept_embeddings is None:
+                self._concept_embeddings = self._semantic_encoder.encode(documents)
+            query_vector = self._semantic_encoder.encode([text])[0]
+            scores = self._concept_embeddings @ query_vector
+            ranked = np.argsort(scores)[::-1]
+            for index in ranked:
+                score = min(max(float(scores[index]), 0.0), 1.0)
+                if score < threshold:
+                    continue
+                concept = concepts[int(index)]
+                if concept in links:
+                    continue
+                links[concept] = ConceptLink(
+                    concept=local_name(concept),
+                    label=self.preferred_label(concept),
+                    score=score,
+                    source=ConceptLinkingMethod.SEMANTIC,
+                )
+
+        return sorted(links.values(), key=lambda link: (-link.score, link.concept))[:limit]
 
     def index_chunks(self, chunks: list[Chunk]) -> tuple[list[Chunk], int]:
         """Annotate chunks and add document/page/chunk facts to the in-memory graph."""

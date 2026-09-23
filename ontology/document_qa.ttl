@@ -1,4 +1,6 @@
 @prefix qa: <https://example.org/document-qa#> .
+@prefix cso: <https://cso.kmi.open.ac.uk/topics/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
@@ -6,7 +8,10 @@
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 qa:DocumentQAOntology a owl:Ontology ;
-    rdfs:label "Document QA ontology"@en .
+    rdfs:label "Document QA ontology"@en ;
+    dcterms:source <https://cso.kmi.open.ac.uk/> ;
+    dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
+    owl:versionInfo "CSO v3.5 subset mapping" .
 
 qa:Document a owl:Class .
 qa:Paper a owl:Class ; rdfs:subClassOf qa:Document .
@@ -110,36 +115,48 @@ qa:SampleChunk a qa:Chunk ;
 qa:RetrievalAugmentedGeneration a qa:Method ;
     skos:prefLabel "retrieval augmented generation"@en ;
     skos:altLabel "RAG"@en, "retrieval-augmented generation"@en ;
+    skos:definition "A method that retrieves external evidence before generating a grounded answer."@en ;
     qa:solvesTask qa:QuestionAnswering ;
+    skos:exactMatch cso:retrieval_augmented_generation ;
     qa:relatedTo qa:InformationRetrieval .
 
 qa:QuestionAnswering a qa:Task ;
     skos:prefLabel "question answering"@en ;
     skos:altLabel "QA"@en, "hỏi đáp"@vi ;
+    skos:definition "The task of producing answers to questions expressed in natural language."@en ;
+    skos:exactMatch cso:question_answering ;
     skos:broader qa:NaturalLanguageProcessing .
 
 qa:InformationRetrieval a qa:ResearchTopic ;
     skos:prefLabel "information retrieval"@en ;
     skos:altLabel "IR"@en, "truy hồi thông tin"@vi ;
+    skos:definition "The study of finding relevant documents or information for a user's information need."@en ;
+    skos:exactMatch cso:information_retrieval ;
     skos:narrower qa:KeywordSearch, qa:SemanticSearch, qa:HybridSearch .
 
 qa:NaturalLanguageProcessing a qa:ResearchTopic ;
     skos:prefLabel "natural language processing"@en ;
-    skos:altLabel "NLP"@en, "xử lý ngôn ngữ tự nhiên"@vi .
+    skos:altLabel "NLP"@en, "xử lý ngôn ngữ tự nhiên"@vi ;
+    skos:definition "The field concerned with computers processing and understanding human language."@en ;
+    skos:exactMatch cso:natural_language_processing .
 
 qa:KeywordSearch a qa:Method ;
     skos:prefLabel "keyword search"@en ;
     skos:altLabel "tìm kiếm từ khóa"@vi, "BM25"@en ;
+    skos:definition "A lexical retrieval method that matches query terms with words in documents."@en ;
     qa:relatedTo qa:InformationRetrieval .
 
 qa:SemanticSearch a qa:Method ;
     skos:prefLabel "semantic search"@en ;
     skos:altLabel "tìm kiếm ngữ nghĩa"@vi, "dense retrieval"@en ;
+    skos:definition "A retrieval method that matches the meaning of a query and documents using semantic representations."@en ;
+    skos:exactMatch cso:semantic_search ;
     qa:relatedTo qa:InformationRetrieval .
 
 qa:HybridSearch a qa:Method ;
     skos:prefLabel "hybrid search"@en ;
     skos:altLabel "tìm kiếm kết hợp"@vi, "hybrid retrieval"@en ;
+    skos:definition "A retrieval method that combines lexical keyword search and semantic search."@en ;
     qa:relatedTo qa:KeywordSearch, qa:SemanticSearch, qa:ReciprocalRankFusion .
 
 qa:ReciprocalRankFusion a qa:Method ;
