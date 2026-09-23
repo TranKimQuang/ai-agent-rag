@@ -86,3 +86,14 @@ ablation rather than part of the primary configuration because it showed query d
 
 The configuration in `locked_retrieval_config.json` is frozen before the one-time held-out test
 run. Complete validation results are stored in `ontology_weight_validation_results.json`.
+
+## Held-out test result
+
+The locked configuration was evaluated once on 33 questions from the untouched test split. The
+validation improvement did not generalize: Ontology re-ranking reached Recall@5 0.3900 and
+MRR@5 0.3202, slightly below Hybrid at 0.3983 and 0.3242. It rescued two questions but also lost
+two. Semantic retrieval was strongest overall, with Recall@5 0.4823 and MRR@5 0.3924.
+
+No threshold, weight, or vocabulary was changed after observing this result. This negative result
+is retained as evidence that the current Ontology coverage and scoring require a better design,
+not post-test tuning. The compact record is stored in `locked_test_results.json`.
