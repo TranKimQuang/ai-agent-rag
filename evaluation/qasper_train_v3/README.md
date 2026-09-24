@@ -26,6 +26,23 @@ vocabulary changes, or weight selection. Do not run or inspect retrieval results
 file. After that point, run the held-out evaluation once and report the result without tuning on
 it.
 
+## Development baseline
+
+The first semantic-linking ablation on all 78 development questions produced these `k=5`
+results:
+
+- BM25: Recall 0.2781, MRR 0.2026, nDCG 0.2059.
+- Semantic: Recall 0.2379, MRR 0.1761, nDCG 0.1785.
+- Hybrid: Recall 0.2991, MRR 0.2331, nDCG 0.2306.
+- Hybrid + Ontology re-ranking: identical to Hybrid.
+- Hybrid + Ontology expansion: Recall 0.2703, MRR 0.2274, nDCG 0.2144.
+
+Coverage analysis found concepts in only 7/78 queries and an Ontology relation between query and
+gold evidence for only 3/78 questions. Therefore the development result does not justify opening
+held-out v3. Expansion remains disabled because it caused query drift. Compact reproducible
+records are stored in `development_retrieval_results.json` and
+`development_coverage_analysis.json`.
+
 Regenerate from the verified source with:
 
 ```powershell

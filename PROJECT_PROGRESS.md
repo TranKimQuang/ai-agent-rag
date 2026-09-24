@@ -139,7 +139,12 @@ trang và đoạn bằng chứng. Nếu tài liệu không có đủ bằng ch�
   lên 0,1697; query expansion tiếp tục gây query drift.
 - [x] Tạo protocol v3 hoàn toàn tách biệt: development 20 paper/78 câu và held-out
   20 paper/70 câu; cả 40 paper không trùng nhau và không trùng 60 paper đã dùng trước đó.
-- [ ] Chạy phân tích và chọn cấu hình chỉ trên development v3; chưa mở held-out v3.
+- [x] Chạy ablation development v3: Hybrid đạt Recall@5 0,2991 và MRR@5 0,2331;
+  Ontology re-ranking không đổi, expansion giảm Recall@5 còn 0,2703.
+- [x] Phân tích coverage development v3: 7/78 query có concept, 29/78 gold evidence có
+  concept và chỉ 3/78 cặp có quan hệ Ontology; chưa mở held-out v3.
+- [x] Sửa pipeline để phân biệt chunk đã index nhưng không có concept, mã hóa chunk theo lô,
+  cache embedding câu hỏi và cache kết quả concept linking.
 - [x] Xây dựng tập dữ liệu thực từ 20 bài QASPER và 75 câu hỏi có gold evidence.
 - [x] Chạy ablation đầu tiên trên 42 câu validation và ghi nhận vocabulary ban đầu chỉ
   tạo 22 concept-link, chưa làm thay đổi kết quả Hybrid.
@@ -172,9 +177,10 @@ PDF
 Milestone tiếp theo: kiểm chứng khả năng khái quát của semantic concept linking và hoàn thiện
 answer generation.
 
-1. Phân tích coverage và chạy ablation semantic re-ranking chỉ trên development v3.
-2. Khóa cấu hình v3 bằng file cấu hình đã commit, sau đó chỉ mở held-out v3 một lần.
-3. Sau retrieval v3, tích hợp LLM và đánh giá Agent/citation.
+1. Gán nhãn một tập concept-linking đại diện từ development v3 và phân tích các concept thiếu.
+2. Cải thiện semantic concept linking chỉ bằng development v3, rồi khóa cấu hình trong file đã
+   commit; chưa mở held-out v3 khi re-ranking chưa tạo tín hiệu ổn định.
+3. Sau khi khóa retrieval v3, chỉ chạy held-out một lần rồi tích hợp LLM và đánh giá Agent/citation.
 
 Chưa ưu tiên trong milestone này: mở rộng giao diện, PostgreSQL, pgvector, OCR và
 framework Agent phức tạp.

@@ -118,6 +118,7 @@ class InMemorySemanticRetriever:
         self._chunks: list[Chunk] = []
         self._embeddings: NDArray[np.float32] | None = None
         self._encoder = encoder or SentenceTransformerEncoder()
+        self._query_embeddings: dict[str, NDArray[np.float32]] = {}
         self._lock = RLock()
 
     def add(self, chunks: list[Chunk]) -> None:
@@ -140,7 +141,10 @@ class InMemorySemanticRetriever:
             if self._embeddings is None:
                 return []
 
-            query_vector = self._encoder.encode([query])[0]
+            query_vector = self._query_embeddings.get(query)
+            if query_vector is None:
+                query_vector = self._encoder.encode([query])[0]
+                self._query_embeddings[query] = query_vector
             scores = self._embeddings @ query_vector
             ranked = np.argsort(scores)[::-1][:limit]
 
@@ -295,7 +299,9 @@ class InMemoryHybridRetriever:
         query_concepts = expansion.query_concepts
         reranked: list[SearchResult] = []
         for candidate in candidates:
-            if candidate.chunk_concepts:
+            if candidate.chunk_concepts or self.ontology.is_chunk_indexed(
+                candidate.chunk_id
+            ):
                 match = self.ontology.score_concept_names(
                     query_concepts,
                     candidate.chunk_concepts,

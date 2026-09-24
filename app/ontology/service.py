@@ -77,6 +77,7 @@ class OntologyService:
         self.linking_limit = linking_limit
         self._concept_embeddings: NDArray[np.float32] | None = None
         self._concept_aliases = self._load_concept_aliases()
+        self._configured_concept_cache: dict[str, tuple[URIRef, ...]] = {}
 
     def _load_concept_aliases(self) -> dict[URIRef, set[str]]:
         concept_types = {
@@ -193,28 +194,29 @@ class OntologyService:
 
     def configured_concepts(self, text: str) -> list[URIRef]:
         """Link text using the strategy configured for the retrieval pipeline."""
-        links = self.link_concepts(
-            text,
-            self.linking_method,
-            threshold=self.linking_threshold,
-            limit=self.linking_limit,
-        )
-        known_by_name = {local_name(concept): concept for concept in self._concept_aliases}
-        return [known_by_name[link.concept] for link in links if link.concept in known_by_name]
+        return self.configured_concepts_batch([text])[0]
 
     def configured_concepts_batch(self, texts: list[str]) -> list[list[URIRef]]:
         """Link configured concepts for many texts using one embedding batch."""
+        missing_texts = list(
+            dict.fromkeys(
+                text for text in texts if text not in self._configured_concept_cache
+            )
+        )
         linked = self.link_concepts_batch(
-            texts,
+            missing_texts,
             self.linking_method,
             threshold=self.linking_threshold,
             limit=self.linking_limit,
         )
         known_by_name = {local_name(concept): concept for concept in self._concept_aliases}
-        return [
-            [known_by_name[link.concept] for link in links if link.concept in known_by_name]
-            for links in linked
-        ]
+        for text, links in zip(missing_texts, linked, strict=True):
+            self._configured_concept_cache[text] = tuple(
+                known_by_name[link.concept]
+                for link in links
+                if link.concept in known_by_name
+            )
+        return [list(self._configured_concept_cache[text]) for text in texts]
 
     def index_chunks(self, chunks: list[Chunk]) -> tuple[list[Chunk], int]:
         """Annotate chunks and add document/page/chunk facts to the in-memory graph."""
@@ -246,6 +248,11 @@ class OntologyService:
             )
 
         return annotated, concept_links
+
+    def is_chunk_indexed(self, chunk_id: str) -> bool:
+        """Return whether a chunk passed through ontology indexing, even with no links."""
+        chunk_resource = URIRef(f"{QA}chunk-{chunk_id}")
+        return (chunk_resource, RDF.type, QA.Chunk) in self.graph
 
     def _neighbors(self, concept: URIRef) -> set[URIRef]:
         predicates = {SKOS.broader, SKOS.narrower, SKOS.related, QA.relatedTo}

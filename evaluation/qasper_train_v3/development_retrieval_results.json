@@ -1,0 +1,12 @@
+{
+  "protocol": "v3 development only",
+  "questions": 78,
+  "k": 5,
+  "bm25": {"recall": 0.2781339031339031, "mrr": 0.20256410256410257, "ndcg": 0.2058521929953109},
+  "semantic": {"recall": 0.23789173789173793, "mrr": 0.17606837606837605, "ndcg": 0.17847251451499013},
+  "hybrid": {"recall": 0.29914529914529914, "mrr": 0.23311965811965812, "ndcg": 0.23057518584716263},
+  "hybrid_ontology_expansion": {"recall": 0.2702991452991453, "mrr": 0.22735042735042738, "ndcg": 0.2144144053367135},
+  "hybrid_ontology_rerank": {"recall": 0.29914529914529914, "mrr": 0.23311965811965812, "ndcg": 0.23057518584716263},
+  "hybrid_ontology_both": {"recall": 0.2702991452991453, "mrr": 0.22735042735042738, "ndcg": 0.2144144053367135},
+  "conclusion": "Reranking did not change development v3; expansion caused query drift. Held-out v3 remains unopened."
+}

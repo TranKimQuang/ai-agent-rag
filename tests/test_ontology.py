@@ -147,6 +147,32 @@ def test_configured_hybrid_linking_is_used_when_indexing_chunks() -> None:
 
     assert chunks[0].concepts == ["RetrievalAugmentedGeneration"]
     assert link_count == 1
+    assert service.is_chunk_indexed("semantic") is True
+    assert service.is_chunk_indexed("missing") is False
+
+
+def test_configured_concept_linking_caches_repeated_text() -> None:
+    class CountingEncoder(ConceptLinkingEncoder):
+        def __init__(self) -> None:
+            self.calls = 0
+
+        def encode(self, texts: list[str]) -> np.ndarray:
+            self.calls += 1
+            return super().encode(texts)
+
+    encoder = CountingEncoder()
+    service = OntologyService(
+        semantic_encoder=encoder,
+        linking_method=ConceptLinkingMethod.HYBRID,
+        linking_threshold=0.8,
+    )
+    text = "The system retrieves external evidence before producing answers."
+
+    first = service.configured_concepts(text)
+    second = service.configured_concepts(text)
+
+    assert first == second
+    assert encoder.calls == 2  # one concept batch plus one unique input text
 
 
 def test_prelinked_concepts_can_be_scored_without_encoding_text_again() -> None:

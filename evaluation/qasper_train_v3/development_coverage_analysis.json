@@ -1,0 +1,9 @@
+{
+  "questions": 78,
+  "query_with_concept": 7,
+  "query_without_concept": 71,
+  "gold_evidence_with_concept": 29,
+  "gold_without_concept": 49,
+  "query_and_gold_with_relation": 3,
+  "conclusion": "Low query and relation coverage explains why ontology reranking matched plain Hybrid."
+}

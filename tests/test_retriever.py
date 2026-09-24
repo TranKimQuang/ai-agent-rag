@@ -97,6 +97,35 @@ def test_semantic_search_matches_different_wording() -> None:
     assert results[0].method == SearchMethod.SEMANTIC
 
 
+def test_semantic_search_caches_repeated_query_embedding() -> None:
+    class CountingEncoder(FakeEncoder):
+        def __init__(self) -> None:
+            self.calls = 0
+
+        def encode(self, texts: list[str]) -> np.ndarray:
+            self.calls += 1
+            return super().encode(texts)
+
+    encoder = CountingEncoder()
+    retriever = InMemorySemanticRetriever(encoder)
+    retriever.add(
+        [
+            Chunk(
+                id="car",
+                document_id="doc",
+                filename="guide.pdf",
+                page=1,
+                text="An automobile needs maintenance.",
+            )
+        ]
+    )
+
+    retriever.search("vehicle maintenance")
+    retriever.search("vehicle maintenance")
+
+    assert encoder.calls == 2  # one chunk batch plus one unique query
+
+
 def test_hybrid_search_fuses_keyword_and_semantic_ranks() -> None:
     retriever = InMemoryHybridRetriever(semantic_encoder=FakeEncoder())
     retriever.add(
@@ -220,13 +249,15 @@ def test_ontology_ablation_separates_expansion_and_reranking() -> None:
     assert rerank_only[0].chunk_id == "rag"
 
 
-def test_ontology_reranking_without_concepts_preserves_hybrid_ranking() -> None:
+def test_ontology_reranking_without_concepts_preserves_hybrid_ranking(
+    monkeypatch,
+) -> None:
     ontology = OntologyService()
     retriever = InMemoryHybridRetriever(
         semantic_encoder=OntologyRerankEncoder(),
         ontology_service=ontology,
     )
-    retriever.add(
+    chunks, _ = ontology.index_chunks(
         [
             Chunk(
                 id=f"chunk-{index}",
@@ -238,8 +269,16 @@ def test_ontology_reranking_without_concepts_preserves_hybrid_ranking() -> None:
             for index in range(1, 25)
         ]
     )
+    retriever.add(chunks)
 
     hybrid = retriever.search("generic passage", limit=5, method=SearchMethod.HYBRID)
+    monkeypatch.setattr(
+        ontology,
+        "score_text",
+        lambda *_args, **_kwargs: (_ for _ in ()).throw(
+            AssertionError("indexed empty concepts must not be linked again")
+        ),
+    )
     reranked = retriever.search(
         "generic passage",
         limit=5,
