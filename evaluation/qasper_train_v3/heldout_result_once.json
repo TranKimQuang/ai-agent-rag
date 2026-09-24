@@ -1,0 +1,39 @@
+{
+  "protocol": "v3 held-out evaluated once after commit 63dbb6f",
+  "questions": 70,
+  "configuration": {
+    "concept_linking_method": "hybrid",
+    "concept_linking_threshold": 0.65,
+    "retrieval_method": "hybrid_ontology_rerank",
+    "query_expansion": false,
+    "ontology_weight": 0.05
+  },
+  "k": 5,
+  "bm25": {
+    "recall": 0.2219047619047619,
+    "mrr": 0.13357142857142856,
+    "ndcg": 0.14586097116703262
+  },
+  "semantic": {
+    "recall": 0.19285714285714287,
+    "mrr": 0.13190476190476189,
+    "ndcg": 0.1422423980007174
+  },
+  "hybrid": {
+    "recall": 0.26285714285714284,
+    "mrr": 0.14476190476190476,
+    "ndcg": 0.17220847396297864
+  },
+  "hybrid_ontology_rerank": {
+    "recall": 0.26285714285714284,
+    "mrr": 0.14476190476190476,
+    "ndcg": 0.17220847396297864
+  },
+  "hybrid_ontology_expansion": {
+    "recall": 0.2355844155844156,
+    "mrr": 0.1269047619047619,
+    "ndcg": 0.14562143124548652
+  },
+  "result": "negative generalization result: reranking tied Hybrid and expansion was worse",
+  "post_test_tuning": false
+}

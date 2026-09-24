@@ -152,6 +152,10 @@ trang và đoạn bằng chứng. Nếu tài liệu không có đủ bằng ch�
   lên 0,2385 và nDCG@5 từ 0,2306 lên 0,2371; expansion vẫn gây query drift.
 - [x] Quét trọng số development v3 và khóa cấu hình: Hybrid linking threshold 0,65,
   re-ranking weight 0,05, không query expansion; held-out v3 chưa chạy.
+- [x] Chạy held-out v3 đúng một lần sau commit khóa cấu hình: Hybrid và Ontology re-ranking
+  cùng Recall@5 0,2629, MRR@5 0,1448 và nDCG@5 0,1722; không tuning sau test.
+- [x] Coverage held-out v3 chỉ đạt query 6/70 và cặp có quan hệ 5/70, xác nhận vocabulary
+  theo development chưa khái quát đủ sang các chủ đề paper mới.
 - [x] Xây dựng tập dữ liệu thực từ 20 bài QASPER và 75 câu hỏi có gold evidence.
 - [x] Chạy ablation đầu tiên trên 42 câu validation và ghi nhận vocabulary ban đầu chỉ
   tạo 22 concept-link, chưa làm thay đổi kết quả Hybrid.
@@ -184,9 +188,10 @@ PDF
 Milestone tiếp theo: kiểm chứng khả năng khái quát của semantic concept linking và hoàn thiện
 answer generation.
 
-1. Commit cấu hình retrieval v3 đã khóa trước khi đánh giá held-out.
-2. Chạy held-out v3 đúng một lần, ghi nhận cả kết quả dương hoặc âm và không tuning sau test.
-3. Sau retrieval v3, tích hợp LLM và đánh giá Agent/citation.
+1. Giữ nguyên kết quả held-out v3 và không tiếp tục tuning theo test này.
+2. Thiết kế hướng concept linking khái quát hơn (candidate generation từ CSO hoặc zero-shot
+   linking), dùng một development protocol mới nếu tiếp tục nghiên cứu retrieval.
+3. Song song, tích hợp LLM vào Agent và đánh giá answer correctness/citation/unanswerable.
 
 Chưa ưu tiên trong milestone này: mở rộng giao diện, PostgreSQL, pgvector, OCR và
 framework Agent phức tạp.

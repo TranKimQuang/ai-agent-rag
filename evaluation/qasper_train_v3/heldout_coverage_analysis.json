@@ -1,0 +1,9 @@
+{
+  "questions": 70,
+  "query_with_concept": 6,
+  "query_without_concept": 64,
+  "gold_evidence_with_concept": 31,
+  "gold_without_concept": 39,
+  "query_and_gold_with_relation": 5,
+  "conclusion": "Low unseen-query concept coverage explains why reranking tied plain Hybrid. No tuning was performed after this analysis."
+}

@@ -64,6 +64,17 @@ Retrieval also improved over plain Hybrid at `k=5`:
 A development-only weight sweep selected `0.05`. The frozen settings are stored in
 `locked_retrieval_config_v3.json`. Held-out v3 has not been evaluated at the time of this lock.
 
+## One-time held-out v3 result
+
+After configuration commit `63dbb6f`, the frozen system was evaluated once on all 70 held-out
+questions. Plain Hybrid and Ontology re-ranking tied at Recall@5 0.2629, MRR@5 0.1448, and
+nDCG@5 0.1722. Expansion was worse, with Recall@5 0.2356.
+
+Only 6/70 held-out queries received a concept and only 5/70 query/gold-evidence pairs had an
+Ontology relation. This is retained as a negative generalization result: the development-driven
+vocabulary improved its development split but did not cover enough unseen query topics. No
+vocabulary, threshold, or weight was changed after observing held-out v3.
+
 Regenerate from the verified source with:
 
 ```powershell
