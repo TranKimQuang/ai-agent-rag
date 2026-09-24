@@ -120,6 +120,8 @@ trang và đoạn bằng chứng. Nếu tài liệu không có đủ bằng ch�
   regression test, không tái dùng split này để lựa chọn mô hình.
 - [x] Phân tích coverage: 0/33 query có concept, 3/33 gold evidence có concept và không có
   cặp query/evidence nào nhận được quan hệ Ontology.
+- [x] Tạo vòng dữ liệu mới từ QASPER train: development 20 bài/72 câu và held-out
+  20 bài/72 câu; không trùng paper với các split cũ.
 - [x] Xây dựng tập dữ liệu thực từ 20 bài QASPER và 75 câu hỏi có gold evidence.
 - [x] Chạy ablation đầu tiên trên 42 câu validation và ghi nhận vocabulary ban đầu chỉ
   tạo 22 concept-link, chưa làm thay đổi kết quả Hybrid.
@@ -151,10 +153,9 @@ PDF
 
 Milestone tiếp theo: Ontology v2 và thực nghiệm retrieval trên dữ liệu thật.
 
-1. Tạo development split mới từ QASPER train để mở rộng concept linking tổng quát, không dùng
-   33 câu test đã mở làm dữ liệu phát triển.
-2. Tạo một held-out split mới chưa quan sát để đánh giá cuối sau khi candidate-pool bug đã sửa.
-3. Tiếp tục tích hợp LLM và hoàn thiện đánh giá Agent/citation sau khi chốt giao thức mới.
+1. Chỉ dùng QASPER train development 72 câu để đo coverage và mở rộng concept linking tổng quát.
+2. Khóa vocabulary/cấu hình mới rồi mới chạy QASPER train held-out 72 câu đúng một lần.
+3. Tiếp tục tích hợp LLM và hoàn thiện đánh giá Agent/citation sau khi chốt retrieval.
 
 Chưa ưu tiên trong milestone này: mở rộng giao diện, PostgreSQL, pgvector, OCR và
 framework Agent phức tạp.

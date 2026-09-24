@@ -13,17 +13,29 @@ def main() -> None:
     parser.add_argument("--validation-papers", type=int, default=10)
     parser.add_argument("--min-questions-per-paper", type=int, default=3)
     parser.add_argument("--max-questions-per-paper", type=int, default=5)
+    parser.add_argument(
+        "--exclude-dataset",
+        type=Path,
+        action="append",
+        default=[],
+        help="Existing generated dataset whose paper IDs must be excluded.",
+    )
     args = parser.parse_args()
 
     if not 0 < args.validation_papers < args.papers:
         raise ValueError("validation-papers must be between zero and the paper count")
 
     payload = json.loads(args.input.read_text(encoding="utf-8"))
+    excluded_paper_ids: set[str] = set()
+    for dataset_path in args.exclude_dataset:
+        existing = json.loads(dataset_path.read_text(encoding="utf-8"))
+        excluded_paper_ids.update(existing.get("metadata", {}).get("paper_ids", []))
     papers = select_qasper_papers(
         payload,
         paper_limit=args.papers,
         min_questions_per_paper=args.min_questions_per_paper,
         max_questions_per_paper=args.max_questions_per_paper,
+        excluded_paper_ids=excluded_paper_ids,
     )
     if len(papers) < args.papers:
         raise ValueError(f"Only {len(papers)} eligible QASPER papers were found")

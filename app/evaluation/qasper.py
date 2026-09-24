@@ -91,9 +91,13 @@ def select_qasper_papers(
     paper_limit: int = 20,
     min_questions_per_paper: int = 3,
     max_questions_per_paper: int = 5,
+    excluded_paper_ids: set[str] | None = None,
 ) -> list[QasperPaperBenchmark]:
     selected: list[QasperPaperBenchmark] = []
+    excluded = excluded_paper_ids or set()
     for paper_id in sorted(payload):
+        if paper_id in excluded:
+            continue
         converted = convert_qasper_paper(
             paper_id,
             payload[paper_id],
