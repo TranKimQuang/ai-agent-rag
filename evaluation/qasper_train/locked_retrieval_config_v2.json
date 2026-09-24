@@ -1,0 +1,12 @@
+{
+  "selection_split": "qasper_train_development",
+  "heldout_evaluated": false,
+  "primary_method": "hybrid_ontology_rerank",
+  "ontology_weight": 0.05,
+  "concept_linking_method": "hybrid",
+  "concept_linking_threshold": 0.6,
+  "query_expansion_primary": false,
+  "k_values": [1, 3, 5],
+  "selection_metric": "nDCG@5, then MRR@5 and Recall@5",
+  "reason": "Re-ranking improved one development question without losses; expansion lost four top-five answers."
+}

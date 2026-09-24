@@ -42,6 +42,14 @@ threshold 0.60, compared with Alias F1 0.8824. The remaining unlinked questions 
 generic requests about counts, baselines, and datasets; these should not be force-labelled merely
 to inflate coverage. The held-out split remains untouched.
 
+## Locked retrieval configuration v2
+
+On the 72-question development split, Hybrid reached Recall@5 0.2037 and MRR@5 0.1648.
+Ontology re-ranking kept Recall@5 at 0.2037 while increasing MRR@5 to 0.1718. Expansion reduced
+Recall@5 to 0.1412 and is excluded from the primary configuration. Weight 0.05 was selected from
+the development sweep; it improved one question and lost none. The configuration is frozen in
+`locked_retrieval_config_v2.json`. The held-out split has not been evaluated.
+
 Regenerate with:
 
 ```powershell

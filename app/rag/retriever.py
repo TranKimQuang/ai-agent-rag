@@ -172,7 +172,7 @@ class InMemoryHybridRetriever:
         semantic_encoder: TextEncoder | None = None,
         ontology_service: OntologyService | None = None,
         rrf_k: int = 60,
-        ontology_weight: float = 0.10,
+        ontology_weight: float = 0.05,
     ) -> None:
         self.bm25 = InMemoryBM25Retriever()
         self.semantic = InMemorySemanticRetriever(semantic_encoder)

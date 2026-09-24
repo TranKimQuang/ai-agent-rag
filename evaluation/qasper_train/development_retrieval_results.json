@@ -1,0 +1,17 @@
+{
+  "dataset": "QASPER train development",
+  "papers": 20,
+  "questions": 72,
+  "chunks": 1049,
+  "concept_links": 491,
+  "heldout_evaluated": false,
+  "methods": {
+    "bm25": {"recall@5": 0.17476851851851852, "mrr@5": 0.13171296296296295, "ndcg@5": 0.13021858687950583},
+    "semantic": {"recall@5": 0.16203703703703703, "mrr@5": 0.13657407407407407, "ndcg@5": 0.13004835173552126},
+    "hybrid": {"recall@5": 0.2037037037037037, "mrr@5": 0.16481481481481483, "ndcg@5": 0.1576236877023109},
+    "hybrid_ontology_expansion": {"recall@5": 0.1412037037037037, "mrr@5": 0.12777777777777777, "ndcg@5": 0.11500656126445473},
+    "hybrid_ontology_rerank": {"recall@5": 0.2037037037037037, "mrr@5": 0.17175925925925928, "ndcg@5": 0.16274966334715177},
+    "hybrid_ontology": {"recall@5": 0.1550925925925926, "mrr@5": 0.13402777777777777, "ndcg@5": 0.12316081130240758}
+  },
+  "finding": "Re-ranking improves rank quality without changing Recall@5. Query expansion causes substantial query drift and is excluded from the primary configuration."
+}
