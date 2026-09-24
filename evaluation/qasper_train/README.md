@@ -26,6 +26,22 @@ question/evidence pair received a non-zero Ontology relation score. The complete
 stored in `development_coverage_baseline.json`. This confirms that query concept linking—not
 retrieval weighting—is the first problem to solve in the new development cycle.
 
+## Development vocabulary iteration 1
+
+Eighteen recurring research concepts were added using development questions only, including word
+segmentation, CNN, dynamic memory networks, causality extraction, grammatical error correction,
+HMM/LSTM, word2vec, morphological tokenization, label propagation, distant supervision, and
+machine translation. Coverage then changed as follows:
+
+- Questions with a concept: 1/72 to 20/72.
+- Gold evidence with a concept: 20/72 to 33/72.
+- Question/evidence pairs with an Ontology relation: 1/72 to 12/72.
+
+On 20 manually labelled development questions, Hybrid concept linking reached F1 0.9189 at
+threshold 0.60, compared with Alias F1 0.8824. The remaining unlinked questions include many
+generic requests about counts, baselines, and datasets; these should not be force-labelled merely
+to inflate coverage. The held-out split remains untouched.
+
 Regenerate with:
 
 ```powershell

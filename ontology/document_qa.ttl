@@ -279,3 +279,94 @@ qa:ParallelCorpus a qa:Dataset ;
     skos:altLabel "parallel corpora"@en, "multilingual parallel corpus"@en ;
     skos:definition "A collection containing aligned texts in two or more languages."@en ;
     qa:relatedTo qa:NaturalLanguageProcessing, qa:SemanticRoleInduction .
+
+# Concepts added from the disjoint QASPER train development split.
+qa:ParaphraseGeneration a qa:Task ;
+    skos:prefLabel "paraphrase generation"@en ;
+    skos:altLabel "paraphrase generation task"@en, "generate paraphrases"@en ;
+    skos:broader qa:NaturalLanguageProcessing .
+
+qa:ProbabilisticContextFreeGrammar a qa:Model ;
+    skos:prefLabel "probabilistic context-free grammar"@en ;
+    skos:altLabel "PCFG"@en, "probabilistic context free grammar"@en ;
+    qa:relatedTo qa:NaturalLanguageProcessing .
+
+qa:WordSegmentation a qa:Task ;
+    skos:prefLabel "word segmentation"@en ;
+    skos:altLabel "word boundary detection"@en ;
+    skos:broader qa:NaturalLanguageProcessing .
+
+qa:ConvolutionalNeuralNetwork a qa:Model ;
+    skos:prefLabel "convolutional neural network"@en ;
+    skos:altLabel "CNN"@en, "convolutional neural networks"@en ;
+    qa:relatedTo qa:MachineLearning .
+
+qa:DynamicMemoryNetwork a qa:Model ;
+    skos:prefLabel "dynamic memory network"@en ;
+    skos:altLabel "DMN"@en, "dynamic memory networks"@en ;
+    qa:relatedTo qa:QuestionAnswering, qa:MachineLearning .
+
+qa:CausalityExtraction a qa:Task ;
+    skos:prefLabel "causality extraction"@en ;
+    skos:altLabel "causal relation extraction"@en, "extract causality"@en ;
+    skos:broader qa:NaturalLanguageProcessing .
+
+qa:MultipleChoiceQuestionAnswering a qa:Task ;
+    skos:prefLabel "multiple-choice question answering"@en ;
+    skos:altLabel "multiple choice QA"@en, "MC test answers"@en ;
+    skos:broader qa:QuestionAnswering .
+
+qa:GrammaticalErrorCorrection a qa:Task ;
+    skos:prefLabel "grammatical error correction"@en ;
+    skos:altLabel "GEC"@en, "grammar correction"@en ;
+    skos:broader qa:NaturalLanguageProcessing .
+
+qa:HiddenMarkovModel a qa:Model ;
+    skos:prefLabel "hidden Markov model"@en ;
+    skos:altLabel "HMM"@en, "hidden Markov models"@en ;
+    qa:relatedTo qa:MachineLearning .
+
+qa:LongShortTermMemory a qa:Model ;
+    skos:prefLabel "long short-term memory"@en ;
+    skos:altLabel "LSTM"@en, "long short term memory network"@en ;
+    qa:relatedTo qa:RecurrentNeuralNetwork .
+
+qa:Word2Vec a qa:Model ;
+    skos:prefLabel "word2vec"@en ;
+    skos:altLabel "skip-gram"@en, "skipgram"@en ;
+    qa:relatedTo qa:WordEmbedding .
+
+qa:MorphologicalTokenization a qa:Task ;
+    skos:prefLabel "morphological tokenization"@en ;
+    skos:altLabel "morphological segmentation"@en ;
+    skos:broader qa:NaturalLanguageProcessing .
+
+qa:ImageCaptioning a qa:Task ;
+    skos:prefLabel "image captioning"@en ;
+    skos:altLabel "caption generation"@en, "captioning task"@en ;
+    qa:relatedTo qa:MachineLearning .
+
+qa:LabelPropagation a qa:Method ;
+    skos:prefLabel "label propagation"@en ;
+    skos:altLabel "propagate labels"@en ;
+    qa:relatedTo qa:MachineLearning .
+
+qa:DistantSupervision a qa:Method ;
+    skos:prefLabel "distant supervision"@en ;
+    skos:altLabel "distantly supervised learning"@en ;
+    qa:relatedTo qa:SupervisedLearning .
+
+qa:PhraseBasedMachineTranslation a qa:Model ;
+    skos:prefLabel "phrase-based machine translation"@en ;
+    skos:altLabel "PBMT"@en, "phrase based machine translation"@en ;
+    qa:relatedTo qa:NeuralMachineTranslation .
+
+qa:NeuralMachineTranslation a qa:Model ;
+    skos:prefLabel "neural machine translation"@en ;
+    skos:altLabel "NMT"@en ;
+    qa:relatedTo qa:NaturalLanguageProcessing, qa:PhraseBasedMachineTranslation .
+
+qa:SupervisedLearning a qa:Method ;
+    skos:prefLabel "supervised learning"@en ;
+    skos:altLabel "supervised machine learning"@en ;
+    qa:relatedTo qa:MachineLearning .

@@ -1,0 +1,22 @@
+[
+  {"text": "How many paraphrases are generated per question?", "gold_concepts": ["ParaphraseGeneration"]},
+  {"text": "What latent variables are modeled in the PCFG?", "gold_concepts": ["ProbabilisticContextFreeGrammar"]},
+  {"text": "Which method do they use for word segmentation?", "gold_concepts": ["WordSegmentation"]},
+  {"text": "How much faster is training time for MGNC-CNN over the baselines?", "gold_concepts": ["ConvolutionalNeuralNetwork"]},
+  {"text": "Why is supporting fact supervision necessary for DMN?", "gold_concepts": ["DynamicMemoryNetwork"]},
+  {"text": "How do they extract causality from text?", "gold_concepts": ["CausalityExtraction"]},
+  {"text": "What is the state of the art for ranking mc test answers?", "gold_concepts": ["MultipleChoiceQuestionAnswering"]},
+  {"text": "Which dataset do they evaluate grammatical error correction on?", "gold_concepts": ["GrammaticalErrorCorrection"]},
+  {"text": "What kind of features are used by the HMM models?", "gold_concepts": ["HiddenMarkovModel"]},
+  {"text": "What kind of information do the HMMs learn that the LSTMs don't?", "gold_concepts": ["HiddenMarkovModel", "LongShortTermMemory"]},
+  {"text": "Do they use skipgram version of word2vec?", "gold_concepts": ["Word2Vec"]},
+  {"text": "Do they perform any morphological tokenization?", "gold_concepts": ["MorphologicalTokenization"]},
+  {"text": "Did they only experiment with captioning task?", "gold_concepts": ["ImageCaptioning"]},
+  {"text": "How are labels propagated using this approach?", "gold_concepts": ["LabelPropagation"]},
+  {"text": "Is the data acquired under distant supervision verified by humans?", "gold_concepts": ["DistantSupervision"]},
+  {"text": "How is the PBMT system trained?", "gold_concepts": ["PhraseBasedMachineTranslation"]},
+  {"text": "Which NMT architecture do they use?", "gold_concepts": ["NeuralMachineTranslation"]},
+  {"text": "Which supervised learning algorithms are used in the experiments?", "gold_concepts": ["SupervisedLearning"]},
+  {"text": "What are the baselines?", "gold_concepts": []},
+  {"text": "How big is their dataset?", "gold_concepts": []}
+]

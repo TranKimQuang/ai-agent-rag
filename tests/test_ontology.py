@@ -5,7 +5,7 @@ from rdflib import OWL, RDF, RDFS, XSD, Literal, Namespace, URIRef
 from rdflib.namespace import DCTERMS, SKOS
 
 from app.models import Chunk, ConceptLinkingMethod
-from app.ontology.service import QA, OntologyService
+from app.ontology.service import QA, OntologyService, local_name
 
 CSO = Namespace("https://cso.kmi.open.ac.uk/topics/")
 
@@ -177,6 +177,23 @@ def test_validation_driven_query_expansion_uses_domain_relations() -> None:
 
     assert expansion.query_concepts == ["ParallelCorpus", "SemanticRoleInduction"]
     assert "natural language processing" in expansion.expansion_terms
+
+
+def test_train_development_vocabulary_links_repeated_research_topics() -> None:
+    service = OntologyService()
+
+    concepts = {
+        local_name(concept)
+        for concept in service.identify_concepts(
+            "The DMN uses word2vec before grammatical error correction."
+        )
+    }
+
+    assert concepts == {
+        "DynamicMemoryNetwork",
+        "GrammaticalErrorCorrection",
+        "Word2Vec",
+    }
 
 
 def test_ontology_scores_directly_related_concepts() -> None:

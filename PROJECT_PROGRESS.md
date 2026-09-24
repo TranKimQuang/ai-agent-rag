@@ -124,6 +124,9 @@ trang và đoạn bằng chứng. Nếu tài liệu không có đủ bằng ch�
   20 bài/72 câu; không trùng paper với các split cũ.
 - [x] Đo baseline coverage trên development mới: 1/72 query có concept, 20/72 gold evidence
   có concept và chỉ 1/72 cặp query/evidence có quan hệ Ontology.
+- [x] Mở rộng 18 concept theo development: query coverage 20/72, gold coverage 33/72 và
+  12/72 cặp query/evidence có quan hệ; held-out vẫn chưa mở.
+- [x] Gán nhãn 20 câu development: Hybrid concept linking F1 0,9189 tại threshold 0,60.
 - [x] Xây dựng tập dữ liệu thực từ 20 bài QASPER và 75 câu hỏi có gold evidence.
 - [x] Chạy ablation đầu tiên trên 42 câu validation và ghi nhận vocabulary ban đầu chỉ
   tạo 22 concept-link, chưa làm thay đổi kết quả Hybrid.
@@ -155,7 +158,7 @@ PDF
 
 Milestone tiếp theo: Ontology v2 và thực nghiệm retrieval trên dữ liệu thật.
 
-1. Phân tích 71 query development chưa có concept và mở rộng concept linking tổng quát.
+1. Chạy retrieval ablation trên development mới với candidate pool đã sửa và vocabulary mới.
 2. Khóa vocabulary/cấu hình mới rồi mới chạy QASPER train held-out 72 câu đúng một lần.
 3. Tiếp tục tích hợp LLM và hoàn thiện đánh giá Agent/citation sau khi chốt retrieval.
 

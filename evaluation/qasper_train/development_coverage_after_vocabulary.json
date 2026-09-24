@@ -1,0 +1,791 @@
+{
+  "dataset": "evaluation\\qasper_train\\qasper_train_development.json",
+  "purpose": "descriptive ontology coverage analysis",
+  "summary": {
+    "questions": 72,
+    "query_with_concept": 20,
+    "gold_evidence_with_concept": 33,
+    "query_and_gold_with_relation": 12,
+    "query_without_concept": 52,
+    "gold_without_concept": 39
+  },
+  "questions": [
+    {
+      "question_id": "c359ab8ebef6f60c5a38f5244e8c18d85e92761d",
+      "query": "How many paraphrases are generated per question?",
+      "query_concepts": [],
+      "gold_concepts": [],
+      "gold_has_ontology_relation": false,
+      "hybrid_rank": null,
+      "ontology_rank": null
+    },
+    {
+      "question_id": "ad362365656b0b218ba324ae60701eb25fe664c1",
+      "query": "What latent variables are modeled in the PCFG?",
+      "query_concepts": [
+        "ProbabilisticContextFreeGrammar"
+      ],
+      "gold_concepts": [
+        "ProbabilisticContextFreeGrammar"
+      ],
+      "gold_has_ontology_relation": true,
+      "hybrid_rank": null,
+      "ontology_rank": null
+    },
+    {
+      "question_id": "423bb905e404e88a168e7e807950e24ca166306c",
+      "query": "What are the baselines?",
+      "query_concepts": [],
+      "gold_concepts": [
+        "ParaphraseGeneration"
+      ],
+      "gold_has_ontology_relation": false,
+      "hybrid_rank": null,
+      "ontology_rank": null
+    },
+    {
+      "question_id": "23d0637f8ae72ae343556ab135eedc7f4cb58032",
+      "query": "How do they show that acquiring names of places helps self-localization?",
+      "query_concepts": [],
+      "gold_concepts": [
+        "WordSegmentation"
+      ],
+      "gold_has_ontology_relation": false,
+      "hybrid_rank": null,
+      "ontology_rank": null
+    },
+    {
+      "question_id": "21c104d14ba3db7fe2cd804a191f9e6258208235",
+      "query": "How do they evaluate how their model acquired words?",
+      "query_concepts": [],
+      "gold_concepts": [
+        "WordSegmentation"
+      ],
+      "gold_has_ontology_relation": false,
+      "hybrid_rank": null,
+      "ontology_rank": null
+    },
+    {
+      "question_id": "d557752c4706b65dcdb7718272180c59d77fb7a7",
+      "query": "Which method do they use for word segmentation?",
+      "query_concepts": [
+        "WordSegmentation"
+      ],
+      "gold_concepts": [
+        "WordSegmentation"
+      ],
+      "gold_has_ontology_relation": true,
+      "hybrid_rank": null,
+      "ontology_rank": null
+    },
+    {
+      "question_id": "1bdf7e9f3f804930b2933ebd9207a3e000b27742",
+      "query": "Does their model start with any prior knowledge of words?",
+      "query_concepts": [],
+      "gold_concepts": [],
+      "gold_has_ontology_relation": false,
+      "hybrid_rank": null,
+      "ontology_rank": null
+    },
+    {
+      "question_id": "f7d67d6c6fbc62b2953ab74db6871b122b3c92cc",
+      "query": "How much faster is training time for MGNC-CNN over the baselines?",
+      "query_concepts": [
+        "ConvolutionalNeuralNetwork"
+      ],
+      "gold_concepts": [
+        "ConvolutionalNeuralNetwork",
+        "WordEmbedding"
+      ],
+      "gold_has_ontology_relation": true,
+      "hybrid_rank": null,
+      "ontology_rank": null
+    },
+    {
+      "question_id": "085147cd32153d46dd9901ab0f9195bfdbff6a85",
+      "query": "What are the baseline models?",
+      "query_concepts": [],
+      "gold_concepts": [
+        "ConvolutionalNeuralNetwork",
+        "Word2Vec",
+        "WordEmbedding"
+      ],
+      "gold_has_ontology_relation": false,
+      "hybrid_rank": null,
+      "ontology_rank": null
+    },
+    {
+      "question_id": "c0035fb1c2b3de15146a7ce186ccd2e366fb4da2",
+      "query": "By how much of MGNC-CNN out perform the baselines?",
+      "query_concepts": [
+        "ConvolutionalNeuralNetwork"
+      ],
+      "gold_concepts": [],
+      "gold_has_ontology_relation": false,
+      "hybrid_rank": null,
+      "ontology_rank": null
+    },
+    {
+      "question_id": "a8e4a67dd67ae4a9ebf983a90b0d256f4b9ff6c6",
+      "query": "What dataset/corpus is this evaluated over?",
+      "query_concepts": [],
+      "gold_concepts": [],
+      "gold_has_ontology_relation": false,
+      "hybrid_rank": null,
+      "ontology_rank": null
+    },
+    {
+      "question_id": "34dd0ee1374a3afd16cf8b0c803f4ef4c6fec8ac",
+      "query": "What are the comparable alternative architectures?",
+      "query_concepts": [],
+      "gold_concepts": [
+        "ConvolutionalNeuralNetwork",
+        "Word2Vec",
+        "WordEmbedding"
+      ],
+      "gold_has_ontology_relation": false,
+      "hybrid_rank": null,
+      "ontology_rank": null
+    },
+    {
+      "question_id": "129c03acb0963ede3915415953317556a55f34ee",
+      "query": "Why is supporting fact supervision necessary for DMN?",
+      "query_concepts": [
+        "DynamicMemoryNetwork"
+      ],
+      "gold_concepts": [
+        "QuestionAnswering"
+      ],
+      "gold_has_ontology_relation": true,
+      "hybrid_rank": null,
+      "ontology_rank": null
+    },
+    {
+      "question_id": "58b3b630a31fcb9bffb510390e1ec30efe87bfbf",
+      "query": "What does supporting fact supervision mean?",
+      "query_concepts": [],
+      "gold_concepts": [
+        "DynamicMemoryNetwork",
+        "QuestionAnswering"
+      ],
+      "gold_has_ontology_relation": false,
+      "hybrid_rank": null,
+      "ontology_rank": null
+    },
+    {
+      "question_id": "141dab98d19a070f1ce7e7dc384001d49125d545",
+      "query": "What changes they did on input module?",
+      "query_concepts": [],
+      "gold_concepts": [
+        "DynamicMemoryNetwork",
+        "QuestionAnswering"
+      ],
+      "gold_has_ontology_relation": false,
+      "hybrid_rank": null,
+      "ontology_rank": null
+    },
+    {
+      "question_id": "afdad4c9bdebf88630262f1a9a86ac494f06c4c1",
+      "query": "What improvements they did for DMN?",
+      "query_concepts": [
+        "DynamicMemoryNetwork"
+      ],
+      "gold_concepts": [
+        "DynamicMemoryNetwork",
+        "QuestionAnswering"
+      ],
+      "gold_has_ontology_relation": true,
+      "hybrid_rank": null,
+      "ontology_rank": null
+    },
+    {
+      "question_id": "bfd4fc82ffdc5b2b32c37f4222e878106421ce2a",
+      "query": "How does the model circumvent the lack of supporting facts during training?",
+      "query_concepts": [],
+      "gold_concepts": [
+        "DynamicMemoryNetwork",
+        "QuestionAnswering"
+      ],
+      "gold_has_ontology_relation": false,
+      "hybrid_rank": null,
+      "ontology_rank": null
+    },
+    {
+      "question_id": "67a28fe78f07c1383176b89e78630ee191cf15db",
+      "query": "Where is MVCNN pertained?",
+      "query_concepts": [],
+      "gold_concepts": [],
+      "gold_has_ontology_relation": false,
+      "hybrid_rank": null,
+      "ontology_rank": null
+    },
+    {
+      "question_id": "9cba2ee1f8e1560e48b3099d0d8cf6c854ddea2e",
+      "query": "What are the effects of extracting features of multigranular phrases?",
+      "query_concepts": [],
+      "gold_concepts": [
+        "ConvolutionalNeuralNetwork",
+        "WordEmbedding"
+      ],
+      "gold_has_ontology_relation": false,
+      "hybrid_rank": null,
+      "ontology_rank": null
+    },
+    {
+      "question_id": "7975c3e1f61344e3da3b38bb12e1ac6dcb153a18",
+      "query": "What are the effects of diverse versions of pertained word embeddings? ",
+      "query_concepts": [
+        "WordEmbedding"
+      ],
+      "gold_concepts": [
+        "NaturalLanguageProcessing"
+      ],
+      "gold_has_ontology_relation": true,
+      "hybrid_rank": null,
+      "ontology_rank": null
+    },
+    {
+      "question_id": "eddb18109495976123e10f9c6946a256a55074bd",
+      "query": "How is MVCNN compared to CNN?",
+      "query_concepts": [
+        "ConvolutionalNeuralNetwork"
+      ],
+      "gold_concepts": [
+        "ConvolutionalNeuralNetwork",
+        "WordEmbedding"
+      ],
+      "gold_has_ontology_relation": true,
+      "hybrid_rank": null,
+      "ontology_rank": null
+    },
+    {
+      "question_id": "80de3baf97a55ea33e0fe0cafa6f6221ba347d0a",
+      "query": "Are resolution mode variables hand crafted?",
+      "query_concepts": [],
+      "gold_concepts": [],
+      "gold_has_ontology_relation": false,
+      "hybrid_rank": null,
+      "ontology_rank": null
+    },
+    {
+      "question_id": "f5707610dc8ae2a3dc23aec63d4afa4b40b7ec1e",
+      "query": "What are resolution model variables?",
+      "query_concepts": [],
+      "gold_concepts": [],
+      "gold_has_ontology_relation": false,
+      "hybrid_rank": null,
+      "ontology_rank": null
+    },
+    {
+      "question_id": "e76139c63da0f861c097466983fbe0c94d1d9810",
+      "query": "Is the model presented in the paper state of the art?",
+      "query_concepts": [],
+      "gold_concepts": [],
+      "gold_has_ontology_relation": false,
+      "hybrid_rank": null,
+      "ontology_rank": null
+    },
+    {
+      "question_id": "4c822bbb06141433d04bbc472f08c48bc8378865",
+      "query": "How do they extract causality from text?",
+      "query_concepts": [
+        "CausalityExtraction"
+      ],
+      "gold_concepts": [],
+      "gold_has_ontology_relation": false,
+      "hybrid_rank": null,
+      "ontology_rank": null
+    },
+    {
+      "question_id": "1baf87437b70cc0375b8b7dc2cfc2830279bc8b5",
+      "query": "What is the source of the \"control\" corpus?",
+      "query_concepts": [],
+      "gold_concepts": [],
+      "gold_has_ontology_relation": false,
+      "hybrid_rank": null,
+      "ontology_rank": null
+    },
+    {
+      "question_id": "0b31eb5bb111770a3aaf8a3931d8613e578e07a8",
+      "query": "What are the selection criteria for \"causal statements\"?",
+      "query_concepts": [],
+      "gold_concepts": [],
+      "gold_has_ontology_relation": false,
+      "hybrid_rank": null,
+      "ontology_rank": null
+    },
+    {
+      "question_id": "7348e781b2c3755b33df33f4f0cab4b94fcbeb9b",
+      "query": "Do they use expert annotations, crowdsourcing, or only automatic methods to analyze the corpora?",
+      "query_concepts": [],
+      "gold_concepts": [],
+      "gold_has_ontology_relation": false,
+      "hybrid_rank": null,
+      "ontology_rank": null
+    },
+    {
+      "question_id": "f68bd65b5251f86e1ed89f0c858a8bb2a02b233a",
+      "query": "how do they collect the comparable corpus?",
+      "query_concepts": [],
+      "gold_concepts": [],
+      "gold_has_ontology_relation": false,
+      "hybrid_rank": null,
+      "ontology_rank": null
+    },
+    {
+      "question_id": "225a567eeb2698a9d3f1024a8b270313a6d15f82",
+      "query": "what were the baselines?",
+      "query_concepts": [],
+      "gold_concepts": [
+        "ConvolutionalNeuralNetwork",
+        "RecurrentNeuralNetwork",
+        "WordEmbedding"
+      ],
+      "gold_has_ontology_relation": false,
+      "hybrid_rank": null,
+      "ontology_rank": null
+    },
+    {
+      "question_id": "35b10e0dc2cb4a1a31d5692032dc3fbda933bf7d",
+      "query": "what is the state of the art for ranking mc test answers?",
+      "query_concepts": [
+        "MultipleChoiceQuestionAnswering"
+      ],
+      "gold_concepts": [],
+      "gold_has_ontology_relation": false,
+      "hybrid_rank": null,
+      "ontology_rank": null
+    },
+    {
+      "question_id": "62613aca3d7c7d534c9f6d8cb91ff55626bb8695",
+      "query": "what datasets did they use?",
+      "query_concepts": [],
+      "gold_concepts": [],
+      "gold_has_ontology_relation": false,
+      "hybrid_rank": null,
+      "ontology_rank": null
+    },
+    {
+      "question_id": "66f0dee89f084fe0565539a73f5bbe65f3677814",
+      "query": "Do they use pretrained word representations in their neural network models?",
+      "query_concepts": [],
+      "gold_concepts": [
+        "GrammaticalErrorCorrection",
+        "ParallelCorpus"
+      ],
+      "gold_has_ontology_relation": false,
+      "hybrid_rank": null,
+      "ontology_rank": null
+    },
+    {
+      "question_id": "8f882f414d7ea12077930451ae77c6e5f093adbc",
+      "query": "How do they combine the two proposed neural network models?",
+      "query_concepts": [],
+      "gold_concepts": [
+        "GrammaticalErrorCorrection",
+        "NeuralMachineTranslation",
+        "ParallelCorpus",
+        "RecurrentNeuralNetwork"
+      ],
+      "gold_has_ontology_relation": false,
+      "hybrid_rank": null,
+      "ontology_rank": null
+    },
+    {
+      "question_id": "a49832c89a2d7f95c1fe6132902d74e4e7a3f2d0",
+      "query": "Which dataset do they evaluate grammatical error correction on?",
+      "query_concepts": [
+        "GrammaticalErrorCorrection"
+      ],
+      "gold_concepts": [],
+      "gold_has_ontology_relation": false,
+      "hybrid_rank": null,
+      "ontology_rank": null
+    },
+    {
+      "question_id": "5f7850254b723adf891930c6faced1058b99bd57",
+      "query": "What kind of features are used by the HMM models, and how interpretable are those?",
+      "query_concepts": [
+        "HiddenMarkovModel"
+      ],
+      "gold_concepts": [
+        "HiddenMarkovModel",
+        "LongShortTermMemory"
+      ],
+      "gold_has_ontology_relation": true,
+      "hybrid_rank": null,
+      "ontology_rank": null
+    },
+    {
+      "question_id": "4d05a264b2353cff310edb480a917d686353b007",
+      "query": "What kind of information do the HMMs learn that the LSTMs don't?",
+      "query_concepts": [],
+      "gold_concepts": [
+        "HiddenMarkovModel",
+        "LongShortTermMemory"
+      ],
+      "gold_has_ontology_relation": false,
+      "hybrid_rank": null,
+      "ontology_rank": null
+    },
+    {
+      "question_id": "7cdce4222cea6955b656c1a3df1129bb8119e2d0",
+      "query": "Which methods do the authors use to reach the conclusion that LSTMs and HMMs learn complementary information?",
+      "query_concepts": [],
+      "gold_concepts": [
+        "HiddenMarkovModel",
+        "LongShortTermMemory"
+      ],
+      "gold_has_ontology_relation": false,
+      "hybrid_rank": null,
+      "ontology_rank": null
+    },
+    {
+      "question_id": "5efed109940bf74ed0a9d4a5e97a535502b23d27",
+      "query": "Do they use skipgram version of word2vec?",
+      "query_concepts": [
+        "Word2Vec"
+      ],
+      "gold_concepts": [
+        "Word2Vec"
+      ],
+      "gold_has_ontology_relation": true,
+      "hybrid_rank": null,
+      "ontology_rank": null
+    },
+    {
+      "question_id": "b8137eb0fa0b41f871c899a54154f640f0e9aca1",
+      "query": "What domains are considered that have such large vocabularies?",
+      "query_concepts": [],
+      "gold_concepts": [
+        "NaturalLanguageProcessing",
+        "Word2Vec"
+      ],
+      "gold_has_ontology_relation": false,
+      "hybrid_rank": null,
+      "ontology_rank": null
+    },
+    {
+      "question_id": "38b527783330468bf6c4829f7d998e6f17c615f0",
+      "query": "Do they perform any morphological tokenization?",
+      "query_concepts": [
+        "MorphologicalTokenization"
+      ],
+      "gold_concepts": [],
+      "gold_has_ontology_relation": false,
+      "hybrid_rank": null,
+      "ontology_rank": null
+    },
+    {
+      "question_id": "2af66730a85b29ff28dbfa58342e0ae6265d2963",
+      "query": "How many examples are there in the source domain?",
+      "query_concepts": [],
+      "gold_concepts": [],
+      "gold_has_ontology_relation": false,
+      "hybrid_rank": null,
+      "ontology_rank": null
+    },
+    {
+      "question_id": "146fe3e97d8080f04222ed20903dd0d5fd2f551c",
+      "query": "How many examples are there in the target domain?",
+      "query_concepts": [],
+      "gold_concepts": [],
+      "gold_has_ontology_relation": false,
+      "hybrid_rank": null,
+      "ontology_rank": null
+    },
+    {
+      "question_id": "0fc17e51a17efce17577e2db89a24abd6607bb2b",
+      "query": "Did they only experiment with captioning task?",
+      "query_concepts": [
+        "ImageCaptioning"
+      ],
+      "gold_concepts": [],
+      "gold_has_ontology_relation": false,
+      "hybrid_rank": null,
+      "ontology_rank": null
+    },
+    {
+      "question_id": "33957fde72f9082a5c11844e7c47c58f8029c4ae",
+      "query": "What knowledge base do they use?",
+      "query_concepts": [],
+      "gold_concepts": [],
+      "gold_has_ontology_relation": false,
+      "hybrid_rank": null,
+      "ontology_rank": null
+    },
+    {
+      "question_id": "1c4cd22d6eaefffd47b93c2124f6779a06d2d9e1",
+      "query": "How big is their dataset?",
+      "query_concepts": [],
+      "gold_concepts": [],
+      "gold_has_ontology_relation": false,
+      "hybrid_rank": null,
+      "ontology_rank": null
+    },
+    {
+      "question_id": "2122bd05c03dde098aa17e36773e1ac7b6011969",
+      "query": "What task do they evaluate on?",
+      "query_concepts": [],
+      "gold_concepts": [],
+      "gold_has_ontology_relation": false,
+      "hybrid_rank": null,
+      "ontology_rank": null
+    },
+    {
+      "question_id": "7d300176afa04947ac847135ac6ea2929908c0b0",
+      "query": "What shared task does this system achieve SOTA in?",
+      "query_concepts": [],
+      "gold_concepts": [],
+      "gold_has_ontology_relation": false,
+      "hybrid_rank": null,
+      "ontology_rank": null
+    },
+    {
+      "question_id": "df9d16a2c4983a0ff46081e3ff4d6e7ef3338264",
+      "query": "How are labels propagated using this approach?",
+      "query_concepts": [],
+      "gold_concepts": [
+        "LabelPropagation"
+      ],
+      "gold_has_ontology_relation": false,
+      "hybrid_rank": null,
+      "ontology_rank": null
+    },
+    {
+      "question_id": "8c35caf3772637e6297009ceab38f7f5be38ea9d",
+      "query": "What information is contained in the social graph of tweet authors?",
+      "query_concepts": [],
+      "gold_concepts": [],
+      "gold_has_ontology_relation": false,
+      "hybrid_rank": null,
+      "ontology_rank": null
+    },
+    {
+      "question_id": "ba48c095c496d01c7717eaa271470c3406bf2d7c",
+      "query": "What languages do they experiment with?",
+      "query_concepts": [],
+      "gold_concepts": [
+        "QuestionAnswering"
+      ],
+      "gold_has_ontology_relation": false,
+      "hybrid_rank": null,
+      "ontology_rank": null
+    },
+    {
+      "question_id": "42a61773aa494f7b12838f71a949034c12084de1",
+      "query": "What are the baselines?",
+      "query_concepts": [],
+      "gold_concepts": [],
+      "gold_has_ontology_relation": false,
+      "hybrid_rank": null,
+      "ontology_rank": null
+    },
+    {
+      "question_id": "48c3e61b2ed7b3f97706e2a522172bf9b51ec467",
+      "query": "What was the inter-annotator agreement?",
+      "query_concepts": [],
+      "gold_concepts": [
+        "QuestionAnswering"
+      ],
+      "gold_has_ontology_relation": false,
+      "hybrid_rank": null,
+      "ontology_rank": null
+    },
+    {
+      "question_id": "981443fce6167b3f6cadf44f9f108d68c1a3f4ab",
+      "query": "Which countries and languages do the political speeches and manifestos come from?",
+      "query_concepts": [],
+      "gold_concepts": [],
+      "gold_has_ontology_relation": false,
+      "hybrid_rank": null,
+      "ontology_rank": null
+    },
+    {
+      "question_id": "6d0f2cce46bc962c6527f7b4a77721799f2455c6",
+      "query": "Do changes in policies of the political actors account for all of the mistakes the model made?",
+      "query_concepts": [],
+      "gold_concepts": [],
+      "gold_has_ontology_relation": false,
+      "hybrid_rank": null,
+      "ontology_rank": null
+    },
+    {
+      "question_id": "5816ebf15e31bdf70e1de8234132e146d64e31eb",
+      "query": "What model are the text features used in to provide predictions?",
+      "query_concepts": [],
+      "gold_concepts": [],
+      "gold_has_ontology_relation": false,
+      "hybrid_rank": null,
+      "ontology_rank": null
+    },
+    {
+      "question_id": "938688871913862c9f8a28b42165237b7324e0de",
+      "query": "Do the authors mention any possible confounds in their study?",
+      "query_concepts": [],
+      "gold_concepts": [],
+      "gold_has_ontology_relation": false,
+      "hybrid_rank": null,
+      "ontology_rank": null
+    },
+    {
+      "question_id": "4170ed011b02663f5b1b1a3c1f0415b7abfaa85d",
+      "query": "What is the relationship between the co-voting and retweeting patterns?",
+      "query_concepts": [],
+      "gold_concepts": [],
+      "gold_has_ontology_relation": false,
+      "hybrid_rank": null,
+      "ontology_rank": null
+    },
+    {
+      "question_id": "fd08dc218effecbe5137a7e3b73d9e5e37ace9c1",
+      "query": "Does the analysis find that coalitions are formed in the same way for different policy areas?",
+      "query_concepts": [],
+      "gold_concepts": [],
+      "gold_has_ontology_relation": false,
+      "hybrid_rank": null,
+      "ontology_rank": null
+    },
+    {
+      "question_id": "a85c2510f25c7152940b5ac4333a80e0f91ade6e",
+      "query": "What insights does the analysis give about the cohesion of political groups in the European parliament?",
+      "query_concepts": [],
+      "gold_concepts": [],
+      "gold_has_ontology_relation": false,
+      "hybrid_rank": null,
+      "ontology_rank": null
+    },
+    {
+      "question_id": "fa572f1f3f3ce6e1f9f4c9530456329ffc2677ca",
+      "query": "Do they authors account for differences in usage of Twitter amongst MPs into their model?",
+      "query_concepts": [],
+      "gold_concepts": [],
+      "gold_has_ontology_relation": false,
+      "hybrid_rank": null,
+      "ontology_rank": null
+    },
+    {
+      "question_id": "0c08af6e4feaf801185f2ec97c4da04c8b767ad6",
+      "query": "Do the authors mention any confounds to their study?",
+      "query_concepts": [],
+      "gold_concepts": [],
+      "gold_has_ontology_relation": false,
+      "hybrid_rank": null,
+      "ontology_rank": null
+    },
+    {
+      "question_id": "368317b4fd049511e00b441c2e9550ded6607c37",
+      "query": "Is the data acquired under distant supervision verified by humans at any stage?",
+      "query_concepts": [
+        "DistantSupervision"
+      ],
+      "gold_concepts": [],
+      "gold_has_ontology_relation": false,
+      "hybrid_rank": null,
+      "ontology_rank": null
+    },
+    {
+      "question_id": "387970ebc7ef99f302f318d047f708274c0e8f21",
+      "query": "Do the authors equate drunk tweeting with drunk texting? ",
+      "query_concepts": [],
+      "gold_concepts": [],
+      "gold_has_ontology_relation": false,
+      "hybrid_rank": null,
+      "ontology_rank": null
+    },
+    {
+      "question_id": "b13902af1bcf0e199a3ea42bbc8fcd8e696a381a",
+      "query": "Which dataset do they use?",
+      "query_concepts": [],
+      "gold_concepts": [
+        "PhraseBasedMachineTranslation"
+      ],
+      "gold_has_ontology_relation": false,
+      "hybrid_rank": null,
+      "ontology_rank": null
+    },
+    {
+      "question_id": "b84bce289c6c81d0a7507ae183b94982533576b3",
+      "query": "How is the PBMT system trained?",
+      "query_concepts": [
+        "PhraseBasedMachineTranslation"
+      ],
+      "gold_concepts": [],
+      "gold_has_ontology_relation": false,
+      "hybrid_rank": null,
+      "ontology_rank": null
+    },
+    {
+      "question_id": "9fd137bf7eabaf8bc234a18b6ea34471cf4a3b95",
+      "query": "Which NMT architecture do they use?",
+      "query_concepts": [
+        "NeuralMachineTranslation"
+      ],
+      "gold_concepts": [
+        "NeuralMachineTranslation"
+      ],
+      "gold_has_ontology_relation": true,
+      "hybrid_rank": null,
+      "ontology_rank": null
+    },
+    {
+      "question_id": "249f2a9bd9d59679cbe82b3fa01572fc7a04f81b",
+      "query": "Do they train the NMT model on PBMT outputs?",
+      "query_concepts": [
+        "NeuralMachineTranslation",
+        "PhraseBasedMachineTranslation"
+      ],
+      "gold_concepts": [
+        "PhraseBasedMachineTranslation"
+      ],
+      "gold_has_ontology_relation": true,
+      "hybrid_rank": null,
+      "ontology_rank": null
+    },
+    {
+      "question_id": "f8d32088d17b32b0c877d59965b35c4f51f0ceea",
+      "query": "Do the authors report on English datasets only?",
+      "query_concepts": [],
+      "gold_concepts": [],
+      "gold_has_ontology_relation": false,
+      "hybrid_rank": null,
+      "ontology_rank": null
+    },
+    {
+      "question_id": "4f0f446bf4518af7f539f6283145135192d5c00b",
+      "query": "Which supervised learning algorithms are used in the experiments?",
+      "query_concepts": [
+        "SupervisedLearning"
+      ],
+      "gold_concepts": [
+        "MachineLearning",
+        "WordEmbedding"
+      ],
+      "gold_has_ontology_relation": true,
+      "hybrid_rank": null,
+      "ontology_rank": null
+    },
+    {
+      "question_id": "663b36f99ad2422f4d3a8c6398ebf55ceab7770d",
+      "query": "How in YouTube content translated into a vector format?",
+      "query_concepts": [],
+      "gold_concepts": [
+        "WordEmbedding"
+      ],
+      "gold_has_ontology_relation": false,
+      "hybrid_rank": null,
+      "ontology_rank": null
+    },
+    {
+      "question_id": "be595b2017545b0359db6abf4914a155bdd10d23",
+      "query": "How is the ground truth of gang membership established in this dataset?",
+      "query_concepts": [],
+      "gold_concepts": [
+        "WordEmbedding"
+      ],
+      "gold_has_ontology_relation": false,
+      "hybrid_rank": null,
+      "ontology_rank": null
+    }
+  ]
+}
