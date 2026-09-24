@@ -137,6 +137,9 @@ trang và đoạn bằng chứng. Nếu tài liệu không có đủ bằng ch�
 - [x] Chạy lại đúng tập development sau tích hợp semantic linking: Ontology re-ranking tăng
   Recall@5 từ 0,2037 lên 0,2176, MRR@5 từ 0,1648 lên 0,1764 và nDCG@5 từ 0,1576
   lên 0,1697; query expansion tiếp tục gây query drift.
+- [x] Tạo protocol v3 hoàn toàn tách biệt: development 20 paper/78 câu và held-out
+  20 paper/70 câu; cả 40 paper không trùng nhau và không trùng 60 paper đã dùng trước đó.
+- [ ] Chạy phân tích và chọn cấu hình chỉ trên development v3; chưa mở held-out v3.
 - [x] Xây dựng tập dữ liệu thực từ 20 bài QASPER và 75 câu hỏi có gold evidence.
 - [x] Chạy ablation đầu tiên trên 42 câu validation và ghi nhận vocabulary ban đầu chỉ
   tạo 22 concept-link, chưa làm thay đổi kết quả Hybrid.
@@ -169,9 +172,8 @@ PDF
 Milestone tiếp theo: kiểm chứng khả năng khái quát của semantic concept linking và hoàn thiện
 answer generation.
 
-1. Tạo development/held-out protocol v3 trước khi đánh giá lại khả năng khái quát; không dùng
-   lại held-out v2 để tiếp tục lựa chọn cấu hình.
-2. Khóa semantic re-ranking trên development và chỉ mở held-out v3 một lần.
+1. Phân tích coverage và chạy ablation semantic re-ranking chỉ trên development v3.
+2. Khóa cấu hình v3 bằng file cấu hình đã commit, sau đó chỉ mở held-out v3 một lần.
 3. Sau retrieval v3, tích hợp LLM và đánh giá Agent/citation.
 
 Chưa ưu tiên trong milestone này: mở rộng giao diện, PostgreSQL, pgvector, OCR và
