@@ -71,7 +71,7 @@ def main() -> None:
     }
     payload = {
         "dataset": str(args.dataset),
-        "purpose": "post-test descriptive error analysis; not parameter tuning",
+        "purpose": "descriptive ontology coverage analysis",
         "summary": summary,
         "questions": rows,
     }

@@ -122,6 +122,8 @@ trang và đoạn bằng chứng. Nếu tài liệu không có đủ bằng ch�
   cặp query/evidence nào nhận được quan hệ Ontology.
 - [x] Tạo vòng dữ liệu mới từ QASPER train: development 20 bài/72 câu và held-out
   20 bài/72 câu; không trùng paper với các split cũ.
+- [x] Đo baseline coverage trên development mới: 1/72 query có concept, 20/72 gold evidence
+  có concept và chỉ 1/72 cặp query/evidence có quan hệ Ontology.
 - [x] Xây dựng tập dữ liệu thực từ 20 bài QASPER và 75 câu hỏi có gold evidence.
 - [x] Chạy ablation đầu tiên trên 42 câu validation và ghi nhận vocabulary ban đầu chỉ
   tạo 22 concept-link, chưa làm thay đổi kết quả Hybrid.
@@ -153,7 +155,7 @@ PDF
 
 Milestone tiếp theo: Ontology v2 và thực nghiệm retrieval trên dữ liệu thật.
 
-1. Chỉ dùng QASPER train development 72 câu để đo coverage và mở rộng concept linking tổng quát.
+1. Phân tích 71 query development chưa có concept và mở rộng concept linking tổng quát.
 2. Khóa vocabulary/cấu hình mới rồi mới chạy QASPER train held-out 72 câu đúng một lần.
 3. Tiếp tục tích hợp LLM và hoàn thiện đánh giá Agent/citation sau khi chốt retrieval.
 

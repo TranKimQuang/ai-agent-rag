@@ -18,6 +18,14 @@ Only `qasper_train_development.json` may be used for vocabulary, threshold, weig
 development. `qasper_train_heldout.json` must remain untouched until a new configuration and
 evaluation protocol have been frozen.
 
+## Initial development coverage
+
+Before any vocabulary changes, only 1 of 72 development questions matched a local Ontology
+concept. Gold evidence contained at least one concept for 20 questions, but only one
+question/evidence pair received a non-zero Ontology relation score. The complete diagnostic is
+stored in `development_coverage_baseline.json`. This confirms that query concept linking—not
+retrieval weighting—is the first problem to solve in the new development cycle.
+
 Regenerate with:
 
 ```powershell
