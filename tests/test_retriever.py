@@ -218,3 +218,34 @@ def test_ontology_ablation_separates_expansion_and_reranking() -> None:
     assert rerank_only[0].expanded_query is None
     assert rerank_only[0].ontology_score == 0.65
     assert rerank_only[0].chunk_id == "rag"
+
+
+def test_ontology_reranking_without_concepts_preserves_hybrid_ranking() -> None:
+    ontology = OntologyService()
+    retriever = InMemoryHybridRetriever(
+        semantic_encoder=OntologyRerankEncoder(),
+        ontology_service=ontology,
+    )
+    retriever.add(
+        [
+            Chunk(
+                id=f"chunk-{index}",
+                document_id="doc",
+                filename="paper.pdf",
+                page=index,
+                text=f"generic passage number {index}",
+            )
+            for index in range(1, 25)
+        ]
+    )
+
+    hybrid = retriever.search("generic passage", limit=5, method=SearchMethod.HYBRID)
+    reranked = retriever.search(
+        "generic passage",
+        limit=5,
+        method=SearchMethod.HYBRID_ONTOLOGY_RERANK,
+    )
+
+    assert [result.chunk_id for result in reranked] == [
+        result.chunk_id for result in hybrid
+    ]

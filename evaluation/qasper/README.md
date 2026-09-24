@@ -94,6 +94,12 @@ validation improvement did not generalize: Ontology re-ranking reached Recall@5 
 MRR@5 0.3202, slightly below Hybrid at 0.3983 and 0.3242. It rescued two questions but also lost
 two. Semantic retrieval was strongest overall, with Recall@5 0.4823 and MRR@5 0.3924.
 
-No threshold, weight, or vocabulary was changed after observing this result. This negative result
-is retained as evidence that the current Ontology coverage and scoring require a better design,
-not post-test tuning. The compact record is stored in `locked_test_results.json`.
+Post-test analysis found a candidate-pool confound: Ontology branches requested a larger Hybrid
+candidate pool than the plain Hybrid baseline. Therefore BM25, Semantic, and Hybrid scores remain
+valid descriptive baselines, but the Ontology-vs-Hybrid comparison is not a valid final estimate.
+The bug was fixed with a regression test. This test split will not be rerun for model selection;
+a fresh held-out split is required for the next final comparison.
+
+Coverage analysis also found that none of the 33 test questions matched a local Ontology concept,
+only three questions had a concept in their gold evidence, and no question/evidence pair had an
+Ontology relation. The detailed descriptive record is stored in `heldout_error_analysis.json`.

@@ -1,0 +1,317 @@
+{
+  "dataset": "evaluation\\qasper\\qasper_test.json",
+  "purpose": "post-test descriptive error analysis; not parameter tuning",
+  "summary": {
+    "questions": 33,
+    "query_with_concept": 0,
+    "gold_evidence_with_concept": 3,
+    "query_and_gold_with_relation": 0,
+    "query_without_concept": 33,
+    "gold_without_concept": 30
+  },
+  "questions": [
+    {
+      "question_id": "09c86ef78e567033b725fc56b85c5d2602c1a7c3",
+      "query": "How does their ensemble method work?",
+      "query_concepts": [],
+      "gold_concepts": [],
+      "gold_has_ontology_relation": false,
+      "hybrid_rank": null,
+      "ontology_rank": null
+    },
+    {
+      "question_id": "d67c01d9b689c052045f3de1b0918bab18c3f174",
+      "query": "How large are the improvements of the Attention-Sum Reader model when using the BookTest dataset?",
+      "query_concepts": [],
+      "gold_concepts": [],
+      "gold_has_ontology_relation": false,
+      "hybrid_rank": null,
+      "ontology_rank": null
+    },
+    {
+      "question_id": "e5bc73974c79d96eee2b688e578a9de1d0eb38fd",
+      "query": "How do they show there is space for further improvement?",
+      "query_concepts": [],
+      "gold_concepts": [],
+      "gold_has_ontology_relation": false,
+      "hybrid_rank": 4,
+      "ontology_rank": 4
+    },
+    {
+      "question_id": "06eb9f2320451df83e27362c22eb02f4a426a018",
+      "query": "what levels of document preprocessing are looked at?",
+      "query_concepts": [],
+      "gold_concepts": [],
+      "gold_has_ontology_relation": false,
+      "hybrid_rank": 1,
+      "ontology_rank": 1
+    },
+    {
+      "question_id": "e54257585cc75564341eb02bdc63ff8111992f82",
+      "query": "what keyphrase extraction models were reassessed?",
+      "query_concepts": [],
+      "gold_concepts": [],
+      "gold_has_ontology_relation": false,
+      "hybrid_rank": null,
+      "ontology_rank": null
+    },
+    {
+      "question_id": "2a3e36c220e7b47c1b652511a4fdd7238a74a68f",
+      "query": "how many articles are in the dataset?",
+      "query_concepts": [],
+      "gold_concepts": [],
+      "gold_has_ontology_relation": false,
+      "hybrid_rank": 2,
+      "ontology_rank": 2
+    },
+    {
+      "question_id": "3a6e843c6c81244c14730295cfb8b865cd7ede46",
+      "query": "What are the state of the art models?",
+      "query_concepts": [],
+      "gold_concepts": [
+        "NaturalLanguageProcessing"
+      ],
+      "gold_has_ontology_relation": false,
+      "hybrid_rank": null,
+      "ontology_rank": null
+    },
+    {
+      "question_id": "fabf6fdcfb4c4c7affaa1e4336658c1e6635b1bf",
+      "query": "Which benchmark datasets are used?",
+      "query_concepts": [],
+      "gold_concepts": [],
+      "gold_has_ontology_relation": false,
+      "hybrid_rank": 3,
+      "ontology_rank": null
+    },
+    {
+      "question_id": "1beb4a590fa6127a138f4ed1dd13d5d51cc96809",
+      "query": "What are the network's baseline features?",
+      "query_concepts": [],
+      "gold_concepts": [],
+      "gold_has_ontology_relation": false,
+      "hybrid_rank": 4,
+      "ontology_rank": 4
+    },
+    {
+      "question_id": "3611a72f754de1e256fbd25b012197e1c24e8470",
+      "query": "Do they remove seasonality from the time series?",
+      "query_concepts": [],
+      "gold_concepts": [],
+      "gold_has_ontology_relation": false,
+      "hybrid_rank": null,
+      "ontology_rank": null
+    },
+    {
+      "question_id": "4c07c33dfaf4f3e6db55e377da6fa69825d0ba15",
+      "query": "What is the dimension of the embeddings?",
+      "query_concepts": [],
+      "gold_concepts": [],
+      "gold_has_ontology_relation": false,
+      "hybrid_rank": null,
+      "ontology_rank": null
+    },
+    {
+      "question_id": "b1ce129678e37070e69f01332f1a8587e18e06b0",
+      "query": "What dataset is used to train the model?",
+      "query_concepts": [],
+      "gold_concepts": [],
+      "gold_has_ontology_relation": false,
+      "hybrid_rank": null,
+      "ontology_rank": null
+    },
+    {
+      "question_id": "2f901dab6b757e12763b23ae8b37ae2e517a2271",
+      "query": "What languages pairs are used in machine translation?",
+      "query_concepts": [],
+      "gold_concepts": [],
+      "gold_has_ontology_relation": false,
+      "hybrid_rank": 1,
+      "ontology_rank": 1
+    },
+    {
+      "question_id": "b591853e938984e6069d738371500ebdec50d256",
+      "query": "What sentiment classification dataset is used?",
+      "query_concepts": [],
+      "gold_concepts": [],
+      "gold_has_ontology_relation": false,
+      "hybrid_rank": 3,
+      "ontology_rank": 3
+    },
+    {
+      "question_id": "a130306c6662ff489df13fb3f8faa7cba8c52a21",
+      "query": "What pooling function is used?",
+      "query_concepts": [],
+      "gold_concepts": [],
+      "gold_has_ontology_relation": false,
+      "hybrid_rank": 2,
+      "ontology_rank": 2
+    },
+    {
+      "question_id": "fa30a938b58fc05131c3854f12efe376cbad887f",
+      "query": "What was their performance on emotion detection?",
+      "query_concepts": [],
+      "gold_concepts": [],
+      "gold_has_ontology_relation": false,
+      "hybrid_rank": null,
+      "ontology_rank": null
+    },
+    {
+      "question_id": "f875337f2ecd686cd7789e111174d0f14972638d",
+      "query": "Which existing benchmarks did they compare to?",
+      "query_concepts": [],
+      "gold_concepts": [],
+      "gold_has_ontology_relation": false,
+      "hybrid_rank": 5,
+      "ontology_rank": null
+    },
+    {
+      "question_id": "de53af4eddbc30c808d90b8a11a29217d377569e",
+      "query": "Which Facebook pages did they look at?",
+      "query_concepts": [],
+      "gold_concepts": [],
+      "gold_has_ontology_relation": false,
+      "hybrid_rank": 1,
+      "ontology_rank": 1
+    },
+    {
+      "question_id": "37a79be0148e1751ffb2daabe4c8ec6680036106",
+      "query": "What topic is covered in the Chinese Facebook data? ",
+      "query_concepts": [],
+      "gold_concepts": [],
+      "gold_has_ontology_relation": false,
+      "hybrid_rank": 1,
+      "ontology_rank": 1
+    },
+    {
+      "question_id": "518dae6f936882152c162058895db4eca815e649",
+      "query": "How many layers does the UTCNN model have?",
+      "query_concepts": [],
+      "gold_concepts": [
+        "WordEmbedding"
+      ],
+      "gold_has_ontology_relation": false,
+      "hybrid_rank": null,
+      "ontology_rank": 5
+    },
+    {
+      "question_id": "e44a6bf67ce3fde0c6608b150030e44d87eb25e3",
+      "query": "What topics are included in the debate data?",
+      "query_concepts": [],
+      "gold_concepts": [],
+      "gold_has_ontology_relation": false,
+      "hybrid_rank": 1,
+      "ontology_rank": 1
+    },
+    {
+      "question_id": "6a31db1aca57a818f36bba9002561724655372a7",
+      "query": "What is the size of the Chinese data?",
+      "query_concepts": [],
+      "gold_concepts": [],
+      "gold_has_ontology_relation": false,
+      "hybrid_rank": 1,
+      "ontology_rank": 1
+    },
+    {
+      "question_id": "e330e162ec29722f5ec9f83853d129c9e0693d65",
+      "query": "Did they collected the two datasets?",
+      "query_concepts": [],
+      "gold_concepts": [],
+      "gold_has_ontology_relation": false,
+      "hybrid_rank": null,
+      "ontology_rank": 5
+    },
+    {
+      "question_id": "b49598b05358117ab1471b8ebd0b042d2f04b2a4",
+      "query": "What neural models are used to encode the text?",
+      "query_concepts": [],
+      "gold_concepts": [],
+      "gold_has_ontology_relation": false,
+      "hybrid_rank": 2,
+      "ontology_rank": 2
+    },
+    {
+      "question_id": "932b39fd6c47c6a880621a62e6a978491d881d60",
+      "query": "What baselines are used for comparison?",
+      "query_concepts": [],
+      "gold_concepts": [],
+      "gold_has_ontology_relation": false,
+      "hybrid_rank": null,
+      "ontology_rank": null
+    },
+    {
+      "question_id": "b36f867fcda5ad62c46d23513369337352aa01d2",
+      "query": "What datasets are used to evaluate this paper?",
+      "query_concepts": [],
+      "gold_concepts": [],
+      "gold_has_ontology_relation": false,
+      "hybrid_rank": null,
+      "ontology_rank": null
+    },
+    {
+      "question_id": "f94b53db307685d572aefad52cd55f53d23769c2",
+      "query": "How do they calculate variance from the model outputs?",
+      "query_concepts": [],
+      "gold_concepts": [],
+      "gold_has_ontology_relation": false,
+      "hybrid_rank": 3,
+      "ontology_rank": 3
+    },
+    {
+      "question_id": "aa7d327ef98f9f9847b447d4def04889b4508d7a",
+      "query": "How much data samples do they start with before obtaining the initial model labels?",
+      "query_concepts": [],
+      "gold_concepts": [],
+      "gold_has_ontology_relation": false,
+      "hybrid_rank": null,
+      "ontology_rank": null
+    },
+    {
+      "question_id": "b8d7d055ddb94f5826a9aad7479b4a92a9c8a2f0",
+      "query": "Which model do they use for end-to-end speech recognition?",
+      "query_concepts": [],
+      "gold_concepts": [
+        "RecurrentNeuralNetwork"
+      ],
+      "gold_has_ontology_relation": false,
+      "hybrid_rank": null,
+      "ontology_rank": null
+    },
+    {
+      "question_id": "551457ed34ca7fc0878c85bc664b135c21059b58",
+      "query": "Which dataset do they use?",
+      "query_concepts": [],
+      "gold_concepts": [],
+      "gold_has_ontology_relation": false,
+      "hybrid_rank": null,
+      "ontology_rank": null
+    },
+    {
+      "question_id": "8d4ac4afbf5b14f412171729ceb5e822afcfa3f4",
+      "query": "Do they build a model to automatically detect demographic, lingustic or psycological dimensons of people?",
+      "query_concepts": [],
+      "gold_concepts": [],
+      "gold_has_ontology_relation": false,
+      "hybrid_rank": null,
+      "ontology_rank": null
+    },
+    {
+      "question_id": "3c93894c4baf49deacc6ed2a14ef5e0f13b7d96f",
+      "query": "Which demographic dimensions of people do they obtain?",
+      "query_concepts": [],
+      "gold_concepts": [],
+      "gold_has_ontology_relation": false,
+      "hybrid_rank": 1,
+      "ontology_rank": 1
+    },
+    {
+      "question_id": "07d15501a599bae7eb4a9ead63e9df3d55b3dc35",
+      "query": "How do they obtain psychological dimensions of people?",
+      "query_concepts": [],
+      "gold_concepts": [],
+      "gold_has_ontology_relation": false,
+      "hybrid_rank": 2,
+      "ontology_rank": 2
+    }
+  ]
+}

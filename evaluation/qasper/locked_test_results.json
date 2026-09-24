@@ -6,6 +6,7 @@
   "concept_links": 55,
   "run_policy": "one-time evaluation after locking validation configuration",
   "configuration_changed_after_test": false,
+  "ontology_comparison_status": "confounded_by_candidate_pool_bug_discovered_during_post_test_analysis",
   "locked_configuration": {
     "primary_method": "hybrid_ontology_rerank",
     "ontology_weight": 0.1,
@@ -49,5 +50,5 @@
     "unchanged": 15,
     "missed_by_both": 14
   },
-  "finding": "The validation improvement did not generalize to the held-out test set. Semantic retrieval performed best, while the locked Ontology re-ranking configuration was slightly below Hybrid. No parameters were changed after observing test results."
+  "finding": "Semantic retrieval performed best among the valid baselines. Post-test analysis found that Ontology branches used a larger candidate pool than Hybrid, so their direct comparison is confounded and must not be treated as a final generalization result. No parameters were tuned on this test split, and it will not be rerun for model selection."
 }

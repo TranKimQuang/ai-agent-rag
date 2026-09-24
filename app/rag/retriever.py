@@ -223,8 +223,12 @@ class InMemoryHybridRetriever:
         return self._search_hybrid(query, limit)
 
     def _search_hybrid(self, query: str, limit: int) -> list[SearchResult]:
-
         candidate_limit = max(limit * 4, 20)
+        return self._rank_hybrid_candidates(query, candidate_limit)[:limit]
+
+    def _rank_hybrid_candidates(
+        self, query: str, candidate_limit: int
+    ) -> list[SearchResult]:
         bm25_results = self.bm25.search(query, candidate_limit)
         semantic_results = self.semantic.search(query, candidate_limit)
 
@@ -240,7 +244,9 @@ class InMemoryHybridRetriever:
                     1.0 / (self.rrf_k + rank)
                 )
 
-        ranked_ids = sorted(fused_scores, key=fused_scores.get, reverse=True)[:limit]
+        ranked_ids = sorted(fused_scores, key=fused_scores.get, reverse=True)[
+            :candidate_limit
+        ]
         return [
             by_id[chunk_id].model_copy(
                 update={
@@ -267,7 +273,8 @@ class InMemoryHybridRetriever:
 
         expansion = self.ontology.expand_query(query)
         retrieval_query = expansion.expanded_query if use_expansion else query
-        candidates = self._search_hybrid(retrieval_query, max(limit * 4, 20))
+        candidate_limit = max(limit * 4, 20)
+        candidates = self._rank_hybrid_candidates(retrieval_query, candidate_limit)
         if not candidates:
             return []
 
