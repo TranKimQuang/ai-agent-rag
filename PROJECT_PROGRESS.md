@@ -132,6 +132,11 @@ trang và đoạn bằng chứng. Nếu tài liệu không có đủ bằng ch�
 - [x] Khóa cấu hình v2: re-ranking only, trọng số 0,05, concept threshold 0,60.
 - [x] Chạy held-out v2 đúng một lần: Hybrid và các biến thể Ontology bằng nhau vì chỉ
   1/72 query nhận diện được concept; không chỉnh tham số sau held-out.
+- [x] Tích hợp Hybrid concept linking (alias + embedding, threshold 0,60) vào ingest,
+  query expansion và ontology re-ranking; dùng chung embedding encoder và mã hóa chunk theo lô.
+- [x] Chạy lại đúng tập development sau tích hợp semantic linking: Ontology re-ranking tăng
+  Recall@5 từ 0,2037 lên 0,2176, MRR@5 từ 0,1648 lên 0,1764 và nDCG@5 từ 0,1576
+  lên 0,1697; query expansion tiếp tục gây query drift.
 - [x] Xây dựng tập dữ liệu thực từ 20 bài QASPER và 75 câu hỏi có gold evidence.
 - [x] Chạy ablation đầu tiên trên 42 câu validation và ghi nhận vocabulary ban đầu chỉ
   tạo 22 concept-link, chưa làm thay đổi kết quả Hybrid.
@@ -161,11 +166,12 @@ PDF
 
 ## 5. Bước tiếp theo ưu tiên
 
-Milestone tiếp theo: Ontology v2 và thực nghiệm retrieval trên dữ liệu thật.
+Milestone tiếp theo: kiểm chứng khả năng khái quát của semantic concept linking và hoàn thiện
+answer generation.
 
-1. Tích hợp semantic/hybrid concept linking vào index và retrieval thực tế; hiện mới chỉ có
-   benchmark riêng còn pipeline retrieval vẫn dựa vào alias.
-2. Tạo development/held-out protocol v3 trước khi đánh giá lại khả năng khái quát.
+1. Tạo development/held-out protocol v3 trước khi đánh giá lại khả năng khái quát; không dùng
+   lại held-out v2 để tiếp tục lựa chọn cấu hình.
+2. Khóa semantic re-ranking trên development và chỉ mở held-out v3 một lần.
 3. Sau retrieval v3, tích hợp LLM và đánh giá Agent/citation.
 
 Chưa ưu tiên trong milestone này: mở rộng giao diện, PostgreSQL, pgvector, OCR và
@@ -189,8 +195,9 @@ framework Agent phức tạp.
 - Nền tảng RAG cơ bản: đã hoàn thành.
 - Hybrid Search: đã hoàn thành.
 - Ontology nền tảng: đã hoàn thành.
-- Ontology-aware retrieval: đã có ablation trên QASPER validation thật; re-ranking có cải thiện
-  bước đầu nhưng expansion cần tiếp tục kiểm soát query drift. Test set vẫn chưa được dùng.
+- Ontology-aware retrieval: semantic concept linking đã tham gia trực tiếp vào pipeline và
+  re-ranking cải thiện development; expansion vẫn gây query drift. Held-out v2 đã được chạy
+  đúng một lần trước thay đổi này và không được tái dùng để chọn mô hình.
 - AI Agent và answer generation: đã có prototype an toàn dùng câu trích xuất; chưa gọi LLM.
 - Mức độ hoàn thành ước lượng của toàn đồ án: khoảng 60%.
 - Đã đủ cho báo cáo tiến độ về Ontology-aware retrieval; chưa phải kết quả thực nghiệm cuối cùng.

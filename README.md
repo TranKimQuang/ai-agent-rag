@@ -146,6 +146,13 @@ When a PDF is uploaded, detected concepts are now attached to each chunk and wri
 in-memory knowledge graph as `Chunk -> mentionsConcept -> Concept` triples. The ingest response
 includes `concept_links`, which reports how many links were created.
 
+The application and benchmark pipeline use hybrid concept linking: exact aliases remain the
+strongest signal, while multilingual sentence embeddings can link paraphrases that do not appear
+in the alias list. Chunk texts are encoded as one batch and share the same embedding encoder as
+semantic retrieval. The current development configuration uses threshold `0.60`, re-ranking
+weight `0.05`, and disables query expansion in the locked retrieval path because expansion caused
+query drift.
+
 A reproducible benchmark runner compares BM25 and Semantic retrieval plus the four ablation
 configurations Hybrid, Hybrid + Expansion, Hybrid + Re-ranking, and Hybrid + both Ontology
 components. It reports Precision@k, Recall@k, MRR, and nDCG@k:
@@ -159,6 +166,11 @@ Summary results are written to `results/retrieval_benchmark.json` and
 `results/ontology_rank_changes.csv`, which directly compares the gold-evidence rank before and
 after Ontology re-ranking. The included dataset is only a development fixture; do not use its
 scores as final thesis evidence.
+
+On the 72-question QASPER-train development split, semantic concept linking raised Ontology
+re-ranking over plain Hybrid at `k=5`: Recall `0.2037 -> 0.2176`, MRR `0.1648 -> 0.1764`, and
+nDCG `0.1576 -> 0.1697`. Expansion variants were worse and remain disabled. These are model
+development results, not final held-out thesis results.
 
 A deterministic real-data subset of official QASPER v0.3 is stored under `evaluation/qasper`.
 It contains 20 papers and 75 evidence-labelled questions split by paper into validation and test.

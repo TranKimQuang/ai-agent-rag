@@ -65,10 +65,16 @@ class OntologyService:
         self,
         ontology_path: Path = DEFAULT_ONTOLOGY_PATH,
         semantic_encoder: SemanticTextEncoder | None = None,
+        linking_method: ConceptLinkingMethod = ConceptLinkingMethod.ALIAS,
+        linking_threshold: float = 0.55,
+        linking_limit: int = 5,
     ) -> None:
         self.graph = Graph()
         self.graph.parse(ontology_path, format="turtle")
         self._semantic_encoder = semantic_encoder
+        self.linking_method = linking_method
+        self.linking_threshold = linking_threshold
+        self.linking_limit = linking_limit
         self._concept_embeddings: NDArray[np.float32] | None = None
         self._concept_aliases = self._load_concept_aliases()
 
@@ -130,53 +136,96 @@ class OntologyService:
         limit: int = 5,
     ) -> list[ConceptLink]:
         """Link text to concepts with an explicit, comparable strategy."""
-        links: dict[URIRef, ConceptLink] = {}
+        return self.link_concepts_batch(
+            [text], method, threshold=threshold, limit=limit
+        )[0]
+
+    def link_concepts_batch(
+        self,
+        texts: list[str],
+        method: ConceptLinkingMethod = ConceptLinkingMethod.ALIAS,
+        *,
+        threshold: float = 0.55,
+        limit: int = 5,
+    ) -> list[list[ConceptLink]]:
+        """Link a batch of texts while encoding semantic inputs only once."""
+        links_by_text: list[dict[URIRef, ConceptLink]] = [{} for _ in texts]
         if method in {ConceptLinkingMethod.ALIAS, ConceptLinkingMethod.HYBRID}:
-            for concept in self.identify_concepts(text):
-                links[concept] = ConceptLink(
-                    concept=local_name(concept),
-                    label=self.preferred_label(concept),
-                    score=1.0,
-                    source=ConceptLinkingMethod.ALIAS,
-                )
+            for links, text in zip(links_by_text, texts, strict=True):
+                for concept in self.identify_concepts(text):
+                    links[concept] = ConceptLink(
+                        concept=local_name(concept),
+                        label=self.preferred_label(concept),
+                        score=1.0,
+                        source=ConceptLinkingMethod.ALIAS,
+                    )
 
         if method in {ConceptLinkingMethod.SEMANTIC, ConceptLinkingMethod.HYBRID}:
-            if self._semantic_encoder is None or not text.strip():
-                return sorted(links.values(), key=lambda link: (-link.score, link.concept))
+            active = [index for index, text in enumerate(texts) if text.strip()]
+            if self._semantic_encoder is not None and active:
+                concepts, documents = self._concept_documents()
+                if self._concept_embeddings is None:
+                    self._concept_embeddings = self._semantic_encoder.encode(documents)
+                text_vectors = self._semantic_encoder.encode([texts[index] for index in active])
+                score_matrix = text_vectors @ self._concept_embeddings.T
+                for row, text_index in enumerate(active):
+                    links = links_by_text[text_index]
+                    for concept_index in np.argsort(score_matrix[row])[::-1]:
+                        score = min(
+                            max(float(score_matrix[row, concept_index]), 0.0), 1.0
+                        )
+                        if score < threshold:
+                            continue
+                        concept = concepts[int(concept_index)]
+                        if concept in links:
+                            continue
+                        links[concept] = ConceptLink(
+                            concept=local_name(concept),
+                            label=self.preferred_label(concept),
+                            score=score,
+                            source=ConceptLinkingMethod.SEMANTIC,
+                        )
 
-            concepts, documents = self._concept_documents()
-            if self._concept_embeddings is None:
-                self._concept_embeddings = self._semantic_encoder.encode(documents)
-            query_vector = self._semantic_encoder.encode([text])[0]
-            scores = self._concept_embeddings @ query_vector
-            ranked = np.argsort(scores)[::-1]
-            for index in ranked:
-                score = min(max(float(scores[index]), 0.0), 1.0)
-                if score < threshold:
-                    continue
-                concept = concepts[int(index)]
-                if concept in links:
-                    continue
-                links[concept] = ConceptLink(
-                    concept=local_name(concept),
-                    label=self.preferred_label(concept),
-                    score=score,
-                    source=ConceptLinkingMethod.SEMANTIC,
-                )
+        return [
+            sorted(links.values(), key=lambda link: (-link.score, link.concept))[:limit]
+            for links in links_by_text
+        ]
 
-        return sorted(links.values(), key=lambda link: (-link.score, link.concept))[:limit]
+    def configured_concepts(self, text: str) -> list[URIRef]:
+        """Link text using the strategy configured for the retrieval pipeline."""
+        links = self.link_concepts(
+            text,
+            self.linking_method,
+            threshold=self.linking_threshold,
+            limit=self.linking_limit,
+        )
+        known_by_name = {local_name(concept): concept for concept in self._concept_aliases}
+        return [known_by_name[link.concept] for link in links if link.concept in known_by_name]
+
+    def configured_concepts_batch(self, texts: list[str]) -> list[list[URIRef]]:
+        """Link configured concepts for many texts using one embedding batch."""
+        linked = self.link_concepts_batch(
+            texts,
+            self.linking_method,
+            threshold=self.linking_threshold,
+            limit=self.linking_limit,
+        )
+        known_by_name = {local_name(concept): concept for concept in self._concept_aliases}
+        return [
+            [known_by_name[link.concept] for link in links if link.concept in known_by_name]
+            for links in linked
+        ]
 
     def index_chunks(self, chunks: list[Chunk]) -> tuple[list[Chunk], int]:
         """Annotate chunks and add document/page/chunk facts to the in-memory graph."""
         annotated: list[Chunk] = []
         concept_links = 0
 
-        for chunk in chunks:
+        linked_chunks = self.configured_concepts_batch([chunk.text for chunk in chunks])
+        for chunk, concepts in zip(chunks, linked_chunks, strict=True):
             document = URIRef(f"{QA}document-{chunk.document_id}")
             section = URIRef(f"{QA}section-{chunk.document_id}-page-{chunk.page}")
             chunk_resource = URIRef(f"{QA}chunk-{chunk.id}")
-            concepts = self.identify_concepts(chunk.text)
-
             self.graph.add((document, RDF.type, QA.Document))
             self.graph.add((document, QA.sourceFile, Literal(chunk.filename)))
             self.graph.add((document, QA.hasSection, section))
@@ -219,7 +268,7 @@ class OntologyService:
         return str(label) if isinstance(label, Literal) else local_name(concept)
 
     def expand_query(self, query: str) -> QueryExpansion:
-        concepts = self.identify_concepts(query)
+        concepts = self.configured_concepts(query)
         terms: set[str] = set()
         for concept in concepts:
             terms.update(str(value) for value in self.graph.objects(concept, SKOS.altLabel))
@@ -238,8 +287,22 @@ class OntologyService:
         )
 
     def score_text(self, query: str, text: str) -> OntologyMatch:
-        query_concepts = self.identify_concepts(query)
-        chunk_concepts = self.identify_concepts(text)
+        query_concepts = self.configured_concepts(query)
+        chunk_concepts = self.configured_concepts(text)
+        return self._score_concepts(query_concepts, chunk_concepts)
+
+    def score_concept_names(
+        self, query_concepts: list[str], chunk_concepts: list[str]
+    ) -> OntologyMatch:
+        known_by_name = {local_name(concept): concept for concept in self._concept_aliases}
+        return self._score_concepts(
+            [known_by_name[name] for name in query_concepts if name in known_by_name],
+            [known_by_name[name] for name in chunk_concepts if name in known_by_name],
+        )
+
+    def _score_concepts(
+        self, query_concepts: list[URIRef], chunk_concepts: list[URIRef]
+    ) -> OntologyMatch:
         if not query_concepts or not chunk_concepts:
             return OntologyMatch(
                 score=0.0,

@@ -3,9 +3,9 @@ import json
 from pathlib import Path
 
 from app.evaluation.benchmark import run_detailed_benchmark
-from app.models import SearchMethod
+from app.models import ConceptLinkingMethod, SearchMethod
 from app.ontology.service import OntologyService
-from app.rag.retriever import InMemoryHybridRetriever
+from app.rag.retriever import InMemoryHybridRetriever, SentenceTransformerEncoder
 from scripts.run_benchmark import load_dataset
 
 
@@ -56,9 +56,17 @@ def main() -> None:
     args = parser.parse_args()
 
     chunks, questions = load_dataset(args.dataset)
-    ontology = OntologyService()
+    encoder = SentenceTransformerEncoder()
+    ontology = OntologyService(
+        semantic_encoder=encoder,
+        linking_method=ConceptLinkingMethod.HYBRID,
+        linking_threshold=0.60,
+    )
     chunks, concept_links = ontology.index_chunks(chunks)
-    retriever = InMemoryHybridRetriever(ontology_service=ontology)
+    retriever = InMemoryHybridRetriever(
+        semantic_encoder=encoder,
+        ontology_service=ontology,
+    )
     retriever.add(chunks)
 
     baseline_summary, baseline_details = run_detailed_benchmark(

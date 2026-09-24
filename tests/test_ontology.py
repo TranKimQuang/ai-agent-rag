@@ -126,6 +126,40 @@ def test_hybrid_concept_linking_keeps_exact_alias_as_strongest_signal() -> None:
     assert links[0].score == 1.0
 
 
+def test_configured_hybrid_linking_is_used_when_indexing_chunks() -> None:
+    service = OntologyService(
+        semantic_encoder=ConceptLinkingEncoder(),
+        linking_method=ConceptLinkingMethod.HYBRID,
+        linking_threshold=0.8,
+    )
+
+    chunks, link_count = service.index_chunks(
+        [
+            Chunk(
+                id="semantic",
+                document_id="doc",
+                filename="paper.pdf",
+                page=1,
+                text="The system retrieves external evidence before producing answers.",
+            )
+        ]
+    )
+
+    assert chunks[0].concepts == ["RetrievalAugmentedGeneration"]
+    assert link_count == 1
+
+
+def test_prelinked_concepts_can_be_scored_without_encoding_text_again() -> None:
+    match = OntologyService().score_concept_names(
+        ["InformationRetrieval"],
+        ["RetrievalAugmentedGeneration"],
+    )
+
+    assert match.score == 0.65
+    assert match.query_concepts == ["InformationRetrieval"]
+    assert match.chunk_concepts == ["RetrievalAugmentedGeneration"]
+
+
 def test_find_relations_answers_sample_competency_question() -> None:
     service = OntologyService()
 

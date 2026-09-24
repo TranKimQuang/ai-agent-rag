@@ -29,7 +29,11 @@ from app.rag.retriever import (
 )
 
 embedding_encoder = SentenceTransformerEncoder()
-ontology = OntologyService(semantic_encoder=embedding_encoder)
+ontology = OntologyService(
+    semantic_encoder=embedding_encoder,
+    linking_method=ConceptLinkingMethod.HYBRID,
+    linking_threshold=0.60,
+)
 app = FastAPI(title="AI Agent + RAG")
 retriever = InMemoryHybridRetriever(
     semantic_encoder=embedding_encoder,

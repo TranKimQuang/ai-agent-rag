@@ -292,9 +292,19 @@ class InMemoryHybridRetriever:
             ]
 
         max_rrf = max(candidate.score for candidate in candidates) or 1.0
+        query_concepts = expansion.query_concepts
         reranked: list[SearchResult] = []
         for candidate in candidates:
-            match = self.ontology.score_text(query, candidate.text)
+            if candidate.chunk_concepts:
+                match = self.ontology.score_concept_names(
+                    query_concepts,
+                    candidate.chunk_concepts,
+                )
+            else:
+                # Raw chunks added directly to the retriever may not have gone
+                # through ontology indexing yet. Keep that supported while the
+                # normal ingestion path reuses its prelinked concepts.
+                match = self.ontology.score_text(query, candidate.text)
             normalized_rrf = candidate.score / max_rrf
             final_score = (
                 (1.0 - self.ontology_weight) * normalized_rrf
