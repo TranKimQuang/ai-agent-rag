@@ -32,7 +32,7 @@ embedding_encoder = SentenceTransformerEncoder()
 ontology = OntologyService(
     semantic_encoder=embedding_encoder,
     linking_method=ConceptLinkingMethod.HYBRID,
-    linking_threshold=0.60,
+    linking_threshold=0.65,
 )
 app = FastAPI(title="AI Agent + RAG")
 retriever = InMemoryHybridRetriever(

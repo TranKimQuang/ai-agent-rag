@@ -149,7 +149,7 @@ includes `concept_links`, which reports how many links were created.
 The application and benchmark pipeline use hybrid concept linking: exact aliases remain the
 strongest signal, while multilingual sentence embeddings can link paraphrases that do not appear
 in the alias list. Chunk texts are encoded as one batch and share the same embedding encoder as
-semantic retrieval. The current development configuration uses threshold `0.60`, re-ranking
+semantic retrieval. The current v3 development configuration uses threshold `0.65`, re-ranking
 weight `0.05`, and disables query expansion in the locked retrieval path because expansion caused
 query drift.
 

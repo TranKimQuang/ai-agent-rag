@@ -1,0 +1,21 @@
+{
+  "protocol": "v3 development after vocabulary extension",
+  "questions": 78,
+  "concept_links": 644,
+  "k": 5,
+  "hybrid": {
+    "recall": 0.29914529914529914,
+    "mrr": 0.23311965811965812,
+    "ndcg": 0.23057518584716263
+  },
+  "hybrid_ontology_rerank": {
+    "recall": 0.31196581196581197,
+    "mrr": 0.23846153846153847,
+    "ndcg": 0.23712590083338325
+  },
+  "hybrid_ontology_expansion": {
+    "recall": 0.26068376068376065,
+    "mrr": 0.17243589743589743,
+    "ndcg": 0.18017048204620936
+  }
+}

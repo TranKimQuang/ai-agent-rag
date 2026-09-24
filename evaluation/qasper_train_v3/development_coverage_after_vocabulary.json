@@ -1,0 +1,8 @@
+{
+  "questions": 78,
+  "query_with_concept": 30,
+  "query_without_concept": 48,
+  "gold_evidence_with_concept": 47,
+  "gold_without_concept": 31,
+  "query_and_gold_with_relation": 18
+}

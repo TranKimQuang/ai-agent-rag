@@ -1,0 +1,14 @@
+{
+  "version": "v3",
+  "selection_split": "qasper_train_v3 development",
+  "development_sha256": "ffd6ffb5afbcf03f4ea7f0c3f4feb4c81faefddf3b646a7f07bbe9fd75f0822a",
+  "heldout_sha256": "2f61aa1b0e97e5dbc26ee798120cb7ffb9e5c7fa618fe025ed2399632d2b12cd",
+  "concept_linking_method": "hybrid",
+  "concept_linking_threshold": 0.65,
+  "retrieval_method": "hybrid_ontology_rerank",
+  "query_expansion": false,
+  "ontology_weight": 0.05,
+  "candidate_pool_rule": "same Hybrid candidate pool for baseline and reranking",
+  "heldout_evaluated": false,
+  "locked_reason": "Best development nDCG@5, then MRR@5 and Recall@5; expansion caused query drift."
+}

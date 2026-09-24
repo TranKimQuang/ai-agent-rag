@@ -370,3 +370,116 @@ qa:SupervisedLearning a qa:Method ;
     skos:prefLabel "supervised learning"@en ;
     skos:altLabel "supervised machine learning"@en ;
     qa:relatedTo qa:MachineLearning .
+
+# Vocabulary extension labelled only from QASPER train development protocol v3.
+qa:OpenInformationExtraction a qa:Task ;
+    skos:prefLabel "open information extraction"@en ;
+    skos:altLabel "OpenIE"@en, "open IE"@en, "OpenIE extraction"@en,
+        "OpenIE extractions"@en ;
+    skos:broader qa:NaturalLanguageProcessing .
+
+qa:EntityLinking a qa:Task ;
+    skos:prefLabel "entity linking"@en ;
+    skos:altLabel "entity disambiguation"@en, "entity linking process"@en ;
+    skos:broader qa:NaturalLanguageProcessing ;
+    qa:relatedTo qa:InformationRetrieval .
+
+qa:MultiHopQuestionAnswering a qa:Task ;
+    skos:prefLabel "multi-hop question answering"@en ;
+    skos:altLabel "multi-hop QA"@en, "multi hop questions"@en,
+        "multi-hop questions"@en ;
+    skos:broader qa:QuestionAnswering .
+
+qa:BidirectionalLanguageModel a qa:Model ;
+    skos:prefLabel "bidirectional language model"@en ;
+    skos:altLabel "bidirectional LM"@en, "bidirectional LMs"@en ;
+    qa:relatedTo qa:LanguageModel, qa:NaturalLanguageProcessing .
+
+qa:MultitaskLearning a qa:Method ;
+    skos:prefLabel "multitask learning"@en ;
+    skos:altLabel "multi-task learning"@en, "multitask learning setup"@en ;
+    qa:relatedTo qa:MachineLearning .
+
+qa:MeanReciprocalRank a qa:Metric ;
+    skos:prefLabel "mean reciprocal rank"@en ;
+    skos:altLabel "MRR"@en, "mean reciprocal ranking"@en ;
+    qa:relatedTo qa:InformationRetrieval .
+
+qa:TopicModeling a qa:Method ;
+    skos:prefLabel "topic modeling"@en ;
+    skos:altLabel "topic modelling"@en, "topic model"@en, "topic models"@en ;
+    qa:relatedTo qa:LatentDirichletAllocation, qa:NaturalLanguageProcessing .
+
+qa:ComputationalSocialScience a qa:ResearchTopic ;
+    skos:prefLabel "computational social science"@en ;
+    skos:altLabel "CSS"@en, "computational social science NLP"@en ;
+    qa:relatedTo qa:NaturalLanguageProcessing, qa:MachineLearning .
+
+qa:MachineReadingComprehension a qa:Task ;
+    skos:prefLabel "machine reading comprehension"@en ;
+    skos:altLabel "reading comprehension"@en, "MS MARCO"@en, "SQuAD"@en ;
+    skos:broader qa:QuestionAnswering .
+
+qa:MemoryNetwork a qa:Model ;
+    skos:prefLabel "memory network"@en ;
+    skos:altLabel "memory networks"@en, "neural memory"@en ;
+    qa:relatedTo qa:QuestionAnswering, qa:MachineLearning .
+
+qa:NeuralNetwork a qa:Model ;
+    skos:prefLabel "neural network"@en ;
+    skos:altLabel "neural networks"@en, "neural network architecture"@en ;
+    qa:relatedTo qa:MachineLearning .
+
+qa:SentimentAnalysis a qa:Task ;
+    skos:prefLabel "sentiment analysis"@en ;
+    skos:altLabel "sentiment classification"@en, "Twitter sentiment classification"@en ;
+    skos:broader qa:NaturalLanguageProcessing .
+
+qa:LanguageModel a qa:Model ;
+    skos:prefLabel "language model"@en ;
+    skos:altLabel "language models"@en, "LM"@en ;
+    qa:relatedTo qa:NaturalLanguageProcessing .
+
+qa:AuthorProfiling a qa:Task ;
+    skos:prefLabel "author profiling"@en ;
+    skos:altLabel "author profile prediction"@en, "PAN author profiling"@en ;
+    skos:broader qa:NaturalLanguageProcessing .
+
+qa:LexicalDiversity a qa:Metric ;
+    skos:prefLabel "lexical diversity"@en ;
+    skos:altLabel "vocabulary diversity"@en, "lexical variation"@en ;
+    qa:relatedTo qa:NaturalLanguageProcessing .
+
+qa:Crowdsourcing a qa:Method ;
+    skos:prefLabel "crowdsourcing"@en ;
+    skos:altLabel "crowd sourcing"@en, "crowdsourcing platform"@en ;
+    qa:relatedTo qa:Dataset .
+
+qa:BeamSearch a qa:Method ;
+    skos:prefLabel "beam search"@en ;
+    skos:altLabel "beam decoding"@en, "beam search decoding"@en ;
+    qa:relatedTo qa:LanguageModel, qa:NeuralMachineTranslation .
+
+qa:TransferLearning a qa:Method ;
+    skos:prefLabel "transfer learning"@en ;
+    skos:altLabel "model transfer"@en, "transferring the model"@en,
+        "transferring"@en ;
+    qa:relatedTo qa:MachineLearning .
+
+qa:MultilingualNaturalLanguageProcessing a qa:ResearchTopic ;
+    skos:prefLabel "multilingual natural language processing"@en ;
+    skos:altLabel "multilingual NLP"@en, "multilingual dataset"@en,
+        "multilingual data"@en ;
+    skos:broader qa:NaturalLanguageProcessing ;
+    qa:relatedTo qa:ParallelCorpus .
+
+qa:RevisionDetection a qa:Task ;
+    skos:prefLabel "revision detection"@en ;
+    skos:altLabel "text revision detection"@en, "Wikipedia revision detection"@en ;
+    skos:broader qa:NaturalLanguageProcessing .
+
+qa:DiscourseAnalysis a qa:ResearchTopic ;
+    skos:prefLabel "discourse analysis"@en ;
+    skos:altLabel "discourse features"@en, "discourse embedding"@en,
+        "discourse embeddings"@en ;
+    qa:relatedTo qa:NaturalLanguageProcessing, qa:WordEmbedding .

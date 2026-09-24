@@ -43,6 +43,27 @@ held-out v3. Expansion remains disabled because it caused query drift. Compact r
 records are stored in `development_retrieval_results.json` and
 `development_coverage_analysis.json`.
 
+## Development vocabulary iteration 1 and locked v3 configuration
+
+Thirty representative development queries were manually labelled, including two generic
+questions that should not be forced into a concept. The vocabulary was extended only from these
+labels with concepts such as Open Information Extraction, Entity Linking, Multi-hop Question
+Answering, Memory Networks, Sentiment Analysis, Beam Search, Transfer Learning, and Discourse
+Analysis.
+
+At threshold `0.65`, Hybrid concept-linking F1 increased from 0.2703 to 0.9153 and exact match
+from 0.1333 to 0.8333. Query coverage increased from 7/78 to 30/78, gold-evidence coverage from
+29/78 to 47/78, and related query/evidence pairs from 3/78 to 18/78.
+
+Retrieval also improved over plain Hybrid at `k=5`:
+
+- Hybrid: Recall 0.2991, MRR 0.2331, nDCG 0.2306.
+- Hybrid + Ontology re-ranking: Recall 0.3120, MRR 0.2385, nDCG 0.2371.
+- Expansion remained harmful and is disabled.
+
+A development-only weight sweep selected `0.05`. The frozen settings are stored in
+`locked_retrieval_config_v3.json`. Held-out v3 has not been evaluated at the time of this lock.
+
 Regenerate from the verified source with:
 
 ```powershell

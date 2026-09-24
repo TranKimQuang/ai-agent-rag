@@ -24,18 +24,15 @@ def evaluate_concept_linking(
         predicted_total = 0
         gold_total = 0
         exact_matches = 0
-        for item in items:
-            text = item["text"]
+        linked_items = service.link_concepts_batch(
+            [item["text"] for item in items],
+            method,
+            threshold=threshold,
+            limit=20,
+        )
+        for item, links in zip(items, linked_items, strict=True):
             gold = set(item["gold_concepts"])
-            predicted = {
-                link.concept
-                for link in service.link_concepts(
-                    text,
-                    method,
-                    threshold=threshold,
-                    limit=20,
-                )
-            }
+            predicted = {link.concept for link in links}
             true_positive += len(predicted.intersection(gold))
             predicted_total += len(predicted)
             gold_total += len(gold)

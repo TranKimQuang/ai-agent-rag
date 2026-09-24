@@ -60,7 +60,7 @@ def main() -> None:
     ontology = OntologyService(
         semantic_encoder=encoder,
         linking_method=ConceptLinkingMethod.HYBRID,
-        linking_threshold=0.60,
+        linking_threshold=0.65,
     )
     chunks, concept_links = ontology.index_chunks(chunks)
     retriever = InMemoryHybridRetriever(
