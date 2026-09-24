@@ -1,0 +1,23 @@
+{
+  "dataset": "QASPER train held-out v2",
+  "papers": 20,
+  "questions": 72,
+  "chunks": 1013,
+  "concept_links": 391,
+  "run_policy": "one-time evaluation after locking configuration v2",
+  "configuration_changed_after_heldout": false,
+  "methods": {
+    "bm25": {"recall@5": 0.3315972222222222, "mrr@5": 0.2011574074074074, "ndcg@5": 0.22474813797470988},
+    "semantic": {"recall@5": 0.16666666666666666, "mrr@5": 0.12152777777777778, "ndcg@5": 0.13080095227299024},
+    "hybrid": {"recall@5": 0.3263888888888889, "mrr@5": 0.21412037037037035, "ndcg@5": 0.22705514586566647},
+    "hybrid_ontology_expansion": {"recall@5": 0.3263888888888889, "mrr@5": 0.21412037037037035, "ndcg@5": 0.22705514586566647},
+    "hybrid_ontology_rerank": {"recall@5": 0.3263888888888889, "mrr@5": 0.21412037037037035, "ndcg@5": 0.22705514586566647},
+    "hybrid_ontology": {"recall@5": 0.3263888888888889, "mrr@5": 0.21412037037037035, "ndcg@5": 0.22705514586566647}
+  },
+  "coverage": {
+    "query_with_concept": 1,
+    "gold_evidence_with_concept": 28,
+    "query_and_gold_with_relation": 1
+  },
+  "finding": "Ontology variants equal Hybrid because only one held-out query matched a local concept. Development-specific aliases did not generalize; semantic concept linking must be integrated into the actual retrieval pipeline rather than evaluated only as a separate benchmark."
+}

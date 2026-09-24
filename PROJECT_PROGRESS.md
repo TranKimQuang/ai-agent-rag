@@ -130,6 +130,8 @@ trang và đoạn bằng chứng. Nếu tài liệu không có đủ bằng ch�
 - [x] Ablation development mới: Hybrid Recall@5 0,2037; re-ranking giữ Recall và tăng
   MRR@5 từ 0,1648 lên 0,1718; expansion gây query drift.
 - [x] Khóa cấu hình v2: re-ranking only, trọng số 0,05, concept threshold 0,60.
+- [x] Chạy held-out v2 đúng một lần: Hybrid và các biến thể Ontology bằng nhau vì chỉ
+  1/72 query nhận diện được concept; không chỉnh tham số sau held-out.
 - [x] Xây dựng tập dữ liệu thực từ 20 bài QASPER và 75 câu hỏi có gold evidence.
 - [x] Chạy ablation đầu tiên trên 42 câu validation và ghi nhận vocabulary ban đầu chỉ
   tạo 22 concept-link, chưa làm thay đổi kết quả Hybrid.
@@ -161,8 +163,10 @@ PDF
 
 Milestone tiếp theo: Ontology v2 và thực nghiệm retrieval trên dữ liệu thật.
 
-1. Chạy cấu hình v2 đúng một lần trên QASPER train held-out 72 câu và không chỉnh lại theo kết quả.
-2. Tổng hợp kết quả retrieval cuối, sau đó tích hợp LLM và đánh giá Agent/citation.
+1. Tích hợp semantic/hybrid concept linking vào index và retrieval thực tế; hiện mới chỉ có
+   benchmark riêng còn pipeline retrieval vẫn dựa vào alias.
+2. Tạo development/held-out protocol v3 trước khi đánh giá lại khả năng khái quát.
+3. Sau retrieval v3, tích hợp LLM và đánh giá Agent/citation.
 
 Chưa ưu tiên trong milestone này: mở rộng giao diện, PostgreSQL, pgvector, OCR và
 framework Agent phức tạp.

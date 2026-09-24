@@ -50,6 +50,20 @@ Recall@5 to 0.1412 and is excluded from the primary configuration. Weight 0.05 w
 the development sweep; it improved one question and lost none. The configuration is frozen in
 `locked_retrieval_config_v2.json`. The held-out split has not been evaluated.
 
+## Held-out v2 result
+
+The frozen v2 configuration was evaluated once on 72 held-out questions. Hybrid and all three
+Ontology variants produced identical metrics: Recall@5 0.3264, MRR@5 0.2141, and nDCG@5
+0.2271. Coverage analysis explains the equality: only 1/72 held-out questions matched a local
+concept, 28/72 gold evidence sets contained a concept, and only 1/72 question/evidence pairs had
+a non-zero Ontology relation.
+
+This is retained as a negative generalization result. Development-specific aliases improved the
+development split but did not transfer to unseen research topics. The next architecture iteration
+must integrate semantic concept linking into retrieval itself; currently it is only evaluated by a
+separate benchmark while retrieval still relies on exact aliases. No v2 parameter was changed
+after observing held-out results.
+
 Regenerate with:
 
 ```powershell
