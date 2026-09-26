@@ -194,18 +194,24 @@ pytest -q
 
 ## Step 6: Agent orchestration and evidence gate
 
-`POST /ask` now coordinates Ontology-aware retrieval, evidence validation, answer generation,
-and citation validation. The first implementation intentionally uses a deterministic extractive
-generator so the control flow can be tested without an API key or network call.
+`POST /ask` now coordinates document-scoped Ontology-aware retrieval, evidence validation,
+answer generation, and citation validation. Its locked retrieval path uses Hybrid + Ontology
+re-ranking without query expansion because development evaluation found expansion query drift.
+The first implementation defaults to a deterministic extractive generator so the control flow
+can be tested without an API key or network call; Ollama is opt-in through `ANSWER_BACKEND`.
 
 ```powershell
 Invoke-RestMethod `
   -Uri "http://127.0.0.1:8000/ask" `
   -Method Post `
   -ContentType "application/json" `
-  -Body '{"question":"QA thuộc lĩnh vực NLP như thế nào?","limit":5}' |
+  -Body '{"question":"QA thuộc lĩnh vực NLP như thế nào?","limit":5,"document_id":"id-returned-by-upload"}' |
   ConvertTo-Json -Depth 6
 ```
+
+`document_id` is optional for general searches, but should be supplied for questions such as
+“the paper” or “their model” when several documents are loaded. This prevents evidence from a
+different paper from being treated as support for the answer.
 
 If evidence is weak, the Agent returns `insufficient_evidence` and does not call the answer
 generator. The next iteration will replace the extractive generator with an LLM provider while

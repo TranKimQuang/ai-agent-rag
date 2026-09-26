@@ -147,7 +147,12 @@ class DocumentQuestionAgent:
         self.evidence_gate = evidence_gate or EvidenceGate()
         self.answer_generator = answer_generator or ExtractiveAnswerGenerator()
 
-    def ask(self, question: str, limit: int = 5) -> AskResponse:
+    def ask(
+        self,
+        question: str,
+        limit: int = 5,
+        document_id: str | None = None,
+    ) -> AskResponse:
         trace = [
             AgentStep(
                 name="receive_question",
@@ -158,13 +163,16 @@ class DocumentQuestionAgent:
         results = self.retriever.search(
             question,
             limit,
-            SearchMethod.HYBRID_ONTOLOGY,
+            SearchMethod.HYBRID_ONTOLOGY_RERANK,
+            document_id,
         )
         trace.append(
             AgentStep(
                 name="ontology_retrieval",
                 status="completed",
-                detail=f"Đã truy hồi {len(results)} đoạn bằng Hybrid + Ontology.",
+                detail=(
+                    f"Đã truy hồi {len(results)} đoạn bằng Hybrid + Ontology re-ranking."
+                ),
             )
         )
 

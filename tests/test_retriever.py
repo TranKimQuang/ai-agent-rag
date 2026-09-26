@@ -155,6 +155,37 @@ def test_hybrid_search_fuses_keyword_and_semantic_ranks() -> None:
     assert results[0].semantic_score is not None
 
 
+def test_search_can_be_scoped_to_one_document() -> None:
+    retriever = InMemoryHybridRetriever(semantic_encoder=FakeEncoder())
+    retriever.add(
+        [
+            Chunk(
+                id="paper-a:1",
+                document_id="paper-a",
+                filename="paper-a.pdf",
+                page=1,
+                text="Python code from the wrong paper.",
+            ),
+            Chunk(
+                id="paper-b:1",
+                document_id="paper-b",
+                filename="paper-b.pdf",
+                page=1,
+                text="Python programming evidence from the selected paper.",
+            ),
+        ]
+    )
+
+    results = retriever.search(
+        "Python code",
+        method=SearchMethod.HYBRID,
+        document_id="paper-b",
+    )
+
+    assert results
+    assert {result.document_id for result in results} == {"paper-b"}
+
+
 class OntologyRerankEncoder:
     """Ranks a distractor first so Ontology can demonstrate re-ranking."""
 

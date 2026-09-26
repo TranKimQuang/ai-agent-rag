@@ -105,6 +105,11 @@ class ConceptLinkingResponse(BaseModel):
 class AskRequest(BaseModel):
     question: str = Field(min_length=2)
     limit: int = Field(default=5, ge=1, le=10)
+    document_id: str | None = Field(
+        default=None,
+        min_length=1,
+        description="Optional document scope for questions about a specific PDF or paper.",
+    )
 
 
 class Citation(BaseModel):

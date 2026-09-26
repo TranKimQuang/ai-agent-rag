@@ -120,3 +120,23 @@ def test_empty_retrieval_never_calls_generator():
     agent = make_agent()
     agent.answer_generator = MustNotRun()
     assert agent.ask("Missing evidence?").status == AgentStatus.INSUFFICIENT_EVIDENCE
+
+
+def test_agent_forwards_document_scope_to_retriever():
+    class ScopedRetriever:
+        def __init__(self):
+            self.document_id = None
+            self.method = None
+
+        def search(self, query, limit, method, document_id):
+            self.document_id = document_id
+            self.method = method
+            return []
+
+    retriever = ScopedRetriever()
+    agent = DocumentQuestionAgent(retriever)
+
+    agent.ask("What does this paper report?", document_id="paper-123")
+
+    assert retriever.document_id == "paper-123"
+    assert retriever.method == SearchMethod.HYBRID_ONTOLOGY_RERANK

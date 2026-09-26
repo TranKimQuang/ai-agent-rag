@@ -1,5 +1,40 @@
 # Local LLM smoke test — 26/09/2026
 
+## End-to-end QASPER development smoke — 27/09/2026
+
+Added `scripts/smoke_qasper_agent.py` to pass real QASPER development text
+through retrieval, Ontology, the evidence gate, Qwen3:4b and server-owned
+citations. The script refuses held-out input and can compare all six retrieval
+variants without calling Ollama. It selects one question per distinct paper so
+the five-case smoke is not dominated by one paper.
+
+The first unscoped run found gold evidence for only 1/5 questions at top 5.
+The Agent answered 4/5, but only one answer cited a gold chunk. Inspection found
+that ambiguous paper-relative questions were retrieving plausible evidence
+from other papers. `document_id` scoping was therefore added to the retrieval
+stack, `/search`, `/ask`, and the Agent.
+
+The scoped retrieval diagnostic at top 5 found 3/5 hits for BM25, 2/5 for
+Semantic, 2/5 for Hybrid, 2/5 for Hybrid + Ontology re-ranking, and only 1/5
+for each expansion variant. For the OpenIE question, expansion moved a gold
+chunk from rank 1 to outside top 5 (rank 8/9 at top 10). This confirmed query
+drift already observed on the larger development benchmark.
+
+The Agent was also still calling expansion + re-ranking despite the documented
+locked path being re-ranking-only. After correcting that inconsistency, the
+same five scoped questions produced 2/5 retrieval hits, three answers and two
+refusals; two answers cited gold chunks. The remaining answer cited a plausible
+same-paper passage outside QASPER gold, showing that concept-driven evidence
+acceptance still needs validation calibration. Mean end-to-end time was 15.322
+seconds, including a 42.117-second first case. Final artifact:
+`results/qasper_agent_smoke_20260926T170515Z.json`.
+
+This tiny development smoke is diagnostic only. Gold citation overlap does not
+prove answer correctness, and a non-gold citation is not automatically false.
+No held-out evaluation was run or used to change configuration. Ruff and all
+75 tests passed; the remaining warning is the existing Starlette/httpx
+deprecation warning.
+
 ## GPU follow-up after NVIDIA driver update
 
 The NVIDIA notebook driver was updated from 457.34 to 617.14 and Windows was

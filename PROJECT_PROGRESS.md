@@ -1,6 +1,32 @@
 # THEO DÕI TIẾN ĐỘ ĐỒ ÁN AI AGENT + RAG
 
-Cập nhật gần nhất: 26/09/2026
+Cập nhật gần nhất: 27/09/2026
+
+### Mới nhất: smoke Agent end-to-end trên QASPER development
+
+- Đã thêm `scripts/smoke_qasper_agent.py` để chạy văn bản QASPER thật qua
+  retrieval -> Ontology -> evidence gate -> Qwen3:4b -> citation. Script chặn
+  tập held-out và có chế độ retrieval-only để chẩn đoán sáu cấu hình.
+- Lần đầu tìm chung 20 paper chỉ có 1/5 câu thấy gold evidence trong top 5;
+  Agent vẫn trả lời 4/5 nhưng chỉ 1 câu dẫn gold. Kết quả này phát hiện nguy cơ
+  lấy bằng chứng đúng chủ đề nhưng sai paper.
+- Đã bổ sung `document_id` tùy chọn cho `/search`, `/ask`, BM25, Semantic,
+  Hybrid và Agent. Câu QASPER nay được tìm trong đúng paper của nó; đây là
+  ngữ cảnh vốn có của QASPER và cũng cần thiết khi ứng dụng chứa nhiều PDF.
+- Chẩn đoán cùng 5 câu cho thấy BM25 hit 3/5, Semantic 2/5, Hybrid 2/5,
+  Hybrid + re-ranking 2/5, trong khi hai nhánh có expansion chỉ hit 1/5 ở top 5.
+  Query expansion làm câu OpenIE từ hạng 1 rơi khỏi top 5.
+- Phát hiện Agent chưa dùng cấu hình đã khóa trong tài liệu: Agent còn gọi cả
+  expansion + re-ranking dù development đã chọn re-ranking-only. Đã đồng bộ
+  Agent sang `hybrid_ontology_rerank`, không đổi trọng số và không dùng held-out.
+- Lần xác nhận cuối trên đúng 5 câu: retrieval hit 2/5; Agent trả lời 3 và từ
+  chối 2; 2/3 câu trả lời dẫn đúng gold evidence. Câu còn lại dùng đoạn cùng
+  paper nhưng ngoài gold, cho thấy evidence gate còn dễ chấp nhận concept mạnh.
+- Log cuối: `results/qasper_agent_smoke_20260926T170515Z.json`. Đây là smoke
+  development rất nhỏ, không phải kết quả luận văn hoặc đánh giá answer correctness.
+- Toàn bộ 75 test passed; Ruff passed. Còn một cảnh báo deprecation từ
+  Starlette/httpx. Bước tiếp theo: hiệu chỉnh evidence gate trên validation và
+  mở rộng đánh giá answer/citation trên mẫu QASPER lớn hơn; chưa chạy lại held-out.
 
 ### Mới nhất: smoke tiếng Việt và xác nhận GPU
 

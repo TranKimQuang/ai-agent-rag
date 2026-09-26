@@ -104,9 +104,13 @@ def search(
     q: str = Query(min_length=2, description="Question or keywords to search for"),
     limit: int = Query(default=5, ge=1, le=20),
     method: SearchMethod = SearchMethod.HYBRID,
+    document_id: str | None = Query(
+        default=None,
+        description="Optional document scope for an ambiguous paper-specific question.",
+    ),
 ) -> SearchResponse:
     try:
-        results = retriever.search(q, limit, method)
+        results = retriever.search(q, limit, method, document_id)
     except SemanticModelError as exc:
         raise HTTPException(
             status_code=503,
@@ -123,7 +127,11 @@ def search(
 @app.post("/ask", response_model=AskResponse)
 def ask(request: AskRequest) -> AskResponse:
     try:
-        return question_agent.ask(request.question, request.limit)
+        return question_agent.ask(
+            request.question,
+            request.limit,
+            request.document_id,
+        )
     except GenerationError as exc:
         raise HTTPException(
             status_code=503,

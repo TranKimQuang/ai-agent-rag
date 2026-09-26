@@ -47,7 +47,9 @@ class InMemoryBM25Retriever:
             self._chunks.extend(chunks)
             self._index = BM25Okapi([tokenize(chunk.text) for chunk in self._chunks])
 
-    def search(self, query: str, limit: int = 5) -> list[SearchResult]:
+    def search(
+        self, query: str, limit: int = 5, document_id: str | None = None
+    ) -> list[SearchResult]:
         tokens = tokenize(query)
         if not tokens or not self._index:
             return []
@@ -61,6 +63,8 @@ class InMemoryBM25Retriever:
                 if len(results) >= limit:
                     break
                 chunk = self._chunks[index]
+                if document_id is not None and chunk.document_id != document_id:
+                    continue
                 if not set(tokens).intersection(tokenize(chunk.text)):
                     continue
                 results.append(
@@ -132,7 +136,9 @@ class InMemorySemanticRetriever:
         if self._embeddings is None and self._chunks:
             self._embeddings = self._encoder.encode([chunk.text for chunk in self._chunks])
 
-    def search(self, query: str, limit: int = 5) -> list[SearchResult]:
+    def search(
+        self, query: str, limit: int = 5, document_id: str | None = None
+    ) -> list[SearchResult]:
         if not query.strip() or not self._chunks:
             return []
 
@@ -146,24 +152,29 @@ class InMemorySemanticRetriever:
                 query_vector = self._encoder.encode([query])[0]
                 self._query_embeddings[query] = query_vector
             scores = self._embeddings @ query_vector
-            ranked = np.argsort(scores)[::-1][:limit]
+            ranked = np.argsort(scores)[::-1]
 
             results: list[SearchResult] = []
             for index in ranked:
+                chunk = self._chunks[index]
+                if document_id is not None and chunk.document_id != document_id:
+                    continue
                 score = min(max(float(scores[index]), 0.0), 1.0)
                 results.append(
                     SearchResult(
-                        chunk_id=self._chunks[index].id,
-                        document_id=self._chunks[index].document_id,
-                        filename=self._chunks[index].filename,
-                        page=self._chunks[index].page,
-                        text=self._chunks[index].text,
+                        chunk_id=chunk.id,
+                        document_id=chunk.document_id,
+                        filename=chunk.filename,
+                        page=chunk.page,
+                        text=chunk.text,
                         method=SearchMethod.SEMANTIC,
                         score=score,
                         semantic_score=score,
-                        chunk_concepts=self._chunks[index].concepts,
+                        chunk_concepts=chunk.concepts,
                     )
                 )
+                if len(results) >= limit:
+                    break
             return results
 
 
@@ -193,11 +204,12 @@ class InMemoryHybridRetriever:
         query: str,
         limit: int = 5,
         method: SearchMethod = SearchMethod.HYBRID,
+        document_id: str | None = None,
     ) -> list[SearchResult]:
         if method == SearchMethod.BM25:
-            return self.bm25.search(query, limit)
+            return self.bm25.search(query, limit, document_id)
         if method == SearchMethod.SEMANTIC:
-            return self.semantic.search(query, limit)
+            return self.semantic.search(query, limit, document_id)
 
         if method == SearchMethod.HYBRID_ONTOLOGY_EXPANSION:
             return self._search_with_ontology(
@@ -206,6 +218,7 @@ class InMemoryHybridRetriever:
                 method=method,
                 use_expansion=True,
                 use_reranking=False,
+                document_id=document_id,
             )
         if method == SearchMethod.HYBRID_ONTOLOGY_RERANK:
             return self._search_with_ontology(
@@ -214,6 +227,7 @@ class InMemoryHybridRetriever:
                 method=method,
                 use_expansion=False,
                 use_reranking=True,
+                document_id=document_id,
             )
         if method == SearchMethod.HYBRID_ONTOLOGY:
             return self._search_with_ontology(
@@ -222,19 +236,25 @@ class InMemoryHybridRetriever:
                 method=method,
                 use_expansion=True,
                 use_reranking=True,
+                document_id=document_id,
             )
 
-        return self._search_hybrid(query, limit)
+        return self._search_hybrid(query, limit, document_id)
 
-    def _search_hybrid(self, query: str, limit: int) -> list[SearchResult]:
+    def _search_hybrid(
+        self, query: str, limit: int, document_id: str | None = None
+    ) -> list[SearchResult]:
         candidate_limit = max(limit * 4, 20)
-        return self._rank_hybrid_candidates(query, candidate_limit)[:limit]
+        return self._rank_hybrid_candidates(query, candidate_limit, document_id)[:limit]
 
     def _rank_hybrid_candidates(
-        self, query: str, candidate_limit: int
+        self,
+        query: str,
+        candidate_limit: int,
+        document_id: str | None = None,
     ) -> list[SearchResult]:
-        bm25_results = self.bm25.search(query, candidate_limit)
-        semantic_results = self.semantic.search(query, candidate_limit)
+        bm25_results = self.bm25.search(query, candidate_limit, document_id)
+        semantic_results = self.semantic.search(query, candidate_limit, document_id)
 
         by_id: dict[str, SearchResult] = {}
         fused_scores: dict[str, float] = {}
@@ -271,14 +291,17 @@ class InMemoryHybridRetriever:
         method: SearchMethod,
         use_expansion: bool,
         use_reranking: bool,
+        document_id: str | None,
     ) -> list[SearchResult]:
         if self.ontology is None:
-            return self._search_hybrid(query, limit)
+            return self._search_hybrid(query, limit, document_id)
 
         expansion = self.ontology.expand_query(query)
         retrieval_query = expansion.expanded_query if use_expansion else query
         candidate_limit = max(limit * 4, 20)
-        candidates = self._rank_hybrid_candidates(retrieval_query, candidate_limit)
+        candidates = self._rank_hybrid_candidates(
+            retrieval_query, candidate_limit, document_id
+        )
         if not candidates:
             return []
 
