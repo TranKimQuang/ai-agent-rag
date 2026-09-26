@@ -1,3 +1,4 @@
+import os
 from pathlib import Path
 from urllib.parse import unquote
 from uuid import uuid4
@@ -6,6 +7,7 @@ from fastapi import Body, FastAPI, Header, HTTPException, Query
 from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
 
+from app.agent.ollama import GenerationError, OllamaAnswerGenerator
 from app.agent.service import DocumentQuestionAgent
 from app.models import (
     AskRequest,
@@ -39,7 +41,17 @@ retriever = InMemoryHybridRetriever(
     semantic_encoder=embedding_encoder,
     ontology_service=ontology,
 )
-question_agent = DocumentQuestionAgent(retriever)
+answer_backend = os.getenv("ANSWER_BACKEND", "extractive")
+if answer_backend not in {"extractive", "ollama"}:
+    raise ValueError("ANSWER_BACKEND must be extractive or ollama")
+question_agent = DocumentQuestionAgent(
+    retriever,
+    answer_generator=(
+        OllamaAnswerGenerator(os.getenv("OLLAMA_MODEL", "qwen3:4b"))
+        if answer_backend == "ollama"
+        else None
+    ),
+)
 static_dir = Path(__file__).parent / "static"
 app.mount("/static", StaticFiles(directory=static_dir), name="static")
 
@@ -112,6 +124,11 @@ def search(
 def ask(request: AskRequest) -> AskResponse:
     try:
         return question_agent.ask(request.question, request.limit)
+    except GenerationError as exc:
+        raise HTTPException(
+            status_code=503,
+            detail="Local LLM unavailable or invalid output. Check Ollama and model.",
+        ) from exc
     except SemanticModelError as exc:
         raise HTTPException(
             status_code=503,

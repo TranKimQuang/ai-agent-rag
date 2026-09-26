@@ -1,6 +1,79 @@
 # THEO DÕI TIẾN ĐỘ ĐỒ ÁN AI AGENT + RAG
 
-Cập nhật gần nhất: 23/09/2026
+Cập nhật gần nhất: 26/09/2026
+
+### Trạng thái mới nhất: citation bằng ID câu nguồn
+
+- Đã đổi output LLM từ quote tự viết sang sentence_id do server cấp trong
+  từng request. Server tự lấy nguyên văn câu và metadata; ID không hợp lệ trả
+  lỗi generation (503), không còn giả thành model từ chối vì thiếu evidence.
+- Chạy lại 10 câu fixed-evidence: trả lời 7/7 câu có đáp án; từ chối 3/3 câu
+  không có đáp án. Hai câu đếm đã trả đúng 20/75. Câu paper còn thừa ý về số câu hỏi.
+- Thời gian trung bình 9,862 giây/câu (5,910–13,665 giây), CPU. Không kết luận
+  tăng tốc chung từ một lần chạy vì có ảnh hưởng cache và độ dài output.
+- 73 test passed; Ruff passed; còn 1 cảnh báo deprecation httpx/Starlette.
+- Log mới results/local_llm_sentence_ids_20260926T161317Z.json; giữ nguyên log cũ.
+- Đây là kết quả smoke development do assistant kiểm tra, không phải chấm độc
+  lập hay benchmark QASPER. ID đúng không chứng minh claim đúng về ngữ nghĩa.
+- Chưa bật Ollama mặc định ở API; chọn ANSWER_BACKEND=ollama khi demo.
+- Bước kế: câu tiếng Việt, nhiều nguồn, nội dung gây nhiễu và đánh giá end-to-end.
+- Các mục bên dưới giữ lịch sử để phân biệt kết quả trước và sau sửa citation.
+
+### Cập nhật 26/09: kiểm tra nguồn của câu trả lời
+
+### Prototype LLM local (26/09)
+
+- Đã thêm OllamaAnswerGenerator, bật bằng ANSWER_BACKEND=ollama; mặc định
+  vẫn extractive. Model thử nghiệm dự kiến qwen3:4b, localhost:11434.
+- Model trả JSON gồm các claim và quote/chunk_id. Server kiểm tra ID, quote
+  nguyên văn và tự lấy metadata nguồn. Đây CHƯA phải kiểm tra entailment.
+- Lỗi dịch vụ/JSON/timeout trả 503; từ chối vì evidence trả insufficient_evidence.
+- 70 test passed, Ruff passed (1 cảnh báo httpx/Starlette); test LLM dùng mock,
+  KHÔNG coi đây là 70 câu hỏi được model thật trả lời đúng.
+- Đã có scripts/smoke_local_llm.py: 10 câu synthetic với fixed evidence,
+  bao gồm 3 câu unanswerable; chỉ smoke generation, không phải benchmark QASPER.
+- Lần chạy trước khi cài runtime thất bại kết nối; sau cài đã chạy đủ 10 câu thật.
+- Đã cài Ollama 0.34.4 và tải qwen3:4b (digest đầu 359d7dd4bcda,
+  khoảng 2,5 GB). Không cập nhật driver NVIDIA.
+- Đã chạy smoke test model thật. Ollama ps xác nhận 100% CPU, context 4096,
+  kích thước bộ nhớ model do Ollama báo khoảng 3,2 GB (không phải peak RAM máy).
+- Hướng dẫn bật/tắt, chạy thử và giới hạn: LOCAL_LLM.md.
+- Kết quả: trả lời 5/7 câu có đáp án, từ chối cả 3 câu không có đáp án.
+  Hai câu đếm paper/question bị từ chối dù có evidence; chưa phân biệt model
+  từ chối hay quote validator loại vì chưa lưu raw output/rejection reason.
+- Thời gian trung bình 14,021 giây/câu, khoảng 3,778–30,708 giây. Assistant
+  đọc 5 câu đã trả thấy có nguồn hỗ trợ, nhưng 2 câu thừa ý. Chưa chấm độc lập.
+- Báo cáo lần chạy đầu: LOCAL_LLM_SMOKE_REPORT.md. Đây không phải kết quả
+  QASPER hoặc đánh giá end-to-end; chưa đo answer/citation precision-recall chính thức.
+- Bước kế: bổ sung logging lý do từ chối, kiểm tra 2 câu đếm, rồi thêm câu tiếng
+  Việt/nhiều nguồn trước khi chạy end-to-end trên tài liệu thực.
+
+### Chẩn đoán hai câu đếm (26/09)
+
+- Đã chạy scripts/diagnose_local_llm.py, giữ nguyên prompt và validator.
+- Model trả đúng 20 paper và 75 question, nhưng cả hai lần tự thêm `2: ` vào
+  quote. Bộ kiểm tra nguồn từ chối vì không khớp nguyên văn (quote_not_verbatim).
+- Lần chạy lại này không phải model chủ động từ chối. Không có raw output
+  lần đầu để khẳng định chính xác chuỗi quote của lần đầu.
+- Đã lưu request/response riêng trong results/local_llm_diagnostic_20260926T160840Z.json.
+  Script chẩn đoán qua Ruff; không đổi logic ứng dụng hoặc benchmark.
+- Hướng sửa đề xuất: model chọn ID câu nguồn, server tự lấy quote nguyên văn;
+  vẫn cần kiểm tra nguồn có hỗ trợ claim hay không, không nới lỏng validator.
+
+### Kiểm tra nguồn trích xuất (đã thực hiện trước prototype)
+
+- Agent trích xuất chỉ trả citation của chunk thực sự chứa câu trả lời, thay vì
+  tự gắn ba kết quả retrieval đầu tiên. Quote giữ nguyên câu trả lời, không cắt
+  phần đầu chunk khiến mất đoạn bằng chứng.
+- Câu trả lời rỗng hoặc không khớp nguyên văn evidence bị từ chối.
+- Đây là kiểm tra nguồn cho chế độ trích xuất, KHÔNG chứng minh câu trả lời đúng
+  về ngữ nghĩa, và chưa phải validator cho câu trả lời diễn đạt lại bằng LLM.
+- Chưa gọi LLM thật, chưa chọn provider/model hoặc cấu hình chi phí API.
+- Kiểm tra ngày 26/09: 62 test passed, Ruff passed. Còn 1 cảnh báo deprecation
+  httpx/Starlette. Lần đầu có 2 lỗi quyền thư mục Temp; chạy lại với basetemp
+  riêng trong dự án đã qua toàn bộ test. Không chạy lại benchmark held-out.
+- Giữ nguyên benchmark và các held-out đã chạy. Các mốc bên dưới là lịch sử;
+  ghi chú “chưa chạy held-out” ở mốc cũ không mô tả trạng thái hiện tại.
 
 ## 1. Tên đề tài
 
@@ -99,7 +172,7 @@ trang và đoạn bằng chứng. Nếu tài liệu không có đủ bằng ch�
 - [~] AI Agent đã có prototype điều phối và evidence gate, nhưng tạm dừng mở rộng cho
   tới khi retrieval trên dữ liệu thực ổn định.
 
-### Chưa hoàn thành
+### Lịch sử thực nghiệm tiếp theo và các hạng mục còn lại
 
 - [x] Ánh xạ bước đầu một phần Computer Science Ontology (CSO); sẽ mở rộng có chọn lọc
   khi vocabulary dữ liệu QASPER được xác định.
@@ -164,8 +237,9 @@ trang và đoạn bằng chứng. Nếu tài liệu không có đủ bằng ch�
 - [x] Chạy lại ablation: Ontology re-ranking tăng Recall@5 từ 0,3016 lên 0,3254 và
   MRR@5 từ 0,2381 lên 0,2560; query expansion còn gây query drift nhẹ.
 - [ ] Đánh giá độ chính xác của câu trả lời và citation.
-- [ ] Tích hợp LLM để tạo câu trả lời dựa trên evidence.
-- [~] Đã có AI Agent điều phối retrieval, Ontology, evidence và citation; chưa tích hợp LLM.
+- [~] Đã tích hợp adapter và chạy 10 câu với LLM local thật; chưa đánh giá end-to-end.
+- [~] AI Agent có nhánh Ollama, evidence gate và kiểm tra quote/ID; chưa đánh giá
+  độ đúng ngữ nghĩa của claim/citation.
 - [x] Thêm cơ chế từ chối khi không đủ evidence.
 - [x] Tạo giao diện demo.
 - [ ] Chuyển sang PostgreSQL + pgvector sau khi pipeline Ontology chạy đúng.
@@ -217,7 +291,9 @@ framework Agent phức tạp.
 - Ontology-aware retrieval: semantic concept linking đã tham gia trực tiếp vào pipeline và
   re-ranking cải thiện development; expansion vẫn gây query drift. Held-out v2 đã được chạy
   đúng một lần trước thay đổi này và không được tái dùng để chọn mô hình.
-- AI Agent và answer generation: đã có prototype an toàn dùng câu trích xuất; chưa gọi LLM.
+- AI Agent và answer generation: có chế độ trích xuất và adapter Ollama opt-in;
+  đã chạy model thật trên CPU với 10 câu đơn giản, chưa chứng minh chất lượng
+  sinh câu trả lời trên dữ liệu thực.
 - Mức độ hoàn thành ước lượng của toàn đồ án: khoảng 60%.
 - Đã đủ cho báo cáo tiến độ về Ontology-aware retrieval; chưa phải kết quả thực nghiệm cuối cùng.
 - Bộ PDF 16 trang/24 câu chỉ dùng để debug pipeline, không dùng làm kết quả chính thức.

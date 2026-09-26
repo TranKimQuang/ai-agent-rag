@@ -2,6 +2,7 @@ import re
 from dataclasses import dataclass
 from typing import Protocol
 
+from app.agent.ollama import LocalAnswer
 from app.models import (
     AgentStatus,
     AgentStep,
@@ -12,9 +13,7 @@ from app.models import (
 )
 from app.rag.retriever import InMemoryHybridRetriever, tokenize
 
-INSUFFICIENT_EVIDENCE_MESSAGE = (
-    "Tài liệu hiện chưa cung cấp đủ thông tin để trả lời câu hỏi này."
-)
+INSUFFICIENT_EVIDENCE_MESSAGE = "Tài liệu hiện chưa cung cấp đủ thông tin để trả lời câu hỏi này."
 _SENTENCE_BOUNDARY = re.compile(r"(?<=[.!?])\s+")
 _PAGE_HEADER = re.compile(
     r"^Tài liệu kiểm thử AI Agent \+ RAG \+ Ontology Trang \d+\s+\d+\.\s*",
@@ -47,7 +46,7 @@ _EVIDENCE_STOPWORDS = {
 
 
 class AnswerGenerator(Protocol):
-    def generate(self, question: str, evidence: list[SearchResult]) -> str: ...
+    def generate(self, question: str, evidence: list[SearchResult]) -> str | LocalAnswer: ...
 
 
 @dataclass(frozen=True)
@@ -72,9 +71,7 @@ class EvidenceGate:
         ontology_score = top.ontology_score or 0.0
         semantic_score = top.semantic_score or 0.0
         bm25_score = top.bm25_score or 0.0
-        question_terms = {
-            term for term in tokenize(question) if term not in _EVIDENCE_STOPWORDS
-        }
+        question_terms = {term for term in tokenize(question) if term not in _EVIDENCE_STOPWORDS}
         evidence_terms = set(tokenize(" ".join(item.text for item in results[:3])))
         lexical_overlap = len(question_terms.intersection(evidence_terms))
 
@@ -199,19 +196,70 @@ class DocumentQuestionAgent:
                 trace=trace,
             )
 
-        answer = self.answer_generator.generate(question, results)
-        citations = [self._citation(result) for result in results[:3]]
+        generated = self.answer_generator.generate(question, results)
+        # Source integrity is checked here; semantic entailment still needs evaluation.
+        is_llm = isinstance(generated, LocalAnswer)
+        if is_llm:
+            answer, citations = generated.validated_answer(results[:3])
+        else:
+            answer, citations = generated.strip(), []
+        supporting = next(
+            (result for result in results[:3] if answer and answer in result.text),
+            None,
+        )
+        if not answer or (not is_llm and supporting is None):
+            trace.extend(
+                [
+                    AgentStep(
+                        name="answer_generation",
+                        status="completed",
+                        detail=(
+                            "LLM không đưa ra câu trả lời có bằng chứng."
+                            if is_llm
+                            else "Đã nhận câu trả lời từ bộ sinh trích xuất."
+                        ),
+                    ),
+                    AgentStep(
+                        name="citation_validation",
+                        status="rejected",
+                        detail=(
+                            "Không có claim để trích dẫn."
+                            if is_llm
+                            else "Câu trả lời không có đoạn trích khớp trong evidence."
+                        ),
+                    ),
+                ]
+            )
+            return AskResponse(
+                question=question,
+                status=AgentStatus.INSUFFICIENT_EVIDENCE,
+                answer=INSUFFICIENT_EVIDENCE_MESSAGE,
+                confidence=0.0,
+                query_concepts=first.query_concepts if first else [],
+                expanded_query=first.expanded_query if first else None,
+                trace=trace,
+            )
+        if not is_llm:
+            citations = [self._citation(supporting, answer)]
         trace.extend(
             [
                 AgentStep(
                     name="answer_generation",
                     status="completed",
-                    detail="Đã tạo câu trả lời trích xuất từ evidence được chấp nhận.",
+                    detail=(
+                        "Đã sinh câu trả lời bằng LLM local."
+                        if is_llm
+                        else "Đã tạo câu trả lời trích xuất từ evidence được chấp nhận."
+                    ),
                 ),
                 AgentStep(
                     name="citation_validation",
                     status="completed",
-                    detail=f"Đã kiểm tra {len(citations)} citation theo metadata chunk.",
+                    detail=(
+                        "Đã kiểm tra ID và quote; chưa xác minh ngữ nghĩa từng claim."
+                        if is_llm
+                        else "Đã đối chiếu nguyên văn câu trả lời với chunk được trích dẫn."
+                    ),
                 ),
             ]
         )
@@ -227,10 +275,7 @@ class DocumentQuestionAgent:
         )
 
     @staticmethod
-    def _citation(result: SearchResult) -> Citation:
-        quote = result.text.strip()
-        if len(quote) > 320:
-            quote = f"{quote[:317].rstrip()}..."
+    def _citation(result: SearchResult, quote: str) -> Citation:
         return Citation(
             filename=result.filename,
             page=result.page,
