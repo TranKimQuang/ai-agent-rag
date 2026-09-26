@@ -12,9 +12,10 @@ ollama pull qwen3:4b
 ollama list
 ```
 
-Máy được kiểm tra có khoảng 16 GB RAM, GTX 1650 4 GB, driver 457.34.
-Driver này thấp hơn yêu cầu hiện hành của Ollama để dùng NVIDIA.
-Chưa tự cập nhật driver. Nếu thử CPU, cần đo thời gian trước khi dùng demo.
+Máy được kiểm tra có khoảng 16 GB RAM và GTX 1650 4 GB. Driver NVIDIA đã
+được cập nhật từ 457.34 lên 617.14. Ollama nhận CUDA 13.4 và có thể offload
+một phần model Qwen3:4b lên GPU (lần kiểm tra gần nhất: khoảng 67% GPU,
+33% CPU). Lần gọi đầu sau khi nạp model vẫn có thể chậm hơn đáng kể.
 Không cài CUDA toolkit hoặc PostgreSQL cho bước này.
 
 ## Smoke test độc lập
@@ -57,6 +58,7 @@ Mất kết nối, JSON lỗi, timeout hoặc sinh dở: HTTP 503; không giả 
 - Evidence gate hiện là heuristic chưa hiệu chỉnh cho answerability; confidence
   trong API không phải xác suất câu trả lời đúng.
 - Prompt yêu cầu bỏ qua chỉ dẫn trong tài liệu không bảo đảm chống prompt injection.
-- Đã chạy smoke model thật trên CPU; xem LOCAL_LLM_SMOKE_REPORT.md.
-  Chưa đánh giá LLM trên QASPER hoặc đo peak RAM/VRAM.
+- Đã chạy smoke model thật trên cả CPU và GPU; xem LOCAL_LLM_SMOKE_REPORT.md.
+  Đây mới là phép thử nhỏ trên evidence tổng hợp, chưa phải đánh giá LLM trên
+  QASPER và chưa đo peak RAM/VRAM.
 - Không thay đổi hay chạy lại retrieval held-out để lựa chọn model.

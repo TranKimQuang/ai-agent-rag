@@ -1,5 +1,36 @@
 # Local LLM smoke test — 26/09/2026
 
+## GPU follow-up after NVIDIA driver update
+
+The NVIDIA notebook driver was updated from 457.34 to 617.14 and Windows was
+restarted. Ollama 0.34.4 then detected CUDA 13.4, a GTX 1650 (compute 7.5),
+and 4 GB VRAM. Vulkan discovery timed out, but the CUDA backend succeeded.
+Qwen3:4b offloaded 26/37 layers and Ollama reported 67% GPU / 33% CPU, using
+about 2.3 GB VRAM. The first cold request took 82.964 seconds because discovery,
+model loading and cache setup dominated it. A second warm 8-token request took
+0.692 seconds and reported 22.51 generated tokens/second.
+
+The Vietnamese four-case smoke was rerun while the model was warm and saved as
+results/local_llm_vi_20260926T164438Z.json. The outcomes stayed 3/3 supported
+answers and 1/1 evidence refusal. Times were 5.797, 6.548, 6.671 and 2.428
+seconds, mean 5.361 seconds. This is about 2.92x faster than the earlier CPU
+run's 15.650-second mean for the same four prompts. It is a single synthetic
+development comparison, not a general performance claim or QASPER evaluation.
+
+## Vietnamese multi-source development check
+
+Artifact: results/local_llm_vi_20260926T162132Z.json, qwen3:4b on CPU.
+Three synthetic evidence chunks were supplied directly to the generator.
+On assistant inspection, 3/3 answerable questions had supported answers and
+1/1 unanswerable question was refused. The BM25/Semantic comparison correctly
+cited two different sources. Other cases covered 20 papers/75 questions,
+RAM persistence/OCR, and refusal to invent an accuracy percentage.
+Times: 20.809, 17.502, 17.910, 6.379 seconds; mean 15.650 seconds.
+This is not independent human scoring, a retrieval/evidence-gate test, or a
+QASPER benchmark. No held-out configuration was changed. The first attempt
+failed while printing Vietnamese through Windows cp1252; console output now
+uses JSON Unicode escapes, while the saved JSON preserves UTF-8 Vietnamese.
+
 ## Follow-up: server-owned sentence references
 
 Implemented request-local sentence IDs and server-side quote reconstruction.

@@ -2,6 +2,29 @@
 
 Cập nhật gần nhất: 26/09/2026
 
+### Mới nhất: smoke tiếng Việt và xác nhận GPU
+
+- Qwen3:4b trả lời đúng 3/3 câu có đáp án theo kiểm tra của assistant;
+  từ chối 1/1 câu thiếu bằng chứng. Câu so sánh BM25/Semantic dẫn đúng hai nguồn.
+- Log: results/local_llm_vi_20260926T162132Z.json. Trung bình 15,650 giây/câu,
+  chạy CPU. Đây chỉ là 4 câu dữ liệu tổng hợp, đưa evidence trực tiếp vào LLM;
+  chưa phải kiểm thử retrieval/evidence gate end-to-end hay đánh giá QASPER.
+- Đã sửa lỗi xuất tiếng Việt trên terminal Windows cp1252 trong script thử.
+- Đã cập nhật driver notebook NVIDIA cho GTX 1650 4GB từ 457.34 lên 617.14;
+  bộ cài kết thúc thành công và không tự khởi động lại Windows.
+- Sau khi khởi động lại Windows, Ollama nhận CUDA 13.4 và GTX 1650 (compute 7.5).
+  Vulkan discovery bị watchdog timeout nhưng CUDA hoạt động. Qwen3:4b offload
+  26/37 lớp, Ollama báo 67% GPU / 33% CPU và dùng khoảng 2,3 GB VRAM.
+- Cold start đầu tiên mất 82,964 giây do GPU discovery, nạp model và tạo cache;
+  lượt ngắn tiếp theo khi model đã nóng mất 0,692 giây, đạt 22,51 token/giây.
+- Chạy lại 4 câu tiếng Việt trên GPU: 3/3 câu có đáp án đúng nguồn và 1/1 câu
+  thiếu bằng chứng được từ chối; thời gian 5,797 / 6,548 / 6,671 / 2,428 giây,
+  trung bình 5,361 giây/câu. Log: results/local_llm_vi_20260926T164438Z.json.
+- So với đúng smoke CPU trước đó (15,650 giây/câu), lần GPU này nhanh khoảng
+  2,92 lần sau khi warm. Đây không phải benchmark tổng quát hay đánh giá QASPER.
+- Không thay đổi cấu hình retrieval đã khóa.
+
+
 ### Trạng thái mới nhất: citation bằng ID câu nguồn
 
 - Đã đổi output LLM từ quote tự viết sang sentence_id do server cấp trong
