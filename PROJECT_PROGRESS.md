@@ -2,6 +2,24 @@
 
 Cập nhật gần nhất: 27/09/2026
 
+### Mới nhất: thí nghiệm cross-encoder reranker trên QASPER development
+
+- Chẩn đoán 8 retrieval miss cho thấy 7 câu vẫn có gold evidence trong top 20;
+  vấn đề chính là xếp hạng chứ không phải mất chunk hay lỗi đọc dữ liệu.
+- Đã thêm thí nghiệm rerank 20 ứng viên Hybrid + Ontology bằng
+  `cross-encoder/ms-marco-MiniLM-L6-v2`, giữ nguyên các baseline cũ.
+- Trên cùng 20 câu answerable development, Recall@5 tăng từ 0,600 (12/20)
+  lên 0,850 (17/20), MRR tăng từ 0,424 lên 0,566; candidate recall@20 là 0,950.
+- Reranker chạy CPU vì PyTorch trong `.venv` là bản CPU-only; Ollama vẫn dùng
+  GPU độc lập. Chưa cần cài lại PyTorch CUDA cho model nhỏ này.
+- Không mở hoặc chạy held-out. Đây là kết quả chọn hướng trên development,
+  chưa phải kết quả cuối và chưa tự động thay thế phương pháp của Agent.
+- Báo cáo: `CROSS_ENCODER_RERANKER.md`; log cục bộ:
+  `results/qasper_cross_encoder_reranker.json`.
+- 85 test passed; Ruff passed; còn một cảnh báo deprecation Starlette/httpx.
+- Bước kế tiếp: tích hợp reranker thành một phương pháp riêng để giữ ablation,
+  rồi đánh giá ảnh hưởng end-to-end tới Answer-F1 và citation.
+
 ### Mới nhất: phân tích lỗi và cải thiện câu trả lời trực tiếp
 
 - Đã thêm công cụ phân tích 22 case baseline thành các nhóm: 8 retrieval miss,

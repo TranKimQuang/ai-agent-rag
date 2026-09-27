@@ -1,5 +1,5 @@
 from app.models import SearchMethod, SearchResult
-from scripts.analyze_qasper_answer_errors import classify_case
+from scripts.analyze_qasper_answer_errors import classify_case, find_gold_rank
 
 
 def result(chunk_id: str) -> SearchResult:
@@ -53,3 +53,10 @@ def test_error_analysis_recognizes_correct_unanswerable_refusal() -> None:
 
     assert category == "correct_unanswerable_refusal"
     assert rank is None
+
+
+def test_find_gold_rank_returns_first_matching_result() -> None:
+    retrieved = [result("other"), result("gold-2"), result("gold-1")]
+
+    assert find_gold_rank(retrieved, {"gold-1", "gold-2"}) == 2
+    assert find_gold_rank(retrieved, {"missing"}) is None

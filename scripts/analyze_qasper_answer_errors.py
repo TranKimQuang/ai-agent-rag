@@ -9,6 +9,28 @@ from app.models import Chunk, ConceptLinkingMethod, SearchMethod, SearchResult
 from app.ontology.service import OntologyService
 from app.rag.retriever import InMemoryHybridRetriever, SentenceTransformerEncoder
 
+DIAGNOSTIC_METHODS = [
+    SearchMethod.BM25,
+    SearchMethod.SEMANTIC,
+    SearchMethod.HYBRID,
+    SearchMethod.HYBRID_ONTOLOGY_EXPANSION,
+    SearchMethod.HYBRID_ONTOLOGY_RERANK,
+    SearchMethod.HYBRID_ONTOLOGY,
+]
+
+
+def find_gold_rank(
+    retrieved: list[SearchResult], gold_ids: set[str]
+) -> int | None:
+    return next(
+        (
+            rank
+            for rank, result in enumerate(retrieved, start=1)
+            if result.chunk_id in gold_ids
+        ),
+        None,
+    )
+
 
 def classify_case(
     row: dict[str, object], retrieved: list[SearchResult]
@@ -23,14 +45,7 @@ def classify_case(
         for reference in row["references"]
         for chunk_id in reference["evidence_chunk_ids"]
     }
-    gold_rank = next(
-        (
-            rank
-            for rank, result in enumerate(retrieved, start=1)
-            if result.chunk_id in gold_ids
-        ),
-        None,
-    )
+    gold_rank = find_gold_rank(retrieved, gold_ids)
     answered = row["agent_status"] == "answered"
     if gold_rank is None:
         return (
@@ -62,6 +77,12 @@ def main() -> None:
     parser.add_argument(
         "--output", type=Path, default=Path("results/qasper_answer_error_analysis.json")
     )
+    parser.add_argument(
+        "--diagnostic-limit",
+        type=int,
+        default=20,
+        help="Maximum rank inspected for each retrieval method.",
+    )
     args = parser.parse_args()
     run = json.loads(args.input.read_text(encoding="utf-8"))
     dataset = json.loads(args.dataset.read_text(encoding="utf-8"))
@@ -85,13 +106,26 @@ def main() -> None:
     details = []
     categories: Counter[str] = Counter()
     for row in run["cases"]:
-        retrieved = retriever.search(
-            str(row["question"]),
-            5,
-            SearchMethod.HYBRID_ONTOLOGY_RERANK,
-            str(row["paper_id"]),
-        )
+        gold_ids = {
+            str(chunk_id)
+            for reference in row["references"]
+            for chunk_id in reference["evidence_chunk_ids"]
+        }
+        by_method = {
+            method.value: retriever.search(
+                str(row["question"]),
+                args.diagnostic_limit,
+                method,
+                str(row["paper_id"]),
+            )
+            for method in DIAGNOSTIC_METHODS
+        }
+        retrieved = by_method[SearchMethod.HYBRID_ONTOLOGY_RERANK.value][:5]
         category, gold_rank = classify_case(row, retrieved)
+        diagnostic_ranks = {
+            method: find_gold_rank(results, gold_ids)
+            for method, results in by_method.items()
+        }
         categories[category] += 1
         details.append(
             {
@@ -102,6 +136,7 @@ def main() -> None:
                 "agent_status": row["agent_status"],
                 "category": category,
                 "gold_rank": gold_rank,
+                "gold_ranks_by_method": diagnostic_ranks,
                 "answer_f1": row["answer_f1"],
                 "evidence_f1": row["evidence_f1"],
                 "retrieved_chunk_ids": [result.chunk_id for result in retrieved],
@@ -117,6 +152,7 @@ def main() -> None:
         "details": details,
         "notes": {
             "model_context": "top 3 of the top-5 retrieval results",
+            "diagnostic_limit": args.diagnostic_limit,
             "success_threshold": "gold citation overlap and Answer-F1 >= 0.5",
             "warning": "QASPER gold evidence can be incomplete; categories are diagnostic proxies.",
         },
