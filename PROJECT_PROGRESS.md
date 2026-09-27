@@ -2,6 +2,29 @@
 
 Cập nhật gần nhất: 27/09/2026
 
+### Mới nhất: baseline Answer-F1/Citation trên QASPER thật
+
+- Đã tải lại QASPER train/dev v0.3 chính thức và xác minh SHA-256 khớp
+  `a28fdf...b5a`; đủ 20/20 paper development hiện tại, không dùng held-out.
+- Đã thêm bộ đọc reference answer theo evaluator chính thức: extractive,
+  abstractive, boolean và unanswerable; tính Answer-F1 token và Evidence-F1.
+- Đã thêm `scripts/evaluate_qasper_answers.py`, chạy toàn luồng document-scoped
+  retrieval -> Ontology re-ranking -> evidence gate -> Qwen3:4b -> citation.
+- Mẫu gồm 20 câu answerable từ 20 paper khác nhau. Trong chính 20 paper này chỉ
+  có 2 câu mà mọi annotation đều là unanswerable, nên thực tế chạy 22 thay vì
+  25 câu; Agent từ chối đúng 2/2 câu unanswerable tự nhiên.
+- Trên 20 câu answerable: Answer-F1 0,246; Evidence-F1 0,358; citation precision
+  0,300; citation recall 0,375; Agent trả lời 15 và từ chối 5.
+- Toàn bộ 22 câu: Answer-F1 0,315; Evidence-F1 0,417; không có generation error;
+  trung bình 13,081 giây/câu, cold case đầu 67,313 giây.
+- Đây là baseline development, không phải điểm luận văn/held-out. Boolean answer
+  còn dài dòng thay vì trả lời trực tiếp Yes/No; retrieval/citation vẫn là nút thắt.
+- Báo cáo: `QASPER_ANSWER_EVALUATION.md`; log chi tiết cục bộ:
+  `results/qasper_answer_evaluation_20260927T115655Z.json`.
+- 79 test passed; Ruff passed; còn một cảnh báo deprecation Starlette/httpx.
+- Bước kế tiếp: error analysis theo bốn nhóm retrieval miss, gate rejection,
+  answer error, citation error; sau đó sửa direct-answer format trên development.
+
 ### Mới nhất: hiệu chỉnh Evidence Gate trên QASPER development
 
 - Đã thêm cấu hình ngưỡng cho `EvidenceGate` và công cụ

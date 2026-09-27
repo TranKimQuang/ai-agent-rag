@@ -221,3 +221,13 @@ Evidence-gate thresholds are selected only from paper-separated QASPER developme
 calibration includes deterministic wrong-paper negatives and an internal verification half;
 it does not use held-out data. See `EVIDENCE_GATE_CALIBRATION.md` for metrics, limitations and
 the reproduction command. The local Qwen3:4b generator is documented in `LOCAL_LLM.md`.
+
+The first answer-generation baseline on official QASPER references is documented in
+`QASPER_ANSWER_EVALUATION.md`. Its runner calculates normalized Answer-F1, Evidence-F1 and
+citation precision/recall for answerable and naturally unanswerable development questions:
+
+```powershell
+.\.venv\Scripts\python.exe -m scripts.evaluate_qasper_answers `
+  --source C:\path\to\qasper-train-v0.3.json `
+  --answerable 20 --unanswerable 5
+```

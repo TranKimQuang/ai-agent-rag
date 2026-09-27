@@ -1,4 +1,10 @@
 from app.evaluation.qasper import build_split, convert_qasper_paper, select_qasper_papers
+from app.evaluation.qasper_answers import (
+    answer_text,
+    evidence_f1,
+    question_references,
+    token_f1,
+)
 from scripts.prepare_qasper_parquet_subset import parquet_row_to_original
 
 
@@ -22,6 +28,9 @@ def sample_paper() -> dict[str, object]:
                     {
                         "answer": {
                             "unanswerable": False,
+                            "extractive_spans": ["QASPER"],
+                            "free_form_answer": "",
+                            "yes_no": None,
                             "evidence": ["We evaluate the model on QASPER."],
                         }
                     }
@@ -30,7 +39,17 @@ def sample_paper() -> dict[str, object]:
             {
                 "question": "What is not reported?",
                 "question_id": "q2",
-                "answers": [{"answer": {"unanswerable": True, "evidence": []}}],
+                "answers": [
+                    {
+                        "answer": {
+                            "unanswerable": True,
+                            "extractive_spans": [],
+                            "free_form_answer": "",
+                            "yes_no": None,
+                            "evidence": [],
+                        }
+                    }
+                ],
             },
         ],
     }
@@ -99,3 +118,30 @@ def test_parquet_row_is_converted_to_original_qasper_shape() -> None:
 
     assert paper_id == "paper-a"
     assert converted.questions[0]["relevant_chunk_ids"] == ["qasper:paper-a:s0:p0"]
+
+
+def test_qasper_answer_helpers_match_answer_and_evidence() -> None:
+    paper = sample_paper()
+    qa = paper["qas"][0]
+
+    references = question_references("1234.5678", paper, qa)
+
+    assert references[0].answer == "QASPER"
+    assert references[0].answer_type == "extractive"
+    assert references[0].evidence_chunk_ids == ["qasper:1234.5678:s0:p0"]
+    assert token_f1("The QASPER.", "QASPER") == 1.0
+    assert evidence_f1(["a", "b"], ["b", "c"]) == 0.5
+
+
+def test_qasper_answer_types_follow_official_priority() -> None:
+    assert answer_text({"unanswerable": True}) == ("Unanswerable", "none")
+    assert answer_text({"extractive_spans": ["one", "two"]}) == (
+        "one, two",
+        "extractive",
+    )
+    assert answer_text({"free_form_answer": "summary"}) == (
+        "summary",
+        "abstractive",
+    )
+    assert answer_text({"yes_no": True}) == ("Yes", "boolean")
+    assert answer_text({"yes_no": False}) == ("No", "boolean")
