@@ -94,3 +94,23 @@ evidence-gate rejections remain separate problems.
 
 Detailed local artifact:
 `results/qasper_answer_evaluation_20260927T120906Z.json`.
+
+## Full direct-answer and cross-encoder comparison
+
+The full 22-question development sample was run with the revised prompt under
+both the existing retrieval method and the optional cross-encoder method.
+Keeping the prompt fixed isolates the retrieval change.
+
+| Answerable metric | Existing retrieval | Cross-encoder |
+|---|---:|---:|
+| Answer-F1 | **0.349** | 0.292 |
+| Evidence-F1 | 0.425 | **0.450** |
+| Citation precision | 0.400 | **0.425** |
+| Citation recall | 0.375 | **0.425** |
+| Answered | **16/20** | 15/20 |
+
+Both correctly refused 2/2 strict unanswerable questions. Although the
+cross-encoder increased retrieval Recall@5 from 0.600 to 0.850 in the separate
+retrieval experiment, it did not increase end-to-end Answer-F1 and added about
+2.9 seconds per case. It therefore remains an optional ablation method rather
+than the Agent default.

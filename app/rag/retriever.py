@@ -87,6 +87,12 @@ class TextEncoder(Protocol):
     def encode(self, texts: list[str]) -> NDArray[np.float32]: ...
 
 
+class ResultReranker(Protocol):
+    def rerank(
+        self, query: str, candidates: list[SearchResult]
+    ) -> list[SearchResult]: ...
+
+
 class SentenceTransformerEncoder:
     """Loads the multilingual embedding model only when semantic search is first used."""
 
@@ -186,12 +192,14 @@ class InMemoryHybridRetriever:
         *,
         semantic_encoder: TextEncoder | None = None,
         ontology_service: OntologyService | None = None,
+        cross_encoder_reranker: ResultReranker | None = None,
         rrf_k: int = 60,
         ontology_weight: float = 0.05,
     ) -> None:
         self.bm25 = InMemoryBM25Retriever()
         self.semantic = InMemorySemanticRetriever(semantic_encoder)
         self.ontology = ontology_service
+        self.cross_encoder_reranker = cross_encoder_reranker
         self.rrf_k = rrf_k
         self.ontology_weight = ontology_weight
 
@@ -238,6 +246,23 @@ class InMemoryHybridRetriever:
                 use_reranking=True,
                 document_id=document_id,
             )
+        if method == SearchMethod.HYBRID_ONTOLOGY_CROSS_ENCODER:
+            if self.cross_encoder_reranker is None:
+                raise SemanticModelError("Cross-encoder reranker is not configured")
+            candidate_limit = max(limit * 4, 20)
+            candidates = self._search_with_ontology(
+                query,
+                candidate_limit,
+                method=SearchMethod.HYBRID_ONTOLOGY_RERANK,
+                use_expansion=False,
+                use_reranking=True,
+                document_id=document_id,
+            )
+            reranked = self.cross_encoder_reranker.rerank(query, candidates)
+            return [
+                result.model_copy(update={"method": method})
+                for result in reranked[:limit]
+            ]
 
         return self._search_hybrid(query, limit, document_id)
 

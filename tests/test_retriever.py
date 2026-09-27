@@ -319,3 +319,40 @@ def test_ontology_reranking_without_concepts_preserves_hybrid_ranking(
     assert [result.chunk_id for result in reranked] == [
         result.chunk_id for result in hybrid
     ]
+
+
+def test_cross_encoder_is_a_separate_retrieval_method() -> None:
+    class ReverseReranker:
+        def rerank(self, query, candidates):
+            assert query == "programming"
+            return list(reversed(candidates))
+
+    retriever = InMemoryHybridRetriever(
+        semantic_encoder=FakeEncoder(),
+        ontology_service=OntologyService(),
+        cross_encoder_reranker=ReverseReranker(),
+    )
+    retriever.add(
+        [
+            Chunk(
+                id=str(index),
+                document_id="doc",
+                filename="paper.pdf",
+                page=index,
+                text=f"Python programming passage {index}",
+            )
+            for index in range(1, 5)
+        ]
+    )
+
+    results = retriever.search(
+        "programming",
+        limit=2,
+        method=SearchMethod.HYBRID_ONTOLOGY_CROSS_ENCODER,
+    )
+
+    assert len(results) == 2
+    assert all(
+        result.method == SearchMethod.HYBRID_ONTOLOGY_CROSS_ENCODER
+        for result in results
+    )

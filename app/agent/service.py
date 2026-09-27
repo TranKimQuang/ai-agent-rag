@@ -168,10 +168,12 @@ class DocumentQuestionAgent:
         *,
         evidence_gate: EvidenceGate | None = None,
         answer_generator: AnswerGenerator | None = None,
+        retrieval_method: SearchMethod = SearchMethod.HYBRID_ONTOLOGY_RERANK,
     ) -> None:
         self.retriever = retriever
         self.evidence_gate = evidence_gate or EvidenceGate()
         self.answer_generator = answer_generator or ExtractiveAnswerGenerator()
+        self.retrieval_method = retrieval_method
 
     def ask(
         self,
@@ -189,7 +191,7 @@ class DocumentQuestionAgent:
         results = self.retriever.search(
             question,
             limit,
-            SearchMethod.HYBRID_ONTOLOGY_RERANK,
+            self.retrieval_method,
             document_id,
         )
         trace.append(
@@ -197,7 +199,7 @@ class DocumentQuestionAgent:
                 name="ontology_retrieval",
                 status="completed",
                 detail=(
-                    f"Đã truy hồi {len(results)} đoạn bằng Hybrid + Ontology re-ranking."
+                    f"Đã truy hồi {len(results)} đoạn bằng {self.retrieval_method.value}."
                 ),
             )
         )

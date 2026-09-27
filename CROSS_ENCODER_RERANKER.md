@@ -39,4 +39,32 @@ integrate the reranker as a separate optional retrieval method, preserve the
 existing methods for ablation, and measure its effect on end-to-end answers
 before designing a fresh evaluation protocol.
 
+## End-to-end Agent comparison
+
+The reranker was then integrated as the separate method
+`hybrid_ontology_cross_encoder`. Both configurations used the same revised
+direct-answer prompt on the same 20 answerable and two strict unanswerable
+development questions.
+
+| Answerable metric | Existing retrieval | Cross-encoder |
+|---|---:|---:|
+| Answer-F1 | **0.349** | 0.292 |
+| Evidence-F1 | 0.425 | **0.450** |
+| Citation precision | 0.400 | **0.425** |
+| Citation recall | 0.375 | **0.425** |
+| Questions answered | **16/20** | 15/20 |
+| Mean time, all 22 cases | **9.738 s** | 12.642 s |
+
+Both configurations correctly refused 2/2 strict unanswerable questions and
+had no generation errors. The cross-encoder improved retrieval, evidence and
+citation metrics, but this did not translate into higher Answer-F1 or coverage.
+Changing the top evidence can alter both evidence-gate decisions and the text
+seen by the generator. Therefore the existing method remains the Agent default;
+the cross-encoder remains available for ablation and further development.
+
 Detailed local artifact: `results/qasper_cross_encoder_reranker.json`.
+
+End-to-end local artifacts:
+
+- Existing retrieval: `results/qasper_answer_evaluation_20260927T123628Z.json`.
+- Cross-encoder: `results/qasper_answer_evaluation_20260927T123139Z.json`.

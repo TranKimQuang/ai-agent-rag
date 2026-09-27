@@ -16,8 +16,9 @@ from app.evaluation.qasper_answers import (
     question_references,
     token_f1,
 )
-from app.models import AgentStatus, Chunk, ConceptLinkingMethod
+from app.models import AgentStatus, Chunk, ConceptLinkingMethod, SearchMethod
 from app.ontology.service import OntologyService
+from app.rag.reranker import SentenceTransformerCrossEncoderReranker
 from app.rag.retriever import InMemoryHybridRetriever, SentenceTransformerEncoder
 
 DEFAULT_RETRIEVAL_DATASET = Path(
@@ -78,6 +79,19 @@ def main() -> None:
         help="Run only a specific development question ID; may be repeated.",
     )
     parser.add_argument("--model", default="qwen3:4b")
+    parser.add_argument(
+        "--retrieval-method",
+        type=SearchMethod,
+        choices=[
+            SearchMethod.HYBRID_ONTOLOGY_RERANK,
+            SearchMethod.HYBRID_ONTOLOGY_CROSS_ENCODER,
+        ],
+        default=SearchMethod.HYBRID_ONTOLOGY_RERANK,
+    )
+    parser.add_argument(
+        "--reranker-model", default="cross-encoder/ms-marco-MiniLM-L6-v2"
+    )
+    parser.add_argument("--reranker-device", default="cpu")
     parser.add_argument("--output-dir", type=Path, default=Path("results"))
     args = parser.parse_args()
     if args.answerable < 1 or args.unanswerable < 1:
@@ -156,11 +170,21 @@ def main() -> None:
     retriever = InMemoryHybridRetriever(
         semantic_encoder=encoder,
         ontology_service=ontology,
+        cross_encoder_reranker=(
+            SentenceTransformerCrossEncoderReranker(
+                args.reranker_model,
+                device=args.reranker_device,
+            )
+            if args.retrieval_method
+            == SearchMethod.HYBRID_ONTOLOGY_CROSS_ENCODER
+            else None
+        ),
     )
     retriever.add(chunks)
     agent = DocumentQuestionAgent(
         retriever,
         answer_generator=OllamaAnswerGenerator(args.model),
+        retrieval_method=args.retrieval_method,
     )
 
     qa_lookup = {
@@ -305,6 +329,13 @@ def main() -> None:
             "retrieval_dataset": str(args.retrieval_dataset),
             "split": split_name,
             "model": args.model,
+            "retrieval_method": args.retrieval_method.value,
+            "reranker_model": (
+                args.reranker_model
+                if args.retrieval_method
+                == SearchMethod.HYBRID_ONTOLOGY_CROSS_ENCODER
+                else None
+            ),
             "selection": "one question per distinct paper first",
             "concept_links": concept_links,
             "created_at": datetime.now(UTC).isoformat(),

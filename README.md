@@ -231,3 +231,19 @@ citation precision/recall for answerable and naturally unanswerable development 
   --source C:\path\to\qasper-train-v0.3.json `
   --answerable 20 --unanswerable 5
 ```
+
+An optional second-stage cross-encoder is available as the separate search
+method `hybrid_ontology_cross_encoder`. It reranks 20 Hybrid + Ontology
+candidates before returning the requested top results. The Agent deliberately
+keeps `hybrid_ontology_rerank` as its default because development evaluation
+improved retrieval and citation metrics but not end-to-end Answer-F1. To run an
+explicit ablation:
+
+```powershell
+$env:AGENT_RETRIEVAL_METHOD = "hybrid_ontology_cross_encoder"
+$env:RERANKER_DEVICE = "cpu"
+python -m uvicorn app.main:app --reload
+```
+
+See `CROSS_ENCODER_RERANKER.md` for the fair same-prompt comparison and its
+limitations.

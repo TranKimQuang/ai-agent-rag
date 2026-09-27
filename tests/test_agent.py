@@ -147,6 +147,26 @@ def test_agent_forwards_document_scope_to_retriever():
     assert retriever.method == SearchMethod.HYBRID_ONTOLOGY_RERANK
 
 
+def test_agent_accepts_a_separate_retrieval_method():
+    class RecordingRetriever:
+        def __init__(self):
+            self.method = None
+
+        def search(self, query, limit, method, document_id):
+            self.method = method
+            return []
+
+    retriever = RecordingRetriever()
+    agent = DocumentQuestionAgent(
+        retriever,
+        retrieval_method=SearchMethod.HYBRID_ONTOLOGY_CROSS_ENCODER,
+    )
+
+    agent.ask("What does this paper report?")
+
+    assert retriever.method == SearchMethod.HYBRID_ONTOLOGY_CROSS_ENCODER
+
+
 def test_evidence_gate_can_require_lexical_support_for_ontology_match():
     result = SearchResult(
         chunk_id="paper:1",

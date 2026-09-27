@@ -10,6 +10,7 @@ class SearchMethod(str, Enum):
     HYBRID_ONTOLOGY_EXPANSION = "hybrid_ontology_expansion"
     HYBRID_ONTOLOGY_RERANK = "hybrid_ontology_rerank"
     HYBRID_ONTOLOGY = "hybrid_ontology"
+    HYBRID_ONTOLOGY_CROSS_ENCODER = "hybrid_ontology_cross_encoder"
 
 
 class AgentStatus(str, Enum):

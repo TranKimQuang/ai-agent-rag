@@ -13,12 +13,20 @@ Cập nhật gần nhất: 27/09/2026
 - Reranker chạy CPU vì PyTorch trong `.venv` là bản CPU-only; Ollama vẫn dùng
   GPU độc lập. Chưa cần cài lại PyTorch CUDA cho model nhỏ này.
 - Không mở hoặc chạy held-out. Đây là kết quả chọn hướng trên development,
-  chưa phải kết quả cuối và chưa tự động thay thế phương pháp của Agent.
+  chưa phải kết quả cuối.
+- Đã tích hợp thành phương pháp riêng `hybrid_ontology_cross_encoder`, giữ
+  phương pháp cũ và mặc định Agent để phục vụ ablation.
+- Đối chứng end-to-end cùng prompt mới: cross-encoder tăng Evidence-F1 từ
+  0,425 lên 0,450 và citation P/R từ 0,400/0,375 lên 0,425/0,425, nhưng
+  Answer-F1 giảm từ 0,349 xuống 0,292, số câu trả lời giảm 16 xuống 15 và
+  thời gian tăng từ 9,738 lên 12,642 giây/câu.
+- Vì retrieval tốt hơn chưa chuyển thành answer tốt hơn, Agent vẫn dùng
+  `hybrid_ontology_rerank` mặc định; cross-encoder chỉ là tùy chọn thí nghiệm.
 - Báo cáo: `CROSS_ENCODER_RERANKER.md`; log cục bộ:
   `results/qasper_cross_encoder_reranker.json`.
-- 85 test passed; Ruff passed; còn một cảnh báo deprecation Starlette/httpx.
-- Bước kế tiếp: tích hợp reranker thành một phương pháp riêng để giữ ablation,
-  rồi đánh giá ảnh hưởng end-to-end tới Answer-F1 và citation.
+- 89 test passed; Ruff passed; còn một cảnh báo deprecation Starlette/httpx.
+- Bước kế tiếp: phân tích sự lệch giữa retrieval metric và answer metric,
+  đặc biệt evidence gate và lựa chọn top 3 đưa vào LLM; chưa đổi mặc định.
 
 ### Mới nhất: phân tích lỗi và cải thiện câu trả lời trực tiếp
 

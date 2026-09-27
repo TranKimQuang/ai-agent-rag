@@ -24,6 +24,10 @@ from app.models import (
 from app.ontology.service import OntologyService
 from app.rag.chunking import chunk_pages
 from app.rag.pdf_reader import PdfReadError, extract_pdf_pages
+from app.rag.reranker import (
+    CrossEncoderModelError,
+    SentenceTransformerCrossEncoderReranker,
+)
 from app.rag.retriever import (
     InMemoryHybridRetriever,
     SemanticModelError,
@@ -40,10 +44,20 @@ app = FastAPI(title="AI Agent + RAG")
 retriever = InMemoryHybridRetriever(
     semantic_encoder=embedding_encoder,
     ontology_service=ontology,
+    cross_encoder_reranker=SentenceTransformerCrossEncoderReranker(
+        os.getenv("RERANKER_MODEL", "cross-encoder/ms-marco-MiniLM-L6-v2"),
+        device=os.getenv("RERANKER_DEVICE", "cpu"),
+    ),
 )
 answer_backend = os.getenv("ANSWER_BACKEND", "extractive")
 if answer_backend not in {"extractive", "ollama"}:
     raise ValueError("ANSWER_BACKEND must be extractive or ollama")
+agent_retrieval_method = SearchMethod(
+    os.getenv(
+        "AGENT_RETRIEVAL_METHOD",
+        SearchMethod.HYBRID_ONTOLOGY_RERANK.value,
+    )
+)
 question_agent = DocumentQuestionAgent(
     retriever,
     answer_generator=(
@@ -51,6 +65,7 @@ question_agent = DocumentQuestionAgent(
         if answer_backend == "ollama"
         else None
     ),
+    retrieval_method=agent_retrieval_method,
 )
 static_dir = Path(__file__).parent / "static"
 app.mount("/static", StaticFiles(directory=static_dir), name="static")
@@ -111,7 +126,7 @@ def search(
 ) -> SearchResponse:
     try:
         results = retriever.search(q, limit, method, document_id)
-    except SemanticModelError as exc:
+    except (SemanticModelError, CrossEncoderModelError) as exc:
         raise HTTPException(
             status_code=503,
             detail="Embedding model is unavailable. Check the model download and try again.",
@@ -137,7 +152,7 @@ def ask(request: AskRequest) -> AskResponse:
             status_code=503,
             detail="Local LLM unavailable or invalid output. Check Ollama and model.",
         ) from exc
-    except SemanticModelError as exc:
+    except (SemanticModelError, CrossEncoderModelError) as exc:
         raise HTTPException(
             status_code=503,
             detail="Embedding model is unavailable. Check the model download and try again.",
