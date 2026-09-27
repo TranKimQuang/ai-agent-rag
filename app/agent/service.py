@@ -56,8 +56,23 @@ class EvidenceDecision:
     reason: str
 
 
+@dataclass(frozen=True)
+class EvidenceGateConfig:
+    # Selected on the first half of QASPER development papers and verified on
+    # the second half. Held-out data is intentionally not used here.
+    ontology_threshold: float = 0.80
+    ontology_min_overlap: int = 0
+    semantic_threshold: float = 0.55
+    semantic_min_overlap: int = 2
+    combined_semantic_threshold: float = 0.40
+    combined_min_overlap: int = 3
+
+
 class EvidenceGate:
     """Rejects weak retrieval results before any answer generator is called."""
+
+    def __init__(self, config: EvidenceGateConfig | None = None) -> None:
+        self.config = config or EvidenceGateConfig()
 
     def evaluate(
         self,
@@ -75,7 +90,11 @@ class EvidenceGate:
         evidence_terms = set(tokenize(" ".join(item.text for item in results[:3])))
         lexical_overlap = len(question_terms.intersection(evidence_terms))
 
-        if top.query_concepts and ontology_score >= 0.65:
+        if (
+            top.query_concepts
+            and ontology_score >= self.config.ontology_threshold
+            and lexical_overlap >= self.config.ontology_min_overlap
+        ):
             confidence = min(1.0, 0.55 + (0.45 * ontology_score))
             return EvidenceDecision(
                 True,
@@ -83,14 +102,21 @@ class EvidenceGate:
                 "Bằng chứng có concept khớp hoặc liên quan trong Ontology.",
             )
 
-        if semantic_score >= 0.55 and lexical_overlap >= 2:
+        if (
+            semantic_score >= self.config.semantic_threshold
+            and lexical_overlap >= self.config.semantic_min_overlap
+        ):
             return EvidenceDecision(
                 True,
                 min(1.0, semantic_score),
                 "Bằng chứng có độ tương đồng ngữ nghĩa cao.",
             )
 
-        if bm25_score > 0 and semantic_score >= 0.30 and lexical_overlap >= 2:
+        if (
+            bm25_score > 0
+            and semantic_score >= self.config.combined_semantic_threshold
+            and lexical_overlap >= self.config.combined_min_overlap
+        ):
             confidence = min(1.0, 0.5 + (semantic_score * 0.4))
             return EvidenceDecision(
                 True,

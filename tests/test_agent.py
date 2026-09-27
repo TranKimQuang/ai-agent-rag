@@ -1,7 +1,12 @@
 import numpy as np
 import pytest
 
-from app.agent.service import INSUFFICIENT_EVIDENCE_MESSAGE, DocumentQuestionAgent
+from app.agent.service import (
+    INSUFFICIENT_EVIDENCE_MESSAGE,
+    DocumentQuestionAgent,
+    EvidenceGate,
+    EvidenceGateConfig,
+)
 from app.models import AgentStatus, Chunk, SearchMethod, SearchResult
 from app.ontology.service import OntologyService
 from app.rag.retriever import InMemoryHybridRetriever
@@ -140,3 +145,31 @@ def test_agent_forwards_document_scope_to_retriever():
 
     assert retriever.document_id == "paper-123"
     assert retriever.method == SearchMethod.HYBRID_ONTOLOGY_RERANK
+
+
+def test_evidence_gate_can_require_lexical_support_for_ontology_match():
+    result = SearchResult(
+        chunk_id="paper:1",
+        document_id="paper",
+        filename="paper.pdf",
+        page=1,
+        text="This passage discusses an unrelated experiment.",
+        method=SearchMethod.HYBRID_ONTOLOGY_RERANK,
+        score=1.0,
+        ontology_score=1.0,
+        query_concepts=["QuestionAnswering"],
+    )
+    gate = EvidenceGate(EvidenceGateConfig(ontology_min_overlap=2))
+
+    decision = gate.evaluate("How does question answering use evidence?", [result])
+
+    assert decision.accepted is False
+
+
+def test_default_evidence_gate_uses_development_selected_thresholds():
+    config = EvidenceGate().config
+
+    assert config.ontology_threshold == 0.80
+    assert config.semantic_threshold == 0.55
+    assert config.combined_semantic_threshold == 0.40
+    assert config.combined_min_overlap == 3

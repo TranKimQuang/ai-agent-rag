@@ -214,5 +214,10 @@ Invoke-RestMethod `
 different paper from being treated as support for the answer.
 
 If evidence is weak, the Agent returns `insufficient_evidence` and does not call the answer
-generator. The next iteration will replace the extractive generator with an LLM provider while
-keeping the same evidence gate, citations, and orchestration trace.
+generator. The default extractive generator and the opt-in Ollama generator share the same
+evidence gate, citations, and orchestration trace.
+
+Evidence-gate thresholds are selected only from paper-separated QASPER development data. The
+calibration includes deterministic wrong-paper negatives and an internal verification half;
+it does not use held-out data. See `EVIDENCE_GATE_CALIBRATION.md` for metrics, limitations and
+the reproduction command. The local Qwen3:4b generator is documented in `LOCAL_LLM.md`.

@@ -2,6 +2,26 @@
 
 Cập nhật gần nhất: 27/09/2026
 
+### Mới nhất: hiệu chỉnh Evidence Gate trên QASPER development
+
+- Đã thêm cấu hình ngưỡng cho `EvidenceGate` và công cụ
+  `scripts/calibrate_evidence_gate.py`; công cụ từ chối chạy trên held-out.
+- Chia 20 paper development thành 10 paper chọn ngưỡng và 10 paper xác minh
+  nội bộ. Một case được xem là có evidence khi gold QASPER nằm trong top 3 mà
+  LLM nhận; ghép câu hỏi với paper kế tiếp để tạo case thiếu bằng chứng tổng hợp.
+- Đã so 576 cấu hình. Trên 68 case xác minh, balanced accuracy tăng từ 0,549
+  lên 0,657; specificity tăng từ 0,275 lên 0,490; recall giữ nguyên 0,824;
+  false positive giảm từ 37 xuống 26 và false negative giữ nguyên 3.
+- Ngưỡng được khóa: Ontology 0,80; Semantic 0,55 với overlap 2; nhánh kết hợp
+  BM25 + Semantic dùng Semantic 0,40 với overlap 3.
+- Đây là proxy development có negative sai-paper tổng hợp; precision mới 0,350,
+  chưa đủ coi answerability đã giải quyết. Chưa dùng hoặc chạy lại held-out.
+- Báo cáo: `EVIDENCE_GATE_CALIBRATION.md`; log chi tiết cục bộ:
+  `results/evidence_gate_calibration.json`.
+- 77 test passed; Ruff passed; còn một cảnh báo deprecation Starlette/httpx.
+- Bước kế tiếp: đánh giá thủ công answer/citation trên mẫu QASPER lớn hơn và
+  bổ sung câu unanswerable tự nhiên trước khi cân nhắc chạy held-out cuối cùng.
+
 ### Mới nhất: smoke Agent end-to-end trên QASPER development
 
 - Đã thêm `scripts/smoke_qasper_agent.py` để chạy văn bản QASPER thật qua
