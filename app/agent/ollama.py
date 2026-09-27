@@ -99,7 +99,11 @@ class OllamaAnswerGenerator:
                         "Return JSON with answerable and claims. Each claim needs sources "
                         "with an exact sentence_id selected from evidence. "
                         "Do not write quotes or invent IDs. Include only claims needed "
-                        "to answer the question, not unrelated background. "
+                        "to answer the question, not unrelated background. Start with the "
+                        "direct answer, not an explanation. For a yes/no question, the first "
+                        "claim must begin exactly Yes or No. For a requested number, name, "
+                        "task, metric or list, state that value or list first. Prefer one "
+                        "concise claim; use more only when distinct evidence is necessary. "
                         "Do not use outside knowledge. If evidence is insufficient return "
                         '{"answerable":false,"claims":[]}. Use at most 3 concise claims.'
                     ),

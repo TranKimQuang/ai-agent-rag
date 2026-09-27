@@ -71,6 +71,12 @@ def main() -> None:
     )
     parser.add_argument("--answerable", type=int, default=20)
     parser.add_argument("--unanswerable", type=int, default=5)
+    parser.add_argument(
+        "--question-id",
+        action="append",
+        default=[],
+        help="Run only a specific development question ID; may be repeated.",
+    )
     parser.add_argument("--model", default="qwen3:4b")
     parser.add_argument("--output-dir", type=Path, default=Path("results"))
     args = parser.parse_args()
@@ -112,12 +118,32 @@ def main() -> None:
     selected_unanswerable = select_distinct_papers(
         unanswerable_candidates, args.unanswerable
     )
-    selected = [
-        {**item, "expected_kind": "answerable"} for item in selected_answerable
-    ] + [
+    all_answerable = [
+        {**item, "expected_kind": "answerable"} for item in answerable_candidates
+    ]
+    all_unanswerable = [
         {**item, "expected_kind": "unanswerable"}
         for item in selected_unanswerable
     ]
+    if args.question_id:
+        candidates_by_id = {
+            str(item["id"]): item
+            for item in [
+                *all_answerable,
+                *[
+                    {**item, "expected_kind": "unanswerable"}
+                    for item in unanswerable_candidates
+                ],
+            ]
+        }
+        missing = [value for value in args.question_id if value not in candidates_by_id]
+        if missing:
+            raise ValueError(f"Unknown development question IDs: {missing}")
+        selected = [candidates_by_id[value] for value in args.question_id]
+    else:
+        selected = [
+            {**item, "expected_kind": "answerable"} for item in selected_answerable
+        ] + all_unanswerable
 
     encoder = SentenceTransformerEncoder()
     ontology = OntologyService(

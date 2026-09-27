@@ -35,6 +35,10 @@ def test_local_generation_uses_structured_local_request():
         assert body["stream"] is False
         assert body["think"] is False
         assert body["format"]["type"] == "object"
+        system_prompt = body["messages"][0]["content"]
+        assert "Start with the direct answer" in system_prompt
+        assert "begin exactly Yes or No" in system_prompt
+        assert "Prefer one concise claim" in system_prompt
         return httpx.Response(
             200, json={"done": True, "message": {"content": json.dumps(output())}}
         )

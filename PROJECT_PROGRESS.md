@@ -2,6 +2,28 @@
 
 Cập nhật gần nhất: 27/09/2026
 
+### Mới nhất: phân tích lỗi và cải thiện câu trả lời trực tiếp
+
+- Đã thêm công cụ phân tích 22 case baseline thành các nhóm: 8 retrieval miss,
+  7 lỗi nội dung/định dạng câu trả lời, 2 lỗi do chỉ đưa top 3 vào LLM, 1 lần
+  evidence gate từ chối sai, 2 câu thành công và 2 lần từ chối đúng câu
+  unanswerable.
+- Đã bổ sung chế độ chọn `question_id` để chỉ chạy lại case development cần
+  kiểm tra, không mở hoặc dùng held-out.
+- Prompt Qwen3:4b nay yêu cầu trả lời trực tiếp trước: câu boolean bắt đầu bằng
+  `Yes`/`No`; câu hỏi số, tên, task, metric hoặc danh sách nêu giá trị trước.
+- Chạy lại đúng 7 case lỗi định dạng: Answer-F1 tăng từ 0,201 lên 0,563;
+  Evidence-F1 tăng từ 0,690 lên 0,881; citation precision/recall đạt
+  0,929/0,857; không có generation error, 2 câu đạt Answer-F1 1,0.
+- Đây là phép so sánh development có chủ đích trên lỗi đã biết, không thay thế
+  baseline 22 câu và không phải kết quả held-out. Nút thắt tiếp theo là 8
+  retrieval miss, không còn chủ yếu là cách diễn đạt của LLM.
+- Báo cáo: `QASPER_ANSWER_EVALUATION.md`; log chi tiết cục bộ:
+  `results/qasper_answer_evaluation_20260927T120906Z.json`.
+- 81 test passed; Ruff passed; còn một cảnh báo deprecation Starlette/httpx.
+- Bước kế tiếp: sửa retrieval miss trên development bằng chẩn đoán theo từng
+  phương pháp, không chỉnh theo held-out; sau đó chạy lại baseline lớn hơn.
+
 ### Mới nhất: baseline Answer-F1/Citation trên QASPER thật
 
 - Đã tải lại QASPER train/dev v0.3 chính thức và xác minh SHA-256 khớp
@@ -328,10 +350,11 @@ trang và đoạn bằng chứng. Nếu tài liệu không có đủ bằng ch�
   concept-link trên 605 chunk.
 - [x] Chạy lại ablation: Ontology re-ranking tăng Recall@5 từ 0,3016 lên 0,3254 và
   MRR@5 từ 0,2381 lên 0,2560; query expansion còn gây query drift nhẹ.
-- [ ] Đánh giá độ chính xác của câu trả lời và citation.
-- [~] Đã tích hợp adapter và chạy 10 câu với LLM local thật; chưa đánh giá end-to-end.
-- [~] AI Agent có nhánh Ollama, evidence gate và kiểm tra quote/ID; chưa đánh giá
-  độ đúng ngữ nghĩa của claim/citation.
+- [x] Đã có baseline development 22 câu đánh giá Answer-F1, Evidence-F1,
+  citation precision/recall và unanswerable; chưa phải kết quả held-out cuối.
+- [x] Đã tích hợp adapter và chạy end-to-end với LLM local thật trên QASPER.
+- [~] AI Agent có nhánh Ollama, evidence gate và kiểm tra quote/ID; đã có đánh
+  giá tự động bước đầu, còn cần đánh giá thủ công và tập thực nghiệm lớn hơn.
 - [x] Thêm cơ chế từ chối khi không đủ evidence.
 - [x] Tạo giao diện demo.
 - [ ] Chuyển sang PostgreSQL + pgvector sau khi pipeline Ontology chạy đúng.
@@ -357,7 +380,8 @@ answer generation.
 1. Giữ nguyên kết quả held-out v3 và không tiếp tục tuning theo test này.
 2. Thiết kế hướng concept linking khái quát hơn (candidate generation từ CSO hoặc zero-shot
    linking), dùng một development protocol mới nếu tiếp tục nghiên cứu retrieval.
-3. Song song, tích hợp LLM vào Agent và đánh giá answer correctness/citation/unanswerable.
+3. Tiếp tục phân tích và cải thiện retrieval miss trên development; giữ nguyên
+   held-out, sau đó xác nhận answer correctness/citation/unanswerable trên mẫu lớn hơn.
 
 Chưa ưu tiên trong milestone này: mở rộng giao diện, PostgreSQL, pgvector, OCR và
 framework Agent phức tạp.
@@ -383,9 +407,9 @@ framework Agent phức tạp.
 - Ontology-aware retrieval: semantic concept linking đã tham gia trực tiếp vào pipeline và
   re-ranking cải thiện development; expansion vẫn gây query drift. Held-out v2 đã được chạy
   đúng một lần trước thay đổi này và không được tái dùng để chọn mô hình.
-- AI Agent và answer generation: có chế độ trích xuất và adapter Ollama opt-in;
-  đã chạy model thật trên CPU với 10 câu đơn giản, chưa chứng minh chất lượng
-  sinh câu trả lời trên dữ liệu thực.
+- AI Agent và answer generation: đã chạy Qwen3:4b cục bộ end-to-end trên QASPER
+  thật, có baseline Answer-F1/Evidence-F1/citation và thử nghiệm direct-answer;
+  chất lượng còn phụ thuộc mạnh vào retrieval và chưa phải kết quả held-out cuối.
 - Mức độ hoàn thành ước lượng của toàn đồ án: khoảng 60%.
 - Đã đủ cho báo cáo tiến độ về Ontology-aware retrieval; chưa phải kết quả thực nghiệm cuối cùng.
 - Bộ PDF 16 trang/24 câu chỉ dùng để debug pipeline, không dùng làm kết quả chính thức.

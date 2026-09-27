@@ -71,3 +71,26 @@ configuration must be selected on development before the held-out set is run.
 
 Detailed local artifact:
 `results/qasper_answer_evaluation_20260927T115655Z.json`.
+
+## Development follow-up: direct-answer prompt
+
+The seven baseline cases classified as answer content/format errors were run
+again after requiring the model to begin with the direct answer: `Yes`/`No`
+for boolean questions and the requested number, name, task, metric or list for
+short-answer questions.
+
+| Metric on the same 7 cases | Baseline prompt | Direct-answer prompt |
+|---|---:|---:|
+| Answer-F1 | 0.201 | 0.563 |
+| Evidence-F1 | 0.690 | 0.881 |
+| Citation precision | 0.643 | 0.929 |
+| Citation recall | 0.857 | 0.857 |
+
+All seven cases were answered without generation errors; two reached
+Answer-F1 1.0. This is a targeted development comparison selected from known
+errors, so it demonstrates that the formatting fix works on those cases but is
+not an unbiased replacement for the 22-question baseline. Retrieval misses and
+evidence-gate rejections remain separate problems.
+
+Detailed local artifact:
+`results/qasper_answer_evaluation_20260927T120906Z.json`.
