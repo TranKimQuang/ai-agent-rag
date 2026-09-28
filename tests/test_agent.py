@@ -193,3 +193,32 @@ def test_default_evidence_gate_uses_development_selected_thresholds():
     assert config.semantic_threshold == 0.55
     assert config.combined_semantic_threshold == 0.40
     assert config.combined_min_overlap == 3
+    assert config.cross_encoder_threshold == 0.50
+    assert config.cross_encoder_min_overlap == 3
+
+
+def test_evidence_gate_can_use_calibrated_cross_encoder_score():
+    result = SearchResult(
+        chunk_id="paper:1",
+        document_id="paper",
+        filename="paper.pdf",
+        page=1,
+        text="The tested embedding models include GloVe and Word2vec.",
+        method=SearchMethod.HYBRID_ONTOLOGY_CROSS_ENCODER,
+        score=0.9,
+    )
+    gate = EvidenceGate(
+        EvidenceGateConfig(
+            cross_encoder_threshold=0.8,
+            cross_encoder_min_overlap=1,
+        )
+    )
+
+    accepted = gate.evaluate("What embedding models are tested?", [result])
+    rejected = gate.evaluate(
+        "What embedding models are tested?",
+        [result.model_copy(update={"score": 0.7})],
+    )
+
+    assert accepted.accepted is True
+    assert rejected.accepted is False

@@ -15,6 +15,7 @@ from pathlib import Path
 from app.agent.service import EvidenceGate, EvidenceGateConfig
 from app.models import Chunk, ConceptLinkingMethod, SearchMethod, SearchResult
 from app.ontology.service import OntologyService
+from app.rag.reranker import SentenceTransformerCrossEncoderReranker
 from app.rag.retriever import InMemoryHybridRetriever, SentenceTransformerEncoder
 
 DEFAULT_DATASET = Path(
@@ -69,6 +70,7 @@ def build_examples(
     retriever: InMemoryHybridRetriever,
     *,
     limit: int,
+    method: SearchMethod,
 ) -> list[GateExample]:
     next_paper = {
         paper_id: paper_ids[(index + 1) % len(paper_ids)]
@@ -84,7 +86,7 @@ def build_examples(
         supported_results = retriever.search(
             question,
             limit,
-            SearchMethod.HYBRID_ONTOLOGY_RERANK,
+            method,
             paper_id,
         )
         gold_in_model_context = any(
@@ -108,7 +110,7 @@ def build_examples(
                 results=retriever.search(
                     question,
                     limit,
-                    SearchMethod.HYBRID_ONTOLOGY_RERANK,
+                    method,
                     next_paper[paper_id],
                 ),
             )
@@ -116,7 +118,18 @@ def build_examples(
     return examples
 
 
-def candidate_configs() -> list[EvidenceGateConfig]:
+def candidate_configs(method: SearchMethod) -> list[EvidenceGateConfig]:
+    if method == SearchMethod.HYBRID_ONTOLOGY_CROSS_ENCODER:
+        return [
+            EvidenceGateConfig(
+                cross_encoder_threshold=threshold,
+                cross_encoder_min_overlap=overlap,
+            )
+            for threshold, overlap in itertools.product(
+                [0.50, 0.60, 0.70, 0.80, 0.90],
+                [0, 1, 2, 3],
+            )
+        ]
     return [
         EvidenceGateConfig(*values)
         for values in itertools.product(
@@ -147,11 +160,31 @@ def main() -> None:
     parser.add_argument("--dataset", type=Path, default=DEFAULT_DATASET)
     parser.add_argument("--limit", type=int, default=5)
     parser.add_argument(
+        "--retrieval-method",
+        type=SearchMethod,
+        choices=[
+            SearchMethod.HYBRID_ONTOLOGY_RERANK,
+            SearchMethod.HYBRID_ONTOLOGY_CROSS_ENCODER,
+        ],
+        default=SearchMethod.HYBRID_ONTOLOGY_RERANK,
+    )
+    parser.add_argument(
+        "--reranker-model", default="cross-encoder/ms-marco-MiniLM-L6-v2"
+    )
+    parser.add_argument("--reranker-device", default="cpu")
+    parser.add_argument(
         "--output",
         type=Path,
-        default=Path("results/evidence_gate_calibration.json"),
+        default=None,
     )
     args = parser.parse_args()
+    if args.output is None:
+        args.output = Path(
+            "results/cross_encoder_gate_calibration.json"
+            if args.retrieval_method
+            == SearchMethod.HYBRID_ONTOLOGY_CROSS_ENCODER
+            else "results/evidence_gate_calibration.json"
+        )
     if not 3 <= args.limit <= 10:
         parser.error("--limit must be between 3 and 10")
 
@@ -175,17 +208,42 @@ def main() -> None:
     retriever = InMemoryHybridRetriever(
         semantic_encoder=encoder,
         ontology_service=ontology,
+        cross_encoder_reranker=(
+            SentenceTransformerCrossEncoderReranker(
+                args.reranker_model,
+                device=args.reranker_device,
+            )
+            if args.retrieval_method
+            == SearchMethod.HYBRID_ONTOLOGY_CROSS_ENCODER
+            else None
+        ),
     )
     retriever.add(chunks)
 
     questions = payload["questions"]
     selection_examples = build_examples(
-        questions, selection_papers, retriever, limit=args.limit
+        questions,
+        selection_papers,
+        retriever,
+        limit=args.limit,
+        method=args.retrieval_method,
     )
     verification_examples = build_examples(
-        questions, verification_papers, retriever, limit=args.limit
+        questions,
+        verification_papers,
+        retriever,
+        limit=args.limit,
+        method=args.retrieval_method,
     )
-    baseline_config = EvidenceGateConfig()
+    baseline_config = (
+        EvidenceGateConfig(
+            cross_encoder_threshold=0.80,
+            cross_encoder_min_overlap=1,
+        )
+        if args.retrieval_method
+        == SearchMethod.HYBRID_ONTOLOGY_CROSS_ENCODER
+        else EvidenceGateConfig()
+    )
     baseline = {
         "config": asdict(baseline_config),
         "selection": metrics(EvidenceGate(baseline_config), selection_examples),
@@ -193,7 +251,7 @@ def main() -> None:
     }
 
     candidates = []
-    for config in candidate_configs():
+    for config in candidate_configs(args.retrieval_method):
         candidates.append(
             {
                 "config": asdict(config),
@@ -205,6 +263,7 @@ def main() -> None:
     report = {
         "dataset": str(args.dataset),
         "source_split": split_name,
+        "retrieval_method": args.retrieval_method.value,
         "heldout_used": False,
         "selection_papers": selection_papers,
         "verification_papers": verification_papers,

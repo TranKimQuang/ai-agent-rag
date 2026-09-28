@@ -63,3 +63,33 @@ The detailed local result is written to
 `results/evidence_gate_calibration.json`. The next step is a larger manually
 reviewed answer/citation evaluation, including naturally unanswerable
 questions rather than relying only on wrong-paper negatives.
+
+## Cross-encoder gate calibration — 28/09/2026
+
+The optional `hybrid_ontology_cross_encoder` method changes candidate order,
+but the original evidence gate did not treat its pairwise score as a calibrated
+signal. A separate 20-configuration sweep used the same paper-separated
+development selection/verification protocol and deterministic wrong-paper
+negatives. Held-out data was not loaded.
+
+| Verification metric | Initial 0.80 / overlap 1 | Selected 0.50 / overlap 3 |
+|---|---:|---:|
+| Balanced accuracy | 0.7130 | 0.7135 |
+| Precision | 0.5135 | 0.5294 |
+| Recall | 0.8261 | 0.7826 |
+| Specificity | 0.6000 | 0.6444 |
+| False positives | 18 | 16 |
+| False negatives | 4 | 5 |
+
+The selected configuration only marginally improves balanced accuracy. It is
+therefore scoped to the optional cross-encoder method and does not change the
+existing Agent retrieval/gate path. A targeted development check fixed one
+previous false rejection with Answer-F1 0.902, left one weak case rejected,
+and still refused both strict natural unanswerable questions. A third
+answerable case passed the gate and cited gold evidence but received Answer-F1
+0.0, confirming that answer generation remains a separate error source.
+
+Detailed local artifacts:
+
+- `results/cross_encoder_gate_calibration.json`
+- `results/qasper_answer_evaluation_20260928T080847Z.json`

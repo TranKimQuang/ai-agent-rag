@@ -66,6 +66,8 @@ class EvidenceGateConfig:
     semantic_min_overlap: int = 2
     combined_semantic_threshold: float = 0.40
     combined_min_overlap: int = 3
+    cross_encoder_threshold: float = 0.50
+    cross_encoder_min_overlap: int = 3
 
 
 class EvidenceGate:
@@ -89,6 +91,17 @@ class EvidenceGate:
         question_terms = {term for term in tokenize(question) if term not in _EVIDENCE_STOPWORDS}
         evidence_terms = set(tokenize(" ".join(item.text for item in results[:3])))
         lexical_overlap = len(question_terms.intersection(evidence_terms))
+
+        if (
+            top.method == SearchMethod.HYBRID_ONTOLOGY_CROSS_ENCODER
+            and top.score >= self.config.cross_encoder_threshold
+            and lexical_overlap >= self.config.cross_encoder_min_overlap
+        ):
+            return EvidenceDecision(
+                True,
+                min(1.0, top.score),
+                "Bằng chứng đạt ngưỡng cross-encoder đã hiệu chỉnh.",
+            )
 
         if (
             top.query_concepts

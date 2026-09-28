@@ -1,6 +1,26 @@
 # THEO DÕI TIẾN ĐỘ ĐỒ ÁN AI AGENT + RAG
 
-Cập nhật gần nhất: 27/09/2026
+Cập nhật gần nhất: 28/09/2026
+
+### Mới nhất: hiệu chỉnh evidence gate cho cross-encoder
+
+- Đã mở rộng Evidence Gate để hiểu điểm của phương pháp cross-encoder nhưng
+  không thay đổi gate hoặc retrieval mặc định của Agent.
+- Quét 20 cấu hình trên nửa development và xác minh trên nửa paper còn lại,
+  kèm negative ghép sai-paper; không dùng held-out.
+- Chọn ngưỡng cross-encoder 0,50 và lexical overlap 3. Trên verification,
+  balanced accuracy tăng rất nhẹ 0,7130 -> 0,7135, precision 0,514 -> 0,529,
+  specificity 0,600 -> 0,644; recall giảm 0,826 -> 0,783.
+- Kiểm tra mục tiêu 3 câu bị từ chối và 2 câu unanswerable: sửa được 1 câu với
+  Answer-F1 0,902; 1 câu vẫn bị từ chối; 1 câu qua gate và dẫn đúng evidence
+  nhưng Answer-F1 0,0; vẫn từ chối đúng 2/2 câu unanswerable.
+- Kết luận: gate chỉ giải quyết một phần; không nên tiếp tục hạ ngưỡng. Lỗi còn
+  lại nằm ở ranking/context và answer generation.
+- Báo cáo: `EVIDENCE_GATE_CALIBRATION.md`; log cục bộ:
+  `results/cross_encoder_gate_calibration.json`.
+- 90 test passed; Ruff passed; còn một cảnh báo deprecation Starlette/httpx.
+- Bước kế tiếp: cải thiện lựa chọn/diễn đạt câu trả lời từ evidence đã đúng,
+  không tuning thêm gate trên cùng tập development.
 
 ### Mới nhất: thí nghiệm cross-encoder reranker trên QASPER development
 
