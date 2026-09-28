@@ -2,6 +2,24 @@
 
 Cập nhật gần nhất: 28/09/2026
 
+### Mới nhất: semantic diagnostic và phiếu review thủ công
+
+- Đã thêm `scripts/evaluate_answer_semantics.py` để tính semantic similarity
+  giữa prediction và gold answer, đồng thời xuất CSV cho người đánh giá.
+- Trên 20 câu answerable development: mean Answer-F1 0,433; mean semantic
+  similarity 0,596; tương quan Pearson 0,839.
+- Công cụ đánh dấu 10/20 câu cần review, trong đó 2 câu có F1 < 0,50 nhưng
+  semantic similarity >= 0,70; đây là các ca token overlap có thể đánh giá thấp
+  câu diễn đạt đúng ý.
+- CSV tách riêng manual answer correctness (0/1/2), citation support (0/1) và
+  ghi chú; semantic similarity chỉ là proxy, không được gọi là factual accuracy.
+- Rà soát ban đầu xác nhận citation đúng với claim chưa đảm bảo claim trả lời
+  đúng trọng tâm; trường hợp PAN 2017 là ví dụ rõ.
+- Báo cáo: `ANSWER_SEMANTIC_REVIEW.md`; artifacts cục bộ trong `results/`.
+- 97 test passed; Ruff passed; còn một cảnh báo deprecation Starlette/httpx.
+- Bước kế tiếp: người đánh giá điền nhãn thủ công trên mẫu lớn hơn, sau đó báo
+  cáo answer correctness và citation support tách biệt với token/evidence F1.
+
 ### Mới nhất: định dạng câu trả lời theo loại câu hỏi
 
 - Đã thêm phân loại tất định từ chính câu hỏi: `boolean`, `number`,

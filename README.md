@@ -247,3 +247,15 @@ python -m uvicorn app.main:app --reload
 
 See `CROSS_ENCODER_RERANKER.md` for the fair same-prompt comparison and its
 limitations.
+
+For answer-quality diagnosis, semantic similarity can be calculated alongside
+token F1 and a UTF-8 CSV manual-review sheet can be exported:
+
+```powershell
+.\.venv\Scripts\python.exe -m scripts.evaluate_answer_semantics `
+  --input results\qasper_answer_evaluation_TIMESTAMP.json
+```
+
+Semantic similarity is only a review-prioritization proxy. Human answer
+correctness and citation support remain separate labels; see
+`ANSWER_SEMANTIC_REVIEW.md`.
