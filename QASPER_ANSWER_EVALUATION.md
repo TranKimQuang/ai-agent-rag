@@ -114,3 +114,31 @@ cross-encoder increased retrieval Recall@5 from 0.600 to 0.850 in the separate
 retrieval experiment, it did not increase end-to-end Answer-F1 and added about
 2.9 seconds per case. It therefore remains an optional ablation method rather
 than the Agent default.
+
+## Question-type-aware answer formatting — 28/09/2026
+
+The generator now receives a deterministic answer format inferred only from
+the question wording: `boolean`, `number`, `short_phrase_or_list`, or
+`explanation`. This prevents non-boolean questions such as “how are ...” from
+being answered with `Yes`, and asks factoid/list questions to omit a repeated
+question preamble.
+
+The same 22-question development sample was run with unchanged default
+retrieval and evidence-gate settings:
+
+| Answerable metric | Direct-answer prompt | Question-type-aware prompt |
+|---|---:|---:|
+| Answer-F1 | 0.349 | **0.433** |
+| Evidence-F1 | **0.425** | 0.417 |
+| Citation precision | 0.400 | 0.400 |
+| Citation recall | 0.375 | 0.375 |
+| Answered | 16/20 | **17/20** |
+| Mean time, all 22 cases | **9.738 s** | 10.508 s |
+
+Both configurations correctly refused 2/2 strict natural unanswerable
+questions and had no generation errors. The Answer-F1 gain is substantial,
+while the small Evidence-F1 decrease shows that formatting does not solve
+retrieval/citation selection. No held-out data was loaded.
+
+Detailed local artifact:
+`results/qasper_answer_evaluation_20260928T082453Z.json`.

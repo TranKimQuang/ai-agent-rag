@@ -13,6 +13,20 @@ class GenerationError(RuntimeError):
     pass
 
 
+def infer_answer_format(question: str) -> str:
+    normalized = " ".join(question.lower().strip().split())
+    if re.match(r"^(how many|how much|by how much|how big)\b", normalized):
+        return "number"
+    if re.match(
+        r"^(do|does|did|is|are|was|were|can|could|would|should|has|have|had)\b",
+        normalized,
+    ):
+        return "boolean"
+    if re.match(r"^(what|which|who|where|when)\b", normalized):
+        return "short_phrase_or_list"
+    return "explanation"
+
+
 def sentence_sources(evidence: list[SearchResult]) -> dict[str, tuple[SearchResult, str]]:
     """Deterministic, request-local IDs for exactly the text exposed to the model."""
     sources = {}
@@ -100,10 +114,13 @@ class OllamaAnswerGenerator:
                         "with an exact sentence_id selected from evidence. "
                         "Do not write quotes or invent IDs. Include only claims needed "
                         "to answer the question, not unrelated background. Start with the "
-                        "direct answer, not an explanation. For a yes/no question, the first "
-                        "claim must begin exactly Yes or No. For a requested number, name, "
-                        "task, metric or list, state that value or list first. Prefer one "
-                        "concise claim; use more only when distinct evidence is necessary. "
+                        "direct answer, not an explanation. Obey the supplied answer_format. "
+                        "For boolean, the first claim must begin exactly Yes or No. Never "
+                        "begin Yes or No for another format. For number, return the value and "
+                        "unit first. For short_phrase_or_list, give only the requested name, "
+                        "task, metric, phrase or list without restating the question. For "
+                        "explanation, use one direct sentence. Prefer one concise claim; use "
+                        "more only when distinct evidence is necessary. "
                         "Do not use outside knowledge. If evidence is insufficient return "
                         '{"answerable":false,"claims":[]}. Use at most 3 concise claims.'
                     ),
@@ -111,7 +128,11 @@ class OllamaAnswerGenerator:
                 {
                     "role": "user",
                     "content": json.dumps(
-                        {"question": question, "evidence": sources},
+                        {
+                            "question": question,
+                            "answer_format": infer_answer_format(question),
+                            "evidence": sources,
+                        },
                         ensure_ascii=False,
                     ),
                 },

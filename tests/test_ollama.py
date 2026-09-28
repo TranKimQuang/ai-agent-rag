@@ -3,7 +3,12 @@ import json
 import httpx
 import pytest
 
-from app.agent.ollama import GenerationError, LocalAnswer, OllamaAnswerGenerator
+from app.agent.ollama import (
+    GenerationError,
+    LocalAnswer,
+    OllamaAnswerGenerator,
+    infer_answer_format,
+)
 from app.models import SearchMethod, SearchResult
 
 
@@ -39,6 +44,8 @@ def test_local_generation_uses_structured_local_request():
         assert "Start with the direct answer" in system_prompt
         assert "begin exactly Yes or No" in system_prompt
         assert "Prefer one concise claim" in system_prompt
+        user_payload = json.loads(body["messages"][1]["content"])
+        assert user_payload["answer_format"] == "short_phrase_or_list"
         return httpx.Response(
             200, json={"done": True, "message": {"content": json.dumps(output())}}
         )
@@ -51,6 +58,20 @@ def test_local_generation_uses_structured_local_request():
     assert text == "BM25 uses keywords. [1]"
     assert citations[0].filename == "a.pdf"
     assert citations[0].quote == evidence()[0].text
+
+
+@pytest.mark.parametrize(
+    ("question", "expected"),
+    [
+        ("Do they evaluate on QASPER?", "boolean"),
+        ("How many papers are evaluated?", "number"),
+        ("By how much does accuracy improve?", "number"),
+        ("What models are tested?", "short_phrase_or_list"),
+        ("How are bidirectional LMs obtained?", "explanation"),
+    ],
+)
+def test_infer_answer_format(question, expected) -> None:
+    assert infer_answer_format(question) == expected
 
 
 @pytest.mark.parametrize(

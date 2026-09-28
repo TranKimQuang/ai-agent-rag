@@ -2,6 +2,26 @@
 
 Cập nhật gần nhất: 28/09/2026
 
+### Mới nhất: định dạng câu trả lời theo loại câu hỏi
+
+- Đã thêm phân loại tất định từ chính câu hỏi: `boolean`, `number`,
+  `short_phrase_or_list`, `explanation`; không dùng nhãn gold hoặc nội dung
+  held-out.
+- Chỉ câu boolean được phép bắt đầu Yes/No; câu số trả giá trị + đơn vị trước;
+  câu what/which/who trả cụm ngắn hoặc danh sách; câu how dùng một câu giải thích.
+- Đối chứng đủ 22 câu development với retrieval/gate mặc định không đổi:
+  Answer-F1 answerable tăng 0,349 -> 0,433; số câu trả lời tăng 16 -> 17;
+  vẫn từ chối đúng 2/2 unanswerable và không có generation error.
+- Citation precision/recall giữ nguyên 0,400/0,375; Evidence-F1 giảm nhẹ
+  0,425 -> 0,417; thời gian tăng 9,738 -> 10,508 giây/câu.
+- Kết luận: giữ thay đổi vì tăng chất lượng answer rõ và không giảm an toàn hay
+  citation; định dạng không thay thế việc cải thiện evidence selection.
+- Báo cáo: `QASPER_ANSWER_EVALUATION.md`; log cục bộ:
+  `results/qasper_answer_evaluation_20260928T082453Z.json`.
+- 95 test passed; Ruff passed; còn một cảnh báo deprecation Starlette/httpx.
+- Bước kế tiếp: tách các câu evidence đúng nhưng Answer-F1 còn thấp để đánh giá
+  lỗi nội dung và độ đầy đủ; không tiếp tục sửa prompt theo từng câu riêng lẻ.
+
 ### Mới nhất: hiệu chỉnh evidence gate cho cross-encoder
 
 - Đã mở rộng Evidence Gate để hiểu điểm của phương pháp cross-encoder nhưng
