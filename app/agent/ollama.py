@@ -85,9 +85,18 @@ class LocalAnswer(BaseModel):
 
 
 class OllamaAnswerGenerator:
-    def __init__(self, model: str = "qwen3:4b", *, transport=None):
+    def __init__(
+        self,
+        model: str = "qwen3:4b",
+        *,
+        transport=None,
+        max_attempts: int = 2,
+    ):
+        if max_attempts < 1:
+            raise ValueError("max_attempts must be at least 1")
         self.model = model
         self.transport = transport
+        self.max_attempts = max_attempts
 
     def generate(self, question: str, evidence: list[SearchResult]) -> LocalAnswer:
         # Restrict both context and validation to exactly what the model receives.
@@ -138,22 +147,33 @@ class OllamaAnswerGenerator:
                 },
             ],
         }
-        try:
-            with httpx.Client(
-                base_url="http://127.0.0.1:11434",
-                timeout=180,
-                trust_env=False,
-                transport=self.transport,
-            ) as client:
-                response = client.post("/api/chat", json=payload)
-                response.raise_for_status()
-                body = response.json()
-            if body.get("done") is not True or body.get("done_reason") == "length":
-                raise ValueError("Incomplete generation")
-            answer = LocalAnswer.model_validate_json(body["message"]["content"])
-            text, _ = answer.validated_answer(evidence)
-            if answer.answerable and not text:
-                raise ValueError("Invalid sentence references or empty answer")
-            return answer
-        except (httpx.HTTPError, ValueError, KeyError, TypeError, ValidationError) as exc:
-            raise GenerationError("Local LLM unavailable or returned invalid output") from exc
+        last_error: Exception | None = None
+        for _attempt in range(self.max_attempts):
+            try:
+                with httpx.Client(
+                    base_url="http://127.0.0.1:11434",
+                    timeout=180,
+                    trust_env=False,
+                    transport=self.transport,
+                ) as client:
+                    response = client.post("/api/chat", json=payload)
+                    response.raise_for_status()
+                    body = response.json()
+                if body.get("done") is not True or body.get("done_reason") == "length":
+                    raise ValueError("Incomplete generation")
+                answer = LocalAnswer.model_validate_json(body["message"]["content"])
+                text, _ = answer.validated_answer(evidence)
+                if answer.answerable and not text:
+                    raise ValueError("Invalid sentence references or empty answer")
+                return answer
+            except (
+                httpx.HTTPError,
+                ValueError,
+                KeyError,
+                TypeError,
+                ValidationError,
+            ) as exc:
+                last_error = exc
+        raise GenerationError(
+            f"Local LLM failed after {self.max_attempts} attempts"
+        ) from last_error

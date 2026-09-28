@@ -2,6 +2,29 @@
 
 Cập nhật gần nhất: 28/09/2026
 
+### Mới nhất: mở rộng đánh giá Agent lên 50 câu answerable QASPER thật
+
+- Đã chạy toàn luồng document-scoped Hybrid + Ontology re-ranking -> evidence
+  gate -> Qwen3:4b -> citation trên 50 câu answerable từ 20 paper development.
+- Có thêm 2 câu strict natural unanswerable (toàn bộ annotator đều ghi
+  Unanswerable); trong 20 paper đã chọn không có đủ 5 câu loại này.
+- Trên 50 câu answerable: Answer-F1 0,314; Evidence-F1 0,307; citation
+  precision/recall 0,317/0,290; Agent trả lời 40/50 câu.
+- Agent từ chối đúng 2/2 câu unanswerable; không có generation error; thời gian
+  trung bình toàn bộ 52 case là 10,077 giây/câu.
+- Đã thêm retry tối đa 2 lần cho output Ollama lỗi tạm thời. Output hợp lệ
+  `insufficient_evidence` không bị retry hoặc biến thành câu trả lời giả.
+- Semantic diagnostic trên 50 câu: similarity trung bình 0,517, tương quan với
+  token F1 là 0,839; xuất 26 ca cần review thủ công.
+- Điểm thấp hơn mẫu 20 câu là do mẫu mở rộng khó và đa dạng hơn, không phải lỗi
+  chạy. Kết quả vẫn là development; chưa tải hoặc chạy held-out cuối.
+- Artifacts cục bộ: `results/qasper_answer_evaluation_20260928T085754Z.json`,
+  `results/qasper_answer_semantic_review_50.json` và
+  `results/qasper_answer_manual_review_50.csv`.
+- 98 test passed; Ruff passed; còn một cảnh báo deprecation Starlette/httpx.
+- Bước kế tiếp: điền nhãn human review cho 26 ca, khóa cấu hình, rồi mới chạy
+  held-out đúng một lần để tránh tuning theo test.
+
 ### Mới nhất: semantic diagnostic và phiếu review thủ công
 
 - Đã thêm `scripts/evaluate_answer_semantics.py` để tính semantic similarity

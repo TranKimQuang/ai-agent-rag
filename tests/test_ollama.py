@@ -132,3 +132,21 @@ def test_bad_id_is_generation_error_not_model_refusal():
     )
     with pytest.raises(GenerationError):
         generator.generate("Question", evidence())
+
+
+def test_transient_invalid_output_is_retried_once():
+    attempts = 0
+
+    def handler(request):
+        nonlocal attempts
+        attempts += 1
+        content = "not json" if attempts == 1 else json.dumps(output())
+        return httpx.Response(200, json={"done": True, "message": {"content": content}})
+
+    result = OllamaAnswerGenerator(
+        transport=httpx.MockTransport(handler),
+        max_attempts=2,
+    ).generate("What does BM25 use?", evidence())
+
+    assert attempts == 2
+    assert result.answerable is True

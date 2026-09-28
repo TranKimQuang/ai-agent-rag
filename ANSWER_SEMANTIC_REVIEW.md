@@ -50,3 +50,25 @@ Detailed local artifacts:
 
 - `results/qasper_answer_semantic_review.json`
 - `results/qasper_answer_manual_review.csv`
+
+## Expanded 50-answerable diagnostic
+
+The same diagnostic was applied to the expanded development run without
+loading held-out data:
+
+- Answerable questions: 50.
+- Mean token Answer-F1: 0.314.
+- Mean semantic similarity to the closest reference: 0.517.
+- Pearson correlation: 0.839.
+- Cases flagged for manual review: 26/50.
+- Low-F1 cases with semantic similarity at least 0.70: 2.
+
+The 26-case CSV is the working set for reporting human answer correctness and
+citation support separately. The lower means compared with the 20-question
+sample show why the expanded sample is a better development checkpoint; they
+must not be presented as a held-out score or replaced by semantic similarity.
+
+Expanded local artifacts:
+
+- `results/qasper_answer_semantic_review_50.json`
+- `results/qasper_answer_manual_review_50.csv`

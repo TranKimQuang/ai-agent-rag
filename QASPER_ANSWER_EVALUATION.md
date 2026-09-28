@@ -142,3 +142,38 @@ retrieval/citation selection. No held-out data was loaded.
 
 Detailed local artifact:
 `results/qasper_answer_evaluation_20260928T082453Z.json`.
+
+## Expanded development sample — 28/09/2026
+
+The question-type-aware configuration was then evaluated on 50 answerable
+questions drawn deterministically from the same 20 real QASPER development
+papers. The run also included the only two questions in those papers for which
+all available annotations agree on `Unanswerable`. No held-out data was loaded.
+
+| Metric | Expanded result |
+|---|---:|
+| Answerable questions | 50 |
+| Answered / refused | 40 / 10 |
+| Answer-F1 on answerable questions | 0.314 |
+| Evidence-F1 on answerable questions | 0.307 |
+| Citation precision on answerable questions | 0.317 |
+| Citation recall on answerable questions | 0.290 |
+| Strict natural unanswerable questions | 2 |
+| Correctly refused | 2/2 |
+| Generation errors | 0 |
+| Mean end-to-end time | 10.077 seconds |
+
+The larger sample is harder than the earlier one-question-per-paper sample:
+Answer-F1 falls from 0.433 to 0.314 and Evidence-F1 from 0.417 to 0.307. This
+is useful rather than a regression in the implementation: it reveals broader
+question variation and confirms that retrieval/evidence selection remains the
+main limitation. The Agent still rejected both natural unanswerable questions,
+and a retry for transient invalid local-model output prevented infrastructure
+noise from being counted as an answer failure.
+
+This is still development evidence, not the final held-out result. The next
+step is human scoring of the exported review cases, followed by one locked
+held-out evaluation only after the configuration is frozen.
+
+Detailed local artifact:
+`results/qasper_answer_evaluation_20260928T085754Z.json`.
