@@ -16,13 +16,19 @@ Cập nhật gần nhất: 28/09/2026
   `insufficient_evidence` không bị retry hoặc biến thành câu trả lời giả.
 - Semantic diagnostic trên 50 câu: similarity trung bình 0,517, tương quan với
   token F1 là 0,839; xuất 26 ca cần review thủ công.
+- Đã tiền kiểm 26 ca bằng nhãn đề xuất tách riêng: 10 đúng, 8 đúng một phần,
+  8 sai; 22/26 citation hỗ trợ claim được sinh. Đây là gợi ý do AI tạo, không
+  được báo cáo như human evaluation trước khi người thực xác nhận.
+- Phiếu CSV giữ nguyên các cột `manual_*` trống để người chấm xác nhận hoặc sửa;
+  nguồn gợi ý có giải thích được lưu tại
+  `evaluation/qasper_answer_review_suggestions.json`.
 - Điểm thấp hơn mẫu 20 câu là do mẫu mở rộng khó và đa dạng hơn, không phải lỗi
   chạy. Kết quả vẫn là development; chưa tải hoặc chạy held-out cuối.
 - Artifacts cục bộ: `results/qasper_answer_evaluation_20260928T085754Z.json`,
   `results/qasper_answer_semantic_review_50.json` và
   `results/qasper_answer_manual_review_50.csv`.
-- 98 test passed; Ruff passed; còn một cảnh báo deprecation Starlette/httpx.
-- Bước kế tiếp: điền nhãn human review cho 26 ca, khóa cấu hình, rồi mới chạy
+- 99 test passed; Ruff passed; còn một cảnh báo deprecation Starlette/httpx.
+- Bước kế tiếp: người dùng xác nhận/sửa nhãn 26 ca, khóa cấu hình, rồi mới chạy
   held-out đúng một lần để tránh tuning theo test.
 
 ### Mới nhất: semantic diagnostic và phiếu review thủ công

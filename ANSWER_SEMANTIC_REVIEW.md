@@ -72,3 +72,23 @@ Expanded local artifacts:
 
 - `results/qasper_answer_semantic_review_50.json`
 - `results/qasper_answer_manual_review_50.csv`
+
+## AI-assisted pre-review of the 26 flagged cases
+
+To reduce reviewer effort, the 26 flagged cases now include three separate
+`suggested_*` columns with an initial label and a short rationale. The official
+`manual_*` columns remain empty by design: these suggestions are produced by an
+AI assistant and are not independent human evaluation.
+
+The suggested distribution is 10 correct, 8 partial and 8 incorrect answers.
+For 22/26 cases (84.6%), the citation supports the generated claim. This high
+support rate must not be confused with answer correctness: several citations
+faithfully support a nearby or incomplete claim that does not answer the
+question asked. The PAN competitor comparison and Reddit community-selection
+cases are clear examples.
+
+Before using human-scored numbers in a report, the student should inspect each
+row in `results/qasper_answer_manual_review_50.csv`, copy or revise the
+suggestion into the corresponding `manual_*` columns, and add initials/date.
+The reproducible suggestion source is tracked at
+`evaluation/qasper_answer_review_suggestions.json`.

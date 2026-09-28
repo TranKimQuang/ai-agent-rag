@@ -1,0 +1,36 @@
+{
+  "metadata": {
+    "split": "train-development",
+    "source_run": "results/qasper_answer_evaluation_20260928T085754Z.json",
+    "review_type": "AI-assisted pre-review",
+    "warning": "Suggested labels are not independent human evaluation. A human reviewer must confirm or correct them before reporting human-scored results."
+  },
+  "cases": [
+    {"question_id": "fb381a59732474dc71a413e25cac37e239547b55", "suggested_answer_correct_0_1_2": 2, "suggested_citation_supported_0_1": 1, "suggested_notes": "Exact yes/no answer; cited passage discusses evaluation on supervised downstream tasks."},
+    {"question_id": "2fffff59e57b8dbcaefb437a6b3434fc137f813b", "suggested_answer_correct_0_1_2": 1, "suggested_citation_supported_0_1": 1, "suggested_notes": "Names the Sentence corpus but omits the reference description of its web-derived contents."},
+    {"question_id": "c000a43aff3cb0ad1cee5379f9388531b5521e9a", "suggested_answer_correct_0_1_2": 2, "suggested_citation_supported_0_1": 1, "suggested_notes": "Faithful paraphrase of both the reference answer and cited evidence."},
+    {"question_id": "4c71ed7d30ee44cf85ffbd7756b985e32e8e07da", "suggested_answer_correct_0_1_2": 0, "suggested_citation_supported_0_1": 1, "suggested_notes": "Repeats the category supervised learning instead of naming document categorization and regression."},
+    {"question_id": "003f884d3893532f8c302431c9f70be6f64d9be8", "suggested_answer_correct_0_1_2": 0, "suggested_citation_supported_0_1": 0, "suggested_notes": "Refusal misses the substantive reference answer No; no citation was returned."},
+    {"question_id": "c348a8c06e20d5dee07443e962b763073f490079", "suggested_answer_correct_0_1_2": 2, "suggested_citation_supported_0_1": 1, "suggested_notes": "Correctly lists evidence extraction and answer synthesis; citation states both explicitly."},
+    {"question_id": "082c88e132b4f1bf68abdc3a21ac4af180de1113", "suggested_answer_correct_0_1_2": 1, "suggested_citation_supported_0_1": 1, "suggested_notes": "Contains the reference memory-slot and edge description but mixes storage with retrieval and answer generation."},
+    {"question_id": "157b9f6f8fb5d370fa23df31de24ae7efb75d6f3", "suggested_answer_correct_0_1_2": 0, "suggested_citation_supported_0_1": 1, "suggested_notes": "Citation supports cross-year scores, but the question asks for ranking and margins against PAN competitors."},
+    {"question_id": "982979cb3c71770d8d7d2d1be8f92b66223dec85", "suggested_answer_correct_0_1_2": 2, "suggested_citation_supported_0_1": 1, "suggested_notes": "Correct expanded paraphrase of the topology-based metric in the reference."},
+    {"question_id": "cfbccb51f0f8f8f125b40168ed66384e2a09762b", "suggested_answer_correct_0_1_2": 2, "suggested_citation_supported_0_1": 1, "suggested_notes": "Correctly identifies t-SNE analysis and adds a supported nearest-neighbor observation."},
+    {"question_id": "54415efa91566d5d7135fa23bce3840d41a6389e", "suggested_answer_correct_0_1_2": 0, "suggested_citation_supported_0_1": 1, "suggested_notes": "Describes the factorization input rather than the requested 300-dimensional output."},
+    {"question_id": "05238d1fad2128403577822aa4822ef8ca9570ac", "suggested_answer_correct_0_1_2": 2, "suggested_citation_supported_0_1": 0, "suggested_notes": "Yes matches the reference, but the returned citation discusses downstream-task evaluation rather than computation time."},
+    {"question_id": "cd1792929b9fa5dd5b1df0ae06fc6aece4c97424", "suggested_answer_correct_0_1_2": 0, "suggested_citation_supported_0_1": 0, "suggested_notes": "Refusal fails to provide the reference answer No and contains no citation."},
+    {"question_id": "65d34041ffa4564385361979a08706b10b92ebc7", "suggested_answer_correct_0_1_2": 0, "suggested_citation_supported_0_1": 0, "suggested_notes": "Answer should be No; evidence explicitly says multi-object tuples must be mapped into triples."},
+    {"question_id": "e8ca81d5b36952259ef3e0dbeac7b3a622eabe8e", "suggested_answer_correct_0_1_2": 2, "suggested_citation_supported_0_1": 1, "suggested_notes": "Exact corpus name and citation explicitly identifies IEMOCAP."},
+    {"question_id": "1ba28338d3f993674a19d2ee2ec35447e361505b", "suggested_answer_correct_0_1_2": 1, "suggested_citation_supported_0_1": 1, "suggested_notes": "Correctly names several methods but omits Liu et al. and Sahu et al. from the reference list."},
+    {"question_id": "f6380c60e2eb32cb3a9d3bca17cf4dc5ae584eca", "suggested_answer_correct_0_1_2": 1, "suggested_citation_supported_0_1": 1, "suggested_notes": "Captures the value of small domain-specific data but does not directly state the measured task-performance benefit."},
+    {"question_id": "c7d99e66c4ab555fe3d616b15a5048f3fe1f3f0e", "suggested_answer_correct_0_1_2": 1, "suggested_citation_supported_0_1": 1, "suggested_notes": "Mentions the correct State of the Union case but omits that the task is its visualization and adds another case."},
+    {"question_id": "bb97537a0a7c8f12a3f65eba73cefa6abcd2f2b2", "suggested_answer_correct_0_1_2": 0, "suggested_citation_supported_0_1": 1, "suggested_notes": "Discusses temporal identity shifts, whereas the reference asks for retention patterns by community type."},
+    {"question_id": "eea089baedc0ce80731c8fdcb064b82f584f483a", "suggested_answer_correct_0_1_2": 1, "suggested_citation_supported_0_1": 1, "suggested_notes": "Names the relevant characteristics but omits the observed higher retention and newcomer linguistic-gap effects."},
+    {"question_id": "edb2d24d6d10af13931b3a47a6543bd469752f0c", "suggested_answer_correct_0_1_2": 0, "suggested_citation_supported_0_1": 1, "suggested_notes": "Explains the later mapping, not the date, vocabulary, history-length, and language selection criteria."},
+    {"question_id": "938cf30c4f1d14fa182e82919e16072fdbcf2a82", "suggested_answer_correct_0_1_2": 2, "suggested_citation_supported_0_1": 1, "suggested_notes": "Faithfully states the average-volatility definition and cites it directly."},
+    {"question_id": "dd8f72cb3c0961b5ca1413697a00529ba60571fe", "suggested_answer_correct_0_1_2": 1, "suggested_citation_supported_0_1": 1, "suggested_notes": "Gives a valid multi-span/generative difference but omits the reference focus on several passages and correct-passage annotation."},
+    {"question_id": "74091e10f596428135b0ab06008608e09c051565", "suggested_answer_correct_0_1_2": 2, "suggested_citation_supported_0_1": 1, "suggested_notes": "Correctly describes entity memory slots and relational-memory edges using the cited passage."},
+    {"question_id": "a75861e6dd72d69fdf77ebd81c78d26c6f7d0864", "suggested_answer_correct_0_1_2": 1, "suggested_citation_supported_0_1": 1, "suggested_notes": "Correct at a high level but omits the sequential read, relational-memory, and question-attention architecture."},
+    {"question_id": "60fd7ef7986a5752b31d3bd12bbc7da6843547a4", "suggested_answer_correct_0_1_2": 2, "suggested_citation_supported_0_1": 1, "suggested_notes": "EntNet is the comparison method named by both reference and citation."}
+  ]
+}

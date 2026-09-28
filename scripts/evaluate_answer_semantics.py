@@ -35,6 +35,14 @@ def needs_manual_review(
     )
 
 
+def load_review_suggestions(path: Path | None) -> dict[str, dict[str, object]]:
+    if path is None:
+        return {}
+    payload = json.loads(path.read_text(encoding="utf-8"))
+    suggestions = payload.get("cases", [])
+    return {str(case["question_id"]): case for case in suggestions}
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--input", type=Path, required=True)
@@ -53,12 +61,21 @@ def main() -> None:
         type=Path,
         default=Path("results/qasper_answer_manual_review.csv"),
     )
+    parser.add_argument(
+        "--review-suggestions",
+        type=Path,
+        help=(
+            "Optional AI-assisted pre-review labels. These are exported separately "
+            "and never populate the human-review columns."
+        ),
+    )
     args = parser.parse_args()
 
     run = json.loads(args.input.read_text(encoding="utf-8"))
     dataset = json.loads(args.dataset.read_text(encoding="utf-8"))
     if "heldout" in str(dataset.get("metadata", {}).get("split", "")).lower():
         raise ValueError("Answer semantic diagnostics must not use held-out data")
+    suggestions = load_review_suggestions(args.review_suggestions)
     chunk_text = {str(chunk["id"]): str(chunk["text"]) for chunk in dataset["chunks"]}
 
     answerable = [
@@ -100,6 +117,7 @@ def main() -> None:
             evidence_f1=evidence_f1,
             status=status,
         )
+        suggestion = suggestions.get(str(source["question_id"]), {})
         rows.append(
             {
                 "question_id": source["question_id"],
@@ -119,6 +137,13 @@ def main() -> None:
                 "evidence_f1": evidence_f1,
                 "agent_status": status,
                 "needs_manual_review": review,
+                "suggested_answer_correct_0_1_2": suggestion.get(
+                    "suggested_answer_correct_0_1_2", ""
+                ),
+                "suggested_citation_supported_0_1": suggestion.get(
+                    "suggested_citation_supported_0_1", ""
+                ),
+                "suggested_notes": suggestion.get("suggested_notes", ""),
                 "manual_answer_correct_0_1_2": "",
                 "manual_citation_supported_0_1": "",
                 "manual_notes": "",
@@ -140,6 +165,9 @@ def main() -> None:
         "mean_semantic_similarity": float(np.mean(semantic_values)),
         "pearson_correlation": correlation,
         "manual_review_cases": sum(bool(row["needs_manual_review"]) for row in rows),
+        "suggestions_loaded": sum(
+            bool(row["suggested_notes"]) for row in rows
+        ),
         "low_f1_high_semantic": sum(
             float(row["answer_f1"]) < 0.50
             and float(row["semantic_similarity"]) >= 0.70

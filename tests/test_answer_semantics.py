@@ -2,6 +2,7 @@ import numpy as np
 import pytest
 
 from scripts.evaluate_answer_semantics import (
+    load_review_suggestions,
     max_cosine_similarity,
     needs_manual_review,
 )
@@ -33,3 +34,16 @@ def test_manual_review_flags_metric_disagreement_and_citation_mismatch() -> None
         evidence_f1=1.0,
         status="answered",
     )
+
+
+def test_review_suggestions_are_loaded_without_becoming_human_labels(tmp_path) -> None:
+    path = tmp_path / "suggestions.json"
+    path.write_text(
+        '{"cases": [{"question_id": "q1", "suggested_notes": "Check this"}]}',
+        encoding="utf-8",
+    )
+
+    suggestions = load_review_suggestions(path)
+
+    assert suggestions["q1"]["suggested_notes"] == "Check this"
+    assert load_review_suggestions(None) == {}
