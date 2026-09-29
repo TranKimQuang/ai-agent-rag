@@ -2,7 +2,7 @@ import re
 from dataclasses import dataclass
 from typing import Protocol
 
-from app.agent.ollama import LocalAnswer
+from app.agent.ollama import LocalAnswer, SupportVerdict
 from app.models import (
     AgentStatus,
     AgentStep,
@@ -47,6 +47,15 @@ _EVIDENCE_STOPWORDS = {
 
 class AnswerGenerator(Protocol):
     def generate(self, question: str, evidence: list[SearchResult]) -> str | LocalAnswer: ...
+
+
+class AnswerSupportVerifier(Protocol):
+    def verify(
+        self,
+        question: str,
+        answer: str,
+        citations: list[Citation],
+    ) -> SupportVerdict: ...
 
 
 @dataclass(frozen=True)
@@ -181,6 +190,7 @@ class DocumentQuestionAgent:
         *,
         evidence_gate: EvidenceGate | None = None,
         answer_generator: AnswerGenerator | None = None,
+        answer_support_verifier: AnswerSupportVerifier | None = None,
         retrieval_method: SearchMethod = SearchMethod.HYBRID_ONTOLOGY_RERANK,
         generation_evidence_limit: int = 3,
     ) -> None:
@@ -189,6 +199,7 @@ class DocumentQuestionAgent:
         self.retriever = retriever
         self.evidence_gate = evidence_gate or EvidenceGate()
         self.answer_generator = answer_generator or ExtractiveAnswerGenerator()
+        self.answer_support_verifier = answer_support_verifier
         self.retrieval_method = retrieval_method
         self.generation_evidence_limit = generation_evidence_limit
 
@@ -295,27 +306,57 @@ class DocumentQuestionAgent:
             )
         if not is_llm:
             citations = [self._citation(supporting, answer)]
-        trace.extend(
-            [
-                AgentStep(
-                    name="answer_generation",
-                    status="completed",
-                    detail=(
-                        "Đã sinh câu trả lời bằng LLM local."
-                        if is_llm
-                        else "Đã tạo câu trả lời trích xuất từ evidence được chấp nhận."
-                    ),
+        trace.append(
+            AgentStep(
+                name="answer_generation",
+                status="completed",
+                detail=(
+                    "Đã sinh câu trả lời bằng LLM local."
+                    if is_llm
+                    else "Đã tạo câu trả lời trích xuất từ evidence được chấp nhận."
                 ),
+            )
+        )
+        if is_llm and self.answer_support_verifier is not None:
+            verdict = self.answer_support_verifier.verify(question, answer, citations)
+            trace.append(
                 AgentStep(
-                    name="citation_validation",
-                    status="completed",
-                    detail=(
+                    name="answer_support_check",
+                    status="accepted" if verdict.supported else "rejected",
+                    detail=f"{verdict.reason} (confidence={verdict.confidence:.2f})",
+                )
+            )
+            if not verdict.supported:
+                trace.append(
+                    AgentStep(
+                        name="citation_validation",
+                        status="rejected",
+                        detail="Citation hợp lệ nhưng chưa hỗ trợ trực tiếp câu trả lời.",
+                    )
+                )
+                return AskResponse(
+                    question=question,
+                    status=AgentStatus.INSUFFICIENT_EVIDENCE,
+                    answer=INSUFFICIENT_EVIDENCE_MESSAGE,
+                    confidence=0.0,
+                    query_concepts=first.query_concepts if first else [],
+                    expanded_query=first.expanded_query if first else None,
+                    trace=trace,
+                )
+        trace.append(
+            AgentStep(
+                name="citation_validation",
+                status="completed",
+                detail=(
+                    "Đã kiểm tra ID, quote và mức hỗ trợ ngữ nghĩa của citation."
+                    if is_llm and self.answer_support_verifier is not None
+                    else (
                         "Đã kiểm tra ID và quote; chưa xác minh ngữ nghĩa từng claim."
                         if is_llm
                         else "Đã đối chiếu nguyên văn câu trả lời với chunk được trích dẫn."
-                    ),
+                    )
                 ),
-            ]
+            )
         )
         return AskResponse(
             question=question,

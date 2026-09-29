@@ -8,7 +8,11 @@ from datetime import UTC, datetime
 from pathlib import Path
 from statistics import mean
 
-from app.agent.ollama import GenerationError, OllamaAnswerGenerator
+from app.agent.ollama import (
+    GenerationError,
+    OllamaAnswerGenerator,
+    OllamaAnswerSupportVerifier,
+)
 from app.agent.service import DocumentQuestionAgent
 from app.evaluation.qasper_answers import (
     QasperReference,
@@ -98,6 +102,11 @@ def main() -> None:
         choices=range(1, 6),
         default=3,
         help="Number of top retrieved chunks exposed to the answer generator.",
+    )
+    parser.add_argument(
+        "--verify-answer-support",
+        action="store_true",
+        help="Run a second conservative local-LLM check on the answer and citations.",
     )
     parser.add_argument("--output-dir", type=Path, default=Path("results"))
     args = parser.parse_args()
@@ -191,6 +200,11 @@ def main() -> None:
     agent = DocumentQuestionAgent(
         retriever,
         answer_generator=OllamaAnswerGenerator(args.model),
+        answer_support_verifier=(
+            OllamaAnswerSupportVerifier(args.model)
+            if args.verify_answer_support
+            else None
+        ),
         retrieval_method=args.retrieval_method,
         generation_evidence_limit=args.generation_evidence_limit,
     )
@@ -288,6 +302,26 @@ def main() -> None:
     unanswerable_rows = [
         row for row in rows if row["expected_kind"] == "unanswerable"
     ]
+    answerable_answer_f1 = (
+        mean(float(row["answer_f1"]) for row in answerable_rows)
+        if answerable_rows
+        else 0.0
+    )
+    answerable_evidence_f1 = (
+        mean(float(row["evidence_f1"]) for row in answerable_rows)
+        if answerable_rows
+        else 0.0
+    )
+    answerable_citation_precision = (
+        mean(float(row["citation_precision"]) for row in answerable_rows)
+        if answerable_rows
+        else 0.0
+    )
+    answerable_citation_recall = (
+        mean(float(row["citation_recall"]) for row in answerable_rows)
+        if answerable_rows
+        else 0.0
+    )
     summary = {
         "questions": len(rows),
         "answerable_questions": len(answerable_rows),
@@ -297,18 +331,10 @@ def main() -> None:
         "evidence_f1": mean(float(row["evidence_f1"]) for row in rows),
         "citation_precision": mean(float(row["citation_precision"]) for row in rows),
         "citation_recall": mean(float(row["citation_recall"]) for row in rows),
-        "answerable_answer_f1": mean(
-            float(row["answer_f1"]) for row in answerable_rows
-        ),
-        "answerable_evidence_f1": mean(
-            float(row["evidence_f1"]) for row in answerable_rows
-        ),
-        "answerable_citation_precision": mean(
-            float(row["citation_precision"]) for row in answerable_rows
-        ),
-        "answerable_citation_recall": mean(
-            float(row["citation_recall"]) for row in answerable_rows
-        ),
+        "answerable_answer_f1": answerable_answer_f1,
+        "answerable_evidence_f1": answerable_evidence_f1,
+        "answerable_citation_precision": answerable_citation_precision,
+        "answerable_citation_recall": answerable_citation_recall,
         "answerable_answered": sum(
             row["agent_status"] == "answered" for row in answerable_rows
         ),
@@ -339,6 +365,7 @@ def main() -> None:
             "model": args.model,
             "retrieval_method": args.retrieval_method.value,
             "generation_evidence_limit": args.generation_evidence_limit,
+            "verify_answer_support": args.verify_answer_support,
             "reranker_model": (
                 args.reranker_model
                 if args.retrieval_method

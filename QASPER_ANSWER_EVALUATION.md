@@ -213,3 +213,35 @@ silently widening the production prompt.
 
 Detailed local artifact:
 `results/qasper_answer_evaluation_20260929T032301Z.json`.
+
+## Prototype answer-support verifier — 29/09/2026
+
+An optional second local-LLM pass now checks the exact question, proposed
+answer and server-validated citation quotes. Its conservative prompt rejects
+answers that merely share the topic, change the entity or requested attribute,
+or require an assumption not present in the citations. It is disabled by
+default and does not replace citation-ID validation.
+
+A focused development pilot used four previously inspected answerable cases
+and the strict unanswerable case that five-chunk generation had answered
+incorrectly. The final verifier behavior was:
+
+- kept two answers whose citations directly named the requested tasks/corpus;
+- rejected one nominally correct metric answer because its citation said only
+  `micro-averaged`, not the generated `micro-averaged F1 score`;
+- rejected one generated list that named document collections rather than an
+  actual computational-social-science NLP task;
+- correctly rejected the hallucinated disadvantages answer because the cited
+  sentence concerned problems in evaluation, not disadvantages of the proposed
+  embeddings.
+
+This pilot demonstrates useful unsupported-claim detection, but it is selected
+and too small for an effectiveness claim. A second model call also adds major
+latency, especially after cold start. Therefore `ANSWER_SUPPORT_CHECK=ollama`
+and `--verify-answer-support` remain explicit experimental switches. The next
+evaluation must use a larger labelled set of supported and unsupported claims
+before this check can be enabled by default.
+
+Pilot artifacts:
+`results/qasper_answer_evaluation_20260929T034131Z.json` and
+`results/qasper_answer_evaluation_20260929T034449Z.json`.

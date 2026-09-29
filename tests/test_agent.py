@@ -1,6 +1,7 @@
 import numpy as np
 import pytest
 
+from app.agent.ollama import LocalAnswer, SupportVerdict
 from app.agent.service import (
     INSUFFICIENT_EVIDENCE_MESSAGE,
     DocumentQuestionAgent,
@@ -210,6 +211,80 @@ def test_agent_can_expose_five_retrieved_chunks_to_generator():
 def test_agent_rejects_invalid_generation_evidence_limit(limit):
     with pytest.raises(ValueError):
         DocumentQuestionAgent(FixedRetriever(), generation_evidence_limit=limit)
+
+
+def test_agent_rejects_llm_answer_when_support_verifier_rejects_it():
+    class StructuredGenerator:
+        def generate(self, question, evidence):
+            return LocalAnswer.model_validate(
+                {
+                    "answerable": True,
+                    "claims": [
+                        {
+                            "text": "The paper has a different disadvantage.",
+                            "sources": [{"sentence_id": "e1s1"}],
+                        }
+                    ],
+                }
+            )
+
+    class RejectingVerifier:
+        def verify(self, question, answer, citations):
+            return SupportVerdict(
+                supported=False,
+                confidence=0.96,
+                reason="The evidence is only topically related.",
+            )
+
+    agent = DocumentQuestionAgent(
+        FixedRetriever(),
+        answer_generator=StructuredGenerator(),
+        answer_support_verifier=RejectingVerifier(),
+    )
+
+    response = agent.ask("What disadvantage does the paper report?")
+
+    assert response.status == AgentStatus.INSUFFICIENT_EVIDENCE
+    assert response.citations == []
+    assert response.trace[-2].name == "answer_support_check"
+    assert response.trace[-2].status == "rejected"
+
+
+def test_agent_keeps_llm_answer_when_support_verifier_accepts_it():
+    class StructuredGenerator:
+        def generate(self, question, evidence):
+            return LocalAnswer.model_validate(
+                {
+                    "answerable": True,
+                    "claims": [
+                        {
+                            "text": "Question answering uses evidence.",
+                            "sources": [{"sentence_id": "e2s1"}],
+                        }
+                    ],
+                }
+            )
+
+    class AcceptingVerifier:
+        def verify(self, question, answer, citations):
+            return SupportVerdict(
+                supported=True,
+                confidence=0.92,
+                reason="The citation directly supports the answer.",
+            )
+
+    agent = DocumentQuestionAgent(
+        FixedRetriever(),
+        answer_generator=StructuredGenerator(),
+        answer_support_verifier=AcceptingVerifier(),
+    )
+
+    response = agent.ask("What does question answering use?")
+
+    assert response.status == AgentStatus.ANSWERED
+    assert response.citations[0].page == 2
+    assert response.trace[-2].name == "answer_support_check"
+    assert response.trace[-2].status == "accepted"
 
 
 def test_evidence_gate_can_require_lexical_support_for_ontology_match():

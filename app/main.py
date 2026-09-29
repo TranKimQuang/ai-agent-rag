@@ -7,7 +7,11 @@ from fastapi import Body, FastAPI, Header, HTTPException, Query
 from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
 
-from app.agent.ollama import GenerationError, OllamaAnswerGenerator
+from app.agent.ollama import (
+    GenerationError,
+    OllamaAnswerGenerator,
+    OllamaAnswerSupportVerifier,
+)
 from app.agent.service import DocumentQuestionAgent
 from app.models import (
     AskRequest,
@@ -52,6 +56,12 @@ retriever = InMemoryHybridRetriever(
 answer_backend = os.getenv("ANSWER_BACKEND", "extractive")
 if answer_backend not in {"extractive", "ollama"}:
     raise ValueError("ANSWER_BACKEND must be extractive or ollama")
+answer_support_check = os.getenv("ANSWER_SUPPORT_CHECK", "off")
+if answer_support_check not in {"off", "ollama"}:
+    raise ValueError("ANSWER_SUPPORT_CHECK must be off or ollama")
+if answer_support_check == "ollama" and answer_backend != "ollama":
+    raise ValueError("ANSWER_SUPPORT_CHECK=ollama requires ANSWER_BACKEND=ollama")
+ollama_model = os.getenv("OLLAMA_MODEL", "qwen3:4b")
 agent_retrieval_method = SearchMethod(
     os.getenv(
         "AGENT_RETRIEVAL_METHOD",
@@ -61,8 +71,13 @@ agent_retrieval_method = SearchMethod(
 question_agent = DocumentQuestionAgent(
     retriever,
     answer_generator=(
-        OllamaAnswerGenerator(os.getenv("OLLAMA_MODEL", "qwen3:4b"))
+        OllamaAnswerGenerator(ollama_model)
         if answer_backend == "ollama"
+        else None
+    ),
+    answer_support_verifier=(
+        OllamaAnswerSupportVerifier(ollama_model)
+        if answer_support_check == "ollama"
         else None
     ),
     retrieval_method=agent_retrieval_method,

@@ -30,6 +30,27 @@ Cập nhật gần nhất: 29/09/2026
   context thích ứng, rồi đánh giá với nhiều câu unanswerable hơn; chưa chạy
   held-out cuối.
 
+### Prototype kiểm tra answer có được citation hỗ trợ
+
+- Đã thêm `OllamaAnswerSupportVerifier`: sau khi server xác minh sentence ID và
+  quote, một lượt LLM local riêng kiểm tra answer có trả lời đúng câu hỏi và có
+  được các quote hỗ trợ trực tiếp hay chỉ cùng chủ đề.
+- Verifier đã chặn đúng ca unanswerable mà chế độ 5 chunk từng trả lời nhầm:
+  nguồn nói về vấn đề đánh giá word embedding, không phải nhược điểm của word
+  embedding được đề xuất.
+- Pilot cuối trên 4 ca answerable đã biết: giữ 2 answer có nguồn trực tiếp; chặn
+  1 answer thêm chữ `F1 score` khi citation chỉ ghi `micro-averaged`; chặn 1
+  danh sách collection không thực sự là NLP task. Đây là hành vi an toàn hợp lý,
+  nhưng chưa phải điểm benchmark vì mẫu được chọn từ lỗi đã biết.
+- Đã sửa công cụ evaluation để chạy ổn khi chọn riêng toàn câu answerable hoặc
+  toàn câu unanswerable; trước đó phép tính trung bình nhóm rỗng bị lỗi.
+- Có thể bật bằng `ANSWER_SUPPORT_CHECK=ollama` trong API hoặc
+  `--verify-answer-support` trong evaluation. Mặc định vẫn tắt vì cần thêm một
+  lượt gọi Qwen3:4b, độ trễ cao và chưa đánh giá đủ false rejection.
+- 107 test passed; Ruff passed; còn một cảnh báo deprecation Starlette/httpx.
+- Bước kế tiếp: tạo tập nhãn supported/unsupported lớn hơn để đo precision,
+  recall và chọn ngưỡng/chính sách trước khi cân nhắc bật verifier mặc định.
+
 ### Mới nhất: mở rộng đánh giá Agent lên 50 câu answerable QASPER thật
 
 - Đã chạy toàn luồng document-scoped Hybrid + Ontology re-ranking -> evidence

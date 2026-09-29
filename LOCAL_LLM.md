@@ -40,6 +40,20 @@ $env:OLLAMA_MODEL = 'qwen3:4b'
 .\.venv\Scripts\python.exe -m uvicorn app.main:app --reload
 ```
 
+Có thể bật thêm bước kiểm tra xem câu trả lời có thực sự được citation hỗ trợ:
+
+```powershell
+$env:ANSWER_SUPPORT_CHECK = 'ollama'
+```
+
+Đây là chế độ thử nghiệm và mặc định vẫn là `off`. Nó gọi mô hình local thêm
+một lần cho mỗi câu trả lời, giúp chặn nguồn chỉ cùng chủ đề nhưng có thể làm
+tăng thời gian và từ chối một số câu chưa có citation đủ rõ. Muốn tắt lại:
+
+```powershell
+$env:ANSWER_SUPPORT_CHECK = 'off'
+```
+
 Dừng server cũ trước khi chạy cùng cổng. Nạp lại PDF nếu chỉ mục RAM đã mất.
 POST /ask giữ nguyên request. Mỗi ý trả lời có số nguồn [1], [2]...
 Metadata tên file/trang được lấy từ server, không tin metadata model tự viết.
@@ -54,7 +68,8 @@ Mất kết nối, JSON lỗi, timeout hoặc sinh dở: HTTP 503; không giả 
 ## Giới hạn
 
 - Chỉ gửi tối đa 3 chunk, mỗi chunk 1800 ký tự; context 4096, output 700 token.
-- Kiểm tra ID hợp lệ không chứng minh claim được evidence hỗ trợ.
+- Kiểm tra ID hợp lệ không tự chứng minh claim được evidence hỗ trợ. Verifier
+  tùy chọn có kiểm tra ngữ nghĩa nhưng chưa được đánh giá đủ để bật mặc định.
 - Evidence gate hiện là heuristic chưa hiệu chỉnh cho answerability; confidence
   trong API không phải xác suất câu trả lời đúng.
 - Prompt yêu cầu bỏ qua chỉ dẫn trong tài liệu không bảo đảm chống prompt injection.

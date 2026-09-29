@@ -7,6 +7,7 @@ from app.agent.ollama import (
     GenerationError,
     LocalAnswer,
     OllamaAnswerGenerator,
+    OllamaAnswerSupportVerifier,
     infer_answer_format,
 )
 from app.models import SearchMethod, SearchResult
@@ -164,3 +165,47 @@ def test_transient_invalid_output_is_retried_once():
 
     assert attempts == 2
     assert result.answerable is True
+
+
+def test_support_verifier_uses_exact_question_answer_and_quotes():
+    def handler(request):
+        body = json.loads(request.content)
+        user_payload = json.loads(body["messages"][1]["content"])
+        assert user_payload["question"] == "What does BM25 use?"
+        assert user_payload["proposed_answer"] == "BM25 uses keywords."
+        assert user_payload["cited_evidence"][0]["quote"] == evidence()[0].text
+        return httpx.Response(
+            200,
+            json={
+                "done": True,
+                "message": {
+                    "content": json.dumps(
+                        {
+                            "supported": True,
+                            "confidence": 0.95,
+                            "reason": "The citation directly states the answer.",
+                        }
+                    )
+                },
+            },
+        )
+
+    citation = LocalAnswer.model_validate(output()).validated_answer(evidence())[1][0]
+    verdict = OllamaAnswerSupportVerifier(
+        transport=httpx.MockTransport(handler)
+    ).verify("What does BM25 use?", "BM25 uses keywords. [1]", [citation])
+
+    assert verdict.supported is True
+    assert verdict.confidence == 0.95
+
+
+def test_support_verifier_rejects_answer_without_citation_without_calling_model():
+    def handler(request):
+        raise AssertionError("Verifier must not run without citations")
+
+    verdict = OllamaAnswerSupportVerifier(
+        transport=httpx.MockTransport(handler)
+    ).verify("Question", "Answer", [])
+
+    assert verdict.supported is False
+    assert verdict.confidence == 1.0
