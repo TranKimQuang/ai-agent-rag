@@ -167,6 +167,51 @@ def test_agent_accepts_a_separate_retrieval_method():
     assert retriever.method == SearchMethod.HYBRID_ONTOLOGY_CROSS_ENCODER
 
 
+def test_agent_can_expose_five_retrieved_chunks_to_generator():
+    class FiveResultRetriever:
+        def search(self, *args):
+            return [
+                SearchResult(
+                    chunk_id=f"paper:p{page}:c1",
+                    document_id="paper",
+                    filename="paper.pdf",
+                    page=page,
+                    text=f"Question answering evidence from passage {page}.",
+                    method=SearchMethod.HYBRID_ONTOLOGY_RERANK,
+                    score=1.0,
+                    ontology_score=1.0,
+                    query_concepts=["QuestionAnswering"],
+                )
+                for page in range(1, 6)
+            ]
+
+    class LastEvidenceGenerator:
+        seen = 0
+
+        def generate(self, question, evidence):
+            self.seen = len(evidence)
+            return evidence[-1].text
+
+    generator = LastEvidenceGenerator()
+    agent = DocumentQuestionAgent(
+        FiveResultRetriever(),
+        answer_generator=generator,
+        generation_evidence_limit=5,
+    )
+
+    response = agent.ask("What question answering evidence is reported?")
+
+    assert generator.seen == 5
+    assert response.status == AgentStatus.ANSWERED
+    assert response.citations[0].page == 5
+
+
+@pytest.mark.parametrize("limit", [0, 6])
+def test_agent_rejects_invalid_generation_evidence_limit(limit):
+    with pytest.raises(ValueError):
+        DocumentQuestionAgent(FixedRetriever(), generation_evidence_limit=limit)
+
+
 def test_evidence_gate_can_require_lexical_support_for_ontology_match():
     result = SearchResult(
         chunk_id="paper:1",

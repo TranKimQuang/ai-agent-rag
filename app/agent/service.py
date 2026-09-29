@@ -182,11 +182,15 @@ class DocumentQuestionAgent:
         evidence_gate: EvidenceGate | None = None,
         answer_generator: AnswerGenerator | None = None,
         retrieval_method: SearchMethod = SearchMethod.HYBRID_ONTOLOGY_RERANK,
+        generation_evidence_limit: int = 3,
     ) -> None:
+        if not 1 <= generation_evidence_limit <= 5:
+            raise ValueError("generation_evidence_limit must be between 1 and 5")
         self.retriever = retriever
         self.evidence_gate = evidence_gate or EvidenceGate()
         self.answer_generator = answer_generator or ExtractiveAnswerGenerator()
         self.retrieval_method = retrieval_method
+        self.generation_evidence_limit = generation_evidence_limit
 
     def ask(
         self,
@@ -245,15 +249,16 @@ class DocumentQuestionAgent:
                 trace=trace,
             )
 
-        generated = self.answer_generator.generate(question, results)
+        generation_evidence = results[: self.generation_evidence_limit]
+        generated = self.answer_generator.generate(question, generation_evidence)
         # Source integrity is checked here; semantic entailment still needs evaluation.
         is_llm = isinstance(generated, LocalAnswer)
         if is_llm:
-            answer, citations = generated.validated_answer(results[:3])
+            answer, citations = generated.validated_answer(generation_evidence)
         else:
             answer, citations = generated.strip(), []
         supporting = next(
-            (result for result in results[:3] if answer and answer in result.text),
+            (result for result in generation_evidence if answer and answer in result.text),
             None,
         )
         if not answer or (not is_llm and supporting is None):

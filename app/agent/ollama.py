@@ -30,7 +30,7 @@ def infer_answer_format(question: str) -> str:
 def sentence_sources(evidence: list[SearchResult]) -> dict[str, tuple[SearchResult, str]]:
     """Deterministic, request-local IDs for exactly the text exposed to the model."""
     sources = {}
-    for rank, item in enumerate(evidence[:3], start=1):
+    for rank, item in enumerate(evidence, start=1):
         for number, sentence in enumerate(
             re.split(r"(?<=[.!?])\s+|\n+", item.text[:1800]), start=1
         ):

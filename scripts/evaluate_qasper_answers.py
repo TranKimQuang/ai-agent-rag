@@ -92,6 +92,13 @@ def main() -> None:
         "--reranker-model", default="cross-encoder/ms-marco-MiniLM-L6-v2"
     )
     parser.add_argument("--reranker-device", default="cpu")
+    parser.add_argument(
+        "--generation-evidence-limit",
+        type=int,
+        choices=range(1, 6),
+        default=3,
+        help="Number of top retrieved chunks exposed to the answer generator.",
+    )
     parser.add_argument("--output-dir", type=Path, default=Path("results"))
     args = parser.parse_args()
     if args.answerable < 1 or args.unanswerable < 1:
@@ -185,6 +192,7 @@ def main() -> None:
         retriever,
         answer_generator=OllamaAnswerGenerator(args.model),
         retrieval_method=args.retrieval_method,
+        generation_evidence_limit=args.generation_evidence_limit,
     )
 
     qa_lookup = {
@@ -330,6 +338,7 @@ def main() -> None:
             "split": split_name,
             "model": args.model,
             "retrieval_method": args.retrieval_method.value,
+            "generation_evidence_limit": args.generation_evidence_limit,
             "reranker_model": (
                 args.reranker_model
                 if args.retrieval_method

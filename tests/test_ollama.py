@@ -116,6 +116,20 @@ def test_server_resolves_correct_sentence_and_metadata():
     assert citations[0].chunk_id == "p1"
 
 
+def test_sentence_ids_can_reference_a_fifth_exposed_chunk():
+    items = [
+        evidence()[0].model_copy(
+            update={"chunk_id": f"p{number}", "page": number, "text": f"Evidence {number}."}
+        )
+        for number in range(1, 6)
+    ]
+    result = LocalAnswer.model_validate(output("e5s1"))
+
+    _, citations = result.validated_answer(items)
+
+    assert citations[0].chunk_id == "p5"
+
+
 def test_unseen_sentence_is_rejected():
     items = evidence()
     items[0].text = "x" * 1800 + ". Hidden sentence."

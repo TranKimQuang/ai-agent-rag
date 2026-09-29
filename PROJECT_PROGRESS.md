@@ -1,6 +1,34 @@
 # THEO DÕI TIẾN ĐỘ ĐỒ ÁN AI AGENT + RAG
 
-Cập nhật gần nhất: 28/09/2026
+Cập nhật gần nhất: 29/09/2026
+
+### Mới nhất: phân tích lỗi và thử mở rộng evidence cho LLM
+
+- Phân loại 52 case development cho thấy nút thắt chính vẫn là retrieval/context:
+  22 retrieval miss, 6 câu có gold evidence ở hạng 4-5 nhưng LLM chỉ nhận top 3,
+  3 gate false rejection, 10 lỗi nội dung/định dạng và 1 lỗi chọn citation.
+- Thử cross-encoder trên đủ 50 câu answerable: Recall@5 tăng 0,560 -> 0,660,
+  MRR tăng 0,342 -> 0,515; candidate Recall@20 là 0,860. Đây vẫn là kết quả
+  development và chưa đủ để đổi retrieval mặc định.
+- Agent nay cho phép cấu hình số chunk gửi sang bộ sinh từ 1 đến 5; mặc định
+  vẫn là 3. Citation validator chỉ chấp nhận ID thuộc đúng số chunk được gửi.
+- Trên 6 lỗi context-cutoff đã biết, 5 chunk tăng Answer-F1 0,302 -> 0,600 và
+  Evidence-F1 0,000 -> 0,639. Đây là tập lỗi được chọn trước nên không dùng làm
+  kết quả tổng quát.
+- Đối chứng đủ cùng 50 câu answerable: 5 chunk tăng Answer-F1 0,314 -> 0,366,
+  Evidence-F1 0,307 -> 0,373, citation precision/recall 0,317/0,290 ->
+  0,370/0,387; số câu được trả lời giữ nguyên 40/50, không có generation error.
+- Đổi lại, strict unanswerable bị từ chối đúng giảm từ 2/2 xuống 1/2 và thời
+  gian trung bình tăng 10,077 -> 14,015 giây/câu. Vì an toàn quan trọng hơn,
+  chưa đổi mặc định sang 5 chunk; đây chỉ là tùy chọn thí nghiệm.
+- Báo cáo: `QASPER_ANSWER_EVALUATION.md`; artifacts cục bộ:
+  `results/qasper_answer_error_analysis_50.json`,
+  `results/qasper_cross_encoder_reranker_50.json` và
+  `results/qasper_answer_evaluation_20260929T032301Z.json`.
+- 103 test passed; Ruff passed; còn một cảnh báo deprecation Starlette/httpx.
+- Bước kế tiếp: thêm bước kiểm tra claim có thực sự được evidence hỗ trợ hoặc
+  context thích ứng, rồi đánh giá với nhiều câu unanswerable hơn; chưa chạy
+  held-out cuối.
 
 ### Mới nhất: mở rộng đánh giá Agent lên 50 câu answerable QASPER thật
 

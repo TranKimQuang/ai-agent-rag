@@ -177,3 +177,39 @@ held-out evaluation only after the configuration is frozen.
 
 Detailed local artifact:
 `results/qasper_answer_evaluation_20260928T085754Z.json`.
+
+## Generation evidence-context ablation — 29/09/2026
+
+Error analysis on the expanded 50-answerable-question run found that six
+questions had gold evidence at rank 4 or 5, outside the three chunks exposed
+to the local generator. The Agent now supports a configurable generation
+evidence limit from one to five chunks. The safe application default remains
+three chunks.
+
+On the six known context-cutoff cases, exposing five chunks increased
+Answer-F1 from 0.302 to 0.600 and Evidence-F1 from 0.000 to 0.639. Because this
+subset was selected from known errors, a full comparison was then run on the
+same 50 answerable and two strict unanswerable development questions.
+
+| Metric | 3 evidence chunks | 5 evidence chunks |
+|---|---:|---:|
+| Answer-F1, answerable | 0.314 | **0.366** |
+| Evidence-F1, answerable | 0.307 | **0.373** |
+| Citation precision, answerable | 0.317 | **0.370** |
+| Citation recall, answerable | 0.290 | **0.387** |
+| Answered | 40/50 | 40/50 |
+| Strict unanswerable refused | **2/2** | 1/2 |
+| Generation errors | 0 | 0 |
+| Mean time, all 52 cases | **10.077 s** | 14.015 s |
+
+The wider context improves answer and citation metrics, but it also lets one
+unanswerable question select a plausible yet unsupported same-paper sentence.
+The unanswerable sample has only two cases, so neither the 100% nor 50% rate is
+a stable estimate. Nevertheless, refusal safety takes priority: five chunks
+remain an explicit experimental option and do not replace the three-chunk
+default. The next improvement should add answer-support verification or an
+adaptive context policy, evaluated with a larger unanswerable set, rather than
+silently widening the production prompt.
+
+Detailed local artifact:
+`results/qasper_answer_evaluation_20260929T032301Z.json`.
