@@ -1,0 +1,7 @@
+PREFIX qa: <https://example.org/document-qa#>
+
+SELECT ?paper ?metric
+WHERE {
+  ?paper a qa:Paper ;
+         qa:evaluatedBy ?metric .
+}

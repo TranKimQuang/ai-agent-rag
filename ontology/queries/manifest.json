@@ -1,0 +1,62 @@
+[
+  {
+    "id": "CQ01",
+    "question": "Bài báo nào sử dụng một dataset cụ thể?",
+    "query": "01_papers_using_dataset.rq",
+    "minimum_rows": 1
+  },
+  {
+    "id": "CQ02",
+    "question": "Phương pháp nào giải quyết một task cụ thể?",
+    "query": "02_methods_solving_tasks.rq",
+    "minimum_rows": 1
+  },
+  {
+    "id": "CQ03",
+    "question": "Chunk nào nhắc đến một concept cụ thể?",
+    "query": "03_chunks_mentioning_concepts.rq",
+    "minimum_rows": 1
+  },
+  {
+    "id": "CQ04",
+    "question": "Những concept nào có quan hệ trực tiếp với một concept?",
+    "query": "04_related_concepts.rq",
+    "minimum_rows": 1
+  },
+  {
+    "id": "CQ05",
+    "question": "Từ paper có thể truy vết đến chunk và concept bằng đường đi nào?",
+    "query": "05_paper_evidence_path.rq",
+    "minimum_rows": 1
+  },
+  {
+    "id": "CQ06",
+    "question": "Bài báo được đánh giá bằng metric nào?",
+    "query": "06_paper_metrics.rq",
+    "minimum_rows": 1
+  },
+  {
+    "id": "CQ07",
+    "question": "Một paper chứa những section và chunk nào?",
+    "query": "07_paper_sections_and_chunks.rq",
+    "minimum_rows": 1
+  },
+  {
+    "id": "CQ08",
+    "question": "Concept nào có concept rộng hơn trong phân cấp?",
+    "query": "08_concept_hierarchy.rq",
+    "minimum_rows": 1
+  },
+  {
+    "id": "CQ09",
+    "question": "Hybrid Search có liên quan đến những phương pháp retrieval nào?",
+    "query": "09_hybrid_search_relations.rq",
+    "minimum_rows": 3
+  },
+  {
+    "id": "CQ10",
+    "question": "Chunk nào là evidence cho một kết quả?",
+    "query": "10_result_evidence.rq",
+    "minimum_rows": 1
+  }
+]

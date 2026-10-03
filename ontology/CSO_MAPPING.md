@@ -8,13 +8,21 @@ official topic URI pattern documented by the CSO Portal.
 | --- | --- | --- |
 | `InformationRetrieval` | `information_retrieval` | `skos:exactMatch` |
 | `NaturalLanguageProcessing` | `natural_language_processing` | `skos:exactMatch` |
-| `QuestionAnswering` | `question_answering` | `skos:exactMatch` |
-| `RetrievalAugmentedGeneration` | `retrieval_augmented_generation` | `skos:exactMatch` |
-| `SemanticSearch` | `semantic_search` | `skos:exactMatch` |
+| `QuestionAnswering` | `question_answering` | `skos:closeMatch` |
+| `RetrievalAugmentedGeneration` | `retrieval-augmented_generation` | `skos:closeMatch` |
+| `SemanticSearch` | `semantic_search` | `skos:closeMatch` |
 
-`skos:exactMatch` is used only where the local concept and CSO topic denote the same research
-area. Project-specific implementation concepts are intentionally left unmapped until an
-equivalent CSO topic is verified. This avoids asserting unsupported equivalence.
+`skos:exactMatch` is retained only for the two local `ResearchTopic` concepts whose labels and
+scope match the corresponding CSO research areas. `QuestionAnswering` is modeled locally as a
+`Task`, while `RetrievalAugmentedGeneration` and `SemanticSearch` are modeled as `Method`;
+their CSO resources are research topics. They therefore use the weaker `skos:closeMatch`.
+Project-specific implementation concepts are intentionally left unmapped until an equivalent
+CSO topic is verified. This avoids asserting unsupported equivalence.
+
+The five URIs were checked against the CSO 3.5 content-negotiation endpoints on 03/10/2026.
+This review also corrected the RAG URI from the nonexistent
+`retrieval_augmented_generation` resource to the official
+`retrieval-augmented_generation` resource.
 
 Sources:
 

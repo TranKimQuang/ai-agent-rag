@@ -1,8 +1,32 @@
 # THEO DÕI TIẾN ĐỘ ĐỒ ÁN AI AGENT + RAG
 
-Cập nhật gần nhất: 29/09/2026
+Cập nhật gần nhất: 03/10/2026
 
-### Mới nhất: phân tích lỗi và thử mở rộng evidence cho LLM
+### Mới nhất: đánh giá hình thức Ontology bằng reasoner và competency questions
+
+- [x] Tích hợp OWL-RL reasoner (`owlrl`) và tạo công cụ đánh giá có thể chạy lại bằng
+  `python scripts/evaluate_ontology.py`.
+- [x] Kiểm tra consistency: 550 triple ban đầu, 1.616 triple sau suy luận,
+  1.066 triple suy ra và không phát hiện mâu thuẫn theo các kiểm tra OWL-RL hỗ trợ.
+- [x] Hoàn thiện đủ 10 truy vấn SPARQL cho 10 competency questions; toàn bộ 10/10
+  đạt số dòng kết quả tối thiểu trên các instance mẫu.
+- [x] Xuất artifact đối chiếu tại `evaluation/ontology_quality_report.json` và
+  `evaluation/ONTOLOGY_QUALITY_REPORT.md`.
+- [x] Báo cáo thống kê 14 class, 25 object property, 9 datatype property,
+  73 individual, 34/34 property có domain/range và 8 object property có inverse.
+- [x] Rà soát 5 ánh xạ CSO 3.5: giữ 2 `skos:exactMatch` cho Information Retrieval/NLP,
+  đổi Question Answering/RAG/Semantic Search sang 3 `skos:closeMatch` do khác vai trò
+  mô hình cục bộ; đồng thời sửa URI RAG sang `retrieval-augmented_generation`.
+- [x] Chạy paired bootstrap 10.000 mẫu trên 78 câu development cho Hybrid so với
+  Ontology re-ranking. Chênh lệch Recall@5 +0,0128 có CI 95%
+  [-0,0256; 0,0641], MRR@5 +0,0053 có CI [-0,0045; 0,0162] và nDCG@5
+  +0,0066 có CI [-0,0099; 0,0254]; tất cả đều chưa có ý nghĩa ở mức 0,05.
+- [x] Lưu kết quả significance tại
+  `evaluation/qasper_train_v3/development_significance.json` và
+  `evaluation/qasper_train_v3/DEVELOPMENT_SIGNIFICANCE.md`.
+- [x] Toàn bộ 111 test và Ruff đạt trên mã nguồn chính (`app`, `scripts`, `tests`).
+
+### Trước đó: phân tích lỗi và thử mở rộng evidence cho LLM
 
 - Phân loại 52 case development cho thấy nút thắt chính vẫn là retrieval/context:
   22 retrieval miss, 6 câu có gold evidence ở hạng 4-5 nhưng LLM chỉ nhận top 3,
@@ -537,13 +561,16 @@ PDF
 ## 5. Bước tiếp theo ưu tiên
 
 Milestone tiếp theo: kiểm chứng khả năng khái quát của semantic concept linking và hoàn thiện
-answer generation.
+đánh giá khoa học cho Ontology/Agent.
 
 1. Giữ nguyên kết quả held-out v3 và không tiếp tục tuning theo test này.
 2. Thiết kế hướng concept linking khái quát hơn (candidate generation từ CSO hoặc zero-shot
    linking), dùng một development protocol mới nếu tiếp tục nghiên cứu retrieval.
 3. Tiếp tục phân tích và cải thiện retrieval miss trên development; giữ nguyên
    held-out, sau đó xác nhận answer correctness/citation/unanswerable trên mẫu lớn hơn.
+4. Đã hoàn thành reasoner consistency, 10 competency questions, rà soát CSO mapping
+   và paired bootstrap trên development; tiếp theo thiết kế protocol mới để kiểm chứng
+   khả năng khái quát mà không dùng lại held-out đã xem.
 
 Chưa ưu tiên trong milestone này: mở rộng giao diện, PostgreSQL, pgvector, OCR và
 framework Agent phức tạp.

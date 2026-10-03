@@ -1,0 +1,234 @@
+{
+  "ontology_path": "ontology/document_qa.ttl",
+  "reasoner": "OWL-RL (owlrl)",
+  "consistent": true,
+  "consistency_issues": [],
+  "triples_before_reasoning": 550,
+  "triples_after_reasoning": 1616,
+  "inferred_triples": 1066,
+  "schema": {
+    "classes": 14,
+    "object_properties": 25,
+    "data_properties": 9,
+    "individuals": 73,
+    "properties_with_domain": 34,
+    "properties_with_range": 34,
+    "object_properties_with_inverse": 8
+  },
+  "cso_mapping": {
+    "exact_match_count": 2,
+    "close_match_count": 3,
+    "exact_matches": [
+      {
+        "local_concept": "InformationRetrieval",
+        "external_uri": "https://cso.kmi.open.ac.uk/topics/information_retrieval"
+      },
+      {
+        "local_concept": "NaturalLanguageProcessing",
+        "external_uri": "https://cso.kmi.open.ac.uk/topics/natural_language_processing"
+      }
+    ],
+    "close_matches": [
+      {
+        "local_concept": "QuestionAnswering",
+        "external_uri": "https://cso.kmi.open.ac.uk/topics/question_answering"
+      },
+      {
+        "local_concept": "RetrievalAugmentedGeneration",
+        "external_uri": "https://cso.kmi.open.ac.uk/topics/retrieval-augmented_generation"
+      },
+      {
+        "local_concept": "SemanticSearch",
+        "external_uri": "https://cso.kmi.open.ac.uk/topics/semantic_search"
+      }
+    ],
+    "source_version": "CSO 3.5",
+    "reviewed_on": "2026-10-03",
+    "manual_review_status": "completed"
+  },
+  "competency_questions": [
+    {
+      "id": "CQ01",
+      "question": "Bài báo nào sử dụng một dataset cụ thể?",
+      "query": "01_papers_using_dataset.rq",
+      "minimum_rows": 1,
+      "actual_rows": 1,
+      "passed": true,
+      "sample_rows": [
+        {
+          "paper": "SamplePaper",
+          "dataset": "QASPER"
+        }
+      ]
+    },
+    {
+      "id": "CQ02",
+      "question": "Phương pháp nào giải quyết một task cụ thể?",
+      "query": "02_methods_solving_tasks.rq",
+      "minimum_rows": 1,
+      "actual_rows": 1,
+      "passed": true,
+      "sample_rows": [
+        {
+          "method": "RetrievalAugmentedGeneration",
+          "task": "QuestionAnswering"
+        }
+      ]
+    },
+    {
+      "id": "CQ03",
+      "question": "Chunk nào nhắc đến một concept cụ thể?",
+      "query": "03_chunks_mentioning_concepts.rq",
+      "minimum_rows": 1,
+      "actual_rows": 1,
+      "passed": true,
+      "sample_rows": [
+        {
+          "chunk": "SampleChunk",
+          "concept": "RetrievalAugmentedGeneration"
+        }
+      ]
+    },
+    {
+      "id": "CQ04",
+      "question": "Những concept nào có quan hệ trực tiếp với một concept?",
+      "query": "04_related_concepts.rq",
+      "minimum_rows": 1,
+      "actual_rows": 91,
+      "passed": true,
+      "sample_rows": [
+        {
+          "concept": "SampleRAGModel",
+          "related": "RetrievalAugmentedGeneration"
+        },
+        {
+          "concept": "RetrievalAugmentedGeneration",
+          "related": "InformationRetrieval"
+        },
+        {
+          "concept": "KeywordSearch",
+          "related": "InformationRetrieval"
+        },
+        {
+          "concept": "SemanticSearch",
+          "related": "InformationRetrieval"
+        },
+        {
+          "concept": "EntityLinking",
+          "related": "InformationRetrieval"
+        }
+      ]
+    },
+    {
+      "id": "CQ05",
+      "question": "Từ paper có thể truy vết đến chunk và concept bằng đường đi nào?",
+      "query": "05_paper_evidence_path.rq",
+      "minimum_rows": 1,
+      "actual_rows": 1,
+      "passed": true,
+      "sample_rows": [
+        {
+          "paper": "SamplePaper",
+          "section": "MethodsSection",
+          "chunk": "SampleChunk",
+          "concept": "RetrievalAugmentedGeneration"
+        }
+      ]
+    },
+    {
+      "id": "CQ06",
+      "question": "Bài báo được đánh giá bằng metric nào?",
+      "query": "06_paper_metrics.rq",
+      "minimum_rows": 1,
+      "actual_rows": 1,
+      "passed": true,
+      "sample_rows": [
+        {
+          "paper": "SamplePaper",
+          "metric": "EvidenceF1"
+        }
+      ]
+    },
+    {
+      "id": "CQ07",
+      "question": "Một paper chứa những section và chunk nào?",
+      "query": "07_paper_sections_and_chunks.rq",
+      "minimum_rows": 1,
+      "actual_rows": 1,
+      "passed": true,
+      "sample_rows": [
+        {
+          "paper": "SamplePaper",
+          "section": "MethodsSection",
+          "chunk": "SampleChunk"
+        }
+      ]
+    },
+    {
+      "id": "CQ08",
+      "question": "Concept nào có concept rộng hơn trong phân cấp?",
+      "query": "08_concept_hierarchy.rq",
+      "minimum_rows": 1,
+      "actual_rows": 21,
+      "passed": true,
+      "sample_rows": [
+        {
+          "concept": "QuestionAnswering",
+          "broader": "NaturalLanguageProcessing"
+        },
+        {
+          "concept": "ArgumentMining",
+          "broader": "NaturalLanguageProcessing"
+        },
+        {
+          "concept": "SemanticRoleInduction",
+          "broader": "NaturalLanguageProcessing"
+        },
+        {
+          "concept": "TextSummarization",
+          "broader": "NaturalLanguageProcessing"
+        },
+        {
+          "concept": "SpamDetection",
+          "broader": "NaturalLanguageProcessing"
+        }
+      ]
+    },
+    {
+      "id": "CQ09",
+      "question": "Hybrid Search có liên quan đến những phương pháp retrieval nào?",
+      "query": "09_hybrid_search_relations.rq",
+      "minimum_rows": 3,
+      "actual_rows": 3,
+      "passed": true,
+      "sample_rows": [
+        {
+          "related": "KeywordSearch"
+        },
+        {
+          "related": "SemanticSearch"
+        },
+        {
+          "related": "ReciprocalRankFusion"
+        }
+      ]
+    },
+    {
+      "id": "CQ10",
+      "question": "Chunk nào là evidence cho một kết quả?",
+      "query": "10_result_evidence.rq",
+      "minimum_rows": 1,
+      "actual_rows": 1,
+      "passed": true,
+      "sample_rows": [
+        {
+          "paper": "SamplePaper",
+          "result": "SampleResult",
+          "chunk": "SampleChunk"
+        }
+      ]
+    }
+  ],
+  "competency_questions_passed": 10,
+  "competency_questions_total": 10
+}

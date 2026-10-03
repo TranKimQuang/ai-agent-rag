@@ -1,0 +1,6 @@
+PREFIX qa: <https://example.org/document-qa#>
+
+SELECT ?related
+WHERE {
+  qa:HybridSearch qa:relatedTo ?related .
+}

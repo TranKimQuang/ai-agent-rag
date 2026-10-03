@@ -1,0 +1,8 @@
+PREFIX qa: <https://example.org/document-qa#>
+
+SELECT ?paper ?result ?chunk
+WHERE {
+  ?paper a qa:Paper ;
+         qa:hasResult ?result .
+  ?result qa:hasEvidence ?chunk .
+}

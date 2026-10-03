@@ -11,6 +11,7 @@ sqlalchemy
 psycopg[binary]
 pgvector
 rdflib
+owlrl
 httpx
 pytest
 ruff

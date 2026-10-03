@@ -75,16 +75,20 @@ def test_ontology_v2_defines_inverse_properties_and_constraints() -> None:
 
 def test_selected_topics_are_mapped_to_cso_v35() -> None:
     graph = OntologyService().graph
-    expected_mappings = {
+    expected_exact_mappings = {
         QA.InformationRetrieval: CSO.information_retrieval,
         QA.NaturalLanguageProcessing: CSO.natural_language_processing,
+    }
+    expected_close_mappings = {
         QA.QuestionAnswering: CSO.question_answering,
-        QA.RetrievalAugmentedGeneration: CSO.retrieval_augmented_generation,
+        QA.RetrievalAugmentedGeneration: CSO["retrieval-augmented_generation"],
         QA.SemanticSearch: CSO.semantic_search,
     }
 
-    for local_concept, cso_concept in expected_mappings.items():
+    for local_concept, cso_concept in expected_exact_mappings.items():
         assert (local_concept, SKOS.exactMatch, cso_concept) in graph
+    for local_concept, cso_concept in expected_close_mappings.items():
+        assert (local_concept, SKOS.closeMatch, cso_concept) in graph
 
     ontology = QA.DocumentQAOntology
     assert (ontology, DCTERMS.source, URIRef("https://cso.kmi.open.ac.uk/")) in graph
@@ -277,7 +281,7 @@ def test_example_sparql_queries_are_valid() -> None:
         for path in query_directory.glob("*.rq")
     ]
 
-    assert len(results) == 5
+    assert len(results) == 10
     assert all(result for result in results)
 
 

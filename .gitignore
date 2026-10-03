@@ -4,6 +4,7 @@ __pycache__/
 .pytest_cache/
 .pytest_tmp_*/
 .ruff_cache/
+.docx_work/
 .env
 results/
 tmp/

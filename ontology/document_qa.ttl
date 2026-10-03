@@ -117,14 +117,14 @@ qa:RetrievalAugmentedGeneration a qa:Method ;
     skos:altLabel "RAG"@en, "retrieval-augmented generation"@en ;
     skos:definition "A method that retrieves external evidence before generating a grounded answer."@en ;
     qa:solvesTask qa:QuestionAnswering ;
-    skos:exactMatch cso:retrieval_augmented_generation ;
+    skos:closeMatch <https://cso.kmi.open.ac.uk/topics/retrieval-augmented_generation> ;
     qa:relatedTo qa:InformationRetrieval .
 
 qa:QuestionAnswering a qa:Task ;
     skos:prefLabel "question answering"@en ;
     skos:altLabel "QA"@en, "hỏi đáp"@vi ;
     skos:definition "The task of producing answers to questions expressed in natural language."@en ;
-    skos:exactMatch cso:question_answering ;
+    skos:closeMatch cso:question_answering ;
     skos:broader qa:NaturalLanguageProcessing .
 
 qa:InformationRetrieval a qa:ResearchTopic ;
@@ -150,7 +150,7 @@ qa:SemanticSearch a qa:Method ;
     skos:prefLabel "semantic search"@en ;
     skos:altLabel "tìm kiếm ngữ nghĩa"@vi, "dense retrieval"@en ;
     skos:definition "A retrieval method that matches the meaning of a query and documents using semantic representations."@en ;
-    skos:exactMatch cso:semantic_search ;
+    skos:closeMatch cso:semantic_search ;
     qa:relatedTo qa:InformationRetrieval .
 
 qa:HybridSearch a qa:Method ;
