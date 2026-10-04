@@ -1,0 +1,74 @@
+{
+  "dataset": "evaluation/qasper_protocol_v4/qasper_development.json",
+  "split_role": "development",
+  "details_source": "evaluation/qasper_protocol_v4/development_baseline/retrieval_benchmark_details.json",
+  "concept_links": null,
+  "linking_method": "hybrid",
+  "linking_threshold": 0.65,
+  "ontology_weight": 0.05,
+  "baseline_method": "hybrid",
+  "candidate_method": "hybrid_ontology_rerank",
+  "questions": 74,
+  "k": 5,
+  "bootstrap_samples": 10000,
+  "confidence": 0.95,
+  "seed": 20261003,
+  "metrics": {
+    "precision_at_k": {
+      "baseline_mean": 0.07567567567567568,
+      "candidate_mean": 0.07567567567567568,
+      "observed_difference": 0.0,
+      "confidence_interval": [
+        0.0,
+        0.0
+      ],
+      "two_sided_p_value": 1.0,
+      "improved_questions": 0,
+      "unchanged_questions": 74,
+      "worsened_questions": 0,
+      "significant_at_0_05": false
+    },
+    "recall_at_k": {
+      "baseline_mean": 0.30270270270270266,
+      "candidate_mean": 0.30270270270270266,
+      "observed_difference": 0.0,
+      "confidence_interval": [
+        0.0,
+        0.0
+      ],
+      "two_sided_p_value": 1.0,
+      "improved_questions": 0,
+      "unchanged_questions": 74,
+      "worsened_questions": 0,
+      "significant_at_0_05": false
+    },
+    "mrr_at_k": {
+      "baseline_mean": 0.20743243243243242,
+      "candidate_mean": 0.20923423423423423,
+      "observed_difference": 0.0018018018018018014,
+      "confidence_interval": [
+        0.0,
+        0.005405405405405404
+      ],
+      "two_sided_p_value": 0.7489251074892511,
+      "improved_questions": 1,
+      "unchanged_questions": 73,
+      "worsened_questions": 0,
+      "significant_at_0_05": false
+    },
+    "ndcg_at_k": {
+      "baseline_mean": 0.21130462198454578,
+      "candidate_mean": 0.2128336381029979,
+      "observed_difference": 0.0015290161184521403,
+      "confidence_interval": [
+        0.0,
+        0.00458704835535642
+      ],
+      "two_sided_p_value": 0.7489251074892511,
+      "improved_questions": 1,
+      "unchanged_questions": 73,
+      "worsened_questions": 0,
+      "significant_at_0_05": false
+    }
+  }
+}

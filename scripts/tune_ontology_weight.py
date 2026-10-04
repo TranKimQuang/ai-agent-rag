@@ -53,6 +53,11 @@ def main() -> None:
         type=Path,
         default=Path("evaluation/qasper/ontology_weight_validation_results.json"),
     )
+    parser.add_argument(
+        "--query-type-intent",
+        action="store_true",
+        help="Tune with the experimental model/dataset/metric/method/task linker",
+    )
     args = parser.parse_args()
 
     chunks, questions = load_dataset(args.dataset)
@@ -61,6 +66,7 @@ def main() -> None:
         semantic_encoder=encoder,
         linking_method=ConceptLinkingMethod.HYBRID,
         linking_threshold=0.65,
+        query_type_intent=args.query_type_intent,
     )
     chunks, concept_links = ontology.index_chunks(chunks)
     retriever = InMemoryHybridRetriever(
@@ -118,6 +124,7 @@ def main() -> None:
         "test_split_evaluated": False,
         "questions": len(questions),
         "concept_links": concept_links,
+        "query_type_intent": args.query_type_intent,
         "selection_metric": "rerank nDCG@5, then MRR@5 and Recall@5",
         "selected_weight": float(selected_weight),
         "baseline": baseline_summary,

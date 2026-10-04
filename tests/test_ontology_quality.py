@@ -11,7 +11,7 @@ def test_ontology_quality_report_passes_all_competency_questions() -> None:
     assert report["competency_questions_passed"] == 10
     assert report["triples_after_reasoning"] > report["triples_before_reasoning"]
     assert report["schema"]["classes"] >= 13
-    assert report["cso_mapping"]["exact_match_count"] == 2
+    assert report["cso_mapping"]["exact_match_count"] == 5
     assert report["cso_mapping"]["close_match_count"] == 3
 
 

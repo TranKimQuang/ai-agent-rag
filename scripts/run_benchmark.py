@@ -129,6 +129,11 @@ def main() -> None:
     )
     parser.add_argument("--output-dir", type=Path, default=Path("results"))
     parser.add_argument(
+        "--query-type-intent",
+        action="store_true",
+        help="Experimentally link explicit model/dataset/metric/method/task query intent",
+    )
+    parser.add_argument(
         "--k-values",
         type=int,
         nargs="+",
@@ -143,6 +148,7 @@ def main() -> None:
         semantic_encoder=encoder,
         linking_method=ConceptLinkingMethod.HYBRID,
         linking_threshold=0.65,
+        query_type_intent=args.query_type_intent,
     )
     chunks, concept_links = ontology.index_chunks(chunks)
     retriever = InMemoryHybridRetriever(

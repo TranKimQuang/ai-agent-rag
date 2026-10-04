@@ -1,0 +1,65 @@
+{
+  "selection_split": "validation",
+  "questions": 35,
+  "selection_metric": "nDCG@5, then MRR@5 and Recall@5",
+  "selected": {
+    "retrieval_method": "hybrid",
+    "query_type_intent": false,
+    "ontology_weight": 0.0,
+    "query_expansion": false
+  },
+  "baseline_metrics": {
+    "questions": 35.0,
+    "precision@1": 0.17142857142857143,
+    "recall@1": 0.11142857142857143,
+    "mrr@1": 0.17142857142857143,
+    "ndcg@1": 0.17142857142857143,
+    "precision@3": 0.08571428571428572,
+    "recall@3": 0.1514285714285714,
+    "mrr@3": 0.18571428571428572,
+    "ndcg@3": 0.16499423486611883,
+    "precision@5": 0.06285714285714286,
+    "recall@5": 0.18571428571428572,
+    "mrr@5": 0.19285714285714287,
+    "ndcg@5": 0.16892147205539823
+  },
+  "best_rerank_candidate": {
+    "query_type_intent": false,
+    "ontology_weight": 0.0,
+    "metrics": {
+      "questions": 35.0,
+      "precision@1": 0.17142857142857143,
+      "recall@1": 0.11142857142857143,
+      "mrr@1": 0.17142857142857143,
+      "ndcg@1": 0.17142857142857143,
+      "precision@3": 0.08571428571428572,
+      "recall@3": 0.1514285714285714,
+      "mrr@3": 0.18571428571428572,
+      "ndcg@3": 0.16499423486611883,
+      "precision@5": 0.06285714285714286,
+      "recall@5": 0.18571428571428572,
+      "mrr@5": 0.19285714285714287,
+      "ndcg@5": 0.16892147205539823
+    }
+  },
+  "best_expansion_candidate": {
+    "query_type_intent": false,
+    "metrics": {
+      "questions": 35.0,
+      "precision@1": 0.17142857142857143,
+      "recall@1": 0.11142857142857143,
+      "mrr@1": 0.17142857142857143,
+      "ndcg@1": 0.17142857142857143,
+      "precision@3": 0.08571428571428572,
+      "recall@3": 0.1514285714285714,
+      "mrr@3": 0.18571428571428572,
+      "ndcg@3": 0.16499423486611883,
+      "precision@5": 0.06285714285714286,
+      "recall@5": 0.18571428571428572,
+      "mrr@5": 0.19285714285714287,
+      "ndcg@5": 0.16892147205539823
+    }
+  },
+  "final_test_status": "sealed_not_evaluated",
+  "decision": "Validation did not show an nDCG@5 improvement from Ontology re-ranking or query expansion. Select the simpler Hybrid baseline and keep final-test sealed."
+}

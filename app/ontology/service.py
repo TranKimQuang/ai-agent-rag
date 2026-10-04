@@ -20,6 +20,13 @@ from app.models import (
 DEFAULT_ONTOLOGY_PATH = Path(__file__).parents[2] / "ontology" / "document_qa.ttl"
 QA = Namespace("https://example.org/document-qa#")
 _NON_WORD = re.compile(r"[^a-z0-9]+")
+_QUERY_TYPE_ALIASES = {
+    QA.Dataset: {"dataset", "datasets", "corpus", "corpora"},
+    QA.Metric: {"metric", "metrics", "measure", "measures"},
+    QA.Model: {"model", "models", "architecture", "architectures"},
+    QA.Method: {"method", "methods", "approach", "approaches", "technique", "techniques"},
+    QA.Task: {"task", "tasks", "problem", "problems"},
+}
 
 
 def normalize_text(text: str) -> str:
@@ -68,6 +75,7 @@ class OntologyService:
         linking_method: ConceptLinkingMethod = ConceptLinkingMethod.ALIAS,
         linking_threshold: float = 0.55,
         linking_limit: int = 5,
+        query_type_intent: bool = False,
     ) -> None:
         self.graph = Graph()
         self.graph.parse(ontology_path, format="turtle")
@@ -75,6 +83,7 @@ class OntologyService:
         self.linking_method = linking_method
         self.linking_threshold = linking_threshold
         self.linking_limit = linking_limit
+        self.query_type_intent = query_type_intent
         self._concept_embeddings: NDArray[np.float32] | None = None
         self._concept_aliases = self._load_concept_aliases()
         self._configured_concept_cache: dict[str, tuple[URIRef, ...]] = {}
@@ -92,7 +101,10 @@ class OntologyService:
         concepts = {
             subject
             for subject, object_type in self.graph.subject_objects(RDF.type)
-            if object_type in concept_types and isinstance(subject, URIRef)
+            if object_type in concept_types
+            and isinstance(subject, URIRef)
+            and not local_name(subject).startswith("Sample")
+            and self._retrieval_enabled(subject)
         }
         aliases: dict[URIRef, set[str]] = {}
         for concept in concepts:
@@ -102,6 +114,13 @@ class OntologyService:
             aliases[concept] = {normalize_text(name) for name in names if normalize_text(name)}
         return aliases
 
+    def _retrieval_enabled(self, resource: URIRef) -> bool:
+        return (
+            resource,
+            QA.retrievalEnabled,
+            Literal(False, datatype=XSD.boolean),
+        ) not in self.graph
+
     def identify_concepts(self, text: str) -> list[URIRef]:
         normalized = f" {normalize_text(text)} "
         matches = [
@@ -110,6 +129,10 @@ class OntologyService:
             if any(f" {alias} " in normalized for alias in aliases)
         ]
         return sorted(matches, key=local_name)
+
+    def vocabulary_labels(self) -> set[str]:
+        """Return preferred labels for concepts available to the local linker."""
+        return {self.preferred_label(concept) for concept in self._concept_aliases}
 
     def _concept_documents(self) -> tuple[list[URIRef], list[str]]:
         concepts = sorted(self._concept_aliases, key=local_name)
@@ -192,9 +215,47 @@ class OntologyService:
             for links in links_by_text
         ]
 
+    def semantic_candidates(
+        self, text: str, *, limit: int = 5
+    ) -> list[ConceptLink]:
+        """Return the nearest ontology concepts without applying an acceptance threshold."""
+        return self.semantic_candidates_batch([text], limit=limit)[0]
+
+    def semantic_candidates_batch(
+        self, texts: list[str], *, limit: int = 5
+    ) -> list[list[ConceptLink]]:
+        """Return nearest candidates for auditing misses without changing linking policy."""
+        if limit < 1:
+            raise ValueError("limit must be at least 1")
+        return self.link_concepts_batch(
+            texts,
+            ConceptLinkingMethod.SEMANTIC,
+            threshold=0.0,
+            limit=limit,
+        )
+
     def configured_concepts(self, text: str) -> list[URIRef]:
         """Link text using the strategy configured for the retrieval pipeline."""
         return self.configured_concepts_batch([text])[0]
+
+    def identify_query_type_concepts(self, text: str) -> list[URIRef]:
+        """Find generic ontology classes explicitly requested by a question."""
+        normalized = f" {normalize_text(text)} "
+        return sorted(
+            (
+                concept_type
+                for concept_type, aliases in _QUERY_TYPE_ALIASES.items()
+                if any(f" {alias} " in normalized for alias in aliases)
+            ),
+            key=local_name,
+        )
+
+    def configured_query_concepts(self, text: str) -> list[URIRef]:
+        """Link a query and optionally include its requested ontology entity type."""
+        concepts = self.configured_concepts(text)
+        if self.query_type_intent:
+            concepts.extend(self.identify_query_type_concepts(text))
+        return sorted(set(concepts), key=local_name)
 
     def configured_concepts_batch(self, texts: list[str]) -> list[list[URIRef]]:
         """Link configured concepts for many texts using one embedding batch."""
@@ -261,12 +322,12 @@ class OntologyService:
             neighbors.update(
                 value
                 for value in self.graph.objects(concept, predicate)
-                if isinstance(value, URIRef)
+                if isinstance(value, URIRef) and self._retrieval_enabled(value)
             )
             neighbors.update(
                 value
                 for value in self.graph.subjects(predicate, concept)
-                if isinstance(value, URIRef)
+                if isinstance(value, URIRef) and self._retrieval_enabled(value)
             )
         return neighbors
 
@@ -275,7 +336,7 @@ class OntologyService:
         return str(label) if isinstance(label, Literal) else local_name(concept)
 
     def expand_query(self, query: str) -> QueryExpansion:
-        concepts = self.configured_concepts(query)
+        concepts = self.configured_query_concepts(query)
         terms: set[str] = set()
         for concept in concepts:
             terms.update(str(value) for value in self.graph.objects(concept, SKOS.altLabel))
@@ -294,7 +355,7 @@ class OntologyService:
         )
 
     def score_text(self, query: str, text: str) -> OntologyMatch:
-        query_concepts = self.configured_concepts(query)
+        query_concepts = self.configured_query_concepts(query)
         chunk_concepts = self.configured_concepts(text)
         return self._score_concepts(query_concepts, chunk_concepts)
 
@@ -302,6 +363,9 @@ class OntologyService:
         self, query_concepts: list[str], chunk_concepts: list[str]
     ) -> OntologyMatch:
         known_by_name = {local_name(concept): concept for concept in self._concept_aliases}
+        known_by_name.update(
+            {local_name(concept_type): concept_type for concept_type in _QUERY_TYPE_ALIASES}
+        )
         return self._score_concepts(
             [known_by_name[name] for name in query_concepts if name in known_by_name],
             [known_by_name[name] for name in chunk_concepts if name in known_by_name],
@@ -327,6 +391,12 @@ class OntologyService:
                     best_score = 1.0
                     reasons.append(f"Exact concept: {local_name(query_concept)}")
                     break
+                if self._is_instance_of(chunk_concept, query_concept):
+                    best_score = max(best_score, 0.5)
+                    reasons.append(
+                        f"Requested type: {local_name(chunk_concept)} is a "
+                        f"{local_name(query_concept)}"
+                    )
                 if chunk_concept in self._neighbors(query_concept):
                     best_score = max(best_score, 0.65)
                     reasons.append(
@@ -342,6 +412,27 @@ class OntologyService:
             chunk_concepts=[local_name(value) for value in chunk_concepts],
             explanation="; ".join(dict.fromkeys(reasons)) or "Concepts are not directly related.",
         )
+
+    def _is_instance_of(self, resource: URIRef, requested_type: URIRef) -> bool:
+        pending = [
+            value
+            for value in self.graph.objects(resource, RDF.type)
+            if isinstance(value, URIRef)
+        ]
+        visited: set[URIRef] = set()
+        while pending:
+            current = pending.pop()
+            if current == requested_type:
+                return True
+            if current in visited:
+                continue
+            visited.add(current)
+            pending.extend(
+                value
+                for value in self.graph.objects(current, RDFS.subClassOf)
+                if isinstance(value, URIRef)
+            )
+        return False
 
     def summary(self) -> OntologySummary:
         classes = set(self.graph.subjects(RDF.type, OWL.Class))

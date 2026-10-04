@@ -1,0 +1,44 @@
+{
+  "protocol": "QASPER protocol v4",
+  "created_on": "2026-10-03",
+  "source": "allenai/qasper qasper/train/0000.parquet",
+  "source_sha256": "9af08092ee26c4f700202c1f90d1592b662926f23f3a308a10ff0a53345e37fe",
+  "selection_seed": 20261003,
+  "excluded_dataset_files": [
+    "evaluation/qasper/qasper_validation.json",
+    "evaluation/qasper/qasper_test.json",
+    "evaluation/qasper_train/qasper_train_development.json",
+    "evaluation/qasper_train/qasper_train_heldout.json",
+    "evaluation/qasper_train_v3/qasper_train_development.json",
+    "evaluation/qasper_train_v3/qasper_train_heldout.json"
+  ],
+  "excluded_unique_papers": 100,
+  "paper_disjoint": true,
+  "final_test_policy": "Do not inspect retrieval results or tune on final_test. Freeze and commit the configuration before one-time evaluation.",
+  "splits": {
+    "development": {
+      "file": "qasper_development.json",
+      "papers": 20,
+      "chunks": 1019,
+      "questions": 74,
+      "sha256": "01af22ddd1b206554802e0cd98ead7d664ca29966ef835eaf89f64af268b6a62",
+      "evaluation_status": "available"
+    },
+    "validation": {
+      "file": "qasper_validation.json",
+      "papers": 10,
+      "chunks": 402,
+      "questions": 35,
+      "sha256": "77e18df90e776cfc762a16e2a4a1c7b5a4df4be06b90fca6485c8b9e673944e3",
+      "evaluation_status": "available"
+    },
+    "final_test": {
+      "file": "qasper_final_test.json",
+      "papers": 15,
+      "chunks": 662,
+      "questions": 57,
+      "sha256": "1e40b033b5ec9d86d57d4839d3cfbacea6c2afc887ae2023c22dfd92693bf5db",
+      "evaluation_status": "sealed_not_evaluated"
+    }
+  }
+}

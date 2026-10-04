@@ -8,3 +8,5 @@ __pycache__/
 .env
 results/
 tmp/
+output/qasper-protocol-source/
+output/cso-source/

@@ -73,6 +73,8 @@ qa:citationText a owl:DatatypeProperty ; rdfs:domain qa:Citation ; rdfs:range xs
 qa:doi a owl:DatatypeProperty ; rdfs:domain qa:Paper ; rdfs:range xsd:string .
 qa:metricValue a owl:DatatypeProperty ; rdfs:domain qa:Result ; rdfs:range xsd:decimal .
 qa:resultNote a owl:DatatypeProperty ; rdfs:domain qa:Result ; rdfs:range xsd:string .
+qa:retrievalEnabled a owl:DatatypeProperty ;
+    rdfs:domain qa:Concept ; rdfs:range xsd:boolean .
 
 qa:SamplePaper a qa:Paper ;
     qa:title "A sample paper about retrieval-augmented generation" ;
@@ -483,3 +485,27 @@ qa:DiscourseAnalysis a qa:ResearchTopic ;
     skos:altLabel "discourse features"@en, "discourse embedding"@en,
         "discourse embeddings"@en ;
     qa:relatedTo qa:NaturalLanguageProcessing, qa:WordEmbedding .
+
+# Conservative CSO candidates selected on development only. Each candidate had
+# semantic score >= 0.60 and direct lexical support in the question text.
+qa:HumanEvaluation a qa:Method ;
+    skos:prefLabel "human evaluation"@en ;
+    skos:altLabel "human assessment"@en ;
+    skos:exactMatch cso:human_evaluation ;
+    qa:retrievalEnabled false ;
+    qa:relatedTo qa:NaturalLanguageProcessing .
+
+qa:TargetLanguage a qa:Concept ;
+    skos:prefLabel "target language"@en ;
+    skos:exactMatch cso:target_language ;
+    qa:retrievalEnabled false ;
+    qa:relatedTo qa:NaturalLanguageProcessing, qa:NeuralMachineTranslation .
+
+qa:MachineTranslation a qa:Task ;
+    skos:prefLabel "machine translation"@en ;
+    skos:altLabel "machine translations"@en, "translation system"@en,
+        "translation systems"@en ;
+    skos:exactMatch cso:machine_translations ;
+    qa:retrievalEnabled false ;
+    skos:broader qa:NaturalLanguageProcessing ;
+    qa:relatedTo qa:NeuralMachineTranslation, qa:PhraseBasedMachineTranslation .

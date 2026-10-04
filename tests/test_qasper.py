@@ -5,6 +5,11 @@ from app.evaluation.qasper_answers import (
     question_references,
     token_f1,
 )
+from app.evaluation.qasper_protocol import (
+    serialize_split,
+    sha256_bytes,
+    split_protocol_papers,
+)
 from scripts.prepare_qasper_parquet_subset import parquet_row_to_original
 
 
@@ -87,6 +92,53 @@ def test_select_qasper_papers_excludes_previous_paper_ids() -> None:
     )
 
     assert [paper.paper_id for paper in selected] == ["paper-b"]
+
+
+def test_seeded_qasper_selection_is_deterministic() -> None:
+    payload = {str(index): sample_paper() for index in range(8)}
+
+    first = select_qasper_papers(
+        payload,
+        paper_limit=4,
+        min_questions_per_paper=1,
+        selection_seed=17,
+    )
+    second = select_qasper_papers(
+        payload,
+        paper_limit=4,
+        min_questions_per_paper=1,
+        selection_seed=17,
+    )
+
+    assert [paper.paper_id for paper in first] == [paper.paper_id for paper in second]
+    assert [paper.paper_id for paper in first] != sorted(paper.paper_id for paper in first)
+
+
+def test_protocol_splits_are_disjoint_and_hashable() -> None:
+    payload = {str(index): sample_paper() for index in range(6)}
+    selected = select_qasper_papers(
+        payload,
+        paper_limit=6,
+        min_questions_per_paper=1,
+        selection_seed=19,
+    )
+
+    splits = split_protocol_papers(
+        selected,
+        development_papers=2,
+        validation_papers=2,
+        final_test_papers=2,
+    )
+    ids = {
+        name: {paper.paper_id for paper in papers}
+        for name, papers in splits.items()
+    }
+
+    assert ids["development"].isdisjoint(ids["validation"])
+    assert ids["development"].isdisjoint(ids["final_test"])
+    assert ids["validation"].isdisjoint(ids["final_test"])
+    content = serialize_split(splits["final_test"], split="sealed")
+    assert len(sha256_bytes(content)) == 64
 
 
 def test_parquet_row_is_converted_to_original_qasper_shape() -> None:

@@ -2,7 +2,9 @@ import argparse
 import json
 from pathlib import Path
 
+from app.models import ConceptLinkingMethod
 from app.ontology.service import OntologyService, local_name
+from app.rag.retriever import SentenceTransformerEncoder
 from scripts.run_benchmark import load_dataset
 
 
@@ -13,11 +15,31 @@ def main() -> None:
     parser.add_argument("--dataset", type=Path, required=True)
     parser.add_argument("--details", type=Path, required=True)
     parser.add_argument("--output", type=Path, required=True)
+    parser.add_argument(
+        "--linking-method",
+        type=ConceptLinkingMethod,
+        choices=list(ConceptLinkingMethod),
+        default=ConceptLinkingMethod.HYBRID,
+    )
+    parser.add_argument("--linking-threshold", type=float, default=0.65)
+    parser.add_argument("--query-type-intent", action="store_true")
     args = parser.parse_args()
 
     chunks, questions = load_dataset(args.dataset)
+    encoder = (
+        SentenceTransformerEncoder()
+        if args.linking_method
+        in {ConceptLinkingMethod.SEMANTIC, ConceptLinkingMethod.HYBRID}
+        else None
+    )
+    ontology = OntologyService(
+        semantic_encoder=encoder,
+        linking_method=args.linking_method,
+        linking_threshold=args.linking_threshold,
+        query_type_intent=args.query_type_intent,
+    )
+    chunks, _ = ontology.index_chunks(chunks)
     chunks_by_id = {chunk.id: chunk for chunk in chunks}
-    ontology = OntologyService()
     details = json.loads(args.details.read_text(encoding="utf-8"))
     ranks = {
         (row["question_id"], row["method"]): row["gold_rank"] for row in details
@@ -26,22 +48,26 @@ def main() -> None:
     rows = []
     for question in questions:
         query_concepts = [
-            local_name(concept) for concept in ontology.identify_concepts(question.query)
+            local_name(concept)
+            for concept in ontology.configured_query_concepts(question.query)
         ]
-        gold_texts = [
-            chunks_by_id[chunk_id].text
+        gold_chunks = [
+            chunks_by_id[chunk_id]
             for chunk_id in question.relevant_chunk_ids
             if chunk_id in chunks_by_id
         ]
         gold_concepts = sorted(
             {
-                local_name(concept)
-                for text in gold_texts
-                for concept in ontology.identify_concepts(text)
+                concept
+                for chunk in gold_chunks
+                for concept in chunk.concepts
             }
         )
         best_ontology_score = max(
-            (ontology.score_text(question.query, text).score for text in gold_texts),
+            (
+                ontology.score_concept_names(query_concepts, chunk.concepts).score
+                for chunk in gold_chunks
+            ),
             default=0.0,
         )
         rows.append(
@@ -72,6 +98,9 @@ def main() -> None:
     payload = {
         "dataset": str(args.dataset),
         "purpose": "descriptive ontology coverage analysis",
+        "linking_method": args.linking_method.value,
+        "linking_threshold": args.linking_threshold,
+        "query_type_intent": args.query_type_intent,
         "summary": summary,
         "questions": rows,
     }

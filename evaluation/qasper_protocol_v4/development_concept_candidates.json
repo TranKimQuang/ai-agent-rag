@@ -1,0 +1,2373 @@
+{
+  "coverage_source": "evaluation\\qasper_protocol_v4\\development_coverage.json",
+  "scope": "development queries without accepted concepts",
+  "acceptance_threshold": 0.65,
+  "review_margin": 0.1,
+  "candidate_limit": 5,
+  "summary": {
+    "uncovered_queries": 65,
+    "categories": {
+      "near_threshold": 3,
+      "vocabulary_gap_or_generic_question": 35,
+      "weak_existing_match": 27
+    },
+    "top_candidate_frequency": {
+      "ROUGE": 12,
+      "DatasetBias": 7,
+      "HiddenMarkovModel": 5,
+      "LanguageModel": 4,
+      "MorphologicalTokenization": 3,
+      "PyramidMethod": 3,
+      "LexicalDiversity": 3,
+      "MultitaskLearning": 2,
+      "QuestionAnswering": 2,
+      "CausalityExtraction": 2,
+      "PhraseBasedMachineTranslation": 1,
+      "HashtagPrediction": 1,
+      "MachineLearning": 1,
+      "ImageCaptioning": 1,
+      "SentimentAnalysis": 1
+    }
+  },
+  "queries": [
+    {
+      "question_id": "42af0472e6895eaf7b9392674b0d956e64e86b03",
+      "query": "Which language directions are machine translation systems of WMT evaluated on?",
+      "gold_concepts": [],
+      "hybrid_rank": 2,
+      "ontology_rank": 2,
+      "category": "near_threshold",
+      "candidates": [
+        {
+          "concept": "PhraseBasedMachineTranslation",
+          "label": "phrase-based machine translation",
+          "score": 0.6023802757263184
+        },
+        {
+          "concept": "LanguageModel",
+          "label": "language model",
+          "score": 0.5961980223655701
+        },
+        {
+          "concept": "BidirectionalLanguageModel",
+          "label": "bidirectional language model",
+          "score": 0.5576610565185547
+        },
+        {
+          "concept": "NeuralMachineTranslation",
+          "label": "neural machine translation",
+          "score": 0.5389964580535889
+        },
+        {
+          "concept": "NaturalLanguageProcessing",
+          "label": "natural language processing",
+          "score": 0.5201555490493774
+        }
+      ]
+    },
+    {
+      "question_id": "57e783f00f594e08e43a31939aedb235c9d5a102",
+      "query": "What evaluation metrics were used?",
+      "gold_concepts": [
+        "ConvolutionalNeuralNetwork"
+      ],
+      "hybrid_rank": null,
+      "ontology_rank": null,
+      "category": "near_threshold",
+      "candidates": [
+        {
+          "concept": "ROUGE",
+          "label": "ROUGE",
+          "score": 0.5834184885025024
+        },
+        {
+          "concept": "PyramidMethod",
+          "label": "Pyramid method",
+          "score": 0.43434077501296997
+        },
+        {
+          "concept": "DatasetBias",
+          "label": "dataset bias",
+          "score": 0.30359435081481934
+        },
+        {
+          "concept": "MeanReciprocalRank",
+          "label": "mean reciprocal rank",
+          "score": 0.2971169352531433
+        },
+        {
+          "concept": "SupervisedLearning",
+          "label": "supervised learning",
+          "score": 0.29307591915130615
+        }
+      ]
+    },
+    {
+      "question_id": "891cab2e41d6ba962778bda297592c916b432226",
+      "query": "What programming language is target language?",
+      "gold_concepts": [
+        "ParallelCorpus"
+      ],
+      "hybrid_rank": null,
+      "ontology_rank": null,
+      "category": "near_threshold",
+      "candidates": [
+        {
+          "concept": "LanguageModel",
+          "label": "language model",
+          "score": 0.559335470199585
+        },
+        {
+          "concept": "BidirectionalLanguageModel",
+          "label": "bidirectional language model",
+          "score": 0.4883541166782379
+        },
+        {
+          "concept": "NaturalLanguageProcessing",
+          "label": "natural language processing",
+          "score": 0.45161595940589905
+        },
+        {
+          "concept": "QuestionAnswering",
+          "label": "question answering",
+          "score": 0.380165696144104
+        },
+        {
+          "concept": "MultilingualNaturalLanguageProcessing",
+          "label": "multilingual natural language processing",
+          "score": 0.3601720929145813
+        }
+      ]
+    },
+    {
+      "question_id": "99760276cfd699e55b827ceeb653b31b043b9ceb",
+      "query": "How does morphological analysis differ from morphological inflection?",
+      "gold_concepts": [],
+      "hybrid_rank": 2,
+      "ontology_rank": 2,
+      "category": "weak_existing_match",
+      "candidates": [
+        {
+          "concept": "MorphologicalTokenization",
+          "label": "morphological tokenization",
+          "score": 0.5402151346206665
+        },
+        {
+          "concept": "DiscourseAnalysis",
+          "label": "discourse analysis",
+          "score": 0.3275025486946106
+        },
+        {
+          "concept": "NaturalLanguageInference",
+          "label": "natural language inference",
+          "score": 0.3157150149345398
+        },
+        {
+          "concept": "DistributionalSemantics",
+          "label": "distributional semantics",
+          "score": 0.31278279423713684
+        },
+        {
+          "concept": "SemanticRoleInduction",
+          "label": "semantic role induction",
+          "score": 0.3116303086280823
+        }
+      ]
+    },
+    {
+      "question_id": "8112d18681e266426cf7432ac4928b87f5ce8311",
+      "query": "What languages are considered?",
+      "gold_concepts": [],
+      "hybrid_rank": null,
+      "ontology_rank": null,
+      "category": "weak_existing_match",
+      "candidates": [
+        {
+          "concept": "LanguageModel",
+          "label": "language model",
+          "score": 0.5321807265281677
+        },
+        {
+          "concept": "NaturalLanguageProcessing",
+          "label": "natural language processing",
+          "score": 0.4639397859573364
+        },
+        {
+          "concept": "LexicalDiversity",
+          "label": "lexical diversity",
+          "score": 0.43671372532844543
+        },
+        {
+          "concept": "BidirectionalLanguageModel",
+          "label": "bidirectional language model",
+          "score": 0.43392425775527954
+        },
+        {
+          "concept": "QuestionAnswering",
+          "label": "question answering",
+          "score": 0.4207027554512024
+        }
+      ]
+    },
+    {
+      "question_id": "6852217163ea678f2009d4726cb6bd03cf6a8f78",
+      "query": "What benchmark datasets are used for the link prediction task?",
+      "gold_concepts": [],
+      "hybrid_rank": null,
+      "ontology_rank": null,
+      "category": "weak_existing_match",
+      "candidates": [
+        {
+          "concept": "HashtagPrediction",
+          "label": "hashtag prediction",
+          "score": 0.5318108797073364
+        },
+        {
+          "concept": "DatasetBias",
+          "label": "dataset bias",
+          "score": 0.38800591230392456
+        },
+        {
+          "concept": "AuthorProfiling",
+          "label": "author profiling",
+          "score": 0.37315505743026733
+        },
+        {
+          "concept": "PyramidMethod",
+          "label": "Pyramid method",
+          "score": 0.3656380772590637
+        },
+        {
+          "concept": "NeuralNetwork",
+          "label": "neural network",
+          "score": 0.365088552236557
+        }
+      ]
+    },
+    {
+      "question_id": "d1ff6cba8c37e25ac6b261a25ea804d8e58e09c0",
+      "query": "What metrics are used to benchmark the results?",
+      "gold_concepts": [
+        "LongShortTermMemory"
+      ],
+      "hybrid_rank": null,
+      "ontology_rank": null,
+      "category": "weak_existing_match",
+      "candidates": [
+        {
+          "concept": "ROUGE",
+          "label": "ROUGE",
+          "score": 0.5176829695701599
+        },
+        {
+          "concept": "PyramidMethod",
+          "label": "Pyramid method",
+          "score": 0.41237425804138184
+        },
+        {
+          "concept": "MeanReciprocalRank",
+          "label": "mean reciprocal rank",
+          "score": 0.34169936180114746
+        },
+        {
+          "concept": "NeuralNetwork",
+          "label": "neural network",
+          "score": 0.3070944547653198
+        },
+        {
+          "concept": "ReciprocalRankFusion",
+          "label": "reciprocal rank fusion",
+          "score": 0.3016272187232971
+        }
+      ]
+    },
+    {
+      "question_id": "fb76e994e2e3fa129f1e94f1b043b274af8fb84c",
+      "query": "How does the context-aware variational autoencoder learn event background information?",
+      "gold_concepts": [],
+      "hybrid_rank": null,
+      "ontology_rank": null,
+      "category": "weak_existing_match",
+      "candidates": [
+        {
+          "concept": "MachineLearning",
+          "label": "machine learning",
+          "score": 0.5074676275253296
+        },
+        {
+          "concept": "SupervisedLearning",
+          "label": "supervised learning",
+          "score": 0.44629624485969543
+        },
+        {
+          "concept": "ProbabilisticContextFreeGrammar",
+          "label": "probabilistic context-free grammar",
+          "score": 0.4057384133338928
+        },
+        {
+          "concept": "MachineReadingComprehension",
+          "label": "machine reading comprehension",
+          "score": 0.38782525062561035
+        },
+        {
+          "concept": "RetrievalAugmentedGeneration",
+          "label": "retrieval augmented generation",
+          "score": 0.38586050271987915
+        }
+      ]
+    },
+    {
+      "question_id": "7d59374d9301a0c09ea5d023a22ceb6ce07fb490",
+      "query": "How do they measure the diversity of inferences?",
+      "gold_concepts": [],
+      "hybrid_rank": null,
+      "ontology_rank": null,
+      "category": "weak_existing_match",
+      "candidates": [
+        {
+          "concept": "ROUGE",
+          "label": "ROUGE",
+          "score": 0.5018408894538879
+        },
+        {
+          "concept": "DatasetBias",
+          "label": "dataset bias",
+          "score": 0.48067110776901245
+        },
+        {
+          "concept": "NaturalLanguageInference",
+          "label": "natural language inference",
+          "score": 0.44128847122192383
+        },
+        {
+          "concept": "MeanReciprocalRank",
+          "label": "mean reciprocal rank",
+          "score": 0.4180452525615692
+        },
+        {
+          "concept": "DistributionalSemantics",
+          "label": "distributional semantics",
+          "score": 0.3839404284954071
+        }
+      ]
+    },
+    {
+      "question_id": "265c9b733e4dfffb76acfbade4c0c9b14d3ccde1",
+      "query": "What are the characteristics of the dataset?",
+      "gold_concepts": [],
+      "hybrid_rank": null,
+      "ontology_rank": null,
+      "category": "weak_existing_match",
+      "candidates": [
+        {
+          "concept": "DatasetBias",
+          "label": "dataset bias",
+          "score": 0.4927860498428345
+        },
+        {
+          "concept": "QASPER",
+          "label": "QASPER",
+          "score": 0.39661186933517456
+        },
+        {
+          "concept": "ROUGE",
+          "label": "ROUGE",
+          "score": 0.34435755014419556
+        },
+        {
+          "concept": "InformationRetrieval",
+          "label": "information retrieval",
+          "score": 0.3317566215991974
+        },
+        {
+          "concept": "MachineLearning",
+          "label": "machine learning",
+          "score": 0.31489092111587524
+        }
+      ]
+    },
+    {
+      "question_id": "2d62a75af409835e4c123a615b06235a352a67fe",
+      "query": "What model do they use to classify phonetic segments? ",
+      "gold_concepts": [
+        "ConvolutionalNeuralNetwork",
+        "NeuralNetwork"
+      ],
+      "hybrid_rank": null,
+      "ontology_rank": null,
+      "category": "weak_existing_match",
+      "candidates": [
+        {
+          "concept": "MorphologicalTokenization",
+          "label": "morphological tokenization",
+          "score": 0.48800402879714966
+        },
+        {
+          "concept": "WordSegmentation",
+          "label": "word segmentation",
+          "score": 0.45929816365242004
+        },
+        {
+          "concept": "BidirectionalLanguageModel",
+          "label": "bidirectional language model",
+          "score": 0.45107147097587585
+        },
+        {
+          "concept": "LanguageModel",
+          "label": "language model",
+          "score": 0.4343404769897461
+        },
+        {
+          "concept": "NaturalLanguageProcessing",
+          "label": "natural language processing",
+          "score": 0.40310877561569214
+        }
+      ]
+    },
+    {
+      "question_id": "cd1ad7e18d8eef8f67224ce47f3feec02718ea1a",
+      "query": "What are state-of-the art models for this task?",
+      "gold_concepts": [],
+      "hybrid_rank": null,
+      "ontology_rank": null,
+      "category": "weak_existing_match",
+      "candidates": [
+        {
+          "concept": "ImageCaptioning",
+          "label": "image captioning",
+          "score": 0.47068697214126587
+        },
+        {
+          "concept": "MultitaskLearning",
+          "label": "multitask learning",
+          "score": 0.3589154779911041
+        },
+        {
+          "concept": "QuestionAnswering",
+          "label": "question answering",
+          "score": 0.32605817914009094
+        },
+        {
+          "concept": "TopicModeling",
+          "label": "topic modeling",
+          "score": 0.3125212490558624
+        },
+        {
+          "concept": "LatentDirichletAllocation",
+          "label": "latent Dirichlet allocation",
+          "score": 0.31114688515663147
+        }
+      ]
+    },
+    {
+      "question_id": "7920f228de6ef4c685f478bac4c7776443f19f39",
+      "query": "What language is the Twitter content in?",
+      "gold_concepts": [],
+      "hybrid_rank": null,
+      "ontology_rank": null,
+      "category": "weak_existing_match",
+      "candidates": [
+        {
+          "concept": "SentimentAnalysis",
+          "label": "sentiment analysis",
+          "score": 0.4654272198677063
+        },
+        {
+          "concept": "LexicalDiversity",
+          "label": "lexical diversity",
+          "score": 0.46352940797805786
+        },
+        {
+          "concept": "LanguageModel",
+          "label": "language model",
+          "score": 0.4053053855895996
+        },
+        {
+          "concept": "PhraseBasedMachineTranslation",
+          "label": "phrase-based machine translation",
+          "score": 0.34856492280960083
+        },
+        {
+          "concept": "KeywordSearch",
+          "label": "keyword search",
+          "score": 0.33843377232551575
+        }
+      ]
+    },
+    {
+      "question_id": "aa60b0a6c1601e09209626fd8c8bdc463624b0b3",
+      "query": "What are their results on the entity recognition task?",
+      "gold_concepts": [],
+      "hybrid_rank": null,
+      "ontology_rank": null,
+      "category": "weak_existing_match",
+      "candidates": [
+        {
+          "concept": "EntityLinking",
+          "label": "entity linking",
+          "score": 0.44537636637687683
+        },
+        {
+          "concept": "MachineReadingComprehension",
+          "label": "machine reading comprehension",
+          "score": 0.34877026081085205
+        },
+        {
+          "concept": "MachineLearning",
+          "label": "machine learning",
+          "score": 0.33556798100471497
+        },
+        {
+          "concept": "QASPER",
+          "label": "QASPER",
+          "score": 0.3340972661972046
+        },
+        {
+          "concept": "SemanticRoleInduction",
+          "label": "semantic role induction",
+          "score": 0.3308858275413513
+        }
+      ]
+    },
+    {
+      "question_id": "3837ae1e91a4feb27f11ac3b14963e9a12f0c05e",
+      "query": "What task-specific features are used?",
+      "gold_concepts": [],
+      "hybrid_rank": null,
+      "ontology_rank": null,
+      "category": "weak_existing_match",
+      "candidates": [
+        {
+          "concept": "MultitaskLearning",
+          "label": "multitask learning",
+          "score": 0.44347643852233887
+        },
+        {
+          "concept": "ImageCaptioning",
+          "label": "image captioning",
+          "score": 0.4168546497821808
+        },
+        {
+          "concept": "PyramidMethod",
+          "label": "Pyramid method",
+          "score": 0.34743452072143555
+        },
+        {
+          "concept": "ParaphraseGeneration",
+          "label": "paraphrase generation",
+          "score": 0.3414950966835022
+        },
+        {
+          "concept": "SemanticRoleInduction",
+          "label": "semantic role induction",
+          "score": 0.32239240407943726
+        }
+      ]
+    },
+    {
+      "question_id": "ef4d6c9416e45301ea1a4d550b7c381f377cacd9",
+      "query": "What kind of corpus-based features are taken into account?",
+      "gold_concepts": [
+        "NaturalLanguageProcessing"
+      ],
+      "hybrid_rank": 5,
+      "ontology_rank": 5,
+      "category": "weak_existing_match",
+      "candidates": [
+        {
+          "concept": "ROUGE",
+          "label": "ROUGE",
+          "score": 0.442421019077301
+        },
+        {
+          "concept": "ParallelCorpus",
+          "label": "parallel corpus",
+          "score": 0.4159407615661621
+        },
+        {
+          "concept": "LatentDirichletAllocation",
+          "label": "latent Dirichlet allocation",
+          "score": 0.41439199447631836
+        },
+        {
+          "concept": "SemanticRoleInduction",
+          "label": "semantic role induction",
+          "score": 0.35498136281967163
+        },
+        {
+          "concept": "TextSummarization",
+          "label": "text summarization",
+          "score": 0.34412381052970886
+        }
+      ]
+    },
+    {
+      "question_id": "45893f31ef07f0cca5783bd39c4e60630d6b93b3",
+      "query": "How do they select monotonicity facts?",
+      "gold_concepts": [],
+      "hybrid_rank": null,
+      "ontology_rank": null,
+      "category": "weak_existing_match",
+      "candidates": [
+        {
+          "concept": "DatasetBias",
+          "label": "dataset bias",
+          "score": 0.4394925832748413
+        },
+        {
+          "concept": "LatentDirichletAllocation",
+          "label": "latent Dirichlet allocation",
+          "score": 0.37989264726638794
+        },
+        {
+          "concept": "PyramidMethod",
+          "label": "Pyramid method",
+          "score": 0.3553427457809448
+        },
+        {
+          "concept": "ROUGE",
+          "label": "ROUGE",
+          "score": 0.3381471633911133
+        },
+        {
+          "concept": "CausalityExtraction",
+          "label": "causality extraction",
+          "score": 0.3375541567802429
+        }
+      ]
+    },
+    {
+      "question_id": "0f928732f226185c76ad5960402e9342c0619310",
+      "query": "What type of models are used for classification?",
+      "gold_concepts": [
+        "ConvolutionalNeuralNetwork",
+        "NeuralNetwork"
+      ],
+      "hybrid_rank": 5,
+      "ontology_rank": 5,
+      "category": "weak_existing_match",
+      "candidates": [
+        {
+          "concept": "LanguageModel",
+          "label": "language model",
+          "score": 0.4391133785247803
+        },
+        {
+          "concept": "MachineLearning",
+          "label": "machine learning",
+          "score": 0.4134571850299835
+        },
+        {
+          "concept": "ROUGE",
+          "label": "ROUGE",
+          "score": 0.4129851758480072
+        },
+        {
+          "concept": "HiddenMarkovModel",
+          "label": "hidden Markov model",
+          "score": 0.41160470247268677
+        },
+        {
+          "concept": "LatentDirichletAllocation",
+          "label": "latent Dirichlet allocation",
+          "score": 0.399264931678772
+        }
+      ]
+    },
+    {
+      "question_id": "eecf62e18a790bcfdd8a56f0c4f498927ff2fb47",
+      "query": "How does soft contextual data augmentation work?",
+      "gold_concepts": [
+        "LanguageModel"
+      ],
+      "hybrid_rank": 2,
+      "ontology_rank": 2,
+      "category": "weak_existing_match",
+      "candidates": [
+        {
+          "concept": "WordEmbedding",
+          "label": "word embedding",
+          "score": 0.4381723999977112
+        },
+        {
+          "concept": "DatasetBias",
+          "label": "dataset bias",
+          "score": 0.4289480745792389
+        },
+        {
+          "concept": "RetrievalAugmentedGeneration",
+          "label": "retrieval augmented generation",
+          "score": 0.40464258193969727
+        },
+        {
+          "concept": "MachineLearning",
+          "label": "machine learning",
+          "score": 0.3911435008049011
+        },
+        {
+          "concept": "MachineReadingComprehension",
+          "label": "machine reading comprehension",
+          "score": 0.38976427912712097
+        }
+      ]
+    },
+    {
+      "question_id": "8ea4bd4c1d8a466da386d16e4844ea932c44a412",
+      "query": "What dataset do they use?",
+      "gold_concepts": [
+        "ParallelCorpus"
+      ],
+      "hybrid_rank": null,
+      "ontology_rank": null,
+      "category": "weak_existing_match",
+      "candidates": [
+        {
+          "concept": "DatasetBias",
+          "label": "dataset bias",
+          "score": 0.4346235990524292
+        },
+        {
+          "concept": "QASPER",
+          "label": "QASPER",
+          "score": 0.4028644561767578
+        },
+        {
+          "concept": "InformationRetrieval",
+          "label": "information retrieval",
+          "score": 0.36626648902893066
+        },
+        {
+          "concept": "ROUGE",
+          "label": "ROUGE",
+          "score": 0.3530746102333069
+        },
+        {
+          "concept": "MachineLearning",
+          "label": "machine learning",
+          "score": 0.31052500009536743
+        }
+      ]
+    },
+    {
+      "question_id": "9f3444c9fb2e144465d63abf58520cddd4165a01",
+      "query": "what are the methods they compare with in the korean-english dataset?",
+      "gold_concepts": [],
+      "hybrid_rank": 1,
+      "ontology_rank": 1,
+      "category": "weak_existing_match",
+      "candidates": [
+        {
+          "concept": "LanguageModel",
+          "label": "language model",
+          "score": 0.4321349263191223
+        },
+        {
+          "concept": "NaturalLanguageProcessing",
+          "label": "natural language processing",
+          "score": 0.41858553886413574
+        },
+        {
+          "concept": "BidirectionalLanguageModel",
+          "label": "bidirectional language model",
+          "score": 0.40261921286582947
+        },
+        {
+          "concept": "MultilingualNaturalLanguageProcessing",
+          "label": "multilingual natural language processing",
+          "score": 0.3691520392894745
+        },
+        {
+          "concept": "QuestionAnswering",
+          "label": "question answering",
+          "score": 0.3384096026420593
+        }
+      ]
+    },
+    {
+      "question_id": "321429282557e79061fe2fe02a9467f3d0118cdd",
+      "query": "What additional techniques could be incorporated to further improve accuracy?",
+      "gold_concepts": [
+        "WordEmbedding"
+      ],
+      "hybrid_rank": null,
+      "ontology_rank": null,
+      "category": "weak_existing_match",
+      "candidates": [
+        {
+          "concept": "ROUGE",
+          "label": "ROUGE",
+          "score": 0.4231518507003784
+        },
+        {
+          "concept": "PyramidMethod",
+          "label": "Pyramid method",
+          "score": 0.34920045733451843
+        },
+        {
+          "concept": "EvidenceF1",
+          "label": "evidence F1",
+          "score": 0.2777385711669922
+        },
+        {
+          "concept": "NeuralMachineTranslation",
+          "label": "neural machine translation",
+          "score": 0.2747632563114166
+        },
+        {
+          "concept": "MachineReadingComprehension",
+          "label": "machine reading comprehension",
+          "score": 0.24403709173202515
+        }
+      ]
+    },
+    {
+      "question_id": "9f6e877e3bde771595e8aee10c2656a0e7b9aeb2",
+      "query": "Do they perform manual evaluation?",
+      "gold_concepts": [],
+      "hybrid_rank": null,
+      "ontology_rank": null,
+      "category": "weak_existing_match",
+      "candidates": [
+        {
+          "concept": "ROUGE",
+          "label": "ROUGE",
+          "score": 0.4197293817996979
+        },
+        {
+          "concept": "SupervisedLearning",
+          "label": "supervised learning",
+          "score": 0.3409627676010132
+        },
+        {
+          "concept": "PyramidMethod",
+          "label": "Pyramid method",
+          "score": 0.2919583320617676
+        },
+        {
+          "concept": "DistantSupervision",
+          "label": "distant supervision",
+          "score": 0.27919697761535645
+        },
+        {
+          "concept": "MachineReadingComprehension",
+          "label": "machine reading comprehension",
+          "score": 0.24688605964183807
+        }
+      ]
+    },
+    {
+      "question_id": "29983f4bc8a5513a198755e474361deee93d4ab6",
+      "query": "What feedback labels are used?",
+      "gold_concepts": [],
+      "hybrid_rank": 4,
+      "ontology_rank": 4,
+      "category": "weak_existing_match",
+      "candidates": [
+        {
+          "concept": "LabelPropagation",
+          "label": "label propagation",
+          "score": 0.41806840896606445
+        },
+        {
+          "concept": "SentimentAnalysis",
+          "label": "sentiment analysis",
+          "score": 0.39247608184814453
+        },
+        {
+          "concept": "ROUGE",
+          "label": "ROUGE",
+          "score": 0.38619697093963623
+        },
+        {
+          "concept": "RevisionDetection",
+          "label": "revision detection",
+          "score": 0.37184804677963257
+        },
+        {
+          "concept": "PyramidMethod",
+          "label": "Pyramid method",
+          "score": 0.35162055492401123
+        }
+      ]
+    },
+    {
+      "question_id": "04aff4add28e6343634d342db92b3ac36aa8c255",
+      "query": "What is result of their attention distribution analysis?",
+      "gold_concepts": [],
+      "hybrid_rank": 2,
+      "ontology_rank": 2,
+      "category": "weak_existing_match",
+      "candidates": [
+        {
+          "concept": "ROUGE",
+          "label": "ROUGE",
+          "score": 0.4159415364265442
+        },
+        {
+          "concept": "DatasetBias",
+          "label": "dataset bias",
+          "score": 0.3327397108078003
+        },
+        {
+          "concept": "MeanReciprocalRank",
+          "label": "mean reciprocal rank",
+          "score": 0.3304687738418579
+        },
+        {
+          "concept": "AuthorProfiling",
+          "label": "author profiling",
+          "score": 0.3112034797668457
+        },
+        {
+          "concept": "DistantSupervision",
+          "label": "distant supervision",
+          "score": 0.2894473075866699
+        }
+      ]
+    },
+    {
+      "question_id": "acda028a21a465c984036dcbb124b7f03c490b41",
+      "query": "How does muli-agent dual learning work?",
+      "gold_concepts": [],
+      "hybrid_rank": 2,
+      "ontology_rank": 2,
+      "category": "weak_existing_match",
+      "candidates": [
+        {
+          "concept": "TransferLearning",
+          "label": "transfer learning",
+          "score": 0.40932369232177734
+        },
+        {
+          "concept": "MultitaskLearning",
+          "label": "multitask learning",
+          "score": 0.39309465885162354
+        },
+        {
+          "concept": "SupervisedLearning",
+          "label": "supervised learning",
+          "score": 0.37875863909721375
+        },
+        {
+          "concept": "MachineLearning",
+          "label": "machine learning",
+          "score": 0.3726775050163269
+        },
+        {
+          "concept": "MultipleChoiceQuestionAnswering",
+          "label": "multiple-choice question answering",
+          "score": 0.34375375509262085
+        }
+      ]
+    },
+    {
+      "question_id": "fc5f9604c74c9bb804064f315676520937131e17",
+      "query": "What automatic metrics are used to measure performance of the system?",
+      "gold_concepts": [],
+      "hybrid_rank": null,
+      "ontology_rank": null,
+      "category": "weak_existing_match",
+      "candidates": [
+        {
+          "concept": "ROUGE",
+          "label": "ROUGE",
+          "score": 0.408578097820282
+        },
+        {
+          "concept": "NeuralNetwork",
+          "label": "neural network",
+          "score": 0.3545054793357849
+        },
+        {
+          "concept": "PyramidMethod",
+          "label": "Pyramid method",
+          "score": 0.32778671383857727
+        },
+        {
+          "concept": "NeuralMachineTranslation",
+          "label": "neural machine translation",
+          "score": 0.32156848907470703
+        },
+        {
+          "concept": "QASPER",
+          "label": "QASPER",
+          "score": 0.3132277727127075
+        }
+      ]
+    },
+    {
+      "question_id": "8486e06c03f82ebd48c7cfbaffaa76e8b899eea5",
+      "query": "How was annotation done?",
+      "gold_concepts": [
+        "TransferLearning"
+      ],
+      "hybrid_rank": null,
+      "ontology_rank": null,
+      "category": "weak_existing_match",
+      "candidates": [
+        {
+          "concept": "TextSummarization",
+          "label": "text summarization",
+          "score": 0.4064777195453644
+        },
+        {
+          "concept": "AuthorProfiling",
+          "label": "author profiling",
+          "score": 0.3583240509033203
+        },
+        {
+          "concept": "RetrievalAugmentedGeneration",
+          "label": "retrieval augmented generation",
+          "score": 0.3544706404209137
+        },
+        {
+          "concept": "SemanticRoleInduction",
+          "label": "semantic role induction",
+          "score": 0.3262525200843811
+        },
+        {
+          "concept": "MorphologicalTokenization",
+          "label": "morphological tokenization",
+          "score": 0.32127442955970764
+        }
+      ]
+    },
+    {
+      "question_id": "1e2ffa065b640e912d6ed299ff713a12195e12c4",
+      "query": "What simulations are performed by the authors to validate their approach?",
+      "gold_concepts": [],
+      "hybrid_rank": null,
+      "ontology_rank": null,
+      "category": "weak_existing_match",
+      "candidates": [
+        {
+          "concept": "AuthorProfiling",
+          "label": "author profiling",
+          "score": 0.4063114523887634
+        },
+        {
+          "concept": "ROUGE",
+          "label": "ROUGE",
+          "score": 0.31959158182144165
+        },
+        {
+          "concept": "PyramidMethod",
+          "label": "Pyramid method",
+          "score": 0.2922900915145874
+        },
+        {
+          "concept": "TextSummarization",
+          "label": "text summarization",
+          "score": 0.29195502400398254
+        },
+        {
+          "concept": "HiddenMarkovModel",
+          "label": "hidden Markov model",
+          "score": 0.27327537536621094
+        }
+      ]
+    },
+    {
+      "question_id": "8e2b125426d1220691cceaeaf1875f76a6049cbd",
+      "query": "By how much do they improve the accuracy of inferences over state-of-the-art methods?",
+      "gold_concepts": [],
+      "hybrid_rank": null,
+      "ontology_rank": null,
+      "category": "weak_existing_match",
+      "candidates": [
+        {
+          "concept": "ROUGE",
+          "label": "ROUGE",
+          "score": 0.4031773805618286
+        },
+        {
+          "concept": "DatasetBias",
+          "label": "dataset bias",
+          "score": 0.39411062002182007
+        },
+        {
+          "concept": "PyramidMethod",
+          "label": "Pyramid method",
+          "score": 0.3793903887271881
+        },
+        {
+          "concept": "NaturalLanguageInference",
+          "label": "natural language inference",
+          "score": 0.36537954211235046
+        },
+        {
+          "concept": "MachineLearning",
+          "label": "machine learning",
+          "score": 0.3147715628147125
+        }
+      ]
+    },
+    {
+      "question_id": "518d0847b02b4f23a8f441faa38b935c9b892e1e",
+      "query": "What are the baselines?",
+      "gold_concepts": [],
+      "hybrid_rank": null,
+      "ontology_rank": null,
+      "category": "vocabulary_gap_or_generic_question",
+      "candidates": [
+        {
+          "concept": "ROUGE",
+          "label": "ROUGE",
+          "score": 0.3997257649898529
+        },
+        {
+          "concept": "PyramidMethod",
+          "label": "Pyramid method",
+          "score": 0.3073577284812927
+        },
+        {
+          "concept": "LatentDirichletAllocation",
+          "label": "latent Dirichlet allocation",
+          "score": 0.305570125579834
+        },
+        {
+          "concept": "MeanReciprocalRank",
+          "label": "mean reciprocal rank",
+          "score": 0.29953882098197937
+        },
+        {
+          "concept": "MorphologicalTokenization",
+          "label": "morphological tokenization",
+          "score": 0.2746216654777527
+        }
+      ]
+    },
+    {
+      "question_id": "f6202100cfb83286dc51f57c68cffdbf5cf50a3f",
+      "query": "What are 3 novel fusion techniques that are proposed?",
+      "gold_concepts": [
+        "MultitaskLearning"
+      ],
+      "hybrid_rank": 1,
+      "ontology_rank": 1,
+      "category": "vocabulary_gap_or_generic_question",
+      "candidates": [
+        {
+          "concept": "ReciprocalRankFusion",
+          "label": "reciprocal rank fusion",
+          "score": 0.3982579708099365
+        },
+        {
+          "concept": "MultipleChoiceQuestionAnswering",
+          "label": "multiple-choice question answering",
+          "score": 0.21709108352661133
+        },
+        {
+          "concept": "PyramidMethod",
+          "label": "Pyramid method",
+          "score": 0.21486172080039978
+        },
+        {
+          "concept": "ROUGE",
+          "label": "ROUGE",
+          "score": 0.20989489555358887
+        },
+        {
+          "concept": "NeuralMachineTranslation",
+          "label": "neural machine translation",
+          "score": 0.2044900357723236
+        }
+      ]
+    },
+    {
+      "question_id": "a276d5931b989e0a33f2a0bc581456cca25658d9",
+      "query": "What baseline models are offered?",
+      "gold_concepts": [
+        "LanguageModel",
+        "LongShortTermMemory"
+      ],
+      "hybrid_rank": 2,
+      "ontology_rank": 2,
+      "category": "vocabulary_gap_or_generic_question",
+      "candidates": [
+        {
+          "concept": "HiddenMarkovModel",
+          "label": "hidden Markov model",
+          "score": 0.3900884985923767
+        },
+        {
+          "concept": "ROUGE",
+          "label": "ROUGE",
+          "score": 0.38323214650154114
+        },
+        {
+          "concept": "LatentDirichletAllocation",
+          "label": "latent Dirichlet allocation",
+          "score": 0.37937188148498535
+        },
+        {
+          "concept": "TopicModeling",
+          "label": "topic modeling",
+          "score": 0.32797613739967346
+        },
+        {
+          "concept": "LanguageModel",
+          "label": "language model",
+          "score": 0.32350391149520874
+        }
+      ]
+    },
+    {
+      "question_id": "4e9684fd68a242cb354fa6961b0e3b5c35aae4b6",
+      "query": "What is the results of multimodal compared to unimodal models?",
+      "gold_concepts": [
+        "LongShortTermMemory"
+      ],
+      "hybrid_rank": null,
+      "ontology_rank": null,
+      "category": "vocabulary_gap_or_generic_question",
+      "candidates": [
+        {
+          "concept": "HiddenMarkovModel",
+          "label": "hidden Markov model",
+          "score": 0.38982513546943665
+        },
+        {
+          "concept": "MultipleChoiceQuestionAnswering",
+          "label": "multiple-choice question answering",
+          "score": 0.35235145688056946
+        },
+        {
+          "concept": "BidirectionalLanguageModel",
+          "label": "bidirectional language model",
+          "score": 0.3377382457256317
+        },
+        {
+          "concept": "LanguageModel",
+          "label": "language model",
+          "score": 0.33597686886787415
+        },
+        {
+          "concept": "TransferLearning",
+          "label": "transfer learning",
+          "score": 0.30621060729026794
+        }
+      ]
+    },
+    {
+      "question_id": "abad9beb7295d809d7e5e1407cbf673c9ffffd19",
+      "query": "Do they propose any further additions that could be made to improve generalisation to unseen speakers?",
+      "gold_concepts": [],
+      "hybrid_rank": 4,
+      "ontology_rank": 4,
+      "category": "vocabulary_gap_or_generic_question",
+      "candidates": [
+        {
+          "concept": "DiscourseAnalysis",
+          "label": "discourse analysis",
+          "score": 0.38059505820274353
+        },
+        {
+          "concept": "DistantSupervision",
+          "label": "distant supervision",
+          "score": 0.3338405191898346
+        },
+        {
+          "concept": "NaturalLanguageProcessing",
+          "label": "natural language processing",
+          "score": 0.3001636862754822
+        },
+        {
+          "concept": "SupervisedLearning",
+          "label": "supervised learning",
+          "score": 0.27826935052871704
+        },
+        {
+          "concept": "QuestionAnswering",
+          "label": "question answering",
+          "score": 0.27033814787864685
+        }
+      ]
+    },
+    {
+      "question_id": "d803b782023553bbf9b36551fbc888ad189b1f29",
+      "query": "What was the criteria for human evaluation?",
+      "gold_concepts": [],
+      "hybrid_rank": 2,
+      "ontology_rank": 2,
+      "category": "vocabulary_gap_or_generic_question",
+      "candidates": [
+        {
+          "concept": "ROUGE",
+          "label": "ROUGE",
+          "score": 0.37935298681259155
+        },
+        {
+          "concept": "PyramidMethod",
+          "label": "Pyramid method",
+          "score": 0.3411434292793274
+        },
+        {
+          "concept": "SupervisedLearning",
+          "label": "supervised learning",
+          "score": 0.2867800295352936
+        },
+        {
+          "concept": "DistantSupervision",
+          "label": "distant supervision",
+          "score": 0.24585363268852234
+        },
+        {
+          "concept": "QuestionAnswering",
+          "label": "question answering",
+          "score": 0.23527614772319794
+        }
+      ]
+    },
+    {
+      "question_id": "d24acc567ebaec1efee52826b7eaadddc0a89e8b",
+      "query": "How many instances does their dataset have?",
+      "gold_concepts": [],
+      "hybrid_rank": null,
+      "ontology_rank": null,
+      "category": "vocabulary_gap_or_generic_question",
+      "candidates": [
+        {
+          "concept": "CooccurrenceMatrix",
+          "label": "co-occurrence matrix",
+          "score": 0.36565786600112915
+        },
+        {
+          "concept": "DatasetBias",
+          "label": "dataset bias",
+          "score": 0.3376839756965637
+        },
+        {
+          "concept": "ROUGE",
+          "label": "ROUGE",
+          "score": 0.32747477293014526
+        },
+        {
+          "concept": "QASPER",
+          "label": "QASPER",
+          "score": 0.3149617314338684
+        },
+        {
+          "concept": "MultipleChoiceQuestionAnswering",
+          "label": "multiple-choice question answering",
+          "score": 0.29578256607055664
+        }
+      ]
+    },
+    {
+      "question_id": "a8e4522ce2ce7336e731286654d6ad0931927a4e",
+      "query": "What is result of their Principal Component Analysis?",
+      "gold_concepts": [
+        "NeuralMachineTranslation"
+      ],
+      "hybrid_rank": 3,
+      "ontology_rank": 3,
+      "category": "vocabulary_gap_or_generic_question",
+      "candidates": [
+        {
+          "concept": "ROUGE",
+          "label": "ROUGE",
+          "score": 0.36535656452178955
+        },
+        {
+          "concept": "PyramidMethod",
+          "label": "Pyramid method",
+          "score": 0.33287420868873596
+        },
+        {
+          "concept": "CooccurrenceMatrix",
+          "label": "co-occurrence matrix",
+          "score": 0.3317299485206604
+        },
+        {
+          "concept": "AuthorProfiling",
+          "label": "author profiling",
+          "score": 0.32169008255004883
+        },
+        {
+          "concept": "ConvolutionalNeuralNetwork",
+          "label": "convolutional neural network",
+          "score": 0.3137107193470001
+        }
+      ]
+    },
+    {
+      "question_id": "9c9e90ceaba33242342a5ae7568e89fe660270d5",
+      "query": "How better does HAKE model peform than state-of-the-art methods?",
+      "gold_concepts": [
+        "MeanReciprocalRank"
+      ],
+      "hybrid_rank": null,
+      "ontology_rank": null,
+      "category": "vocabulary_gap_or_generic_question",
+      "candidates": [
+        {
+          "concept": "HiddenMarkovModel",
+          "label": "hidden Markov model",
+          "score": 0.3619459271430969
+        },
+        {
+          "concept": "LanguageModel",
+          "label": "language model",
+          "score": 0.31747475266456604
+        },
+        {
+          "concept": "TransferLearning",
+          "label": "transfer learning",
+          "score": 0.28867220878601074
+        },
+        {
+          "concept": "LatentDirichletAllocation",
+          "label": "latent Dirichlet allocation",
+          "score": 0.2854824662208557
+        },
+        {
+          "concept": "BidirectionalLanguageModel",
+          "label": "bidirectional language model",
+          "score": 0.2811955213546753
+        }
+      ]
+    },
+    {
+      "question_id": "2e632eb5ad611bbd16174824de0ae5efe4892daf",
+      "query": "What is author's opinion on why current multimodal models cannot outperform models analyzing only text?",
+      "gold_concepts": [
+        "ConvolutionalNeuralNetwork",
+        "NeuralNetwork"
+      ],
+      "hybrid_rank": 1,
+      "ontology_rank": 1,
+      "category": "vocabulary_gap_or_generic_question",
+      "candidates": [
+        {
+          "concept": "DatasetBias",
+          "label": "dataset bias",
+          "score": 0.3611730933189392
+        },
+        {
+          "concept": "LanguageModel",
+          "label": "language model",
+          "score": 0.35443320870399475
+        },
+        {
+          "concept": "LatentDirichletAllocation",
+          "label": "latent Dirichlet allocation",
+          "score": 0.3467300534248352
+        },
+        {
+          "concept": "AuthorProfiling",
+          "label": "author profiling",
+          "score": 0.34585705399513245
+        },
+        {
+          "concept": "DiscourseAnalysis",
+          "label": "discourse analysis",
+          "score": 0.34337562322616577
+        }
+      ]
+    },
+    {
+      "question_id": "79cfd1b82c72d18e2279792c66a042c0e9dfa6b7",
+      "query": "What are the architectures used for the three tasks?",
+      "gold_concepts": [],
+      "hybrid_rank": null,
+      "ontology_rank": null,
+      "category": "vocabulary_gap_or_generic_question",
+      "candidates": [
+        {
+          "concept": "MultitaskLearning",
+          "label": "multitask learning",
+          "score": 0.3602061867713928
+        },
+        {
+          "concept": "ImageCaptioning",
+          "label": "image captioning",
+          "score": 0.3247184157371521
+        },
+        {
+          "concept": "LatentDirichletAllocation",
+          "label": "latent Dirichlet allocation",
+          "score": 0.3078843355178833
+        },
+        {
+          "concept": "PyramidMethod",
+          "label": "Pyramid method",
+          "score": 0.2944806218147278
+        },
+        {
+          "concept": "MemoryNetwork",
+          "label": "memory network",
+          "score": 0.28326958417892456
+        }
+      ]
+    },
+    {
+      "question_id": "fb5ce11bfd74e9d7c322444b006a27f2ff32a0cf",
+      "query": "What is task success rate achieved? ",
+      "gold_concepts": [],
+      "hybrid_rank": null,
+      "ontology_rank": null,
+      "category": "vocabulary_gap_or_generic_question",
+      "candidates": [
+        {
+          "concept": "PyramidMethod",
+          "label": "Pyramid method",
+          "score": 0.3531198501586914
+        },
+        {
+          "concept": "ParaphraseGeneration",
+          "label": "paraphrase generation",
+          "score": 0.31647005677223206
+        },
+        {
+          "concept": "MultitaskLearning",
+          "label": "multitask learning",
+          "score": 0.30837833881378174
+        },
+        {
+          "concept": "ImageCaptioning",
+          "label": "image captioning",
+          "score": 0.2974838614463806
+        },
+        {
+          "concept": "MachineReadingComprehension",
+          "label": "machine reading comprehension",
+          "score": 0.24757742881774902
+        }
+      ]
+    },
+    {
+      "question_id": "42bc4e0cd0f3e238a4891142f1b84ebcd6594bf1",
+      "query": "Which models do they use as baselines on the Atomic dataset?",
+      "gold_concepts": [
+        "RecurrentNeuralNetwork"
+      ],
+      "hybrid_rank": 4,
+      "ontology_rank": 4,
+      "category": "vocabulary_gap_or_generic_question",
+      "candidates": [
+        {
+          "concept": "HiddenMarkovModel",
+          "label": "hidden Markov model",
+          "score": 0.3492550849914551
+        },
+        {
+          "concept": "LatentDirichletAllocation",
+          "label": "latent Dirichlet allocation",
+          "score": 0.34727829694747925
+        },
+        {
+          "concept": "DatasetBias",
+          "label": "dataset bias",
+          "score": 0.32149600982666016
+        },
+        {
+          "concept": "QASPER",
+          "label": "QASPER",
+          "score": 0.3089134991168976
+        },
+        {
+          "concept": "LanguageModel",
+          "label": "language model",
+          "score": 0.2985226809978485
+        }
+      ]
+    },
+    {
+      "question_id": "163a21c0701d5cda15be2d0eb4981a686e54a842",
+      "query": "what genre was the most difficult to classify?",
+      "gold_concepts": [],
+      "hybrid_rank": 1,
+      "ontology_rank": 1,
+      "category": "vocabulary_gap_or_generic_question",
+      "candidates": [
+        {
+          "concept": "LexicalDiversity",
+          "label": "lexical diversity",
+          "score": 0.34720396995544434
+        },
+        {
+          "concept": "SpamDetection",
+          "label": "spam detection",
+          "score": 0.267802894115448
+        },
+        {
+          "concept": "WordSegmentation",
+          "label": "word segmentation",
+          "score": 0.26687145233154297
+        },
+        {
+          "concept": "MorphologicalTokenization",
+          "label": "morphological tokenization",
+          "score": 0.24577713012695312
+        },
+        {
+          "concept": "AuthorProfiling",
+          "label": "author profiling",
+          "score": 0.24030719697475433
+        }
+      ]
+    },
+    {
+      "question_id": "9e1bf306658ef2972159643fdaf149c569db524b",
+      "query": "Which language family does Chatino belong to?",
+      "gold_concepts": [],
+      "hybrid_rank": 1,
+      "ontology_rank": 1,
+      "category": "vocabulary_gap_or_generic_question",
+      "candidates": [
+        {
+          "concept": "QuestionAnswering",
+          "label": "question answering",
+          "score": 0.34069520235061646
+        },
+        {
+          "concept": "LanguageModel",
+          "label": "language model",
+          "score": 0.3349825143814087
+        },
+        {
+          "concept": "NaturalLanguageProcessing",
+          "label": "natural language processing",
+          "score": 0.3269873261451721
+        },
+        {
+          "concept": "MultilingualNaturalLanguageProcessing",
+          "label": "multilingual natural language processing",
+          "score": 0.31958910822868347
+        },
+        {
+          "concept": "LexicalDiversity",
+          "label": "lexical diversity",
+          "score": 0.30801546573638916
+        }
+      ]
+    },
+    {
+      "question_id": "4688534a07a3cbd8afa738eea02cc6981a4fd285",
+      "query": "How do they combine MonaLog with BERT?",
+      "gold_concepts": [
+        "LanguageModel",
+        "NaturalLanguageInference"
+      ],
+      "hybrid_rank": 2,
+      "ontology_rank": 2,
+      "category": "vocabulary_gap_or_generic_question",
+      "candidates": [
+        {
+          "concept": "NeuralMachineTranslation",
+          "label": "neural machine translation",
+          "score": 0.3399612009525299
+        },
+        {
+          "concept": "HiddenMarkovModel",
+          "label": "hidden Markov model",
+          "score": 0.32277512550354004
+        },
+        {
+          "concept": "MemoryNetwork",
+          "label": "memory network",
+          "score": 0.32209107279777527
+        },
+        {
+          "concept": "Word2Vec",
+          "label": "word2vec",
+          "score": 0.300431489944458
+        },
+        {
+          "concept": "MorphologicalTokenization",
+          "label": "morphological tokenization",
+          "score": 0.28995245695114136
+        }
+      ]
+    },
+    {
+      "question_id": "6976296126e4a5c518e6b57de70f8dc8d8fde292",
+      "query": "What models do they propose?",
+      "gold_concepts": [
+        "ConvolutionalNeuralNetwork",
+        "RecurrentNeuralNetwork"
+      ],
+      "hybrid_rank": null,
+      "ontology_rank": null,
+      "category": "vocabulary_gap_or_generic_question",
+      "candidates": [
+        {
+          "concept": "TopicModeling",
+          "label": "topic modeling",
+          "score": 0.3374485969543457
+        },
+        {
+          "concept": "LanguageModel",
+          "label": "language model",
+          "score": 0.3268764913082123
+        },
+        {
+          "concept": "HiddenMarkovModel",
+          "label": "hidden Markov model",
+          "score": 0.30267393589019775
+        },
+        {
+          "concept": "TransferLearning",
+          "label": "transfer learning",
+          "score": 0.3023093342781067
+        },
+        {
+          "concept": "BidirectionalLanguageModel",
+          "label": "bidirectional language model",
+          "score": 0.2901860475540161
+        }
+      ]
+    },
+    {
+      "question_id": "2348d68e065443f701d8052018c18daa4ecc120e",
+      "query": "what pitfalls are mentioned in the paper?",
+      "gold_concepts": [
+        "NeuralMachineTranslation"
+      ],
+      "hybrid_rank": null,
+      "ontology_rank": null,
+      "category": "vocabulary_gap_or_generic_question",
+      "candidates": [
+        {
+          "concept": "CausalityExtraction",
+          "label": "causality extraction",
+          "score": 0.33317071199417114
+        },
+        {
+          "concept": "DiscourseAnalysis",
+          "label": "discourse analysis",
+          "score": 0.3209105432033539
+        },
+        {
+          "concept": "LatentDirichletAllocation",
+          "label": "latent Dirichlet allocation",
+          "score": 0.3100336790084839
+        },
+        {
+          "concept": "PyramidMethod",
+          "label": "Pyramid method",
+          "score": 0.2667211890220642
+        },
+        {
+          "concept": "QuestionAnswering",
+          "label": "question answering",
+          "score": 0.2618667781352997
+        }
+      ]
+    },
+    {
+      "question_id": "c21d26130b521c9596a1edd7b9ef3fe80a499f1e",
+      "query": "Which six domains are covered in the dataset?",
+      "gold_concepts": [],
+      "hybrid_rank": null,
+      "ontology_rank": null,
+      "category": "vocabulary_gap_or_generic_question",
+      "candidates": [
+        {
+          "concept": "LatentDirichletAllocation",
+          "label": "latent Dirichlet allocation",
+          "score": 0.3331308960914612
+        },
+        {
+          "concept": "DatasetBias",
+          "label": "dataset bias",
+          "score": 0.3286990523338318
+        },
+        {
+          "concept": "MemoryNetwork",
+          "label": "memory network",
+          "score": 0.31952953338623047
+        },
+        {
+          "concept": "QASPER",
+          "label": "QASPER",
+          "score": 0.30161330103874207
+        },
+        {
+          "concept": "DistributionalSemantics",
+          "label": "distributional semantics",
+          "score": 0.29845529794692993
+        }
+      ]
+    },
+    {
+      "question_id": "a3783e42c2bf616c8a07bd3b3d503886660e4344",
+      "query": "Do they compare against Noraset et al. 2017?",
+      "gold_concepts": [
+        "NeuralNetwork",
+        "RecurrentNeuralNetwork"
+      ],
+      "hybrid_rank": null,
+      "ontology_rank": null,
+      "category": "vocabulary_gap_or_generic_question",
+      "candidates": [
+        {
+          "concept": "EvidenceF1",
+          "label": "evidence F1",
+          "score": 0.31730276346206665
+        },
+        {
+          "concept": "ROUGE",
+          "label": "ROUGE",
+          "score": 0.30034127831459045
+        },
+        {
+          "concept": "AuthorProfiling",
+          "label": "author profiling",
+          "score": 0.2633497714996338
+        },
+        {
+          "concept": "DatasetBias",
+          "label": "dataset bias",
+          "score": 0.26064687967300415
+        },
+        {
+          "concept": "RevisionDetection",
+          "label": "revision detection",
+          "score": 0.21106192469596863
+        }
+      ]
+    },
+    {
+      "question_id": "07d7652ad4a0ec92e6b44847a17c378b0d9f57f5",
+      "query": "what were their experimental results in the low-resource dataset?",
+      "gold_concepts": [],
+      "hybrid_rank": null,
+      "ontology_rank": null,
+      "category": "vocabulary_gap_or_generic_question",
+      "candidates": [
+        {
+          "concept": "DatasetBias",
+          "label": "dataset bias",
+          "score": 0.30430877208709717
+        },
+        {
+          "concept": "HiddenMarkovModel",
+          "label": "hidden Markov model",
+          "score": 0.2888460159301758
+        },
+        {
+          "concept": "ComputationalSocialScience",
+          "label": "computational social science",
+          "score": 0.2810440957546234
+        },
+        {
+          "concept": "ROUGE",
+          "label": "ROUGE",
+          "score": 0.280645489692688
+        },
+        {
+          "concept": "LongShortTermMemory",
+          "label": "long short-term memory",
+          "score": 0.2778168320655823
+        }
+      ]
+    },
+    {
+      "question_id": "25b24ab1248f14a621686a57555189acc1afd49c",
+      "query": "What system is used as baseline?",
+      "gold_concepts": [],
+      "hybrid_rank": null,
+      "ontology_rank": null,
+      "category": "vocabulary_gap_or_generic_question",
+      "candidates": [
+        {
+          "concept": "HiddenMarkovModel",
+          "label": "hidden Markov model",
+          "score": 0.3018321394920349
+        },
+        {
+          "concept": "QASPER",
+          "label": "QASPER",
+          "score": 0.29038989543914795
+        },
+        {
+          "concept": "ROUGE",
+          "label": "ROUGE",
+          "score": 0.2648453116416931
+        },
+        {
+          "concept": "MachineReadingComprehension",
+          "label": "machine reading comprehension",
+          "score": 0.2632743716239929
+        },
+        {
+          "concept": "LatentDirichletAllocation",
+          "label": "latent Dirichlet allocation",
+          "score": 0.2577574551105499
+        }
+      ]
+    },
+    {
+      "question_id": "2a058f8f6bd6f8e80e8452e1dba9f8db5e3c7de8",
+      "query": "How are entities mapped onto polar coordinate system?",
+      "gold_concepts": [],
+      "hybrid_rank": 1,
+      "ontology_rank": 1,
+      "category": "vocabulary_gap_or_generic_question",
+      "candidates": [
+        {
+          "concept": "MorphologicalTokenization",
+          "label": "morphological tokenization",
+          "score": 0.29955947399139404
+        },
+        {
+          "concept": "EntityLinking",
+          "label": "entity linking",
+          "score": 0.2941671907901764
+        },
+        {
+          "concept": "QASPER",
+          "label": "QASPER",
+          "score": 0.28983592987060547
+        },
+        {
+          "concept": "NeuralMachineTranslation",
+          "label": "neural machine translation",
+          "score": 0.28246134519577026
+        },
+        {
+          "concept": "HiddenMarkovModel",
+          "label": "hidden Markov model",
+          "score": 0.27603480219841003
+        }
+      ]
+    },
+    {
+      "question_id": "b2b0321b0aaf58c3aa9050906ade6ef35874c5c1",
+      "query": "How large is the dataset?",
+      "gold_concepts": [],
+      "hybrid_rank": null,
+      "ontology_rank": null,
+      "category": "vocabulary_gap_or_generic_question",
+      "candidates": [
+        {
+          "concept": "DatasetBias",
+          "label": "dataset bias",
+          "score": 0.29952576756477356
+        },
+        {
+          "concept": "LongShortTermMemory",
+          "label": "long short-term memory",
+          "score": 0.28218308091163635
+        },
+        {
+          "concept": "QASPER",
+          "label": "QASPER",
+          "score": 0.28041455149650574
+        },
+        {
+          "concept": "ROUGE",
+          "label": "ROUGE",
+          "score": 0.2757057845592499
+        },
+        {
+          "concept": "MemoryNetwork",
+          "label": "memory network",
+          "score": 0.2704131603240967
+        }
+      ]
+    },
+    {
+      "question_id": "db9021ddd4593f6fadf172710468e2fdcea99674",
+      "query": "What additional techniques are incorporated?",
+      "gold_concepts": [
+        "LongShortTermMemory"
+      ],
+      "hybrid_rank": null,
+      "ontology_rank": null,
+      "category": "vocabulary_gap_or_generic_question",
+      "candidates": [
+        {
+          "concept": "PyramidMethod",
+          "label": "Pyramid method",
+          "score": 0.2989796996116638
+        },
+        {
+          "concept": "ROUGE",
+          "label": "ROUGE",
+          "score": 0.28723394870758057
+        },
+        {
+          "concept": "MultitaskLearning",
+          "label": "multitask learning",
+          "score": 0.26277869939804077
+        },
+        {
+          "concept": "SupervisedLearning",
+          "label": "supervised learning",
+          "score": 0.24252529442310333
+        },
+        {
+          "concept": "DistantSupervision",
+          "label": "distant supervision",
+          "score": 0.23932775855064392
+        }
+      ]
+    },
+    {
+      "question_id": "4196d329061f5a9d147e1e77aeed6a6bd9b35d18",
+      "query": "What is the architecture of the system?",
+      "gold_concepts": [
+        "LongShortTermMemory",
+        "NeuralMachineTranslation",
+        "NeuralNetwork",
+        "RecurrentNeuralNetwork"
+      ],
+      "hybrid_rank": null,
+      "ontology_rank": null,
+      "category": "vocabulary_gap_or_generic_question",
+      "candidates": [
+        {
+          "concept": "ComputationalSocialScience",
+          "label": "computational social science",
+          "score": 0.2914651036262512
+        },
+        {
+          "concept": "LanguageModel",
+          "label": "language model",
+          "score": 0.2908015847206116
+        },
+        {
+          "concept": "MemoryNetwork",
+          "label": "memory network",
+          "score": 0.2784558832645416
+        },
+        {
+          "concept": "BidirectionalLanguageModel",
+          "label": "bidirectional language model",
+          "score": 0.2515183687210083
+        },
+        {
+          "concept": "DynamicMemoryNetwork",
+          "label": "dynamic memory network",
+          "score": 0.21500414609909058
+        }
+      ]
+    },
+    {
+      "question_id": "205163715f345af1b5523da6f808e6dbf5f5dd47",
+      "query": "How many papers are used in experiment?",
+      "gold_concepts": [],
+      "hybrid_rank": null,
+      "ontology_rank": null,
+      "category": "vocabulary_gap_or_generic_question",
+      "candidates": [
+        {
+          "concept": "MultipleChoiceQuestionAnswering",
+          "label": "multiple-choice question answering",
+          "score": 0.290172815322876
+        },
+        {
+          "concept": "ROUGE",
+          "label": "ROUGE",
+          "score": 0.2799602746963501
+        },
+        {
+          "concept": "LatentDirichletAllocation",
+          "label": "latent Dirichlet allocation",
+          "score": 0.2674447298049927
+        },
+        {
+          "concept": "QuestionAnswering",
+          "label": "question answering",
+          "score": 0.23134657740592957
+        },
+        {
+          "concept": "PyramidMethod",
+          "label": "Pyramid method",
+          "score": 0.22042220830917358
+        }
+      ]
+    },
+    {
+      "question_id": "0d0959dba3f7c15ee4f5cdee51682656c4abbd8f",
+      "query": "What is a sememe?",
+      "gold_concepts": [],
+      "hybrid_rank": null,
+      "ontology_rank": null,
+      "category": "vocabulary_gap_or_generic_question",
+      "candidates": [
+        {
+          "concept": "ParaphraseGeneration",
+          "label": "paraphrase generation",
+          "score": 0.2707771956920624
+        },
+        {
+          "concept": "SemanticSearch",
+          "label": "semantic search",
+          "score": 0.24748525023460388
+        },
+        {
+          "concept": "InformationRetrieval",
+          "label": "information retrieval",
+          "score": 0.2421647012233734
+        },
+        {
+          "concept": "LexicalDiversity",
+          "label": "lexical diversity",
+          "score": 0.23793426156044006
+        },
+        {
+          "concept": "ComputationalSocialScience",
+          "label": "computational social science",
+          "score": 0.22448135912418365
+        }
+      ]
+    },
+    {
+      "question_id": "9646fa1abbe3102a0364f84e0a55d107d45c97f0",
+      "query": "Where did the real production data come from?",
+      "gold_concepts": [
+        "ConvolutionalNeuralNetwork"
+      ],
+      "hybrid_rank": 1,
+      "ontology_rank": 1,
+      "category": "vocabulary_gap_or_generic_question",
+      "candidates": [
+        {
+          "concept": "QuestionAnswering",
+          "label": "question answering",
+          "score": 0.26612457633018494
+        },
+        {
+          "concept": "LabelPropagation",
+          "label": "label propagation",
+          "score": 0.24856646358966827
+        },
+        {
+          "concept": "EvidenceF1",
+          "label": "evidence F1",
+          "score": 0.23435267806053162
+        },
+        {
+          "concept": "NeuralMachineTranslation",
+          "label": "neural machine translation",
+          "score": 0.2163328379392624
+        },
+        {
+          "concept": "QASPER",
+          "label": "QASPER",
+          "score": 0.21602573990821838
+        }
+      ]
+    },
+    {
+      "question_id": "4547818a3bbb727c4bb4a76554b5a5a7b5c5fedb",
+      "query": "what amounts of size were used on german-english?",
+      "gold_concepts": [
+        "NeuralMachineTranslation"
+      ],
+      "hybrid_rank": null,
+      "ontology_rank": null,
+      "category": "vocabulary_gap_or_generic_question",
+      "candidates": [
+        {
+          "concept": "LexicalDiversity",
+          "label": "lexical diversity",
+          "score": 0.26399174332618713
+        },
+        {
+          "concept": "LanguageModel",
+          "label": "language model",
+          "score": 0.2493087500333786
+        },
+        {
+          "concept": "WordSegmentation",
+          "label": "word segmentation",
+          "score": 0.24907764792442322
+        },
+        {
+          "concept": "MorphologicalTokenization",
+          "label": "morphological tokenization",
+          "score": 0.24604979157447815
+        },
+        {
+          "concept": "BidirectionalLanguageModel",
+          "label": "bidirectional language model",
+          "score": 0.23920604586601257
+        }
+      ]
+    },
+    {
+      "question_id": "6b91fe29175be8cd8f22abf27fb3460e43b9889a",
+      "query": "what genres do they songs fall under?",
+      "gold_concepts": [],
+      "hybrid_rank": null,
+      "ontology_rank": null,
+      "category": "vocabulary_gap_or_generic_question",
+      "candidates": [
+        {
+          "concept": "LexicalDiversity",
+          "label": "lexical diversity",
+          "score": 0.26262158155441284
+        },
+        {
+          "concept": "WordSegmentation",
+          "label": "word segmentation",
+          "score": 0.20467913150787354
+        },
+        {
+          "concept": "DiscourseAnalysis",
+          "label": "discourse analysis",
+          "score": 0.20021966099739075
+        },
+        {
+          "concept": "MorphologicalTokenization",
+          "label": "morphological tokenization",
+          "score": 0.18906760215759277
+        },
+        {
+          "concept": "LanguageModel",
+          "label": "language model",
+          "score": 0.1758573353290558
+        }
+      ]
+    },
+    {
+      "question_id": "52b113e66fd691ae18b9bb8a8d17e1ee7054bb81",
+      "query": "what is the source of the song lyrics?",
+      "gold_concepts": [],
+      "hybrid_rank": null,
+      "ontology_rank": null,
+      "category": "vocabulary_gap_or_generic_question",
+      "candidates": [
+        {
+          "concept": "CausalityExtraction",
+          "label": "causality extraction",
+          "score": 0.262031614780426
+        },
+        {
+          "concept": "QuestionAnswering",
+          "label": "question answering",
+          "score": 0.21821631491184235
+        },
+        {
+          "concept": "PhraseBasedMachineTranslation",
+          "label": "phrase-based machine translation",
+          "score": 0.2137817144393921
+        },
+        {
+          "concept": "ParaphraseGeneration",
+          "label": "paraphrase generation",
+          "score": 0.20972448587417603
+        },
+        {
+          "concept": "Word2Vec",
+          "label": "word2vec",
+          "score": 0.20617401599884033
+        }
+      ]
+    },
+    {
+      "question_id": "b37fd665dfa5fad43977069d5623f4490a979305",
+      "query": "What existing methods is SC-GPT compared to?",
+      "gold_concepts": [
+        "LongShortTermMemory"
+      ],
+      "hybrid_rank": null,
+      "ontology_rank": null,
+      "category": "vocabulary_gap_or_generic_question",
+      "candidates": [
+        {
+          "concept": "QASPER",
+          "label": "QASPER",
+          "score": 0.2493600845336914
+        },
+        {
+          "concept": "ROUGE",
+          "label": "ROUGE",
+          "score": 0.24644562602043152
+        },
+        {
+          "concept": "NeuralMachineTranslation",
+          "label": "neural machine translation",
+          "score": 0.2080276608467102
+        },
+        {
+          "concept": "ComputationalSocialScience",
+          "label": "computational social science",
+          "score": 0.20368586480617523
+        },
+        {
+          "concept": "HiddenMarkovModel",
+          "label": "hidden Markov model",
+          "score": 0.19854503870010376
+        }
+      ]
+    },
+    {
+      "question_id": "221e9189a9d2431902d8ea833f486a38a76cbd8e",
+      "query": "What is the average number of turns per dialog?",
+      "gold_concepts": [],
+      "hybrid_rank": 1,
+      "ontology_rank": 1,
+      "category": "vocabulary_gap_or_generic_question",
+      "candidates": [
+        {
+          "concept": "PyramidMethod",
+          "label": "Pyramid method",
+          "score": 0.20703977346420288
+        },
+        {
+          "concept": "ROUGE",
+          "label": "ROUGE",
+          "score": 0.18125328421592712
+        },
+        {
+          "concept": "MultitaskLearning",
+          "label": "multitask learning",
+          "score": 0.17357391119003296
+        },
+        {
+          "concept": "MultipleChoiceQuestionAnswering",
+          "label": "multiple-choice question answering",
+          "score": 0.17330381274223328
+        },
+        {
+          "concept": "MultiHopQuestionAnswering",
+          "label": "multi-hop question answering",
+          "score": 0.1689470261335373
+        }
+      ]
+    },
+    {
+      "question_id": "ee27e5b56e439546d710ce113c9be76e1bfa1a3d",
+      "query": "Do they beat current state-of-the-art on SICK?",
+      "gold_concepts": [
+        "NaturalLanguageInference"
+      ],
+      "hybrid_rank": 3,
+      "ontology_rank": 3,
+      "category": "vocabulary_gap_or_generic_question",
+      "candidates": [
+        {
+          "concept": "DatasetBias",
+          "label": "dataset bias",
+          "score": 0.11844970285892487
+        },
+        {
+          "concept": "SpamDetection",
+          "label": "spam detection",
+          "score": 0.11673104763031006
+        },
+        {
+          "concept": "QuestionAnswering",
+          "label": "question answering",
+          "score": 0.10692726075649261
+        },
+        {
+          "concept": "ConvolutionalNeuralNetwork",
+          "label": "convolutional neural network",
+          "score": 0.08926020562648773
+        },
+        {
+          "concept": "HashtagPrediction",
+          "label": "hashtag prediction",
+          "score": 0.08825366199016571
+        }
+      ]
+    }
+  ]
+}

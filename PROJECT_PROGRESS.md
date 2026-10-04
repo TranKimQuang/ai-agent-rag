@@ -1,22 +1,23 @@
 # THEO DÕI TIẾN ĐỘ ĐỒ ÁN AI AGENT + RAG
 
-Cập nhật gần nhất: 03/10/2026
+Cập nhật gần nhất: 04/10/2026
 
 ### Mới nhất: đánh giá hình thức Ontology bằng reasoner và competency questions
 
 - [x] Tích hợp OWL-RL reasoner (`owlrl`) và tạo công cụ đánh giá có thể chạy lại bằng
   `python scripts/evaluate_ontology.py`.
-- [x] Kiểm tra consistency: 550 triple ban đầu, 1.616 triple sau suy luận,
-  1.066 triple suy ra và không phát hiện mâu thuẫn theo các kiểm tra OWL-RL hỗ trợ.
+- [x] Kiểm tra consistency: 575 triple ban đầu, 1.670 triple sau suy luận,
+  1.095 triple suy ra và không phát hiện mâu thuẫn theo các kiểm tra OWL-RL hỗ trợ.
 - [x] Hoàn thiện đủ 10 truy vấn SPARQL cho 10 competency questions; toàn bộ 10/10
   đạt số dòng kết quả tối thiểu trên các instance mẫu.
 - [x] Xuất artifact đối chiếu tại `evaluation/ontology_quality_report.json` và
   `evaluation/ONTOLOGY_QUALITY_REPORT.md`.
-- [x] Báo cáo thống kê 14 class, 25 object property, 9 datatype property,
-  73 individual, 34/34 property có domain/range và 8 object property có inverse.
-- [x] Rà soát 5 ánh xạ CSO 3.5: giữ 2 `skos:exactMatch` cho Information Retrieval/NLP,
+- [x] Báo cáo thống kê 14 class, 25 object property, 10 datatype property,
+  76 individual, 35/35 property có domain/range và 8 object property có inverse.
+- [x] Rà soát 8 ánh xạ CSO 3.5: giữ 2 `skos:exactMatch` cho Information Retrieval/NLP,
   đổi Question Answering/RAG/Semantic Search sang 3 `skos:closeMatch` do khác vai trò
-  mô hình cục bộ; đồng thời sửa URI RAG sang `retrieval-augmented_generation`.
+  mô hình cục bộ; thêm 3 `exactMatch` candidate có kiểm soát và sửa URI RAG sang
+  `retrieval-augmented_generation`.
 - [x] Chạy paired bootstrap 10.000 mẫu trên 78 câu development cho Hybrid so với
   Ontology re-ranking. Chênh lệch Recall@5 +0,0128 có CI 95%
   [-0,0256; 0,0641], MRR@5 +0,0053 có CI [-0,0045; 0,0162] và nDCG@5
@@ -24,7 +25,49 @@ Cập nhật gần nhất: 03/10/2026
 - [x] Lưu kết quả significance tại
   `evaluation/qasper_train_v3/development_significance.json` và
   `evaluation/qasper_train_v3/DEVELOPMENT_SIGNIFICANCE.md`.
-- [x] Toàn bộ 111 test và Ruff đạt trên mã nguồn chính (`app`, `scripts`, `tests`).
+- [x] Toàn bộ 125 test và Ruff đạt trên mã nguồn chính (`app`, `scripts`, `tests`).
+
+### Protocol v4: development/validation/final-test mới
+
+- [x] Tải lại QASPER train chính thức và xác minh SHA-256
+  `9af08092ee26c4f700202c1f90d1592b662926f23f3a308a10ff0a53345e37fe`.
+- [x] Loại 100 paper đã xuất hiện trong sáu split cũ và chia theo seed `20261003`:
+  development 20 paper/74 câu, validation 10 paper/35 câu và final-test 15 paper/57 câu.
+- [x] Ba split không trùng paper; manifest lưu SHA-256 cho từng file. Final-test được đánh dấu
+  `sealed_not_evaluated` và chưa chạy retrieval.
+- [x] Baseline development v4: Semantic tốt nhất với Recall@5 0,3270; Hybrid đạt 0,3027;
+  Ontology re-ranking giữ nguyên Recall và chỉ tăng MRR@5 từ 0,2074 lên 0,2092.
+- [x] Coverage development v4 còn thấp: 9/74 query có concept, 34/74 gold evidence có
+  concept và chỉ 5/74 cặp query/evidence có quan hệ Ontology.
+- [x] Paired bootstrap 10.000 mẫu trên development v4: Recall không đổi; MRR tăng 0,0018
+  nhưng chỉ một câu thay đổi và chưa có ý nghĩa thống kê (`p=0,7489`).
+- [x] Phân tích đủ 65 query chưa có concept trên development bằng top-5 semantic
+  candidates: 3 câu gần ngưỡng 0,65; 27 câu có weak match và 35 câu thuộc nhóm
+  vocabulary gap/câu hỏi chung. Kết quả cho thấy không nên hạ ngưỡng đồng loạt.
+- [x] Loại `SampleRAGModel` (instance minh họa) khỏi vocabulary có thể link; chạy lại
+  development baseline cho kết quả không đổi, xác nhận lỗi này chưa làm sai các chỉ số đã báo.
+- [x] Xuất hàng đợi review tại
+  `evaluation/qasper_protocol_v4/development_concept_review.csv` cùng báo cáo JSON/Markdown.
+- [x] Thêm thí nghiệm query type-intent cho `Model`, `Dataset`, `Metric`, `Method`, `Task`
+  dưới cờ mặc định tắt. Coverage query tăng 9/74 -> 42/74 và số cặp query/evidence
+  có quan hệ tăng 5/74 -> 18/74.
+- [x] Type-intent re-ranking giữ Recall@5 0,3027 và tăng MRR@5 0,2074 -> 0,2110,
+  nhưng chỉ cải thiện 2/74 câu và chưa có ý nghĩa (`p=0,2704`). Query expansion giảm
+  Recall@5 còn 0,2757, nên chưa bật cấu hình này làm mặc định.
+- [x] Bổ sung candidate generation từ nguồn vocabulary ngoài cho 32 query còn thiếu;
+  sau khi ổn định mới dùng validation để chọn cấu hình.
+- [x] Tải CSO 3.5 chính thức (SHA-256 `f8dda279...f61d6b`), đọc 138.419 triple/
+  14.636 topic và lấy 1.901 topic thuộc sáu nhánh AI/NLP/IR/QA/Semantic Search/ML.
+- [x] Sinh top-5 CSO candidates cho 32 query còn thiếu: 15 câu có top score >= 0,60,
+  nhưng bộ lọc semantic + lexical bảo thủ chỉ giữ 3 candidate để tránh false positive.
+- [x] Thêm mapping `HumanEvaluation`, `TargetLanguage`, `MachineTranslation`; khi kích hoạt,
+  coverage tăng 42/74 -> 45/74 và concept link 370 -> 406 nhưng MRR@5 giảm
+  0,2110 -> 0,2088. Vì vậy giữ mapping trong Ontology nhưng đặt `retrievalEnabled=false`.
+- [x] Chạy validation 35 câu cho type-intent bật/tắt và weight 0,0–0,20. Mọi cấu hình
+  re-ranking tốt nhất đều hòa Hybrid tại weight 0,0; expansion không cải thiện.
+  Khóa lựa chọn validation là Hybrid thuần và tiếp tục niêm phong final-test.
+- [ ] Cải thiện cơ chế Ontology scoring theo ngữ cảnh tài liệu trước khi quyết định chạy
+  final-test đúng một lần; không tiếp tục thêm vocabulary chỉ để tăng coverage.
 
 ### Trước đó: phân tích lỗi và thử mở rộng evidence cho LLM
 

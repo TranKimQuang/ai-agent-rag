@@ -99,6 +99,52 @@ def test_selected_topics_are_mapped_to_cso_v35() -> None:
     ) in graph
 
 
+def test_conservative_development_candidates_are_mapped_to_cso() -> None:
+    graph = OntologyService().graph
+    expected = {
+        QA.HumanEvaluation: CSO.human_evaluation,
+        QA.TargetLanguage: CSO.target_language,
+        QA.MachineTranslation: CSO.machine_translations,
+    }
+
+    for local_concept, cso_concept in expected.items():
+        assert (local_concept, SKOS.exactMatch, cso_concept) in graph
+        assert (
+            local_concept,
+            QA.retrievalEnabled,
+            Literal(False, datatype=XSD.boolean),
+        ) in graph
+
+
+def test_disabled_cso_candidates_do_not_change_active_linker() -> None:
+    service = OntologyService()
+
+    linked = {
+        local_name(concept)
+        for concept in service.identify_concepts(
+            "human evaluation of machine translation in the target language"
+        )
+    }
+
+    assert linked.isdisjoint({"HumanEvaluation", "MachineTranslation", "TargetLanguage"})
+    expansion = service.expand_query("neural machine translation")
+    assert "machine translation" not in expansion.expansion_terms
+
+
+def test_sample_instances_are_not_linkable_vocabulary_concepts() -> None:
+    service = OntologyService()
+
+    identified = {local_name(concept) for concept in service.identify_concepts("sample RAG model")}
+    assert "RetrievalAugmentedGeneration" in identified
+    assert "SampleRAGModel" not in identified
+    assert all(
+        candidate.concept != "SampleRAGModel"
+        for candidate in OntologyService(
+            semantic_encoder=ConceptLinkingEncoder()
+        ).semantic_candidates("baseline model", limit=100)
+    )
+
+
 def test_semantic_concept_linking_finds_paraphrase_missing_from_aliases() -> None:
     service = OntologyService(semantic_encoder=ConceptLinkingEncoder())
     paraphrase = "The system retrieves external evidence before producing answers."
@@ -114,6 +160,26 @@ def test_semantic_concept_linking_finds_paraphrase_missing_from_aliases() -> Non
     assert semantic_links[0].concept == "RetrievalAugmentedGeneration"
     assert semantic_links[0].source == ConceptLinkingMethod.SEMANTIC
     assert semantic_links[0].score == 1.0
+
+
+def test_semantic_candidates_are_returned_below_acceptance_threshold() -> None:
+    service = OntologyService(semantic_encoder=ConceptLinkingEncoder())
+
+    candidates = service.semantic_candidates("unrelated wording", limit=2)
+
+    assert len(candidates) == 2
+    assert candidates[0].source == ConceptLinkingMethod.SEMANTIC
+
+
+def test_semantic_candidates_reject_invalid_limit() -> None:
+    service = OntologyService(semantic_encoder=ConceptLinkingEncoder())
+
+    try:
+        service.semantic_candidates("text", limit=0)
+    except ValueError as exc:
+        assert str(exc) == "limit must be at least 1"
+    else:
+        raise AssertionError("Expected an invalid candidate limit to be rejected")
 
 
 def test_hybrid_concept_linking_keeps_exact_alias_as_strongest_signal() -> None:
@@ -188,6 +254,33 @@ def test_prelinked_concepts_can_be_scored_without_encoding_text_again() -> None:
     assert match.score == 0.65
     assert match.query_concepts == ["InformationRetrieval"]
     assert match.chunk_concepts == ["RetrievalAugmentedGeneration"]
+
+
+def test_query_type_intent_links_explicit_metric_request() -> None:
+    service = OntologyService(query_type_intent=True)
+
+    concepts = service.configured_query_concepts("What evaluation metrics were used?")
+
+    assert QA.Metric in concepts
+
+
+def test_query_type_intent_is_disabled_by_default() -> None:
+    service = OntologyService()
+
+    assert QA.Metric not in service.configured_query_concepts(
+        "What evaluation metrics were used?"
+    )
+
+
+def test_query_type_scores_specific_concept_through_class_hierarchy() -> None:
+    service = OntologyService(query_type_intent=True)
+
+    metric_match = service.score_concept_names(["Metric"], ["ROUGE"])
+    method_match = service.score_concept_names(["Method"], ["NeuralNetwork"])
+
+    assert metric_match.score == 0.5
+    assert method_match.score == 0.5
+    assert "Requested type" in metric_match.explanation
 
 
 def test_find_relations_answers_sample_competency_question() -> None:

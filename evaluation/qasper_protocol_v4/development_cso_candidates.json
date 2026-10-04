@@ -1,0 +1,1600 @@
+{
+  "scope": "development queries uncovered after local query-type linking",
+  "cso_source": "output/cso-source/cso-v3.5.csv",
+  "cso_sha256": "f8dda2793b63735fcc06e9bf6e8062f551c102efbcc1958079d3cf5c08f61d6b",
+  "coverage_source": "evaluation/qasper_protocol_v4/development_type_intent/coverage.json",
+  "seeds": [
+    "artificial intelligence",
+    "information retrieval",
+    "machine learning",
+    "natural language processing",
+    "question answering",
+    "semantic search"
+  ],
+  "summary": {
+    "cso_rows": 138419,
+    "cso_labelled_topics": 14636,
+    "selected_topics": 1901,
+    "queries": 32,
+    "top_score_at_least_0_60": 15,
+    "top_score_at_least_0_50": 23,
+    "conservative_shortlist": 3,
+    "top_candidate_frequency": {
+      "human evaluation": 1,
+      "target language": 1,
+      "music genre": 1,
+      "feedback forms": 1,
+      "machine translations": 1,
+      "first principal components": 1,
+      "multi-agent learning": 1,
+      "automatic evaluation": 1,
+      "music genre classification": 1,
+      "attention mechanism": 1,
+      "annealing process": 1,
+      "natural language questions": 1,
+      "polarity classification": 1,
+      "primary systems": 1,
+      "context-aware recommender systems": 1
+    }
+  },
+  "queries": [
+    {
+      "question_id": "d803b782023553bbf9b36551fbc888ad189b1f29",
+      "query": "What was the criteria for human evaluation?",
+      "gold_concepts": [],
+      "review_priority": "high",
+      "candidates": [
+        {
+          "label": "human evaluation",
+          "uri": "https://cso.kmi.open.ac.uk/topics/human_evaluation",
+          "score": 0.8177188038825989,
+          "branch_depth": 2,
+          "already_local": false,
+          "lexical_support": true
+        },
+        {
+          "label": "automatic evaluation",
+          "uri": "https://cso.kmi.open.ac.uk/topics/automatic_evaluation",
+          "score": 0.5586591362953186,
+          "branch_depth": 2,
+          "already_local": false,
+          "lexical_support": false
+        },
+        {
+          "label": "policy evaluation",
+          "uri": "https://cso.kmi.open.ac.uk/topics/policy_evaluation",
+          "score": 0.5131945013999939,
+          "branch_depth": 3,
+          "already_local": false,
+          "lexical_support": false
+        },
+        {
+          "label": "partial evaluation",
+          "uri": "https://cso.kmi.open.ac.uk/topics/partial_evaluation",
+          "score": 0.5048747062683105,
+          "branch_depth": 4,
+          "already_local": false,
+          "lexical_support": false
+        },
+        {
+          "label": "fitness evaluations",
+          "uri": "https://cso.kmi.open.ac.uk/topics/fitness_evaluations",
+          "score": 0.48716288805007935,
+          "branch_depth": 3,
+          "already_local": false,
+          "lexical_support": false
+        }
+      ]
+    },
+    {
+      "question_id": "891cab2e41d6ba962778bda297592c916b432226",
+      "query": "What programming language is target language?",
+      "gold_concepts": [
+        "ParallelCorpus"
+      ],
+      "review_priority": "high",
+      "candidates": [
+        {
+          "label": "target language",
+          "uri": "https://cso.kmi.open.ac.uk/topics/target_language",
+          "score": 0.810431718826294,
+          "branch_depth": 2,
+          "already_local": false,
+          "lexical_support": true
+        },
+        {
+          "label": "source language",
+          "uri": "https://cso.kmi.open.ac.uk/topics/source_language",
+          "score": 0.5758447647094727,
+          "branch_depth": 3,
+          "already_local": false,
+          "lexical_support": false
+        },
+        {
+          "label": "formal specification language",
+          "uri": "https://cso.kmi.open.ac.uk/topics/formal_specification_language",
+          "score": 0.5721800327301025,
+          "branch_depth": 3,
+          "already_local": false,
+          "lexical_support": false
+        },
+        {
+          "label": "bidirectional language model",
+          "uri": "https://cso.kmi.open.ac.uk/topics/bidirectional_language_model",
+          "score": 0.5464982390403748,
+          "branch_depth": 3,
+          "already_local": true,
+          "lexical_support": false
+        },
+        {
+          "label": "natural language processing",
+          "uri": "https://cso.kmi.open.ac.uk/topics/natural_language_processing",
+          "score": 0.5077749490737915,
+          "branch_depth": 0,
+          "already_local": true,
+          "lexical_support": false
+        }
+      ]
+    },
+    {
+      "question_id": "6b91fe29175be8cd8f22abf27fb3460e43b9889a",
+      "query": "what genres do they songs fall under?",
+      "gold_concepts": [],
+      "review_priority": "medium",
+      "candidates": [
+        {
+          "label": "music genre",
+          "uri": "https://cso.kmi.open.ac.uk/topics/music_genre",
+          "score": 0.7602028846740723,
+          "branch_depth": 3,
+          "already_local": false,
+          "lexical_support": false
+        },
+        {
+          "label": "music genre classification",
+          "uri": "https://cso.kmi.open.ac.uk/topics/music_genre_classification",
+          "score": 0.6770716309547424,
+          "branch_depth": 2,
+          "already_local": false,
+          "lexical_support": false
+        },
+        {
+          "label": "music similarity",
+          "uri": "https://cso.kmi.open.ac.uk/topics/music_similarity",
+          "score": 0.6116888523101807,
+          "branch_depth": 2,
+          "already_local": false,
+          "lexical_support": false
+        },
+        {
+          "label": "music classification",
+          "uri": "https://cso.kmi.open.ac.uk/topics/music_classification",
+          "score": 0.6055480241775513,
+          "branch_depth": 2,
+          "already_local": false,
+          "lexical_support": false
+        },
+        {
+          "label": "music database",
+          "uri": "https://cso.kmi.open.ac.uk/topics/music_database",
+          "score": 0.5994232892990112,
+          "branch_depth": 2,
+          "already_local": false,
+          "lexical_support": false
+        }
+      ]
+    },
+    {
+      "question_id": "29983f4bc8a5513a198755e474361deee93d4ab6",
+      "query": "What feedback labels are used?",
+      "gold_concepts": [],
+      "review_priority": "medium",
+      "candidates": [
+        {
+          "label": "feedback forms",
+          "uri": "https://cso.kmi.open.ac.uk/topics/feedback_forms",
+          "score": 0.736232340335846,
+          "branch_depth": 3,
+          "already_local": false,
+          "lexical_support": false
+        },
+        {
+          "label": "explicit feedback",
+          "uri": "https://cso.kmi.open.ac.uk/topics/explicit_feedback",
+          "score": 0.6744012832641602,
+          "branch_depth": 3,
+          "already_local": false,
+          "lexical_support": false
+        },
+        {
+          "label": "relevance feedback",
+          "uri": "https://cso.kmi.open.ac.uk/topics/relevance_feedback",
+          "score": 0.6436899900436401,
+          "branch_depth": 3,
+          "already_local": false,
+          "lexical_support": false
+        },
+        {
+          "label": "implicit feedback",
+          "uri": "https://cso.kmi.open.ac.uk/topics/implicit_feedback",
+          "score": 0.6063855886459351,
+          "branch_depth": 2,
+          "already_local": false,
+          "lexical_support": false
+        },
+        {
+          "label": "pseudo relevance feedback",
+          "uri": "https://cso.kmi.open.ac.uk/topics/pseudo_relevance_feedback",
+          "score": 0.5817670822143555,
+          "branch_depth": 1,
+          "already_local": false,
+          "lexical_support": false
+        }
+      ]
+    },
+    {
+      "question_id": "42af0472e6895eaf7b9392674b0d956e64e86b03",
+      "query": "Which language directions are machine translation systems of WMT evaluated on?",
+      "gold_concepts": [],
+      "review_priority": "high",
+      "candidates": [
+        {
+          "label": "machine translations",
+          "uri": "https://cso.kmi.open.ac.uk/topics/machine_translations",
+          "score": 0.726083517074585,
+          "branch_depth": 1,
+          "already_local": false,
+          "lexical_support": true
+        },
+        {
+          "label": "computer aided language translation",
+          "uri": "https://cso.kmi.open.ac.uk/topics/computer_aided_language_translation",
+          "score": 0.7044329643249512,
+          "branch_depth": 2,
+          "already_local": false,
+          "lexical_support": false
+        },
+        {
+          "label": "translation systems",
+          "uri": "https://cso.kmi.open.ac.uk/topics/translation_systems",
+          "score": 0.6404013633728027,
+          "branch_depth": 2,
+          "already_local": false,
+          "lexical_support": true
+        },
+        {
+          "label": "statistical machine translation system",
+          "uri": "https://cso.kmi.open.ac.uk/topics/statistical_machine_translation_system",
+          "score": 0.6295357346534729,
+          "branch_depth": 3,
+          "already_local": false,
+          "lexical_support": false
+        },
+        {
+          "label": "large language models",
+          "uri": "https://cso.kmi.open.ac.uk/topics/large_language_models",
+          "score": 0.6283301711082458,
+          "branch_depth": 1,
+          "already_local": false,
+          "lexical_support": false
+        }
+      ]
+    },
+    {
+      "question_id": "a8e4522ce2ce7336e731286654d6ad0931927a4e",
+      "query": "What is result of their Principal Component Analysis?",
+      "gold_concepts": [
+        "NeuralMachineTranslation"
+      ],
+      "review_priority": "medium",
+      "candidates": [
+        {
+          "label": "first principal components",
+          "uri": "https://cso.kmi.open.ac.uk/topics/first_principal_components",
+          "score": 0.7239590287208557,
+          "branch_depth": 4,
+          "already_local": false,
+          "lexical_support": false
+        },
+        {
+          "label": "principal component analysis (pca)",
+          "uri": "https://cso.kmi.open.ac.uk/topics/principal_component_analysis_%28pca%29",
+          "score": 0.6876347661018372,
+          "branch_depth": 3,
+          "already_local": false,
+          "lexical_support": false
+        },
+        {
+          "label": "connected component analysis",
+          "uri": "https://cso.kmi.open.ac.uk/topics/connected_component_analysis",
+          "score": 0.5841021537780762,
+          "branch_depth": 4,
+          "already_local": false,
+          "lexical_support": false
+        },
+        {
+          "label": "cluster analysis",
+          "uri": "https://cso.kmi.open.ac.uk/topics/cluster_analysis",
+          "score": 0.5439466238021851,
+          "branch_depth": 1,
+          "already_local": false,
+          "lexical_support": false
+        },
+        {
+          "label": "hierarchical cluster analysis",
+          "uri": "https://cso.kmi.open.ac.uk/topics/hierarchical_cluster_analysis",
+          "score": 0.5315272808074951,
+          "branch_depth": 2,
+          "already_local": false,
+          "lexical_support": false
+        }
+      ]
+    },
+    {
+      "question_id": "acda028a21a465c984036dcbb124b7f03c490b41",
+      "query": "How does muli-agent dual learning work?",
+      "gold_concepts": [],
+      "review_priority": "medium",
+      "candidates": [
+        {
+          "label": "multi-agent learning",
+          "uri": "https://cso.kmi.open.ac.uk/topics/multi-agent_learning",
+          "score": 0.7219266891479492,
+          "branch_depth": 2,
+          "already_local": false,
+          "lexical_support": false
+        },
+        {
+          "label": "learning agents",
+          "uri": "https://cso.kmi.open.ac.uk/topics/learning_agents",
+          "score": 0.7022707462310791,
+          "branch_depth": 2,
+          "already_local": false,
+          "lexical_support": true
+        },
+        {
+          "label": "multi-agent reinforcement learning",
+          "uri": "https://cso.kmi.open.ac.uk/topics/multi-agent_reinforcement_learning",
+          "score": 0.673492431640625,
+          "branch_depth": 3,
+          "already_local": false,
+          "lexical_support": false
+        },
+        {
+          "label": "multi-agent model",
+          "uri": "https://cso.kmi.open.ac.uk/topics/multi-agent_model",
+          "score": 0.6019489765167236,
+          "branch_depth": 3,
+          "already_local": false,
+          "lexical_support": false
+        },
+        {
+          "label": "multi-agent technologies",
+          "uri": "https://cso.kmi.open.ac.uk/topics/multi-agent_technologies",
+          "score": 0.5984891653060913,
+          "branch_depth": 3,
+          "already_local": false,
+          "lexical_support": false
+        }
+      ]
+    },
+    {
+      "question_id": "9f6e877e3bde771595e8aee10c2656a0e7b9aeb2",
+      "query": "Do they perform manual evaluation?",
+      "gold_concepts": [],
+      "review_priority": "medium",
+      "candidates": [
+        {
+          "label": "automatic evaluation",
+          "uri": "https://cso.kmi.open.ac.uk/topics/automatic_evaluation",
+          "score": 0.6820212602615356,
+          "branch_depth": 2,
+          "already_local": false,
+          "lexical_support": false
+        },
+        {
+          "label": "human evaluation",
+          "uri": "https://cso.kmi.open.ac.uk/topics/human_evaluation",
+          "score": 0.6116014719009399,
+          "branch_depth": 2,
+          "already_local": false,
+          "lexical_support": false
+        },
+        {
+          "label": "partial evaluation",
+          "uri": "https://cso.kmi.open.ac.uk/topics/partial_evaluation",
+          "score": 0.5298964977264404,
+          "branch_depth": 4,
+          "already_local": false,
+          "lexical_support": false
+        },
+        {
+          "label": "customer review",
+          "uri": "https://cso.kmi.open.ac.uk/topics/customer_review",
+          "score": 0.4932367503643036,
+          "branch_depth": 4,
+          "already_local": false,
+          "lexical_support": false
+        },
+        {
+          "label": "recommendation accuracy",
+          "uri": "https://cso.kmi.open.ac.uk/topics/recommendation_accuracy",
+          "score": 0.49090129137039185,
+          "branch_depth": 2,
+          "already_local": false,
+          "lexical_support": false
+        }
+      ]
+    },
+    {
+      "question_id": "163a21c0701d5cda15be2d0eb4981a686e54a842",
+      "query": "what genre was the most difficult to classify?",
+      "gold_concepts": [],
+      "review_priority": "medium",
+      "candidates": [
+        {
+          "label": "music genre classification",
+          "uri": "https://cso.kmi.open.ac.uk/topics/music_genre_classification",
+          "score": 0.6777762770652771,
+          "branch_depth": 2,
+          "already_local": false,
+          "lexical_support": false
+        },
+        {
+          "label": "music genre",
+          "uri": "https://cso.kmi.open.ac.uk/topics/music_genre",
+          "score": 0.6058056354522705,
+          "branch_depth": 3,
+          "already_local": false,
+          "lexical_support": false
+        },
+        {
+          "label": "music classification",
+          "uri": "https://cso.kmi.open.ac.uk/topics/music_classification",
+          "score": 0.543502688407898,
+          "branch_depth": 2,
+          "already_local": false,
+          "lexical_support": false
+        },
+        {
+          "label": "music recommendation",
+          "uri": "https://cso.kmi.open.ac.uk/topics/music_recommendation",
+          "score": 0.4456414580345154,
+          "branch_depth": 2,
+          "already_local": false,
+          "lexical_support": false
+        },
+        {
+          "label": "music database",
+          "uri": "https://cso.kmi.open.ac.uk/topics/music_database",
+          "score": 0.40667304396629333,
+          "branch_depth": 2,
+          "already_local": false,
+          "lexical_support": false
+        }
+      ]
+    },
+    {
+      "question_id": "04aff4add28e6343634d342db92b3ac36aa8c255",
+      "query": "What is result of their attention distribution analysis?",
+      "gold_concepts": [],
+      "review_priority": "medium",
+      "candidates": [
+        {
+          "label": "attention mechanism",
+          "uri": "https://cso.kmi.open.ac.uk/topics/attention_mechanism",
+          "score": 0.6734426021575928,
+          "branch_depth": 3,
+          "already_local": false,
+          "lexical_support": false
+        },
+        {
+          "label": "visual attention models",
+          "uri": "https://cso.kmi.open.ac.uk/topics/visual_attention_models",
+          "score": 0.6020464897155762,
+          "branch_depth": 4,
+          "already_local": false,
+          "lexical_support": false
+        },
+        {
+          "label": "polyhedron attention mechanisms",
+          "uri": "https://cso.kmi.open.ac.uk/topics/polyhedron_attention_mechanisms",
+          "score": 0.5264502763748169,
+          "branch_depth": 4,
+          "already_local": false,
+          "lexical_support": false
+        },
+        {
+          "label": "response-time analysis",
+          "uri": "https://cso.kmi.open.ac.uk/topics/response-time_analysis",
+          "score": 0.5155356526374817,
+          "branch_depth": 4,
+          "already_local": false,
+          "lexical_support": false
+        },
+        {
+          "label": "intelligence analysis",
+          "uri": "https://cso.kmi.open.ac.uk/topics/intelligence_analysis",
+          "score": 0.5070055723190308,
+          "branch_depth": 1,
+          "already_local": false,
+          "lexical_support": false
+        }
+      ]
+    },
+    {
+      "question_id": "8486e06c03f82ebd48c7cfbaffaa76e8b899eea5",
+      "query": "How was annotation done?",
+      "gold_concepts": [
+        "TransferLearning"
+      ],
+      "review_priority": "medium",
+      "candidates": [
+        {
+          "label": "annealing process",
+          "uri": "https://cso.kmi.open.ac.uk/topics/annealing_process",
+          "score": 0.6650363206863403,
+          "branch_depth": 5,
+          "already_local": false,
+          "lexical_support": false
+        },
+        {
+          "label": "image annotation",
+          "uri": "https://cso.kmi.open.ac.uk/topics/image_annotation",
+          "score": 0.586513340473175,
+          "branch_depth": 2,
+          "already_local": false,
+          "lexical_support": false
+        },
+        {
+          "label": "automatic image annotation",
+          "uri": "https://cso.kmi.open.ac.uk/topics/automatic_image_annotation",
+          "score": 0.5599035024642944,
+          "branch_depth": 3,
+          "already_local": false,
+          "lexical_support": false
+        },
+        {
+          "label": "annealing",
+          "uri": "https://cso.kmi.open.ac.uk/topics/annealing",
+          "score": 0.555854082107544,
+          "branch_depth": 3,
+          "already_local": false,
+          "lexical_support": false
+        },
+        {
+          "label": "coinduction",
+          "uri": "https://cso.kmi.open.ac.uk/topics/coinduction",
+          "score": 0.48922163248062134,
+          "branch_depth": 4,
+          "already_local": false,
+          "lexical_support": false
+        }
+      ]
+    },
+    {
+      "question_id": "8112d18681e266426cf7432ac4928b87f5ce8311",
+      "query": "What languages are considered?",
+      "gold_concepts": [],
+      "review_priority": "medium",
+      "candidates": [
+        {
+          "label": "natural language questions",
+          "uri": "https://cso.kmi.open.ac.uk/topics/natural_language_questions",
+          "score": 0.6561213135719299,
+          "branch_depth": 1,
+          "already_local": false,
+          "lexical_support": false
+        },
+        {
+          "label": "bilingual dictionary",
+          "uri": "https://cso.kmi.open.ac.uk/topics/bilingual_dictionary",
+          "score": 0.6427691578865051,
+          "branch_depth": 2,
+          "already_local": false,
+          "lexical_support": false
+        },
+        {
+          "label": "spoken language understanding",
+          "uri": "https://cso.kmi.open.ac.uk/topics/spoken_language_understanding",
+          "score": 0.6156709790229797,
+          "branch_depth": 2,
+          "already_local": false,
+          "lexical_support": false
+        },
+        {
+          "label": "natural language text",
+          "uri": "https://cso.kmi.open.ac.uk/topics/natural_language_text",
+          "score": 0.6026433110237122,
+          "branch_depth": 1,
+          "already_local": false,
+          "lexical_support": false
+        },
+        {
+          "label": "natural language understanding",
+          "uri": "https://cso.kmi.open.ac.uk/topics/natural_language_understanding",
+          "score": 0.5880473852157593,
+          "branch_depth": 1,
+          "already_local": false,
+          "lexical_support": false
+        }
+      ]
+    },
+    {
+      "question_id": "2a058f8f6bd6f8e80e8452e1dba9f8db5e3c7de8",
+      "query": "How are entities mapped onto polar coordinate system?",
+      "gold_concepts": [],
+      "review_priority": "medium",
+      "candidates": [
+        {
+          "label": "polarity classification",
+          "uri": "https://cso.kmi.open.ac.uk/topics/polarity_classification",
+          "score": 0.6295097470283508,
+          "branch_depth": 3,
+          "already_local": false,
+          "lexical_support": false
+        },
+        {
+          "label": "sensing schemes",
+          "uri": "https://cso.kmi.open.ac.uk/topics/sensing_schemes",
+          "score": 0.4999983310699463,
+          "branch_depth": 3,
+          "already_local": false,
+          "lexical_support": false
+        },
+        {
+          "label": "local geometry",
+          "uri": "https://cso.kmi.open.ac.uk/topics/local_geometry",
+          "score": 0.47027328610420227,
+          "branch_depth": 4,
+          "already_local": false,
+          "lexical_support": false
+        },
+        {
+          "label": "cognitive maps",
+          "uri": "https://cso.kmi.open.ac.uk/topics/cognitive_maps",
+          "score": 0.46586835384368896,
+          "branch_depth": 3,
+          "already_local": false,
+          "lexical_support": false
+        },
+        {
+          "label": "locality preserving projections",
+          "uri": "https://cso.kmi.open.ac.uk/topics/locality_preserving_projections",
+          "score": 0.4647119641304016,
+          "branch_depth": 3,
+          "already_local": false,
+          "lexical_support": false
+        }
+      ]
+    },
+    {
+      "question_id": "25b24ab1248f14a621686a57555189acc1afd49c",
+      "query": "What system is used as baseline?",
+      "gold_concepts": [],
+      "review_priority": "medium",
+      "candidates": [
+        {
+          "label": "primary systems",
+          "uri": "https://cso.kmi.open.ac.uk/topics/primary_systems",
+          "score": 0.6156491637229919,
+          "branch_depth": 3,
+          "already_local": false,
+          "lexical_support": false
+        },
+        {
+          "label": "smt systems",
+          "uri": "https://cso.kmi.open.ac.uk/topics/smt_systems",
+          "score": 0.6043131351470947,
+          "branch_depth": 3,
+          "already_local": false,
+          "lexical_support": false
+        },
+        {
+          "label": "systems design",
+          "uri": "https://cso.kmi.open.ac.uk/topics/systems_design",
+          "score": 0.5915441513061523,
+          "branch_depth": 2,
+          "already_local": false,
+          "lexical_support": false
+        },
+        {
+          "label": "secondary system",
+          "uri": "https://cso.kmi.open.ac.uk/topics/secondary_system",
+          "score": 0.55072021484375,
+          "branch_depth": 4,
+          "already_local": false,
+          "lexical_support": false
+        },
+        {
+          "label": "system theory",
+          "uri": "https://cso.kmi.open.ac.uk/topics/system_theory",
+          "score": 0.5371324419975281,
+          "branch_depth": 1,
+          "already_local": false,
+          "lexical_support": false
+        }
+      ]
+    },
+    {
+      "question_id": "fb76e994e2e3fa129f1e94f1b043b274af8fb84c",
+      "query": "How does the context-aware variational autoencoder learn event background information?",
+      "gold_concepts": [],
+      "review_priority": "medium",
+      "candidates": [
+        {
+          "label": "context-aware recommender systems",
+          "uri": "https://cso.kmi.open.ac.uk/topics/context-aware_recommender_systems",
+          "score": 0.6004294157028198,
+          "branch_depth": 2,
+          "already_local": false,
+          "lexical_support": false
+        },
+        {
+          "label": "pattern recognition, visual",
+          "uri": "https://cso.kmi.open.ac.uk/topics/pattern_recognition%2C_visual",
+          "score": 0.5312783718109131,
+          "branch_depth": 2,
+          "already_local": false,
+          "lexical_support": false
+        },
+        {
+          "label": "background knowledge",
+          "uri": "https://cso.kmi.open.ac.uk/topics/background_knowledge",
+          "score": 0.5307058095932007,
+          "branch_depth": 3,
+          "already_local": false,
+          "lexical_support": false
+        },
+        {
+          "label": "variational autoencoders",
+          "uri": "https://cso.kmi.open.ac.uk/topics/variational_autoencoders",
+          "score": 0.5272432565689087,
+          "branch_depth": 3,
+          "already_local": false,
+          "lexical_support": true
+        },
+        {
+          "label": "syntactic pattern recognition",
+          "uri": "https://cso.kmi.open.ac.uk/topics/syntactic_pattern_recognition",
+          "score": 0.5263781547546387,
+          "branch_depth": 2,
+          "already_local": false,
+          "lexical_support": false
+        }
+      ]
+    },
+    {
+      "question_id": "eecf62e18a790bcfdd8a56f0c4f498927ff2fb47",
+      "query": "How does soft contextual data augmentation work?",
+      "gold_concepts": [
+        "LanguageModel"
+      ],
+      "review_priority": "low",
+      "candidates": [
+        {
+          "label": "soft computing methods",
+          "uri": "https://cso.kmi.open.ac.uk/topics/soft_computing_methods",
+          "score": 0.5994920134544373,
+          "branch_depth": 2,
+          "already_local": false,
+          "lexical_support": false
+        },
+        {
+          "label": "data abstraction",
+          "uri": "https://cso.kmi.open.ac.uk/topics/data_abstraction",
+          "score": 0.5828101634979248,
+          "branch_depth": 3,
+          "already_local": false,
+          "lexical_support": false
+        },
+        {
+          "label": "soft computing",
+          "uri": "https://cso.kmi.open.ac.uk/topics/soft_computing",
+          "score": 0.5732535719871521,
+          "branch_depth": 1,
+          "already_local": false,
+          "lexical_support": false
+        },
+        {
+          "label": "relevance models",
+          "uri": "https://cso.kmi.open.ac.uk/topics/relevance_models",
+          "score": 0.5483038425445557,
+          "branch_depth": 1,
+          "already_local": false,
+          "lexical_support": false
+        },
+        {
+          "label": "data sparsity",
+          "uri": "https://cso.kmi.open.ac.uk/topics/data_sparsity",
+          "score": 0.5106984972953796,
+          "branch_depth": 2,
+          "already_local": false,
+          "lexical_support": false
+        }
+      ]
+    },
+    {
+      "question_id": "9e1bf306658ef2972159643fdaf149c569db524b",
+      "query": "Which language family does Chatino belong to?",
+      "gold_concepts": [],
+      "review_priority": "low",
+      "candidates": [
+        {
+          "label": "bilingual corpora",
+          "uri": "https://cso.kmi.open.ac.uk/topics/bilingual_corpora",
+          "score": 0.5624257326126099,
+          "branch_depth": 3,
+          "already_local": false,
+          "lexical_support": false
+        },
+        {
+          "label": "language pairs",
+          "uri": "https://cso.kmi.open.ac.uk/topics/language_pairs",
+          "score": 0.5391865968704224,
+          "branch_depth": 2,
+          "already_local": false,
+          "lexical_support": false
+        },
+        {
+          "label": "bilingual dictionary",
+          "uri": "https://cso.kmi.open.ac.uk/topics/bilingual_dictionary",
+          "score": 0.47498956322669983,
+          "branch_depth": 2,
+          "already_local": false,
+          "lexical_support": false
+        },
+        {
+          "label": "chinese characters",
+          "uri": "https://cso.kmi.open.ac.uk/topics/chinese_characters",
+          "score": 0.47056660056114197,
+          "branch_depth": 3,
+          "already_local": false,
+          "lexical_support": false
+        },
+        {
+          "label": "chinese language",
+          "uri": "https://cso.kmi.open.ac.uk/topics/chinese_language",
+          "score": 0.4677293300628662,
+          "branch_depth": 4,
+          "already_local": false,
+          "lexical_support": false
+        }
+      ]
+    },
+    {
+      "question_id": "99760276cfd699e55b827ceeb653b31b043b9ceb",
+      "query": "How does morphological analysis differ from morphological inflection?",
+      "gold_concepts": [],
+      "review_priority": "low",
+      "candidates": [
+        {
+          "label": "appearance models",
+          "uri": "https://cso.kmi.open.ac.uk/topics/appearance_models",
+          "score": 0.5555746555328369,
+          "branch_depth": 3,
+          "already_local": false,
+          "lexical_support": false
+        },
+        {
+          "label": "appearance modeling",
+          "uri": "https://cso.kmi.open.ac.uk/topics/appearance_modeling",
+          "score": 0.5353662967681885,
+          "branch_depth": 4,
+          "already_local": false,
+          "lexical_support": false
+        },
+        {
+          "label": "shape description",
+          "uri": "https://cso.kmi.open.ac.uk/topics/shape_description",
+          "score": 0.524316668510437,
+          "branch_depth": 4,
+          "already_local": false,
+          "lexical_support": false
+        },
+        {
+          "label": "shape information",
+          "uri": "https://cso.kmi.open.ac.uk/topics/shape_information",
+          "score": 0.49632927775382996,
+          "branch_depth": 3,
+          "already_local": false,
+          "lexical_support": false
+        },
+        {
+          "label": "layout analysis",
+          "uri": "https://cso.kmi.open.ac.uk/topics/layout_analysis",
+          "score": 0.4925634264945984,
+          "branch_depth": 5,
+          "already_local": false,
+          "lexical_support": false
+        }
+      ]
+    },
+    {
+      "question_id": "abad9beb7295d809d7e5e1407cbf673c9ffffd19",
+      "query": "Do they propose any further additions that could be made to improve generalisation to unseen speakers?",
+      "gold_concepts": [],
+      "review_priority": "low",
+      "candidates": [
+        {
+          "label": "speech transmission",
+          "uri": "https://cso.kmi.open.ac.uk/topics/speech_transmission",
+          "score": 0.5537044405937195,
+          "branch_depth": 1,
+          "already_local": false,
+          "lexical_support": false
+        },
+        {
+          "label": "speech-to-speech translation",
+          "uri": "https://cso.kmi.open.ac.uk/topics/speech-to-speech_translation",
+          "score": 0.4534532427787781,
+          "branch_depth": 2,
+          "already_local": false,
+          "lexical_support": false
+        },
+        {
+          "label": "wireless microphone",
+          "uri": "https://cso.kmi.open.ac.uk/topics/wireless_microphone",
+          "score": 0.4347938895225525,
+          "branch_depth": 3,
+          "already_local": false,
+          "lexical_support": false
+        },
+        {
+          "label": "cognitive radio technologies",
+          "uri": "https://cso.kmi.open.ac.uk/topics/cognitive_radio_technologies",
+          "score": 0.4249245524406433,
+          "branch_depth": 3,
+          "already_local": false,
+          "lexical_support": false
+        },
+        {
+          "label": "noise power",
+          "uri": "https://cso.kmi.open.ac.uk/topics/noise_power",
+          "score": 0.42309099435806274,
+          "branch_depth": 3,
+          "already_local": false,
+          "lexical_support": false
+        }
+      ]
+    },
+    {
+      "question_id": "45893f31ef07f0cca5783bd39c4e60630d6b93b3",
+      "query": "How do they select monotonicity facts?",
+      "gold_concepts": [],
+      "review_priority": "low",
+      "candidates": [
+        {
+          "label": "gaussian mixture of experts",
+          "uri": "https://cso.kmi.open.ac.uk/topics/gaussian_mixture_of_experts",
+          "score": 0.5404269695281982,
+          "branch_depth": 1,
+          "already_local": false,
+          "lexical_support": false
+        },
+        {
+          "label": "dempster-shafer theory of evidence",
+          "uri": "https://cso.kmi.open.ac.uk/topics/dempster-shafer_theory_of_evidence",
+          "score": 0.5230125188827515,
+          "branch_depth": 3,
+          "already_local": false,
+          "lexical_support": false
+        },
+        {
+          "label": "syntactic information",
+          "uri": "https://cso.kmi.open.ac.uk/topics/syntactic_information",
+          "score": 0.515354335308075,
+          "branch_depth": 1,
+          "already_local": false,
+          "lexical_support": false
+        },
+        {
+          "label": "non-monotonic reasoning",
+          "uri": "https://cso.kmi.open.ac.uk/topics/non-monotonic_reasoning",
+          "score": 0.5139253735542297,
+          "branch_depth": 3,
+          "already_local": false,
+          "lexical_support": false
+        },
+        {
+          "label": "interestingness measures",
+          "uri": "https://cso.kmi.open.ac.uk/topics/interestingness_measures",
+          "score": 0.5017738342285156,
+          "branch_depth": 2,
+          "already_local": false,
+          "lexical_support": false
+        }
+      ]
+    },
+    {
+      "question_id": "518d0847b02b4f23a8f441faa38b935c9b892e1e",
+      "query": "What are the baselines?",
+      "gold_concepts": [],
+      "review_priority": "low",
+      "candidates": [
+        {
+          "label": "marginals",
+          "uri": "https://cso.kmi.open.ac.uk/topics/marginals",
+          "score": 0.5286458730697632,
+          "branch_depth": 2,
+          "already_local": false,
+          "lexical_support": false
+        },
+        {
+          "label": "scale factor",
+          "uri": "https://cso.kmi.open.ac.uk/topics/scale_factor",
+          "score": 0.51627117395401,
+          "branch_depth": 3,
+          "already_local": false,
+          "lexical_support": false
+        },
+        {
+          "label": "double threshold",
+          "uri": "https://cso.kmi.open.ac.uk/topics/double_threshold",
+          "score": 0.5013808012008667,
+          "branch_depth": 4,
+          "already_local": false,
+          "lexical_support": false
+        },
+        {
+          "label": "base learners",
+          "uri": "https://cso.kmi.open.ac.uk/topics/base_learners",
+          "score": 0.5007268190383911,
+          "branch_depth": 2,
+          "already_local": false,
+          "lexical_support": false
+        },
+        {
+          "label": "pareto frontiers",
+          "uri": "https://cso.kmi.open.ac.uk/topics/pareto_frontiers",
+          "score": 0.4951595067977905,
+          "branch_depth": 5,
+          "already_local": false,
+          "lexical_support": false
+        }
+      ]
+    },
+    {
+      "question_id": "2348d68e065443f701d8052018c18daa4ecc120e",
+      "query": "what pitfalls are mentioned in the paper?",
+      "gold_concepts": [
+        "NeuralMachineTranslation"
+      ],
+      "review_priority": "low",
+      "candidates": [
+        {
+          "label": "solution concepts",
+          "uri": "https://cso.kmi.open.ac.uk/topics/solution_concepts",
+          "score": 0.5185574293136597,
+          "branch_depth": 2,
+          "already_local": false,
+          "lexical_support": false
+        },
+        {
+          "label": "latent factor",
+          "uri": "https://cso.kmi.open.ac.uk/topics/latent_factor",
+          "score": 0.506560206413269,
+          "branch_depth": 3,
+          "already_local": false,
+          "lexical_support": false
+        },
+        {
+          "label": "constraint solvers",
+          "uri": "https://cso.kmi.open.ac.uk/topics/constraint_solvers",
+          "score": 0.5033132433891296,
+          "branch_depth": 3,
+          "already_local": false,
+          "lexical_support": false
+        },
+        {
+          "label": "propositional formulas",
+          "uri": "https://cso.kmi.open.ac.uk/topics/propositional_formulas",
+          "score": 0.46450376510620117,
+          "branch_depth": 4,
+          "already_local": false,
+          "lexical_support": false
+        },
+        {
+          "label": "nondominated solutions",
+          "uri": "https://cso.kmi.open.ac.uk/topics/nondominated_solutions",
+          "score": 0.4630913734436035,
+          "branch_depth": 5,
+          "already_local": false,
+          "lexical_support": false
+        }
+      ]
+    },
+    {
+      "question_id": "7920f228de6ef4c685f478bac4c7776443f19f39",
+      "query": "What language is the Twitter content in?",
+      "gold_concepts": [],
+      "review_priority": "low",
+      "candidates": [
+        {
+          "label": "natural language text",
+          "uri": "https://cso.kmi.open.ac.uk/topics/natural_language_text",
+          "score": 0.5080766677856445,
+          "branch_depth": 1,
+          "already_local": false,
+          "lexical_support": false
+        },
+        {
+          "label": "source language",
+          "uri": "https://cso.kmi.open.ac.uk/topics/source_language",
+          "score": 0.48171377182006836,
+          "branch_depth": 3,
+          "already_local": false,
+          "lexical_support": false
+        },
+        {
+          "label": "bilingual dictionary",
+          "uri": "https://cso.kmi.open.ac.uk/topics/bilingual_dictionary",
+          "score": 0.4657018780708313,
+          "branch_depth": 2,
+          "already_local": false,
+          "lexical_support": false
+        },
+        {
+          "label": "target language",
+          "uri": "https://cso.kmi.open.ac.uk/topics/target_language",
+          "score": 0.4569928050041199,
+          "branch_depth": 2,
+          "already_local": false,
+          "lexical_support": false
+        },
+        {
+          "label": "natural language questions",
+          "uri": "https://cso.kmi.open.ac.uk/topics/natural_language_questions",
+          "score": 0.4541616439819336,
+          "branch_depth": 1,
+          "already_local": false,
+          "lexical_support": false
+        }
+      ]
+    },
+    {
+      "question_id": "9646fa1abbe3102a0364f84e0a55d107d45c97f0",
+      "query": "Where did the real production data come from?",
+      "gold_concepts": [
+        "ConvolutionalNeuralNetwork"
+      ],
+      "review_priority": "low",
+      "candidates": [
+        {
+          "label": "synthetic data",
+          "uri": "https://cso.kmi.open.ac.uk/topics/synthetic_data",
+          "score": 0.48928824067115784,
+          "branch_depth": 1,
+          "already_local": false,
+          "lexical_support": false
+        },
+        {
+          "label": "smart manufacturing",
+          "uri": "https://cso.kmi.open.ac.uk/topics/smart_manufacturing",
+          "score": 0.39595168828964233,
+          "branch_depth": 3,
+          "already_local": false,
+          "lexical_support": false
+        },
+        {
+          "label": "distribution of goods",
+          "uri": "https://cso.kmi.open.ac.uk/topics/distribution_of_goods",
+          "score": 0.3643295466899872,
+          "branch_depth": 3,
+          "already_local": false,
+          "lexical_support": false
+        },
+        {
+          "label": "associative processing",
+          "uri": "https://cso.kmi.open.ac.uk/topics/associative_processing",
+          "score": 0.3631325662136078,
+          "branch_depth": 1,
+          "already_local": false,
+          "lexical_support": false
+        },
+        {
+          "label": "evolutionary computation techniques",
+          "uri": "https://cso.kmi.open.ac.uk/topics/evolutionary_computation_techniques",
+          "score": 0.3392793834209442,
+          "branch_depth": 3,
+          "already_local": false,
+          "lexical_support": false
+        }
+      ]
+    },
+    {
+      "question_id": "205163715f345af1b5523da6f808e6dbf5f5dd47",
+      "query": "How many papers are used in experiment?",
+      "gold_concepts": [],
+      "review_priority": "low",
+      "candidates": [
+        {
+          "label": "test samples",
+          "uri": "https://cso.kmi.open.ac.uk/topics/test_samples",
+          "score": 0.48335176706314087,
+          "branch_depth": 1,
+          "already_local": false,
+          "lexical_support": false
+        },
+        {
+          "label": "gaussian mixture of experts",
+          "uri": "https://cso.kmi.open.ac.uk/topics/gaussian_mixture_of_experts",
+          "score": 0.4728299379348755,
+          "branch_depth": 1,
+          "already_local": false,
+          "lexical_support": false
+        },
+        {
+          "label": "document frequency",
+          "uri": "https://cso.kmi.open.ac.uk/topics/document_frequency",
+          "score": 0.4442143440246582,
+          "branch_depth": 2,
+          "already_local": false,
+          "lexical_support": false
+        },
+        {
+          "label": "small sample size",
+          "uri": "https://cso.kmi.open.ac.uk/topics/small_sample_size",
+          "score": 0.43952733278274536,
+          "branch_depth": 3,
+          "already_local": false,
+          "lexical_support": false
+        },
+        {
+          "label": "periodic tasks",
+          "uri": "https://cso.kmi.open.ac.uk/topics/periodic_tasks",
+          "score": 0.4222092926502228,
+          "branch_depth": 3,
+          "already_local": false,
+          "lexical_support": false
+        }
+      ]
+    },
+    {
+      "question_id": "4688534a07a3cbd8afa738eea02cc6981a4fd285",
+      "query": "How do they combine MonaLog with BERT?",
+      "gold_concepts": [
+        "LanguageModel",
+        "NaturalLanguageInference"
+      ],
+      "review_priority": "low",
+      "candidates": [
+        {
+          "label": "multimodal ai",
+          "uri": "https://cso.kmi.open.ac.uk/topics/multimodal_ai",
+          "score": 0.4551149308681488,
+          "branch_depth": 1,
+          "already_local": false,
+          "lexical_support": false
+        },
+        {
+          "label": "syntactic features",
+          "uri": "https://cso.kmi.open.ac.uk/topics/syntactic_features",
+          "score": 0.4429572820663452,
+          "branch_depth": 1,
+          "already_local": false,
+          "lexical_support": false
+        },
+        {
+          "label": "syntactic structure",
+          "uri": "https://cso.kmi.open.ac.uk/topics/syntactic_structure",
+          "score": 0.4316363036632538,
+          "branch_depth": 1,
+          "already_local": false,
+          "lexical_support": false
+        },
+        {
+          "label": "markov logic networks",
+          "uri": "https://cso.kmi.open.ac.uk/topics/markov_logic_networks",
+          "score": 0.4270628094673157,
+          "branch_depth": 3,
+          "already_local": false,
+          "lexical_support": false
+        },
+        {
+          "label": "syntactic analysis",
+          "uri": "https://cso.kmi.open.ac.uk/topics/syntactic_analysis",
+          "score": 0.41437864303588867,
+          "branch_depth": 1,
+          "already_local": false,
+          "lexical_support": false
+        }
+      ]
+    },
+    {
+      "question_id": "a3783e42c2bf616c8a07bd3b3d503886660e4344",
+      "query": "Do they compare against Noraset et al. 2017?",
+      "gold_concepts": [
+        "NeuralNetwork",
+        "RecurrentNeuralNetwork"
+      ],
+      "review_priority": "low",
+      "candidates": [
+        {
+          "label": "product reviews",
+          "uri": "https://cso.kmi.open.ac.uk/topics/product_reviews",
+          "score": 0.43394386768341064,
+          "branch_depth": 3,
+          "already_local": false,
+          "lexical_support": false
+        },
+        {
+          "label": "recommendation accuracy",
+          "uri": "https://cso.kmi.open.ac.uk/topics/recommendation_accuracy",
+          "score": 0.4230583906173706,
+          "branch_depth": 2,
+          "already_local": false,
+          "lexical_support": false
+        },
+        {
+          "label": "recommendation performance",
+          "uri": "https://cso.kmi.open.ac.uk/topics/recommendation_performance",
+          "score": 0.4151787757873535,
+          "branch_depth": 2,
+          "already_local": false,
+          "lexical_support": false
+        },
+        {
+          "label": "cluster validity",
+          "uri": "https://cso.kmi.open.ac.uk/topics/cluster_validity",
+          "score": 0.3884608745574951,
+          "branch_depth": 2,
+          "already_local": false,
+          "lexical_support": false
+        },
+        {
+          "label": "forecasting performance",
+          "uri": "https://cso.kmi.open.ac.uk/topics/forecasting_performance",
+          "score": 0.3817543387413025,
+          "branch_depth": 2,
+          "already_local": false,
+          "lexical_support": false
+        }
+      ]
+    },
+    {
+      "question_id": "4547818a3bbb727c4bb4a76554b5a5a7b5c5fedb",
+      "query": "what amounts of size were used on german-english?",
+      "gold_concepts": [
+        "NeuralMachineTranslation"
+      ],
+      "review_priority": "low",
+      "candidates": [
+        {
+          "label": "small sample size",
+          "uri": "https://cso.kmi.open.ac.uk/topics/small_sample_size",
+          "score": 0.4251425564289093,
+          "branch_depth": 3,
+          "already_local": false,
+          "lexical_support": false
+        },
+        {
+          "label": "bayer pattern",
+          "uri": "https://cso.kmi.open.ac.uk/topics/bayer_pattern",
+          "score": 0.41807985305786133,
+          "branch_depth": 4,
+          "already_local": false,
+          "lexical_support": false
+        },
+        {
+          "label": "scale factor",
+          "uri": "https://cso.kmi.open.ac.uk/topics/scale_factor",
+          "score": 0.41459891200065613,
+          "branch_depth": 3,
+          "already_local": false,
+          "lexical_support": false
+        },
+        {
+          "label": "statistical language models",
+          "uri": "https://cso.kmi.open.ac.uk/topics/statistical_language_models",
+          "score": 0.40288397669792175,
+          "branch_depth": 1,
+          "already_local": false,
+          "lexical_support": false
+        },
+        {
+          "label": "english sentences",
+          "uri": "https://cso.kmi.open.ac.uk/topics/english_sentences",
+          "score": 0.39521220326423645,
+          "branch_depth": 2,
+          "already_local": false,
+          "lexical_support": false
+        }
+      ]
+    },
+    {
+      "question_id": "221e9189a9d2431902d8ea833f486a38a76cbd8e",
+      "query": "What is the average number of turns per dialog?",
+      "gold_concepts": [],
+      "review_priority": "low",
+      "candidates": [
+        {
+          "label": "mean shift algorithm",
+          "uri": "https://cso.kmi.open.ac.uk/topics/mean_shift_algorithm",
+          "score": 0.41735565662384033,
+          "branch_depth": 4,
+          "already_local": false,
+          "lexical_support": false
+        },
+        {
+          "label": "mean shift tracking",
+          "uri": "https://cso.kmi.open.ac.uk/topics/mean_shift_tracking",
+          "score": 0.39946213364601135,
+          "branch_depth": 5,
+          "already_local": false,
+          "lexical_support": false
+        },
+        {
+          "label": "head pose estimation",
+          "uri": "https://cso.kmi.open.ac.uk/topics/head_pose_estimation",
+          "score": 0.3555821180343628,
+          "branch_depth": 4,
+          "already_local": false,
+          "lexical_support": false
+        },
+        {
+          "label": "response-time analysis",
+          "uri": "https://cso.kmi.open.ac.uk/topics/response-time_analysis",
+          "score": 0.3372596204280853,
+          "branch_depth": 4,
+          "already_local": false,
+          "lexical_support": false
+        },
+        {
+          "label": "accelerometer data",
+          "uri": "https://cso.kmi.open.ac.uk/topics/accelerometer_data",
+          "score": 0.3362751007080078,
+          "branch_depth": 3,
+          "already_local": false,
+          "lexical_support": false
+        }
+      ]
+    },
+    {
+      "question_id": "0d0959dba3f7c15ee4f5cdee51682656c4abbd8f",
+      "query": "What is a sememe?",
+      "gold_concepts": [],
+      "review_priority": "low",
+      "candidates": [
+        {
+          "label": "sift descriptors",
+          "uri": "https://cso.kmi.open.ac.uk/topics/sift_descriptors",
+          "score": 0.3949465751647949,
+          "branch_depth": 4,
+          "already_local": false,
+          "lexical_support": false
+        },
+        {
+          "label": "word sense",
+          "uri": "https://cso.kmi.open.ac.uk/topics/word_sense",
+          "score": 0.38629060983657837,
+          "branch_depth": 3,
+          "already_local": false,
+          "lexical_support": false
+        },
+        {
+          "label": "simca",
+          "uri": "https://cso.kmi.open.ac.uk/topics/simca",
+          "score": 0.37488704919815063,
+          "branch_depth": 4,
+          "already_local": false,
+          "lexical_support": false
+        },
+        {
+          "label": "encoders",
+          "uri": "https://cso.kmi.open.ac.uk/topics/encoders",
+          "score": 0.3699817955493927,
+          "branch_depth": 3,
+          "already_local": false,
+          "lexical_support": false
+        },
+        {
+          "label": "lexical semantics",
+          "uri": "https://cso.kmi.open.ac.uk/topics/lexical_semantics",
+          "score": 0.3687295615673065,
+          "branch_depth": 1,
+          "already_local": false,
+          "lexical_support": false
+        }
+      ]
+    },
+    {
+      "question_id": "52b113e66fd691ae18b9bb8a8d17e1ee7054bb81",
+      "query": "what is the source of the song lyrics?",
+      "gold_concepts": [],
+      "review_priority": "low",
+      "candidates": [
+        {
+          "label": "speech translation",
+          "uri": "https://cso.kmi.open.ac.uk/topics/speech_translation",
+          "score": 0.3879691958427429,
+          "branch_depth": 3,
+          "already_local": false,
+          "lexical_support": false
+        },
+        {
+          "label": "source language",
+          "uri": "https://cso.kmi.open.ac.uk/topics/source_language",
+          "score": 0.3736634850502014,
+          "branch_depth": 3,
+          "already_local": false,
+          "lexical_support": false
+        },
+        {
+          "label": "handwritten words",
+          "uri": "https://cso.kmi.open.ac.uk/topics/handwritten_words",
+          "score": 0.34002310037612915,
+          "branch_depth": 4,
+          "already_local": false,
+          "lexical_support": false
+        },
+        {
+          "label": "scene text",
+          "uri": "https://cso.kmi.open.ac.uk/topics/scene_text",
+          "score": 0.3374220132827759,
+          "branch_depth": 3,
+          "already_local": false,
+          "lexical_support": false
+        },
+        {
+          "label": "speech-to-speech translation",
+          "uri": "https://cso.kmi.open.ac.uk/topics/speech-to-speech_translation",
+          "score": 0.3323684632778168,
+          "branch_depth": 2,
+          "already_local": false,
+          "lexical_support": false
+        }
+      ]
+    },
+    {
+      "question_id": "ee27e5b56e439546d710ce113c9be76e1bfa1a3d",
+      "query": "Do they beat current state-of-the-art on SICK?",
+      "gold_concepts": [
+        "NaturalLanguageInference"
+      ],
+      "review_priority": "low",
+      "candidates": [
+        {
+          "label": "uhf",
+          "uri": "https://cso.kmi.open.ac.uk/topics/uhf",
+          "score": 0.30784642696380615,
+          "branch_depth": 6,
+          "already_local": false,
+          "lexical_support": false
+        },
+        {
+          "label": "national library of medicine (u.s.)",
+          "uri": "https://cso.kmi.open.ac.uk/topics/national_library_of_medicine_%28u.s.%29",
+          "score": 0.2515442967414856,
+          "branch_depth": 2,
+          "already_local": false,
+          "lexical_support": false
+        },
+        {
+          "label": "communities of practice",
+          "uri": "https://cso.kmi.open.ac.uk/topics/communities_of_practice",
+          "score": 0.24858038127422333,
+          "branch_depth": 4,
+          "already_local": false,
+          "lexical_support": false
+        },
+        {
+          "label": "community of practice",
+          "uri": "https://cso.kmi.open.ac.uk/topics/community_of_practice",
+          "score": 0.24596695601940155,
+          "branch_depth": 5,
+          "already_local": false,
+          "lexical_support": false
+        },
+        {
+          "label": "hmi",
+          "uri": "https://cso.kmi.open.ac.uk/topics/hmi",
+          "score": 0.2363942563533783,
+          "branch_depth": 4,
+          "already_local": false,
+          "lexical_support": false
+        }
+      ]
+    }
+  ]
+}

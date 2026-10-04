@@ -26,6 +26,7 @@ def render_markdown(payload: dict[str, object]) -> str:
         f"- Cutoff: k={payload['k']}",
         f"- Bootstrap samples: {payload['bootstrap_samples']}",
         f"- Seed: {payload['seed']}",
+        f"- Query type intent: {payload['query_type_intent']}",
         "",
         "| Metric | Hybrid | Ontology | Chênh lệch | 95% CI | p hai phía | Ý nghĩa 0,05 |",
         "|---|---:|---:|---:|---|---:|---|",
@@ -67,6 +68,16 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--samples", type=int, default=10_000)
     parser.add_argument("--seed", type=int, default=20261003)
     parser.add_argument(
+        "--details",
+        type=Path,
+        help="Existing detailed benchmark JSON; skips model inference when provided.",
+    )
+    parser.add_argument(
+        "--query-type-intent",
+        action="store_true",
+        help="Record that supplied details used the experimental query-type linker",
+    )
+    parser.add_argument(
         "--json-output",
         type=Path,
         default=Path("evaluation/qasper_train_v3/development_significance.json"),
@@ -81,26 +92,32 @@ def parse_args() -> argparse.Namespace:
 
 def main() -> None:
     args = parse_args()
-    chunks, questions = load_dataset(args.dataset)
-    encoder = SentenceTransformerEncoder()
-    ontology = OntologyService(
-        semantic_encoder=encoder,
-        linking_method=ConceptLinkingMethod.HYBRID,
-        linking_threshold=0.65,
-    )
-    chunks, concept_links = ontology.index_chunks(chunks)
-    retriever = InMemoryHybridRetriever(
-        semantic_encoder=encoder,
-        ontology_service=ontology,
-        ontology_weight=0.05,
-    )
-    retriever.add(chunks)
-    _, details = run_detailed_benchmark(
-        retriever,
-        questions,
-        methods=[SearchMethod.HYBRID, SearchMethod.HYBRID_ONTOLOGY_RERANK],
-        k_values=(args.k,),
-    )
+    if args.details:
+        details = json.loads(args.details.read_text(encoding="utf-8"))
+        concept_links = None
+        details_source = args.details.as_posix()
+    else:
+        chunks, questions = load_dataset(args.dataset)
+        encoder = SentenceTransformerEncoder()
+        ontology = OntologyService(
+            semantic_encoder=encoder,
+            linking_method=ConceptLinkingMethod.HYBRID,
+            linking_threshold=0.65,
+        )
+        chunks, concept_links = ontology.index_chunks(chunks)
+        retriever = InMemoryHybridRetriever(
+            semantic_encoder=encoder,
+            ontology_service=ontology,
+            ontology_weight=0.05,
+        )
+        retriever.add(chunks)
+        _, details = run_detailed_benchmark(
+            retriever,
+            questions,
+            methods=[SearchMethod.HYBRID, SearchMethod.HYBRID_ONTOLOGY_RERANK],
+            k_values=(args.k,),
+        )
+        details_source = "generated"
     report = paired_bootstrap_comparison(
         details,
         baseline_method=SearchMethod.HYBRID.value,
@@ -112,10 +129,12 @@ def main() -> None:
     payload = {
         "dataset": args.dataset.as_posix(),
         "split_role": "development",
+        "details_source": details_source,
         "concept_links": concept_links,
         "linking_method": "hybrid",
         "linking_threshold": 0.65,
         "ontology_weight": 0.05,
+        "query_type_intent": args.query_type_intent,
         **report,
     }
     args.json_output.parent.mkdir(parents=True, exist_ok=True)

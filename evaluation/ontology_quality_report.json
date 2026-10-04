@@ -3,29 +3,41 @@
   "reasoner": "OWL-RL (owlrl)",
   "consistent": true,
   "consistency_issues": [],
-  "triples_before_reasoning": 550,
-  "triples_after_reasoning": 1616,
-  "inferred_triples": 1066,
+  "triples_before_reasoning": 575,
+  "triples_after_reasoning": 1670,
+  "inferred_triples": 1095,
   "schema": {
     "classes": 14,
     "object_properties": 25,
-    "data_properties": 9,
-    "individuals": 73,
-    "properties_with_domain": 34,
-    "properties_with_range": 34,
+    "data_properties": 10,
+    "individuals": 76,
+    "properties_with_domain": 35,
+    "properties_with_range": 35,
     "object_properties_with_inverse": 8
   },
   "cso_mapping": {
-    "exact_match_count": 2,
+    "exact_match_count": 5,
     "close_match_count": 3,
     "exact_matches": [
+      {
+        "local_concept": "HumanEvaluation",
+        "external_uri": "https://cso.kmi.open.ac.uk/topics/human_evaluation"
+      },
       {
         "local_concept": "InformationRetrieval",
         "external_uri": "https://cso.kmi.open.ac.uk/topics/information_retrieval"
       },
       {
+        "local_concept": "MachineTranslation",
+        "external_uri": "https://cso.kmi.open.ac.uk/topics/machine_translations"
+      },
+      {
         "local_concept": "NaturalLanguageProcessing",
         "external_uri": "https://cso.kmi.open.ac.uk/topics/natural_language_processing"
+      },
+      {
+        "local_concept": "TargetLanguage",
+        "external_uri": "https://cso.kmi.open.ac.uk/topics/target_language"
       }
     ],
     "close_matches": [
@@ -94,7 +106,7 @@
       "question": "Những concept nào có quan hệ trực tiếp với một concept?",
       "query": "04_related_concepts.rq",
       "minimum_rows": 1,
-      "actual_rows": 91,
+      "actual_rows": 97,
       "passed": true,
       "sample_rows": [
         {
@@ -169,7 +181,7 @@
       "question": "Concept nào có concept rộng hơn trong phân cấp?",
       "query": "08_concept_hierarchy.rq",
       "minimum_rows": 1,
-      "actual_rows": 21,
+      "actual_rows": 22,
       "passed": true,
       "sample_rows": [
         {
