@@ -24,7 +24,10 @@
     "chunks": 1109,
     "questions": 75,
     "sha256": "0df2de0a5f2f8a4e4dd4ba4cd8b127148b54d3998a477ba85826af26d9656b87",
-    "evaluation_status": "prepared_not_evaluated"
+    "evaluation_status": "evaluated_once",
+    "evaluated_on": "2026-10-08",
+    "result_file": "validation_result_once.json",
+    "selected_weight": 0.2
   },
   "policy": "Do not alter Result extraction rules or ontology weight after observing this validation without creating another paper-disjoint split. Final-test v4 remains sealed."
 }

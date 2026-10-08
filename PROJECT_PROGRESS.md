@@ -22,7 +22,17 @@ Cập nhật gần nhất: 07/10/2026
 - [x] Đã chuẩn bị validation v5 độc lập gồm 20 paper, 1.109 chunk và 75 câu hỏi; loại
   145 paper từ toàn bộ chín split cũ, overlap bằng 0. Trạng thái hiện là
   `prepared_not_evaluated`; final-test v4 vẫn sealed.
-- [ ] Cần khóa/commit code và weight candidates trước khi chạy validation v5 đúng một lần.
+- [x] Đã khóa/commit code và weight candidates trước khi chạy validation v5.
+- [x] Đã commit/push cấu hình trước validation tại commit `65ae6f7`.
+- [x] Đã chạy validation v5 đúng một lần trên 75 câu: Hybrid Recall@5 0,2333,
+  MRR@5 0,1693, nDCG@5 0,1699; Result re-ranking weight 0,20 đạt tương ứng
+  0,2533, 0,1804 và 0,1848.
+- [x] Validation có 3 câu tăng hạng, 2 câu được cứu vào top 5, 2 câu giảm hạng và
+  không mất câu nào; query expansion tiếp tục làm giảm kết quả.
+- [x] Khóa weight 0,20, tắt query expansion trong `locked_result_context_config.json`;
+  final-test v4 vẫn `sealed_not_evaluated`.
+- [ ] Review 29 Result trong `result_context_audit_pending.csv` để đo precision extraction
+  độc lập; không dùng review này để tuning lại cấu hình đã khóa.
 
 ### Result-centric knowledge graph và relation scoring v2 (trước audit)
 

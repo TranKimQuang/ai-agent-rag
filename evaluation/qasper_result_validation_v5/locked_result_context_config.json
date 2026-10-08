@@ -1,0 +1,23 @@
+{
+  "configuration_status": "frozen_after_validation",
+  "frozen_on": "2026-10-08",
+  "selection_split": "evaluation/qasper_result_validation_v5/qasper_validation.json",
+  "selection_split_sha256": "0df2de0a5f2f8a4e4dd4ba4cd8b127148b54d3998a477ba85826af26d9656b87",
+  "selection_run": "evaluation/qasper_result_validation_v5/validation_result_once.json",
+  "retrieval_method": "hybrid_ontology_rerank",
+  "ontology_weight": 0.2,
+  "query_expansion": false,
+  "query_type_intent": false,
+  "concept_linking_method": "hybrid",
+  "concept_linking_threshold": 0.65,
+  "selection_rule": "highest rerank nDCG@5, then MRR@5 and Recall@5",
+  "validation_metrics": {
+    "recall@5": 0.25333333333333335,
+    "mrr@5": 0.18044444444444444,
+    "ndcg@5": 0.1847966276994197
+  },
+  "final_test": {
+    "dataset": "evaluation/qasper_protocol_v4/qasper_final_test.json",
+    "status": "sealed_not_evaluated"
+  }
+}
