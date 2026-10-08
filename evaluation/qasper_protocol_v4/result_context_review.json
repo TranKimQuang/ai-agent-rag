@@ -1,0 +1,120 @@
+{
+  "schema_version": 1,
+  "reviewed_at": "2026-10-07",
+  "review_scope": "Manual review of all 52 development Result instances and their extracted role links.",
+  "conventions": {
+    "default_result_status": "in_scope",
+    "default_nonempty_role_status": "correct",
+    "default_empty_role_status": "not_present",
+    "precision_rule": "correct links / (correct + incorrect links); ambiguous links are excluded"
+  },
+  "annotations": {
+    "result-chunk-qasper:1904.00648:s4:p5": {
+      "result_status": "non_result",
+      "models_invalid": ["NER"],
+      "note": "System description/model selection; NER is a task, not a model."
+    },
+    "result-chunk-qasper:1904.00648:s4:p6": {
+      "result_status": "non_result",
+      "models_invalid": ["NER"],
+      "note": "Experiment setup without a reported result; NER is a task, not a model."
+    },
+    "result-chunk-qasper:1905.06512:s0:p2": {
+      "result_status": "non_result",
+      "note": "Background and task formulation rather than a reported paper result."
+    },
+    "result-chunk-qasper:1905.06512:s7:p0": {
+      "result_status": "non_result",
+      "note": "Settings/evaluation procedure; no measured outcome is reported in this chunk."
+    },
+    "result-chunk-qasper:1905.06512:s7:p1": {
+      "result_status": "non_result",
+      "note": "Training settings and prior baseline description, not a result statement."
+    },
+    "result-chunk-qasper:1905.11901:s10:p0": {
+      "note": "Reviewed after the sentence-aware value fix; 3.2M training words is no longer extracted as BLEU."
+    },
+    "result-chunk-qasper:1905.11901:s8:p0": {
+      "result_status": "non_result",
+      "note": "PBSMT baseline configuration; no result value is reported."
+    },
+    "result-chunk-qasper:1905.11901:s9:p0": {
+      "result_status": "non_result",
+      "note": "NMT training configuration; no result value is reported."
+    },
+    "result-chunk-qasper:1907.01413:s2:p0": {
+      "result_status": "prior_work",
+      "note": "Related-work evidence is incorrectly scoped as a result of the current paper."
+    },
+    "result-chunk-qasper:1909.08824:s5:p0": {
+      "result_status": "non_result",
+      "note": "Training details without a measured outcome."
+    },
+    "result-chunk-qasper:1910.02754:s10:p0": {
+      "datasets_invalid": ["MMT"],
+      "note": "MMT denotes the task/domain; the named dataset is How2."
+    },
+    "result-chunk-qasper:1910.03814:s1:p0": {
+      "result_status": "prior_work",
+      "note": "Related-work comparison is not a result of the current paper."
+    },
+    "result-chunk-qasper:1910.08772:s11:p1": {
+      "result_status": "ambiguous",
+      "note": "The chunk mixes prior corrections with the current authors' audit of those corrections."
+    },
+    "result-chunk-qasper:1910.11471:s10:p0": {
+      "datasets_invalid": ["parallel corpus"],
+      "note": "The dataset label is generic; the 3% training split is no longer extracted as a metric value."
+    },
+    "result-chunk-qasper:1911.06191:s23:p5": {
+      "note": "Reviewed after the sentence-aware value fix; length penalty 1.0 is no longer extracted as BLEU."
+    },
+    "result-chunk-qasper:1911.06191:s31:p0": {
+      "result_status": "non_result",
+      "metrics_invalid": ["accuracy"],
+      "note": "Conclusion/future-work statement predicts improved accuracy but reports no measured result."
+    },
+    "result-chunk-qasper:1911.06191:s4:p0": {
+      "result_status": "non_result",
+      "metrics_invalid": ["accuracy"],
+      "note": "Accuracy refers to computer-vision background, not an evaluation of the translation system."
+    },
+    "result-chunk-qasper:1911.07228:s0:p11": {
+      "result_status": "non_result",
+      "note": "Paper roadmap and experiment description, not a result."
+    },
+    "result-chunk-qasper:1911.07228:s1:p1": {
+      "result_status": "prior_work",
+      "note": "Scores belong to cited related work, not the current paper."
+    },
+    "result-chunk-qasper:1911.07228:s2:p0": {
+      "result_status": "non_result",
+      "note": "Evaluation method definition, not an observed result."
+    },
+    "result-chunk-qasper:1911.07228:s2:p2": {
+      "result_status": "non_result",
+      "note": "Error-analysis procedure, not an observed result."
+    },
+    "result-chunk-qasper:1912.03234:s0:p1": {
+      "result_status": "non_result",
+      "models_invalid": ["BIBREF7"],
+      "note": "Architecture overview; BIBREF7 is a citation marker, not a model."
+    },
+    "result-chunk-qasper:1912.03234:s3:p0": {
+      "result_status": "non_result",
+      "metrics_invalid": ["accuracy"],
+      "note": "Method description uses accuracy as a design trade-off, not a measured outcome."
+    },
+    "result-chunk-qasper:2002.12328:s18:p0": {
+      "note": "4.96 is a valid ERR value; the extractor misses the ERR metric but the value itself is evaluative."
+    },
+    "result-chunk-qasper:2003.05377:s1:p3": {
+      "result_status": "prior_work",
+      "models_ambiguous": ["Deep Learning"],
+      "note": "Related-work result; Deep Learning is an underspecified model-family label."
+    },
+    "result-chunk-qasper:2003.05377:s7:p1": {
+      "note": "Reviewed after the role fix; BLSTM is now linked as a model and word embedding remains a method."
+    }
+  }
+}

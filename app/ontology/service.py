@@ -20,6 +20,82 @@ from app.models import (
 DEFAULT_ONTOLOGY_PATH = Path(__file__).parents[2] / "ontology" / "document_qa.ttl"
 QA = Namespace("https://example.org/document-qa#")
 _NON_WORD = re.compile(r"[^a-z0-9]+")
+_RESULT_OUTCOME_CUE = re.compile(
+    r"\b(achieve|achieved|benefit|benefits|find|finds|found|gain|gains|higher|lower|"
+    r"outperform|outperformed|outperforms|improve|improved|improves|show|shows|"
+    r"shown)\b",
+    re.IGNORECASE,
+)
+_RESULT_SECTION_CUE = re.compile(
+    r"^(?:results?\b|experiments?\b|experimental results?\b|validation\b|"
+    r"conclusions?\b|dataset analysis\b|submitted systems?\b)",
+    re.IGNORECASE,
+)
+_NON_RESULT_SECTION_CUE = re.compile(
+    r"^(?:related works?\b|settings\b|method(?:s)?\b|error-analysis method\b|"
+    r".*training details\b|[^.\n]{1,60}\s+system\.|[^.\n]{1,60}\s+baseline\.)",
+    re.IGNORECASE,
+)
+_PAPER_ROADMAP_CUE = re.compile(
+    r"\b(?:section\s+\d+\s+(?:discusses|presents)|we will present|will be introduced)\b",
+    re.IGNORECASE,
+)
+_FUTURE_ONLY_CUE = re.compile(
+    r"\b(?:will conduct experiments|future work|future direction|worthy of exploration)\b",
+    re.IGNORECASE,
+)
+_MODEL_LABEL_CUE = re.compile(
+    r"(?:bi?lstm|cnn|gpt(?:-\d+)?|lr|rnn|transformer)",
+    re.IGNORECASE,
+)
+_RESULT_VALUE_CUE = re.compile(
+    r"\b(how much|by how much|what (?:is|was|were) (?:the )?(?:result|score|value)|"
+    r"result|results|score|performance|accuracy|f1|bleu|rouge)\b",
+    re.IGNORECASE,
+)
+_METRIC_CUE = re.compile(
+    r"\b(F1|F-?score|F-?measure|BLEU|ROUGE(?:-[A-Za-z0-9]+)?|accuracy|precision|"
+    r"recall|MRR|nDCG|AUC(?:-ROC)?|ERR|H@\d+)\b",
+    re.IGNORECASE,
+)
+_DECIMAL_VALUE = re.compile(r"(?<![\w.])(\d+(?:\.\d+)?)\s*(%)?")
+_PAPER_ROLE_PATTERNS = {
+    QA.Dataset: (
+        re.compile(
+            r"\b([A-Z][A-Za-z0-9_-]{1,40}(?:\s+[A-Z][A-Za-z0-9_-]{1,40}){0,2})\s+"
+            r"(?:dataset|corpus|benchmark)\b"
+        ),
+    ),
+    QA.Metric: (
+        re.compile(
+            r"\b(F1|F-?measure|BLEU|ROUGE(?:-[A-Za-z0-9]+)?|accuracy|precision|"
+            r"recall|MRR|nDCG|AUC(?:-ROC)?|ERR|H@\d+)\b",
+            re.IGNORECASE,
+        ),
+    ),
+    QA.Model: (
+        re.compile(
+            r"\b([A-Z][A-Za-z0-9_-]{1,40}(?:\s+[A-Z][A-Za-z0-9_-]{1,40}){0,1})\s+"
+            r"(?:model|system|architecture)\b"
+        ),
+    ),
+    QA.Method: (
+        re.compile(
+            r"\b([A-Z][A-Za-z0-9_-]{1,40}(?:\s+[A-Z][A-Za-z0-9_-]{1,40}){0,1})\s+"
+            r"(?:method|approach|technique)\b"
+        ),
+    ),
+}
+_PAPER_ENTITY_STOP_LABELS = {
+    "baseline",
+    "neural",
+    "new",
+    "our",
+    "proposed",
+    "the",
+    "their",
+    "this",
+}
 _QUERY_TYPE_ALIASES = {
     QA.Dataset: {"dataset", "datasets", "corpus", "corpora"},
     QA.Metric: {"metric", "metrics", "measure", "measures"},
@@ -289,7 +365,7 @@ class OntologyService:
             document = URIRef(f"{QA}document-{chunk.document_id}")
             section = URIRef(f"{QA}section-{chunk.document_id}-page-{chunk.page}")
             chunk_resource = URIRef(f"{QA}chunk-{chunk.id}")
-            self.graph.add((document, RDF.type, QA.Document))
+            self.graph.add((document, RDF.type, QA.Paper))
             self.graph.add((document, QA.sourceFile, Literal(chunk.filename)))
             self.graph.add((document, QA.hasSection, section))
             self.graph.add((section, RDF.type, QA.Section))
@@ -304,11 +380,142 @@ class OntologyService:
                 self.graph.add((chunk_resource, QA.mentionsConcept, concept))
                 concept_links += 1
 
+            self._index_result_context(document, chunk_resource, chunk.text, concepts)
+
             annotated.append(
                 chunk.model_copy(update={"concepts": [local_name(value) for value in concepts]})
             )
 
         return annotated, concept_links
+
+    def _index_result_context(
+        self,
+        document: URIRef,
+        chunk_resource: URIRef,
+        text: str,
+        concepts: list[URIRef],
+    ) -> None:
+        """Create paper-scoped Result facts from one evidence chunk.
+
+        This is deliberately conservative: a Result is created only when the chunk
+        contains typed experimental entities and either a metric or an explicit
+        result cue. It is a transparent baseline, not a claim of full IE quality.
+        """
+        paper_entities = self._extract_paper_scoped_entities(document, text)
+        models = [value for value in concepts if self._is_instance_of(value, QA.Model)]
+        models.extend(paper_entities[QA.Model])
+        methods = [
+            value
+            for value in concepts
+            if value not in models and self._is_instance_of(value, QA.Method)
+        ]
+        methods.extend(paper_entities[QA.Method])
+        datasets = [value for value in concepts if self._is_instance_of(value, QA.Dataset)]
+        datasets.extend(paper_entities[QA.Dataset])
+        metrics = [value for value in concepts if self._is_instance_of(value, QA.Metric)]
+        metrics.extend(paper_entities[QA.Metric])
+        typed_dimensions = sum(bool(values) for values in (models, methods, datasets, metrics))
+        metric_values = self._extract_metric_values(text)
+        if (
+            _NON_RESULT_SECTION_CUE.search(text)
+            or _PAPER_ROADMAP_CUE.search(text)
+            or (not metric_values and _FUTURE_ONLY_CUE.search(text))
+        ):
+            return
+        if not (
+            (metric_values and typed_dimensions >= 2)
+            or (
+                (_RESULT_OUTCOME_CUE.search(text) or _RESULT_SECTION_CUE.search(text))
+                and typed_dimensions >= 2
+            )
+        ):
+            return
+
+        chunk_name = local_name(chunk_resource)
+        result = URIRef(f"{QA}result-{chunk_name}")
+        self.graph.add((result, RDF.type, QA.Result))
+        self.graph.add((document, QA.hasResult, result))
+        self.graph.add((result, QA.resultOf, document))
+        self.graph.add((result, QA.hasEvidence, chunk_resource))
+        self.graph.add((chunk_resource, QA.isEvidenceFor, result))
+        self.graph.add((result, QA.resultNote, Literal(text[:1000])))
+
+        for value in methods:
+            self.graph.add((result, QA.resultUsesMethod, value))
+            self.graph.add((document, QA.usesMethod, value))
+        for value in models:
+            self.graph.add((result, QA.resultUsesModel, value))
+            self.graph.add((document, QA.usesMethod, value))
+        for value in datasets:
+            self.graph.add((result, QA.resultUsesDataset, value))
+            self.graph.add((document, QA.usesDataset, value))
+        for value in metrics:
+            self.graph.add((result, QA.measuredBy, value))
+            self.graph.add((document, QA.evaluatedBy, value))
+        for value in {value for values in paper_entities.values() for value in values}:
+            self.graph.add((chunk_resource, QA.mentionsConcept, value))
+        if metrics:
+            for value in metric_values:
+                self.graph.add(
+                    (result, QA.metricValue, Literal(value, datatype=XSD.decimal))
+                )
+
+    @staticmethod
+    def _extract_metric_values(text: str) -> list[str]:
+        values: list[str] = []
+        sentences = re.split(r"(?<=[.!?])\s+(?=[A-Z])", text)
+        for sentence in sentences:
+            if not _METRIC_CUE.search(sentence):
+                continue
+            for match in _DECIMAL_VALUE.finditer(sentence):
+                raw, percent = match.groups()
+                # Integers without a percent sign are commonly years, counts or table IDs.
+                if not percent and "." not in raw:
+                    continue
+                number = float(raw)
+                if percent:
+                    number /= 100.0
+                if number < 0 or number > 100:
+                    continue
+                normalized = f"{number:.8f}".rstrip("0").rstrip(".")
+                if normalized not in values:
+                    values.append(normalized)
+        return values
+
+    def _extract_paper_scoped_entities(
+        self, document: URIRef, text: str
+    ) -> dict[URIRef, list[URIRef]]:
+        entities: dict[URIRef, list[URIRef]] = {
+            concept_type: [] for concept_type in _PAPER_ROLE_PATTERNS
+        }
+        document_name = local_name(document)
+        for concept_type, patterns in _PAPER_ROLE_PATTERNS.items():
+            labels: set[str] = set()
+            for pattern in patterns:
+                for match in pattern.finditer(text):
+                    label = match.group(1).strip(" -_,.;:()")
+                    label = re.sub(
+                        r"^(?:the|a|an|this|our|their|proposed|new)\s+",
+                        "",
+                        label,
+                        flags=re.IGNORECASE,
+                    )
+                    if label and normalize_text(label) not in _PAPER_ENTITY_STOP_LABELS:
+                        labels.add(label)
+            for label in sorted(labels, key=str.lower):
+                target_type = concept_type
+                if concept_type == QA.Method and _MODEL_LABEL_CUE.fullmatch(label):
+                    target_type = QA.Model
+                slug = normalize_text(label).replace(" ", "-")
+                if not slug:
+                    continue
+                resource = URIRef(
+                    f"{QA}paper-entity-{document_name}-{local_name(target_type)}-{slug}"
+                )
+                self.graph.add((resource, RDF.type, target_type))
+                self.graph.add((resource, SKOS.prefLabel, Literal(label)))
+                entities[target_type].append(resource)
+        return entities
 
     def is_chunk_indexed(self, chunk_id: str) -> bool:
         """Return whether a chunk passed through ontology indexing, even with no links."""
@@ -358,6 +565,188 @@ class OntologyService:
         query_concepts = self.configured_query_concepts(query)
         chunk_concepts = self.configured_concepts(text)
         return self._score_concepts(query_concepts, chunk_concepts)
+
+    def score_context(
+        self,
+        query: str,
+        text: str,
+        *,
+        query_concepts: list[str] | None = None,
+        chunk_concepts: list[str] | None = None,
+        chunk_id: str | None = None,
+    ) -> OntologyMatch:
+        """Score ontology evidence while respecting the question and passage context.
+
+        The original graph-only score treats every linked concept as equally reliable.
+        This variant downweights broad/hub concepts and semantic-only links, recognises
+        the entity type explicitly requested by the question, and leaves final fusion
+        with the retrieval score to the retriever.
+        """
+        known_by_name = {local_name(concept): concept for concept in self._concept_aliases}
+        resolved_query = (
+            [known_by_name[name] for name in query_concepts or [] if name in known_by_name]
+            if query_concepts is not None
+            else self.configured_concepts(query)
+        )
+        resolved_chunks = (
+            [known_by_name[name] for name in chunk_concepts or [] if name in known_by_name]
+            if chunk_concepts is not None
+            else self.configured_concepts(text)
+        )
+        requested_types = self.identify_query_type_concepts(query)
+
+        topical = self._score_concepts(resolved_query, resolved_chunks)
+        type_matches = [
+            concept
+            for concept in resolved_chunks
+            if any(self._is_instance_of(concept, requested) for requested in requested_types)
+        ]
+        type_score = 1.0 if type_matches else 0.0
+
+        if resolved_query:
+            raw_score = topical.score
+            if requested_types:
+                raw_score = (0.8 * raw_score) + (0.2 * type_score)
+        elif requested_types:
+            # A generic request such as "which dataset" is useful context, but it
+            # must not overpower the lexical/semantic retrieval evidence.
+            raw_score = 0.35 * type_score
+        else:
+            raw_score = 0.0
+
+        result_score, result_reason = self._score_result_context(
+            query,
+            requested_types,
+            resolved_query,
+            chunk_id,
+        )
+        raw_score = max(raw_score, result_score)
+
+        query_support = self._explicit_support_ratio(query, resolved_query)
+        chunk_support = self._explicit_support_ratio(text, resolved_chunks)
+        lexical_reliability = 0.7 + (0.15 * query_support) + (0.15 * chunk_support)
+        specificity = self._query_specificity(resolved_query)
+        if resolved_query and set(resolved_query).issubset(resolved_chunks):
+            # Exact concepts explicitly supported on both sides are strong evidence,
+            # even when the concept is a broad graph hub such as NLP.
+            specificity = 1.0
+        score = min(max(raw_score * lexical_reliability * specificity, 0.0), 1.0)
+
+        reasons = [topical.explanation] if topical.score > 0 else []
+        if requested_types:
+            requested = ", ".join(local_name(value) for value in requested_types)
+            if type_matches:
+                matched = ", ".join(local_name(value) for value in type_matches)
+                reasons.append(f"Question requests {requested}; passage contains {matched}.")
+            else:
+                reasons.append(f"Question requests {requested}; no matching passage type.")
+        if result_reason:
+            reasons.append(result_reason)
+        reasons.append(
+            "Context reliability: "
+            f"query={query_support:.2f}, passage={chunk_support:.2f}, "
+            f"specificity={specificity:.2f}."
+        )
+
+        displayed_query = [local_name(value) for value in resolved_query]
+        displayed_query.extend(local_name(value) for value in requested_types)
+        return OntologyMatch(
+            score=score,
+            query_concepts=list(dict.fromkeys(displayed_query)),
+            chunk_concepts=[local_name(value) for value in resolved_chunks],
+            explanation=" ".join(reasons),
+        )
+
+    def _score_result_context(
+        self,
+        query: str,
+        requested_types: list[URIRef],
+        query_concepts: list[URIRef],
+        chunk_id: str | None,
+    ) -> tuple[float, str]:
+        if not chunk_id:
+            return 0.0, ""
+        chunk_resource = URIRef(f"{QA}chunk-{chunk_id}")
+        results = [
+            value
+            for value in self.graph.objects(chunk_resource, QA.isEvidenceFor)
+            if isinstance(value, URIRef)
+        ]
+        if not results:
+            return 0.0, ""
+
+        type_predicates = {
+            QA.Method: (QA.resultUsesMethod, QA.resultUsesModel),
+            QA.Model: (QA.resultUsesModel,),
+            QA.Dataset: (QA.resultUsesDataset,),
+            QA.Metric: (QA.measuredBy,),
+        }
+        requested_dimensions = [
+            value for value in requested_types if value in type_predicates
+        ]
+        asks_for_value = bool(_RESULT_VALUE_CUE.search(query))
+        best_score = 0.0
+        best_facts: list[str] = []
+        for result in results:
+            entities = {
+                value
+                for predicate in (
+                    QA.resultUsesMethod,
+                    QA.resultUsesModel,
+                    QA.resultUsesDataset,
+                    QA.measuredBy,
+                )
+                for value in self.graph.objects(result, predicate)
+                if isinstance(value, URIRef)
+            }
+            dimension_matches = sum(
+                any(next(self.graph.objects(result, predicate), None) is not None for predicate in type_predicates[requested])
+                for requested in requested_dimensions
+            )
+            value_match = asks_for_value and any(
+                True for _ in self.graph.objects(result, QA.metricValue)
+            )
+            requirements = len(requested_dimensions) + int(asks_for_value)
+            matched = dimension_matches + int(value_match)
+            if requirements == 0:
+                continue
+
+            anchor_match = any(
+                concept in entities
+                or any(entity in self._neighbors(concept) for entity in entities)
+                for concept in query_concepts
+            )
+            coverage = matched / requirements
+            score = (0.55 * coverage) + (0.20 if anchor_match else 0.0)
+            if score > best_score:
+                best_score = score
+                best_facts = [local_name(value) for value in sorted(entities, key=local_name)]
+
+        if best_score == 0:
+            return 0.0, ""
+        return min(best_score, 0.85), (
+            "Paper-scoped Result context matched: " + ", ".join(best_facts) + "."
+        )
+
+    def _explicit_support_ratio(self, text: str, concepts: list[URIRef]) -> float:
+        if not concepts:
+            return 0.0
+        normalized = f" {normalize_text(text)} "
+        supported = sum(
+            any(f" {alias} " in normalized for alias in self._concept_aliases.get(concept, set()))
+            for concept in concepts
+        )
+        return supported / len(concepts)
+
+    def _query_specificity(self, concepts: list[URIRef]) -> float:
+        """Downweight broad graph hubs without discarding exact topic evidence."""
+        if not concepts:
+            return 1.0
+        values = []
+        for concept in concepts:
+            degree = len(self._neighbors(concept))
+            values.append(max(0.65, 1.0 - (0.04 * min(degree, 8))))
+        return sum(values) / len(values)
 
     def score_concept_names(
         self, query_concepts: list[str], chunk_concepts: list[str]

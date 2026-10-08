@@ -140,7 +140,15 @@ def main() -> None:
         default=[1, 3, 5],
         help="Cutoffs used for the summary, for example: --k-values 1 3 5",
     )
+    parser.add_argument(
+        "--ontology-weight",
+        type=float,
+        default=0.05,
+        help="Ontology bonus weight used by re-ranking configurations",
+    )
     args = parser.parse_args()
+    if not 0.0 <= args.ontology_weight <= 1.0:
+        raise ValueError("Ontology weight must be between 0 and 1")
 
     chunks, questions = load_dataset(args.dataset)
     encoder = SentenceTransformerEncoder()
@@ -154,6 +162,7 @@ def main() -> None:
     retriever = InMemoryHybridRetriever(
         semantic_encoder=encoder,
         ontology_service=ontology,
+        ontology_weight=args.ontology_weight,
     )
     retriever.add(chunks)
 

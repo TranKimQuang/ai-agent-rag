@@ -232,7 +232,8 @@ def test_ontology_aware_search_expands_and_reranks() -> None:
     )
 
     assert results[0].chunk_id == "rag"
-    assert results[0].ontology_score == 0.65
+    assert results[0].ontology_score is not None
+    assert 0.0 < results[0].ontology_score < 0.65
     assert results[0].query_concepts == ["InformationRetrieval"]
     assert results[0].chunk_concepts == ["RetrievalAugmentedGeneration"]
     assert "retrieval augmented generation" in (results[0].expanded_query or "")
@@ -276,7 +277,8 @@ def test_ontology_ablation_separates_expansion_and_reranking() -> None:
     assert expansion_only[0].ontology_score is None
     assert rerank_only[0].method == SearchMethod.HYBRID_ONTOLOGY_RERANK
     assert rerank_only[0].expanded_query is None
-    assert rerank_only[0].ontology_score == 0.65
+    assert rerank_only[0].ontology_score is not None
+    assert 0.0 < rerank_only[0].ontology_score < 0.65
     assert rerank_only[0].chunk_id == "rag"
 
 

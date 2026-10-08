@@ -60,6 +60,19 @@
       "ndcg@5": 0.16892147205539823
     }
   },
+  "context_scoring_v1": {
+    "strategy": "contextual_multiplicative_v1",
+    "weights_evaluated": [0.0, 0.05, 0.1, 0.2, 0.3, 0.4, 0.5, 0.75, 1.0],
+    "selected_weight": 0.0,
+    "rank_changes_at_selected_weight": {
+      "improved": 0,
+      "unchanged": 35,
+      "worsened": 0,
+      "rescued": 0,
+      "lost": 0
+    },
+    "artifact": "context_scoring_validation.json"
+  },
   "final_test_status": "sealed_not_evaluated",
-  "decision": "Validation did not show an nDCG@5 improvement from Ontology re-ranking or query expansion. Select the simpler Hybrid baseline and keep final-test sealed."
+  "decision": "Validation did not show an nDCG@5 improvement from query expansion, fixed Ontology re-ranking, or context-aware Ontology scoring v1. Select the simpler Hybrid baseline and keep final-test sealed."
 }

@@ -58,6 +58,12 @@ def main() -> None:
         action="store_true",
         help="Tune with the experimental model/dataset/metric/method/task linker",
     )
+    parser.add_argument(
+        "--selection-split",
+        choices=["development", "validation"],
+        default="validation",
+        help="Label the non-test split used by this run",
+    )
     args = parser.parse_args()
 
     chunks, questions = load_dataset(args.dataset)
@@ -120,8 +126,9 @@ def main() -> None:
     )
     payload = {
         "dataset": str(args.dataset),
-        "selection_split": "validation",
+        "selection_split": args.selection_split,
         "test_split_evaluated": False,
+        "scoring_strategy": "result_contextual_v2",
         "questions": len(questions),
         "concept_links": concept_links,
         "query_type_intent": args.query_type_intent,

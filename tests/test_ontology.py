@@ -365,6 +365,47 @@ def test_ontology_scores_directly_related_concepts() -> None:
     assert "Related concepts" in match.explanation
 
 
+def test_context_score_uses_question_type_and_explicit_passage_evidence() -> None:
+    service = OntologyService()
+
+    supported = service.score_context(
+        "Which dataset is used for machine translation?",
+        "Machine translation is trained on a parallel corpus.",
+        query_concepts=["MachineTranslation"],
+        chunk_concepts=["MachineTranslation", "ParallelCorpus"],
+    )
+    unsupported_type = service.score_context(
+        "Which dataset is used for machine translation?",
+        "The machine translation model uses an encoder.",
+        query_concepts=["MachineTranslation"],
+        chunk_concepts=["MachineTranslation"],
+    )
+
+    assert supported.score > unsupported_type.score
+    assert "Dataset" in supported.query_concepts
+    assert "passage contains ParallelCorpus" in supported.explanation
+
+
+def test_context_score_downweights_semantic_only_and_hub_matches() -> None:
+    service = OntologyService()
+
+    explicit = service.score_context(
+        "How is information retrieval performed?",
+        "Information retrieval uses a lexical index.",
+        query_concepts=["InformationRetrieval"],
+        chunk_concepts=["InformationRetrieval"],
+    )
+    inferred = service.score_context(
+        "How is the search performed?",
+        "The system processes evidence.",
+        query_concepts=["InformationRetrieval"],
+        chunk_concepts=["InformationRetrieval"],
+    )
+
+    assert explicit.score > inferred.score
+    assert 0.0 <= inferred.score <= 1.0
+
+
 def test_example_sparql_queries_are_valid() -> None:
     service = OntologyService()
     query_directory = Path(__file__).parents[1] / "ontology" / "queries"
@@ -397,6 +438,238 @@ def test_index_chunks_creates_knowledge_graph_links() -> None:
     chunk_resource = QA["chunk-doc:p1:c1"]
     assert (chunk_resource, RDF.type, QA.Chunk) in service.graph
     assert (chunk_resource, QA.mentionsConcept, QA.RetrievalAugmentedGeneration) in service.graph
+
+
+def test_index_chunks_creates_paper_scoped_result_facts() -> None:
+    service = OntologyService()
+    chunks, _ = service.index_chunks(
+        [
+            Chunk(
+                id="paper:p2:c1",
+                document_id="paper",
+                filename="paper.pdf",
+                page=2,
+                text="RAG achieved an Evidence F1 score of 72% on QASPER.",
+            )
+        ]
+    )
+
+    assert {
+        "RetrievalAugmentedGeneration",
+        "EvidenceF1",
+        "QASPER",
+    }.issubset(chunks[0].concepts)
+    paper = QA["document-paper"]
+    chunk = QA["chunk-paper:p2:c1"]
+    result = QA["result-chunk-paper:p2:c1"]
+    assert (paper, RDF.type, QA.Paper) in service.graph
+    assert (paper, QA.hasResult, result) in service.graph
+    assert (chunk, QA.isEvidenceFor, result) in service.graph
+    assert (result, QA.resultUsesMethod, QA.RetrievalAugmentedGeneration) in service.graph
+    assert (result, QA.resultUsesDataset, QA.QASPER) in service.graph
+    assert (result, QA.measuredBy, QA.EvidenceF1) in service.graph
+    assert (
+        result,
+        QA.metricValue,
+        Literal("0.72", datatype=XSD.decimal),
+    ) in service.graph
+
+
+def test_result_context_scores_only_evidence_linked_to_a_result() -> None:
+    service = OntologyService()
+    service.index_chunks(
+        [
+            Chunk(
+                id="paper:p2:result",
+                document_id="paper",
+                filename="paper.pdf",
+                page=2,
+                text="RAG achieved an Evidence F1 score of 72% on QASPER.",
+            ),
+            Chunk(
+                id="paper:p1:overview",
+                document_id="paper",
+                filename="paper.pdf",
+                page=1,
+                text="This paper gives an overview of RAG and QASPER.",
+            ),
+        ]
+    )
+
+    result = service.score_context(
+        "What result was achieved?",
+        "RAG achieved an Evidence F1 score of 72% on QASPER.",
+        query_concepts=[],
+        chunk_concepts=["RetrievalAugmentedGeneration", "EvidenceF1", "QASPER"],
+        chunk_id="paper:p2:result",
+    )
+    overview = service.score_context(
+        "What result was achieved?",
+        "This paper gives an overview of RAG and QASPER.",
+        query_concepts=[],
+        chunk_concepts=["RetrievalAugmentedGeneration", "QASPER"],
+        chunk_id="paper:p1:overview",
+    )
+
+    assert result.score > overview.score
+    assert "Paper-scoped Result context matched" in result.explanation
+
+
+def test_result_context_extracts_paper_scoped_entities_without_global_vocabulary() -> None:
+    service = OntologyService()
+    service.index_chunks(
+        [
+            Chunk(
+                id="paper:p3:c1",
+                document_id="paper",
+                filename="paper.pdf",
+                page=3,
+                text=(
+                    "The ZXNet model achieved 83.5 BLEU on the FooBench dataset."
+                ),
+            )
+        ]
+    )
+
+    result = QA["result-chunk-paper:p3:c1"]
+    datasets = list(service.graph.objects(result, QA.resultUsesDataset))
+    metrics = list(service.graph.objects(result, QA.measuredBy))
+    models = list(service.graph.objects(result, QA.resultUsesModel))
+    assert [str(service.graph.value(value, SKOS.prefLabel)) for value in datasets] == [
+        "FooBench"
+    ]
+    assert [str(service.graph.value(value, SKOS.prefLabel)) for value in metrics] == [
+        "BLEU"
+    ]
+    assert [str(service.graph.value(value, SKOS.prefLabel)) for value in models] == [
+        "ZXNet"
+    ]
+    assert (
+        result,
+        QA.metricValue,
+        Literal("83.5", datatype=XSD.decimal),
+    ) in service.graph
+    assert "FooBench" not in service.vocabulary_labels()
+
+
+def test_result_context_rejects_settings_and_related_work_sections() -> None:
+    service = OntologyService()
+    service.index_chunks(
+        [
+            Chunk(
+                id="paper:p1:settings",
+                document_id="paper",
+                filename="paper.pdf",
+                page=1,
+                text=(
+                    "Settings. We compute BLEU on the FooBench dataset using the "
+                    "ZXNet model."
+                ),
+            ),
+            Chunk(
+                id="paper:p2:related",
+                document_id="paper",
+                filename="paper.pdf",
+                page=2,
+                text=(
+                    "Related Work. Prior ZXNet models achieved 90% accuracy on the "
+                    "FooBench dataset."
+                ),
+            ),
+        ]
+    )
+
+    assert (
+        QA["document-paper"],
+        QA.hasResult,
+        QA["result-chunk-paper:p1:settings"],
+    ) not in service.graph
+    assert (
+        QA["document-paper"],
+        QA.hasResult,
+        QA["result-chunk-paper:p2:related"],
+    ) not in service.graph
+
+
+def test_metric_values_only_use_sentences_that_name_a_metric() -> None:
+    text = (
+        "The corpus contains 3.2M words. "
+        "The model achieved 74.40% accuracy. "
+        "All runs used a length penalty of 1.0."
+    )
+
+    assert OntologyService._extract_metric_values(text) == ["0.744"]
+
+
+def test_result_context_rejects_setup_roadmap_and_future_only_claims() -> None:
+    service = OntologyService()
+    chunks = [
+        Chunk(
+            id="paper:p1:system",
+            document_id="paper",
+            filename="paper.pdf",
+            page=1,
+            text="NER system. Prior work showed that NER obtained the best accuracy.",
+        ),
+        Chunk(
+            id="paper:p2:baseline",
+            document_id="paper",
+            filename="paper.pdf",
+            page=2,
+            text="PBSMT Baseline. We optimize the language model to maximize BLEU.",
+        ),
+        Chunk(
+            id="paper:p3:roadmap",
+            document_id="paper",
+            filename="paper.pdf",
+            page=3,
+            text=(
+                "Introduction. Section 2 discusses the neural network and Section 3 "
+                "presents the accuracy results."
+            ),
+        ),
+        Chunk(
+            id="paper:p4:future",
+            document_id="paper",
+            filename="paper.pdf",
+            page=4,
+            text=(
+                "Conclusions. We believe the language model will improve accuracy and "
+                "will conduct experiments in future work."
+            ),
+        ),
+    ]
+    service.index_chunks(chunks)
+
+    paper = QA["document-paper"]
+    assert not list(service.graph.objects(paper, QA.hasResult))
+
+
+def test_model_architecture_named_as_approach_is_linked_as_model() -> None:
+    service = OntologyService()
+    service.index_chunks(
+        [
+            Chunk(
+                id="paper:p5:c1",
+                document_id="paper",
+                filename="paper.pdf",
+                page=5,
+                text="Results. Our BLSTM approach achieved an F1 score of 0.48.",
+            )
+        ]
+    )
+
+    result = QA["result-chunk-paper:p5:c1"]
+    model_labels = {
+        str(service.graph.value(value, SKOS.prefLabel))
+        for value in service.graph.objects(result, QA.resultUsesModel)
+    }
+    method_labels = {
+        str(service.graph.value(value, SKOS.prefLabel))
+        for value in service.graph.objects(result, QA.resultUsesMethod)
+    }
+    assert "BLSTM" in model_labels
+    assert "BLSTM" not in method_labels
 
 
 def test_custom_ontology_path_can_be_loaded(tmp_path: Path) -> None:

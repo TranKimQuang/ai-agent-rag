@@ -1,0 +1,345 @@
+{
+  "dataset": "evaluation\\qasper_protocol_v4\\qasper_development.json",
+  "selection_split": "development",
+  "test_split_evaluated": false,
+  "scoring_strategy": "result_contextual_v2",
+  "questions": 74,
+  "concept_links": 370,
+  "query_type_intent": false,
+  "selection_metric": "rerank nDCG@5, then MRR@5 and Recall@5",
+  "selected_weight": 0.3,
+  "baseline": {
+    "hybrid": {
+      "questions": 74.0,
+      "precision@1": 0.10810810810810811,
+      "recall@1": 0.08828828828828829,
+      "mrr@1": 0.10810810810810811,
+      "ndcg@1": 0.10810810810810811,
+      "precision@3": 0.0945945945945946,
+      "recall@3": 0.22837837837837835,
+      "mrr@3": 0.1891891891891892,
+      "ndcg@3": 0.18242208802170806,
+      "precision@5": 0.07567567567567568,
+      "recall@5": 0.30270270270270266,
+      "mrr@5": 0.20743243243243242,
+      "ndcg@5": 0.21130462198454578
+    },
+    "hybrid_ontology_expansion": {
+      "questions": 74.0,
+      "precision@1": 0.12162162162162163,
+      "recall@1": 0.1018018018018018,
+      "mrr@1": 0.12162162162162163,
+      "ndcg@1": 0.12162162162162163,
+      "precision@3": 0.09009009009009009,
+      "recall@3": 0.21486486486486486,
+      "mrr@3": 0.1891891891891892,
+      "ndcg@3": 0.17982246232541152,
+      "precision@5": 0.07297297297297298,
+      "recall@5": 0.2891891891891892,
+      "mrr@5": 0.20743243243243242,
+      "ndcg@5": 0.20870499628824923
+    }
+  },
+  "selected": {
+    "metrics": {
+      "hybrid_ontology_rerank": {
+        "questions": 74.0,
+        "precision@1": 0.10810810810810811,
+        "recall@1": 0.0972972972972973,
+        "mrr@1": 0.10810810810810811,
+        "ndcg@1": 0.10810810810810811,
+        "precision@3": 0.10810810810810811,
+        "recall@3": 0.2689189189189189,
+        "mrr@3": 0.20270270270270271,
+        "ndcg@3": 0.2062783128458786,
+        "precision@5": 0.08108108108108109,
+        "recall@5": 0.3297297297297297,
+        "mrr@5": 0.21824324324324323,
+        "ndcg@5": 0.23021101906180624
+      },
+      "hybrid_ontology": {
+        "questions": 74.0,
+        "precision@1": 0.10810810810810811,
+        "recall@1": 0.0972972972972973,
+        "mrr@1": 0.10810810810810811,
+        "ndcg@1": 0.10810810810810811,
+        "precision@3": 0.0990990990990991,
+        "recall@3": 0.24189189189189186,
+        "mrr@3": 0.1891891891891892,
+        "ndcg@3": 0.19016517363606855,
+        "precision@5": 0.07837837837837838,
+        "recall@5": 0.3162162162162162,
+        "mrr@5": 0.20743243243243242,
+        "ndcg@5": 0.2193256204903008
+      }
+    },
+    "rank_changes": {
+      "hybrid_ontology_rerank": {
+        "improved": 2,
+        "unchanged": 69,
+        "worsened": 1,
+        "rescued": 2,
+        "lost": 0
+      },
+      "hybrid_ontology": {
+        "improved": 2,
+        "unchanged": 65,
+        "worsened": 2,
+        "rescued": 3,
+        "lost": 2
+      }
+    }
+  },
+  "by_weight": {
+    "0.00": {
+      "metrics": {
+        "hybrid_ontology_rerank": {
+          "questions": 74.0,
+          "precision@1": 0.10810810810810811,
+          "recall@1": 0.08828828828828829,
+          "mrr@1": 0.10810810810810811,
+          "ndcg@1": 0.10810810810810811,
+          "precision@3": 0.0945945945945946,
+          "recall@3": 0.22837837837837835,
+          "mrr@3": 0.1891891891891892,
+          "ndcg@3": 0.18242208802170806,
+          "precision@5": 0.07567567567567568,
+          "recall@5": 0.30270270270270266,
+          "mrr@5": 0.20743243243243242,
+          "ndcg@5": 0.21130462198454578
+        },
+        "hybrid_ontology": {
+          "questions": 74.0,
+          "precision@1": 0.12162162162162163,
+          "recall@1": 0.1018018018018018,
+          "mrr@1": 0.12162162162162163,
+          "ndcg@1": 0.12162162162162163,
+          "precision@3": 0.09009009009009009,
+          "recall@3": 0.21486486486486486,
+          "mrr@3": 0.1891891891891892,
+          "ndcg@3": 0.17982246232541152,
+          "precision@5": 0.07297297297297298,
+          "recall@5": 0.2891891891891892,
+          "mrr@5": 0.20743243243243242,
+          "ndcg@5": 0.20870499628824923
+        }
+      },
+      "rank_changes": {
+        "hybrid_ontology_rerank": {
+          "improved": 0,
+          "unchanged": 74,
+          "worsened": 0,
+          "rescued": 0,
+          "lost": 0
+        },
+        "hybrid_ontology": {
+          "improved": 1,
+          "unchanged": 69,
+          "worsened": 1,
+          "rescued": 1,
+          "lost": 2
+        }
+      }
+    },
+    "0.05": {
+      "metrics": {
+        "hybrid_ontology_rerank": {
+          "questions": 74.0,
+          "precision@1": 0.10810810810810811,
+          "recall@1": 0.08828828828828829,
+          "mrr@1": 0.10810810810810811,
+          "ndcg@1": 0.10810810810810811,
+          "precision@3": 0.0945945945945946,
+          "recall@3": 0.22837837837837835,
+          "mrr@3": 0.1891891891891892,
+          "ndcg@3": 0.18242208802170806,
+          "precision@5": 0.07837837837837838,
+          "recall@5": 0.3162162162162162,
+          "mrr@5": 0.21216216216216216,
+          "ndcg@5": 0.21830900117037141
+        },
+        "hybrid_ontology": {
+          "questions": 74.0,
+          "precision@1": 0.12162162162162163,
+          "recall@1": 0.1018018018018018,
+          "mrr@1": 0.12162162162162163,
+          "ndcg@1": 0.12162162162162163,
+          "precision@3": 0.09009009009009009,
+          "recall@3": 0.21486486486486486,
+          "mrr@3": 0.1891891891891892,
+          "ndcg@3": 0.17982246232541152,
+          "precision@5": 0.07567567567567568,
+          "recall@5": 0.30270270270270266,
+          "mrr@5": 0.2114864864864865,
+          "ndcg@5": 0.2151171626249012
+        }
+      },
+      "rank_changes": {
+        "hybrid_ontology_rerank": {
+          "improved": 2,
+          "unchanged": 71,
+          "worsened": 0,
+          "rescued": 1,
+          "lost": 0
+        },
+        "hybrid_ontology": {
+          "improved": 2,
+          "unchanged": 67,
+          "worsened": 1,
+          "rescued": 2,
+          "lost": 2
+        }
+      }
+    },
+    "0.10": {
+      "metrics": {
+        "hybrid_ontology_rerank": {
+          "questions": 74.0,
+          "precision@1": 0.12162162162162163,
+          "recall@1": 0.1018018018018018,
+          "mrr@1": 0.12162162162162163,
+          "ndcg@1": 0.12162162162162163,
+          "precision@3": 0.10810810810810811,
+          "recall@3": 0.2689189189189189,
+          "mrr@3": 0.21171171171171171,
+          "ndcg@3": 0.2094491150487351,
+          "precision@5": 0.07837837837837838,
+          "recall@5": 0.3162162162162162,
+          "mrr@5": 0.22454954954954956,
+          "ndcg@5": 0.22787616773496355
+        },
+        "hybrid_ontology": {
+          "questions": 74.0,
+          "precision@1": 0.12162162162162163,
+          "recall@1": 0.1018018018018018,
+          "mrr@1": 0.12162162162162163,
+          "ndcg@1": 0.12162162162162163,
+          "precision@3": 0.0990990990990991,
+          "recall@3": 0.24189189189189186,
+          "mrr@3": 0.1981981981981982,
+          "ndcg@3": 0.19333597583892503,
+          "precision@5": 0.07567567567567568,
+          "recall@5": 0.30270270270270266,
+          "mrr@5": 0.21373873873873875,
+          "ndcg@5": 0.2169907691634581
+        }
+      },
+      "rank_changes": {
+        "hybrid_ontology_rerank": {
+          "improved": 2,
+          "unchanged": 71,
+          "worsened": 0,
+          "rescued": 1,
+          "lost": 0
+        },
+        "hybrid_ontology": {
+          "improved": 2,
+          "unchanged": 67,
+          "worsened": 1,
+          "rescued": 2,
+          "lost": 2
+        }
+      }
+    },
+    "0.20": {
+      "metrics": {
+        "hybrid_ontology_rerank": {
+          "questions": 74.0,
+          "precision@1": 0.10810810810810811,
+          "recall@1": 0.0972972972972973,
+          "mrr@1": 0.10810810810810811,
+          "ndcg@1": 0.10810810810810811,
+          "precision@3": 0.10810810810810811,
+          "recall@3": 0.2689189189189189,
+          "mrr@3": 0.20495495495495494,
+          "ndcg@3": 0.20710861754796628,
+          "precision@5": 0.07837837837837838,
+          "recall@5": 0.3162162162162162,
+          "mrr@5": 0.2177927927927928,
+          "ndcg@5": 0.22553567023419477
+        },
+        "hybrid_ontology": {
+          "questions": 74.0,
+          "precision@1": 0.10810810810810811,
+          "recall@1": 0.0972972972972973,
+          "mrr@1": 0.10810810810810811,
+          "ndcg@1": 0.10810810810810811,
+          "precision@3": 0.0990990990990991,
+          "recall@3": 0.24189189189189186,
+          "mrr@3": 0.19144144144144143,
+          "ndcg@3": 0.19099547833815622,
+          "precision@5": 0.07567567567567568,
+          "recall@5": 0.30270270270270266,
+          "mrr@5": 0.20698198198198198,
+          "ndcg@5": 0.21465027166268932
+        }
+      },
+      "rank_changes": {
+        "hybrid_ontology_rerank": {
+          "improved": 2,
+          "unchanged": 70,
+          "worsened": 1,
+          "rescued": 1,
+          "lost": 0
+        },
+        "hybrid_ontology": {
+          "improved": 2,
+          "unchanged": 66,
+          "worsened": 2,
+          "rescued": 2,
+          "lost": 2
+        }
+      }
+    },
+    "0.30": {
+      "metrics": {
+        "hybrid_ontology_rerank": {
+          "questions": 74.0,
+          "precision@1": 0.10810810810810811,
+          "recall@1": 0.0972972972972973,
+          "mrr@1": 0.10810810810810811,
+          "ndcg@1": 0.10810810810810811,
+          "precision@3": 0.10810810810810811,
+          "recall@3": 0.2689189189189189,
+          "mrr@3": 0.20270270270270271,
+          "ndcg@3": 0.2062783128458786,
+          "precision@5": 0.08108108108108109,
+          "recall@5": 0.3297297297297297,
+          "mrr@5": 0.21824324324324323,
+          "ndcg@5": 0.23021101906180624
+        },
+        "hybrid_ontology": {
+          "questions": 74.0,
+          "precision@1": 0.10810810810810811,
+          "recall@1": 0.0972972972972973,
+          "mrr@1": 0.10810810810810811,
+          "ndcg@1": 0.10810810810810811,
+          "precision@3": 0.0990990990990991,
+          "recall@3": 0.24189189189189186,
+          "mrr@3": 0.1891891891891892,
+          "ndcg@3": 0.19016517363606855,
+          "precision@5": 0.07837837837837838,
+          "recall@5": 0.3162162162162162,
+          "mrr@5": 0.20743243243243242,
+          "ndcg@5": 0.2193256204903008
+        }
+      },
+      "rank_changes": {
+        "hybrid_ontology_rerank": {
+          "improved": 2,
+          "unchanged": 69,
+          "worsened": 1,
+          "rescued": 2,
+          "lost": 0
+        },
+        "hybrid_ontology": {
+          "improved": 2,
+          "unchanged": 65,
+          "worsened": 2,
+          "rescued": 3,
+          "lost": 2
+        }
+      }
+    }
+  }
+}

@@ -1,6 +1,71 @@
 # THEO DÕI TIẾN ĐỘ ĐỒ ÁN AI AGENT + RAG
 
-Cập nhật gần nhất: 04/10/2026
+Cập nhật gần nhất: 07/10/2026
+
+### Mới nhất: Audit và sửa precision cho Result-centric scoring v2
+
+- [x] Review thủ công toàn bộ 52 Result development ban đầu; lưu nhãn tái tạo được theo
+  từng role trong `result_context_review.json`, không dùng final-test.
+- [x] Audit ban đầu: 32 Result đúng phạm vi, 15 non-result, 4 prior-work và 1 mơ hồ;
+  precision Result 62,75% khi bỏ dòng mơ hồ.
+- [x] Siết bộ lọc section/scope, chỉ nhận metric value trong cùng câu có metric, bổ sung
+  AUC/ERR/H@k và sửa phân loại kiến trúc BLSTM/LSTM/CNN/RNN/BERT/GPT/Transformer/LR.
+- [x] Hậu sửa còn 39 Result: 38 đúng phạm vi, 1 mơ hồ và 0 dòng đã xác nhận sai.
+  Precision role: Method 100%, Model 100%, Dataset 94,44%, Metric 100%, Value 100%.
+- [x] Benchmark development 74 câu hậu sửa tại weight 0,30: Recall@5 0,3027 -> 0,3297,
+  MRR@5 0,2074 -> 0,2182 và nDCG@5 0,2113 -> 0,2302; 2 câu được cứu vào top 5,
+  không mất câu nào.
+- [x] Giữ snapshot trước/hậu sửa và báo cáo tại `evaluation/qasper_protocol_v4/`.
+- [ ] Chưa chạy validation/final-test. Bước kế tiếp là tạo validation mới từ paper chưa
+  từng quan sát để kiểm tra khả năng khái quát, vì precision hậu sửa hiện vẫn đo trên
+  development đã dùng để thiết kế quy tắc.
+- [x] Đã chuẩn bị validation v5 độc lập gồm 20 paper, 1.109 chunk và 75 câu hỏi; loại
+  145 paper từ toàn bộ chín split cũ, overlap bằng 0. Trạng thái hiện là
+  `prepared_not_evaluated`; final-test v4 vẫn sealed.
+- [ ] Cần khóa/commit code và weight candidates trước khi chạy validation v5 đúng một lần.
+
+### Result-centric knowledge graph và relation scoring v2 (trước audit)
+
+- [x] Khi ingest, mỗi chunk có bằng chứng thực nghiệm phù hợp được mô hình hóa thành
+  `Paper -> hasResult -> Result -> hasEvidence -> Chunk` thay vì chỉ gắn concept rời rạc.
+- [x] Result liên kết có phạm vi theo đúng paper/chunk với `resultUsesMethod`,
+  `resultUsesModel`, `resultUsesDataset`, `measuredBy` và `metricValue`.
+- [x] Không thêm vocabulary toàn cục. Tên Model/Dataset/Metric chưa có trong Ontology được
+  tạo thành paper-scoped entity, chỉ dùng trong paper tương ứng và không tham gia query expansion.
+- [x] Thêm bộ lọc các nhãn chung/false positive như `The model`, `This model`,
+  `Neural model`; giữ các tên cụ thể như `BLSTM-CNN-CRF`, `MultiWOZ`, `BLEU`.
+- [x] Trên development 1.019 chunk, tạo 52 Result với 21 Method, 56 Model,
+  20 Dataset, 49 Metric và 20 Value links sau lọc.
+- [x] Development 74 câu tại weight 0,30: Recall@5 tăng 0,3027 -> 0,3162,
+  MRR@5 0,2074 -> 0,2137 và nDCG@5 0,2113 -> 0,2235; 2 câu tốt hơn,
+  1 câu được cứu vào top 5, 1 câu xấu đi và không mất câu nào khỏi top 5.
+- [x] Công cụ benchmark nhận `--ontology-weight` để xuất đầy đủ rank changes cho cấu hình
+  Result-centric đã chọn trên development.
+- [x] Lưu artifact tại `evaluation/qasper_protocol_v4/result_context_development.json`,
+  `result_context_development_weight_030/` và `RESULT_CONTEXT_REPORT.md`.
+- [x] Xuất 52 dòng Result kèm text, role và cột review tại
+  `evaluation/qasper_protocol_v4/result_context_audit.csv`; bộ lọc tự động không còn nhãn
+  model chung đã biết, nhưng toàn bộ dòng vẫn để `pending` để không giả lập đánh giá thủ công.
+- [x] Audit thủ công paper-scoped entity đã hoàn thành; validation/final-test chưa chạy.
+
+### Mới nhất: Context-aware Ontology scoring v1
+
+- [x] Không thêm vocabulary mới; thay điểm relation cố định bằng điểm có xét loại thực thể
+  câu hỏi yêu cầu, explicit mention trong query/passage và độ đặc hiệu của concept trong graph.
+- [x] Đổi phép hợp nhất từ nội suy độc lập sang bonus nhân theo điểm RRF đã chuẩn hóa. Nhờ đó
+  passage retrieval yếu không thể vượt lên chỉ vì chứa một concept rộng.
+- [x] Thêm kiểm thử cho type intent, explicit/semantic-only evidence và tích hợp re-ranking.
+- [x] Trên development 74 câu, weight 0,10 giữ Recall@5 0,3027, tăng MRR@5
+  0,2074 -> 0,2200 và nDCG@5 0,2113 -> 0,2211; 2 câu tốt hơn, không có câu xấu đi.
+- [x] Weight 0,40 đạt nDCG@5 0,2202 và Recall@5 0,3054 nhưng có 1 câu xấu đi, nên không
+  chọn chỉ dựa trên development.
+- [x] Trên validation 35 câu, toàn bộ weight 0,00-1,00 đều hòa Hybrid và không đổi hạng.
+  Vì vậy tiếp tục chọn Hybrid/weight 0,0; final-test vẫn `sealed_not_evaluated`.
+- [x] Lưu đầy đủ kết quả và quyết định tại
+  `evaluation/qasper_protocol_v4/CONTEXT_SCORING_REPORT.md`,
+  `context_scoring_development.json` và `context_scoring_validation.json`.
+- [ ] Bước nghiên cứu tiếp theo: mô hình hóa quan hệ theo từng paper/result và học calibration
+  trên một validation mới độc lập; không xem lại final-test hiện tại.
 
 ### Mới nhất: đánh giá hình thức Ontology bằng reasoner và competency questions
 
@@ -66,8 +131,8 @@ Cập nhật gần nhất: 04/10/2026
 - [x] Chạy validation 35 câu cho type-intent bật/tắt và weight 0,0–0,20. Mọi cấu hình
   re-ranking tốt nhất đều hòa Hybrid tại weight 0,0; expansion không cải thiện.
   Khóa lựa chọn validation là Hybrid thuần và tiếp tục niêm phong final-test.
-- [ ] Cải thiện cơ chế Ontology scoring theo ngữ cảnh tài liệu trước khi quyết định chạy
-  final-test đúng một lần; không tiếp tục thêm vocabulary chỉ để tăng coverage.
+- [x] Đã triển khai Context-aware Ontology scoring v1; validation chưa cải thiện nên chưa
+  bật re-ranking và chưa chạy final-test.
 
 ### Trước đó: phân tích lỗi và thử mở rộng evidence cho LLM
 

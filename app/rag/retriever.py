@@ -350,19 +350,28 @@ class InMemoryHybridRetriever:
             if candidate.chunk_concepts or self.ontology.is_chunk_indexed(
                 candidate.chunk_id
             ):
-                match = self.ontology.score_concept_names(
-                    query_concepts,
-                    candidate.chunk_concepts,
+                match = self.ontology.score_context(
+                    query,
+                    candidate.text,
+                    query_concepts=query_concepts,
+                    chunk_concepts=candidate.chunk_concepts,
+                    chunk_id=candidate.chunk_id,
                 )
             else:
                 # Raw chunks added directly to the retriever may not have gone
                 # through ontology indexing yet. Keep that supported while the
                 # normal ingestion path reuses its prelinked concepts.
-                match = self.ontology.score_text(query, candidate.text)
+                match = self.ontology.score_context(
+                    query,
+                    candidate.text,
+                    chunk_id=candidate.chunk_id,
+                )
             normalized_rrf = candidate.score / max_rrf
-            final_score = (
-                (1.0 - self.ontology_weight) * normalized_rrf
-                + self.ontology_weight * match.score
+            # Ontology is a context-dependent bonus on top of retrieval evidence.
+            # Multiplicative fusion prevents a weak candidate from jumping to the
+            # top solely because it mentions a broad ontology concept.
+            final_score = normalized_rrf * (
+                1.0 + (self.ontology_weight * match.score)
             )
             reranked.append(
                 candidate.model_copy(
