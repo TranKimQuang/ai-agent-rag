@@ -31,8 +31,14 @@ nDCG@5 là chỉ số ưu tiên thứ nhất. Không điều chỉnh quy tắc s
 Cấu hình được lưu tại `locked_result_context_config.json`. Validation v5 không được dùng
 cho vòng tuning tiếp theo; nếu thay đổi thuật toán phải tạo một paper-disjoint split mới.
 
-## Bước kiểm tra còn lại
+## Audit extraction độc lập
 
-Đã xuất 29 Result của validation vào `result_context_audit_pending.csv`. Cần review độc lập
-để đo precision extraction trên paper mới. Việc review này không được dùng để sửa cấu hình
-đã khóa trước khi chạy final-test hiện tại.
+Đã review toàn bộ 29 Result sau khi khóa cấu hình. Có 15 Result đúng phạm vi và 14 đoạn
+non-result, tương ứng precision instance 51,72%. Precision theo role: Method 75,00%,
+Model 89,66%, Dataset 86,67%, Metric 100,00% và Value 75,00%.
+
+Kết quả cho thấy scoring có cải thiện retrieval nhưng bộ trích xuất Result chưa khái quát
+tốt sang paper mới. Vì vậy chưa chạy final-test v4. Chi tiết và nhãn từng dòng nằm trong
+`RESULT_CONTEXT_AUDIT.md`, `result_context_audit.csv`, `result_context_review.json` và
+`result_context_audit_summary.json`. Snapshot `result_context_audit_pending.csv` được giữ
+nguyên. Không dùng audit này để tuning lại validation v5 hoặc cấu hình đã khóa.

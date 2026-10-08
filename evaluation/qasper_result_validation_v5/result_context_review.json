@@ -1,0 +1,105 @@
+{
+  "schema_version": 1,
+  "reviewed_at": "2026-10-08",
+  "review_scope": "Independent manual review of all 29 validation Result instances and their extracted role links.",
+  "conventions": {
+    "default_result_status": "in_scope",
+    "default_nonempty_role_status": "correct",
+    "default_empty_role_status": "not_present",
+    "precision_rule": "correct links / (correct + incorrect links); ambiguous links are excluded"
+  },
+  "annotations": {
+    "result-chunk-qasper:1808.09409:s8:p4": {
+      "result_status": "non_result",
+      "note": "Method and data-expansion procedure; it does not report an observed result of the paper."
+    },
+    "result-chunk-qasper:1906.10551:s11:p11": {
+      "methods_invalid": [
+        "AV"
+      ],
+      "datasets_invalid": [
+        "INLINEFORM0"
+      ],
+      "note": "The passage reports a current experimental result, but AV is the authorship-verification task/category and INLINEFORM0 is an unresolved formula placeholder rather than a dataset name."
+    },
+    "result-chunk-qasper:1906.10551:s4:p0": {
+      "result_status": "non_result",
+      "methods_invalid": [
+        "AV"
+      ],
+      "note": "Definition of optimizability and a survey of AV approaches; no measured outcome is reported, and AV is a task/category rather than a concrete method."
+    },
+    "result-chunk-qasper:1909.02265:s6:p0": {
+      "result_status": "non_result",
+      "note": "Experimental settings and parameter choices only; no observed result is reported."
+    },
+    "result-chunk-qasper:1909.02265:s6:p1": {
+      "result_status": "non_result",
+      "note": "Model configuration and training settings only; no observed result is reported."
+    },
+    "result-chunk-qasper:1909.02265:s7:p0": {
+      "result_status": "non_result",
+      "note": "Evaluation setup and metric definitions; the passage points to a table but does not state an observed outcome."
+    },
+    "result-chunk-qasper:1909.11189:s1:p1": {
+      "result_status": "non_result",
+      "note": "LDA preprocessing and training configuration; no evaluated outcome is reported."
+    },
+    "result-chunk-qasper:1910.02339:s13:p0": {
+      "values_invalid": [
+        "0.5"
+      ],
+      "note": "The result instance is valid, but 0.5 comes from the definition of the 50p-Acc metric (passing 50% of tests), not from an observed score."
+    },
+    "result-chunk-qasper:1910.02339:s17:p2": {
+      "result_status": "non_result",
+      "values_invalid": [
+        "0.5"
+      ],
+      "note": "Dataset and metric documentation rather than a measured result; 0.5 is the threshold embedded in the 50p-Acc metric definition."
+    },
+    "result-chunk-qasper:1910.11790:s0:p0": {
+      "result_status": "non_result",
+      "models_invalid": [
+        "PARADISE BIBREF3"
+      ],
+      "note": "Introduction and prior-metric discussion without a current-paper result; the extracted model label incorrectly retains a citation marker."
+    },
+    "result-chunk-qasper:1910.11790:s8:p0": {
+      "models_invalid": [
+        "BLEU"
+      ],
+      "note": "The conclusion reports current findings, but BLEU is an evaluation metric/baseline score rather than a model."
+    },
+    "result-chunk-qasper:1911.09483:s9:p0": {
+      "result_status": "non_result",
+      "note": "Inference settings and evaluation-metric choice only; no observed result is reported."
+    },
+    "result-chunk-qasper:2001.05493:s10:p0": {
+      "result_status": "non_result",
+      "models_invalid": [
+        "For DPCNN"
+      ],
+      "note": "Experimental setup only; the extracted model label includes a stray preposition and is not a valid normalized model name."
+    },
+    "result-chunk-qasper:2001.05493:s6:p0": {
+      "result_status": "non_result",
+      "note": "Architecture/methodology description without a measured outcome."
+    },
+    "result-chunk-qasper:2001.06286:s0:p2": {
+      "result_status": "non_result",
+      "datasets_invalid": [
+        "Dutch"
+      ],
+      "note": "Introduction and motivation rather than a reported result; Dutch is a language adjective here, not a named dataset."
+    },
+    "result-chunk-qasper:2003.12932:s2:p1": {
+      "result_status": "non_result",
+      "note": "Dataset/task description and metric selection; no observed result is reported."
+    },
+    "result-chunk-qasper:2003.12932:s2:p4": {
+      "result_status": "non_result",
+      "note": "Hyperparameter and training configuration only; no measured result is reported."
+    }
+  }
+}

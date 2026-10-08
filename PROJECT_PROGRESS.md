@@ -1,6 +1,6 @@
 # THEO DÕI TIẾN ĐỘ ĐỒ ÁN AI AGENT + RAG
 
-Cập nhật gần nhất: 07/10/2026
+Cập nhật gần nhất: 08/10/2026
 
 ### Mới nhất: Audit và sửa precision cho Result-centric scoring v2
 
@@ -16,12 +16,10 @@ Cập nhật gần nhất: 07/10/2026
   MRR@5 0,2074 -> 0,2182 và nDCG@5 0,2113 -> 0,2302; 2 câu được cứu vào top 5,
   không mất câu nào.
 - [x] Giữ snapshot trước/hậu sửa và báo cáo tại `evaluation/qasper_protocol_v4/`.
-- [ ] Chưa chạy validation/final-test. Bước kế tiếp là tạo validation mới từ paper chưa
-  từng quan sát để kiểm tra khả năng khái quát, vì precision hậu sửa hiện vẫn đo trên
-  development đã dùng để thiết kế quy tắc.
+- [x] Đã chạy validation mới từ paper chưa từng quan sát; final-test vẫn chưa chạy.
 - [x] Đã chuẩn bị validation v5 độc lập gồm 20 paper, 1.109 chunk và 75 câu hỏi; loại
-  145 paper từ toàn bộ chín split cũ, overlap bằng 0. Trạng thái hiện là
-  `prepared_not_evaluated`; final-test v4 vẫn sealed.
+  145 paper từ toàn bộ chín split cũ, overlap bằng 0. Sau lần chạy đã khóa, trạng thái
+  manifest là `evaluated_once`; final-test v4 vẫn sealed.
 - [x] Đã khóa/commit code và weight candidates trước khi chạy validation v5.
 - [x] Đã commit/push cấu hình trước validation tại commit `65ae6f7`.
 - [x] Đã chạy validation v5 đúng một lần trên 75 câu: Hybrid Recall@5 0,2333,
@@ -31,8 +29,15 @@ Cập nhật gần nhất: 07/10/2026
   không mất câu nào; query expansion tiếp tục làm giảm kết quả.
 - [x] Khóa weight 0,20, tắt query expansion trong `locked_result_context_config.json`;
   final-test v4 vẫn `sealed_not_evaluated`.
-- [ ] Review 29 Result trong `result_context_audit_pending.csv` để đo precision extraction
-  độc lập; không dùng review này để tuning lại cấu hình đã khóa.
+- [x] Review độc lập toàn bộ 29 Result validation: 15 đúng phạm vi, 14 non-result,
+  precision instance 51,72%. Precision role: Method 75,00%, Model 89,66%, Dataset
+  86,67%, Metric 100,00%, Value 75,00%.
+- [x] Lưu nhãn từng dòng, CSV hậu review, summary và báo cáo tại
+  `evaluation/qasper_result_validation_v5/`; giữ nguyên snapshot pending và không dùng
+  audit này để tuning lại validation v5.
+- [ ] Chưa chạy final-test v4. Bước tiếp theo là tạo development split paper-disjoint mới
+  để sửa khả năng phân biệt kết quả quan sát với setup/method/metric definition, sau đó
+  đánh giá trên một validation mới khác.
 
 ### Result-centric knowledge graph và relation scoring v2 (trước audit)
 
