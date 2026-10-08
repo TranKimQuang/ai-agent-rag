@@ -1,0 +1,46 @@
+{
+  "rows": 44,
+  "result_counts": {
+    "non_result": 7,
+    "in_scope": 30,
+    "prior_work": 7
+  },
+  "result_instance_precision": 0.6818,
+  "role_precision": {
+    "methods": {
+      "total_links": 21,
+      "correct": 20,
+      "incorrect": 1,
+      "ambiguous": 0,
+      "reviewed_precision": 0.9524
+    },
+    "models": {
+      "total_links": 57,
+      "correct": 56,
+      "incorrect": 1,
+      "ambiguous": 0,
+      "reviewed_precision": 0.9825
+    },
+    "datasets": {
+      "total_links": 16,
+      "correct": 9,
+      "incorrect": 7,
+      "ambiguous": 0,
+      "reviewed_precision": 0.5625
+    },
+    "metrics": {
+      "total_links": 27,
+      "correct": 27,
+      "incorrect": 0,
+      "ambiguous": 0,
+      "reviewed_precision": 1.0
+    },
+    "values": {
+      "total_links": 20,
+      "correct": 20,
+      "incorrect": 0,
+      "ambiguous": 0,
+      "reviewed_precision": 1.0
+    }
+  }
+}

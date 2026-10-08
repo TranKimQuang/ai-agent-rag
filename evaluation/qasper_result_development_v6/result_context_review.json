@@ -1,0 +1,95 @@
+{
+  "schema_version": 1,
+  "reviewed_at": "2026-10-08",
+  "review_scope": "Manual review of all 44 development v6 Result instances and their extracted role links.",
+  "conventions": {
+    "default_result_status": "in_scope",
+    "default_nonempty_role_status": "correct",
+    "default_empty_role_status": "not_present",
+    "precision_rule": "correct links / (correct + incorrect links); ambiguous links are excluded"
+  },
+  "annotations": {
+    "result-chunk-qasper:1805.09959:s10:p1": {
+      "result_status": "non_result",
+      "datasets_invalid": ["NLP"],
+      "note": "Methodology and training procedure without an observed outcome; NLP is a field/task label rather than a named dataset."
+    },
+    "result-chunk-qasper:1805.09959:s5:p8": {
+      "result_status": "non_result",
+      "note": "Discussion gives a tentative overfitting explanation and a general promise claim, not a measured experimental result."
+    },
+    "result-chunk-qasper:1901.09755:s2:p2": {
+      "result_status": "prior_work",
+      "note": "Results belong primarily to previous SemEval participant systems rather than the current paper."
+    },
+    "result-chunk-qasper:1901.09755:s2:p6": {
+      "result_status": "prior_work",
+      "note": "The state-of-the-art claim reports the outcome of cited work BIBREF27."
+    },
+    "result-chunk-qasper:1906.09774:s1:p1": {
+      "result_status": "prior_work",
+      "note": "Historical survey of prior chatbot datasets and systems; no current-paper result is reported."
+    },
+    "result-chunk-qasper:1907.00758:s2:p0": {
+      "result_status": "prior_work",
+      "note": "The near-perfect accuracy belongs to the cited SyncNet work; the current paper only states that it adopts the approach."
+    },
+    "result-chunk-qasper:1908.05434:s3:p0": {
+      "result_status": "prior_work",
+      "note": "Background description of word embeddings and previously reported advantages, not a result of the current paper."
+    },
+    "result-chunk-qasper:1908.06151:s3:p1": {
+      "result_status": "non_result",
+      "note": "Baseline and evaluation setup; no observed score or comparison outcome is stated."
+    },
+    "result-chunk-qasper:1908.06151:s4:p2": {
+      "result_status": "non_result",
+      "datasets_invalid": ["APE", "Moses BIBREF18"],
+      "note": "Data-cleaning procedure without an experimental outcome; APE is a task and Moses BIBREF18 is a toolkit/citation phrase, not a dataset."
+    },
+    "result-chunk-qasper:1910.11768:s11:p3": {
+      "datasets_invalid": ["parallel corpus"],
+      "note": "The result is in scope, but parallel corpus is a generic resource type rather than a named dataset."
+    },
+    "result-chunk-qasper:1910.11768:s12:p1": {
+      "datasets_invalid": ["parallel corpus"],
+      "note": "The conclusion reports a current finding, but parallel corpus is a generic resource type rather than a named dataset."
+    },
+    "result-chunk-qasper:1912.13072:s4:p1": {
+      "datasets_invalid": ["Twitter"],
+      "note": "The result is in scope, but Twitter is the platform/resource type; the named dataset is the UBC Twitter Gender Dataset."
+    },
+    "result-chunk-qasper:1912.13072:s6:p0": {
+      "datasets_invalid": ["Twitter"],
+      "note": "The result is in scope, but Twitter is a generic platform label rather than the named dataset."
+    },
+    "result-chunk-qasper:2002.05104:s7:p1": {
+      "result_status": "non_result",
+      "note": "Model and representation choices for the text encoder; no observed result is reported."
+    },
+    "result-chunk-qasper:2002.05104:s8:p3": {
+      "methods_invalid": ["Faster-RCNN"],
+      "note": "The result is in scope, but Faster-RCNN is a model architecture rather than a method role."
+    },
+    "result-chunk-qasper:2003.08370:s0:p3": {
+      "result_status": "prior_work",
+      "note": "Introduction summarizes established embedding methods and prior performance; it does not report a current-paper result."
+    },
+    "result-chunk-qasper:2003.08370:s5:p3": {
+      "result_status": "non_result",
+      "note": "Model configuration and evaluation protocol; the actual F1 outcome is deferred to the result section."
+    },
+    "result-chunk-qasper:2003.08370:s7:p0": {
+      "models_invalid": ["If"],
+      "note": "The conclusion is in scope, but If is a sentence-initial conjunction incorrectly extracted as a model name."
+    },
+    "result-chunk-qasper:2003.08370:s7:p1": {
+      "result_status": "non_result",
+      "note": "Future-work proposals and planned experiments; no new observed result is reported."
+    },
+    "result-chunk-qasper:2004.01694:s4:p0": {
+      "result_status": "prior_work",
+      "note": "Background survey and hypothesis based on earlier MT evaluation studies, not a result of the current paper."
+    }
+  }
+}

@@ -38,6 +38,17 @@ Cập nhật gần nhất: 08/10/2026
 - [ ] Chưa chạy final-test v4. Bước tiếp theo là tạo development split paper-disjoint mới
   để sửa khả năng phân biệt kết quả quan sát với setup/method/metric definition, sau đó
   đánh giá trên một validation mới khác.
+- [x] Đã tạo development v6 mới gồm 20 paper, 1.044 chunk và 69 câu hỏi; loại 165 paper
+  từng dùng trước đây, bao gồm validation v5, overlap bằng 0.
+- [x] Đã chạy bộ trích xuất hiện tại trên development v6 và xuất 44 Result thô vào
+  `evaluation/qasper_result_development_v6/result_context_audit_pending.csv`.
+- [x] Review 44 Result development v6: 30 đúng phạm vi, 7 non-result, 7 prior-work;
+  precision instance 68,18%. Precision role: Method 95,24%, Model 98,25%, Dataset
+  56,25%, Metric 100%, Value 100%.
+- [x] Lưu nhãn, CSV, summary và báo cáo audit tại
+  `evaluation/qasper_result_development_v6/`; giữ nguyên snapshot pending.
+- [ ] Sửa bộ nhận diện trên development v6, ưu tiên loại setup/prior-work và chuẩn hóa
+  Dataset, khóa code, rồi tạo validation paper-disjoint mới để đánh giá đúng một lần.
 
 ### Result-centric knowledge graph và relation scoring v2 (trước audit)
 
