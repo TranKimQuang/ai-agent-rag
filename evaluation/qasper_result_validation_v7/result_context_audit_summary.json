@@ -1,0 +1,47 @@
+{
+  "rows": 88,
+  "result_counts": {
+    "in_scope": 80,
+    "non_result": 5,
+    "prior_work": 3
+  },
+  "result_instance_precision": 0.9091,
+  "role_precision": {
+    "methods": {
+      "total_links": 16,
+      "correct": 15,
+      "incorrect": 1,
+      "ambiguous": 0,
+      "reviewed_precision": 0.9375
+    },
+    "models": {
+      "total_links": 66,
+      "correct": 52,
+      "incorrect": 14,
+      "ambiguous": 0,
+      "reviewed_precision": 0.7879
+    },
+    "datasets": {
+      "total_links": 10,
+      "correct": 10,
+      "incorrect": 0,
+      "ambiguous": 0,
+      "reviewed_precision": 1.0
+    },
+    "metrics": {
+      "total_links": 89,
+      "correct": 88,
+      "incorrect": 1,
+      "ambiguous": 0,
+      "reviewed_precision": 0.9888
+    },
+    "values": {
+      "total_links": 93,
+      "correct": 92,
+      "incorrect": 1,
+      "ambiguous": 0,
+      "reviewed_precision": 0.9892
+    }
+  },
+  "protocol_note": "Single locked validation-v7 run. No extraction rules were changed after observing these results. Final-test v4 remains sealed."
+}

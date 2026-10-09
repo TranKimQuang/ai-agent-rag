@@ -58,8 +58,17 @@ Cập nhật gần nhất: 09/10/2026
 - [x] Đã khóa bộ nhận diện hậu sửa tại commit `633724e`.
 - [x] Đã chuẩn bị validation v7 gồm 20 paper, 1.314 chunk và 76 câu hỏi; loại 185 paper
   từng dùng, overlap bằng 0, trạng thái `prepared_not_evaluated`.
-- [ ] Commit dataset/manifest/cấu hình khóa của validation v7, sau đó chạy Result
+- [x] Commit dataset/manifest/cấu hình khóa của validation v7, sau đó chạy Result
   extraction đúng một lần và review toàn bộ instance; không tuning lại trên v7.
+- [x] Đã commit protocol validation v7 tại `bec2d4a`, chạy extraction đúng một lần và
+  review toàn bộ 88 instance.
+- [x] Validation v7 có 80 Result đúng, 5 non-result và 3 prior-work; precision instance
+  90,91%. Precision role: Method 93,75%, Model 78,79%, Dataset 100%, Metric 98,88%,
+  Value 98,92%.
+- [x] Ghi nhận `QA` là nguồn chính của lỗi Model role (10/14 lỗi), cùng `AI`, `VTE`,
+  `For`, `NER-specific`; không sửa rule theo validation v7.
+- [ ] Bước tiếp theo: quyết định giữ cấu hình 90,91% để tiếp tục benchmark retrieval,
+  hoặc tạo development v8 mới nếu muốn cải thiện Model role trước khi đánh giá tiếp.
 
 ### Result-centric knowledge graph và relation scoring v2 (trước audit)
 

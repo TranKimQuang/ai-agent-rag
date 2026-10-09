@@ -1,0 +1,101 @@
+{
+  "schema_version": 1,
+  "reviewed_at": "2026-10-09",
+  "review_scope": "Manual review of all 88 Result instances emitted by the single locked validation-v7 extraction run and their extracted role links.",
+  "conventions": {
+    "default_result_status": "in_scope",
+    "default_nonempty_role_status": "correct",
+    "default_empty_role_status": "not_present",
+    "precision_rule": "correct links / (correct + incorrect links); ambiguous links are excluded"
+  },
+  "annotations": {
+    "result-chunk-qasper:1910.07181:s8:p5": {
+      "result_status": "non_result",
+      "note": "Test-set generation constraints and a comparison limitation are described, but no observed result of the current paper is reported."
+    },
+    "result-chunk-qasper:1910.09399:s18:p1": {
+      "result_status": "prior_work",
+      "note": "This survey paragraph reports AttnGAN results from cited work rather than a new result of the current paper."
+    },
+    "result-chunk-qasper:1910.09399:s33:p0": {
+      "result_status": "prior_work",
+      "note": "The survey summarizes results and applications from cited GAN papers."
+    },
+    "result-chunk-qasper:1911.03894:s12:p1": {
+      "result_status": "non_result",
+      "note": "This paragraph defines precision, recall and F1 for the evaluation protocol without reporting an observed outcome."
+    },
+    "result-chunk-qasper:1911.03894:s21:p0": {
+      "models_invalid": [
+        "NER-specific"
+      ],
+      "note": "NER-specific is an adjective describing a model category rather than a named model."
+    },
+    "result-chunk-qasper:1911.09886:s5:p0": {
+      "result_status": "non_result",
+      "note": "The paragraph specifies the pointer-network decoder architecture and contains no experimental outcome."
+    },
+    "result-chunk-qasper:1912.05238:s4:p7": {
+      "models_invalid": [
+        "AI"
+      ],
+      "note": "AI denotes the general system field, not a named model."
+    },
+    "result-chunk-qasper:1912.10435:s10:p1": {
+      "result_status": "non_result",
+      "note": "The paragraph contains only future-work plans and proposed experiments."
+    },
+    "result-chunk-qasper:1912.10806:s10:p0": {
+      "result_status": "non_result",
+      "note": "The training subsection motivates differential privacy using general properties and cited claims; it does not report the current experiment's outcome."
+    },
+    "result-chunk-qasper:2002.06053:s23:p3": {
+      "result_status": "prior_work",
+      "note": "This review paragraph summarizes Word2Vec-based biochemical representation results from cited studies."
+    },
+    "result-chunk-qasper:2002.09758:s25:p0": {
+      "models_invalid": ["QA"]
+    },
+    "result-chunk-qasper:2002.09758:s25:p1": {
+      "models_invalid": ["QA"]
+    },
+    "result-chunk-qasper:2002.09758:s26:p1": {
+      "methods_invalid": ["QA"],
+      "models_invalid": ["QA"]
+    },
+    "result-chunk-qasper:2002.09758:s27:p0": {
+      "models_invalid": ["QA"]
+    },
+    "result-chunk-qasper:2002.09758:s29:p0": {
+      "models_invalid": ["QA"]
+    },
+    "result-chunk-qasper:2002.09758:s31:p0": {
+      "models_invalid": ["QA"]
+    },
+    "result-chunk-qasper:2002.09758:s33:p0": {
+      "models_invalid": ["QA"]
+    },
+    "result-chunk-qasper:2002.09758:s34:p0": {
+      "models_invalid": ["QA"]
+    },
+    "result-chunk-qasper:2002.09758:s36:p0": {
+      "models_invalid": ["QA"]
+    },
+    "result-chunk-qasper:2002.09758:s42:p1": {
+      "models_invalid": ["QA"]
+    },
+    "result-chunk-qasper:2002.11893:s15:p2": {
+      "models_invalid": ["For"],
+      "note": "For is a sentence-initial token, not a model name."
+    },
+    "result-chunk-qasper:2004.03744:s5:p2": {
+      "metrics_invalid": ["recall"],
+      "values_invalid": ["0.31"],
+      "note": "Recall is used as a discourse verb, so 31% is a label-noise proportion rather than a recall score."
+    },
+    "result-chunk-qasper:2004.03744:s7:p1": {
+      "models_invalid": ["VTE"],
+      "note": "VTE names the task, not a model."
+    }
+  }
+}
