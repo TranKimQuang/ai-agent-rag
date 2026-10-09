@@ -369,21 +369,35 @@ def test_context_score_uses_question_type_and_explicit_passage_evidence() -> Non
     service = OntologyService()
 
     supported = service.score_context(
-        "Which dataset is used for machine translation?",
-        "Machine translation is trained on a parallel corpus.",
-        query_concepts=["MachineTranslation"],
-        chunk_concepts=["MachineTranslation", "ParallelCorpus"],
+        "Which dataset is used for RAG?",
+        "RAG is evaluated on the QASPER dataset.",
+        query_concepts=["RetrievalAugmentedGeneration"],
+        chunk_concepts=["RetrievalAugmentedGeneration", "QASPER"],
     )
     unsupported_type = service.score_context(
-        "Which dataset is used for machine translation?",
-        "The machine translation model uses an encoder.",
-        query_concepts=["MachineTranslation"],
-        chunk_concepts=["MachineTranslation"],
+        "Which dataset is used for RAG?",
+        "RAG retrieves evidence before answering.",
+        query_concepts=["RetrievalAugmentedGeneration"],
+        chunk_concepts=["RetrievalAugmentedGeneration"],
     )
 
     assert supported.score > unsupported_type.score
     assert "Dataset" in supported.query_concepts
-    assert "passage contains ParallelCorpus" in supported.explanation
+    assert "passage contains QASPER" in supported.explanation
+
+
+def test_context_score_does_not_bonus_unanchored_generic_entity_type() -> None:
+    service = OntologyService()
+
+    match = service.score_context(
+        "Which model architecture do they use?",
+        "The unrelated baseline uses a Transformer model.",
+        query_concepts=[],
+        chunk_concepts=["Transformer"],
+    )
+
+    assert match.score == 0.0
+    assert "Question requests Model" in match.explanation
 
 
 def test_context_score_downweights_semantic_only_and_hub_matches() -> None:

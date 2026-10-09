@@ -96,6 +96,11 @@ _RESULT_VALUE_CUE = re.compile(
     r"result|results|score|performance|accuracy|f1|bleu|rouge)\b",
     re.IGNORECASE,
 )
+_DIRECT_RESULT_QUERY_CUE = re.compile(
+    r"\b(result|results|performance|score|accuracy|f1|bleu|rouge|"
+    r"how much better|improvement|improve|outperform(?:ed|s|ing)?)\b",
+    re.IGNORECASE,
+)
 _METRIC_CUE = re.compile(
     r"\b(F1|F-?score|F-?measure|BLEU|ROUGE(?:-[A-Za-z0-9]+)?|acc(?:uracy)?|precision|"
     r"recall|MRR|nDCG|AUC(?:-ROC)?|ERR|H@\d+)\b",
@@ -710,9 +715,12 @@ class OntologyService:
             if requested_types:
                 raw_score = (0.8 * raw_score) + (0.2 * type_score)
         elif requested_types:
-            # A generic request such as "which dataset" is useful context, but it
-            # must not overpower the lexical/semantic retrieval evidence.
-            raw_score = 0.35 * type_score
+            # A generic request such as "which dataset" has no topical anchor.
+            # Rewarding every passage that contains the requested entity type
+            # causes unrelated datasets/models to move ahead of stronger retrieval
+            # evidence. Keep the type visible for explanation, but do not award a
+            # ranking bonus until the query also links to a topical concept.
+            raw_score = 0.0
         else:
             raw_score = 0.0
 
@@ -767,6 +775,8 @@ class OntologyService:
         chunk_id: str | None,
     ) -> tuple[float, str]:
         if not chunk_id:
+            return 0.0, ""
+        if not query_concepts and not _DIRECT_RESULT_QUERY_CUE.search(query):
             return 0.0, ""
         chunk_resource = URIRef(f"{QA}chunk-{chunk_id}")
         results = [
