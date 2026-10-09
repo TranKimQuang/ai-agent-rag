@@ -3,6 +3,7 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+from datetime import UTC, datetime
 from pathlib import Path
 
 from app.evaluation.qasper import build_split, select_qasper_papers
@@ -30,6 +31,12 @@ def parse_args() -> argparse.Namespace:
         type=Path,
         default=Path("evaluation/qasper_result_validation_v5"),
     )
+    parser.add_argument("--version", type=int, default=5)
+    parser.add_argument(
+        "--created-on",
+        default=datetime.now(tz=UTC).date().isoformat(),
+    )
+    parser.add_argument("--locked-commit")
     parser.add_argument("--exclude-dataset", type=Path, action="append", default=[])
     parser.add_argument("--papers", type=int, default=20)
     parser.add_argument("--min-questions-per-paper", type=int, default=3)
@@ -65,7 +72,10 @@ def main() -> None:
     if len(papers) != args.papers:
         raise ValueError(f"Only {len(papers)} eligible QASPER papers were found")
 
-    validation = build_split(papers, split="result_context_validation_v5")
+    validation = build_split(
+        papers,
+        split=f"result_context_validation_v{args.version}",
+    )
     args.output_dir.mkdir(parents=True, exist_ok=True)
     validation_path = args.output_dir / "qasper_validation.json"
     validation_content = (
@@ -78,8 +88,8 @@ def main() -> None:
     if overlap:
         raise ValueError(f"Validation overlaps excluded papers: {overlap}")
     manifest = {
-        "protocol": "QASPER Result-context validation v5",
-        "created_on": "2026-10-07",
+        "protocol": f"QASPER Result-context validation v{args.version}",
+        "created_on": args.created_on,
         "source": "allenai/qasper qasper/train/0000.parquet",
         "source_sha256": source_hash,
         "selection_seed": args.seed,
@@ -87,6 +97,7 @@ def main() -> None:
         "excluded_unique_papers": len(excluded),
         "paper_disjoint": True,
         "overlap_with_excluded_papers": overlap,
+        "locked_code_commit": args.locked_commit,
         "validation": {
             "file": validation_path.name,
             "papers": len(validation["metadata"]["paper_ids"]),

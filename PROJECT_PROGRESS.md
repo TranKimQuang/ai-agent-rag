@@ -53,8 +53,13 @@ Cập nhật gần nhất: 09/10/2026
   Metric 100%, Value 100%.
 - [x] Lưu nhãn hậu sửa và summary tại `evaluation/qasper_result_development_v6/`;
   validation v5 không được dùng lại và final-test v4 vẫn sealed.
-- [ ] Khóa/commit code hậu sửa, sau đó tạo validation v7 paper-disjoint với toàn bộ split
+- [x] Khóa/commit code hậu sửa, sau đó tạo validation v7 paper-disjoint với toàn bộ split
   đã dùng và chạy đúng một lần để kiểm tra khả năng khái quát hóa.
+- [x] Đã khóa bộ nhận diện hậu sửa tại commit `633724e`.
+- [x] Đã chuẩn bị validation v7 gồm 20 paper, 1.314 chunk và 76 câu hỏi; loại 185 paper
+  từng dùng, overlap bằng 0, trạng thái `prepared_not_evaluated`.
+- [ ] Commit dataset/manifest/cấu hình khóa của validation v7, sau đó chạy Result
+  extraction đúng một lần và review toàn bộ instance; không tuning lại trên v7.
 
 ### Result-centric knowledge graph và relation scoring v2 (trước audit)
 

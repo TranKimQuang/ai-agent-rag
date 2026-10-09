@@ -1,0 +1,10 @@
+{
+  "locked_on": "2026-10-09",
+  "code_commit": "633724e46718aeadabcf2e77f70f3ae5efd599dd",
+  "result_extraction_file": "app/ontology/service.py",
+  "result_extraction_sha256": "65f290707359f08f08bc3fd5ef73cc7c48ad28d65129318cefffbe8c33f3c577",
+  "development_source": "evaluation/qasper_result_development_v6",
+  "validation_dataset": "qasper_validation.json",
+  "validation_dataset_sha256": "f20637a577fdbbf7d6399172323f5339bd6675fed07478d03f3a40e3d716e61a",
+  "evaluation_policy": "Run Result extraction once, review every emitted instance, and do not change extraction rules based on validation v7. Final-test v4 remains sealed."
+}
