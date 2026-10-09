@@ -697,6 +697,9 @@ trang và đoạn bằng chứng. Nếu tài liệu không có đủ bằng ch�
   paper-disjoint với 205 paper của toàn bộ split trước; đây là tập được phép tuning tiếp theo.
 - [x] Chạy baseline v8: Hybrid nDCG@5 0,2599, re-ranking 0,2580; chỉ 7/73 query có
   concept và generic type cue gây thay đổi thứ hạng thiếu căn cứ khi query không có topic.
+- [x] Thêm context gate cho Ontology scoring trên development v8: re-ranking đạt
+  Recall@5 0,3479, MRR@5 0,2708 và nDCG@5 0,2667, cao hơn Hybrid; không còn câu
+  nào bị rơi khỏi top-5. Đã dừng tuning để chuẩn bị validation paper-disjoint mới.
 - [x] Đã có baseline development 22 câu đánh giá Answer-F1, Evidence-F1,
   citation precision/recall và unanswerable; chưa phải kết quả held-out cuối.
 - [x] Đã tích hợp adapter và chạy end-to-end với LLM local thật trên QASPER.
@@ -725,10 +728,10 @@ Milestone tiếp theo: kiểm chứng khả năng khái quát của semantic con
 đánh giá khoa học cho Ontology/Agent.
 
 1. Giữ nguyên kết quả held-out v3 và validation v7; không tiếp tục tuning theo các tập đã xem.
-2. Trên một development split paper-disjoint mới, thay ontology bonus cố định bằng cơ chế
-   chỉ re-rank khi quan hệ concept có đủ độ tin cậy và phù hợp kiểu câu hỏi/ngữ cảnh.
-3. Phân tích các false-positive type link như nhãn `QA` bị xem là Model và các câu re-ranking
-   làm xấu thứ hạng; sau đó mới khóa cấu hình cho một held-out mới.
+2. Đã thêm context gate trên development v8 để chặn generic type bonus thiếu topic anchor;
+   tiếp theo khóa candidate và tạo validation paper-disjoint mới để đánh giá đúng một lần.
+3. Tiếp tục theo dõi false-positive type link như nhãn `QA` bị xem là Model, nhưng không
+   sửa theo validation đã xem.
 4. Khi retrieval ổn định, xác nhận answer correctness/citation/unanswerable trên mẫu lớn hơn.
 
 Chưa ưu tiên trong milestone này: mở rộng giao diện, PostgreSQL, pgvector, OCR và

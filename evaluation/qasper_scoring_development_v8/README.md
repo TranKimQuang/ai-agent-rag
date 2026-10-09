@@ -33,3 +33,20 @@ Coverage cho thấy chỉ 7/73 query có concept, 26/73 gold evidence có concep
 3/73 cặp query-gold có quan hệ Ontology. Phân tích cho thấy các type cue chung như
 `dataset` và `model` vẫn tạo bonus khi query không có concept chủ đề; đây là mục tiêu
 cải thiện đầu tiên trên development v8.
+
+## Candidate context gate
+
+Candidate tại commit `4d5403a` không cấp bonus cho type cue chung nếu câu hỏi không có
+concept chủ đề; Result-context bonus chỉ được dùng khi có concept chủ đề hoặc câu hỏi nêu
+rõ result/performance.
+
+| Cấu hình | Recall@5 | MRR@5 | nDCG@5 |
+|---|---:|---:|---:|
+| Hybrid | 0,3342 | 0,2662 | 0,2599 |
+| Re-ranking trước sửa | 0,3205 | 0,2708 | 0,2580 |
+| Re-ranking với context gate | **0,3479** | **0,2708** | **0,2667** |
+
+So với Hybrid, candidate cải thiện 1 câu, cứu 1 câu, làm xấu 1 câu và không làm mất
+câu nào khỏi top-5. Câu còn bị tụt dùng evidence gián tiếp cho câu hỏi về Word2Vec,
+trong khi một đoạn khác nhắc concept trực tiếp. Dừng tuning tại candidate này; bước kế
+tiếp là khóa code và đánh giá đúng một lần trên validation paper-disjoint mới.

@@ -31,7 +31,10 @@
     "baseline_result": "baseline_retrieval.json",
     "baseline_result_sha256": "4a0192ac1bd355b2fd83f8c0ccffdb8e833e769e9bb11db08edaf136d1c3ce48",
     "baseline_coverage": "baseline_ontology_coverage.json",
-    "baseline_coverage_sha256": "6a7d0cec5ac58423f338a73d0bcec5462e3823c508549b3ea62ad483f22167a4"
+    "baseline_coverage_sha256": "6a7d0cec5ac58423f338a73d0bcec5462e3823c508549b3ea62ad483f22167a4",
+    "selected_candidate": "candidate_context_gate.json",
+    "selected_candidate_sha256": "6eb331c25cd4ea48cb23784f0384f7ab07d9650173c0383586226579ae397a5e",
+    "selected_code_commit": "4d5403a"
   },
   "policy": "This split may be used to improve context-aware Ontology scoring. Do not tune on validation v7 or sealed final-test v4. Evaluate the final change on a new paper-disjoint validation split."
 }
