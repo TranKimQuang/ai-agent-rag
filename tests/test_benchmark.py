@@ -9,6 +9,7 @@ from app.evaluation.benchmark import (
 from app.models import Chunk, SearchMethod
 from app.ontology.service import OntologyService
 from app.rag.retriever import InMemoryHybridRetriever
+from scripts.evaluate_locked_retrieval import summarize_rank_changes
 from scripts.run_benchmark import write_ontology_rank_changes
 from scripts.tune_ontology_weight import compare_ranks
 
@@ -202,3 +203,20 @@ def test_weight_tuning_counts_rank_changes() -> None:
         "rescued": 1,
         "lost": 1,
     }
+
+
+def test_locked_evaluation_summarizes_each_ontology_ablation() -> None:
+    details = []
+    for method, rank in (
+        ("hybrid", 3),
+        ("hybrid_ontology_expansion", 4),
+        ("hybrid_ontology_rerank", 1),
+        ("hybrid_ontology", 2),
+    ):
+        details.append({"question_id": "q1", "method": method, "gold_rank": rank})
+
+    changes = summarize_rank_changes(details)
+
+    assert changes["hybrid_ontology_expansion"]["worsened"] == 1
+    assert changes["hybrid_ontology_rerank"]["improved"] == 1
+    assert changes["hybrid_ontology"]["improved"] == 1

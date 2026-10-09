@@ -1,0 +1,16 @@
+{
+  "configuration_status": "frozen_before_evaluation",
+  "frozen_on": "2026-10-09",
+  "evaluation_status": "not_evaluated",
+  "selection_source": "evaluation/qasper_result_validation_v5/locked_result_context_config.json",
+  "dataset": "evaluation/qasper_result_validation_v7/qasper_validation.json",
+  "dataset_sha256": "f20637a577fdbbf7d6399172323f5339bd6675fed07478d03f3a40e3d716e61a",
+  "primary_method": "hybrid_ontology_rerank",
+  "ontology_weight": 0.2,
+  "query_expansion_primary": false,
+  "query_type_intent": false,
+  "concept_linking_method": "hybrid",
+  "concept_linking_threshold": 0.65,
+  "k_values": [1, 3, 5],
+  "policy": "Evaluate once without changing weights or retrieval rules after observing this split."
+}
