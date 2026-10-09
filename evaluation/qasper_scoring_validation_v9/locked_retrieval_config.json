@@ -1,7 +1,10 @@
 {
   "configuration_status": "frozen_before_evaluation",
   "frozen_on": "2026-10-09",
-  "evaluation_status": "not_evaluated",
+  "evaluation_status": "evaluated_once",
+  "evaluated_on": "2026-10-09",
+  "result": "locked_retrieval_once.json",
+  "result_sha256": "5334d885442b03d5ccd8cd219bb29ff9ba93ab95526857549ebdf8e02c9a613d",
   "dataset": "evaluation/qasper_scoring_validation_v9/qasper_validation.json",
   "dataset_sha256": "9afe6cd1178a02c3a78b286407d6e2f63feedb9364a2141e1e7bb5a305d21231",
   "locked_code_commit": "4d5403a",

@@ -700,6 +700,10 @@ trang và đoạn bằng chứng. Nếu tài liệu không có đủ bằng ch�
 - [x] Thêm context gate cho Ontology scoring trên development v8: re-ranking đạt
   Recall@5 0,3479, MRR@5 0,2708 và nDCG@5 0,2667, cao hơn Hybrid; không còn câu
   nào bị rơi khỏi top-5. Đã dừng tuning để chuẩn bị validation paper-disjoint mới.
+- [x] Chạy validation v9 đúng một lần trên 20 paper/78 câu, tách khỏi 225 paper cũ:
+  context-gated re-ranking bằng Hybrid trên mọi chỉ số và giữ nguyên 78/78 thứ hạng.
+  Chỉ 1/78 query có concept, xác nhận nút thắt tiếp theo là khả năng khái quát concept
+  linking/vocabulary chứ không còn là generic type bonus.
 - [x] Đã có baseline development 22 câu đánh giá Answer-F1, Evidence-F1,
   citation precision/recall và unanswerable; chưa phải kết quả held-out cuối.
 - [x] Đã tích hợp adapter và chạy end-to-end với LLM local thật trên QASPER.
@@ -728,10 +732,10 @@ Milestone tiếp theo: kiểm chứng khả năng khái quát của semantic con
 đánh giá khoa học cho Ontology/Agent.
 
 1. Giữ nguyên kết quả held-out v3 và validation v7; không tiếp tục tuning theo các tập đã xem.
-2. Đã thêm context gate trên development v8 để chặn generic type bonus thiếu topic anchor;
-   tiếp theo khóa candidate và tạo validation paper-disjoint mới để đánh giá đúng một lần.
-3. Tiếp tục theo dõi false-positive type link như nhãn `QA` bị xem là Model, nhưng không
-   sửa theo validation đã xem.
+2. Giữ nguyên validation v9; không tuning scoring theo tập này. Bước nghiên cứu tiếp theo
+   là concept candidate generation/zero-shot linking có khả năng khái quát sang paper mới.
+3. Tạo development split mới nếu sửa concept linking; chỉ sau khi khóa mới tạo validation
+   paper-disjoint khác. Tiếp tục theo dõi false-positive type link như `QA` bị xem là Model.
 4. Khi retrieval ổn định, xác nhận answer correctness/citation/unanswerable trên mẫu lớn hơn.
 
 Chưa ưu tiên trong milestone này: mở rộng giao diện, PostgreSQL, pgvector, OCR và

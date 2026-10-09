@@ -30,7 +30,12 @@
     "chunks": 1391,
     "questions": 78,
     "sha256": "9afe6cd1178a02c3a78b286407d6e2f63feedb9364a2141e1e7bb5a305d21231",
-    "evaluation_status": "prepared_not_evaluated"
+    "evaluation_status": "evaluated_once",
+    "evaluated_on": "2026-10-09",
+    "retrieval_result": "locked_retrieval_once.json",
+    "retrieval_result_sha256": "5334d885442b03d5ccd8cd219bb29ff9ba93ab95526857549ebdf8e02c9a613d",
+    "coverage_result": "ontology_coverage.json",
+    "coverage_result_sha256": "594968e17c6a336a29e33c4e81a6a8408698161de17d82a091034d26220441bb"
   },
   "policy": "Run the locked context-gated Ontology scoring candidate exactly once. Do not alter scoring rules or weights after observing validation v9 without creating another paper-disjoint split. Final-test v4 remains sealed."
 }

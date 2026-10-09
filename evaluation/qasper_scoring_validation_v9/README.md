@@ -11,3 +11,20 @@ Validation v9 kiểm tra đúng một lần candidate context gate đã chọn t
 
 Không thay đổi rule, threshold hoặc weight sau khi xem kết quả v9. Final-test v4 tiếp tục
 được niêm phong.
+
+## Kết quả lần chạy duy nhất
+
+| Cấu hình | Recall@5 | MRR@5 | nDCG@5 |
+|---|---:|---:|---:|
+| Hybrid | 0,2928 | 0,2472 | 0,2343 |
+| Hybrid + Expansion | 0,2928 | 0,2408 | 0,2296 |
+| Hybrid + context-gated Re-ranking | 0,2928 | 0,2472 | 0,2343 |
+| Hybrid + Expansion + Re-ranking | 0,2928 | 0,2408 | 0,2296 |
+
+Context-gated re-ranking giữ nguyên thứ hạng của cả 78/78 câu: không cải thiện, không
+làm xấu và không làm mất câu nào khỏi top-5. Coverage giải thích kết quả này: chỉ 1/78
+query có concept, 28/78 gold evidence có concept và chỉ 1/78 cặp query-gold có quan hệ
+Ontology. Kết luận: context gate khái quát được khả năng tránh gây hại, nhưng concept
+linking/vocabulary hiện chưa khái quát đủ để tạo lợi ích trên paper mới.
+
+Không tuning lại trên v9.
