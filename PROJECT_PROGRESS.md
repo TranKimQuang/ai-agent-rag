@@ -693,6 +693,8 @@ trang và đoạn bằng chứng. Nếu tài liệu không có đủ bằng ch�
 - [x] Kiểm chứng độc lập v7 trên 20 paper/76 câu, không trùng 185 paper đã dùng: Result
   extraction đạt precision instance 90,91%, nhưng retrieval re-ranking không khái quát
   tốt hơn Hybrid (nDCG@5 0,2190 so với 0,2307). Đã khóa kết quả và không tuning trên v7.
+- [x] Tạo development v8 cho context-aware Ontology scoring: 20 paper/987 chunk/73 câu,
+  paper-disjoint với 205 paper của toàn bộ split trước; đây là tập được phép tuning tiếp theo.
 - [x] Đã có baseline development 22 câu đánh giá Answer-F1, Evidence-F1,
   citation precision/recall và unanswerable; chưa phải kết quả held-out cuối.
 - [x] Đã tích hợp adapter và chạy end-to-end với LLM local thật trên QASPER.

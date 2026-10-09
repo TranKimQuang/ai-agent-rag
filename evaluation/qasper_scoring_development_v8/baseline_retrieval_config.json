@@ -1,0 +1,15 @@
+{
+  "configuration_status": "frozen_before_evaluation",
+  "frozen_on": "2026-10-09",
+  "evaluation_status": "not_evaluated",
+  "dataset": "evaluation/qasper_scoring_development_v8/qasper_development.json",
+  "dataset_sha256": "6e3644e1c64d822ac5df4327af996a65fd83bd9b2e0e3451946ee08356e0817e",
+  "primary_method": "hybrid_ontology_rerank",
+  "ontology_weight": 0.2,
+  "query_expansion_primary": false,
+  "query_type_intent": false,
+  "concept_linking_method": "hybrid",
+  "concept_linking_threshold": 0.65,
+  "k_values": [1, 3, 5],
+  "policy": "Development split: repeated analysis and tuning are allowed, but validation v7 remains untouched."
+}

@@ -25,6 +25,7 @@ def parse_args() -> argparse.Namespace:
         type=Path,
         default=Path("evaluation/qasper_result_development_v6"),
     )
+    parser.add_argument("--version", type=int, default=6)
     parser.add_argument("--exclude-dataset", type=Path, action="append", default=[])
     parser.add_argument("--papers", type=int, default=20)
     parser.add_argument("--min-questions-per-paper", type=int, default=3)
@@ -64,7 +65,10 @@ def main() -> None:
     if len(papers) != args.papers:
         raise ValueError(f"Only {len(papers)} eligible QASPER papers were found")
 
-    development = build_split(papers, split="result_context_development_v6")
+    development = build_split(
+        papers,
+        split=f"result_context_development_v{args.version}",
+    )
     args.output_dir.mkdir(parents=True, exist_ok=True)
     development_path = args.output_dir / "qasper_development.json"
     development_content = (
@@ -78,7 +82,7 @@ def main() -> None:
         raise ValueError(f"Development split overlaps excluded papers: {overlap}")
 
     manifest = {
-        "protocol": "QASPER Result-extraction development v6",
+        "protocol": f"QASPER Result-extraction development v{args.version}",
         "created_on": args.created_on,
         "source": "allenai/qasper qasper/train/0000.parquet",
         "source_sha256": source_hash,
