@@ -1,7 +1,10 @@
 {
   "configuration_status": "frozen_before_evaluation",
   "frozen_on": "2026-10-09",
-  "evaluation_status": "not_evaluated",
+  "evaluation_status": "evaluated_once",
+  "evaluated_on": "2026-10-09",
+  "result": "baseline_retrieval.json",
+  "result_sha256": "4a0192ac1bd355b2fd83f8c0ccffdb8e833e769e9bb11db08edaf136d1c3ce48",
   "dataset": "evaluation/qasper_scoring_development_v8/qasper_development.json",
   "dataset_sha256": "6e3644e1c64d822ac5df4327af996a65fd83bd9b2e0e3451946ee08356e0817e",
   "primary_method": "hybrid_ontology_rerank",

@@ -40,7 +40,12 @@ def main() -> None:
     )
     chunks, _ = ontology.index_chunks(chunks)
     chunks_by_id = {chunk.id: chunk for chunk in chunks}
-    details = json.loads(args.details.read_text(encoding="utf-8"))
+    details_payload = json.loads(args.details.read_text(encoding="utf-8"))
+    details = (
+        details_payload["details"]
+        if isinstance(details_payload, dict) and "details" in details_payload
+        else details_payload
+    )
     ranks = {
         (row["question_id"], row["method"]): row["gold_rank"] for row in details
     }

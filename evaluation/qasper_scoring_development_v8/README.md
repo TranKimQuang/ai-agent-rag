@@ -18,3 +18,18 @@ Quy trình:
 5. Sau khi khóa code, tạo một validation paper-disjoint mới để đánh giá đúng một lần.
 
 Không dùng lại validation v7 hoặc final-test v4 để tuning.
+
+## Baseline trước sửa scoring
+
+| Cấu hình | Recall@5 | MRR@5 | nDCG@5 |
+|---|---:|---:|---:|
+| Hybrid | 0,3342 | 0,2662 | 0,2599 |
+| Hybrid + Expansion | 0,3342 | 0,2559 | 0,2521 |
+| Hybrid + Re-ranking | 0,3205 | 0,2708 | 0,2580 |
+| Hybrid + Expansion + Re-ranking | 0,3205 | 0,2674 | 0,2553 |
+
+Re-ranking cải thiện 2 câu, cứu 1 câu, làm xấu 3 câu và làm mất 2 câu khỏi top-5.
+Coverage cho thấy chỉ 7/73 query có concept, 26/73 gold evidence có concept và chỉ
+3/73 cặp query-gold có quan hệ Ontology. Phân tích cho thấy các type cue chung như
+`dataset` và `model` vẫn tạo bonus khi query không có concept chủ đề; đây là mục tiêu
+cải thiện đầu tiên trên development v8.

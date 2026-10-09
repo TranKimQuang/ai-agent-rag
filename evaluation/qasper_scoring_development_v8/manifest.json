@@ -27,7 +27,11 @@
     "chunks": 987,
     "questions": 73,
     "sha256": "6e3644e1c64d822ac5df4327af996a65fd83bd9b2e0e3451946ee08356e0817e",
-    "status": "prepared_not_reviewed"
+    "status": "baseline_evaluated",
+    "baseline_result": "baseline_retrieval.json",
+    "baseline_result_sha256": "4a0192ac1bd355b2fd83f8c0ccffdb8e833e769e9bb11db08edaf136d1c3ce48",
+    "baseline_coverage": "baseline_ontology_coverage.json",
+    "baseline_coverage_sha256": "6a7d0cec5ac58423f338a73d0bcec5462e3823c508549b3ea62ad483f22167a4"
   },
   "policy": "This split may be used to improve context-aware Ontology scoring. Do not tune on validation v7 or sealed final-test v4. Evaluate the final change on a new paper-disjoint validation split."
 }

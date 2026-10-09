@@ -695,6 +695,8 @@ trang và đoạn bằng chứng. Nếu tài liệu không có đủ bằng ch�
   tốt hơn Hybrid (nDCG@5 0,2190 so với 0,2307). Đã khóa kết quả và không tuning trên v7.
 - [x] Tạo development v8 cho context-aware Ontology scoring: 20 paper/987 chunk/73 câu,
   paper-disjoint với 205 paper của toàn bộ split trước; đây là tập được phép tuning tiếp theo.
+- [x] Chạy baseline v8: Hybrid nDCG@5 0,2599, re-ranking 0,2580; chỉ 7/73 query có
+  concept và generic type cue gây thay đổi thứ hạng thiếu căn cứ khi query không có topic.
 - [x] Đã có baseline development 22 câu đánh giá Answer-F1, Evidence-F1,
   citation precision/recall và unanswerable; chưa phải kết quả held-out cuối.
 - [x] Đã tích hợp adapter và chạy end-to-end với LLM local thật trên QASPER.
