@@ -690,6 +690,9 @@ trang và đoạn bằng chứng. Nếu tài liệu không có đủ bằng ch�
   concept-link trên 605 chunk.
 - [x] Chạy lại ablation: Ontology re-ranking tăng Recall@5 từ 0,3016 lên 0,3254 và
   MRR@5 từ 0,2381 lên 0,2560; query expansion còn gây query drift nhẹ.
+- [x] Kiểm chứng độc lập v7 trên 20 paper/76 câu, không trùng 185 paper đã dùng: Result
+  extraction đạt precision instance 90,91%, nhưng retrieval re-ranking không khái quát
+  tốt hơn Hybrid (nDCG@5 0,2190 so với 0,2307). Đã khóa kết quả và không tuning trên v7.
 - [x] Đã có baseline development 22 câu đánh giá Answer-F1, Evidence-F1,
   citation precision/recall và unanswerable; chưa phải kết quả held-out cuối.
 - [x] Đã tích hợp adapter và chạy end-to-end với LLM local thật trên QASPER.
@@ -717,14 +720,12 @@ PDF
 Milestone tiếp theo: kiểm chứng khả năng khái quát của semantic concept linking và hoàn thiện
 đánh giá khoa học cho Ontology/Agent.
 
-1. Giữ nguyên kết quả held-out v3 và không tiếp tục tuning theo test này.
-2. Thiết kế hướng concept linking khái quát hơn (candidate generation từ CSO hoặc zero-shot
-   linking), dùng một development protocol mới nếu tiếp tục nghiên cứu retrieval.
-3. Tiếp tục phân tích và cải thiện retrieval miss trên development; giữ nguyên
-   held-out, sau đó xác nhận answer correctness/citation/unanswerable trên mẫu lớn hơn.
-4. Đã hoàn thành reasoner consistency, 10 competency questions, rà soát CSO mapping
-   và paired bootstrap trên development; tiếp theo thiết kế protocol mới để kiểm chứng
-   khả năng khái quát mà không dùng lại held-out đã xem.
+1. Giữ nguyên kết quả held-out v3 và validation v7; không tiếp tục tuning theo các tập đã xem.
+2. Trên một development split paper-disjoint mới, thay ontology bonus cố định bằng cơ chế
+   chỉ re-rank khi quan hệ concept có đủ độ tin cậy và phù hợp kiểu câu hỏi/ngữ cảnh.
+3. Phân tích các false-positive type link như nhãn `QA` bị xem là Model và các câu re-ranking
+   làm xấu thứ hạng; sau đó mới khóa cấu hình cho một held-out mới.
+4. Khi retrieval ổn định, xác nhận answer correctness/citation/unanswerable trên mẫu lớn hơn.
 
 Chưa ưu tiên trong milestone này: mở rộng giao diện, PostgreSQL, pgvector, OCR và
 framework Agent phức tạp.

@@ -35,7 +35,10 @@
     "result_snapshot": "result_context_audit_pending.csv",
     "result_snapshot_sha256": "48c1113e5e9cd4953f021408c3e2c93b305a2873ac28f90478cb648f55d9d343",
     "result_review": "result_context_review.json",
-    "result_summary": "result_context_audit_summary.json"
+    "result_summary": "result_context_audit_summary.json",
+    "retrieval_evaluation_status": "evaluated_once",
+    "retrieval_result": "locked_retrieval_once.json",
+    "retrieval_result_sha256": "1a19785a108a19445bfec7c00491c5165b4f0c93e8a8e6168781f716d76171a5"
   },
   "policy": "Do not alter Result extraction rules or ontology weight after observing this validation without creating another paper-disjoint split. Final-test v4 remains sealed."
 }

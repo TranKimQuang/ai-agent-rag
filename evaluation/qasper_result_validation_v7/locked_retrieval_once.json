@@ -1,0 +1,5767 @@
+{
+  "protocol": "locked_retrieval_evaluation",
+  "dataset": "evaluation\\qasper_result_validation_v7\\qasper_validation.json",
+  "config": "evaluation\\qasper_result_validation_v7\\locked_retrieval_config.json",
+  "configuration": {
+    "configuration_status": "frozen_before_evaluation",
+    "frozen_on": "2026-10-09",
+    "evaluation_status": "not_evaluated",
+    "selection_source": "evaluation/qasper_result_validation_v5/locked_result_context_config.json",
+    "dataset": "evaluation/qasper_result_validation_v7/qasper_validation.json",
+    "dataset_sha256": "f20637a577fdbbf7d6399172323f5339bd6675fed07478d03f3a40e3d716e61a",
+    "primary_method": "hybrid_ontology_rerank",
+    "ontology_weight": 0.2,
+    "query_expansion_primary": false,
+    "query_type_intent": false,
+    "concept_linking_method": "hybrid",
+    "concept_linking_threshold": 0.65,
+    "k_values": [
+      1,
+      3,
+      5
+    ],
+    "policy": "Evaluate once without changing weights or retrieval rules after observing this split."
+  },
+  "chunks": 1314,
+  "questions": 76,
+  "concept_links": 630,
+  "summary": {
+    "hybrid": {
+      "questions": 76.0,
+      "precision@1": 0.17105263157894737,
+      "recall@1": 0.14638157894736842,
+      "mrr@1": 0.17105263157894737,
+      "ndcg@1": 0.17105263157894737,
+      "precision@3": 0.09649122807017543,
+      "recall@3": 0.25603070175438597,
+      "mrr@3": 0.22587719298245615,
+      "ndcg@3": 0.22166737828375335,
+      "precision@5": 0.06315789473684212,
+      "recall@5": 0.28234649122807015,
+      "mrr@5": 0.2317982456140351,
+      "ndcg@5": 0.2307122578174217
+    },
+    "hybrid_ontology_expansion": {
+      "questions": 76.0,
+      "precision@1": 0.15789473684210525,
+      "recall@1": 0.13322368421052633,
+      "mrr@1": 0.15789473684210525,
+      "ndcg@1": 0.15789473684210525,
+      "precision@3": 0.09210526315789473,
+      "recall@3": 0.24287280701754385,
+      "mrr@3": 0.21271929824561406,
+      "ndcg@3": 0.20850948354691123,
+      "precision@5": 0.06052631578947369,
+      "recall@5": 0.26918859649122806,
+      "mrr@5": 0.218640350877193,
+      "ndcg@5": 0.21755436308057957
+    },
+    "hybrid_ontology_rerank": {
+      "questions": 76.0,
+      "precision@1": 0.17105263157894737,
+      "recall@1": 0.14638157894736842,
+      "mrr@1": 0.17105263157894737,
+      "ndcg@1": 0.17105263157894737,
+      "precision@3": 0.09210526315789473,
+      "recall@3": 0.24287280701754385,
+      "mrr@3": 0.21491228070175436,
+      "ndcg@3": 0.20992015116909055,
+      "precision@5": 0.06052631578947369,
+      "recall@5": 0.26918859649122806,
+      "mrr@5": 0.22083333333333335,
+      "ndcg@5": 0.21896503070275888
+    },
+    "hybrid_ontology": {
+      "questions": 76.0,
+      "precision@1": 0.17105263157894737,
+      "recall@1": 0.14638157894736842,
+      "mrr@1": 0.17105263157894737,
+      "ndcg@1": 0.17105263157894737,
+      "precision@3": 0.09210526315789473,
+      "recall@3": 0.24287280701754385,
+      "mrr@3": 0.21491228070175436,
+      "ndcg@3": 0.20992015116909055,
+      "precision@5": 0.05789473684210527,
+      "recall@5": 0.25603070175438597,
+      "mrr@5": 0.21754385964912282,
+      "ndcg@5": 0.2132982338860037
+    }
+  },
+  "rank_changes_from_hybrid": {
+    "hybrid_ontology_expansion": {
+      "improved": 0,
+      "unchanged": 75,
+      "worsened": 0,
+      "rescued": 0,
+      "lost": 1
+    },
+    "hybrid_ontology_rerank": {
+      "improved": 3,
+      "unchanged": 69,
+      "worsened": 3,
+      "rescued": 0,
+      "lost": 1
+    },
+    "hybrid_ontology": {
+      "improved": 3,
+      "unchanged": 69,
+      "worsened": 2,
+      "rescued": 0,
+      "lost": 2
+    }
+  },
+  "details": [
+    {
+      "question_id": "d6e2b276390bdc957dfa7e878de80cee1f41fbca",
+      "category": "qasper_real",
+      "query": "What models other than standalone BERT is new model compared to?",
+      "method": "hybrid",
+      "gold_chunk_ids": [
+        "qasper:1910.07181:s10:p2"
+      ],
+      "gold_rank": 1,
+      "top_chunk_id": "qasper:1910.07181:s10:p2",
+      "retrieved_chunk_ids": [
+        "qasper:1910.07181:s10:p2",
+        "qasper:1909.00100:s2:p1",
+        "qasper:1909.00100:s4:p2",
+        "qasper:1908.08593:s2:p4",
+        "qasper:1911.03894:s3:p1"
+      ]
+    },
+    {
+      "question_id": "32537fdf0d4f76f641086944b413b2f756097e5e",
+      "category": "qasper_real",
+      "query": "How much is representaton improved for rare/medum frequency words compared to standalone BERT and previous work?",
+      "method": "hybrid",
+      "gold_chunk_ids": [
+        "qasper:1910.07181:s10:p2"
+      ],
+      "gold_rank": 1,
+      "top_chunk_id": "qasper:1910.07181:s10:p2",
+      "retrieved_chunk_ids": [
+        "qasper:1910.07181:s10:p2",
+        "qasper:1911.12579:s25:p7",
+        "qasper:1910.07181:s12:p0",
+        "qasper:1908.08593:s1:p0",
+        "qasper:1910.07181:s9:p1"
+      ]
+    },
+    {
+      "question_id": "ef081d78be17ef2af792e7e919d15a235b8d7275",
+      "category": "qasper_real",
+      "query": "What are three downstream task datasets?",
+      "method": "hybrid",
+      "gold_chunk_ids": [
+        "qasper:1910.07181:s11:p0"
+      ],
+      "gold_rank": 2,
+      "top_chunk_id": "qasper:1910.07181:s11:p4",
+      "retrieved_chunk_ids": [
+        "qasper:1910.07181:s11:p4",
+        "qasper:1910.07181:s11:p0",
+        "qasper:1910.07181:s11:p3",
+        "qasper:1910.07181:s11:p2",
+        "qasper:1910.07181:s11:p5"
+      ]
+    },
+    {
+      "question_id": "537b2d7799124d633892a1ef1a485b3b071b303d",
+      "category": "qasper_real",
+      "query": "What is dataset for word probing task?",
+      "method": "hybrid",
+      "gold_chunk_ids": [
+        "qasper:1910.07181:s10:p0"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:1910.07181:s1:p2",
+      "retrieved_chunk_ids": [
+        "qasper:1910.07181:s1:p2",
+        "qasper:1910.07181:s10:p1",
+        "qasper:1910.07181:s11:p4",
+        "qasper:1910.07181:s0:p2",
+        "qasper:1910.07181:s5:p0"
+      ]
+    },
+    {
+      "question_id": "735f58e28d84ee92024a36bc348cfac2ee114409",
+      "category": "qasper_real",
+      "query": "Are there datasets with relation tuples annotated, how big are datasets available?",
+      "method": "hybrid",
+      "gold_chunk_ids": [
+        "qasper:1911.09886:s9:p0"
+      ],
+      "gold_rank": 1,
+      "top_chunk_id": "qasper:1911.09886:s9:p0",
+      "retrieved_chunk_ids": [
+        "qasper:1911.09886:s9:p0",
+        "qasper:1910.07181:s1:p2",
+        "qasper:1911.09886:s0:p3",
+        "qasper:1911.09886:s1:p0",
+        "qasper:1911.09886:s0:p2"
+      ]
+    },
+    {
+      "question_id": "710fa8b3e74ee63d2acc20af19f95f7702b7ce5e",
+      "category": "qasper_real",
+      "query": "Which one of two proposed approaches performed better in experiments?",
+      "method": "hybrid",
+      "gold_chunk_ids": [
+        "qasper:1911.09886:s12:p0"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:1911.09886:s17:p0",
+      "retrieved_chunk_ids": [
+        "qasper:1911.09886:s17:p0",
+        "qasper:1908.08593:s2:p0",
+        "qasper:1909.00542:s2:p7",
+        "qasper:1908.08593:s3:p0",
+        "qasper:2004.03744:s2:p2"
+      ]
+    },
+    {
+      "question_id": "56123dd42cf5c77fc9a88fc311ed2e1eb672126e",
+      "category": "qasper_real",
+      "query": "What is previous work authors reffer to?",
+      "method": "hybrid",
+      "gold_chunk_ids": [
+        "qasper:1911.09886:s11:p0",
+        "qasper:1911.09886:s11:p1",
+        "qasper:1911.09886:s11:p2",
+        "qasper:1911.09886:s11:p3",
+        "qasper:1911.09886:s11:p4",
+        "qasper:1911.09886:s11:p5",
+        "qasper:1911.09886:s11:p6"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:2003.06279:s1:p1",
+      "retrieved_chunk_ids": [
+        "qasper:2003.06279:s1:p1",
+        "qasper:2004.03744:s2:p2",
+        "qasper:1908.08593:s17:p2",
+        "qasper:2003.06279:s9:p0",
+        "qasper:2003.00639:s4:p0"
+      ]
+    },
+    {
+      "question_id": "1898f999626f9a6da637bd8b4857e5eddf2fc729",
+      "category": "qasper_real",
+      "query": "How higher are F1 scores compared to previous work?",
+      "method": "hybrid",
+      "gold_chunk_ids": [
+        "qasper:1911.09886:s12:p0"
+      ],
+      "gold_rank": 1,
+      "top_chunk_id": "qasper:1911.09886:s12:p0",
+      "retrieved_chunk_ids": [
+        "qasper:1911.09886:s12:p0",
+        "qasper:1911.09886:s14:p0",
+        "qasper:1912.10435:s9:p0",
+        "qasper:1912.10435:s9:p2",
+        "qasper:1911.09886:s14:p1"
+      ]
+    },
+    {
+      "question_id": "8de64483ae96c0a03a8e527950582f127b43dceb",
+      "category": "qasper_real",
+      "query": "Do they report results only on English data?",
+      "method": "hybrid",
+      "gold_chunk_ids": [
+        "qasper:1912.05238:s4:p2",
+        "qasper:1912.05238:s4:p4"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:1911.03894:s15:p0",
+      "retrieved_chunk_ids": [
+        "qasper:1911.03894:s15:p0",
+        "qasper:1909.00100:s15:p94",
+        "qasper:1910.07181:s5:p3",
+        "qasper:1909.00100:s15:p196",
+        "qasper:1909.00100:s10:p0"
+      ]
+    },
+    {
+      "question_id": "4d062673b714998800e61f66b6ccbf7eef5be2ac",
+      "category": "qasper_real",
+      "query": "What is the Moral Choice Machine?",
+      "method": "hybrid",
+      "gold_chunk_ids": [
+        "qasper:1912.05238:s6:p0"
+      ],
+      "gold_rank": 3,
+      "top_chunk_id": "qasper:1912.05238:s4:p9",
+      "retrieved_chunk_ids": [
+        "qasper:1912.05238:s4:p9",
+        "qasper:1912.05238:s0:p4",
+        "qasper:1912.05238:s6:p0",
+        "qasper:1912.05238:s5:p1",
+        "qasper:1912.05238:s9:p0"
+      ]
+    },
+    {
+      "question_id": "f4238f558d6ddf3849497a130b3a6ad866ff38b3",
+      "category": "qasper_real",
+      "query": "How is moral bias measured?",
+      "method": "hybrid",
+      "gold_chunk_ids": [
+        "qasper:1912.05238:s2:p1",
+        "qasper:1912.05238:s2:p2"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:1912.05238:s3:p2",
+      "retrieved_chunk_ids": [
+        "qasper:1912.05238:s3:p2",
+        "qasper:1912.05238:s3:p0",
+        "qasper:1912.05238:s2:p3",
+        "qasper:1912.05238:s4:p8",
+        "qasper:1912.05238:s11:p0"
+      ]
+    },
+    {
+      "question_id": "96dcabaa8b6bd89b032da609e709900a1569a0f9",
+      "category": "qasper_real",
+      "query": "How do the authors define deontological ethical reasoning?",
+      "method": "hybrid",
+      "gold_chunk_ids": [
+        "qasper:1912.05238:s1:p2"
+      ],
+      "gold_rank": 1,
+      "top_chunk_id": "qasper:1912.05238:s1:p2",
+      "retrieved_chunk_ids": [
+        "qasper:1912.05238:s1:p2",
+        "qasper:1912.05238:s5:p0",
+        "qasper:1912.05238:s0:p3",
+        "qasper:1912.05238:s5:p1",
+        "qasper:1912.05238:s0:p2"
+      ]
+    },
+    {
+      "question_id": "4cc5ba404d6a47363f119d9db7266157d3bb246b",
+      "category": "qasper_real",
+      "query": "What off-the-shelf QA model was used to answer sub-questions?",
+      "method": "hybrid",
+      "gold_chunk_ids": [
+        "qasper:2002.09758:s33:p0"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:2002.09758:s8:p0",
+      "retrieved_chunk_ids": [
+        "qasper:2002.09758:s8:p0",
+        "qasper:2002.09758:s29:p0",
+        "qasper:2002.09758:s27:p0",
+        "qasper:2002.09758:s0:p3",
+        "qasper:2002.09758:s0:p0"
+      ]
+    },
+    {
+      "question_id": "1d72770d075b22411ec86d8bdee532f8c643740b",
+      "category": "qasper_real",
+      "query": "How large is the improvement over the baseline?",
+      "method": "hybrid",
+      "gold_chunk_ids": [
+        "qasper:2002.09758:s25:p0"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:1912.10435:s9:p7",
+      "retrieved_chunk_ids": [
+        "qasper:1912.10435:s9:p7",
+        "qasper:1911.02821:s5:p1",
+        "qasper:2003.06279:s5:p1",
+        "qasper:1912.10435:s10:p0",
+        "qasper:2003.06279:s4:p1"
+      ]
+    },
+    {
+      "question_id": "af1439c68b28c27848203f863675946380d28943",
+      "category": "qasper_real",
+      "query": "What is the strong baseline that this work outperforms?",
+      "method": "hybrid",
+      "gold_chunk_ids": [
+        "qasper:2002.09758:s20:p0",
+        "qasper:2002.09758:s20:p1",
+        "qasper:2002.09758:s25:p0"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:1911.02821:s5:p0",
+      "retrieved_chunk_ids": [
+        "qasper:1911.02821:s5:p0",
+        "qasper:1909.00100:s11:p0",
+        "qasper:1911.03894:s18:p2",
+        "qasper:1911.03894:s14:p3",
+        "qasper:1911.03894:s16:p0"
+      ]
+    },
+    {
+      "question_id": "5c0b8c1b649df1b07d9af3aa9154ac340ec8b81c",
+      "category": "qasper_real",
+      "query": "Is the model compared against a linear regression baseline?",
+      "method": "hybrid",
+      "gold_chunk_ids": [
+        "qasper:1912.10806:s12:p3"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:1909.00542:s3:p2",
+      "retrieved_chunk_ids": [
+        "qasper:1909.00542:s3:p2",
+        "qasper:1909.00542:s5:p1",
+        "qasper:1909.00542:s2:p8",
+        "qasper:1909.00542:s2:p2",
+        "qasper:1909.00542:s2:p10"
+      ]
+    },
+    {
+      "question_id": "3b391cd58cf6a61fe8c8eff2095e33794e80f0e3",
+      "category": "qasper_real",
+      "query": "What is the dataset used in the paper?",
+      "method": "hybrid",
+      "gold_chunk_ids": [
+        "qasper:1912.10806:s8:p0"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:1909.04181:s0:p1",
+      "retrieved_chunk_ids": [
+        "qasper:1909.04181:s0:p1",
+        "qasper:2003.06279:s2:p18",
+        "qasper:1911.09886:s9:p0",
+        "qasper:2003.06279:s2:p11",
+        "qasper:1908.07816:s7:p2"
+      ]
+    },
+    {
+      "question_id": "4d8ca3f7aa65dcb42eba72acf3584d37b416b19c",
+      "category": "qasper_real",
+      "query": "How does the differential privacy mechanism work?",
+      "method": "hybrid",
+      "gold_chunk_ids": [
+        "qasper:1912.10806:s0:p4",
+        "qasper:1912.10806:s6:p0"
+      ],
+      "gold_rank": 1,
+      "top_chunk_id": "qasper:1912.10806:s6:p0",
+      "retrieved_chunk_ids": [
+        "qasper:1912.10806:s6:p0",
+        "qasper:1912.10806:s6:p1",
+        "qasper:1912.10806:s10:p0",
+        "qasper:1912.10806:s14:p20",
+        "qasper:1912.10806:s14:p7"
+      ]
+    },
+    {
+      "question_id": "5b6aec1b88c9832075cd343f59158078a91f3597",
+      "category": "qasper_real",
+      "query": "How does proposed word embeddings compare to Sindhi fastText word representations?",
+      "method": "hybrid",
+      "gold_chunk_ids": [
+        "qasper:1911.12579:s27:p0",
+        "qasper:1911.12579:s27:p1"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:1911.12579:s0:p7",
+      "retrieved_chunk_ids": [
+        "qasper:1911.12579:s0:p7",
+        "qasper:1911.12579:s31:p1",
+        "qasper:1911.12579:s28:p0",
+        "qasper:2003.06279:s2:p6",
+        "qasper:1911.03894:s2:p0"
+      ]
+    },
+    {
+      "question_id": "a6717e334c53ebbb87e5ef878a77ef46866e3aed",
+      "category": "qasper_real",
+      "query": "Are trained word embeddings used for any other NLP task?",
+      "method": "hybrid",
+      "gold_chunk_ids": [
+        "qasper:1911.12579:s30:p0"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:1911.12579:s6:p0",
+      "retrieved_chunk_ids": [
+        "qasper:1911.12579:s6:p0",
+        "qasper:1911.12579:s0:p2",
+        "qasper:1911.02821:s7:p0",
+        "qasper:1911.03894:s2:p0",
+        "qasper:1911.12579:s1:p2"
+      ]
+    },
+    {
+      "question_id": "a1064307a19cd7add32163a70b6623278a557946",
+      "category": "qasper_real",
+      "query": "How many uniue words are in the dataset?",
+      "method": "hybrid",
+      "gold_chunk_ids": [
+        "qasper:1911.12579:s19:p0"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:1910.07181:s1:p2",
+      "retrieved_chunk_ids": [
+        "qasper:1910.07181:s1:p2",
+        "qasper:2002.11893:s9:p0",
+        "qasper:2003.06279:s1:p4",
+        "qasper:1910.07181:s5:p1",
+        "qasper:2002.06053:s5:p0"
+      ]
+    },
+    {
+      "question_id": "8cb9006bcbd2f390aadc6b70d54ee98c674e45cc",
+      "category": "qasper_real",
+      "query": "How is the data collected, which web resources were used?",
+      "method": "hybrid",
+      "gold_chunk_ids": [
+        "qasper:1911.12579:s4:p0"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:1911.12579:s5:p3",
+      "retrieved_chunk_ids": [
+        "qasper:1911.12579:s5:p3",
+        "qasper:1911.12579:s19:p0",
+        "qasper:2002.11893:s2:p1",
+        "qasper:1912.10806:s8:p0",
+        "qasper:1911.12579:s0:p3"
+      ]
+    },
+    {
+      "question_id": "8d989490c5392492ad66e6a5047b7d74cc719f30",
+      "category": "qasper_real",
+      "query": "What ensemble methods are used for best model?",
+      "method": "hybrid",
+      "gold_chunk_ids": [
+        "qasper:1912.10435:s8:p2"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:1912.10435:s8:p1",
+      "retrieved_chunk_ids": [
+        "qasper:1912.10435:s8:p1",
+        "qasper:2003.06279:s2:p11",
+        "qasper:1912.10435:s9:p3",
+        "qasper:2002.09758:s33:p0",
+        "qasper:1912.10435:s8:p0"
+      ]
+    },
+    {
+      "question_id": "a7829abed2186f757a59d3da44893c0172c7012b",
+      "category": "qasper_real",
+      "query": "What hyperparameters have been tuned?",
+      "method": "hybrid",
+      "gold_chunk_ids": [
+        "qasper:1912.10435:s2:p0"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:1912.10435:s7:p0",
+      "retrieved_chunk_ids": [
+        "qasper:1912.10435:s7:p0",
+        "qasper:1909.00100:s12:p1",
+        "qasper:1909.00100:s12:p5",
+        "qasper:1909.00100:s12:p3",
+        "qasper:1909.00100:s12:p0"
+      ]
+    },
+    {
+      "question_id": "707db46938d16647bf4b6407b2da84b5c7ab4a81",
+      "category": "qasper_real",
+      "query": "How much F1 was improved after adding skip connections?",
+      "method": "hybrid",
+      "gold_chunk_ids": [
+        "qasper:1912.10435:s9:p0"
+      ],
+      "gold_rank": 2,
+      "top_chunk_id": "qasper:1912.10435:s9:p1",
+      "retrieved_chunk_ids": [
+        "qasper:1912.10435:s9:p1",
+        "qasper:1912.10435:s9:p0",
+        "qasper:1912.10435:s5:p0",
+        "qasper:1911.09886:s14:p0",
+        "qasper:1911.02821:s5:p1"
+      ]
+    },
+    {
+      "question_id": "71f2b368228a748fd348f1abf540236568a61b07",
+      "category": "qasper_real",
+      "query": "What is CamemBERT trained on?",
+      "method": "hybrid",
+      "gold_chunk_ids": [
+        "qasper:1911.03894:s9:p3"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:1911.03894:s4:p1",
+      "retrieved_chunk_ids": [
+        "qasper:1911.03894:s4:p1",
+        "qasper:1911.03894:s16:p0",
+        "qasper:1911.03894:s5:p0",
+        "qasper:1911.03894:s4:p2",
+        "qasper:1911.03894:s4:p0"
+      ]
+    },
+    {
+      "question_id": "d3d4eef047aa01391e3e5d613a0f1f786ae7cfc7",
+      "category": "qasper_real",
+      "query": "Which tasks does CamemBERT not improve on?",
+      "method": "hybrid",
+      "gold_chunk_ids": [
+        "qasper:1911.03894:s20:p0"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:1911.03894:s16:p0",
+      "retrieved_chunk_ids": [
+        "qasper:1911.03894:s16:p0",
+        "qasper:1911.03894:s6:p3",
+        "qasper:1911.03894:s22:p0",
+        "qasper:1911.03894:s18:p2",
+        "qasper:1911.03894:s11:p1"
+      ]
+    },
+    {
+      "question_id": "63723c6b398100bba5dc21754451f503cb91c9b8",
+      "category": "qasper_real",
+      "query": "What is the state of the art?",
+      "method": "hybrid",
+      "gold_chunk_ids": [
+        "qasper:1911.03894:s11:p2",
+        "qasper:1911.03894:s13:p2",
+        "qasper:1911.03894:s15:p1"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:1909.00100:s2:p1",
+      "retrieved_chunk_ids": [
+        "qasper:1909.00100:s2:p1",
+        "qasper:1908.08593:s0:p1",
+        "qasper:2002.11893:s12:p0",
+        "qasper:1911.09886:s11:p0",
+        "qasper:2004.03744:s0:p2"
+      ]
+    },
+    {
+      "question_id": "5471766ca7c995dd7f0f449407902b32ac9db269",
+      "category": "qasper_real",
+      "query": "How much better was results of CamemBERT than previous results on these tasks?",
+      "method": "hybrid",
+      "gold_chunk_ids": [
+        "qasper:1911.03894:s19:p1",
+        "qasper:1911.03894:s20:p0",
+        "qasper:1911.03894:s21:p0"
+      ],
+      "gold_rank": 3,
+      "top_chunk_id": "qasper:1911.03894:s22:p0",
+      "retrieved_chunk_ids": [
+        "qasper:1911.03894:s22:p0",
+        "qasper:1911.03894:s16:p0",
+        "qasper:1911.03894:s21:p0",
+        "qasper:1911.03894:s19:p0",
+        "qasper:1911.02821:s5:p1"
+      ]
+    },
+    {
+      "question_id": "dc49746fc98647445599da9d17bc004bafdc4579",
+      "category": "qasper_real",
+      "query": "Was CamemBERT compared against multilingual BERT on these tasks?",
+      "method": "hybrid",
+      "gold_chunk_ids": [
+        "qasper:1911.03894:s11:p0"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:1909.00100:s2:p1",
+      "retrieved_chunk_ids": [
+        "qasper:1909.00100:s2:p1",
+        "qasper:1911.03894:s22:p0",
+        "qasper:1909.00100:s2:p0",
+        "qasper:1909.00100:s2:p2",
+        "qasper:1908.08593:s1:p0"
+      ]
+    },
+    {
+      "question_id": "cfffc94518d64cb3c8789395707e4336676e0345",
+      "category": "qasper_real",
+      "query": "What approaches without reinforcement learning have been tried?",
+      "method": "hybrid",
+      "gold_chunk_ids": [
+        "qasper:1909.00542:s2:p11",
+        "qasper:1909.00542:s3:p0",
+        "qasper:1909.00542:s3:p1"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:1909.00542:s4:p7",
+      "retrieved_chunk_ids": [
+        "qasper:1909.00542:s4:p7",
+        "qasper:1909.00542:s7:p2",
+        "qasper:1909.00542:s4:p5",
+        "qasper:1909.00542:s4:p3",
+        "qasper:1909.00542:s4:p4"
+      ]
+    },
+    {
+      "question_id": "f60629c01f99de3f68365833ee115b95a3388699",
+      "category": "qasper_real",
+      "query": "What classification approaches were experimented for this task?",
+      "method": "hybrid",
+      "gold_chunk_ids": [
+        "qasper:1909.00542:s2:p11",
+        "qasper:1909.00542:s3:p1"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:1909.00542:s2:p3",
+      "retrieved_chunk_ids": [
+        "qasper:1909.00542:s2:p3",
+        "qasper:2003.06279:s2:p16",
+        "qasper:1909.00542:s7:p0",
+        "qasper:1908.08593:s2:p0",
+        "qasper:1908.08593:s2:p1"
+      ]
+    },
+    {
+      "question_id": "a7cb4f8e29fd2f3d1787df64cd981a6318b65896",
+      "category": "qasper_real",
+      "query": "Did classification models perform better than previous regression one?",
+      "method": "hybrid",
+      "gold_chunk_ids": [
+        "qasper:1909.00542:s0:p2"
+      ],
+      "gold_rank": 1,
+      "top_chunk_id": "qasper:1909.00542:s0:p2",
+      "retrieved_chunk_ids": [
+        "qasper:1909.00542:s0:p2",
+        "qasper:1909.00542:s2:p12",
+        "qasper:1909.00542:s2:p7",
+        "qasper:1909.00542:s2:p1",
+        "qasper:1909.00542:s2:p13"
+      ]
+    },
+    {
+      "question_id": "a45edc04277a458911086752af4f17405501230f",
+      "category": "qasper_real",
+      "query": "Are datasets publicly available?",
+      "method": "hybrid",
+      "gold_chunk_ids": [
+        "qasper:2002.06053:s29:p0"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:1910.07181:s1:p2",
+      "retrieved_chunk_ids": [
+        "qasper:1910.07181:s1:p2",
+        "qasper:2002.11893:s0:p6",
+        "qasper:1910.07181:s5:p3",
+        "qasper:2002.06053:s0:p3",
+        "qasper:1910.07181:s0:p11"
+      ]
+    },
+    {
+      "question_id": "8c8a32592184c88f61fac1eef12c7d233dbec9dc",
+      "category": "qasper_real",
+      "query": "Are this models usually semi/supervised or unsupervised?",
+      "method": "hybrid",
+      "gold_chunk_ids": [
+        "qasper:2002.06053:s24:p3",
+        "qasper:2002.06053:s24:p4",
+        "qasper:2002.06053:s25:p0"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:2002.09758:s42:p1",
+      "retrieved_chunk_ids": [
+        "qasper:2002.09758:s42:p1",
+        "qasper:2002.09758:s42:p0",
+        "qasper:2002.09758:s1:p1",
+        "qasper:2003.06279:s2:p16",
+        "qasper:1910.07181:s4:p4"
+      ]
+    },
+    {
+      "question_id": "16646ee77975fed372b76ce639e2664ae2105dcf",
+      "category": "qasper_real",
+      "query": "Is there any concrete example in the paper that shows that this approach had huge impact on drug discovery?",
+      "method": "hybrid",
+      "gold_chunk_ids": [
+        "qasper:2002.06053:s23:p2"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:2002.06053:s0:p4",
+      "retrieved_chunk_ids": [
+        "qasper:2002.06053:s0:p4",
+        "qasper:2002.06053:s31:p0",
+        "qasper:2002.06053:s0:p0",
+        "qasper:2002.06053:s28:p0",
+        "qasper:1909.00542:s2:p0"
+      ]
+    },
+    {
+      "question_id": "e96adf8466e67bd19f345578d5a6dc68fd0279a1",
+      "category": "qasper_real",
+      "query": "Is text-to-image synthesis trained is suppervized or unsuppervized manner?",
+      "method": "hybrid",
+      "gold_chunk_ids": [
+        "qasper:1910.09399:s12:p1",
+        "qasper:1910.09399:s5:p4"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:1910.09399:s2:p0",
+      "retrieved_chunk_ids": [
+        "qasper:1910.09399:s2:p0",
+        "qasper:1910.09399:s25:p0",
+        "qasper:1910.09399:s17:p1",
+        "qasper:1910.09399:s29:p1",
+        "qasper:1910.09399:s1:p0"
+      ]
+    },
+    {
+      "question_id": "c1477a6c86bd1670dd17407590948000c9a6b7c6",
+      "category": "qasper_real",
+      "query": "What challenges remain unresolved?",
+      "method": "hybrid",
+      "gold_chunk_ids": [
+        "qasper:1910.09399:s34:p1"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:2002.06053:s27:p0",
+      "retrieved_chunk_ids": [
+        "qasper:2002.06053:s27:p0",
+        "qasper:1909.00542:s1:p0",
+        "qasper:1908.08593:s2:p2",
+        "qasper:2002.06053:s0:p3",
+        "qasper:2002.06053:s29:p0"
+      ]
+    },
+    {
+      "question_id": "e020677261d739c35c6f075cde6937d0098ace7f",
+      "category": "qasper_real",
+      "query": "What is the conclusion of comparison of proposed solution?",
+      "method": "hybrid",
+      "gold_chunk_ids": [
+        "qasper:1910.09399:s32:p0",
+        "qasper:1910.09399:s32:p1",
+        "qasper:1910.09399:s32:p2"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:2003.00639:s14:p0",
+      "retrieved_chunk_ids": [
+        "qasper:2003.00639:s14:p0",
+        "qasper:1908.08593:s17:p0",
+        "qasper:1912.05238:s0:p5",
+        "qasper:1908.08593:s2:p2",
+        "qasper:1910.07181:s0:p9"
+      ]
+    },
+    {
+      "question_id": "6389d5a152151fb05aae00b53b521c117d7b5e54",
+      "category": "qasper_real",
+      "query": "What is typical GAN architecture for each text-to-image synhesis group?",
+      "method": "hybrid",
+      "gold_chunk_ids": [
+        "qasper:1910.09399:s9:p0"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:1910.09399:s22:p0",
+      "retrieved_chunk_ids": [
+        "qasper:1910.09399:s22:p0",
+        "qasper:1910.09399:s10:p7",
+        "qasper:1910.09399:s13:p0",
+        "qasper:1910.09399:s10:p3",
+        "qasper:1910.09399:s4:p0"
+      ]
+    },
+    {
+      "question_id": "f33236ebd6f5a9ccb9b9dbf05ac17c3724f93f91",
+      "category": "qasper_real",
+      "query": "Is model explanation output evaluated, what metric was used?",
+      "method": "hybrid",
+      "gold_chunk_ids": [
+        "qasper:2004.03744:s2:p9"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:2004.03744:s14:p1",
+      "retrieved_chunk_ids": [
+        "qasper:2004.03744:s14:p1",
+        "qasper:1912.10435:s9:p2",
+        "qasper:2004.03744:s7:p1",
+        "qasper:1908.07816:s10:p1",
+        "qasper:1911.03894:s14:p4"
+      ]
+    },
+    {
+      "question_id": "66bf0d61ffc321f15e7347aaed191223f4ce4b4a",
+      "category": "qasper_real",
+      "query": "How many annotators are used to write natural language explanations to SNLI-VE-2.0?",
+      "method": "hybrid",
+      "gold_chunk_ids": [
+        "qasper:2004.03744:s23:p0"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:2004.03744:s7:p2",
+      "retrieved_chunk_ids": [
+        "qasper:2004.03744:s7:p2",
+        "qasper:2004.03744:s0:p4",
+        "qasper:2004.03744:s7:p0",
+        "qasper:2004.03744:s6:p0",
+        "qasper:2004.03744:s20:p0"
+      ]
+    },
+    {
+      "question_id": "5dfa59c116e0ceb428efd99bab19731aa3df4bbd",
+      "category": "qasper_real",
+      "query": "How many natural language explanations are human-written?",
+      "method": "hybrid",
+      "gold_chunk_ids": [
+        "qasper:2004.03744:s22:p0"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:2004.03744:s6:p0",
+      "retrieved_chunk_ids": [
+        "qasper:2004.03744:s6:p0",
+        "qasper:2004.03744:s14:p1",
+        "qasper:2004.03744:s19:p0",
+        "qasper:2004.03744:s7:p1",
+        "qasper:2004.03744:s18:p2"
+      ]
+    },
+    {
+      "question_id": "0c557b408183630d1c6c325b5fb9ff1573661290",
+      "category": "qasper_real",
+      "query": "How much is performance difference of existing model between original and corrected corpus?",
+      "method": "hybrid",
+      "gold_chunk_ids": [
+        "qasper:2004.03744:s5:p1"
+      ],
+      "gold_rank": 5,
+      "top_chunk_id": "qasper:2003.06279:s4:p7",
+      "retrieved_chunk_ids": [
+        "qasper:2003.06279:s4:p7",
+        "qasper:2002.11893:s17:p6",
+        "qasper:2004.03744:s2:p0",
+        "qasper:2003.06279:s4:p1",
+        "qasper:2004.03744:s5:p1"
+      ]
+    },
+    {
+      "question_id": "a08b5018943d4428f067c08077bfff1af3de9703",
+      "category": "qasper_real",
+      "query": "What is the class with highest error rate in SNLI-VE?",
+      "method": "hybrid",
+      "gold_chunk_ids": [
+        "qasper:2004.03744:s0:p1"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:2004.03744:s2:p8",
+      "retrieved_chunk_ids": [
+        "qasper:2004.03744:s2:p8",
+        "qasper:2004.03744:s22:p0",
+        "qasper:2004.03744:s3:p0",
+        "qasper:2004.03744:s0:p3",
+        "qasper:2004.03744:s20:p0"
+      ]
+    },
+    {
+      "question_id": "6b4de7fef3a543215f16042ce6a29186bf84fea4",
+      "category": "qasper_real",
+      "query": "What pre-trained models did they compare to?",
+      "method": "hybrid",
+      "gold_chunk_ids": [
+        "qasper:1911.02821:s4:p0"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:2002.09758:s16:p0",
+      "retrieved_chunk_ids": [
+        "qasper:2002.09758:s16:p0",
+        "qasper:1908.08593:s2:p4",
+        "qasper:1908.08593:s9:p0",
+        "qasper:1908.08593:s2:p2",
+        "qasper:1910.07181:s4:p4"
+      ]
+    },
+    {
+      "question_id": "3a62dd5fece70f8bf876dcbb131223682e3c54b7",
+      "category": "qasper_real",
+      "query": "How does the fusion method work?",
+      "method": "hybrid",
+      "gold_chunk_ids": [
+        "qasper:1911.02821:s2:p5"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:1911.02821:s6:p0",
+      "retrieved_chunk_ids": [
+        "qasper:1911.02821:s6:p0",
+        "qasper:1911.09886:s11:p2",
+        "qasper:1908.08593:s2:p1",
+        "qasper:1911.09886:s11:p3",
+        "qasper:2003.06279:s1:p4"
+      ]
+    },
+    {
+      "question_id": "34fab25d9ceb9c5942daf4ebdab6c5dd4ff9d3db",
+      "category": "qasper_real",
+      "query": "What dataset did they use?",
+      "method": "hybrid",
+      "gold_chunk_ids": [
+        "qasper:1911.02821:s5:p0"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:1908.08593:s2:p1",
+      "retrieved_chunk_ids": [
+        "qasper:1908.08593:s2:p1",
+        "qasper:1909.04181:s1:p0",
+        "qasper:1908.08593:s2:p2",
+        "qasper:1908.07816:s7:p3",
+        "qasper:1909.04181:s0:p0"
+      ]
+    },
+    {
+      "question_id": "2c20426c003f7e3053f8e6c333f8bb744f6f31f8",
+      "category": "qasper_real",
+      "query": "What benchmarks did they experiment on?",
+      "method": "hybrid",
+      "gold_chunk_ids": [
+        "qasper:1911.02821:s4:p1"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:1911.02821:s5:p0",
+      "retrieved_chunk_ids": [
+        "qasper:1911.02821:s5:p0",
+        "qasper:1908.08593:s2:p1",
+        "qasper:1911.03894:s16:p0",
+        "qasper:1908.08593:s2:p2",
+        "qasper:1911.03894:s18:p1"
+      ]
+    },
+    {
+      "question_id": "c034f38a570d40360c3551a6469486044585c63c",
+      "category": "qasper_real",
+      "query": "How better is proposed method than baselines perpexity wise?",
+      "method": "hybrid",
+      "gold_chunk_ids": [
+        "qasper:1908.07816:s11:p0"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:2003.06279:s5:p2",
+      "retrieved_chunk_ids": [
+        "qasper:2003.06279:s5:p2",
+        "qasper:1912.10806:s14:p1",
+        "qasper:1908.08593:s2:p0",
+        "qasper:1911.12579:s14:p0",
+        "qasper:1911.12579:s24:p0"
+      ]
+    },
+    {
+      "question_id": "9cbea686732b5b85f77868ca47d2f93cf34516ed",
+      "category": "qasper_real",
+      "query": "How does the multi-turn dialog system learns?",
+      "method": "hybrid",
+      "gold_chunk_ids": [
+        "qasper:1908.07816:s2:p4"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:1908.07816:s0:p2",
+      "retrieved_chunk_ids": [
+        "qasper:1908.07816:s0:p2",
+        "qasper:2003.00639:s11:p1",
+        "qasper:2003.00639:s11:p3",
+        "qasper:1908.08593:s2:p1",
+        "qasper:2002.09758:s46:p0"
+      ]
+    },
+    {
+      "question_id": "6aee16c4f319a190c2a451c1c099b66162299a28",
+      "category": "qasper_real",
+      "query": "How is human evaluation performed?",
+      "method": "hybrid",
+      "gold_chunk_ids": [
+        "qasper:1908.07816:s10:p1"
+      ],
+      "gold_rank": 2,
+      "top_chunk_id": "qasper:1908.07816:s9:p0",
+      "retrieved_chunk_ids": [
+        "qasper:1908.07816:s9:p0",
+        "qasper:1908.07816:s10:p1",
+        "qasper:1909.00542:s5:p0",
+        "qasper:1908.07816:s10:p0",
+        "qasper:2003.00639:s14:p1"
+      ]
+    },
+    {
+      "question_id": "4d4b9ff2da51b9e0255e5fab0b41dfe49a0d9012",
+      "category": "qasper_real",
+      "query": "Is some other metrics other then perplexity measured?",
+      "method": "hybrid",
+      "gold_chunk_ids": [
+        "qasper:1908.07816:s9:p0"
+      ],
+      "gold_rank": 2,
+      "top_chunk_id": "qasper:1908.07816:s11:p0",
+      "retrieved_chunk_ids": [
+        "qasper:1908.07816:s11:p0",
+        "qasper:1908.07816:s9:p0",
+        "qasper:1909.00542:s7:p1",
+        "qasper:1911.09886:s11:p5",
+        "qasper:1911.12579:s18:p1"
+      ]
+    },
+    {
+      "question_id": "180047e1ccfc7c98f093b8d1e1d0479a4cca99cc",
+      "category": "qasper_real",
+      "query": "What two baseline models are used?",
+      "method": "hybrid",
+      "gold_chunk_ids": [
+        "qasper:1908.07816:s8:p0"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:1912.10435:s9:p5",
+      "retrieved_chunk_ids": [
+        "qasper:1912.10435:s9:p5",
+        "qasper:1911.09886:s11:p0",
+        "qasper:1908.08593:s2:p2",
+        "qasper:1910.07181:s2:p1",
+        "qasper:1909.00100:s0:p0"
+      ]
+    },
+    {
+      "question_id": "ec8043290356fcb871c2f5d752a9fe93a94c2f71",
+      "category": "qasper_real",
+      "query": "What other natural processing tasks authors think could be studied by using word embeddings?",
+      "method": "hybrid",
+      "gold_chunk_ids": [
+        "qasper:2003.06279:s6:p2"
+      ],
+      "gold_rank": 1,
+      "top_chunk_id": "qasper:2003.06279:s6:p2",
+      "retrieved_chunk_ids": [
+        "qasper:2003.06279:s6:p2",
+        "qasper:1911.03894:s1:p0",
+        "qasper:2003.06279:s6:p0",
+        "qasper:1911.12579:s6:p0",
+        "qasper:2003.06279:s2:p3"
+      ]
+    },
+    {
+      "question_id": "728c2fb445173fe117154a2a5482079caa42fe24",
+      "category": "qasper_real",
+      "query": "What is the reason that traditional co-occurrence networks fail in establishing links between similar words whenever they appear distant in the text?",
+      "method": "hybrid",
+      "gold_chunk_ids": [
+        "qasper:2003.06279:s0:p1",
+        "qasper:2003.06279:s0:p2"
+      ],
+      "gold_rank": 1,
+      "top_chunk_id": "qasper:2003.06279:s0:p2",
+      "retrieved_chunk_ids": [
+        "qasper:2003.06279:s0:p2",
+        "qasper:2003.06279:s6:p0",
+        "qasper:2003.06279:s2:p12",
+        "qasper:2003.06279:s1:p4",
+        "qasper:2003.06279:s0:p3"
+      ]
+    },
+    {
+      "question_id": "23d32666dfc29ed124f3aa4109e2527efa225fbc",
+      "category": "qasper_real",
+      "query": "Do the use word embeddings alone or they replace some previous features of the model with word embeddings?",
+      "method": "hybrid",
+      "gold_chunk_ids": [
+        "qasper:2003.06279:s0:p2"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:1909.00542:s4:p9",
+      "retrieved_chunk_ids": [
+        "qasper:1909.00542:s4:p9",
+        "qasper:1911.12579:s6:p0",
+        "qasper:1911.12579:s1:p3",
+        "qasper:1910.07181:s3:p3",
+        "qasper:1911.03894:s2:p0"
+      ]
+    },
+    {
+      "question_id": "076928bebde4dffcb404be216846d9d680310622",
+      "category": "qasper_real",
+      "query": "On what model architectures are previous co-occurence networks based?",
+      "method": "hybrid",
+      "gold_chunk_ids": [
+        "qasper:2003.06279:s0:p1"
+      ],
+      "gold_rank": 4,
+      "top_chunk_id": "qasper:2003.06279:s1:p3",
+      "retrieved_chunk_ids": [
+        "qasper:2003.06279:s1:p3",
+        "qasper:2003.06279:s1:p4",
+        "qasper:2003.06279:s1:p2",
+        "qasper:2003.06279:s0:p1",
+        "qasper:1910.07181:s0:p5"
+      ]
+    },
+    {
+      "question_id": "63eb31f613a41a3ddd86f599e743ed10e1cd07ba",
+      "category": "qasper_real",
+      "query": "What codemixed language pairs are evaluated?",
+      "method": "hybrid",
+      "gold_chunk_ids": [
+        "qasper:1909.00100:s10:p0"
+      ],
+      "gold_rank": 2,
+      "top_chunk_id": "qasper:1909.00100:s10:p2",
+      "retrieved_chunk_ids": [
+        "qasper:1909.00100:s10:p2",
+        "qasper:1909.00100:s10:p0",
+        "qasper:1911.12579:s18:p0",
+        "qasper:1911.03894:s14:p1",
+        "qasper:1909.00100:s10:p1"
+      ]
+    },
+    {
+      "question_id": "d2804ac0f068e9c498e33582af9c66906b26cac3",
+      "category": "qasper_real",
+      "query": "How do they compress the model?",
+      "method": "hybrid",
+      "gold_chunk_ids": [
+        "qasper:1909.00100:s5:p0",
+        "qasper:1909.00100:s5:p1",
+        "qasper:1909.00100:s5:p2"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:1910.07181:s4:p5",
+      "retrieved_chunk_ids": [
+        "qasper:1910.07181:s4:p5",
+        "qasper:1908.07816:s2:p4",
+        "qasper:1908.08593:s2:p1",
+        "qasper:1908.07816:s2:p2",
+        "qasper:1908.08593:s2:p3"
+      ]
+    },
+    {
+      "question_id": "e24fbcc8be922c43f6b6037cdf2bfd4c0a926c08",
+      "category": "qasper_real",
+      "query": "What is the multilingual baseline?",
+      "method": "hybrid",
+      "gold_chunk_ids": [
+        "qasper:1909.00100:s0:p0"
+      ],
+      "gold_rank": 1,
+      "top_chunk_id": "qasper:1909.00100:s0:p0",
+      "retrieved_chunk_ids": [
+        "qasper:1909.00100:s0:p0",
+        "qasper:1909.00100:s8:p0",
+        "qasper:1909.00100:s9:p2",
+        "qasper:1909.00100:s8:p2",
+        "qasper:1909.00100:s8:p1"
+      ]
+    },
+    {
+      "question_id": "1a252ffeaebdb189317aefd6c606652ba9677112",
+      "category": "qasper_real",
+      "query": "How much is performance improved by disabling attention in certain heads?",
+      "method": "hybrid",
+      "gold_chunk_ids": [
+        "qasper:1908.08593:s15:p0"
+      ],
+      "gold_rank": 2,
+      "top_chunk_id": "qasper:1908.08593:s14:p0",
+      "retrieved_chunk_ids": [
+        "qasper:1908.08593:s14:p0",
+        "qasper:1908.08593:s15:p0",
+        "qasper:1908.08593:s16:p0",
+        "qasper:1908.08593:s2:p3",
+        "qasper:1908.08593:s17:p1"
+      ]
+    },
+    {
+      "question_id": "da4d25dd9de09d16168788bb02ad600f5b0b3ba4",
+      "category": "qasper_real",
+      "query": "In which certain heads was attention disabled in experiments?",
+      "method": "hybrid",
+      "gold_chunk_ids": [
+        "qasper:1908.08593:s15:p0"
+      ],
+      "gold_rank": 1,
+      "top_chunk_id": "qasper:1908.08593:s15:p0",
+      "retrieved_chunk_ids": [
+        "qasper:1908.08593:s15:p0",
+        "qasper:1908.08593:s14:p0",
+        "qasper:1912.10435:s9:p4",
+        "qasper:1908.08593:s7:p0",
+        "qasper:1908.08593:s13:p0"
+      ]
+    },
+    {
+      "question_id": "2870fbce43a3cf6daf982f720137c008b30c60dc",
+      "category": "qasper_real",
+      "query": "What handcrafter features-of-interest are used?",
+      "method": "hybrid",
+      "gold_chunk_ids": [
+        "qasper:1908.08593:s10:p1"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:1908.08593:s2:p1",
+      "retrieved_chunk_ids": [
+        "qasper:1908.08593:s2:p1",
+        "qasper:1908.08593:s0:p2",
+        "qasper:2004.03744:s23:p1",
+        "qasper:1910.09399:s35:p0",
+        "qasper:1908.08593:s2:p3"
+      ]
+    },
+    {
+      "question_id": "65b579b2c62982e2ff154c8160288c2950d509f2",
+      "category": "qasper_real",
+      "query": "What subset of GLUE tasks is used?",
+      "method": "hybrid",
+      "gold_chunk_ids": [
+        "qasper:1908.08593:s2:p10",
+        "qasper:1908.08593:s2:p11",
+        "qasper:1908.08593:s2:p12",
+        "qasper:1908.08593:s2:p5",
+        "qasper:1908.08593:s2:p6",
+        "qasper:1908.08593:s2:p7",
+        "qasper:1908.08593:s2:p8",
+        "qasper:1908.08593:s2:p9"
+      ],
+      "gold_rank": 1,
+      "top_chunk_id": "qasper:1908.08593:s2:p5",
+      "retrieved_chunk_ids": [
+        "qasper:1908.08593:s2:p5",
+        "qasper:1911.03894:s0:p5",
+        "qasper:2004.03744:s23:p1",
+        "qasper:1908.08593:s2:p13",
+        "qasper:1911.03894:s16:p0"
+      ]
+    },
+    {
+      "question_id": "f416c6818a7a8acb7ec4682ed424ecdbd7dd6df1",
+      "category": "qasper_real",
+      "query": "How does framework automatically chooses different curricula at the evolving learning process according to the learning status of the neural dialogue generation model?",
+      "method": "hybrid",
+      "gold_chunk_ids": [
+        "qasper:2003.00639:s11:p1"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:2003.00639:s0:p3",
+      "retrieved_chunk_ids": [
+        "qasper:2003.00639:s0:p3",
+        "qasper:2003.00639:s21:p0",
+        "qasper:2003.00639:s11:p0",
+        "qasper:2003.00639:s9:p0",
+        "qasper:2003.00639:s20:p0"
+      ]
+    },
+    {
+      "question_id": "a1d422cb2e428333961370496ca281a1be99fdff",
+      "category": "qasper_real",
+      "query": "What human judgement metrics are used?",
+      "method": "hybrid",
+      "gold_chunk_ids": [
+        "qasper:2003.00639:s14:p1"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:1909.00542:s7:p1",
+      "retrieved_chunk_ids": [
+        "qasper:1909.00542:s7:p1",
+        "qasper:1908.07816:s9:p0",
+        "qasper:1909.00542:s5:p0",
+        "qasper:1908.07816:s10:p1",
+        "qasper:1909.00542:s0:p3"
+      ]
+    },
+    {
+      "question_id": "3de9bf4b0b667b3f1181da9f006da1354565bcbd",
+      "category": "qasper_real",
+      "query": "What automatic evaluation metrics are used?",
+      "method": "hybrid",
+      "gold_chunk_ids": [
+        "qasper:2003.00639:s12:p0"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:1909.00542:s7:p1",
+      "retrieved_chunk_ids": [
+        "qasper:1909.00542:s7:p1",
+        "qasper:1908.07816:s9:p0",
+        "qasper:1910.09399:s31:p0",
+        "qasper:1911.03894:s12:p1",
+        "qasper:1909.00542:s0:p3"
+      ]
+    },
+    {
+      "question_id": "1a1293e24f4924064e6fb9998658f5a329879109",
+      "category": "qasper_real",
+      "query": "What state of the art models were used in experiments?",
+      "method": "hybrid",
+      "gold_chunk_ids": [
+        "qasper:2003.00639:s12:p0"
+      ],
+      "gold_rank": 2,
+      "top_chunk_id": "qasper:1911.03894:s18:p2",
+      "retrieved_chunk_ids": [
+        "qasper:1911.03894:s18:p2",
+        "qasper:2003.00639:s12:p0",
+        "qasper:1911.09886:s11:p0",
+        "qasper:1908.08593:s3:p0",
+        "qasper:1911.09886:s0:p5"
+      ]
+    },
+    {
+      "question_id": "3ccd337f77c5d2f7294eb459ccc1770796c2eaef",
+      "category": "qasper_real",
+      "query": "What five dialogue attributes were analyzed?",
+      "method": "hybrid",
+      "gold_chunk_ids": [
+        "qasper:2003.00639:s2:p0",
+        "qasper:2003.00639:s3:p0",
+        "qasper:2003.00639:s4:p0",
+        "qasper:2003.00639:s5:p0",
+        "qasper:2003.00639:s6:p0"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:2003.00639:s8:p0",
+      "retrieved_chunk_ids": [
+        "qasper:2003.00639:s8:p0",
+        "qasper:2003.00639:s21:p0",
+        "qasper:2003.00639:s0:p4",
+        "qasper:2002.11893:s8:p2",
+        "qasper:2003.00639:s1:p0"
+      ]
+    },
+    {
+      "question_id": "2376c170c343e2305dac08ba5f5bda47c370357f",
+      "category": "qasper_real",
+      "query": "How was the dataset collected?",
+      "method": "hybrid",
+      "gold_chunk_ids": [
+        "qasper:2002.11893:s2:p0",
+        "qasper:2002.11893:s2:p1",
+        "qasper:2002.11893:s2:p2",
+        "qasper:2002.11893:s2:p3",
+        "qasper:2002.11893:s2:p4"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:1912.10806:s8:p0",
+      "retrieved_chunk_ids": [
+        "qasper:1912.10806:s8:p0",
+        "qasper:1911.12579:s19:p0",
+        "qasper:2004.03744:s1:p4",
+        "qasper:1908.07816:s7:p2",
+        "qasper:2004.03744:s6:p0"
+      ]
+    },
+    {
+      "question_id": "0137ecebd84a03b224eb5ca51d189283abb5f6d9",
+      "category": "qasper_real",
+      "query": "What are the benchmark models?",
+      "method": "hybrid",
+      "gold_chunk_ids": [
+        "qasper:2002.11893:s12:p1",
+        "qasper:2002.11893:s13:p1",
+        "qasper:2002.11893:s14:p1"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:1911.09886:s0:p5",
+      "retrieved_chunk_ids": [
+        "qasper:1911.09886:s0:p5",
+        "qasper:2002.11893:s17:p6",
+        "qasper:2002.11893:s13:p2",
+        "qasper:1908.08593:s2:p2",
+        "qasper:2002.11893:s0:p6"
+      ]
+    },
+    {
+      "question_id": "5f6fbd57cce47f20a0fda27d954543c00c4344c2",
+      "category": "qasper_real",
+      "query": "How was the corpus annotated?",
+      "method": "hybrid",
+      "gold_chunk_ids": [
+        "qasper:2002.11893:s2:p3",
+        "qasper:2002.11893:s2:p4"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:1911.12579:s1:p1",
+      "retrieved_chunk_ids": [
+        "qasper:1911.12579:s1:p1",
+        "qasper:1911.12579:s4:p0",
+        "qasper:2002.11893:s10:p0",
+        "qasper:1911.12579:s19:p0",
+        "qasper:1911.12579:s20:p1"
+      ]
+    },
+    {
+      "question_id": "52ed2eb6f4d1f74ebdc4dcddcae201786d4c0463",
+      "category": "qasper_real",
+      "query": "Are the models compared to some baseline models?",
+      "method": "hybrid",
+      "gold_chunk_ids": [
+        "qasper:1909.04181:s3:p0"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:2002.09758:s24:p0",
+      "retrieved_chunk_ids": [
+        "qasper:2002.09758:s24:p0",
+        "qasper:1909.00542:s3:p2",
+        "qasper:1909.00100:s6:p1",
+        "qasper:1911.09886:s11:p0",
+        "qasper:1909.00100:s11:p0"
+      ]
+    },
+    {
+      "question_id": "2c576072e494ab5598667cd6b40bc97fdd7d92d7",
+      "category": "qasper_real",
+      "query": "What are the in-house data employed?",
+      "method": "hybrid",
+      "gold_chunk_ids": [
+        "qasper:1909.04181:s5:p0"
+      ],
+      "gold_rank": 1,
+      "top_chunk_id": "qasper:1909.04181:s5:p0",
+      "retrieved_chunk_ids": [
+        "qasper:1909.04181:s5:p0",
+        "qasper:1909.04181:s2:p0",
+        "qasper:2002.11893:s2:p4",
+        "qasper:1908.07816:s7:p3",
+        "qasper:1909.04181:s8:p0"
+      ]
+    },
+    {
+      "question_id": "8602160e98e4b2c9c702440da395df5261f55b1f",
+      "category": "qasper_real",
+      "query": "What are the three datasets used in the paper?",
+      "method": "hybrid",
+      "gold_chunk_ids": [
+        "qasper:1909.04181:s1:p0"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:1911.09886:s9:p0",
+      "retrieved_chunk_ids": [
+        "qasper:1911.09886:s9:p0",
+        "qasper:2003.06279:s2:p18",
+        "qasper:1910.07181:s0:p8",
+        "qasper:2003.06279:s2:p11",
+        "qasper:1909.00542:s6:p0"
+      ]
+    },
+    {
+      "question_id": "d6e2b276390bdc957dfa7e878de80cee1f41fbca",
+      "category": "qasper_real",
+      "query": "What models other than standalone BERT is new model compared to?",
+      "method": "hybrid_ontology_expansion",
+      "gold_chunk_ids": [
+        "qasper:1910.07181:s10:p2"
+      ],
+      "gold_rank": 1,
+      "top_chunk_id": "qasper:1910.07181:s10:p2",
+      "retrieved_chunk_ids": [
+        "qasper:1910.07181:s10:p2",
+        "qasper:1909.00100:s2:p1",
+        "qasper:1909.00100:s4:p2",
+        "qasper:1908.08593:s2:p4",
+        "qasper:1911.03894:s3:p1"
+      ]
+    },
+    {
+      "question_id": "32537fdf0d4f76f641086944b413b2f756097e5e",
+      "category": "qasper_real",
+      "query": "How much is representaton improved for rare/medum frequency words compared to standalone BERT and previous work?",
+      "method": "hybrid_ontology_expansion",
+      "gold_chunk_ids": [
+        "qasper:1910.07181:s10:p2"
+      ],
+      "gold_rank": 1,
+      "top_chunk_id": "qasper:1910.07181:s10:p2",
+      "retrieved_chunk_ids": [
+        "qasper:1910.07181:s10:p2",
+        "qasper:1911.12579:s25:p7",
+        "qasper:1910.07181:s12:p0",
+        "qasper:1908.08593:s1:p0",
+        "qasper:1910.07181:s9:p1"
+      ]
+    },
+    {
+      "question_id": "ef081d78be17ef2af792e7e919d15a235b8d7275",
+      "category": "qasper_real",
+      "query": "What are three downstream task datasets?",
+      "method": "hybrid_ontology_expansion",
+      "gold_chunk_ids": [
+        "qasper:1910.07181:s11:p0"
+      ],
+      "gold_rank": 2,
+      "top_chunk_id": "qasper:1910.07181:s11:p4",
+      "retrieved_chunk_ids": [
+        "qasper:1910.07181:s11:p4",
+        "qasper:1910.07181:s11:p0",
+        "qasper:1910.07181:s11:p3",
+        "qasper:1910.07181:s11:p2",
+        "qasper:1910.07181:s11:p5"
+      ]
+    },
+    {
+      "question_id": "537b2d7799124d633892a1ef1a485b3b071b303d",
+      "category": "qasper_real",
+      "query": "What is dataset for word probing task?",
+      "method": "hybrid_ontology_expansion",
+      "gold_chunk_ids": [
+        "qasper:1910.07181:s10:p0"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:1910.07181:s1:p2",
+      "retrieved_chunk_ids": [
+        "qasper:1910.07181:s1:p2",
+        "qasper:1910.07181:s10:p1",
+        "qasper:1910.07181:s11:p4",
+        "qasper:1910.07181:s0:p2",
+        "qasper:1910.07181:s5:p0"
+      ]
+    },
+    {
+      "question_id": "735f58e28d84ee92024a36bc348cfac2ee114409",
+      "category": "qasper_real",
+      "query": "Are there datasets with relation tuples annotated, how big are datasets available?",
+      "method": "hybrid_ontology_expansion",
+      "gold_chunk_ids": [
+        "qasper:1911.09886:s9:p0"
+      ],
+      "gold_rank": 1,
+      "top_chunk_id": "qasper:1911.09886:s9:p0",
+      "retrieved_chunk_ids": [
+        "qasper:1911.09886:s9:p0",
+        "qasper:1910.07181:s1:p2",
+        "qasper:1911.09886:s0:p3",
+        "qasper:1911.09886:s1:p0",
+        "qasper:1911.09886:s0:p2"
+      ]
+    },
+    {
+      "question_id": "710fa8b3e74ee63d2acc20af19f95f7702b7ce5e",
+      "category": "qasper_real",
+      "query": "Which one of two proposed approaches performed better in experiments?",
+      "method": "hybrid_ontology_expansion",
+      "gold_chunk_ids": [
+        "qasper:1911.09886:s12:p0"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:1911.09886:s17:p0",
+      "retrieved_chunk_ids": [
+        "qasper:1911.09886:s17:p0",
+        "qasper:1908.08593:s2:p0",
+        "qasper:1909.00542:s2:p7",
+        "qasper:1908.08593:s3:p0",
+        "qasper:2004.03744:s2:p2"
+      ]
+    },
+    {
+      "question_id": "56123dd42cf5c77fc9a88fc311ed2e1eb672126e",
+      "category": "qasper_real",
+      "query": "What is previous work authors reffer to?",
+      "method": "hybrid_ontology_expansion",
+      "gold_chunk_ids": [
+        "qasper:1911.09886:s11:p0",
+        "qasper:1911.09886:s11:p1",
+        "qasper:1911.09886:s11:p2",
+        "qasper:1911.09886:s11:p3",
+        "qasper:1911.09886:s11:p4",
+        "qasper:1911.09886:s11:p5",
+        "qasper:1911.09886:s11:p6"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:2003.06279:s1:p1",
+      "retrieved_chunk_ids": [
+        "qasper:2003.06279:s1:p1",
+        "qasper:2004.03744:s2:p2",
+        "qasper:1908.08593:s17:p2",
+        "qasper:2003.06279:s9:p0",
+        "qasper:2003.00639:s4:p0"
+      ]
+    },
+    {
+      "question_id": "1898f999626f9a6da637bd8b4857e5eddf2fc729",
+      "category": "qasper_real",
+      "query": "How higher are F1 scores compared to previous work?",
+      "method": "hybrid_ontology_expansion",
+      "gold_chunk_ids": [
+        "qasper:1911.09886:s12:p0"
+      ],
+      "gold_rank": 1,
+      "top_chunk_id": "qasper:1911.09886:s12:p0",
+      "retrieved_chunk_ids": [
+        "qasper:1911.09886:s12:p0",
+        "qasper:1911.09886:s14:p0",
+        "qasper:1912.10435:s9:p0",
+        "qasper:1912.10435:s9:p2",
+        "qasper:1911.09886:s14:p1"
+      ]
+    },
+    {
+      "question_id": "8de64483ae96c0a03a8e527950582f127b43dceb",
+      "category": "qasper_real",
+      "query": "Do they report results only on English data?",
+      "method": "hybrid_ontology_expansion",
+      "gold_chunk_ids": [
+        "qasper:1912.05238:s4:p2",
+        "qasper:1912.05238:s4:p4"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:1911.03894:s15:p0",
+      "retrieved_chunk_ids": [
+        "qasper:1911.03894:s15:p0",
+        "qasper:1909.00100:s15:p94",
+        "qasper:1910.07181:s5:p3",
+        "qasper:1909.00100:s15:p196",
+        "qasper:1909.00100:s10:p0"
+      ]
+    },
+    {
+      "question_id": "4d062673b714998800e61f66b6ccbf7eef5be2ac",
+      "category": "qasper_real",
+      "query": "What is the Moral Choice Machine?",
+      "method": "hybrid_ontology_expansion",
+      "gold_chunk_ids": [
+        "qasper:1912.05238:s6:p0"
+      ],
+      "gold_rank": 3,
+      "top_chunk_id": "qasper:1912.05238:s4:p9",
+      "retrieved_chunk_ids": [
+        "qasper:1912.05238:s4:p9",
+        "qasper:1912.05238:s0:p4",
+        "qasper:1912.05238:s6:p0",
+        "qasper:1912.05238:s5:p1",
+        "qasper:1912.05238:s9:p0"
+      ]
+    },
+    {
+      "question_id": "f4238f558d6ddf3849497a130b3a6ad866ff38b3",
+      "category": "qasper_real",
+      "query": "How is moral bias measured?",
+      "method": "hybrid_ontology_expansion",
+      "gold_chunk_ids": [
+        "qasper:1912.05238:s2:p1",
+        "qasper:1912.05238:s2:p2"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:1912.05238:s3:p2",
+      "retrieved_chunk_ids": [
+        "qasper:1912.05238:s3:p2",
+        "qasper:1912.05238:s3:p0",
+        "qasper:1912.05238:s2:p3",
+        "qasper:1912.05238:s4:p8",
+        "qasper:1912.05238:s11:p0"
+      ]
+    },
+    {
+      "question_id": "96dcabaa8b6bd89b032da609e709900a1569a0f9",
+      "category": "qasper_real",
+      "query": "How do the authors define deontological ethical reasoning?",
+      "method": "hybrid_ontology_expansion",
+      "gold_chunk_ids": [
+        "qasper:1912.05238:s1:p2"
+      ],
+      "gold_rank": 1,
+      "top_chunk_id": "qasper:1912.05238:s1:p2",
+      "retrieved_chunk_ids": [
+        "qasper:1912.05238:s1:p2",
+        "qasper:1912.05238:s5:p0",
+        "qasper:1912.05238:s0:p3",
+        "qasper:1912.05238:s5:p1",
+        "qasper:1912.05238:s0:p2"
+      ]
+    },
+    {
+      "question_id": "4cc5ba404d6a47363f119d9db7266157d3bb246b",
+      "category": "qasper_real",
+      "query": "What off-the-shelf QA model was used to answer sub-questions?",
+      "method": "hybrid_ontology_expansion",
+      "gold_chunk_ids": [
+        "qasper:2002.09758:s33:p0"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:2002.09758:s0:p0",
+      "retrieved_chunk_ids": [
+        "qasper:2002.09758:s0:p0",
+        "qasper:2002.09758:s8:p0",
+        "qasper:2002.09758:s23:p0",
+        "qasper:2002.09758:s0:p3",
+        "qasper:2002.09758:s29:p0"
+      ]
+    },
+    {
+      "question_id": "1d72770d075b22411ec86d8bdee532f8c643740b",
+      "category": "qasper_real",
+      "query": "How large is the improvement over the baseline?",
+      "method": "hybrid_ontology_expansion",
+      "gold_chunk_ids": [
+        "qasper:2002.09758:s25:p0"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:1912.10435:s9:p7",
+      "retrieved_chunk_ids": [
+        "qasper:1912.10435:s9:p7",
+        "qasper:1911.02821:s5:p1",
+        "qasper:2003.06279:s5:p1",
+        "qasper:1912.10435:s10:p0",
+        "qasper:2003.06279:s4:p1"
+      ]
+    },
+    {
+      "question_id": "af1439c68b28c27848203f863675946380d28943",
+      "category": "qasper_real",
+      "query": "What is the strong baseline that this work outperforms?",
+      "method": "hybrid_ontology_expansion",
+      "gold_chunk_ids": [
+        "qasper:2002.09758:s20:p0",
+        "qasper:2002.09758:s20:p1",
+        "qasper:2002.09758:s25:p0"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:1911.02821:s5:p0",
+      "retrieved_chunk_ids": [
+        "qasper:1911.02821:s5:p0",
+        "qasper:1909.00100:s11:p0",
+        "qasper:1911.03894:s18:p2",
+        "qasper:1911.03894:s14:p3",
+        "qasper:1911.03894:s16:p0"
+      ]
+    },
+    {
+      "question_id": "5c0b8c1b649df1b07d9af3aa9154ac340ec8b81c",
+      "category": "qasper_real",
+      "query": "Is the model compared against a linear regression baseline?",
+      "method": "hybrid_ontology_expansion",
+      "gold_chunk_ids": [
+        "qasper:1912.10806:s12:p3"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:1909.00542:s3:p2",
+      "retrieved_chunk_ids": [
+        "qasper:1909.00542:s3:p2",
+        "qasper:1909.00542:s5:p1",
+        "qasper:1909.00542:s2:p8",
+        "qasper:1909.00542:s2:p2",
+        "qasper:1909.00542:s2:p10"
+      ]
+    },
+    {
+      "question_id": "3b391cd58cf6a61fe8c8eff2095e33794e80f0e3",
+      "category": "qasper_real",
+      "query": "What is the dataset used in the paper?",
+      "method": "hybrid_ontology_expansion",
+      "gold_chunk_ids": [
+        "qasper:1912.10806:s8:p0"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:1909.04181:s0:p1",
+      "retrieved_chunk_ids": [
+        "qasper:1909.04181:s0:p1",
+        "qasper:2003.06279:s2:p18",
+        "qasper:1911.09886:s9:p0",
+        "qasper:2003.06279:s2:p11",
+        "qasper:1908.07816:s7:p2"
+      ]
+    },
+    {
+      "question_id": "4d8ca3f7aa65dcb42eba72acf3584d37b416b19c",
+      "category": "qasper_real",
+      "query": "How does the differential privacy mechanism work?",
+      "method": "hybrid_ontology_expansion",
+      "gold_chunk_ids": [
+        "qasper:1912.10806:s0:p4",
+        "qasper:1912.10806:s6:p0"
+      ],
+      "gold_rank": 1,
+      "top_chunk_id": "qasper:1912.10806:s6:p0",
+      "retrieved_chunk_ids": [
+        "qasper:1912.10806:s6:p0",
+        "qasper:1912.10806:s6:p1",
+        "qasper:1912.10806:s10:p0",
+        "qasper:1912.10806:s14:p20",
+        "qasper:1912.10806:s14:p7"
+      ]
+    },
+    {
+      "question_id": "5b6aec1b88c9832075cd343f59158078a91f3597",
+      "category": "qasper_real",
+      "query": "How does proposed word embeddings compare to Sindhi fastText word representations?",
+      "method": "hybrid_ontology_expansion",
+      "gold_chunk_ids": [
+        "qasper:1911.12579:s27:p0",
+        "qasper:1911.12579:s27:p1"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:1911.12579:s0:p7",
+      "retrieved_chunk_ids": [
+        "qasper:1911.12579:s0:p7",
+        "qasper:1911.12579:s31:p1",
+        "qasper:2002.06053:s23:p1",
+        "qasper:1911.12579:s3:p0",
+        "qasper:1911.03894:s1:p0"
+      ]
+    },
+    {
+      "question_id": "a6717e334c53ebbb87e5ef878a77ef46866e3aed",
+      "category": "qasper_real",
+      "query": "Are trained word embeddings used for any other NLP task?",
+      "method": "hybrid_ontology_expansion",
+      "gold_chunk_ids": [
+        "qasper:1911.12579:s30:p0"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:1911.12579:s1:p2",
+      "retrieved_chunk_ids": [
+        "qasper:1911.12579:s1:p2",
+        "qasper:1908.07816:s0:p0",
+        "qasper:1912.05238:s1:p4",
+        "qasper:1911.02821:s7:p0",
+        "qasper:1911.03894:s0:p0"
+      ]
+    },
+    {
+      "question_id": "a1064307a19cd7add32163a70b6623278a557946",
+      "category": "qasper_real",
+      "query": "How many uniue words are in the dataset?",
+      "method": "hybrid_ontology_expansion",
+      "gold_chunk_ids": [
+        "qasper:1911.12579:s19:p0"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:1910.07181:s1:p2",
+      "retrieved_chunk_ids": [
+        "qasper:1910.07181:s1:p2",
+        "qasper:2002.11893:s9:p0",
+        "qasper:2003.06279:s1:p4",
+        "qasper:1910.07181:s5:p1",
+        "qasper:2002.06053:s5:p0"
+      ]
+    },
+    {
+      "question_id": "8cb9006bcbd2f390aadc6b70d54ee98c674e45cc",
+      "category": "qasper_real",
+      "query": "How is the data collected, which web resources were used?",
+      "method": "hybrid_ontology_expansion",
+      "gold_chunk_ids": [
+        "qasper:1911.12579:s4:p0"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:1911.12579:s5:p3",
+      "retrieved_chunk_ids": [
+        "qasper:1911.12579:s5:p3",
+        "qasper:1911.12579:s19:p0",
+        "qasper:2002.11893:s2:p1",
+        "qasper:1912.10806:s8:p0",
+        "qasper:1911.12579:s0:p3"
+      ]
+    },
+    {
+      "question_id": "8d989490c5392492ad66e6a5047b7d74cc719f30",
+      "category": "qasper_real",
+      "query": "What ensemble methods are used for best model?",
+      "method": "hybrid_ontology_expansion",
+      "gold_chunk_ids": [
+        "qasper:1912.10435:s8:p2"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:1912.10435:s8:p1",
+      "retrieved_chunk_ids": [
+        "qasper:1912.10435:s8:p1",
+        "qasper:2003.06279:s2:p11",
+        "qasper:1912.10435:s9:p3",
+        "qasper:2002.09758:s33:p0",
+        "qasper:1912.10435:s8:p0"
+      ]
+    },
+    {
+      "question_id": "a7829abed2186f757a59d3da44893c0172c7012b",
+      "category": "qasper_real",
+      "query": "What hyperparameters have been tuned?",
+      "method": "hybrid_ontology_expansion",
+      "gold_chunk_ids": [
+        "qasper:1912.10435:s2:p0"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:1912.10435:s7:p0",
+      "retrieved_chunk_ids": [
+        "qasper:1912.10435:s7:p0",
+        "qasper:1909.00100:s12:p1",
+        "qasper:1909.00100:s12:p5",
+        "qasper:1909.00100:s12:p3",
+        "qasper:1909.00100:s12:p0"
+      ]
+    },
+    {
+      "question_id": "707db46938d16647bf4b6407b2da84b5c7ab4a81",
+      "category": "qasper_real",
+      "query": "How much F1 was improved after adding skip connections?",
+      "method": "hybrid_ontology_expansion",
+      "gold_chunk_ids": [
+        "qasper:1912.10435:s9:p0"
+      ],
+      "gold_rank": 2,
+      "top_chunk_id": "qasper:1912.10435:s9:p1",
+      "retrieved_chunk_ids": [
+        "qasper:1912.10435:s9:p1",
+        "qasper:1912.10435:s9:p0",
+        "qasper:1912.10435:s5:p0",
+        "qasper:1911.09886:s14:p0",
+        "qasper:1911.02821:s5:p1"
+      ]
+    },
+    {
+      "question_id": "71f2b368228a748fd348f1abf540236568a61b07",
+      "category": "qasper_real",
+      "query": "What is CamemBERT trained on?",
+      "method": "hybrid_ontology_expansion",
+      "gold_chunk_ids": [
+        "qasper:1911.03894:s9:p3"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:1911.03894:s4:p1",
+      "retrieved_chunk_ids": [
+        "qasper:1911.03894:s4:p1",
+        "qasper:1911.03894:s16:p0",
+        "qasper:1911.03894:s5:p0",
+        "qasper:1911.03894:s4:p2",
+        "qasper:1911.03894:s4:p0"
+      ]
+    },
+    {
+      "question_id": "d3d4eef047aa01391e3e5d613a0f1f786ae7cfc7",
+      "category": "qasper_real",
+      "query": "Which tasks does CamemBERT not improve on?",
+      "method": "hybrid_ontology_expansion",
+      "gold_chunk_ids": [
+        "qasper:1911.03894:s20:p0"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:1911.03894:s16:p0",
+      "retrieved_chunk_ids": [
+        "qasper:1911.03894:s16:p0",
+        "qasper:1911.03894:s6:p3",
+        "qasper:1911.03894:s22:p0",
+        "qasper:1911.03894:s18:p2",
+        "qasper:1911.03894:s11:p1"
+      ]
+    },
+    {
+      "question_id": "63723c6b398100bba5dc21754451f503cb91c9b8",
+      "category": "qasper_real",
+      "query": "What is the state of the art?",
+      "method": "hybrid_ontology_expansion",
+      "gold_chunk_ids": [
+        "qasper:1911.03894:s11:p2",
+        "qasper:1911.03894:s13:p2",
+        "qasper:1911.03894:s15:p1"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:1909.00100:s2:p1",
+      "retrieved_chunk_ids": [
+        "qasper:1909.00100:s2:p1",
+        "qasper:1908.08593:s0:p1",
+        "qasper:2002.11893:s12:p0",
+        "qasper:1911.09886:s11:p0",
+        "qasper:2004.03744:s0:p2"
+      ]
+    },
+    {
+      "question_id": "5471766ca7c995dd7f0f449407902b32ac9db269",
+      "category": "qasper_real",
+      "query": "How much better was results of CamemBERT than previous results on these tasks?",
+      "method": "hybrid_ontology_expansion",
+      "gold_chunk_ids": [
+        "qasper:1911.03894:s19:p1",
+        "qasper:1911.03894:s20:p0",
+        "qasper:1911.03894:s21:p0"
+      ],
+      "gold_rank": 3,
+      "top_chunk_id": "qasper:1911.03894:s22:p0",
+      "retrieved_chunk_ids": [
+        "qasper:1911.03894:s22:p0",
+        "qasper:1911.03894:s16:p0",
+        "qasper:1911.03894:s21:p0",
+        "qasper:1911.03894:s19:p0",
+        "qasper:1911.02821:s5:p1"
+      ]
+    },
+    {
+      "question_id": "dc49746fc98647445599da9d17bc004bafdc4579",
+      "category": "qasper_real",
+      "query": "Was CamemBERT compared against multilingual BERT on these tasks?",
+      "method": "hybrid_ontology_expansion",
+      "gold_chunk_ids": [
+        "qasper:1911.03894:s11:p0"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:1909.00100:s2:p1",
+      "retrieved_chunk_ids": [
+        "qasper:1909.00100:s2:p1",
+        "qasper:1911.03894:s22:p0",
+        "qasper:1909.00100:s2:p0",
+        "qasper:1909.00100:s2:p2",
+        "qasper:1908.08593:s1:p0"
+      ]
+    },
+    {
+      "question_id": "cfffc94518d64cb3c8789395707e4336676e0345",
+      "category": "qasper_real",
+      "query": "What approaches without reinforcement learning have been tried?",
+      "method": "hybrid_ontology_expansion",
+      "gold_chunk_ids": [
+        "qasper:1909.00542:s2:p11",
+        "qasper:1909.00542:s3:p0",
+        "qasper:1909.00542:s3:p1"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:1909.00542:s4:p7",
+      "retrieved_chunk_ids": [
+        "qasper:1909.00542:s4:p7",
+        "qasper:1909.00542:s7:p2",
+        "qasper:1909.00542:s4:p5",
+        "qasper:1909.00542:s4:p3",
+        "qasper:1909.00542:s4:p4"
+      ]
+    },
+    {
+      "question_id": "f60629c01f99de3f68365833ee115b95a3388699",
+      "category": "qasper_real",
+      "query": "What classification approaches were experimented for this task?",
+      "method": "hybrid_ontology_expansion",
+      "gold_chunk_ids": [
+        "qasper:1909.00542:s2:p11",
+        "qasper:1909.00542:s3:p1"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:1909.00542:s2:p3",
+      "retrieved_chunk_ids": [
+        "qasper:1909.00542:s2:p3",
+        "qasper:2003.06279:s2:p16",
+        "qasper:1909.00542:s7:p0",
+        "qasper:1908.08593:s2:p0",
+        "qasper:1908.08593:s2:p1"
+      ]
+    },
+    {
+      "question_id": "a7cb4f8e29fd2f3d1787df64cd981a6318b65896",
+      "category": "qasper_real",
+      "query": "Did classification models perform better than previous regression one?",
+      "method": "hybrid_ontology_expansion",
+      "gold_chunk_ids": [
+        "qasper:1909.00542:s0:p2"
+      ],
+      "gold_rank": 1,
+      "top_chunk_id": "qasper:1909.00542:s0:p2",
+      "retrieved_chunk_ids": [
+        "qasper:1909.00542:s0:p2",
+        "qasper:1909.00542:s2:p12",
+        "qasper:1909.00542:s2:p7",
+        "qasper:1909.00542:s2:p1",
+        "qasper:1909.00542:s2:p13"
+      ]
+    },
+    {
+      "question_id": "a45edc04277a458911086752af4f17405501230f",
+      "category": "qasper_real",
+      "query": "Are datasets publicly available?",
+      "method": "hybrid_ontology_expansion",
+      "gold_chunk_ids": [
+        "qasper:2002.06053:s29:p0"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:1910.07181:s1:p2",
+      "retrieved_chunk_ids": [
+        "qasper:1910.07181:s1:p2",
+        "qasper:2002.11893:s0:p6",
+        "qasper:1910.07181:s5:p3",
+        "qasper:2002.06053:s0:p3",
+        "qasper:1910.07181:s0:p11"
+      ]
+    },
+    {
+      "question_id": "8c8a32592184c88f61fac1eef12c7d233dbec9dc",
+      "category": "qasper_real",
+      "query": "Are this models usually semi/supervised or unsupervised?",
+      "method": "hybrid_ontology_expansion",
+      "gold_chunk_ids": [
+        "qasper:2002.06053:s24:p3",
+        "qasper:2002.06053:s24:p4",
+        "qasper:2002.06053:s25:p0"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:2002.09758:s42:p1",
+      "retrieved_chunk_ids": [
+        "qasper:2002.09758:s42:p1",
+        "qasper:2002.09758:s42:p0",
+        "qasper:2002.09758:s1:p1",
+        "qasper:2003.06279:s2:p16",
+        "qasper:1910.07181:s4:p4"
+      ]
+    },
+    {
+      "question_id": "16646ee77975fed372b76ce639e2664ae2105dcf",
+      "category": "qasper_real",
+      "query": "Is there any concrete example in the paper that shows that this approach had huge impact on drug discovery?",
+      "method": "hybrid_ontology_expansion",
+      "gold_chunk_ids": [
+        "qasper:2002.06053:s23:p2"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:2002.06053:s0:p4",
+      "retrieved_chunk_ids": [
+        "qasper:2002.06053:s0:p4",
+        "qasper:2002.06053:s31:p0",
+        "qasper:2002.06053:s0:p0",
+        "qasper:2002.06053:s28:p0",
+        "qasper:1909.00542:s2:p0"
+      ]
+    },
+    {
+      "question_id": "e96adf8466e67bd19f345578d5a6dc68fd0279a1",
+      "category": "qasper_real",
+      "query": "Is text-to-image synthesis trained is suppervized or unsuppervized manner?",
+      "method": "hybrid_ontology_expansion",
+      "gold_chunk_ids": [
+        "qasper:1910.09399:s12:p1",
+        "qasper:1910.09399:s5:p4"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:1910.09399:s2:p0",
+      "retrieved_chunk_ids": [
+        "qasper:1910.09399:s2:p0",
+        "qasper:1910.09399:s25:p0",
+        "qasper:1910.09399:s17:p1",
+        "qasper:1910.09399:s29:p1",
+        "qasper:1910.09399:s1:p0"
+      ]
+    },
+    {
+      "question_id": "c1477a6c86bd1670dd17407590948000c9a6b7c6",
+      "category": "qasper_real",
+      "query": "What challenges remain unresolved?",
+      "method": "hybrid_ontology_expansion",
+      "gold_chunk_ids": [
+        "qasper:1910.09399:s34:p1"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:2002.06053:s27:p0",
+      "retrieved_chunk_ids": [
+        "qasper:2002.06053:s27:p0",
+        "qasper:1909.00542:s1:p0",
+        "qasper:1908.08593:s2:p2",
+        "qasper:2002.06053:s0:p3",
+        "qasper:2002.06053:s29:p0"
+      ]
+    },
+    {
+      "question_id": "e020677261d739c35c6f075cde6937d0098ace7f",
+      "category": "qasper_real",
+      "query": "What is the conclusion of comparison of proposed solution?",
+      "method": "hybrid_ontology_expansion",
+      "gold_chunk_ids": [
+        "qasper:1910.09399:s32:p0",
+        "qasper:1910.09399:s32:p1",
+        "qasper:1910.09399:s32:p2"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:2003.00639:s14:p0",
+      "retrieved_chunk_ids": [
+        "qasper:2003.00639:s14:p0",
+        "qasper:1908.08593:s17:p0",
+        "qasper:1912.05238:s0:p5",
+        "qasper:1908.08593:s2:p2",
+        "qasper:1910.07181:s0:p9"
+      ]
+    },
+    {
+      "question_id": "6389d5a152151fb05aae00b53b521c117d7b5e54",
+      "category": "qasper_real",
+      "query": "What is typical GAN architecture for each text-to-image synhesis group?",
+      "method": "hybrid_ontology_expansion",
+      "gold_chunk_ids": [
+        "qasper:1910.09399:s9:p0"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:1910.09399:s22:p0",
+      "retrieved_chunk_ids": [
+        "qasper:1910.09399:s22:p0",
+        "qasper:1910.09399:s10:p7",
+        "qasper:1910.09399:s13:p0",
+        "qasper:1910.09399:s10:p3",
+        "qasper:1910.09399:s4:p0"
+      ]
+    },
+    {
+      "question_id": "f33236ebd6f5a9ccb9b9dbf05ac17c3724f93f91",
+      "category": "qasper_real",
+      "query": "Is model explanation output evaluated, what metric was used?",
+      "method": "hybrid_ontology_expansion",
+      "gold_chunk_ids": [
+        "qasper:2004.03744:s2:p9"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:2004.03744:s14:p1",
+      "retrieved_chunk_ids": [
+        "qasper:2004.03744:s14:p1",
+        "qasper:1912.10435:s9:p2",
+        "qasper:2004.03744:s7:p1",
+        "qasper:1908.07816:s10:p1",
+        "qasper:1911.03894:s14:p4"
+      ]
+    },
+    {
+      "question_id": "66bf0d61ffc321f15e7347aaed191223f4ce4b4a",
+      "category": "qasper_real",
+      "query": "How many annotators are used to write natural language explanations to SNLI-VE-2.0?",
+      "method": "hybrid_ontology_expansion",
+      "gold_chunk_ids": [
+        "qasper:2004.03744:s23:p0"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:2004.03744:s7:p2",
+      "retrieved_chunk_ids": [
+        "qasper:2004.03744:s7:p2",
+        "qasper:2004.03744:s0:p4",
+        "qasper:2004.03744:s7:p0",
+        "qasper:2004.03744:s6:p0",
+        "qasper:2004.03744:s20:p0"
+      ]
+    },
+    {
+      "question_id": "5dfa59c116e0ceb428efd99bab19731aa3df4bbd",
+      "category": "qasper_real",
+      "query": "How many natural language explanations are human-written?",
+      "method": "hybrid_ontology_expansion",
+      "gold_chunk_ids": [
+        "qasper:2004.03744:s22:p0"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:2004.03744:s6:p0",
+      "retrieved_chunk_ids": [
+        "qasper:2004.03744:s6:p0",
+        "qasper:2004.03744:s14:p1",
+        "qasper:2004.03744:s19:p0",
+        "qasper:2004.03744:s7:p1",
+        "qasper:2004.03744:s18:p2"
+      ]
+    },
+    {
+      "question_id": "0c557b408183630d1c6c325b5fb9ff1573661290",
+      "category": "qasper_real",
+      "query": "How much is performance difference of existing model between original and corrected corpus?",
+      "method": "hybrid_ontology_expansion",
+      "gold_chunk_ids": [
+        "qasper:2004.03744:s5:p1"
+      ],
+      "gold_rank": 5,
+      "top_chunk_id": "qasper:2003.06279:s4:p7",
+      "retrieved_chunk_ids": [
+        "qasper:2003.06279:s4:p7",
+        "qasper:2002.11893:s17:p6",
+        "qasper:2004.03744:s2:p0",
+        "qasper:2003.06279:s4:p1",
+        "qasper:2004.03744:s5:p1"
+      ]
+    },
+    {
+      "question_id": "a08b5018943d4428f067c08077bfff1af3de9703",
+      "category": "qasper_real",
+      "query": "What is the class with highest error rate in SNLI-VE?",
+      "method": "hybrid_ontology_expansion",
+      "gold_chunk_ids": [
+        "qasper:2004.03744:s0:p1"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:2004.03744:s2:p8",
+      "retrieved_chunk_ids": [
+        "qasper:2004.03744:s2:p8",
+        "qasper:2004.03744:s22:p0",
+        "qasper:2004.03744:s3:p0",
+        "qasper:2004.03744:s0:p3",
+        "qasper:2004.03744:s20:p0"
+      ]
+    },
+    {
+      "question_id": "6b4de7fef3a543215f16042ce6a29186bf84fea4",
+      "category": "qasper_real",
+      "query": "What pre-trained models did they compare to?",
+      "method": "hybrid_ontology_expansion",
+      "gold_chunk_ids": [
+        "qasper:1911.02821:s4:p0"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:2002.09758:s16:p0",
+      "retrieved_chunk_ids": [
+        "qasper:2002.09758:s16:p0",
+        "qasper:1908.08593:s2:p4",
+        "qasper:1908.08593:s9:p0",
+        "qasper:1908.08593:s2:p2",
+        "qasper:1910.07181:s4:p4"
+      ]
+    },
+    {
+      "question_id": "3a62dd5fece70f8bf876dcbb131223682e3c54b7",
+      "category": "qasper_real",
+      "query": "How does the fusion method work?",
+      "method": "hybrid_ontology_expansion",
+      "gold_chunk_ids": [
+        "qasper:1911.02821:s2:p5"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:1911.02821:s6:p0",
+      "retrieved_chunk_ids": [
+        "qasper:1911.02821:s6:p0",
+        "qasper:1911.09886:s11:p2",
+        "qasper:1908.08593:s2:p1",
+        "qasper:1911.09886:s11:p3",
+        "qasper:2003.06279:s1:p4"
+      ]
+    },
+    {
+      "question_id": "34fab25d9ceb9c5942daf4ebdab6c5dd4ff9d3db",
+      "category": "qasper_real",
+      "query": "What dataset did they use?",
+      "method": "hybrid_ontology_expansion",
+      "gold_chunk_ids": [
+        "qasper:1911.02821:s5:p0"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:1908.08593:s2:p1",
+      "retrieved_chunk_ids": [
+        "qasper:1908.08593:s2:p1",
+        "qasper:1909.04181:s1:p0",
+        "qasper:1908.08593:s2:p2",
+        "qasper:1908.07816:s7:p3",
+        "qasper:1909.04181:s0:p0"
+      ]
+    },
+    {
+      "question_id": "2c20426c003f7e3053f8e6c333f8bb744f6f31f8",
+      "category": "qasper_real",
+      "query": "What benchmarks did they experiment on?",
+      "method": "hybrid_ontology_expansion",
+      "gold_chunk_ids": [
+        "qasper:1911.02821:s4:p1"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:1911.02821:s5:p0",
+      "retrieved_chunk_ids": [
+        "qasper:1911.02821:s5:p0",
+        "qasper:1908.08593:s2:p1",
+        "qasper:1911.03894:s16:p0",
+        "qasper:1908.08593:s2:p2",
+        "qasper:1911.03894:s18:p1"
+      ]
+    },
+    {
+      "question_id": "c034f38a570d40360c3551a6469486044585c63c",
+      "category": "qasper_real",
+      "query": "How better is proposed method than baselines perpexity wise?",
+      "method": "hybrid_ontology_expansion",
+      "gold_chunk_ids": [
+        "qasper:1908.07816:s11:p0"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:2003.06279:s5:p2",
+      "retrieved_chunk_ids": [
+        "qasper:2003.06279:s5:p2",
+        "qasper:1912.10806:s14:p1",
+        "qasper:1908.08593:s2:p0",
+        "qasper:1911.12579:s14:p0",
+        "qasper:1911.12579:s24:p0"
+      ]
+    },
+    {
+      "question_id": "9cbea686732b5b85f77868ca47d2f93cf34516ed",
+      "category": "qasper_real",
+      "query": "How does the multi-turn dialog system learns?",
+      "method": "hybrid_ontology_expansion",
+      "gold_chunk_ids": [
+        "qasper:1908.07816:s2:p4"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:1908.07816:s0:p2",
+      "retrieved_chunk_ids": [
+        "qasper:1908.07816:s0:p2",
+        "qasper:2003.00639:s11:p1",
+        "qasper:2003.00639:s11:p3",
+        "qasper:1908.08593:s2:p1",
+        "qasper:2002.09758:s46:p0"
+      ]
+    },
+    {
+      "question_id": "6aee16c4f319a190c2a451c1c099b66162299a28",
+      "category": "qasper_real",
+      "query": "How is human evaluation performed?",
+      "method": "hybrid_ontology_expansion",
+      "gold_chunk_ids": [
+        "qasper:1908.07816:s10:p1"
+      ],
+      "gold_rank": 2,
+      "top_chunk_id": "qasper:1908.07816:s9:p0",
+      "retrieved_chunk_ids": [
+        "qasper:1908.07816:s9:p0",
+        "qasper:1908.07816:s10:p1",
+        "qasper:1909.00542:s5:p0",
+        "qasper:1908.07816:s10:p0",
+        "qasper:2003.00639:s14:p1"
+      ]
+    },
+    {
+      "question_id": "4d4b9ff2da51b9e0255e5fab0b41dfe49a0d9012",
+      "category": "qasper_real",
+      "query": "Is some other metrics other then perplexity measured?",
+      "method": "hybrid_ontology_expansion",
+      "gold_chunk_ids": [
+        "qasper:1908.07816:s9:p0"
+      ],
+      "gold_rank": 2,
+      "top_chunk_id": "qasper:1908.07816:s11:p0",
+      "retrieved_chunk_ids": [
+        "qasper:1908.07816:s11:p0",
+        "qasper:1908.07816:s9:p0",
+        "qasper:1909.00542:s7:p1",
+        "qasper:1911.09886:s11:p5",
+        "qasper:1911.12579:s18:p1"
+      ]
+    },
+    {
+      "question_id": "180047e1ccfc7c98f093b8d1e1d0479a4cca99cc",
+      "category": "qasper_real",
+      "query": "What two baseline models are used?",
+      "method": "hybrid_ontology_expansion",
+      "gold_chunk_ids": [
+        "qasper:1908.07816:s8:p0"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:1912.10435:s9:p5",
+      "retrieved_chunk_ids": [
+        "qasper:1912.10435:s9:p5",
+        "qasper:1911.09886:s11:p0",
+        "qasper:1908.08593:s2:p2",
+        "qasper:1910.07181:s2:p1",
+        "qasper:1909.00100:s0:p0"
+      ]
+    },
+    {
+      "question_id": "ec8043290356fcb871c2f5d752a9fe93a94c2f71",
+      "category": "qasper_real",
+      "query": "What other natural processing tasks authors think could be studied by using word embeddings?",
+      "method": "hybrid_ontology_expansion",
+      "gold_chunk_ids": [
+        "qasper:2003.06279:s6:p2"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:2003.06279:s6:p0",
+      "retrieved_chunk_ids": [
+        "qasper:2003.06279:s6:p0",
+        "qasper:2002.06053:s23:p1",
+        "qasper:1911.03894:s1:p0",
+        "qasper:1912.05238:s1:p4",
+        "qasper:2002.06053:s23:p2"
+      ]
+    },
+    {
+      "question_id": "728c2fb445173fe117154a2a5482079caa42fe24",
+      "category": "qasper_real",
+      "query": "What is the reason that traditional co-occurrence networks fail in establishing links between similar words whenever they appear distant in the text?",
+      "method": "hybrid_ontology_expansion",
+      "gold_chunk_ids": [
+        "qasper:2003.06279:s0:p1",
+        "qasper:2003.06279:s0:p2"
+      ],
+      "gold_rank": 1,
+      "top_chunk_id": "qasper:2003.06279:s0:p2",
+      "retrieved_chunk_ids": [
+        "qasper:2003.06279:s0:p2",
+        "qasper:2003.06279:s6:p0",
+        "qasper:2003.06279:s2:p12",
+        "qasper:2003.06279:s1:p4",
+        "qasper:2003.06279:s0:p3"
+      ]
+    },
+    {
+      "question_id": "23d32666dfc29ed124f3aa4109e2527efa225fbc",
+      "category": "qasper_real",
+      "query": "Do the use word embeddings alone or they replace some previous features of the model with word embeddings?",
+      "method": "hybrid_ontology_expansion",
+      "gold_chunk_ids": [
+        "qasper:2003.06279:s0:p2"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:2002.06053:s23:p1",
+      "retrieved_chunk_ids": [
+        "qasper:2002.06053:s23:p1",
+        "qasper:1911.03894:s1:p0",
+        "qasper:1909.00542:s4:p9",
+        "qasper:1911.03894:s2:p0",
+        "qasper:1911.12579:s1:p2"
+      ]
+    },
+    {
+      "question_id": "076928bebde4dffcb404be216846d9d680310622",
+      "category": "qasper_real",
+      "query": "On what model architectures are previous co-occurence networks based?",
+      "method": "hybrid_ontology_expansion",
+      "gold_chunk_ids": [
+        "qasper:2003.06279:s0:p1"
+      ],
+      "gold_rank": 4,
+      "top_chunk_id": "qasper:2003.06279:s1:p3",
+      "retrieved_chunk_ids": [
+        "qasper:2003.06279:s1:p3",
+        "qasper:2003.06279:s1:p4",
+        "qasper:2003.06279:s1:p2",
+        "qasper:2003.06279:s0:p1",
+        "qasper:1910.07181:s0:p5"
+      ]
+    },
+    {
+      "question_id": "63eb31f613a41a3ddd86f599e743ed10e1cd07ba",
+      "category": "qasper_real",
+      "query": "What codemixed language pairs are evaluated?",
+      "method": "hybrid_ontology_expansion",
+      "gold_chunk_ids": [
+        "qasper:1909.00100:s10:p0"
+      ],
+      "gold_rank": 2,
+      "top_chunk_id": "qasper:1909.00100:s10:p2",
+      "retrieved_chunk_ids": [
+        "qasper:1909.00100:s10:p2",
+        "qasper:1909.00100:s10:p0",
+        "qasper:1911.12579:s18:p0",
+        "qasper:1911.03894:s14:p1",
+        "qasper:1909.00100:s10:p1"
+      ]
+    },
+    {
+      "question_id": "d2804ac0f068e9c498e33582af9c66906b26cac3",
+      "category": "qasper_real",
+      "query": "How do they compress the model?",
+      "method": "hybrid_ontology_expansion",
+      "gold_chunk_ids": [
+        "qasper:1909.00100:s5:p0",
+        "qasper:1909.00100:s5:p1",
+        "qasper:1909.00100:s5:p2"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:1910.07181:s4:p5",
+      "retrieved_chunk_ids": [
+        "qasper:1910.07181:s4:p5",
+        "qasper:1908.07816:s2:p4",
+        "qasper:1908.08593:s2:p1",
+        "qasper:1908.07816:s2:p2",
+        "qasper:1908.08593:s2:p3"
+      ]
+    },
+    {
+      "question_id": "e24fbcc8be922c43f6b6037cdf2bfd4c0a926c08",
+      "category": "qasper_real",
+      "query": "What is the multilingual baseline?",
+      "method": "hybrid_ontology_expansion",
+      "gold_chunk_ids": [
+        "qasper:1909.00100:s0:p0"
+      ],
+      "gold_rank": 1,
+      "top_chunk_id": "qasper:1909.00100:s0:p0",
+      "retrieved_chunk_ids": [
+        "qasper:1909.00100:s0:p0",
+        "qasper:1909.00100:s8:p0",
+        "qasper:1909.00100:s9:p2",
+        "qasper:1909.00100:s8:p2",
+        "qasper:1909.00100:s8:p1"
+      ]
+    },
+    {
+      "question_id": "1a252ffeaebdb189317aefd6c606652ba9677112",
+      "category": "qasper_real",
+      "query": "How much is performance improved by disabling attention in certain heads?",
+      "method": "hybrid_ontology_expansion",
+      "gold_chunk_ids": [
+        "qasper:1908.08593:s15:p0"
+      ],
+      "gold_rank": 2,
+      "top_chunk_id": "qasper:1908.08593:s14:p0",
+      "retrieved_chunk_ids": [
+        "qasper:1908.08593:s14:p0",
+        "qasper:1908.08593:s15:p0",
+        "qasper:1908.08593:s16:p0",
+        "qasper:1908.08593:s2:p3",
+        "qasper:1908.08593:s17:p1"
+      ]
+    },
+    {
+      "question_id": "da4d25dd9de09d16168788bb02ad600f5b0b3ba4",
+      "category": "qasper_real",
+      "query": "In which certain heads was attention disabled in experiments?",
+      "method": "hybrid_ontology_expansion",
+      "gold_chunk_ids": [
+        "qasper:1908.08593:s15:p0"
+      ],
+      "gold_rank": 1,
+      "top_chunk_id": "qasper:1908.08593:s15:p0",
+      "retrieved_chunk_ids": [
+        "qasper:1908.08593:s15:p0",
+        "qasper:1908.08593:s14:p0",
+        "qasper:1912.10435:s9:p4",
+        "qasper:1908.08593:s7:p0",
+        "qasper:1908.08593:s13:p0"
+      ]
+    },
+    {
+      "question_id": "2870fbce43a3cf6daf982f720137c008b30c60dc",
+      "category": "qasper_real",
+      "query": "What handcrafter features-of-interest are used?",
+      "method": "hybrid_ontology_expansion",
+      "gold_chunk_ids": [
+        "qasper:1908.08593:s10:p1"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:1908.08593:s2:p1",
+      "retrieved_chunk_ids": [
+        "qasper:1908.08593:s2:p1",
+        "qasper:1908.08593:s0:p2",
+        "qasper:2004.03744:s23:p1",
+        "qasper:1910.09399:s35:p0",
+        "qasper:1908.08593:s2:p3"
+      ]
+    },
+    {
+      "question_id": "65b579b2c62982e2ff154c8160288c2950d509f2",
+      "category": "qasper_real",
+      "query": "What subset of GLUE tasks is used?",
+      "method": "hybrid_ontology_expansion",
+      "gold_chunk_ids": [
+        "qasper:1908.08593:s2:p10",
+        "qasper:1908.08593:s2:p11",
+        "qasper:1908.08593:s2:p12",
+        "qasper:1908.08593:s2:p5",
+        "qasper:1908.08593:s2:p6",
+        "qasper:1908.08593:s2:p7",
+        "qasper:1908.08593:s2:p8",
+        "qasper:1908.08593:s2:p9"
+      ],
+      "gold_rank": 1,
+      "top_chunk_id": "qasper:1908.08593:s2:p5",
+      "retrieved_chunk_ids": [
+        "qasper:1908.08593:s2:p5",
+        "qasper:1911.03894:s0:p5",
+        "qasper:2004.03744:s23:p1",
+        "qasper:1908.08593:s2:p13",
+        "qasper:1911.03894:s16:p0"
+      ]
+    },
+    {
+      "question_id": "f416c6818a7a8acb7ec4682ed424ecdbd7dd6df1",
+      "category": "qasper_real",
+      "query": "How does framework automatically chooses different curricula at the evolving learning process according to the learning status of the neural dialogue generation model?",
+      "method": "hybrid_ontology_expansion",
+      "gold_chunk_ids": [
+        "qasper:2003.00639:s11:p1"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:2003.00639:s0:p3",
+      "retrieved_chunk_ids": [
+        "qasper:2003.00639:s0:p3",
+        "qasper:2003.00639:s21:p0",
+        "qasper:2003.00639:s11:p0",
+        "qasper:2003.00639:s9:p0",
+        "qasper:2003.00639:s20:p0"
+      ]
+    },
+    {
+      "question_id": "a1d422cb2e428333961370496ca281a1be99fdff",
+      "category": "qasper_real",
+      "query": "What human judgement metrics are used?",
+      "method": "hybrid_ontology_expansion",
+      "gold_chunk_ids": [
+        "qasper:2003.00639:s14:p1"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:1909.00542:s7:p1",
+      "retrieved_chunk_ids": [
+        "qasper:1909.00542:s7:p1",
+        "qasper:1908.07816:s9:p0",
+        "qasper:1909.00542:s5:p0",
+        "qasper:1908.07816:s10:p1",
+        "qasper:1909.00542:s0:p3"
+      ]
+    },
+    {
+      "question_id": "3de9bf4b0b667b3f1181da9f006da1354565bcbd",
+      "category": "qasper_real",
+      "query": "What automatic evaluation metrics are used?",
+      "method": "hybrid_ontology_expansion",
+      "gold_chunk_ids": [
+        "qasper:2003.00639:s12:p0"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:1909.00542:s7:p1",
+      "retrieved_chunk_ids": [
+        "qasper:1909.00542:s7:p1",
+        "qasper:1908.07816:s9:p0",
+        "qasper:1910.09399:s31:p0",
+        "qasper:1911.03894:s12:p1",
+        "qasper:1909.00542:s0:p3"
+      ]
+    },
+    {
+      "question_id": "1a1293e24f4924064e6fb9998658f5a329879109",
+      "category": "qasper_real",
+      "query": "What state of the art models were used in experiments?",
+      "method": "hybrid_ontology_expansion",
+      "gold_chunk_ids": [
+        "qasper:2003.00639:s12:p0"
+      ],
+      "gold_rank": 2,
+      "top_chunk_id": "qasper:1911.03894:s18:p2",
+      "retrieved_chunk_ids": [
+        "qasper:1911.03894:s18:p2",
+        "qasper:2003.00639:s12:p0",
+        "qasper:1911.09886:s11:p0",
+        "qasper:1908.08593:s3:p0",
+        "qasper:1911.09886:s0:p5"
+      ]
+    },
+    {
+      "question_id": "3ccd337f77c5d2f7294eb459ccc1770796c2eaef",
+      "category": "qasper_real",
+      "query": "What five dialogue attributes were analyzed?",
+      "method": "hybrid_ontology_expansion",
+      "gold_chunk_ids": [
+        "qasper:2003.00639:s2:p0",
+        "qasper:2003.00639:s3:p0",
+        "qasper:2003.00639:s4:p0",
+        "qasper:2003.00639:s5:p0",
+        "qasper:2003.00639:s6:p0"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:2003.00639:s8:p0",
+      "retrieved_chunk_ids": [
+        "qasper:2003.00639:s8:p0",
+        "qasper:2003.00639:s21:p0",
+        "qasper:2003.00639:s0:p4",
+        "qasper:2002.11893:s8:p2",
+        "qasper:2003.00639:s1:p0"
+      ]
+    },
+    {
+      "question_id": "2376c170c343e2305dac08ba5f5bda47c370357f",
+      "category": "qasper_real",
+      "query": "How was the dataset collected?",
+      "method": "hybrid_ontology_expansion",
+      "gold_chunk_ids": [
+        "qasper:2002.11893:s2:p0",
+        "qasper:2002.11893:s2:p1",
+        "qasper:2002.11893:s2:p2",
+        "qasper:2002.11893:s2:p3",
+        "qasper:2002.11893:s2:p4"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:1912.10806:s8:p0",
+      "retrieved_chunk_ids": [
+        "qasper:1912.10806:s8:p0",
+        "qasper:1911.12579:s19:p0",
+        "qasper:2004.03744:s1:p4",
+        "qasper:1908.07816:s7:p2",
+        "qasper:2004.03744:s6:p0"
+      ]
+    },
+    {
+      "question_id": "0137ecebd84a03b224eb5ca51d189283abb5f6d9",
+      "category": "qasper_real",
+      "query": "What are the benchmark models?",
+      "method": "hybrid_ontology_expansion",
+      "gold_chunk_ids": [
+        "qasper:2002.11893:s12:p1",
+        "qasper:2002.11893:s13:p1",
+        "qasper:2002.11893:s14:p1"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:1911.09886:s0:p5",
+      "retrieved_chunk_ids": [
+        "qasper:1911.09886:s0:p5",
+        "qasper:2002.11893:s17:p6",
+        "qasper:2002.11893:s13:p2",
+        "qasper:1908.08593:s2:p2",
+        "qasper:2002.11893:s0:p6"
+      ]
+    },
+    {
+      "question_id": "5f6fbd57cce47f20a0fda27d954543c00c4344c2",
+      "category": "qasper_real",
+      "query": "How was the corpus annotated?",
+      "method": "hybrid_ontology_expansion",
+      "gold_chunk_ids": [
+        "qasper:2002.11893:s2:p3",
+        "qasper:2002.11893:s2:p4"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:1911.12579:s1:p1",
+      "retrieved_chunk_ids": [
+        "qasper:1911.12579:s1:p1",
+        "qasper:1911.12579:s4:p0",
+        "qasper:2002.11893:s10:p0",
+        "qasper:1911.12579:s19:p0",
+        "qasper:1911.12579:s20:p1"
+      ]
+    },
+    {
+      "question_id": "52ed2eb6f4d1f74ebdc4dcddcae201786d4c0463",
+      "category": "qasper_real",
+      "query": "Are the models compared to some baseline models?",
+      "method": "hybrid_ontology_expansion",
+      "gold_chunk_ids": [
+        "qasper:1909.04181:s3:p0"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:2002.09758:s24:p0",
+      "retrieved_chunk_ids": [
+        "qasper:2002.09758:s24:p0",
+        "qasper:1909.00542:s3:p2",
+        "qasper:1909.00100:s6:p1",
+        "qasper:1911.09886:s11:p0",
+        "qasper:1909.00100:s11:p0"
+      ]
+    },
+    {
+      "question_id": "2c576072e494ab5598667cd6b40bc97fdd7d92d7",
+      "category": "qasper_real",
+      "query": "What are the in-house data employed?",
+      "method": "hybrid_ontology_expansion",
+      "gold_chunk_ids": [
+        "qasper:1909.04181:s5:p0"
+      ],
+      "gold_rank": 1,
+      "top_chunk_id": "qasper:1909.04181:s5:p0",
+      "retrieved_chunk_ids": [
+        "qasper:1909.04181:s5:p0",
+        "qasper:1909.04181:s2:p0",
+        "qasper:2002.11893:s2:p4",
+        "qasper:1908.07816:s7:p3",
+        "qasper:1909.04181:s8:p0"
+      ]
+    },
+    {
+      "question_id": "8602160e98e4b2c9c702440da395df5261f55b1f",
+      "category": "qasper_real",
+      "query": "What are the three datasets used in the paper?",
+      "method": "hybrid_ontology_expansion",
+      "gold_chunk_ids": [
+        "qasper:1909.04181:s1:p0"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:1911.09886:s9:p0",
+      "retrieved_chunk_ids": [
+        "qasper:1911.09886:s9:p0",
+        "qasper:2003.06279:s2:p18",
+        "qasper:1910.07181:s0:p8",
+        "qasper:2003.06279:s2:p11",
+        "qasper:1909.00542:s6:p0"
+      ]
+    },
+    {
+      "question_id": "d6e2b276390bdc957dfa7e878de80cee1f41fbca",
+      "category": "qasper_real",
+      "query": "What models other than standalone BERT is new model compared to?",
+      "method": "hybrid_ontology_rerank",
+      "gold_chunk_ids": [
+        "qasper:1910.07181:s10:p2"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:1909.00100:s4:p2",
+      "retrieved_chunk_ids": [
+        "qasper:1909.00100:s4:p2",
+        "qasper:1909.00100:s4:p0",
+        "qasper:1909.00100:s3:p0",
+        "qasper:1909.00100:s11:p0",
+        "qasper:1912.10435:s9:p3"
+      ]
+    },
+    {
+      "question_id": "32537fdf0d4f76f641086944b413b2f756097e5e",
+      "category": "qasper_real",
+      "query": "How much is representaton improved for rare/medum frequency words compared to standalone BERT and previous work?",
+      "method": "hybrid_ontology_rerank",
+      "gold_chunk_ids": [
+        "qasper:1910.07181:s10:p2"
+      ],
+      "gold_rank": 1,
+      "top_chunk_id": "qasper:1910.07181:s10:p2",
+      "retrieved_chunk_ids": [
+        "qasper:1910.07181:s10:p2",
+        "qasper:1911.12579:s25:p7",
+        "qasper:1910.07181:s12:p0",
+        "qasper:1908.08593:s1:p0",
+        "qasper:1910.07181:s9:p1"
+      ]
+    },
+    {
+      "question_id": "ef081d78be17ef2af792e7e919d15a235b8d7275",
+      "category": "qasper_real",
+      "query": "What are three downstream task datasets?",
+      "method": "hybrid_ontology_rerank",
+      "gold_chunk_ids": [
+        "qasper:1910.07181:s11:p0"
+      ],
+      "gold_rank": 1,
+      "top_chunk_id": "qasper:1910.07181:s11:p0",
+      "retrieved_chunk_ids": [
+        "qasper:1910.07181:s11:p0",
+        "qasper:1910.07181:s11:p4",
+        "qasper:1910.07181:s11:p3",
+        "qasper:1910.07181:s11:p2",
+        "qasper:1910.07181:s11:p5"
+      ]
+    },
+    {
+      "question_id": "537b2d7799124d633892a1ef1a485b3b071b303d",
+      "category": "qasper_real",
+      "query": "What is dataset for word probing task?",
+      "method": "hybrid_ontology_rerank",
+      "gold_chunk_ids": [
+        "qasper:1910.07181:s10:p0"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:1910.07181:s1:p2",
+      "retrieved_chunk_ids": [
+        "qasper:1910.07181:s1:p2",
+        "qasper:1910.07181:s10:p1",
+        "qasper:1910.07181:s11:p4",
+        "qasper:1910.07181:s0:p2",
+        "qasper:1910.07181:s5:p0"
+      ]
+    },
+    {
+      "question_id": "735f58e28d84ee92024a36bc348cfac2ee114409",
+      "category": "qasper_real",
+      "query": "Are there datasets with relation tuples annotated, how big are datasets available?",
+      "method": "hybrid_ontology_rerank",
+      "gold_chunk_ids": [
+        "qasper:1911.09886:s9:p0"
+      ],
+      "gold_rank": 1,
+      "top_chunk_id": "qasper:1911.09886:s9:p0",
+      "retrieved_chunk_ids": [
+        "qasper:1911.09886:s9:p0",
+        "qasper:1910.07181:s1:p2",
+        "qasper:1911.09886:s0:p3",
+        "qasper:1911.09886:s1:p0",
+        "qasper:1911.09886:s0:p2"
+      ]
+    },
+    {
+      "question_id": "710fa8b3e74ee63d2acc20af19f95f7702b7ce5e",
+      "category": "qasper_real",
+      "query": "Which one of two proposed approaches performed better in experiments?",
+      "method": "hybrid_ontology_rerank",
+      "gold_chunk_ids": [
+        "qasper:1911.09886:s12:p0"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:2004.03744:s5:p0",
+      "retrieved_chunk_ids": [
+        "qasper:2004.03744:s5:p0",
+        "qasper:2003.00639:s13:p0",
+        "qasper:1911.09886:s17:p0",
+        "qasper:1908.08593:s2:p0",
+        "qasper:1909.00542:s2:p7"
+      ]
+    },
+    {
+      "question_id": "56123dd42cf5c77fc9a88fc311ed2e1eb672126e",
+      "category": "qasper_real",
+      "query": "What is previous work authors reffer to?",
+      "method": "hybrid_ontology_rerank",
+      "gold_chunk_ids": [
+        "qasper:1911.09886:s11:p0",
+        "qasper:1911.09886:s11:p1",
+        "qasper:1911.09886:s11:p2",
+        "qasper:1911.09886:s11:p3",
+        "qasper:1911.09886:s11:p4",
+        "qasper:1911.09886:s11:p5",
+        "qasper:1911.09886:s11:p6"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:2003.06279:s1:p1",
+      "retrieved_chunk_ids": [
+        "qasper:2003.06279:s1:p1",
+        "qasper:2004.03744:s2:p2",
+        "qasper:1908.08593:s17:p2",
+        "qasper:2003.06279:s9:p0",
+        "qasper:2003.00639:s4:p0"
+      ]
+    },
+    {
+      "question_id": "1898f999626f9a6da637bd8b4857e5eddf2fc729",
+      "category": "qasper_real",
+      "query": "How higher are F1 scores compared to previous work?",
+      "method": "hybrid_ontology_rerank",
+      "gold_chunk_ids": [
+        "qasper:1911.09886:s12:p0"
+      ],
+      "gold_rank": 1,
+      "top_chunk_id": "qasper:1911.09886:s12:p0",
+      "retrieved_chunk_ids": [
+        "qasper:1911.09886:s12:p0",
+        "qasper:1911.09886:s14:p0",
+        "qasper:1912.10435:s9:p0",
+        "qasper:1912.10435:s9:p2",
+        "qasper:1911.09886:s14:p1"
+      ]
+    },
+    {
+      "question_id": "8de64483ae96c0a03a8e527950582f127b43dceb",
+      "category": "qasper_real",
+      "query": "Do they report results only on English data?",
+      "method": "hybrid_ontology_rerank",
+      "gold_chunk_ids": [
+        "qasper:1912.05238:s4:p2",
+        "qasper:1912.05238:s4:p4"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:1911.03894:s15:p0",
+      "retrieved_chunk_ids": [
+        "qasper:1911.03894:s15:p0",
+        "qasper:1909.00100:s15:p94",
+        "qasper:1910.07181:s5:p3",
+        "qasper:1909.00100:s15:p196",
+        "qasper:1909.00100:s10:p0"
+      ]
+    },
+    {
+      "question_id": "4d062673b714998800e61f66b6ccbf7eef5be2ac",
+      "category": "qasper_real",
+      "query": "What is the Moral Choice Machine?",
+      "method": "hybrid_ontology_rerank",
+      "gold_chunk_ids": [
+        "qasper:1912.05238:s6:p0"
+      ],
+      "gold_rank": 3,
+      "top_chunk_id": "qasper:1912.05238:s4:p9",
+      "retrieved_chunk_ids": [
+        "qasper:1912.05238:s4:p9",
+        "qasper:1912.05238:s0:p4",
+        "qasper:1912.05238:s6:p0",
+        "qasper:1912.05238:s5:p1",
+        "qasper:1912.05238:s9:p0"
+      ]
+    },
+    {
+      "question_id": "f4238f558d6ddf3849497a130b3a6ad866ff38b3",
+      "category": "qasper_real",
+      "query": "How is moral bias measured?",
+      "method": "hybrid_ontology_rerank",
+      "gold_chunk_ids": [
+        "qasper:1912.05238:s2:p1",
+        "qasper:1912.05238:s2:p2"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:1912.05238:s3:p2",
+      "retrieved_chunk_ids": [
+        "qasper:1912.05238:s3:p2",
+        "qasper:1912.05238:s3:p0",
+        "qasper:1912.05238:s2:p3",
+        "qasper:1912.05238:s4:p8",
+        "qasper:1912.05238:s11:p0"
+      ]
+    },
+    {
+      "question_id": "96dcabaa8b6bd89b032da609e709900a1569a0f9",
+      "category": "qasper_real",
+      "query": "How do the authors define deontological ethical reasoning?",
+      "method": "hybrid_ontology_rerank",
+      "gold_chunk_ids": [
+        "qasper:1912.05238:s1:p2"
+      ],
+      "gold_rank": 1,
+      "top_chunk_id": "qasper:1912.05238:s1:p2",
+      "retrieved_chunk_ids": [
+        "qasper:1912.05238:s1:p2",
+        "qasper:1912.05238:s5:p0",
+        "qasper:1912.05238:s0:p3",
+        "qasper:1912.05238:s5:p1",
+        "qasper:1912.05238:s0:p2"
+      ]
+    },
+    {
+      "question_id": "4cc5ba404d6a47363f119d9db7266157d3bb246b",
+      "category": "qasper_real",
+      "query": "What off-the-shelf QA model was used to answer sub-questions?",
+      "method": "hybrid_ontology_rerank",
+      "gold_chunk_ids": [
+        "qasper:2002.09758:s33:p0"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:2002.09758:s8:p0",
+      "retrieved_chunk_ids": [
+        "qasper:2002.09758:s8:p0",
+        "qasper:2002.09758:s29:p0",
+        "qasper:2002.09758:s27:p0",
+        "qasper:2002.09758:s0:p3",
+        "qasper:2002.09758:s0:p0"
+      ]
+    },
+    {
+      "question_id": "1d72770d075b22411ec86d8bdee532f8c643740b",
+      "category": "qasper_real",
+      "query": "How large is the improvement over the baseline?",
+      "method": "hybrid_ontology_rerank",
+      "gold_chunk_ids": [
+        "qasper:2002.09758:s25:p0"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:1912.10435:s9:p7",
+      "retrieved_chunk_ids": [
+        "qasper:1912.10435:s9:p7",
+        "qasper:1911.02821:s5:p1",
+        "qasper:2003.06279:s5:p1",
+        "qasper:1912.10435:s10:p0",
+        "qasper:2003.06279:s4:p1"
+      ]
+    },
+    {
+      "question_id": "af1439c68b28c27848203f863675946380d28943",
+      "category": "qasper_real",
+      "query": "What is the strong baseline that this work outperforms?",
+      "method": "hybrid_ontology_rerank",
+      "gold_chunk_ids": [
+        "qasper:2002.09758:s20:p0",
+        "qasper:2002.09758:s20:p1",
+        "qasper:2002.09758:s25:p0"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:1911.02821:s5:p0",
+      "retrieved_chunk_ids": [
+        "qasper:1911.02821:s5:p0",
+        "qasper:1909.00100:s11:p0",
+        "qasper:1911.03894:s18:p2",
+        "qasper:1911.03894:s14:p3",
+        "qasper:1911.03894:s16:p0"
+      ]
+    },
+    {
+      "question_id": "5c0b8c1b649df1b07d9af3aa9154ac340ec8b81c",
+      "category": "qasper_real",
+      "query": "Is the model compared against a linear regression baseline?",
+      "method": "hybrid_ontology_rerank",
+      "gold_chunk_ids": [
+        "qasper:1912.10806:s12:p3"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:1909.00542:s3:p2",
+      "retrieved_chunk_ids": [
+        "qasper:1909.00542:s3:p2",
+        "qasper:1909.00542:s5:p1",
+        "qasper:1909.00542:s2:p8",
+        "qasper:1909.00542:s2:p2",
+        "qasper:1909.00542:s2:p10"
+      ]
+    },
+    {
+      "question_id": "3b391cd58cf6a61fe8c8eff2095e33794e80f0e3",
+      "category": "qasper_real",
+      "query": "What is the dataset used in the paper?",
+      "method": "hybrid_ontology_rerank",
+      "gold_chunk_ids": [
+        "qasper:1912.10806:s8:p0"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:1909.04181:s0:p1",
+      "retrieved_chunk_ids": [
+        "qasper:1909.04181:s0:p1",
+        "qasper:2003.06279:s2:p18",
+        "qasper:1911.09886:s9:p0",
+        "qasper:2003.06279:s2:p11",
+        "qasper:1908.07816:s7:p2"
+      ]
+    },
+    {
+      "question_id": "4d8ca3f7aa65dcb42eba72acf3584d37b416b19c",
+      "category": "qasper_real",
+      "query": "How does the differential privacy mechanism work?",
+      "method": "hybrid_ontology_rerank",
+      "gold_chunk_ids": [
+        "qasper:1912.10806:s0:p4",
+        "qasper:1912.10806:s6:p0"
+      ],
+      "gold_rank": 1,
+      "top_chunk_id": "qasper:1912.10806:s6:p0",
+      "retrieved_chunk_ids": [
+        "qasper:1912.10806:s6:p0",
+        "qasper:1912.10806:s6:p1",
+        "qasper:1912.10806:s10:p0",
+        "qasper:1912.10806:s14:p20",
+        "qasper:1912.10806:s14:p7"
+      ]
+    },
+    {
+      "question_id": "5b6aec1b88c9832075cd343f59158078a91f3597",
+      "category": "qasper_real",
+      "query": "How does proposed word embeddings compare to Sindhi fastText word representations?",
+      "method": "hybrid_ontology_rerank",
+      "gold_chunk_ids": [
+        "qasper:1911.12579:s27:p0",
+        "qasper:1911.12579:s27:p1"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:1911.12579:s0:p7",
+      "retrieved_chunk_ids": [
+        "qasper:1911.12579:s0:p7",
+        "qasper:1911.12579:s31:p1",
+        "qasper:1911.12579:s28:p0",
+        "qasper:1911.03894:s2:p0",
+        "qasper:1911.12579:s31:p0"
+      ]
+    },
+    {
+      "question_id": "a6717e334c53ebbb87e5ef878a77ef46866e3aed",
+      "category": "qasper_real",
+      "query": "Are trained word embeddings used for any other NLP task?",
+      "method": "hybrid_ontology_rerank",
+      "gold_chunk_ids": [
+        "qasper:1911.12579:s30:p0"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:1911.12579:s6:p0",
+      "retrieved_chunk_ids": [
+        "qasper:1911.12579:s6:p0",
+        "qasper:1911.12579:s0:p2",
+        "qasper:1911.12579:s1:p2",
+        "qasper:1911.02821:s7:p0",
+        "qasper:1911.03894:s2:p0"
+      ]
+    },
+    {
+      "question_id": "a1064307a19cd7add32163a70b6623278a557946",
+      "category": "qasper_real",
+      "query": "How many uniue words are in the dataset?",
+      "method": "hybrid_ontology_rerank",
+      "gold_chunk_ids": [
+        "qasper:1911.12579:s19:p0"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:1910.07181:s1:p2",
+      "retrieved_chunk_ids": [
+        "qasper:1910.07181:s1:p2",
+        "qasper:2002.11893:s9:p0",
+        "qasper:2003.06279:s1:p4",
+        "qasper:1910.07181:s5:p1",
+        "qasper:2002.06053:s5:p0"
+      ]
+    },
+    {
+      "question_id": "8cb9006bcbd2f390aadc6b70d54ee98c674e45cc",
+      "category": "qasper_real",
+      "query": "How is the data collected, which web resources were used?",
+      "method": "hybrid_ontology_rerank",
+      "gold_chunk_ids": [
+        "qasper:1911.12579:s4:p0"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:1911.12579:s5:p3",
+      "retrieved_chunk_ids": [
+        "qasper:1911.12579:s5:p3",
+        "qasper:1911.12579:s19:p0",
+        "qasper:2002.11893:s2:p1",
+        "qasper:1912.10806:s8:p0",
+        "qasper:1911.12579:s0:p3"
+      ]
+    },
+    {
+      "question_id": "8d989490c5392492ad66e6a5047b7d74cc719f30",
+      "category": "qasper_real",
+      "query": "What ensemble methods are used for best model?",
+      "method": "hybrid_ontology_rerank",
+      "gold_chunk_ids": [
+        "qasper:1912.10435:s8:p2"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:1912.10435:s8:p1",
+      "retrieved_chunk_ids": [
+        "qasper:1912.10435:s8:p1",
+        "qasper:1912.10435:s9:p3",
+        "qasper:2003.06279:s2:p11",
+        "qasper:2002.09758:s33:p0",
+        "qasper:1912.10435:s8:p0"
+      ]
+    },
+    {
+      "question_id": "a7829abed2186f757a59d3da44893c0172c7012b",
+      "category": "qasper_real",
+      "query": "What hyperparameters have been tuned?",
+      "method": "hybrid_ontology_rerank",
+      "gold_chunk_ids": [
+        "qasper:1912.10435:s2:p0"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:1912.10435:s7:p0",
+      "retrieved_chunk_ids": [
+        "qasper:1912.10435:s7:p0",
+        "qasper:1909.00100:s12:p1",
+        "qasper:1909.00100:s12:p5",
+        "qasper:1909.00100:s12:p3",
+        "qasper:1909.00100:s12:p0"
+      ]
+    },
+    {
+      "question_id": "707db46938d16647bf4b6407b2da84b5c7ab4a81",
+      "category": "qasper_real",
+      "query": "How much F1 was improved after adding skip connections?",
+      "method": "hybrid_ontology_rerank",
+      "gold_chunk_ids": [
+        "qasper:1912.10435:s9:p0"
+      ],
+      "gold_rank": 2,
+      "top_chunk_id": "qasper:1912.10435:s9:p1",
+      "retrieved_chunk_ids": [
+        "qasper:1912.10435:s9:p1",
+        "qasper:1912.10435:s9:p0",
+        "qasper:1911.09886:s14:p0",
+        "qasper:1912.10435:s5:p0",
+        "qasper:1911.02821:s5:p1"
+      ]
+    },
+    {
+      "question_id": "71f2b368228a748fd348f1abf540236568a61b07",
+      "category": "qasper_real",
+      "query": "What is CamemBERT trained on?",
+      "method": "hybrid_ontology_rerank",
+      "gold_chunk_ids": [
+        "qasper:1911.03894:s9:p3"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:1911.03894:s4:p1",
+      "retrieved_chunk_ids": [
+        "qasper:1911.03894:s4:p1",
+        "qasper:1911.03894:s16:p0",
+        "qasper:1911.03894:s5:p0",
+        "qasper:1911.03894:s4:p2",
+        "qasper:1911.03894:s4:p0"
+      ]
+    },
+    {
+      "question_id": "d3d4eef047aa01391e3e5d613a0f1f786ae7cfc7",
+      "category": "qasper_real",
+      "query": "Which tasks does CamemBERT not improve on?",
+      "method": "hybrid_ontology_rerank",
+      "gold_chunk_ids": [
+        "qasper:1911.03894:s20:p0"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:1911.03894:s16:p0",
+      "retrieved_chunk_ids": [
+        "qasper:1911.03894:s16:p0",
+        "qasper:1911.03894:s18:p2",
+        "qasper:1911.03894:s6:p3",
+        "qasper:1911.03894:s22:p0",
+        "qasper:1911.03894:s11:p1"
+      ]
+    },
+    {
+      "question_id": "63723c6b398100bba5dc21754451f503cb91c9b8",
+      "category": "qasper_real",
+      "query": "What is the state of the art?",
+      "method": "hybrid_ontology_rerank",
+      "gold_chunk_ids": [
+        "qasper:1911.03894:s11:p2",
+        "qasper:1911.03894:s13:p2",
+        "qasper:1911.03894:s15:p1"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:1909.00100:s2:p1",
+      "retrieved_chunk_ids": [
+        "qasper:1909.00100:s2:p1",
+        "qasper:1908.08593:s0:p1",
+        "qasper:2002.11893:s12:p0",
+        "qasper:1911.09886:s11:p0",
+        "qasper:2004.03744:s0:p2"
+      ]
+    },
+    {
+      "question_id": "5471766ca7c995dd7f0f449407902b32ac9db269",
+      "category": "qasper_real",
+      "query": "How much better was results of CamemBERT than previous results on these tasks?",
+      "method": "hybrid_ontology_rerank",
+      "gold_chunk_ids": [
+        "qasper:1911.03894:s19:p1",
+        "qasper:1911.03894:s20:p0",
+        "qasper:1911.03894:s21:p0"
+      ],
+      "gold_rank": 3,
+      "top_chunk_id": "qasper:1911.03894:s22:p0",
+      "retrieved_chunk_ids": [
+        "qasper:1911.03894:s22:p0",
+        "qasper:1911.03894:s16:p0",
+        "qasper:1911.03894:s21:p0",
+        "qasper:1911.02821:s5:p1",
+        "qasper:1911.03894:s0:p2"
+      ]
+    },
+    {
+      "question_id": "dc49746fc98647445599da9d17bc004bafdc4579",
+      "category": "qasper_real",
+      "query": "Was CamemBERT compared against multilingual BERT on these tasks?",
+      "method": "hybrid_ontology_rerank",
+      "gold_chunk_ids": [
+        "qasper:1911.03894:s11:p0"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:1909.00100:s2:p1",
+      "retrieved_chunk_ids": [
+        "qasper:1909.00100:s2:p1",
+        "qasper:1911.03894:s22:p0",
+        "qasper:1909.00100:s2:p0",
+        "qasper:1909.00100:s2:p2",
+        "qasper:1911.03894:s0:p2"
+      ]
+    },
+    {
+      "question_id": "cfffc94518d64cb3c8789395707e4336676e0345",
+      "category": "qasper_real",
+      "query": "What approaches without reinforcement learning have been tried?",
+      "method": "hybrid_ontology_rerank",
+      "gold_chunk_ids": [
+        "qasper:1909.00542:s2:p11",
+        "qasper:1909.00542:s3:p0",
+        "qasper:1909.00542:s3:p1"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:1909.00542:s4:p7",
+      "retrieved_chunk_ids": [
+        "qasper:1909.00542:s4:p7",
+        "qasper:1909.00542:s7:p2",
+        "qasper:1909.00542:s4:p5",
+        "qasper:1909.00542:s4:p3",
+        "qasper:1909.00542:s4:p4"
+      ]
+    },
+    {
+      "question_id": "f60629c01f99de3f68365833ee115b95a3388699",
+      "category": "qasper_real",
+      "query": "What classification approaches were experimented for this task?",
+      "method": "hybrid_ontology_rerank",
+      "gold_chunk_ids": [
+        "qasper:1909.00542:s2:p11",
+        "qasper:1909.00542:s3:p1"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:1909.00542:s2:p3",
+      "retrieved_chunk_ids": [
+        "qasper:1909.00542:s2:p3",
+        "qasper:2003.06279:s2:p16",
+        "qasper:1909.00542:s7:p0",
+        "qasper:1911.03894:s16:p0",
+        "qasper:1908.08593:s2:p0"
+      ]
+    },
+    {
+      "question_id": "a7cb4f8e29fd2f3d1787df64cd981a6318b65896",
+      "category": "qasper_real",
+      "query": "Did classification models perform better than previous regression one?",
+      "method": "hybrid_ontology_rerank",
+      "gold_chunk_ids": [
+        "qasper:1909.00542:s0:p2"
+      ],
+      "gold_rank": 1,
+      "top_chunk_id": "qasper:1909.00542:s0:p2",
+      "retrieved_chunk_ids": [
+        "qasper:1909.00542:s0:p2",
+        "qasper:1909.00542:s2:p12",
+        "qasper:1909.00542:s2:p7",
+        "qasper:1909.00542:s2:p1",
+        "qasper:1909.00542:s2:p13"
+      ]
+    },
+    {
+      "question_id": "a45edc04277a458911086752af4f17405501230f",
+      "category": "qasper_real",
+      "query": "Are datasets publicly available?",
+      "method": "hybrid_ontology_rerank",
+      "gold_chunk_ids": [
+        "qasper:2002.06053:s29:p0"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:1910.07181:s1:p2",
+      "retrieved_chunk_ids": [
+        "qasper:1910.07181:s1:p2",
+        "qasper:2002.11893:s0:p6",
+        "qasper:1910.07181:s5:p3",
+        "qasper:2002.06053:s0:p3",
+        "qasper:1910.07181:s0:p11"
+      ]
+    },
+    {
+      "question_id": "8c8a32592184c88f61fac1eef12c7d233dbec9dc",
+      "category": "qasper_real",
+      "query": "Are this models usually semi/supervised or unsupervised?",
+      "method": "hybrid_ontology_rerank",
+      "gold_chunk_ids": [
+        "qasper:2002.06053:s24:p3",
+        "qasper:2002.06053:s24:p4",
+        "qasper:2002.06053:s25:p0"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:2002.09758:s42:p1",
+      "retrieved_chunk_ids": [
+        "qasper:2002.09758:s42:p1",
+        "qasper:2002.09758:s42:p0",
+        "qasper:2002.09758:s1:p1",
+        "qasper:2002.06053:s18:p0",
+        "qasper:2003.06279:s2:p16"
+      ]
+    },
+    {
+      "question_id": "16646ee77975fed372b76ce639e2664ae2105dcf",
+      "category": "qasper_real",
+      "query": "Is there any concrete example in the paper that shows that this approach had huge impact on drug discovery?",
+      "method": "hybrid_ontology_rerank",
+      "gold_chunk_ids": [
+        "qasper:2002.06053:s23:p2"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:2002.06053:s31:p0",
+      "retrieved_chunk_ids": [
+        "qasper:2002.06053:s31:p0",
+        "qasper:2002.06053:s0:p4",
+        "qasper:2002.06053:s0:p0",
+        "qasper:2002.06053:s28:p0",
+        "qasper:1909.00542:s2:p0"
+      ]
+    },
+    {
+      "question_id": "e96adf8466e67bd19f345578d5a6dc68fd0279a1",
+      "category": "qasper_real",
+      "query": "Is text-to-image synthesis trained is suppervized or unsuppervized manner?",
+      "method": "hybrid_ontology_rerank",
+      "gold_chunk_ids": [
+        "qasper:1910.09399:s12:p1",
+        "qasper:1910.09399:s5:p4"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:1910.09399:s2:p0",
+      "retrieved_chunk_ids": [
+        "qasper:1910.09399:s2:p0",
+        "qasper:1910.09399:s25:p0",
+        "qasper:1910.09399:s17:p1",
+        "qasper:1910.09399:s29:p1",
+        "qasper:1910.09399:s1:p0"
+      ]
+    },
+    {
+      "question_id": "c1477a6c86bd1670dd17407590948000c9a6b7c6",
+      "category": "qasper_real",
+      "query": "What challenges remain unresolved?",
+      "method": "hybrid_ontology_rerank",
+      "gold_chunk_ids": [
+        "qasper:1910.09399:s34:p1"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:2002.06053:s27:p0",
+      "retrieved_chunk_ids": [
+        "qasper:2002.06053:s27:p0",
+        "qasper:1909.00542:s1:p0",
+        "qasper:1908.08593:s2:p2",
+        "qasper:2002.06053:s0:p3",
+        "qasper:2002.06053:s29:p0"
+      ]
+    },
+    {
+      "question_id": "e020677261d739c35c6f075cde6937d0098ace7f",
+      "category": "qasper_real",
+      "query": "What is the conclusion of comparison of proposed solution?",
+      "method": "hybrid_ontology_rerank",
+      "gold_chunk_ids": [
+        "qasper:1910.09399:s32:p0",
+        "qasper:1910.09399:s32:p1",
+        "qasper:1910.09399:s32:p2"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:2003.00639:s14:p0",
+      "retrieved_chunk_ids": [
+        "qasper:2003.00639:s14:p0",
+        "qasper:1908.08593:s17:p0",
+        "qasper:1912.05238:s0:p5",
+        "qasper:1908.08593:s2:p2",
+        "qasper:1910.07181:s0:p9"
+      ]
+    },
+    {
+      "question_id": "6389d5a152151fb05aae00b53b521c117d7b5e54",
+      "category": "qasper_real",
+      "query": "What is typical GAN architecture for each text-to-image synhesis group?",
+      "method": "hybrid_ontology_rerank",
+      "gold_chunk_ids": [
+        "qasper:1910.09399:s9:p0"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:1910.09399:s10:p3",
+      "retrieved_chunk_ids": [
+        "qasper:1910.09399:s10:p3",
+        "qasper:1910.09399:s22:p0",
+        "qasper:1910.09399:s10:p7",
+        "qasper:1910.09399:s13:p0",
+        "qasper:1910.09399:s4:p0"
+      ]
+    },
+    {
+      "question_id": "f33236ebd6f5a9ccb9b9dbf05ac17c3724f93f91",
+      "category": "qasper_real",
+      "query": "Is model explanation output evaluated, what metric was used?",
+      "method": "hybrid_ontology_rerank",
+      "gold_chunk_ids": [
+        "qasper:2004.03744:s2:p9"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:2004.03744:s14:p1",
+      "retrieved_chunk_ids": [
+        "qasper:2004.03744:s14:p1",
+        "qasper:1912.10435:s9:p2",
+        "qasper:2004.03744:s7:p1",
+        "qasper:1912.10806:s5:p6",
+        "qasper:2004.03744:s11:p0"
+      ]
+    },
+    {
+      "question_id": "66bf0d61ffc321f15e7347aaed191223f4ce4b4a",
+      "category": "qasper_real",
+      "query": "How many annotators are used to write natural language explanations to SNLI-VE-2.0?",
+      "method": "hybrid_ontology_rerank",
+      "gold_chunk_ids": [
+        "qasper:2004.03744:s23:p0"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:2004.03744:s7:p2",
+      "retrieved_chunk_ids": [
+        "qasper:2004.03744:s7:p2",
+        "qasper:2004.03744:s0:p4",
+        "qasper:2004.03744:s7:p0",
+        "qasper:2004.03744:s6:p0",
+        "qasper:2004.03744:s20:p0"
+      ]
+    },
+    {
+      "question_id": "5dfa59c116e0ceb428efd99bab19731aa3df4bbd",
+      "category": "qasper_real",
+      "query": "How many natural language explanations are human-written?",
+      "method": "hybrid_ontology_rerank",
+      "gold_chunk_ids": [
+        "qasper:2004.03744:s22:p0"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:2004.03744:s6:p0",
+      "retrieved_chunk_ids": [
+        "qasper:2004.03744:s6:p0",
+        "qasper:2004.03744:s14:p1",
+        "qasper:2004.03744:s19:p0",
+        "qasper:2004.03744:s7:p1",
+        "qasper:2004.03744:s18:p2"
+      ]
+    },
+    {
+      "question_id": "0c557b408183630d1c6c325b5fb9ff1573661290",
+      "category": "qasper_real",
+      "query": "How much is performance difference of existing model between original and corrected corpus?",
+      "method": "hybrid_ontology_rerank",
+      "gold_chunk_ids": [
+        "qasper:2004.03744:s5:p1"
+      ],
+      "gold_rank": 3,
+      "top_chunk_id": "qasper:2003.06279:s4:p7",
+      "retrieved_chunk_ids": [
+        "qasper:2003.06279:s4:p7",
+        "qasper:2002.11893:s17:p6",
+        "qasper:2004.03744:s5:p1",
+        "qasper:1912.10435:s9:p3",
+        "qasper:1911.03894:s22:p0"
+      ]
+    },
+    {
+      "question_id": "a08b5018943d4428f067c08077bfff1af3de9703",
+      "category": "qasper_real",
+      "query": "What is the class with highest error rate in SNLI-VE?",
+      "method": "hybrid_ontology_rerank",
+      "gold_chunk_ids": [
+        "qasper:2004.03744:s0:p1"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:2004.03744:s2:p8",
+      "retrieved_chunk_ids": [
+        "qasper:2004.03744:s2:p8",
+        "qasper:2004.03744:s22:p0",
+        "qasper:2004.03744:s3:p0",
+        "qasper:2004.03744:s0:p3",
+        "qasper:2004.03744:s20:p0"
+      ]
+    },
+    {
+      "question_id": "6b4de7fef3a543215f16042ce6a29186bf84fea4",
+      "category": "qasper_real",
+      "query": "What pre-trained models did they compare to?",
+      "method": "hybrid_ontology_rerank",
+      "gold_chunk_ids": [
+        "qasper:1911.02821:s4:p0"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:2002.09758:s16:p0",
+      "retrieved_chunk_ids": [
+        "qasper:2002.09758:s16:p0",
+        "qasper:1908.08593:s9:p0",
+        "qasper:1908.08593:s2:p4",
+        "qasper:1909.00100:s8:p0",
+        "qasper:1908.08593:s2:p2"
+      ]
+    },
+    {
+      "question_id": "3a62dd5fece70f8bf876dcbb131223682e3c54b7",
+      "category": "qasper_real",
+      "query": "How does the fusion method work?",
+      "method": "hybrid_ontology_rerank",
+      "gold_chunk_ids": [
+        "qasper:1911.02821:s2:p5"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:1911.02821:s6:p0",
+      "retrieved_chunk_ids": [
+        "qasper:1911.02821:s6:p0",
+        "qasper:1911.09886:s11:p2",
+        "qasper:2003.06279:s1:p4",
+        "qasper:1908.08593:s2:p1",
+        "qasper:2003.06279:s4:p7"
+      ]
+    },
+    {
+      "question_id": "34fab25d9ceb9c5942daf4ebdab6c5dd4ff9d3db",
+      "category": "qasper_real",
+      "query": "What dataset did they use?",
+      "method": "hybrid_ontology_rerank",
+      "gold_chunk_ids": [
+        "qasper:1911.02821:s5:p0"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:1908.08593:s2:p1",
+      "retrieved_chunk_ids": [
+        "qasper:1908.08593:s2:p1",
+        "qasper:1909.04181:s1:p0",
+        "qasper:1908.08593:s2:p2",
+        "qasper:1908.07816:s7:p3",
+        "qasper:1909.04181:s0:p0"
+      ]
+    },
+    {
+      "question_id": "2c20426c003f7e3053f8e6c333f8bb744f6f31f8",
+      "category": "qasper_real",
+      "query": "What benchmarks did they experiment on?",
+      "method": "hybrid_ontology_rerank",
+      "gold_chunk_ids": [
+        "qasper:1911.02821:s4:p1"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:1911.02821:s5:p0",
+      "retrieved_chunk_ids": [
+        "qasper:1911.02821:s5:p0",
+        "qasper:1908.08593:s2:p1",
+        "qasper:1911.03894:s16:p0",
+        "qasper:1908.08593:s2:p2",
+        "qasper:1911.03894:s18:p1"
+      ]
+    },
+    {
+      "question_id": "c034f38a570d40360c3551a6469486044585c63c",
+      "category": "qasper_real",
+      "query": "How better is proposed method than baselines perpexity wise?",
+      "method": "hybrid_ontology_rerank",
+      "gold_chunk_ids": [
+        "qasper:1908.07816:s11:p0"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:2003.06279:s5:p2",
+      "retrieved_chunk_ids": [
+        "qasper:2003.06279:s5:p2",
+        "qasper:1912.10806:s14:p1",
+        "qasper:2004.03744:s5:p0",
+        "qasper:1908.08593:s2:p0",
+        "qasper:1911.12579:s14:p0"
+      ]
+    },
+    {
+      "question_id": "9cbea686732b5b85f77868ca47d2f93cf34516ed",
+      "category": "qasper_real",
+      "query": "How does the multi-turn dialog system learns?",
+      "method": "hybrid_ontology_rerank",
+      "gold_chunk_ids": [
+        "qasper:1908.07816:s2:p4"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:1908.07816:s0:p2",
+      "retrieved_chunk_ids": [
+        "qasper:1908.07816:s0:p2",
+        "qasper:2003.00639:s11:p1",
+        "qasper:2003.00639:s11:p3",
+        "qasper:1908.08593:s2:p1",
+        "qasper:2002.09758:s46:p0"
+      ]
+    },
+    {
+      "question_id": "6aee16c4f319a190c2a451c1c099b66162299a28",
+      "category": "qasper_real",
+      "query": "How is human evaluation performed?",
+      "method": "hybrid_ontology_rerank",
+      "gold_chunk_ids": [
+        "qasper:1908.07816:s10:p1"
+      ],
+      "gold_rank": 2,
+      "top_chunk_id": "qasper:1908.07816:s9:p0",
+      "retrieved_chunk_ids": [
+        "qasper:1908.07816:s9:p0",
+        "qasper:1908.07816:s10:p1",
+        "qasper:1909.00542:s5:p0",
+        "qasper:1908.07816:s10:p0",
+        "qasper:2003.00639:s14:p1"
+      ]
+    },
+    {
+      "question_id": "4d4b9ff2da51b9e0255e5fab0b41dfe49a0d9012",
+      "category": "qasper_real",
+      "query": "Is some other metrics other then perplexity measured?",
+      "method": "hybrid_ontology_rerank",
+      "gold_chunk_ids": [
+        "qasper:1908.07816:s9:p0"
+      ],
+      "gold_rank": 3,
+      "top_chunk_id": "qasper:1908.07816:s11:p0",
+      "retrieved_chunk_ids": [
+        "qasper:1908.07816:s11:p0",
+        "qasper:1909.00542:s7:p1",
+        "qasper:1908.07816:s9:p0",
+        "qasper:1911.09886:s11:p5",
+        "qasper:1911.12579:s18:p1"
+      ]
+    },
+    {
+      "question_id": "180047e1ccfc7c98f093b8d1e1d0479a4cca99cc",
+      "category": "qasper_real",
+      "query": "What two baseline models are used?",
+      "method": "hybrid_ontology_rerank",
+      "gold_chunk_ids": [
+        "qasper:1908.07816:s8:p0"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:1909.00100:s0:p0",
+      "retrieved_chunk_ids": [
+        "qasper:1909.00100:s0:p0",
+        "qasper:1912.10435:s9:p5",
+        "qasper:1911.09886:s11:p0",
+        "qasper:1908.08593:s2:p2",
+        "qasper:1910.07181:s2:p1"
+      ]
+    },
+    {
+      "question_id": "ec8043290356fcb871c2f5d752a9fe93a94c2f71",
+      "category": "qasper_real",
+      "query": "What other natural processing tasks authors think could be studied by using word embeddings?",
+      "method": "hybrid_ontology_rerank",
+      "gold_chunk_ids": [
+        "qasper:2003.06279:s6:p2"
+      ],
+      "gold_rank": 4,
+      "top_chunk_id": "qasper:1911.03894:s1:p0",
+      "retrieved_chunk_ids": [
+        "qasper:1911.03894:s1:p0",
+        "qasper:2003.06279:s6:p0",
+        "qasper:1911.12579:s6:p0",
+        "qasper:2003.06279:s6:p2",
+        "qasper:2003.06279:s2:p3"
+      ]
+    },
+    {
+      "question_id": "728c2fb445173fe117154a2a5482079caa42fe24",
+      "category": "qasper_real",
+      "query": "What is the reason that traditional co-occurrence networks fail in establishing links between similar words whenever they appear distant in the text?",
+      "method": "hybrid_ontology_rerank",
+      "gold_chunk_ids": [
+        "qasper:2003.06279:s0:p1",
+        "qasper:2003.06279:s0:p2"
+      ],
+      "gold_rank": 1,
+      "top_chunk_id": "qasper:2003.06279:s0:p2",
+      "retrieved_chunk_ids": [
+        "qasper:2003.06279:s0:p2",
+        "qasper:2003.06279:s6:p0",
+        "qasper:2003.06279:s2:p12",
+        "qasper:2003.06279:s1:p4",
+        "qasper:2003.06279:s0:p3"
+      ]
+    },
+    {
+      "question_id": "23d32666dfc29ed124f3aa4109e2527efa225fbc",
+      "category": "qasper_real",
+      "query": "Do the use word embeddings alone or they replace some previous features of the model with word embeddings?",
+      "method": "hybrid_ontology_rerank",
+      "gold_chunk_ids": [
+        "qasper:2003.06279:s0:p2"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:1909.00542:s4:p9",
+      "retrieved_chunk_ids": [
+        "qasper:1909.00542:s4:p9",
+        "qasper:1911.12579:s6:p0",
+        "qasper:1911.03894:s2:p0",
+        "qasper:1911.12579:s1:p3",
+        "qasper:1911.03894:s1:p0"
+      ]
+    },
+    {
+      "question_id": "076928bebde4dffcb404be216846d9d680310622",
+      "category": "qasper_real",
+      "query": "On what model architectures are previous co-occurence networks based?",
+      "method": "hybrid_ontology_rerank",
+      "gold_chunk_ids": [
+        "qasper:2003.06279:s0:p1"
+      ],
+      "gold_rank": 5,
+      "top_chunk_id": "qasper:2003.06279:s1:p3",
+      "retrieved_chunk_ids": [
+        "qasper:2003.06279:s1:p3",
+        "qasper:2003.06279:s1:p4",
+        "qasper:2003.06279:s1:p2",
+        "qasper:1912.10435:s1:p0",
+        "qasper:2003.06279:s0:p1"
+      ]
+    },
+    {
+      "question_id": "63eb31f613a41a3ddd86f599e743ed10e1cd07ba",
+      "category": "qasper_real",
+      "query": "What codemixed language pairs are evaluated?",
+      "method": "hybrid_ontology_rerank",
+      "gold_chunk_ids": [
+        "qasper:1909.00100:s10:p0"
+      ],
+      "gold_rank": 2,
+      "top_chunk_id": "qasper:1909.00100:s10:p2",
+      "retrieved_chunk_ids": [
+        "qasper:1909.00100:s10:p2",
+        "qasper:1909.00100:s10:p0",
+        "qasper:1911.12579:s18:p0",
+        "qasper:1911.03894:s14:p1",
+        "qasper:1909.00100:s10:p1"
+      ]
+    },
+    {
+      "question_id": "d2804ac0f068e9c498e33582af9c66906b26cac3",
+      "category": "qasper_real",
+      "query": "How do they compress the model?",
+      "method": "hybrid_ontology_rerank",
+      "gold_chunk_ids": [
+        "qasper:1909.00100:s5:p0",
+        "qasper:1909.00100:s5:p1",
+        "qasper:1909.00100:s5:p2"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:1908.07816:s2:p4",
+      "retrieved_chunk_ids": [
+        "qasper:1908.07816:s2:p4",
+        "qasper:1910.07181:s4:p5",
+        "qasper:1910.07181:s1:p1",
+        "qasper:1908.08593:s2:p1",
+        "qasper:1908.07816:s2:p2"
+      ]
+    },
+    {
+      "question_id": "e24fbcc8be922c43f6b6037cdf2bfd4c0a926c08",
+      "category": "qasper_real",
+      "query": "What is the multilingual baseline?",
+      "method": "hybrid_ontology_rerank",
+      "gold_chunk_ids": [
+        "qasper:1909.00100:s0:p0"
+      ],
+      "gold_rank": 1,
+      "top_chunk_id": "qasper:1909.00100:s0:p0",
+      "retrieved_chunk_ids": [
+        "qasper:1909.00100:s0:p0",
+        "qasper:1909.00100:s8:p0",
+        "qasper:1909.00100:s9:p2",
+        "qasper:1909.00100:s8:p2",
+        "qasper:1909.00100:s8:p1"
+      ]
+    },
+    {
+      "question_id": "1a252ffeaebdb189317aefd6c606652ba9677112",
+      "category": "qasper_real",
+      "query": "How much is performance improved by disabling attention in certain heads?",
+      "method": "hybrid_ontology_rerank",
+      "gold_chunk_ids": [
+        "qasper:1908.08593:s15:p0"
+      ],
+      "gold_rank": 2,
+      "top_chunk_id": "qasper:1908.08593:s14:p0",
+      "retrieved_chunk_ids": [
+        "qasper:1908.08593:s14:p0",
+        "qasper:1908.08593:s15:p0",
+        "qasper:1908.08593:s16:p0",
+        "qasper:1908.08593:s2:p3",
+        "qasper:1908.08593:s17:p1"
+      ]
+    },
+    {
+      "question_id": "da4d25dd9de09d16168788bb02ad600f5b0b3ba4",
+      "category": "qasper_real",
+      "query": "In which certain heads was attention disabled in experiments?",
+      "method": "hybrid_ontology_rerank",
+      "gold_chunk_ids": [
+        "qasper:1908.08593:s15:p0"
+      ],
+      "gold_rank": 1,
+      "top_chunk_id": "qasper:1908.08593:s15:p0",
+      "retrieved_chunk_ids": [
+        "qasper:1908.08593:s15:p0",
+        "qasper:1908.08593:s14:p0",
+        "qasper:1912.10435:s9:p4",
+        "qasper:1908.08593:s7:p0",
+        "qasper:1908.08593:s13:p0"
+      ]
+    },
+    {
+      "question_id": "2870fbce43a3cf6daf982f720137c008b30c60dc",
+      "category": "qasper_real",
+      "query": "What handcrafter features-of-interest are used?",
+      "method": "hybrid_ontology_rerank",
+      "gold_chunk_ids": [
+        "qasper:1908.08593:s10:p1"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:1908.08593:s2:p1",
+      "retrieved_chunk_ids": [
+        "qasper:1908.08593:s2:p1",
+        "qasper:1908.08593:s0:p2",
+        "qasper:2004.03744:s23:p1",
+        "qasper:1910.09399:s35:p0",
+        "qasper:1908.08593:s2:p3"
+      ]
+    },
+    {
+      "question_id": "65b579b2c62982e2ff154c8160288c2950d509f2",
+      "category": "qasper_real",
+      "query": "What subset of GLUE tasks is used?",
+      "method": "hybrid_ontology_rerank",
+      "gold_chunk_ids": [
+        "qasper:1908.08593:s2:p10",
+        "qasper:1908.08593:s2:p11",
+        "qasper:1908.08593:s2:p12",
+        "qasper:1908.08593:s2:p5",
+        "qasper:1908.08593:s2:p6",
+        "qasper:1908.08593:s2:p7",
+        "qasper:1908.08593:s2:p8",
+        "qasper:1908.08593:s2:p9"
+      ],
+      "gold_rank": 1,
+      "top_chunk_id": "qasper:1908.08593:s2:p5",
+      "retrieved_chunk_ids": [
+        "qasper:1908.08593:s2:p5",
+        "qasper:1911.03894:s0:p5",
+        "qasper:2004.03744:s23:p1",
+        "qasper:1911.03894:s16:p0",
+        "qasper:1908.08593:s9:p0"
+      ]
+    },
+    {
+      "question_id": "f416c6818a7a8acb7ec4682ed424ecdbd7dd6df1",
+      "category": "qasper_real",
+      "query": "How does framework automatically chooses different curricula at the evolving learning process according to the learning status of the neural dialogue generation model?",
+      "method": "hybrid_ontology_rerank",
+      "gold_chunk_ids": [
+        "qasper:2003.00639:s11:p1"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:2003.00639:s0:p3",
+      "retrieved_chunk_ids": [
+        "qasper:2003.00639:s0:p3",
+        "qasper:2003.00639:s21:p0",
+        "qasper:2003.00639:s11:p0",
+        "qasper:2003.00639:s9:p0",
+        "qasper:2003.00639:s20:p0"
+      ]
+    },
+    {
+      "question_id": "a1d422cb2e428333961370496ca281a1be99fdff",
+      "category": "qasper_real",
+      "query": "What human judgement metrics are used?",
+      "method": "hybrid_ontology_rerank",
+      "gold_chunk_ids": [
+        "qasper:2003.00639:s14:p1"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:1909.00542:s7:p1",
+      "retrieved_chunk_ids": [
+        "qasper:1909.00542:s7:p1",
+        "qasper:1909.00542:s5:p0",
+        "qasper:1909.00542:s0:p3",
+        "qasper:1908.07816:s9:p0",
+        "qasper:1908.07816:s10:p1"
+      ]
+    },
+    {
+      "question_id": "3de9bf4b0b667b3f1181da9f006da1354565bcbd",
+      "category": "qasper_real",
+      "query": "What automatic evaluation metrics are used?",
+      "method": "hybrid_ontology_rerank",
+      "gold_chunk_ids": [
+        "qasper:2003.00639:s12:p0"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:1909.00542:s7:p1",
+      "retrieved_chunk_ids": [
+        "qasper:1909.00542:s7:p1",
+        "qasper:1911.03894:s12:p1",
+        "qasper:1908.07816:s9:p0",
+        "qasper:1910.09399:s31:p0",
+        "qasper:1909.00542:s0:p3"
+      ]
+    },
+    {
+      "question_id": "1a1293e24f4924064e6fb9998658f5a329879109",
+      "category": "qasper_real",
+      "query": "What state of the art models were used in experiments?",
+      "method": "hybrid_ontology_rerank",
+      "gold_chunk_ids": [
+        "qasper:2003.00639:s12:p0"
+      ],
+      "gold_rank": 1,
+      "top_chunk_id": "qasper:2003.00639:s12:p0",
+      "retrieved_chunk_ids": [
+        "qasper:2003.00639:s12:p0",
+        "qasper:1911.03894:s18:p2",
+        "qasper:1911.09886:s11:p0",
+        "qasper:1908.08593:s3:p0",
+        "qasper:1911.09886:s0:p5"
+      ]
+    },
+    {
+      "question_id": "3ccd337f77c5d2f7294eb459ccc1770796c2eaef",
+      "category": "qasper_real",
+      "query": "What five dialogue attributes were analyzed?",
+      "method": "hybrid_ontology_rerank",
+      "gold_chunk_ids": [
+        "qasper:2003.00639:s2:p0",
+        "qasper:2003.00639:s3:p0",
+        "qasper:2003.00639:s4:p0",
+        "qasper:2003.00639:s5:p0",
+        "qasper:2003.00639:s6:p0"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:2003.00639:s8:p0",
+      "retrieved_chunk_ids": [
+        "qasper:2003.00639:s8:p0",
+        "qasper:2003.00639:s21:p0",
+        "qasper:2003.00639:s0:p4",
+        "qasper:2002.11893:s8:p2",
+        "qasper:2003.00639:s1:p0"
+      ]
+    },
+    {
+      "question_id": "2376c170c343e2305dac08ba5f5bda47c370357f",
+      "category": "qasper_real",
+      "query": "How was the dataset collected?",
+      "method": "hybrid_ontology_rerank",
+      "gold_chunk_ids": [
+        "qasper:2002.11893:s2:p0",
+        "qasper:2002.11893:s2:p1",
+        "qasper:2002.11893:s2:p2",
+        "qasper:2002.11893:s2:p3",
+        "qasper:2002.11893:s2:p4"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:1912.10806:s8:p0",
+      "retrieved_chunk_ids": [
+        "qasper:1912.10806:s8:p0",
+        "qasper:1911.12579:s19:p0",
+        "qasper:2004.03744:s1:p4",
+        "qasper:1908.07816:s7:p2",
+        "qasper:2004.03744:s6:p0"
+      ]
+    },
+    {
+      "question_id": "0137ecebd84a03b224eb5ca51d189283abb5f6d9",
+      "category": "qasper_real",
+      "query": "What are the benchmark models?",
+      "method": "hybrid_ontology_rerank",
+      "gold_chunk_ids": [
+        "qasper:2002.11893:s12:p1",
+        "qasper:2002.11893:s13:p1",
+        "qasper:2002.11893:s14:p1"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:1911.09886:s0:p5",
+      "retrieved_chunk_ids": [
+        "qasper:1911.09886:s0:p5",
+        "qasper:2002.11893:s17:p6",
+        "qasper:2002.11893:s13:p2",
+        "qasper:1908.08593:s2:p2",
+        "qasper:2002.11893:s0:p6"
+      ]
+    },
+    {
+      "question_id": "5f6fbd57cce47f20a0fda27d954543c00c4344c2",
+      "category": "qasper_real",
+      "query": "How was the corpus annotated?",
+      "method": "hybrid_ontology_rerank",
+      "gold_chunk_ids": [
+        "qasper:2002.11893:s2:p3",
+        "qasper:2002.11893:s2:p4"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:1911.12579:s1:p1",
+      "retrieved_chunk_ids": [
+        "qasper:1911.12579:s1:p1",
+        "qasper:1911.12579:s4:p0",
+        "qasper:2002.11893:s10:p0",
+        "qasper:1911.12579:s19:p0",
+        "qasper:1911.12579:s20:p1"
+      ]
+    },
+    {
+      "question_id": "52ed2eb6f4d1f74ebdc4dcddcae201786d4c0463",
+      "category": "qasper_real",
+      "query": "Are the models compared to some baseline models?",
+      "method": "hybrid_ontology_rerank",
+      "gold_chunk_ids": [
+        "qasper:1909.04181:s3:p0"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:2002.09758:s24:p0",
+      "retrieved_chunk_ids": [
+        "qasper:2002.09758:s24:p0",
+        "qasper:1909.00542:s3:p2",
+        "qasper:1909.00100:s11:p0",
+        "qasper:1909.00100:s6:p1",
+        "qasper:1911.09886:s11:p0"
+      ]
+    },
+    {
+      "question_id": "2c576072e494ab5598667cd6b40bc97fdd7d92d7",
+      "category": "qasper_real",
+      "query": "What are the in-house data employed?",
+      "method": "hybrid_ontology_rerank",
+      "gold_chunk_ids": [
+        "qasper:1909.04181:s5:p0"
+      ],
+      "gold_rank": 1,
+      "top_chunk_id": "qasper:1909.04181:s5:p0",
+      "retrieved_chunk_ids": [
+        "qasper:1909.04181:s5:p0",
+        "qasper:1909.04181:s2:p0",
+        "qasper:2002.11893:s2:p4",
+        "qasper:1908.07816:s7:p3",
+        "qasper:1909.04181:s8:p0"
+      ]
+    },
+    {
+      "question_id": "8602160e98e4b2c9c702440da395df5261f55b1f",
+      "category": "qasper_real",
+      "query": "What are the three datasets used in the paper?",
+      "method": "hybrid_ontology_rerank",
+      "gold_chunk_ids": [
+        "qasper:1909.04181:s1:p0"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:1910.07181:s0:p8",
+      "retrieved_chunk_ids": [
+        "qasper:1910.07181:s0:p8",
+        "qasper:1911.09886:s9:p0",
+        "qasper:2003.06279:s2:p18",
+        "qasper:2003.06279:s2:p11",
+        "qasper:1909.00542:s6:p0"
+      ]
+    },
+    {
+      "question_id": "d6e2b276390bdc957dfa7e878de80cee1f41fbca",
+      "category": "qasper_real",
+      "query": "What models other than standalone BERT is new model compared to?",
+      "method": "hybrid_ontology",
+      "gold_chunk_ids": [
+        "qasper:1910.07181:s10:p2"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:1909.00100:s4:p2",
+      "retrieved_chunk_ids": [
+        "qasper:1909.00100:s4:p2",
+        "qasper:1909.00100:s4:p0",
+        "qasper:1909.00100:s3:p0",
+        "qasper:1909.00100:s11:p0",
+        "qasper:1912.10435:s9:p3"
+      ]
+    },
+    {
+      "question_id": "32537fdf0d4f76f641086944b413b2f756097e5e",
+      "category": "qasper_real",
+      "query": "How much is representaton improved for rare/medum frequency words compared to standalone BERT and previous work?",
+      "method": "hybrid_ontology",
+      "gold_chunk_ids": [
+        "qasper:1910.07181:s10:p2"
+      ],
+      "gold_rank": 1,
+      "top_chunk_id": "qasper:1910.07181:s10:p2",
+      "retrieved_chunk_ids": [
+        "qasper:1910.07181:s10:p2",
+        "qasper:1911.12579:s25:p7",
+        "qasper:1910.07181:s12:p0",
+        "qasper:1908.08593:s1:p0",
+        "qasper:1910.07181:s9:p1"
+      ]
+    },
+    {
+      "question_id": "ef081d78be17ef2af792e7e919d15a235b8d7275",
+      "category": "qasper_real",
+      "query": "What are three downstream task datasets?",
+      "method": "hybrid_ontology",
+      "gold_chunk_ids": [
+        "qasper:1910.07181:s11:p0"
+      ],
+      "gold_rank": 1,
+      "top_chunk_id": "qasper:1910.07181:s11:p0",
+      "retrieved_chunk_ids": [
+        "qasper:1910.07181:s11:p0",
+        "qasper:1910.07181:s11:p4",
+        "qasper:1910.07181:s11:p3",
+        "qasper:1910.07181:s11:p2",
+        "qasper:1910.07181:s11:p5"
+      ]
+    },
+    {
+      "question_id": "537b2d7799124d633892a1ef1a485b3b071b303d",
+      "category": "qasper_real",
+      "query": "What is dataset for word probing task?",
+      "method": "hybrid_ontology",
+      "gold_chunk_ids": [
+        "qasper:1910.07181:s10:p0"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:1910.07181:s1:p2",
+      "retrieved_chunk_ids": [
+        "qasper:1910.07181:s1:p2",
+        "qasper:1910.07181:s10:p1",
+        "qasper:1910.07181:s11:p4",
+        "qasper:1910.07181:s0:p2",
+        "qasper:1910.07181:s5:p0"
+      ]
+    },
+    {
+      "question_id": "735f58e28d84ee92024a36bc348cfac2ee114409",
+      "category": "qasper_real",
+      "query": "Are there datasets with relation tuples annotated, how big are datasets available?",
+      "method": "hybrid_ontology",
+      "gold_chunk_ids": [
+        "qasper:1911.09886:s9:p0"
+      ],
+      "gold_rank": 1,
+      "top_chunk_id": "qasper:1911.09886:s9:p0",
+      "retrieved_chunk_ids": [
+        "qasper:1911.09886:s9:p0",
+        "qasper:1910.07181:s1:p2",
+        "qasper:1911.09886:s0:p3",
+        "qasper:1911.09886:s1:p0",
+        "qasper:1911.09886:s0:p2"
+      ]
+    },
+    {
+      "question_id": "710fa8b3e74ee63d2acc20af19f95f7702b7ce5e",
+      "category": "qasper_real",
+      "query": "Which one of two proposed approaches performed better in experiments?",
+      "method": "hybrid_ontology",
+      "gold_chunk_ids": [
+        "qasper:1911.09886:s12:p0"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:2004.03744:s5:p0",
+      "retrieved_chunk_ids": [
+        "qasper:2004.03744:s5:p0",
+        "qasper:2003.00639:s13:p0",
+        "qasper:1911.09886:s17:p0",
+        "qasper:1908.08593:s2:p0",
+        "qasper:1909.00542:s2:p7"
+      ]
+    },
+    {
+      "question_id": "56123dd42cf5c77fc9a88fc311ed2e1eb672126e",
+      "category": "qasper_real",
+      "query": "What is previous work authors reffer to?",
+      "method": "hybrid_ontology",
+      "gold_chunk_ids": [
+        "qasper:1911.09886:s11:p0",
+        "qasper:1911.09886:s11:p1",
+        "qasper:1911.09886:s11:p2",
+        "qasper:1911.09886:s11:p3",
+        "qasper:1911.09886:s11:p4",
+        "qasper:1911.09886:s11:p5",
+        "qasper:1911.09886:s11:p6"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:2003.06279:s1:p1",
+      "retrieved_chunk_ids": [
+        "qasper:2003.06279:s1:p1",
+        "qasper:2004.03744:s2:p2",
+        "qasper:1908.08593:s17:p2",
+        "qasper:2003.06279:s9:p0",
+        "qasper:2003.00639:s4:p0"
+      ]
+    },
+    {
+      "question_id": "1898f999626f9a6da637bd8b4857e5eddf2fc729",
+      "category": "qasper_real",
+      "query": "How higher are F1 scores compared to previous work?",
+      "method": "hybrid_ontology",
+      "gold_chunk_ids": [
+        "qasper:1911.09886:s12:p0"
+      ],
+      "gold_rank": 1,
+      "top_chunk_id": "qasper:1911.09886:s12:p0",
+      "retrieved_chunk_ids": [
+        "qasper:1911.09886:s12:p0",
+        "qasper:1911.09886:s14:p0",
+        "qasper:1912.10435:s9:p0",
+        "qasper:1912.10435:s9:p2",
+        "qasper:1911.09886:s14:p1"
+      ]
+    },
+    {
+      "question_id": "8de64483ae96c0a03a8e527950582f127b43dceb",
+      "category": "qasper_real",
+      "query": "Do they report results only on English data?",
+      "method": "hybrid_ontology",
+      "gold_chunk_ids": [
+        "qasper:1912.05238:s4:p2",
+        "qasper:1912.05238:s4:p4"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:1911.03894:s15:p0",
+      "retrieved_chunk_ids": [
+        "qasper:1911.03894:s15:p0",
+        "qasper:1909.00100:s15:p94",
+        "qasper:1910.07181:s5:p3",
+        "qasper:1909.00100:s15:p196",
+        "qasper:1909.00100:s10:p0"
+      ]
+    },
+    {
+      "question_id": "4d062673b714998800e61f66b6ccbf7eef5be2ac",
+      "category": "qasper_real",
+      "query": "What is the Moral Choice Machine?",
+      "method": "hybrid_ontology",
+      "gold_chunk_ids": [
+        "qasper:1912.05238:s6:p0"
+      ],
+      "gold_rank": 3,
+      "top_chunk_id": "qasper:1912.05238:s4:p9",
+      "retrieved_chunk_ids": [
+        "qasper:1912.05238:s4:p9",
+        "qasper:1912.05238:s0:p4",
+        "qasper:1912.05238:s6:p0",
+        "qasper:1912.05238:s5:p1",
+        "qasper:1912.05238:s9:p0"
+      ]
+    },
+    {
+      "question_id": "f4238f558d6ddf3849497a130b3a6ad866ff38b3",
+      "category": "qasper_real",
+      "query": "How is moral bias measured?",
+      "method": "hybrid_ontology",
+      "gold_chunk_ids": [
+        "qasper:1912.05238:s2:p1",
+        "qasper:1912.05238:s2:p2"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:1912.05238:s3:p2",
+      "retrieved_chunk_ids": [
+        "qasper:1912.05238:s3:p2",
+        "qasper:1912.05238:s3:p0",
+        "qasper:1912.05238:s2:p3",
+        "qasper:1912.05238:s4:p8",
+        "qasper:1912.05238:s11:p0"
+      ]
+    },
+    {
+      "question_id": "96dcabaa8b6bd89b032da609e709900a1569a0f9",
+      "category": "qasper_real",
+      "query": "How do the authors define deontological ethical reasoning?",
+      "method": "hybrid_ontology",
+      "gold_chunk_ids": [
+        "qasper:1912.05238:s1:p2"
+      ],
+      "gold_rank": 1,
+      "top_chunk_id": "qasper:1912.05238:s1:p2",
+      "retrieved_chunk_ids": [
+        "qasper:1912.05238:s1:p2",
+        "qasper:1912.05238:s5:p0",
+        "qasper:1912.05238:s0:p3",
+        "qasper:1912.05238:s5:p1",
+        "qasper:1912.05238:s0:p2"
+      ]
+    },
+    {
+      "question_id": "4cc5ba404d6a47363f119d9db7266157d3bb246b",
+      "category": "qasper_real",
+      "query": "What off-the-shelf QA model was used to answer sub-questions?",
+      "method": "hybrid_ontology",
+      "gold_chunk_ids": [
+        "qasper:2002.09758:s33:p0"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:2002.09758:s0:p0",
+      "retrieved_chunk_ids": [
+        "qasper:2002.09758:s0:p0",
+        "qasper:2002.09758:s8:p0",
+        "qasper:2002.09758:s23:p0",
+        "qasper:2002.09758:s0:p3",
+        "qasper:2002.09758:s29:p0"
+      ]
+    },
+    {
+      "question_id": "1d72770d075b22411ec86d8bdee532f8c643740b",
+      "category": "qasper_real",
+      "query": "How large is the improvement over the baseline?",
+      "method": "hybrid_ontology",
+      "gold_chunk_ids": [
+        "qasper:2002.09758:s25:p0"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:1912.10435:s9:p7",
+      "retrieved_chunk_ids": [
+        "qasper:1912.10435:s9:p7",
+        "qasper:1911.02821:s5:p1",
+        "qasper:2003.06279:s5:p1",
+        "qasper:1912.10435:s10:p0",
+        "qasper:2003.06279:s4:p1"
+      ]
+    },
+    {
+      "question_id": "af1439c68b28c27848203f863675946380d28943",
+      "category": "qasper_real",
+      "query": "What is the strong baseline that this work outperforms?",
+      "method": "hybrid_ontology",
+      "gold_chunk_ids": [
+        "qasper:2002.09758:s20:p0",
+        "qasper:2002.09758:s20:p1",
+        "qasper:2002.09758:s25:p0"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:1911.02821:s5:p0",
+      "retrieved_chunk_ids": [
+        "qasper:1911.02821:s5:p0",
+        "qasper:1909.00100:s11:p0",
+        "qasper:1911.03894:s18:p2",
+        "qasper:1911.03894:s14:p3",
+        "qasper:1911.03894:s16:p0"
+      ]
+    },
+    {
+      "question_id": "5c0b8c1b649df1b07d9af3aa9154ac340ec8b81c",
+      "category": "qasper_real",
+      "query": "Is the model compared against a linear regression baseline?",
+      "method": "hybrid_ontology",
+      "gold_chunk_ids": [
+        "qasper:1912.10806:s12:p3"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:1909.00542:s3:p2",
+      "retrieved_chunk_ids": [
+        "qasper:1909.00542:s3:p2",
+        "qasper:1909.00542:s5:p1",
+        "qasper:1909.00542:s2:p8",
+        "qasper:1909.00542:s2:p2",
+        "qasper:1909.00542:s2:p10"
+      ]
+    },
+    {
+      "question_id": "3b391cd58cf6a61fe8c8eff2095e33794e80f0e3",
+      "category": "qasper_real",
+      "query": "What is the dataset used in the paper?",
+      "method": "hybrid_ontology",
+      "gold_chunk_ids": [
+        "qasper:1912.10806:s8:p0"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:1909.04181:s0:p1",
+      "retrieved_chunk_ids": [
+        "qasper:1909.04181:s0:p1",
+        "qasper:2003.06279:s2:p18",
+        "qasper:1911.09886:s9:p0",
+        "qasper:2003.06279:s2:p11",
+        "qasper:1908.07816:s7:p2"
+      ]
+    },
+    {
+      "question_id": "4d8ca3f7aa65dcb42eba72acf3584d37b416b19c",
+      "category": "qasper_real",
+      "query": "How does the differential privacy mechanism work?",
+      "method": "hybrid_ontology",
+      "gold_chunk_ids": [
+        "qasper:1912.10806:s0:p4",
+        "qasper:1912.10806:s6:p0"
+      ],
+      "gold_rank": 1,
+      "top_chunk_id": "qasper:1912.10806:s6:p0",
+      "retrieved_chunk_ids": [
+        "qasper:1912.10806:s6:p0",
+        "qasper:1912.10806:s6:p1",
+        "qasper:1912.10806:s10:p0",
+        "qasper:1912.10806:s14:p20",
+        "qasper:1912.10806:s14:p7"
+      ]
+    },
+    {
+      "question_id": "5b6aec1b88c9832075cd343f59158078a91f3597",
+      "category": "qasper_real",
+      "query": "How does proposed word embeddings compare to Sindhi fastText word representations?",
+      "method": "hybrid_ontology",
+      "gold_chunk_ids": [
+        "qasper:1911.12579:s27:p0",
+        "qasper:1911.12579:s27:p1"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:1911.12579:s0:p7",
+      "retrieved_chunk_ids": [
+        "qasper:1911.12579:s0:p7",
+        "qasper:1911.12579:s31:p1",
+        "qasper:2002.06053:s23:p1",
+        "qasper:1911.12579:s3:p0",
+        "qasper:1911.03894:s1:p0"
+      ]
+    },
+    {
+      "question_id": "a6717e334c53ebbb87e5ef878a77ef46866e3aed",
+      "category": "qasper_real",
+      "query": "Are trained word embeddings used for any other NLP task?",
+      "method": "hybrid_ontology",
+      "gold_chunk_ids": [
+        "qasper:1911.12579:s30:p0"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:1911.12579:s1:p2",
+      "retrieved_chunk_ids": [
+        "qasper:1911.12579:s1:p2",
+        "qasper:1911.03894:s0:p0",
+        "qasper:1911.02821:s7:p0",
+        "qasper:1912.05238:s1:p4",
+        "qasper:1911.12579:s0:p2"
+      ]
+    },
+    {
+      "question_id": "a1064307a19cd7add32163a70b6623278a557946",
+      "category": "qasper_real",
+      "query": "How many uniue words are in the dataset?",
+      "method": "hybrid_ontology",
+      "gold_chunk_ids": [
+        "qasper:1911.12579:s19:p0"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:1910.07181:s1:p2",
+      "retrieved_chunk_ids": [
+        "qasper:1910.07181:s1:p2",
+        "qasper:2002.11893:s9:p0",
+        "qasper:2003.06279:s1:p4",
+        "qasper:1910.07181:s5:p1",
+        "qasper:2002.06053:s5:p0"
+      ]
+    },
+    {
+      "question_id": "8cb9006bcbd2f390aadc6b70d54ee98c674e45cc",
+      "category": "qasper_real",
+      "query": "How is the data collected, which web resources were used?",
+      "method": "hybrid_ontology",
+      "gold_chunk_ids": [
+        "qasper:1911.12579:s4:p0"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:1911.12579:s5:p3",
+      "retrieved_chunk_ids": [
+        "qasper:1911.12579:s5:p3",
+        "qasper:1911.12579:s19:p0",
+        "qasper:2002.11893:s2:p1",
+        "qasper:1912.10806:s8:p0",
+        "qasper:1911.12579:s0:p3"
+      ]
+    },
+    {
+      "question_id": "8d989490c5392492ad66e6a5047b7d74cc719f30",
+      "category": "qasper_real",
+      "query": "What ensemble methods are used for best model?",
+      "method": "hybrid_ontology",
+      "gold_chunk_ids": [
+        "qasper:1912.10435:s8:p2"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:1912.10435:s8:p1",
+      "retrieved_chunk_ids": [
+        "qasper:1912.10435:s8:p1",
+        "qasper:1912.10435:s9:p3",
+        "qasper:2003.06279:s2:p11",
+        "qasper:2002.09758:s33:p0",
+        "qasper:1912.10435:s8:p0"
+      ]
+    },
+    {
+      "question_id": "a7829abed2186f757a59d3da44893c0172c7012b",
+      "category": "qasper_real",
+      "query": "What hyperparameters have been tuned?",
+      "method": "hybrid_ontology",
+      "gold_chunk_ids": [
+        "qasper:1912.10435:s2:p0"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:1912.10435:s7:p0",
+      "retrieved_chunk_ids": [
+        "qasper:1912.10435:s7:p0",
+        "qasper:1909.00100:s12:p1",
+        "qasper:1909.00100:s12:p5",
+        "qasper:1909.00100:s12:p3",
+        "qasper:1909.00100:s12:p0"
+      ]
+    },
+    {
+      "question_id": "707db46938d16647bf4b6407b2da84b5c7ab4a81",
+      "category": "qasper_real",
+      "query": "How much F1 was improved after adding skip connections?",
+      "method": "hybrid_ontology",
+      "gold_chunk_ids": [
+        "qasper:1912.10435:s9:p0"
+      ],
+      "gold_rank": 2,
+      "top_chunk_id": "qasper:1912.10435:s9:p1",
+      "retrieved_chunk_ids": [
+        "qasper:1912.10435:s9:p1",
+        "qasper:1912.10435:s9:p0",
+        "qasper:1911.09886:s14:p0",
+        "qasper:1912.10435:s5:p0",
+        "qasper:1911.02821:s5:p1"
+      ]
+    },
+    {
+      "question_id": "71f2b368228a748fd348f1abf540236568a61b07",
+      "category": "qasper_real",
+      "query": "What is CamemBERT trained on?",
+      "method": "hybrid_ontology",
+      "gold_chunk_ids": [
+        "qasper:1911.03894:s9:p3"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:1911.03894:s4:p1",
+      "retrieved_chunk_ids": [
+        "qasper:1911.03894:s4:p1",
+        "qasper:1911.03894:s16:p0",
+        "qasper:1911.03894:s5:p0",
+        "qasper:1911.03894:s4:p2",
+        "qasper:1911.03894:s4:p0"
+      ]
+    },
+    {
+      "question_id": "d3d4eef047aa01391e3e5d613a0f1f786ae7cfc7",
+      "category": "qasper_real",
+      "query": "Which tasks does CamemBERT not improve on?",
+      "method": "hybrid_ontology",
+      "gold_chunk_ids": [
+        "qasper:1911.03894:s20:p0"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:1911.03894:s16:p0",
+      "retrieved_chunk_ids": [
+        "qasper:1911.03894:s16:p0",
+        "qasper:1911.03894:s18:p2",
+        "qasper:1911.03894:s6:p3",
+        "qasper:1911.03894:s22:p0",
+        "qasper:1911.03894:s11:p1"
+      ]
+    },
+    {
+      "question_id": "63723c6b398100bba5dc21754451f503cb91c9b8",
+      "category": "qasper_real",
+      "query": "What is the state of the art?",
+      "method": "hybrid_ontology",
+      "gold_chunk_ids": [
+        "qasper:1911.03894:s11:p2",
+        "qasper:1911.03894:s13:p2",
+        "qasper:1911.03894:s15:p1"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:1909.00100:s2:p1",
+      "retrieved_chunk_ids": [
+        "qasper:1909.00100:s2:p1",
+        "qasper:1908.08593:s0:p1",
+        "qasper:2002.11893:s12:p0",
+        "qasper:1911.09886:s11:p0",
+        "qasper:2004.03744:s0:p2"
+      ]
+    },
+    {
+      "question_id": "5471766ca7c995dd7f0f449407902b32ac9db269",
+      "category": "qasper_real",
+      "query": "How much better was results of CamemBERT than previous results on these tasks?",
+      "method": "hybrid_ontology",
+      "gold_chunk_ids": [
+        "qasper:1911.03894:s19:p1",
+        "qasper:1911.03894:s20:p0",
+        "qasper:1911.03894:s21:p0"
+      ],
+      "gold_rank": 3,
+      "top_chunk_id": "qasper:1911.03894:s22:p0",
+      "retrieved_chunk_ids": [
+        "qasper:1911.03894:s22:p0",
+        "qasper:1911.03894:s16:p0",
+        "qasper:1911.03894:s21:p0",
+        "qasper:1911.02821:s5:p1",
+        "qasper:1911.03894:s0:p2"
+      ]
+    },
+    {
+      "question_id": "dc49746fc98647445599da9d17bc004bafdc4579",
+      "category": "qasper_real",
+      "query": "Was CamemBERT compared against multilingual BERT on these tasks?",
+      "method": "hybrid_ontology",
+      "gold_chunk_ids": [
+        "qasper:1911.03894:s11:p0"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:1909.00100:s2:p1",
+      "retrieved_chunk_ids": [
+        "qasper:1909.00100:s2:p1",
+        "qasper:1911.03894:s22:p0",
+        "qasper:1909.00100:s2:p0",
+        "qasper:1909.00100:s2:p2",
+        "qasper:1911.03894:s0:p2"
+      ]
+    },
+    {
+      "question_id": "cfffc94518d64cb3c8789395707e4336676e0345",
+      "category": "qasper_real",
+      "query": "What approaches without reinforcement learning have been tried?",
+      "method": "hybrid_ontology",
+      "gold_chunk_ids": [
+        "qasper:1909.00542:s2:p11",
+        "qasper:1909.00542:s3:p0",
+        "qasper:1909.00542:s3:p1"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:1909.00542:s4:p7",
+      "retrieved_chunk_ids": [
+        "qasper:1909.00542:s4:p7",
+        "qasper:1909.00542:s7:p2",
+        "qasper:1909.00542:s4:p5",
+        "qasper:1909.00542:s4:p3",
+        "qasper:1909.00542:s4:p4"
+      ]
+    },
+    {
+      "question_id": "f60629c01f99de3f68365833ee115b95a3388699",
+      "category": "qasper_real",
+      "query": "What classification approaches were experimented for this task?",
+      "method": "hybrid_ontology",
+      "gold_chunk_ids": [
+        "qasper:1909.00542:s2:p11",
+        "qasper:1909.00542:s3:p1"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:1909.00542:s2:p3",
+      "retrieved_chunk_ids": [
+        "qasper:1909.00542:s2:p3",
+        "qasper:2003.06279:s2:p16",
+        "qasper:1909.00542:s7:p0",
+        "qasper:1911.03894:s16:p0",
+        "qasper:1908.08593:s2:p0"
+      ]
+    },
+    {
+      "question_id": "a7cb4f8e29fd2f3d1787df64cd981a6318b65896",
+      "category": "qasper_real",
+      "query": "Did classification models perform better than previous regression one?",
+      "method": "hybrid_ontology",
+      "gold_chunk_ids": [
+        "qasper:1909.00542:s0:p2"
+      ],
+      "gold_rank": 1,
+      "top_chunk_id": "qasper:1909.00542:s0:p2",
+      "retrieved_chunk_ids": [
+        "qasper:1909.00542:s0:p2",
+        "qasper:1909.00542:s2:p12",
+        "qasper:1909.00542:s2:p7",
+        "qasper:1909.00542:s2:p1",
+        "qasper:1909.00542:s2:p13"
+      ]
+    },
+    {
+      "question_id": "a45edc04277a458911086752af4f17405501230f",
+      "category": "qasper_real",
+      "query": "Are datasets publicly available?",
+      "method": "hybrid_ontology",
+      "gold_chunk_ids": [
+        "qasper:2002.06053:s29:p0"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:1910.07181:s1:p2",
+      "retrieved_chunk_ids": [
+        "qasper:1910.07181:s1:p2",
+        "qasper:2002.11893:s0:p6",
+        "qasper:1910.07181:s5:p3",
+        "qasper:2002.06053:s0:p3",
+        "qasper:1910.07181:s0:p11"
+      ]
+    },
+    {
+      "question_id": "8c8a32592184c88f61fac1eef12c7d233dbec9dc",
+      "category": "qasper_real",
+      "query": "Are this models usually semi/supervised or unsupervised?",
+      "method": "hybrid_ontology",
+      "gold_chunk_ids": [
+        "qasper:2002.06053:s24:p3",
+        "qasper:2002.06053:s24:p4",
+        "qasper:2002.06053:s25:p0"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:2002.09758:s42:p1",
+      "retrieved_chunk_ids": [
+        "qasper:2002.09758:s42:p1",
+        "qasper:2002.09758:s42:p0",
+        "qasper:2002.09758:s1:p1",
+        "qasper:2002.06053:s18:p0",
+        "qasper:2003.06279:s2:p16"
+      ]
+    },
+    {
+      "question_id": "16646ee77975fed372b76ce639e2664ae2105dcf",
+      "category": "qasper_real",
+      "query": "Is there any concrete example in the paper that shows that this approach had huge impact on drug discovery?",
+      "method": "hybrid_ontology",
+      "gold_chunk_ids": [
+        "qasper:2002.06053:s23:p2"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:2002.06053:s31:p0",
+      "retrieved_chunk_ids": [
+        "qasper:2002.06053:s31:p0",
+        "qasper:2002.06053:s0:p4",
+        "qasper:2002.06053:s0:p0",
+        "qasper:2002.06053:s28:p0",
+        "qasper:1909.00542:s2:p0"
+      ]
+    },
+    {
+      "question_id": "e96adf8466e67bd19f345578d5a6dc68fd0279a1",
+      "category": "qasper_real",
+      "query": "Is text-to-image synthesis trained is suppervized or unsuppervized manner?",
+      "method": "hybrid_ontology",
+      "gold_chunk_ids": [
+        "qasper:1910.09399:s12:p1",
+        "qasper:1910.09399:s5:p4"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:1910.09399:s2:p0",
+      "retrieved_chunk_ids": [
+        "qasper:1910.09399:s2:p0",
+        "qasper:1910.09399:s25:p0",
+        "qasper:1910.09399:s17:p1",
+        "qasper:1910.09399:s29:p1",
+        "qasper:1910.09399:s1:p0"
+      ]
+    },
+    {
+      "question_id": "c1477a6c86bd1670dd17407590948000c9a6b7c6",
+      "category": "qasper_real",
+      "query": "What challenges remain unresolved?",
+      "method": "hybrid_ontology",
+      "gold_chunk_ids": [
+        "qasper:1910.09399:s34:p1"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:2002.06053:s27:p0",
+      "retrieved_chunk_ids": [
+        "qasper:2002.06053:s27:p0",
+        "qasper:1909.00542:s1:p0",
+        "qasper:1908.08593:s2:p2",
+        "qasper:2002.06053:s0:p3",
+        "qasper:2002.06053:s29:p0"
+      ]
+    },
+    {
+      "question_id": "e020677261d739c35c6f075cde6937d0098ace7f",
+      "category": "qasper_real",
+      "query": "What is the conclusion of comparison of proposed solution?",
+      "method": "hybrid_ontology",
+      "gold_chunk_ids": [
+        "qasper:1910.09399:s32:p0",
+        "qasper:1910.09399:s32:p1",
+        "qasper:1910.09399:s32:p2"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:2003.00639:s14:p0",
+      "retrieved_chunk_ids": [
+        "qasper:2003.00639:s14:p0",
+        "qasper:1908.08593:s17:p0",
+        "qasper:1912.05238:s0:p5",
+        "qasper:1908.08593:s2:p2",
+        "qasper:1910.07181:s0:p9"
+      ]
+    },
+    {
+      "question_id": "6389d5a152151fb05aae00b53b521c117d7b5e54",
+      "category": "qasper_real",
+      "query": "What is typical GAN architecture for each text-to-image synhesis group?",
+      "method": "hybrid_ontology",
+      "gold_chunk_ids": [
+        "qasper:1910.09399:s9:p0"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:1910.09399:s10:p3",
+      "retrieved_chunk_ids": [
+        "qasper:1910.09399:s10:p3",
+        "qasper:1910.09399:s22:p0",
+        "qasper:1910.09399:s10:p7",
+        "qasper:1910.09399:s13:p0",
+        "qasper:1910.09399:s4:p0"
+      ]
+    },
+    {
+      "question_id": "f33236ebd6f5a9ccb9b9dbf05ac17c3724f93f91",
+      "category": "qasper_real",
+      "query": "Is model explanation output evaluated, what metric was used?",
+      "method": "hybrid_ontology",
+      "gold_chunk_ids": [
+        "qasper:2004.03744:s2:p9"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:2004.03744:s14:p1",
+      "retrieved_chunk_ids": [
+        "qasper:2004.03744:s14:p1",
+        "qasper:1912.10435:s9:p2",
+        "qasper:2004.03744:s7:p1",
+        "qasper:1912.10806:s5:p6",
+        "qasper:2004.03744:s11:p0"
+      ]
+    },
+    {
+      "question_id": "66bf0d61ffc321f15e7347aaed191223f4ce4b4a",
+      "category": "qasper_real",
+      "query": "How many annotators are used to write natural language explanations to SNLI-VE-2.0?",
+      "method": "hybrid_ontology",
+      "gold_chunk_ids": [
+        "qasper:2004.03744:s23:p0"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:2004.03744:s7:p2",
+      "retrieved_chunk_ids": [
+        "qasper:2004.03744:s7:p2",
+        "qasper:2004.03744:s0:p4",
+        "qasper:2004.03744:s7:p0",
+        "qasper:2004.03744:s6:p0",
+        "qasper:2004.03744:s20:p0"
+      ]
+    },
+    {
+      "question_id": "5dfa59c116e0ceb428efd99bab19731aa3df4bbd",
+      "category": "qasper_real",
+      "query": "How many natural language explanations are human-written?",
+      "method": "hybrid_ontology",
+      "gold_chunk_ids": [
+        "qasper:2004.03744:s22:p0"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:2004.03744:s6:p0",
+      "retrieved_chunk_ids": [
+        "qasper:2004.03744:s6:p0",
+        "qasper:2004.03744:s14:p1",
+        "qasper:2004.03744:s19:p0",
+        "qasper:2004.03744:s7:p1",
+        "qasper:2004.03744:s18:p2"
+      ]
+    },
+    {
+      "question_id": "0c557b408183630d1c6c325b5fb9ff1573661290",
+      "category": "qasper_real",
+      "query": "How much is performance difference of existing model between original and corrected corpus?",
+      "method": "hybrid_ontology",
+      "gold_chunk_ids": [
+        "qasper:2004.03744:s5:p1"
+      ],
+      "gold_rank": 3,
+      "top_chunk_id": "qasper:2003.06279:s4:p7",
+      "retrieved_chunk_ids": [
+        "qasper:2003.06279:s4:p7",
+        "qasper:2002.11893:s17:p6",
+        "qasper:2004.03744:s5:p1",
+        "qasper:1912.10435:s9:p3",
+        "qasper:1911.03894:s22:p0"
+      ]
+    },
+    {
+      "question_id": "a08b5018943d4428f067c08077bfff1af3de9703",
+      "category": "qasper_real",
+      "query": "What is the class with highest error rate in SNLI-VE?",
+      "method": "hybrid_ontology",
+      "gold_chunk_ids": [
+        "qasper:2004.03744:s0:p1"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:2004.03744:s2:p8",
+      "retrieved_chunk_ids": [
+        "qasper:2004.03744:s2:p8",
+        "qasper:2004.03744:s22:p0",
+        "qasper:2004.03744:s3:p0",
+        "qasper:2004.03744:s0:p3",
+        "qasper:2004.03744:s20:p0"
+      ]
+    },
+    {
+      "question_id": "6b4de7fef3a543215f16042ce6a29186bf84fea4",
+      "category": "qasper_real",
+      "query": "What pre-trained models did they compare to?",
+      "method": "hybrid_ontology",
+      "gold_chunk_ids": [
+        "qasper:1911.02821:s4:p0"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:2002.09758:s16:p0",
+      "retrieved_chunk_ids": [
+        "qasper:2002.09758:s16:p0",
+        "qasper:1908.08593:s9:p0",
+        "qasper:1908.08593:s2:p4",
+        "qasper:1909.00100:s8:p0",
+        "qasper:1908.08593:s2:p2"
+      ]
+    },
+    {
+      "question_id": "3a62dd5fece70f8bf876dcbb131223682e3c54b7",
+      "category": "qasper_real",
+      "query": "How does the fusion method work?",
+      "method": "hybrid_ontology",
+      "gold_chunk_ids": [
+        "qasper:1911.02821:s2:p5"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:1911.02821:s6:p0",
+      "retrieved_chunk_ids": [
+        "qasper:1911.02821:s6:p0",
+        "qasper:1911.09886:s11:p2",
+        "qasper:2003.06279:s1:p4",
+        "qasper:1908.08593:s2:p1",
+        "qasper:2003.06279:s4:p7"
+      ]
+    },
+    {
+      "question_id": "34fab25d9ceb9c5942daf4ebdab6c5dd4ff9d3db",
+      "category": "qasper_real",
+      "query": "What dataset did they use?",
+      "method": "hybrid_ontology",
+      "gold_chunk_ids": [
+        "qasper:1911.02821:s5:p0"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:1908.08593:s2:p1",
+      "retrieved_chunk_ids": [
+        "qasper:1908.08593:s2:p1",
+        "qasper:1909.04181:s1:p0",
+        "qasper:1908.08593:s2:p2",
+        "qasper:1908.07816:s7:p3",
+        "qasper:1909.04181:s0:p0"
+      ]
+    },
+    {
+      "question_id": "2c20426c003f7e3053f8e6c333f8bb744f6f31f8",
+      "category": "qasper_real",
+      "query": "What benchmarks did they experiment on?",
+      "method": "hybrid_ontology",
+      "gold_chunk_ids": [
+        "qasper:1911.02821:s4:p1"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:1911.02821:s5:p0",
+      "retrieved_chunk_ids": [
+        "qasper:1911.02821:s5:p0",
+        "qasper:1908.08593:s2:p1",
+        "qasper:1911.03894:s16:p0",
+        "qasper:1908.08593:s2:p2",
+        "qasper:1911.03894:s18:p1"
+      ]
+    },
+    {
+      "question_id": "c034f38a570d40360c3551a6469486044585c63c",
+      "category": "qasper_real",
+      "query": "How better is proposed method than baselines perpexity wise?",
+      "method": "hybrid_ontology",
+      "gold_chunk_ids": [
+        "qasper:1908.07816:s11:p0"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:2003.06279:s5:p2",
+      "retrieved_chunk_ids": [
+        "qasper:2003.06279:s5:p2",
+        "qasper:1912.10806:s14:p1",
+        "qasper:2004.03744:s5:p0",
+        "qasper:1908.08593:s2:p0",
+        "qasper:1911.12579:s14:p0"
+      ]
+    },
+    {
+      "question_id": "9cbea686732b5b85f77868ca47d2f93cf34516ed",
+      "category": "qasper_real",
+      "query": "How does the multi-turn dialog system learns?",
+      "method": "hybrid_ontology",
+      "gold_chunk_ids": [
+        "qasper:1908.07816:s2:p4"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:1908.07816:s0:p2",
+      "retrieved_chunk_ids": [
+        "qasper:1908.07816:s0:p2",
+        "qasper:2003.00639:s11:p1",
+        "qasper:2003.00639:s11:p3",
+        "qasper:1908.08593:s2:p1",
+        "qasper:2002.09758:s46:p0"
+      ]
+    },
+    {
+      "question_id": "6aee16c4f319a190c2a451c1c099b66162299a28",
+      "category": "qasper_real",
+      "query": "How is human evaluation performed?",
+      "method": "hybrid_ontology",
+      "gold_chunk_ids": [
+        "qasper:1908.07816:s10:p1"
+      ],
+      "gold_rank": 2,
+      "top_chunk_id": "qasper:1908.07816:s9:p0",
+      "retrieved_chunk_ids": [
+        "qasper:1908.07816:s9:p0",
+        "qasper:1908.07816:s10:p1",
+        "qasper:1909.00542:s5:p0",
+        "qasper:1908.07816:s10:p0",
+        "qasper:2003.00639:s14:p1"
+      ]
+    },
+    {
+      "question_id": "4d4b9ff2da51b9e0255e5fab0b41dfe49a0d9012",
+      "category": "qasper_real",
+      "query": "Is some other metrics other then perplexity measured?",
+      "method": "hybrid_ontology",
+      "gold_chunk_ids": [
+        "qasper:1908.07816:s9:p0"
+      ],
+      "gold_rank": 3,
+      "top_chunk_id": "qasper:1908.07816:s11:p0",
+      "retrieved_chunk_ids": [
+        "qasper:1908.07816:s11:p0",
+        "qasper:1909.00542:s7:p1",
+        "qasper:1908.07816:s9:p0",
+        "qasper:1911.09886:s11:p5",
+        "qasper:1911.12579:s18:p1"
+      ]
+    },
+    {
+      "question_id": "180047e1ccfc7c98f093b8d1e1d0479a4cca99cc",
+      "category": "qasper_real",
+      "query": "What two baseline models are used?",
+      "method": "hybrid_ontology",
+      "gold_chunk_ids": [
+        "qasper:1908.07816:s8:p0"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:1909.00100:s0:p0",
+      "retrieved_chunk_ids": [
+        "qasper:1909.00100:s0:p0",
+        "qasper:1912.10435:s9:p5",
+        "qasper:1911.09886:s11:p0",
+        "qasper:1908.08593:s2:p2",
+        "qasper:1910.07181:s2:p1"
+      ]
+    },
+    {
+      "question_id": "ec8043290356fcb871c2f5d752a9fe93a94c2f71",
+      "category": "qasper_real",
+      "query": "What other natural processing tasks authors think could be studied by using word embeddings?",
+      "method": "hybrid_ontology",
+      "gold_chunk_ids": [
+        "qasper:2003.06279:s6:p2"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:2003.06279:s6:p0",
+      "retrieved_chunk_ids": [
+        "qasper:2003.06279:s6:p0",
+        "qasper:2002.06053:s23:p1",
+        "qasper:1911.03894:s1:p0",
+        "qasper:1912.05238:s1:p4",
+        "qasper:1911.12579:s1:p2"
+      ]
+    },
+    {
+      "question_id": "728c2fb445173fe117154a2a5482079caa42fe24",
+      "category": "qasper_real",
+      "query": "What is the reason that traditional co-occurrence networks fail in establishing links between similar words whenever they appear distant in the text?",
+      "method": "hybrid_ontology",
+      "gold_chunk_ids": [
+        "qasper:2003.06279:s0:p1",
+        "qasper:2003.06279:s0:p2"
+      ],
+      "gold_rank": 1,
+      "top_chunk_id": "qasper:2003.06279:s0:p2",
+      "retrieved_chunk_ids": [
+        "qasper:2003.06279:s0:p2",
+        "qasper:2003.06279:s6:p0",
+        "qasper:2003.06279:s2:p12",
+        "qasper:2003.06279:s1:p4",
+        "qasper:2003.06279:s0:p3"
+      ]
+    },
+    {
+      "question_id": "23d32666dfc29ed124f3aa4109e2527efa225fbc",
+      "category": "qasper_real",
+      "query": "Do the use word embeddings alone or they replace some previous features of the model with word embeddings?",
+      "method": "hybrid_ontology",
+      "gold_chunk_ids": [
+        "qasper:2003.06279:s0:p2"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:2002.06053:s23:p1",
+      "retrieved_chunk_ids": [
+        "qasper:2002.06053:s23:p1",
+        "qasper:1911.03894:s1:p0",
+        "qasper:1909.00542:s4:p9",
+        "qasper:1911.03894:s2:p0",
+        "qasper:1911.12579:s1:p2"
+      ]
+    },
+    {
+      "question_id": "076928bebde4dffcb404be216846d9d680310622",
+      "category": "qasper_real",
+      "query": "On what model architectures are previous co-occurence networks based?",
+      "method": "hybrid_ontology",
+      "gold_chunk_ids": [
+        "qasper:2003.06279:s0:p1"
+      ],
+      "gold_rank": 5,
+      "top_chunk_id": "qasper:2003.06279:s1:p3",
+      "retrieved_chunk_ids": [
+        "qasper:2003.06279:s1:p3",
+        "qasper:2003.06279:s1:p4",
+        "qasper:2003.06279:s1:p2",
+        "qasper:1912.10435:s1:p0",
+        "qasper:2003.06279:s0:p1"
+      ]
+    },
+    {
+      "question_id": "63eb31f613a41a3ddd86f599e743ed10e1cd07ba",
+      "category": "qasper_real",
+      "query": "What codemixed language pairs are evaluated?",
+      "method": "hybrid_ontology",
+      "gold_chunk_ids": [
+        "qasper:1909.00100:s10:p0"
+      ],
+      "gold_rank": 2,
+      "top_chunk_id": "qasper:1909.00100:s10:p2",
+      "retrieved_chunk_ids": [
+        "qasper:1909.00100:s10:p2",
+        "qasper:1909.00100:s10:p0",
+        "qasper:1911.12579:s18:p0",
+        "qasper:1911.03894:s14:p1",
+        "qasper:1909.00100:s10:p1"
+      ]
+    },
+    {
+      "question_id": "d2804ac0f068e9c498e33582af9c66906b26cac3",
+      "category": "qasper_real",
+      "query": "How do they compress the model?",
+      "method": "hybrid_ontology",
+      "gold_chunk_ids": [
+        "qasper:1909.00100:s5:p0",
+        "qasper:1909.00100:s5:p1",
+        "qasper:1909.00100:s5:p2"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:1908.07816:s2:p4",
+      "retrieved_chunk_ids": [
+        "qasper:1908.07816:s2:p4",
+        "qasper:1910.07181:s4:p5",
+        "qasper:1910.07181:s1:p1",
+        "qasper:1908.08593:s2:p1",
+        "qasper:1908.07816:s2:p2"
+      ]
+    },
+    {
+      "question_id": "e24fbcc8be922c43f6b6037cdf2bfd4c0a926c08",
+      "category": "qasper_real",
+      "query": "What is the multilingual baseline?",
+      "method": "hybrid_ontology",
+      "gold_chunk_ids": [
+        "qasper:1909.00100:s0:p0"
+      ],
+      "gold_rank": 1,
+      "top_chunk_id": "qasper:1909.00100:s0:p0",
+      "retrieved_chunk_ids": [
+        "qasper:1909.00100:s0:p0",
+        "qasper:1909.00100:s8:p0",
+        "qasper:1909.00100:s9:p2",
+        "qasper:1909.00100:s8:p2",
+        "qasper:1909.00100:s8:p1"
+      ]
+    },
+    {
+      "question_id": "1a252ffeaebdb189317aefd6c606652ba9677112",
+      "category": "qasper_real",
+      "query": "How much is performance improved by disabling attention in certain heads?",
+      "method": "hybrid_ontology",
+      "gold_chunk_ids": [
+        "qasper:1908.08593:s15:p0"
+      ],
+      "gold_rank": 2,
+      "top_chunk_id": "qasper:1908.08593:s14:p0",
+      "retrieved_chunk_ids": [
+        "qasper:1908.08593:s14:p0",
+        "qasper:1908.08593:s15:p0",
+        "qasper:1908.08593:s16:p0",
+        "qasper:1908.08593:s2:p3",
+        "qasper:1908.08593:s17:p1"
+      ]
+    },
+    {
+      "question_id": "da4d25dd9de09d16168788bb02ad600f5b0b3ba4",
+      "category": "qasper_real",
+      "query": "In which certain heads was attention disabled in experiments?",
+      "method": "hybrid_ontology",
+      "gold_chunk_ids": [
+        "qasper:1908.08593:s15:p0"
+      ],
+      "gold_rank": 1,
+      "top_chunk_id": "qasper:1908.08593:s15:p0",
+      "retrieved_chunk_ids": [
+        "qasper:1908.08593:s15:p0",
+        "qasper:1908.08593:s14:p0",
+        "qasper:1912.10435:s9:p4",
+        "qasper:1908.08593:s7:p0",
+        "qasper:1908.08593:s13:p0"
+      ]
+    },
+    {
+      "question_id": "2870fbce43a3cf6daf982f720137c008b30c60dc",
+      "category": "qasper_real",
+      "query": "What handcrafter features-of-interest are used?",
+      "method": "hybrid_ontology",
+      "gold_chunk_ids": [
+        "qasper:1908.08593:s10:p1"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:1908.08593:s2:p1",
+      "retrieved_chunk_ids": [
+        "qasper:1908.08593:s2:p1",
+        "qasper:1908.08593:s0:p2",
+        "qasper:2004.03744:s23:p1",
+        "qasper:1910.09399:s35:p0",
+        "qasper:1908.08593:s2:p3"
+      ]
+    },
+    {
+      "question_id": "65b579b2c62982e2ff154c8160288c2950d509f2",
+      "category": "qasper_real",
+      "query": "What subset of GLUE tasks is used?",
+      "method": "hybrid_ontology",
+      "gold_chunk_ids": [
+        "qasper:1908.08593:s2:p10",
+        "qasper:1908.08593:s2:p11",
+        "qasper:1908.08593:s2:p12",
+        "qasper:1908.08593:s2:p5",
+        "qasper:1908.08593:s2:p6",
+        "qasper:1908.08593:s2:p7",
+        "qasper:1908.08593:s2:p8",
+        "qasper:1908.08593:s2:p9"
+      ],
+      "gold_rank": 1,
+      "top_chunk_id": "qasper:1908.08593:s2:p5",
+      "retrieved_chunk_ids": [
+        "qasper:1908.08593:s2:p5",
+        "qasper:1911.03894:s0:p5",
+        "qasper:2004.03744:s23:p1",
+        "qasper:1911.03894:s16:p0",
+        "qasper:1908.08593:s9:p0"
+      ]
+    },
+    {
+      "question_id": "f416c6818a7a8acb7ec4682ed424ecdbd7dd6df1",
+      "category": "qasper_real",
+      "query": "How does framework automatically chooses different curricula at the evolving learning process according to the learning status of the neural dialogue generation model?",
+      "method": "hybrid_ontology",
+      "gold_chunk_ids": [
+        "qasper:2003.00639:s11:p1"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:2003.00639:s0:p3",
+      "retrieved_chunk_ids": [
+        "qasper:2003.00639:s0:p3",
+        "qasper:2003.00639:s21:p0",
+        "qasper:2003.00639:s11:p0",
+        "qasper:2003.00639:s9:p0",
+        "qasper:2003.00639:s20:p0"
+      ]
+    },
+    {
+      "question_id": "a1d422cb2e428333961370496ca281a1be99fdff",
+      "category": "qasper_real",
+      "query": "What human judgement metrics are used?",
+      "method": "hybrid_ontology",
+      "gold_chunk_ids": [
+        "qasper:2003.00639:s14:p1"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:1909.00542:s7:p1",
+      "retrieved_chunk_ids": [
+        "qasper:1909.00542:s7:p1",
+        "qasper:1909.00542:s5:p0",
+        "qasper:1909.00542:s0:p3",
+        "qasper:1908.07816:s9:p0",
+        "qasper:1908.07816:s10:p1"
+      ]
+    },
+    {
+      "question_id": "3de9bf4b0b667b3f1181da9f006da1354565bcbd",
+      "category": "qasper_real",
+      "query": "What automatic evaluation metrics are used?",
+      "method": "hybrid_ontology",
+      "gold_chunk_ids": [
+        "qasper:2003.00639:s12:p0"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:1909.00542:s7:p1",
+      "retrieved_chunk_ids": [
+        "qasper:1909.00542:s7:p1",
+        "qasper:1911.03894:s12:p1",
+        "qasper:1908.07816:s9:p0",
+        "qasper:1910.09399:s31:p0",
+        "qasper:1909.00542:s0:p3"
+      ]
+    },
+    {
+      "question_id": "1a1293e24f4924064e6fb9998658f5a329879109",
+      "category": "qasper_real",
+      "query": "What state of the art models were used in experiments?",
+      "method": "hybrid_ontology",
+      "gold_chunk_ids": [
+        "qasper:2003.00639:s12:p0"
+      ],
+      "gold_rank": 1,
+      "top_chunk_id": "qasper:2003.00639:s12:p0",
+      "retrieved_chunk_ids": [
+        "qasper:2003.00639:s12:p0",
+        "qasper:1911.03894:s18:p2",
+        "qasper:1911.09886:s11:p0",
+        "qasper:1908.08593:s3:p0",
+        "qasper:1911.09886:s0:p5"
+      ]
+    },
+    {
+      "question_id": "3ccd337f77c5d2f7294eb459ccc1770796c2eaef",
+      "category": "qasper_real",
+      "query": "What five dialogue attributes were analyzed?",
+      "method": "hybrid_ontology",
+      "gold_chunk_ids": [
+        "qasper:2003.00639:s2:p0",
+        "qasper:2003.00639:s3:p0",
+        "qasper:2003.00639:s4:p0",
+        "qasper:2003.00639:s5:p0",
+        "qasper:2003.00639:s6:p0"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:2003.00639:s8:p0",
+      "retrieved_chunk_ids": [
+        "qasper:2003.00639:s8:p0",
+        "qasper:2003.00639:s21:p0",
+        "qasper:2003.00639:s0:p4",
+        "qasper:2002.11893:s8:p2",
+        "qasper:2003.00639:s1:p0"
+      ]
+    },
+    {
+      "question_id": "2376c170c343e2305dac08ba5f5bda47c370357f",
+      "category": "qasper_real",
+      "query": "How was the dataset collected?",
+      "method": "hybrid_ontology",
+      "gold_chunk_ids": [
+        "qasper:2002.11893:s2:p0",
+        "qasper:2002.11893:s2:p1",
+        "qasper:2002.11893:s2:p2",
+        "qasper:2002.11893:s2:p3",
+        "qasper:2002.11893:s2:p4"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:1912.10806:s8:p0",
+      "retrieved_chunk_ids": [
+        "qasper:1912.10806:s8:p0",
+        "qasper:1911.12579:s19:p0",
+        "qasper:2004.03744:s1:p4",
+        "qasper:1908.07816:s7:p2",
+        "qasper:2004.03744:s6:p0"
+      ]
+    },
+    {
+      "question_id": "0137ecebd84a03b224eb5ca51d189283abb5f6d9",
+      "category": "qasper_real",
+      "query": "What are the benchmark models?",
+      "method": "hybrid_ontology",
+      "gold_chunk_ids": [
+        "qasper:2002.11893:s12:p1",
+        "qasper:2002.11893:s13:p1",
+        "qasper:2002.11893:s14:p1"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:1911.09886:s0:p5",
+      "retrieved_chunk_ids": [
+        "qasper:1911.09886:s0:p5",
+        "qasper:2002.11893:s17:p6",
+        "qasper:2002.11893:s13:p2",
+        "qasper:1908.08593:s2:p2",
+        "qasper:2002.11893:s0:p6"
+      ]
+    },
+    {
+      "question_id": "5f6fbd57cce47f20a0fda27d954543c00c4344c2",
+      "category": "qasper_real",
+      "query": "How was the corpus annotated?",
+      "method": "hybrid_ontology",
+      "gold_chunk_ids": [
+        "qasper:2002.11893:s2:p3",
+        "qasper:2002.11893:s2:p4"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:1911.12579:s1:p1",
+      "retrieved_chunk_ids": [
+        "qasper:1911.12579:s1:p1",
+        "qasper:1911.12579:s4:p0",
+        "qasper:2002.11893:s10:p0",
+        "qasper:1911.12579:s19:p0",
+        "qasper:1911.12579:s20:p1"
+      ]
+    },
+    {
+      "question_id": "52ed2eb6f4d1f74ebdc4dcddcae201786d4c0463",
+      "category": "qasper_real",
+      "query": "Are the models compared to some baseline models?",
+      "method": "hybrid_ontology",
+      "gold_chunk_ids": [
+        "qasper:1909.04181:s3:p0"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:2002.09758:s24:p0",
+      "retrieved_chunk_ids": [
+        "qasper:2002.09758:s24:p0",
+        "qasper:1909.00542:s3:p2",
+        "qasper:1909.00100:s11:p0",
+        "qasper:1909.00100:s6:p1",
+        "qasper:1911.09886:s11:p0"
+      ]
+    },
+    {
+      "question_id": "2c576072e494ab5598667cd6b40bc97fdd7d92d7",
+      "category": "qasper_real",
+      "query": "What are the in-house data employed?",
+      "method": "hybrid_ontology",
+      "gold_chunk_ids": [
+        "qasper:1909.04181:s5:p0"
+      ],
+      "gold_rank": 1,
+      "top_chunk_id": "qasper:1909.04181:s5:p0",
+      "retrieved_chunk_ids": [
+        "qasper:1909.04181:s5:p0",
+        "qasper:1909.04181:s2:p0",
+        "qasper:2002.11893:s2:p4",
+        "qasper:1908.07816:s7:p3",
+        "qasper:1909.04181:s8:p0"
+      ]
+    },
+    {
+      "question_id": "8602160e98e4b2c9c702440da395df5261f55b1f",
+      "category": "qasper_real",
+      "query": "What are the three datasets used in the paper?",
+      "method": "hybrid_ontology",
+      "gold_chunk_ids": [
+        "qasper:1909.04181:s1:p0"
+      ],
+      "gold_rank": null,
+      "top_chunk_id": "qasper:1910.07181:s0:p8",
+      "retrieved_chunk_ids": [
+        "qasper:1910.07181:s0:p8",
+        "qasper:1911.09886:s9:p0",
+        "qasper:2003.06279:s2:p18",
+        "qasper:2003.06279:s2:p11",
+        "qasper:1909.00542:s6:p0"
+      ]
+    }
+  ]
+}
