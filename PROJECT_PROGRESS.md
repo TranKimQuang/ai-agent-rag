@@ -1,6 +1,6 @@
 # THEO DÕI TIẾN ĐỘ ĐỒ ÁN AI AGENT + RAG
 
-Cập nhật gần nhất: 08/10/2026
+Cập nhật gần nhất: 09/10/2026
 
 ### Mới nhất: Audit và sửa precision cho Result-centric scoring v2
 
@@ -35,9 +35,8 @@ Cập nhật gần nhất: 08/10/2026
 - [x] Lưu nhãn từng dòng, CSV hậu review, summary và báo cáo tại
   `evaluation/qasper_result_validation_v5/`; giữ nguyên snapshot pending và không dùng
   audit này để tuning lại validation v5.
-- [ ] Chưa chạy final-test v4. Bước tiếp theo là tạo development split paper-disjoint mới
-  để sửa khả năng phân biệt kết quả quan sát với setup/method/metric definition, sau đó
-  đánh giá trên một validation mới khác.
+- [x] Chưa chạy final-test v4; đã tạo development split paper-disjoint mới để sửa khả
+  năng phân biệt kết quả quan sát với setup/method/metric definition.
 - [x] Đã tạo development v6 mới gồm 20 paper, 1.044 chunk và 69 câu hỏi; loại 165 paper
   từng dùng trước đây, bao gồm validation v5, overlap bằng 0.
 - [x] Đã chạy bộ trích xuất hiện tại trên development v6 và xuất 44 Result thô vào
@@ -47,8 +46,15 @@ Cập nhật gần nhất: 08/10/2026
   56,25%, Metric 100%, Value 100%.
 - [x] Lưu nhãn, CSV, summary và báo cáo audit tại
   `evaluation/qasper_result_development_v6/`; giữ nguyên snapshot pending.
-- [ ] Sửa bộ nhận diện trên development v6, ưu tiên loại setup/prior-work và chuẩn hóa
-  Dataset, khóa code, rồi tạo validation paper-disjoint mới để đánh giá đúng một lần.
+- [x] Đã sửa bộ nhận diện trên development v6: giữ 30/30 Result đúng đã biết, loại
+  14/14 instance sai đã biết và tìm thêm 28 ứng viên đã được review.
+- [x] Hậu sửa có 58 instance, gồm 57 đúng phạm vi và 1 prior-work; precision instance
+  development đạt 98,28%. Precision role: Method 100%, Model 98,25%, Dataset 77,78%,
+  Metric 100%, Value 100%.
+- [x] Lưu nhãn hậu sửa và summary tại `evaluation/qasper_result_development_v6/`;
+  validation v5 không được dùng lại và final-test v4 vẫn sealed.
+- [ ] Khóa/commit code hậu sửa, sau đó tạo validation v7 paper-disjoint với toàn bộ split
+  đã dùng và chạy đúng một lần để kiểm tra khả năng khái quát hóa.
 
 ### Result-centric knowledge graph và relation scoring v2 (trước audit)
 

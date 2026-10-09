@@ -27,25 +27,68 @@ _RESULT_OUTCOME_CUE = re.compile(
     re.IGNORECASE,
 )
 _RESULT_SECTION_CUE = re.compile(
-    r"^(?:results?\b|experiments?\b|experimental results?\b|validation\b|"
-    r"conclusions?\b|dataset analysis\b|submitted systems?\b)",
+    r"^(?:results?\b|experimental results?\b|validation\b|"
+    r"conclusions?\b|discussion and conclusions?\b|dataset analysis\b|"
+    r"discussion and error analysis\b|submitted systems?\b)",
     re.IGNORECASE,
 )
 _NON_RESULT_SECTION_CUE = re.compile(
     r"^(?:related works?\b|settings\b|method(?:s)?\b|error-analysis method\b|"
-    r".*training details\b|[^.\n]{1,60}\s+system\.|[^.\n]{1,60}\s+baseline\.)",
+    r".*(?:methodology|experimental settings|experimental setup)\b|"
+    r".*training details\b|"
+    r"[^.\n]{1,60}\s+system\.|[^.\n]{1,60}\s+baseline\.)",
     re.IGNORECASE,
+)
+_PRIOR_WORK_SECTION_CUE = re.compile(
+    r"^(?:history\b|background\b)",
+    re.IGNORECASE,
+)
+_PRIOR_WORK_CUE = re.compile(
+    r"\b(?:following previous approaches|previous approaches|prior work|"
+    r"has been shown|have been shown|BIBREF\d+\s+(?:develop|report|show|use)|"
+    r"they (?:report|were))\b",
+    re.IGNORECASE,
+)
+_CITATION_CLAIM_CUE = re.compile(r"\bBIBREF\d+\b", re.IGNORECASE)
+_CURRENT_PAPER_CUE = re.compile(
+    r"\b(?:we|our|this (?:work|study|paper))\b",
+    re.IGNORECASE,
+)
+_CURRENT_RESULT_CUE = re.compile(
+    r"(?:\b(?:we|our|this (?:work|study|paper))\b.{0,180}"
+    r"\b(?:achieved|found|showed|improved|improves|outperformed|"
+    r"outperforms|gained|gains|yielded|yields|reached|reaches)\b|"
+    r"\bthe results?\b.{0,80}\b(?:show|shows|showed|confirm|confirms|confirmed|"
+    r"indicate|indicates|demonstrate|demonstrates)\b|"
+    r"\btable(?:\s+TABREF\d+)?\b.{0,80}\b(?:show|shows|showed|illustrate|"
+    r"illustrates|present|presents)\b)",
+    re.IGNORECASE | re.DOTALL,
 )
 _PAPER_ROADMAP_CUE = re.compile(
     r"\b(?:section\s+\d+\s+(?:discusses|presents)|we will present|will be introduced)\b",
     re.IGNORECASE,
 )
 _FUTURE_ONLY_CUE = re.compile(
-    r"\b(?:will conduct experiments|future work|future direction|worthy of exploration)\b",
+    r"\b(?:will conduct experiments|future work|future direction|in the future|"
+    r"want to evaluate|want to investigate|would be interesting to experiment|"
+    r"worthy of exploration)\b",
+    re.IGNORECASE,
+)
+_HYPOTHESIS_ONLY_CUE = re.compile(
+    r"\b(?:we believe|we hypothesi[sz]e|we expect|we predict|"
+    r"it is to be expected)\b",
+    re.IGNORECASE,
+)
+_WEAK_PROMISE_CUE = re.compile(
+    r"\bshows? great promise\b",
+    re.IGNORECASE,
+)
+_PURPOSE_OUTCOME_CUE = re.compile(
+    r"\b(?:so as to|in order to|to)\s+(?:achieve|improve|increase|maximi[sz]e)\b",
     re.IGNORECASE,
 )
 _MODEL_LABEL_CUE = re.compile(
-    r"(?:bi?lstm|cnn|gpt(?:-\d+)?|lr|rnn|transformer)",
+    r"(?:bi?lstm|cnn|faster-r?cnn|gpt(?:-\d+)?|lr|rnn|transformer)",
     re.IGNORECASE,
 )
 _RESULT_VALUE_CUE = re.compile(
@@ -54,7 +97,7 @@ _RESULT_VALUE_CUE = re.compile(
     re.IGNORECASE,
 )
 _METRIC_CUE = re.compile(
-    r"\b(F1|F-?score|F-?measure|BLEU|ROUGE(?:-[A-Za-z0-9]+)?|accuracy|precision|"
+    r"\b(F1|F-?score|F-?measure|BLEU|ROUGE(?:-[A-Za-z0-9]+)?|acc(?:uracy)?|precision|"
     r"recall|MRR|nDCG|AUC(?:-ROC)?|ERR|H@\d+)\b",
     re.IGNORECASE,
 )
@@ -95,6 +138,13 @@ _PAPER_ENTITY_STOP_LABELS = {
     "the",
     "their",
     "this",
+    "if",
+}
+_PAPER_DATASET_STOP_LABELS = {
+    "ape",
+    "nlp",
+    "parallel corpus",
+    "twitter",
 }
 _QUERY_TYPE_ALIASES = {
     QA.Dataset: {"dataset", "datasets", "corpus", "corpora"},
@@ -410,24 +460,63 @@ class OntologyService:
             if value not in models and self._is_instance_of(value, QA.Method)
         ]
         methods.extend(paper_entities[QA.Method])
-        datasets = [value for value in concepts if self._is_instance_of(value, QA.Dataset)]
+        datasets = [
+            value
+            for value in concepts
+            if self._is_instance_of(value, QA.Dataset)
+            and normalize_text(
+                str(self.graph.value(value, SKOS.prefLabel) or local_name(value))
+            )
+            not in _PAPER_DATASET_STOP_LABELS
+        ]
         datasets.extend(paper_entities[QA.Dataset])
         metrics = [value for value in concepts if self._is_instance_of(value, QA.Metric)]
         metrics.extend(paper_entities[QA.Metric])
         typed_dimensions = sum(bool(values) for values in (models, methods, datasets, metrics))
         metric_values = self._extract_metric_values(text)
+        outcome_text = _PURPOSE_OUTCOME_CUE.sub("", text)
+        has_outcome = _RESULT_OUTCOME_CUE.search(outcome_text) is not None
+        has_current_result = _CURRENT_RESULT_CUE.search(outcome_text) is not None
         if (
             _NON_RESULT_SECTION_CUE.search(text)
+            or _PRIOR_WORK_SECTION_CUE.search(text)
             or _PAPER_ROADMAP_CUE.search(text)
-            or (not metric_values and _FUTURE_ONLY_CUE.search(text))
+            or (
+                (
+                    _PRIOR_WORK_CUE.search(text)
+                    or (
+                        _CITATION_CLAIM_CUE.search(text)
+                        and not _CURRENT_PAPER_CUE.search(text)
+                    )
+                )
+                and not has_current_result
+                and not _RESULT_SECTION_CUE.search(text)
+            )
+            or (
+                not metric_values
+                and (
+                    (
+                        (
+                            _FUTURE_ONLY_CUE.search(text)
+                            or _WEAK_PROMISE_CUE.search(text)
+                        )
+                        and not has_current_result
+                    )
+                    or (
+                        _HYPOTHESIS_ONLY_CUE.search(text)
+                        and not _RESULT_SECTION_CUE.search(text)
+                    )
+                )
+            )
         ):
             return
         if not (
-            (metric_values and typed_dimensions >= 2)
+            (metric_values and typed_dimensions >= 1)
             or (
-                (_RESULT_OUTCOME_CUE.search(text) or _RESULT_SECTION_CUE.search(text))
+                (has_outcome or _RESULT_SECTION_CUE.search(text))
                 and typed_dimensions >= 2
             )
+            or (has_current_result and typed_dimensions >= 1)
         ):
             return
 
@@ -500,7 +589,20 @@ class OntologyService:
                         label,
                         flags=re.IGNORECASE,
                     )
-                    if label and normalize_text(label) not in _PAPER_ENTITY_STOP_LABELS:
+                    normalized_label = normalize_text(label)
+                    invalid_dataset = (
+                        concept_type == QA.Dataset
+                        and normalized_label in _PAPER_DATASET_STOP_LABELS
+                    )
+                    unresolved_marker = re.search(
+                        r"\b(?:bibref|inlineform)\d+\b", normalized_label
+                    )
+                    if (
+                        label
+                        and normalized_label not in _PAPER_ENTITY_STOP_LABELS
+                        and not invalid_dataset
+                        and unresolved_marker is None
+                    ):
                         labels.add(label)
             for label in sorted(labels, key=str.lower):
                 target_type = concept_type

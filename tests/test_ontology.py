@@ -645,6 +645,249 @@ def test_result_context_rejects_setup_roadmap_and_future_only_claims() -> None:
     assert not list(service.graph.objects(paper, QA.hasResult))
 
 
+def test_result_context_rejects_experiment_setup_without_observed_outcome() -> None:
+    service = OntologyService()
+    service.index_chunks(
+        [
+            Chunk(
+                id="paper:p1:experiment-setup",
+                document_id="paper",
+                filename="paper.pdf",
+                page=1,
+                text=(
+                    "Experiments. For the PBSMT task, we compare four baselines and "
+                    "evaluate the systems using BLEU."
+                ),
+            )
+        ]
+    )
+
+    assert not list(service.graph.objects(QA["document-paper"], QA.hasResult))
+
+
+def test_result_context_rejects_numeric_experimental_setup() -> None:
+    service = OntologyService()
+    service.index_chunks(
+        [
+            Chunk(
+                id="paper:p1:numeric-setup",
+                document_id="paper",
+                filename="paper.pdf",
+                page=1,
+                text=(
+                    "Experimental Setup. We report training accuracy on a validation "
+                    "split containing 2,000 instances."
+                ),
+            )
+        ]
+    )
+
+    assert not list(service.graph.objects(QA["document-paper"], QA.hasResult))
+
+
+def test_result_context_rejects_prior_work_without_current_outcome() -> None:
+    service = OntologyService()
+    service.index_chunks(
+        [
+            Chunk(
+                id="paper:p1:prior-work",
+                document_id="paper",
+                filename="paper.pdf",
+                page=1,
+                text=(
+                    "Audiovisual synchronisation. Previous approaches use the SyncNet "
+                    "neural network. It achieves near perfect accuracy. We adopt the "
+                    "original approach."
+                ),
+            )
+        ]
+    )
+
+    assert not list(service.graph.objects(QA["document-paper"], QA.hasResult))
+
+
+def test_result_context_keeps_current_result_after_prior_work_comparison() -> None:
+    service = OntologyService()
+    service.index_chunks(
+        [
+            Chunk(
+                id="paper:p1:current-result",
+                document_id="paper",
+                filename="paper.pdf",
+                page=1,
+                text=(
+                    "Results. Previous approaches used a CNN. Our BERT model achieved "
+                    "80% accuracy on the FooBench dataset."
+                ),
+            )
+        ]
+    )
+
+    result = QA["result-chunk-paper:p1:current-result"]
+    assert (QA["document-paper"], QA.hasResult, result) in service.graph
+
+
+def test_result_context_keeps_current_finding_with_future_work_and_one_role() -> None:
+    service = OntologyService()
+    service.index_chunks(
+        [
+            Chunk(
+                id="paper:p1:conclusion",
+                document_id="paper",
+                filename="paper.pdf",
+                page=1,
+                text=(
+                    "Conclusion. In this work we studied a neural network and found "
+                    "several useful resources. In the future we will study more languages."
+                ),
+            )
+        ]
+    )
+
+    result = QA["result-chunk-paper:p1:conclusion"]
+    assert (QA["document-paper"], QA.hasResult, result) in service.graph
+
+
+def test_result_context_keeps_explicit_current_result_with_one_typed_dimension() -> None:
+    service = OntologyService()
+    service.index_chunks(
+        [
+            Chunk(
+                id="paper:p1:single-dimension",
+                document_id="paper",
+                filename="paper.pdf",
+                page=1,
+                text=(
+                    "Experiments. The results show that accuracy improved for French "
+                    "and Portuguese."
+                ),
+            )
+        ]
+    )
+
+    result = QA["result-chunk-paper:p1:single-dimension"]
+    assert (QA["document-paper"], QA.hasResult, result) in service.graph
+
+
+def test_result_context_keeps_table_result_with_abbreviated_accuracy() -> None:
+    service = OntologyService()
+    service.index_chunks(
+        [
+            Chunk(
+                id="paper:p1:table-result",
+                document_id="paper",
+                filename="paper.pdf",
+                page=1,
+                text=(
+                    "Data and Models. Table TABREF15 shows that the Multilingual Cased "
+                    "model obtains 62.42% acc on DEV and 60.54% acc on TEST."
+                ),
+            )
+        ]
+    )
+
+    result = QA["result-chunk-paper:p1:table-result"]
+    assert (QA["document-paper"], QA.hasResult, result) in service.graph
+
+
+def test_result_context_rejects_cited_claim_without_current_result() -> None:
+    service = OntologyService()
+    service.index_chunks(
+        [
+            Chunk(
+                id="paper:p1:cited-claim",
+                document_id="paper",
+                filename="paper.pdf",
+                page=1,
+                text=(
+                    "Word Embeddings. Neural network embeddings preserve regularities "
+                    "BIBREF18 and help algorithms achieve better performance BIBREF4."
+                ),
+            )
+        ]
+    )
+
+    assert not list(service.graph.objects(QA["document-paper"], QA.hasResult))
+
+
+def test_result_context_rejects_hypothetical_gain_outside_result_section() -> None:
+    service = OntologyService()
+    service.index_chunks(
+        [
+            Chunk(
+                id="paper:p1:hypothesis",
+                document_id="paper",
+                filename="paper.pdf",
+                page=1,
+                text=(
+                    "Multilingual. We believe that clustering features trained on the "
+                    "Yelp dataset would be superior to those achieved out of domain."
+                ),
+            )
+        ]
+    )
+
+    assert not list(service.graph.objects(QA["document-paper"], QA.hasResult))
+
+
+def test_result_context_keeps_result_section_with_trailing_hypothesis() -> None:
+    service = OntologyService()
+    service.index_chunks(
+        [
+            Chunk(
+                id="paper:p1:discussion",
+                document_id="paper",
+                filename="paper.pdf",
+                page=1,
+                text=(
+                    "Discussion and Error Analysis. The results confirm that our CRF "
+                    "improves F1, but we believe data size explains one exception."
+                ),
+            )
+        ]
+    )
+
+    result = QA["result-chunk-paper:p1:discussion"]
+    assert (QA["document-paper"], QA.hasResult, result) in service.graph
+
+
+def test_paper_scoped_entities_filter_generic_datasets_and_role_noise() -> None:
+    service = OntologyService()
+    service.index_chunks(
+        [
+            Chunk(
+                id="paper:p1:dataset-noise",
+                document_id="paper",
+                filename="paper.pdf",
+                page=1,
+                text=(
+                    "Results. If model size is not a constraint, our Faster-RCNN "
+                    "approach achieved 80% accuracy on the Twitter dataset, a parallel "
+                    "corpus benchmark, and the Moses BIBREF18 corpus."
+                ),
+            )
+        ]
+    )
+
+    result = QA["result-chunk-paper:p1:dataset-noise"]
+    model_labels = {
+        str(service.graph.value(value, SKOS.prefLabel))
+        for value in service.graph.objects(result, QA.resultUsesModel)
+    }
+    method_labels = {
+        str(service.graph.value(value, SKOS.prefLabel))
+        for value in service.graph.objects(result, QA.resultUsesMethod)
+    }
+    dataset_labels = {
+        str(service.graph.value(value, SKOS.prefLabel))
+        for value in service.graph.objects(result, QA.resultUsesDataset)
+    }
+    assert "Faster-RCNN" in model_labels
+    assert "If" not in model_labels
+    assert "Faster-RCNN" not in method_labels
+    assert dataset_labels == set()
+
+
 def test_model_architecture_named_as_approach_is_linked_as_model() -> None:
     service = OntologyService()
     service.index_chunks(

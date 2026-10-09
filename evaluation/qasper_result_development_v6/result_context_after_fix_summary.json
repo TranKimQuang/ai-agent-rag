@@ -1,0 +1,45 @@
+{
+  "evaluated_at": "2026-10-08",
+  "dataset": "qasper_result_development_v6",
+  "papers": 20,
+  "chunks": 1044,
+  "result_instances": 58,
+  "result_counts": {
+    "in_scope": 57,
+    "prior_work": 1
+  },
+  "result_instance_precision": 0.9828,
+  "baseline_regression": {
+    "previously_confirmed_true_retained": "30/30",
+    "previously_confirmed_false_remaining": "0/14",
+    "newly_surfaced_candidates_reviewed": 28
+  },
+  "role_precision": {
+    "methods": {
+      "correct": 10,
+      "total": 10,
+      "precision": 1.0
+    },
+    "models": {
+      "correct": 56,
+      "total": 57,
+      "precision": 0.9825
+    },
+    "datasets": {
+      "correct": 7,
+      "total": 9,
+      "precision": 0.7778
+    },
+    "metrics": {
+      "correct": 43,
+      "total": 43,
+      "precision": 1.0
+    },
+    "values": {
+      "correct": 47,
+      "total": 47,
+      "precision": 1.0
+    }
+  },
+  "protocol_note": "Development-only result. Validation v5 was not reused and final-test v4 remains sealed. A new paper-disjoint validation split is required after the code is locked."
+}

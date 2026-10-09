@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "reviewed_at": "2026-10-08",
+  "review_scope": "Manual review of all 58 post-fix development v6 Result instances and their extracted role links. The 30 retained instances reuse the completed development-v6 audit; 28 newly surfaced instances were reviewed from their full chunk text.",
+  "conventions": {
+    "default_result_status": "in_scope",
+    "default_nonempty_role_status": "correct",
+    "default_empty_role_status": "not_present",
+    "precision_rule": "correct links / (correct + incorrect links); ambiguous links are excluded"
+  },
+  "annotations": {
+    "result-chunk-qasper:1901.09755:s4:p0": {
+      "datasets_invalid": [
+        "Dutch",
+        "Russian"
+      ],
+      "note": "The dataset-analysis finding is in scope, but Dutch and Russian are language names rather than named datasets."
+    },
+    "result-chunk-qasper:1906.09774:s3:p1": {
+      "models_invalid": [
+        "Dimensional"
+      ],
+      "note": "The systematic-review finding is in scope, but Dimensional denotes an emotion-representation viewpoint rather than a named model."
+    },
+    "result-chunk-qasper:2004.01694:s23:p1": {
+      "result_status": "prior_work",
+      "note": "The concrete comparison is attributed to the external WMT 2019 campaign; this paragraph mainly uses cited findings to support recommendations."
+    }
+  }
+}
