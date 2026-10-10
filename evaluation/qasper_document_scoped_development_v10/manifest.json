@@ -35,7 +35,16 @@
     "coverage_result": "baseline_ontology_coverage.json",
     "coverage_result_sha256": "4491a5075c448601adaeb1d3d6a32ba95b7e4b838b333dde7a6937582ab58651",
     "rejected_candidate": "candidate_scoped_type_bonus.json",
-    "rejected_candidate_sha256": "e2179fdac92636edaf2db000643a200b693767141b05fac6bc7dae86a0d71bd2"
+    "rejected_candidate_sha256": "e2179fdac92636edaf2db000643a200b693767141b05fac6bc7dae86a0d71bd2",
+    "full_baseline_result": "baseline_full_retrieval.json",
+    "full_baseline_result_sha256": "08e391a83cbecf3c50bc133cd06804e39c98b8c1fde0d519d65ed8305132a675",
+    "contextual_retrieval_ablation": {
+      "status": "two_candidates_rejected",
+      "title_result": "title_context_retrieval.json",
+      "title_result_sha256": "025fd26ea60232d5ae22eb6395ddd34a9893befabb6c6c541a68b05a8520ee89",
+      "title_abstract_result": "title_abstract_context_retrieval.json",
+      "title_abstract_result_sha256": "ebf30d1cf71fda4a3404584b4ba8a05e131175ae0a830722892550a745e4c852"
+    }
   },
   "benchmark_code_commit": "048a00d",
   "policy": "This split may be used to establish and improve document-scoped retrieval and concept linking. Do not rerun or tune on validation v9 or sealed final-test v4. Evaluate selected changes on a new paper-disjoint validation split."

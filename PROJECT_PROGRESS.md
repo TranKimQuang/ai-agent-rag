@@ -712,6 +712,10 @@ trang và đoạn bằng chứng. Nếu tài liệu không có đủ bằng ch�
   tụt hạng; coverage query vẫn 7/74 nhưng không còn phải dùng concept để suy ra paper.
 - [x] Thử generic entity-type bonus nhỏ trong đúng paper: Recall@5 giảm còn 0,6029,
   3 câu xấu đi và 1 câu mất khỏi top-5. Đã loại candidate và giữ artifact kết quả âm.
+- [x] Tách `retrieval_text` khỏi evidence/citation text và thử contextualized retrieval trên
+  đúng development v10. Thêm title làm Hybrid Recall@5 giảm từ 0,6164 xuống 0,5390;
+  thêm title + 80 từ abstract giảm còn 0,4507. Hai candidate đã bị loại vì context cấp
+  paper bị lặp ở mọi chunk và làm giảm khả năng phân biệt passage.
 - [x] Đã có baseline development 22 câu đánh giá Answer-F1, Evidence-F1,
   citation precision/recall và unanswerable; chưa phải kết quả held-out cuối.
 - [x] Đã tích hợp adapter và chạy end-to-end với LLM local thật trên QASPER.
@@ -742,8 +746,9 @@ Milestone tiếp theo: kiểm chứng khả năng khái quát của semantic con
 1. Giữ nguyên kết quả held-out v3 và validation v7; không tiếp tục tuning theo các tập đã xem.
 2. Giữ nguyên validation v9; không tuning scoring theo tập này. Tạo development split mới
    và thiết lập baseline document-scoped trước khi kết luận thêm về concept coverage.
-3. Trên protocol đúng paper, mới thử concept candidate generation/zero-shot linking;
-   chỉ sau khi khóa mới tạo validation paper-disjoint khác.
+3. Trên protocol đúng paper, thử graph-based concept-to-chunk candidate generation hoặc
+   chunk-specific context; không lặp lại title/abstract giống nhau vào mọi chunk. Chỉ sau
+   khi khóa candidate mới tạo validation paper-disjoint khác.
 4. Khi retrieval ổn định, xác nhận answer correctness/citation/unanswerable trên mẫu lớn hơn.
 
 Chưa ưu tiên trong milestone này: mở rộng giao diện, PostgreSQL, pgvector, OCR và

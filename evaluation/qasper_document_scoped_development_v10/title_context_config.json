@@ -1,7 +1,10 @@
 {
   "configuration_status": "frozen_before_evaluation",
   "frozen_on": "2026-10-10",
-  "evaluation_status": "not_evaluated",
+  "evaluation_status": "evaluated_once",
+  "evaluated_on": "2026-10-10",
+  "result": "title_context_retrieval.json",
+  "result_sha256": "025fd26ea60232d5ae22eb6395ddd34a9893befabb6c6c541a68b05a8520ee89",
   "dataset": "evaluation/qasper_document_scoped_development_v10/qasper_title_context.json",
   "dataset_sha256": "f04ae31cc60d30b5f50dfdf10fd975ca2bfa9fc983e43b493600a39cce383c33",
   "benchmark_code_commit": "e99f211",
@@ -15,5 +18,6 @@
   "concept_linking_threshold": 0.65,
   "k_values": [1, 3, 5],
   "context_gate": true,
+  "decision": "rejected",
   "policy": "Development ablation. Only retrieval_text is enriched; original evidence and gold labels are unchanged."
 }

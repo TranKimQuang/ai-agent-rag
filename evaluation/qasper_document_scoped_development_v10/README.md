@@ -36,3 +36,20 @@ Recall@5 0,6029, MRR@5 0,3723 và nDCG@5 0,4036; thấp hơn Hybrid ở cả ba 
 Candidate cải thiện 1 câu nhưng làm xấu 3 câu và làm mất 1 câu khỏi top-5. Vì vậy thay
 đổi tại commit `f09754c` bị loại và code được đưa về context gate không cấp generic type
 bonus. Kết quả âm vẫn được giữ để tránh lặp lại thí nghiệm.
+
+### Contextualized retrieval: hai candidate đều bị loại
+
+Đã tách `retrieval_text` khỏi `text`, nhờ đó phần dùng để lập chỉ mục có thể nhận thêm
+ngữ cảnh nhưng evidence/citation vẫn giữ nguyên văn bản gốc. Ba cấu hình dùng cùng 824
+chunk, 74 câu hỏi và gold IDs; benchmark đo đủ sáu phương pháp.
+
+| Retrieval text | Hybrid Recall@5 | Hybrid MRR@5 | Hybrid nDCG@5 |
+|---|---:|---:|---:|
+| Section + passage (baseline) | **0,6164** | **0,3818** | **0,4140** |
+| Title + section + passage | 0,5390 | 0,3446 | 0,3681 |
+| Title + 80 từ abstract + section + passage | 0,4507 | 0,2962 | 0,3192 |
+
+Title/abstract giống nhau bị lặp vào mọi chunk trong cùng paper, làm BM25 và đặc biệt
+embedding khó phân biệt các passage. Hai candidate bị loại; pipeline chính tiếp tục dùng
+passage gốc. Nếu thử contextual retrieval lần nữa, context phải đặc thù cho từng chunk
+thay vì chỉ là metadata cấp paper.
