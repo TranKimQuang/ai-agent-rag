@@ -214,6 +214,7 @@ class OntologyService:
         semantic_encoder: SemanticTextEncoder | None = None,
         linking_method: ConceptLinkingMethod = ConceptLinkingMethod.ALIAS,
         linking_threshold: float = 0.55,
+        query_linking_threshold: float | None = None,
         linking_limit: int = 5,
         query_type_intent: bool = False,
     ) -> None:
@@ -222,11 +223,17 @@ class OntologyService:
         self._semantic_encoder = semantic_encoder
         self.linking_method = linking_method
         self.linking_threshold = linking_threshold
+        self.query_linking_threshold = (
+            linking_threshold
+            if query_linking_threshold is None
+            else query_linking_threshold
+        )
         self.linking_limit = linking_limit
         self.query_type_intent = query_type_intent
         self._concept_embeddings: NDArray[np.float32] | None = None
         self._concept_aliases = self._load_concept_aliases()
         self._configured_concept_cache: dict[str, tuple[URIRef, ...]] = {}
+        self._configured_query_concept_cache: dict[str, tuple[URIRef, ...]] = {}
 
     def _load_concept_aliases(self) -> dict[URIRef, set[str]]:
         concept_types = {
@@ -392,7 +399,24 @@ class OntologyService:
 
     def configured_query_concepts(self, text: str) -> list[URIRef]:
         """Link a query and optionally include its requested ontology entity type."""
-        concepts = self.configured_concepts(text)
+        cached = self._configured_query_concept_cache.get(text)
+        if cached is None:
+            links = self.link_concepts(
+                text,
+                self.linking_method,
+                threshold=self.query_linking_threshold,
+                limit=self.linking_limit,
+            )
+            known_by_name = {
+                local_name(concept): concept for concept in self._concept_aliases
+            }
+            cached = tuple(
+                known_by_name[link.concept]
+                for link in links
+                if link.concept in known_by_name
+            )
+            self._configured_query_concept_cache[text] = cached
+        concepts = list(cached)
         if self.query_type_intent:
             concepts.extend(self.identify_query_type_concepts(text))
         return sorted(set(concepts), key=local_name)

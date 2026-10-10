@@ -245,6 +245,34 @@ def test_configured_concept_linking_caches_repeated_text() -> None:
     assert encoder.calls == 2  # one concept batch plus one unique input text
 
 
+def test_query_and_chunk_linking_can_use_separate_thresholds() -> None:
+    class ModerateConceptEncoder(ConceptLinkingEncoder):
+        def encode(self, texts: list[str]) -> np.ndarray:
+            vectors = []
+            for text in texts:
+                normalized = text.lower()
+                if "before producing answers" in normalized:
+                    vectors.append([0.9, 0.43589])
+                elif "retrieval augmented generation" in normalized:
+                    vectors.append([1.0, 0.0])
+                else:
+                    vectors.append([0.0, 1.0])
+            return np.asarray(vectors, dtype=np.float32)
+
+    service = OntologyService(
+        semantic_encoder=ModerateConceptEncoder(),
+        linking_method=ConceptLinkingMethod.SEMANTIC,
+        linking_threshold=0.95,
+        query_linking_threshold=0.80,
+    )
+    text = "The system retrieves external evidence before producing answers."
+
+    assert service.configured_concepts(text) == []
+    assert [
+        local_name(concept) for concept in service.configured_query_concepts(text)
+    ] == ["RetrievalAugmentedGeneration"]
+
+
 def test_graph_chunk_candidates_follow_concepts_and_document_scope() -> None:
     service = OntologyService()
     service.index_chunks(

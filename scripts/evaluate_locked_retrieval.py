@@ -57,6 +57,9 @@ def main() -> None:
         semantic_encoder=encoder,
         linking_method=ConceptLinkingMethod(config["concept_linking_method"]),
         linking_threshold=float(config["concept_linking_threshold"]),
+        query_linking_threshold=float(
+            config.get("query_concept_linking_threshold", config["concept_linking_threshold"])
+        ),
         query_type_intent=bool(config["query_type_intent"]),
     )
     chunks, concept_links = ontology.index_chunks(chunks)
