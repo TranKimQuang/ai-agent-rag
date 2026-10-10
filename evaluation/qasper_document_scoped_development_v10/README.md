@@ -11,3 +11,20 @@ trong bài báo nguồn được chỉ định bởi `paper_id`.
 
 Development v10 được phép dùng để phân tích và cải thiện. Validation v9 và final-test v4
 không được chạy lại. Sau khi chọn thay đổi, phải tạo validation paper-disjoint mới.
+
+## Baseline document-scoped
+
+| Cấu hình | Recall@5 | MRR@5 | nDCG@5 |
+|---|---:|---:|---:|
+| Hybrid | **0,6164** | **0,3818** | **0,4140** |
+| Hybrid + Expansion | 0,6097 | 0,3716 | 0,4041 |
+| Hybrid + context-gated Re-ranking | 0,6164 | 0,3750 | 0,4091 |
+| Hybrid + Expansion + Re-ranking | 0,6164 | 0,3716 | 0,4077 |
+
+So với benchmark global trước đây, document scope đưa bài toán về đúng ngữ cảnh QASPER
+và tăng mạnh Recall@5. Re-ranking hiện giữ Recall nhưng làm một câu tụt từ hạng 1 xuống
+hạng 2. Coverage: 7/74 query có concept, 25/74 gold evidence có concept và 2/74 cặp
+query-gold có quan hệ Ontology.
+
+Bước thử nghiệm tiếp theo trên development: tận dụng entity type như Model/Dataset chỉ
+khi retrieval đã được giới hạn trong đúng paper, với bonus nhỏ và có kiểm soát.

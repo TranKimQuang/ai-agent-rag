@@ -707,6 +707,9 @@ trang và đoạn bằng chứng. Nếu tài liệu không có đủ bằng ch�
 - [x] Rà soát protocol phát hiện benchmark QASPER trước đây truy hồi chung trên toàn bộ
   paper dù mỗi câu có `paper_id`. Đã sửa benchmark để giới hạn retrieval trong đúng paper,
   phù hợp bản chất document-grounded QA; giữ nguyên artifact cũ và không chạy lại v9.
+- [x] Baseline document-scoped v10 trên 20 paper/74 câu: Hybrid Recall@5 0,6164,
+  MRR@5 0,3818 và nDCG@5 0,4140. Ontology re-ranking giữ Recall nhưng làm một câu
+  tụt hạng; coverage query vẫn 7/74 nhưng không còn phải dùng concept để suy ra paper.
 - [x] Đã có baseline development 22 câu đánh giá Answer-F1, Evidence-F1,
   citation precision/recall và unanswerable; chưa phải kết quả held-out cuối.
 - [x] Đã tích hợp adapter và chạy end-to-end với LLM local thật trên QASPER.

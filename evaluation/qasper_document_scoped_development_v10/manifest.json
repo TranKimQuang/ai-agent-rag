@@ -29,7 +29,11 @@
     "chunks": 824,
     "questions": 74,
     "sha256": "64708249727afe4264dacafd34d315a4d645573b67ff1bb9559fa1c9b9f5815a",
-    "status": "prepared_not_reviewed"
+    "status": "baseline_evaluated",
+    "baseline_result": "baseline_retrieval.json",
+    "baseline_result_sha256": "031e5680bd951342d7f8c8327522f8e0ab9a1f1d70d6c9da83d001237e9477dd",
+    "coverage_result": "baseline_ontology_coverage.json",
+    "coverage_result_sha256": "4491a5075c448601adaeb1d3d6a32ba95b7e4b838b333dde7a6937582ab58651"
   },
   "benchmark_code_commit": "048a00d",
   "policy": "This split may be used to establish and improve document-scoped retrieval and concept linking. Do not rerun or tune on validation v9 or sealed final-test v4. Evaluate selected changes on a new paper-disjoint validation split."
