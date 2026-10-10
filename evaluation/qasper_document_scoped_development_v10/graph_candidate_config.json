@@ -1,7 +1,11 @@
 {
   "configuration_status": "frozen_before_evaluation",
   "frozen_on": "2026-10-10",
-  "evaluation_status": "not_evaluated",
+  "evaluation_status": "evaluated_once",
+  "evaluated_on": "2026-10-10",
+  "result": "graph_candidate_retrieval.json",
+  "result_sha256": "c6c5fa1029f0863c12d0ca8b45addb37b52151ff1e82c310903b78ce6c87e5b0",
+  "decision": "rejected_query_drift",
   "dataset": "evaluation/qasper_document_scoped_development_v10/qasper_development.json",
   "dataset_sha256": "64708249727afe4264dacafd34d315a4d645573b67ff1bb9559fa1c9b9f5815a",
   "benchmark_code_commit": "2363cb4",

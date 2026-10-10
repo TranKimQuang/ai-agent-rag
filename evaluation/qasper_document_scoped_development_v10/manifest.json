@@ -44,6 +44,13 @@
       "title_result_sha256": "025fd26ea60232d5ae22eb6395ddd34a9893befabb6c6c541a68b05a8520ee89",
       "title_abstract_result": "title_abstract_context_retrieval.json",
       "title_abstract_result_sha256": "ebf30d1cf71fda4a3404584b4ba8a05e131175ae0a830722892550a745e4c852"
+    },
+    "graph_candidate_ablation": {
+      "status": "not_selected",
+      "one_hop_result": "graph_candidate_retrieval.json",
+      "one_hop_result_sha256": "c6c5fa1029f0863c12d0ca8b45addb37b52151ff1e82c310903b78ce6c87e5b0",
+      "exact_result": "graph_exact_retrieval.json",
+      "exact_result_sha256": "1fbd16d43cd5c0ee7bdfe0a88f2a998b35a8ec053a67b2b3fe9357bd506a58cd"
     }
   },
   "benchmark_code_commit": "048a00d",

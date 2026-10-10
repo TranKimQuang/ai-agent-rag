@@ -43,7 +43,7 @@ The index is intentionally temporary at this stage and is cleared whenever the s
 
 ## Step 2: Semantic and hybrid retrieval
 
-The search endpoint supports six methods:
+The search endpoint supports eight methods:
 
 - `bm25`: exact keyword retrieval.
 - `semantic`: meaning-based retrieval with multilingual sentence embeddings.
@@ -51,6 +51,8 @@ The search endpoint supports six methods:
 - `hybrid_ontology_expansion`: Hybrid with Ontology query expansion only.
 - `hybrid_ontology_rerank`: Hybrid with Ontology re-ranking only.
 - `hybrid_ontology`: Hybrid with both query expansion and Ontology re-ranking.
+- `hybrid_ontology_graph`: experimental Hybrid + exact concept-to-chunk graph candidates.
+- `hybrid_ontology_cross_encoder`: experimental second-stage cross-encoder re-ranking.
 
 The embedding model is loaded lazily on CPU when semantic or hybrid search is used for the first
 time. The first request can therefore take longer while the model is downloaded and initialized.

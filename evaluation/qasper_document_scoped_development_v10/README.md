@@ -53,3 +53,19 @@ Title/abstract giống nhau bị lặp vào mọi chunk trong cùng paper, làm 
 embedding khó phân biệt các passage. Hai candidate bị loại; pipeline chính tiếp tục dùng
 passage gốc. Nếu thử contextual retrieval lần nữa, context phải đặc thù cho từng chunk
 thay vì chỉ là metadata cấp paper.
+
+### Graph concept-to-chunk retrieval: chưa được chọn
+
+Đã bổ sung một kênh truy hồi trực tiếp từ concept của câu hỏi qua cạnh
+`Chunk -> mentionsConcept -> Concept`, hợp nhất với Hybrid bằng RRF và vẫn giới hạn trong
+đúng paper. Hai cấu hình đã được kiểm tra:
+
+| Cấu hình graph | Recall@5 | MRR@5 | nDCG@5 | So với Hybrid |
+|---|---:|---:|---:|---|
+| Exact + quan hệ một bước | 0,6164 | 0,3795 | 0,4113 | 1 câu xấu đi |
+| Chỉ exact concept | 0,6164 | 0,3818 | 0,4131 | 74/74 gold rank không đổi |
+
+Quan hệ một bước bị loại vì query drift. Exact-only được giữ như cơ chế thử nghiệm an toàn
+nhưng chưa chọn làm pipeline chính vì không cải thiện. Nút thắt được xác nhận là coverage:
+chỉ 7/74 câu hỏi development link được concept, nên graph không có đủ tín hiệu để cứu các
+retrieval miss.
