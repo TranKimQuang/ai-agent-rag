@@ -27,6 +27,7 @@ def load_dataset(path: Path) -> tuple[list[Chunk], list[BenchmarkQuestion]]:
             query=item["query"],
             relevant_chunk_ids=set(item["relevant_chunk_ids"]),
             category=item.get("category", "unspecified"),
+            document_id=item.get("paper_id") or item.get("document_id"),
         )
         for item in payload["questions"]
     ]

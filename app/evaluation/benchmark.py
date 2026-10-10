@@ -11,6 +11,7 @@ class BenchmarkQuestion:
     query: str
     relevant_chunk_ids: set[str]
     category: str = "unspecified"
+    document_id: str | None = None
 
 
 @dataclass(frozen=True)
@@ -71,7 +72,12 @@ def run_benchmark(
     for method in methods:
         scores = []
         for question in questions:
-            results = retriever.search(question.query, limit=k, method=method)
+            results = retriever.search(
+                question.query,
+                limit=k,
+                method=method,
+                document_id=question.document_id,
+            )
             scores.append(
                 evaluate_ranking(
                     [result.chunk_id for result in results],
@@ -112,7 +118,12 @@ def run_detailed_benchmark(
     for method in methods:
         metric_rows: dict[int, list[RetrievalMetrics]] = {k: [] for k in k_values}
         for question in questions:
-            results = retriever.search(question.query, limit=max_k, method=method)
+            results = retriever.search(
+                question.query,
+                limit=max_k,
+                method=method,
+                document_id=question.document_id,
+            )
             retrieved_ids = [result.chunk_id for result in results]
             gold_rank = next(
                 (
@@ -127,6 +138,7 @@ def run_detailed_benchmark(
                     "question_id": question.question_id,
                     "category": question.category,
                     "query": question.query,
+                    "document_id": question.document_id,
                     "method": method.value,
                     "gold_chunk_ids": sorted(question.relevant_chunk_ids),
                     "gold_rank": gold_rank,

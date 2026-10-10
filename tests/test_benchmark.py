@@ -104,6 +104,51 @@ def test_detailed_benchmark_reports_each_question_rank_and_multiple_k_values() -
     assert details[0]["category"] == "keyword"
 
 
+def test_detailed_benchmark_limits_qasper_question_to_its_paper() -> None:
+    ontology = OntologyService()
+    chunks, _ = ontology.index_chunks(
+        [
+            Chunk(
+                id="other-paper",
+                document_id="other",
+                filename="other.json",
+                page=1,
+                text="BM25 keyword keyword keyword.",
+            ),
+            Chunk(
+                id="gold-paper",
+                document_id="target",
+                filename="target.json",
+                page=1,
+                text="BM25 keyword retrieval.",
+            ),
+        ]
+    )
+    retriever = InMemoryHybridRetriever(
+        semantic_encoder=BenchmarkEncoder(), ontology_service=ontology
+    )
+    retriever.add(chunks)
+
+    _, details = run_detailed_benchmark(
+        retriever,
+        [
+            BenchmarkQuestion(
+                "q1",
+                "BM25 keyword",
+                {"gold-paper"},
+                "qasper_real",
+                document_id="target",
+            )
+        ],
+        methods=[SearchMethod.BM25],
+        k_values=(1,),
+    )
+
+    assert details[0]["gold_rank"] == 1
+    assert details[0]["top_chunk_id"] == "gold-paper"
+    assert details[0]["document_id"] == "target"
+
+
 def test_benchmark_reports_all_ontology_ablation_variants() -> None:
     ontology = OntologyService()
     chunks, _ = ontology.index_chunks(
