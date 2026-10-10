@@ -22,6 +22,7 @@ def main() -> None:
         default=ConceptLinkingMethod.HYBRID,
     )
     parser.add_argument("--linking-threshold", type=float, default=0.65)
+    parser.add_argument("--query-linking-threshold", type=float)
     parser.add_argument("--query-type-intent", action="store_true")
     args = parser.parse_args()
 
@@ -36,6 +37,7 @@ def main() -> None:
         semantic_encoder=encoder,
         linking_method=args.linking_method,
         linking_threshold=args.linking_threshold,
+        query_linking_threshold=args.query_linking_threshold,
         query_type_intent=args.query_type_intent,
     )
     chunks, _ = ontology.index_chunks(chunks)
@@ -105,6 +107,11 @@ def main() -> None:
         "purpose": "descriptive ontology coverage analysis",
         "linking_method": args.linking_method.value,
         "linking_threshold": args.linking_threshold,
+        "query_linking_threshold": (
+            args.query_linking_threshold
+            if args.query_linking_threshold is not None
+            else args.linking_threshold
+        ),
         "query_type_intent": args.query_type_intent,
         "summary": summary,
         "questions": rows,

@@ -69,3 +69,14 @@ Quan hệ một bước bị loại vì query drift. Exact-only được giữ n
 nhưng chưa chọn làm pipeline chính vì không cải thiện. Nút thắt được xác nhận là coverage:
 chỉ 7/74 câu hỏi development link được concept, nên graph không có đủ tín hiệu để cứu các
 retrieval miss.
+
+### Query threshold riêng: chọn để kiểm tra trên validation mới
+
+Threshold `0,55` cho câu hỏi được lấy từ bộ nhãn concept-linking validation độc lập
+(precision 1,0; Hybrid F1 0,9412). Threshold chunk vẫn giữ `0,65`. Thay đổi này tăng
+query coverage từ 7/74 lên 10/74 và số query-gold có quan hệ từ 2/74 lên 4/74.
+
+Graph exact tăng MRR@5 từ 0,3818 lên **0,3851**, nDCG@5 từ 0,4140 lên **0,4158**;
+một câu tăng gold rank từ 4 lên 2 và không câu nào xấu đi. Recall@5 giữ nguyên 0,6164.
+Candidate được chọn để đánh giá đúng một lần trên validation paper-disjoint mới; chưa thay
+pipeline mặc định trước khi có kết quả validation.

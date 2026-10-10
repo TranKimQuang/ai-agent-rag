@@ -51,6 +51,15 @@
       "one_hop_result_sha256": "c6c5fa1029f0863c12d0ca8b45addb37b52151ff1e82c310903b78ce6c87e5b0",
       "exact_result": "graph_exact_retrieval.json",
       "exact_result_sha256": "1fbd16d43cd5c0ee7bdfe0a88f2a998b35a8ec053a67b2b3fe9357bd506a58cd"
+    },
+    "separate_query_threshold": {
+      "status": "selected_for_new_validation",
+      "query_threshold": 0.55,
+      "chunk_threshold": 0.65,
+      "result": "query_threshold_055_retrieval.json",
+      "result_sha256": "c307f0b79080fc469b1349018ffa1ed67d25b3c4476c5b51e465109a0d9f0075",
+      "coverage": "query_threshold_055_coverage.json",
+      "coverage_sha256": "7ce783161e915bdafee5e627c76975c832951dac512a0b88c57dd2ee0c367ffe"
     }
   },
   "benchmark_code_commit": "048a00d",

@@ -720,6 +720,10 @@ trang và đoạn bằng chứng. Nếu tài liệu không có đủ bằng ch�
   Bản dùng quan hệ một bước giữ Recall@5 nhưng làm một câu tụt hạng; bản exact-only giữ
   nguyên gold rank 74/74 câu nhưng không cải thiện. Cơ chế được giữ ở trạng thái thử nghiệm,
   không thay baseline. Coverage query 7/74 là nút thắt trước khi graph có thể phát huy.
+- [x] Tách threshold query/chunk theo bằng chứng từ nhãn độc lập: query 0,55, chunk 0,65.
+  Query coverage tăng 7/74 -> 10/74; quan hệ query-gold tăng 2/74 -> 4/74. Graph exact
+  tăng MRR@5 0,3818 -> 0,3851 và nDCG@5 0,4140 -> 0,4158, cải thiện một câu và không
+  làm xấu câu nào. Candidate đã được chọn để chạy đúng một lần trên validation mới.
 - [x] Đã có baseline development 22 câu đánh giá Answer-F1, Evidence-F1,
   citation precision/recall và unanswerable; chưa phải kết quả held-out cuối.
 - [x] Đã tích hợp adapter và chạy end-to-end với LLM local thật trên QASPER.
