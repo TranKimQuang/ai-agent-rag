@@ -62,6 +62,58 @@ def test_search_returns_relevant_chunk() -> None:
     assert results[0].page == 1
 
 
+def test_bm25_indexes_context_but_returns_original_evidence_text() -> None:
+    retriever = InMemoryBM25Retriever()
+    retriever.add(
+        [
+            Chunk(
+                id="contextual",
+                document_id="paper",
+                filename="paper.pdf",
+                page=1,
+                text="The experiment uses a held-out test set.",
+                retrieval_text=(
+                    "Paper title: Ontology-aware retrieval\n"
+                    "Passage: The experiment uses a held-out test set."
+                ),
+            )
+        ]
+    )
+
+    results = retriever.search("ontology retrieval")
+
+    assert results[0].chunk_id == "contextual"
+    assert results[0].text == "The experiment uses a held-out test set."
+
+
+def test_semantic_index_uses_context_but_returns_original_evidence_text() -> None:
+    retriever = InMemorySemanticRetriever(FakeEncoder())
+    retriever.add(
+        [
+            Chunk(
+                id="contextual",
+                document_id="paper",
+                filename="paper.pdf",
+                page=1,
+                text="The experiment reports a result.",
+                retrieval_text="Paper title: Python programming\nPassage: experiment",
+            ),
+            Chunk(
+                id="other",
+                document_id="paper",
+                filename="paper.pdf",
+                page=2,
+                text="An unrelated passage.",
+            ),
+        ]
+    )
+
+    results = retriever.search("programming code", limit=1)
+
+    assert results[0].chunk_id == "contextual"
+    assert results[0].text == "The experiment reports a result."
+
+
 def test_empty_query_has_no_results() -> None:
     assert InMemoryBM25Retriever().search("anything") == []
 

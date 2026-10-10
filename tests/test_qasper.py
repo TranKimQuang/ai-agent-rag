@@ -1,4 +1,9 @@
-from app.evaluation.qasper import build_split, convert_qasper_paper, select_qasper_papers
+from app.evaluation.qasper import (
+    build_split,
+    contextualize_split,
+    convert_qasper_paper,
+    select_qasper_papers,
+)
 from app.evaluation.qasper_answers import (
     answer_text,
     evidence_f1,
@@ -16,6 +21,7 @@ from scripts.prepare_qasper_parquet_subset import parquet_row_to_original
 def sample_paper() -> dict[str, object]:
     return {
         "title": "A real scientific paper",
+        "abstract": "This paper studies evidence retrieval for scientific questions.",
         "full_text": [
             {
                 "section_name": "Methods",
@@ -66,6 +72,30 @@ def test_convert_qasper_paper_maps_text_evidence_to_paragraph_chunk() -> None:
     assert len(converted.chunks) == 2
     assert len(converted.questions) == 1
     assert converted.questions[0]["relevant_chunk_ids"] == ["qasper:1234.5678:s0:p0"]
+    assert converted.abstract.startswith("This paper studies")
+
+
+def test_contextualize_split_preserves_gold_ids_and_adds_paper_context() -> None:
+    paper = sample_paper()
+    split = build_split(
+        [convert_qasper_paper("1234.5678", paper)], split="development"
+    )
+
+    contextualized = contextualize_split(
+        split,
+        {"1234.5678": paper},
+        mode="title_abstract",
+        abstract_word_limit=5,
+    )
+
+    chunk = contextualized["chunks"][0]
+    retrieval_text = chunk["retrieval_text"]
+    assert retrieval_text.startswith("Paper title: A real scientific paper")
+    assert "Abstract context: This paper studies evidence retrieval" in retrieval_text
+    assert retrieval_text.endswith("Passage: Methods. We evaluate the model on QASPER.")
+    assert chunk["text"] == "Methods. We evaluate the model on QASPER."
+    assert contextualized["questions"] == split["questions"]
+    assert contextualized["chunks"][0]["id"] == split["chunks"][0]["id"]
 
 
 def test_select_and_split_qasper_papers_is_deterministic() -> None:
@@ -145,6 +175,7 @@ def test_parquet_row_is_converted_to_original_qasper_shape() -> None:
     row = {
         "id": "paper-a",
         "title": "Paper A",
+        "abstract": "Paper abstract.",
         "full_text": {
             "section_name": ["Methods"],
             "paragraphs": [["Evidence paragraph."]],
@@ -169,6 +200,7 @@ def test_parquet_row_is_converted_to_original_qasper_shape() -> None:
     converted = convert_qasper_paper(paper_id, paper)
 
     assert paper_id == "paper-a"
+    assert paper["abstract"] == "Paper abstract."
     assert converted.questions[0]["relevant_chunk_ids"] == ["qasper:paper-a:s0:p0"]
 
 

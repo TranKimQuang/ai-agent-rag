@@ -30,6 +30,7 @@ class Chunk(BaseModel):
     filename: str
     page: int
     text: str
+    retrieval_text: str | None = None
     concepts: list[str] = Field(default_factory=list)
 
 

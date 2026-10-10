@@ -9,11 +9,16 @@ from app.rag.retriever import InMemoryHybridRetriever, SentenceTransformerEncode
 from scripts.run_benchmark import load_dataset
 from scripts.tune_ontology_weight import compare_ranks
 
-ABLATION_METHODS = [
-    SearchMethod.HYBRID,
+ONTOLOGY_METHODS = [
     SearchMethod.HYBRID_ONTOLOGY_EXPANSION,
     SearchMethod.HYBRID_ONTOLOGY_RERANK,
     SearchMethod.HYBRID_ONTOLOGY,
+]
+EVALUATION_METHODS = [
+    SearchMethod.BM25,
+    SearchMethod.SEMANTIC,
+    SearchMethod.HYBRID,
+    *ONTOLOGY_METHODS,
 ]
 
 
@@ -26,7 +31,7 @@ def summarize_rank_changes(
             baseline,
             [row for row in details if row["method"] == method.value],
         )
-        for method in ABLATION_METHODS[1:]
+        for method in ONTOLOGY_METHODS
     }
 
 
@@ -65,7 +70,7 @@ def main() -> None:
     summary, details = run_detailed_benchmark(
         retriever,
         questions,
-        methods=ABLATION_METHODS,
+        methods=EVALUATION_METHODS,
         k_values=k_values,
     )
     payload = {

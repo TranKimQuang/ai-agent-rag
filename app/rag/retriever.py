@@ -28,6 +28,11 @@ def tokenize(text: str) -> list[str]:
     return _TOKEN.findall(without_accents)
 
 
+def retrieval_text(chunk: Chunk) -> str:
+    """Return enriched index text while preserving the original citation text."""
+    return chunk.retrieval_text or chunk.text
+
+
 class InMemoryBM25Retriever:
     """Small development index. Data disappears when the server restarts."""
 
@@ -45,7 +50,9 @@ class InMemoryBM25Retriever:
             return
         with self._lock:
             self._chunks.extend(chunks)
-            self._index = BM25Okapi([tokenize(chunk.text) for chunk in self._chunks])
+            self._index = BM25Okapi(
+                [tokenize(retrieval_text(chunk)) for chunk in self._chunks]
+            )
 
     def search(
         self, query: str, limit: int = 5, document_id: str | None = None
@@ -65,7 +72,7 @@ class InMemoryBM25Retriever:
                 chunk = self._chunks[index]
                 if document_id is not None and chunk.document_id != document_id:
                     continue
-                if not set(tokens).intersection(tokenize(chunk.text)):
+                if not set(tokens).intersection(tokenize(retrieval_text(chunk))):
                     continue
                 results.append(
                     SearchResult(
@@ -140,7 +147,9 @@ class InMemorySemanticRetriever:
 
     def _ensure_index(self) -> None:
         if self._embeddings is None and self._chunks:
-            self._embeddings = self._encoder.encode([chunk.text for chunk in self._chunks])
+            self._embeddings = self._encoder.encode(
+                [retrieval_text(chunk) for chunk in self._chunks]
+            )
 
     def search(
         self, query: str, limit: int = 5, document_id: str | None = None

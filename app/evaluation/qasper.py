@@ -1,6 +1,8 @@
 import random
 import re
+from copy import deepcopy
 from dataclasses import dataclass
+from typing import Literal
 
 from app.models import Chunk
 
@@ -15,6 +17,7 @@ def normalize_evidence(text: str) -> str:
 class QasperPaperBenchmark:
     paper_id: str
     title: str
+    abstract: str
     chunks: list[Chunk]
     questions: list[dict[str, object]]
 
@@ -81,9 +84,47 @@ def convert_qasper_paper(
     return QasperPaperBenchmark(
         paper_id=paper_id,
         title=str(paper["title"]),
+        abstract=str(paper.get("abstract", "")),
         chunks=chunks,
         questions=questions,
     )
+
+
+def contextualize_split(
+    dataset: dict[str, object],
+    papers: dict[str, dict[str, object]],
+    *,
+    mode: Literal["title", "title_abstract"],
+    abstract_word_limit: int = 80,
+) -> dict[str, object]:
+    """Prepend deterministic paper context without changing questions or gold IDs."""
+    if abstract_word_limit < 1:
+        raise ValueError("abstract_word_limit must be at least 1")
+    contextualized = deepcopy(dataset)
+    for chunk in contextualized["chunks"]:  # type: ignore[index]
+        paper_id = str(chunk["document_id"])
+        paper = papers.get(paper_id)
+        if paper is None:
+            raise ValueError(f"Missing source paper for chunk: {paper_id}")
+        context = [f"Paper title: {str(paper['title']).strip()}"]
+        if mode == "title_abstract":
+            abstract = " ".join(str(paper.get("abstract", "")).split())
+            abstract = " ".join(abstract.split()[:abstract_word_limit])
+            if abstract:
+                context.append(f"Abstract context: {abstract}")
+        context.append(f"Passage: {chunk['text']}")
+        chunk["retrieval_text"] = "\n".join(context)
+
+    metadata = contextualized["metadata"]  # type: ignore[index]
+    metadata["contextualization"] = {
+        "mode": mode,
+        "abstract_word_limit": abstract_word_limit if mode == "title_abstract" else None,
+        "note": (
+            "Only retrieval_text is enriched. Original evidence text, question IDs, "
+            "chunk IDs and gold evidence IDs are unchanged."
+        ),
+    }
+    return contextualized
 
 
 def select_qasper_papers(

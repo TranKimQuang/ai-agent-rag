@@ -28,6 +28,7 @@ def parquet_row_to_original(row: dict[str, object]) -> tuple[str, dict[str, obje
         )
     return str(row["id"]), {
         "title": row["title"],
+        "abstract": row.get("abstract", ""),
         "full_text": sections,
         "qas": questions,
     }
