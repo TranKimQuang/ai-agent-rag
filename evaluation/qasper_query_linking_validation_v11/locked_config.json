@@ -1,0 +1,22 @@
+{
+  "configuration_status": "frozen_before_evaluation",
+  "frozen_on": "2026-10-10",
+  "evaluation_status": "not_evaluated",
+  "dataset": "evaluation/qasper_query_linking_validation_v11/qasper_validation.json",
+  "dataset_sha256": "eb3d4e432b4f661b6ac350946ca2423b2deb7863db46084bc18fb70c504e4978",
+  "benchmark_code_commit": "1c9d9d8",
+  "selected_from": "evaluation/qasper_document_scoped_development_v10/query_threshold_055_config.json",
+  "document_scoped": true,
+  "primary_method": "hybrid_ontology_graph",
+  "graph_candidate_weight": 1.0,
+  "graph_include_related": false,
+  "ontology_weight": 0.2,
+  "query_expansion_primary": false,
+  "query_type_intent": false,
+  "concept_linking_method": "hybrid",
+  "concept_linking_threshold": 0.65,
+  "query_concept_linking_threshold": 0.55,
+  "k_values": [1, 3, 5],
+  "context_gate": true,
+  "policy": "Paper-disjoint validation. Run exactly once and do not tune after observing results."
+}
