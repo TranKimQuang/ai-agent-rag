@@ -400,20 +400,6 @@ def test_context_score_does_not_bonus_unanchored_generic_entity_type() -> None:
     assert "Question requests Model" in match.explanation
 
 
-def test_context_score_allows_small_type_bonus_inside_known_paper() -> None:
-    service = OntologyService()
-
-    match = service.score_context(
-        "Which model architecture do they use?",
-        "The proposed Word2Vec model encodes the input.",
-        query_concepts=[],
-        chunk_concepts=["Word2Vec"],
-        document_scoped=True,
-    )
-
-    assert 0.0 < match.score < 0.2
-
-
 def test_context_score_downweights_semantic_only_and_hub_matches() -> None:
     service = OntologyService()
 

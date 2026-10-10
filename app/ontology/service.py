@@ -681,7 +681,6 @@ class OntologyService:
         query_concepts: list[str] | None = None,
         chunk_concepts: list[str] | None = None,
         chunk_id: str | None = None,
-        document_scoped: bool = False,
     ) -> OntologyMatch:
         """Score ontology evidence while respecting the question and passage context.
 
@@ -721,10 +720,7 @@ class OntologyService:
             # causes unrelated datasets/models to move ahead of stronger retrieval
             # evidence. Keep the type visible for explanation, but do not award a
             # ranking bonus until the query also links to a topical concept.
-            # Inside a known source paper, an entity-type match is weak but valid
-            # evidence: all candidates already share the paper topic. Keep the
-            # bonus deliberately small so retrieval relevance remains dominant.
-            raw_score = 0.15 * type_score if document_scoped else 0.0
+            raw_score = 0.0
         else:
             raw_score = 0.0
 

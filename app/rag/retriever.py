@@ -356,7 +356,6 @@ class InMemoryHybridRetriever:
                     query_concepts=query_concepts,
                     chunk_concepts=candidate.chunk_concepts,
                     chunk_id=candidate.chunk_id,
-                    document_scoped=document_id is not None,
                 )
             else:
                 # Raw chunks added directly to the retriever may not have gone
@@ -366,7 +365,6 @@ class InMemoryHybridRetriever:
                     query,
                     candidate.text,
                     chunk_id=candidate.chunk_id,
-                    document_scoped=document_id is not None,
                 )
             normalized_rrf = candidate.score / max_rrf
             # Ontology is a context-dependent bonus on top of retrieval evidence.

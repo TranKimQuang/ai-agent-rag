@@ -1,7 +1,11 @@
 {
   "configuration_status": "frozen_before_evaluation",
   "frozen_on": "2026-10-10",
-  "evaluation_status": "not_evaluated",
+  "evaluation_status": "evaluated_rejected",
+  "evaluated_on": "2026-10-10",
+  "result": "candidate_scoped_type_bonus.json",
+  "result_sha256": "e2179fdac92636edaf2db000643a200b693767141b05fac6bc7dae86a0d71bd2",
+  "decision": "rejected",
   "dataset": "evaluation/qasper_document_scoped_development_v10/qasper_development.json",
   "dataset_sha256": "64708249727afe4264dacafd34d315a4d645573b67ff1bb9559fa1c9b9f5815a",
   "document_scoped": true,

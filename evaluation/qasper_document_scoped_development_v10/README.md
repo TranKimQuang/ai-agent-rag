@@ -28,3 +28,11 @@ query-gold có quan hệ Ontology.
 
 Bước thử nghiệm tiếp theo trên development: tận dụng entity type như Model/Dataset chỉ
 khi retrieval đã được giới hạn trong đúng paper, với bonus nhỏ và có kiểm soát.
+
+### Candidate entity-type bonus: loại
+
+Thử bonus nhỏ 0,15 trước reliability scaling khi đã biết paper. Kết quả re-ranking:
+Recall@5 0,6029, MRR@5 0,3723 và nDCG@5 0,4036; thấp hơn Hybrid ở cả ba chỉ số.
+Candidate cải thiện 1 câu nhưng làm xấu 3 câu và làm mất 1 câu khỏi top-5. Vì vậy thay
+đổi tại commit `f09754c` bị loại và code được đưa về context gate không cấp generic type
+bonus. Kết quả âm vẫn được giữ để tránh lặp lại thí nghiệm.
