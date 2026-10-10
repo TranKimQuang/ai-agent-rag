@@ -245,6 +245,44 @@ def test_configured_concept_linking_caches_repeated_text() -> None:
     assert encoder.calls == 2  # one concept batch plus one unique input text
 
 
+def test_graph_chunk_candidates_follow_concepts_and_document_scope() -> None:
+    service = OntologyService()
+    service.index_chunks(
+        [
+            Chunk(
+                id="rag-a",
+                document_id="paper-a",
+                filename="a.pdf",
+                page=1,
+                text="RAG retrieves evidence before answer generation.",
+            ),
+            Chunk(
+                id="rag-b",
+                document_id="paper-b",
+                filename="b.pdf",
+                page=1,
+                text="RAG uses retrieved passages as evidence.",
+            ),
+        ]
+    )
+
+    candidates = service.graph_chunk_candidates(
+        "information retrieval",
+        document_id="paper-a",
+    )
+
+    assert [candidate.chunk_id for candidate in candidates] == ["rag-a"]
+    assert candidates[0].score == 0.5
+    assert candidates[0].query_concepts == ["InformationRetrieval"]
+    assert candidates[0].matched_concepts == ["RetrievalAugmentedGeneration"]
+
+
+def test_graph_chunk_candidates_require_query_concept() -> None:
+    service = OntologyService()
+
+    assert service.graph_chunk_candidates("completely unknown topic") == []
+
+
 def test_prelinked_concepts_can_be_scored_without_encoding_text_again() -> None:
     match = OntologyService().score_concept_names(
         ["InformationRetrieval"],

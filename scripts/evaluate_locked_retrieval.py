@@ -13,6 +13,7 @@ ONTOLOGY_METHODS = [
     SearchMethod.HYBRID_ONTOLOGY_EXPANSION,
     SearchMethod.HYBRID_ONTOLOGY_RERANK,
     SearchMethod.HYBRID_ONTOLOGY,
+    SearchMethod.HYBRID_ONTOLOGY_GRAPH,
 ]
 EVALUATION_METHODS = [
     SearchMethod.BM25,
@@ -63,6 +64,7 @@ def main() -> None:
         semantic_encoder=encoder,
         ontology_service=ontology,
         ontology_weight=float(config["ontology_weight"]),
+        graph_candidate_weight=float(config.get("graph_candidate_weight", 1.0)),
     )
     retriever.add(chunks)
 

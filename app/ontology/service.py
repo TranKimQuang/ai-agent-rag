@@ -186,6 +186,15 @@ class OntologyMatch:
     explanation: str
 
 
+@dataclass(frozen=True)
+class GraphChunkCandidate:
+    chunk_id: str
+    score: float
+    query_concepts: list[str]
+    matched_concepts: list[str]
+    explanation: str
+
+
 class SemanticTextEncoder(Protocol):
     def encode(self, texts: list[str]) -> NDArray[np.float32]: ...
 
@@ -628,6 +637,80 @@ class OntologyService:
         """Return whether a chunk passed through ontology indexing, even with no links."""
         chunk_resource = URIRef(f"{QA}chunk-{chunk_id}")
         return (chunk_resource, RDF.type, QA.Chunk) in self.graph
+
+    def graph_chunk_candidates(
+        self,
+        query: str,
+        *,
+        document_id: str | None = None,
+        include_related: bool = True,
+        limit: int = 20,
+    ) -> list[GraphChunkCandidate]:
+        """Retrieve chunks through query-concept graph links.
+
+        Exact concept matches receive weight 1.0 and one-hop ontology neighbors 0.5.
+        The optional document scope is enforced through Paper -> Section -> Chunk edges.
+        """
+        if limit < 1:
+            raise ValueError("limit must be at least 1")
+        query_concepts = self.configured_query_concepts(query)
+        if not query_concepts:
+            return []
+
+        allowed_chunks: set[URIRef] | None = None
+        if document_id is not None:
+            document = URIRef(f"{QA}document-{document_id}")
+            sections = self.graph.objects(document, QA.hasSection)
+            allowed_chunks = {
+                chunk
+                for section in sections
+                for chunk in self.graph.objects(section, QA.hasChunk)
+                if isinstance(chunk, URIRef)
+            }
+
+        concept_weights: dict[URIRef, float] = {
+            concept: 1.0 for concept in query_concepts
+        }
+        if include_related:
+            for concept in query_concepts:
+                for neighbor in self._neighbors(concept):
+                    concept_weights.setdefault(neighbor, 0.5)
+
+        scores: dict[URIRef, float] = {}
+        matches: dict[URIRef, set[URIRef]] = {}
+        for concept, weight in concept_weights.items():
+            for chunk in self.graph.subjects(QA.mentionsConcept, concept):
+                if not isinstance(chunk, URIRef):
+                    continue
+                if allowed_chunks is not None and chunk not in allowed_chunks:
+                    continue
+                scores[chunk] = min(scores.get(chunk, 0.0) + weight, 1.0)
+                matches.setdefault(chunk, set()).add(concept)
+
+        ranked = sorted(
+            scores,
+            key=lambda chunk: (-scores[chunk], local_name(chunk)),
+        )[:limit]
+        query_names = [local_name(concept) for concept in query_concepts]
+        candidates: list[GraphChunkCandidate] = []
+        for chunk in ranked:
+            matched_names = sorted(local_name(value) for value in matches[chunk])
+            chunk_name = local_name(chunk)
+            chunk_id = chunk_name.removeprefix("chunk-")
+            candidates.append(
+                GraphChunkCandidate(
+                    chunk_id=chunk_id,
+                    score=scores[chunk],
+                    query_concepts=query_names,
+                    matched_concepts=matched_names,
+                    explanation=(
+                        "Graph candidate via mentionsConcept: "
+                        + ", ".join(matched_names)
+                        + "."
+                    ),
+                )
+            )
+        return candidates
 
     def _neighbors(self, concept: URIRef) -> set[URIRef]:
         predicates = {SKOS.broader, SKOS.narrower, SKOS.related, QA.relatedTo}

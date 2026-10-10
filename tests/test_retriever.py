@@ -410,3 +410,55 @@ def test_cross_encoder_is_a_separate_retrieval_method() -> None:
         result.method == SearchMethod.HYBRID_ONTOLOGY_CROSS_ENCODER
         for result in results
     )
+
+
+def test_graph_search_can_add_related_concept_chunk_to_hybrid_candidates() -> None:
+    ontology = OntologyService()
+    retriever = InMemoryHybridRetriever(
+        semantic_encoder=OntologyRerankEncoder(),
+        ontology_service=ontology,
+        graph_candidate_weight=1.0,
+    )
+    chunks, _ = ontology.index_chunks(
+        [
+            *[
+                Chunk(
+                    id=f"distractor-{index}",
+                    document_id="paper",
+                    filename="paper.pdf",
+                    page=index,
+                    text=f"An unrelated surface match number {index}.",
+                )
+                for index in range(1, 25)
+            ],
+            Chunk(
+                id="rag-evidence",
+                document_id="paper",
+                filename="paper.pdf",
+                page=25,
+                text="RAG retrieves evidence before generating an answer.",
+            ),
+        ]
+    )
+    retriever.add(chunks)
+
+    hybrid = retriever.search(
+        "information retrieval",
+        limit=5,
+        method=SearchMethod.HYBRID,
+        document_id="paper",
+    )
+    graph = retriever.search(
+        "information retrieval",
+        limit=5,
+        method=SearchMethod.HYBRID_ONTOLOGY_GRAPH,
+        document_id="paper",
+    )
+
+    assert "rag-evidence" not in [result.chunk_id for result in hybrid]
+    graph_evidence = next(result for result in graph if result.chunk_id == "rag-evidence")
+    assert graph_evidence.method == SearchMethod.HYBRID_ONTOLOGY_GRAPH
+    assert graph_evidence.ontology_score == 0.5
+    assert "RetrievalAugmentedGeneration" in (
+        graph_evidence.ontology_explanation or ""
+    )

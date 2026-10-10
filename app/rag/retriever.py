@@ -204,6 +204,7 @@ class InMemoryHybridRetriever:
         cross_encoder_reranker: ResultReranker | None = None,
         rrf_k: int = 60,
         ontology_weight: float = 0.05,
+        graph_candidate_weight: float = 1.0,
     ) -> None:
         self.bm25 = InMemoryBM25Retriever()
         self.semantic = InMemorySemanticRetriever(semantic_encoder)
@@ -211,8 +212,11 @@ class InMemoryHybridRetriever:
         self.cross_encoder_reranker = cross_encoder_reranker
         self.rrf_k = rrf_k
         self.ontology_weight = ontology_weight
+        self.graph_candidate_weight = graph_candidate_weight
+        self._chunks_by_id: dict[str, Chunk] = {}
 
     def add(self, chunks: list[Chunk]) -> None:
+        self._chunks_by_id.update({chunk.id: chunk for chunk in chunks})
         self.bm25.add(chunks)
         self.semantic.add(chunks)
 
@@ -255,6 +259,8 @@ class InMemoryHybridRetriever:
                 use_reranking=True,
                 document_id=document_id,
             )
+        if method == SearchMethod.HYBRID_ONTOLOGY_GRAPH:
+            return self._search_with_graph_candidates(query, limit, document_id)
         if method == SearchMethod.HYBRID_ONTOLOGY_CROSS_ENCODER:
             if self.cross_encoder_reranker is None:
                 raise SemanticModelError("Cross-encoder reranker is not configured")
@@ -274,6 +280,77 @@ class InMemoryHybridRetriever:
             ]
 
         return self._search_hybrid(query, limit, document_id)
+
+    def _search_with_graph_candidates(
+        self,
+        query: str,
+        limit: int,
+        document_id: str | None,
+    ) -> list[SearchResult]:
+        if self.ontology is None:
+            return self._search_hybrid(query, limit, document_id)
+
+        candidate_limit = max(limit * 4, 20)
+        hybrid = self._rank_hybrid_candidates(query, candidate_limit, document_id)
+        graph = self.ontology.graph_chunk_candidates(
+            query,
+            document_id=document_id,
+            limit=candidate_limit,
+        )
+        if not graph:
+            return [
+                result.model_copy(update={"method": SearchMethod.HYBRID_ONTOLOGY_GRAPH})
+                for result in hybrid[:limit]
+            ]
+
+        by_id = {result.chunk_id: result for result in hybrid}
+        fused = {
+            result.chunk_id: 1.0 / (self.rrf_k + rank)
+            for rank, result in enumerate(hybrid, start=1)
+        }
+        graph_by_id = {candidate.chunk_id: candidate for candidate in graph}
+        for rank, candidate in enumerate(graph, start=1):
+            chunk = self._chunks_by_id.get(candidate.chunk_id)
+            if chunk is None:
+                continue
+            if document_id is not None and chunk.document_id != document_id:
+                continue
+            by_id.setdefault(
+                candidate.chunk_id,
+                SearchResult(
+                    chunk_id=chunk.id,
+                    document_id=chunk.document_id,
+                    filename=chunk.filename,
+                    page=chunk.page,
+                    text=chunk.text,
+                    method=SearchMethod.HYBRID_ONTOLOGY_GRAPH,
+                    score=0.0,
+                    chunk_concepts=chunk.concepts,
+                ),
+            )
+            fused[candidate.chunk_id] = fused.get(candidate.chunk_id, 0.0) + (
+                self.graph_candidate_weight
+                / (self.rrf_k + rank)
+            )
+
+        ranked_ids = sorted(fused, key=lambda chunk_id: fused[chunk_id], reverse=True)
+        results: list[SearchResult] = []
+        for chunk_id in ranked_ids[:limit]:
+            candidate = graph_by_id.get(chunk_id)
+            update: dict[str, object] = {
+                "method": SearchMethod.HYBRID_ONTOLOGY_GRAPH,
+                "score": fused[chunk_id],
+            }
+            if candidate is not None:
+                update.update(
+                    {
+                        "ontology_score": candidate.score,
+                        "query_concepts": candidate.query_concepts,
+                        "ontology_explanation": candidate.explanation,
+                    }
+                )
+            results.append(by_id[chunk_id].model_copy(update=update))
+        return results
 
     def _search_hybrid(
         self, query: str, limit: int, document_id: str | None = None
