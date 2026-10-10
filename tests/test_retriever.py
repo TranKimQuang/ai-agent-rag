@@ -418,6 +418,7 @@ def test_graph_search_can_add_related_concept_chunk_to_hybrid_candidates() -> No
         semantic_encoder=OntologyRerankEncoder(),
         ontology_service=ontology,
         graph_candidate_weight=1.0,
+        graph_include_related=True,
     )
     chunks, _ = ontology.index_chunks(
         [

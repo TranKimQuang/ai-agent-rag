@@ -65,6 +65,7 @@ def main() -> None:
         ontology_service=ontology,
         ontology_weight=float(config["ontology_weight"]),
         graph_candidate_weight=float(config.get("graph_candidate_weight", 1.0)),
+        graph_include_related=bool(config.get("graph_include_related", False)),
     )
     retriever.add(chunks)
 

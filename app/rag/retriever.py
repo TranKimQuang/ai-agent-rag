@@ -205,6 +205,7 @@ class InMemoryHybridRetriever:
         rrf_k: int = 60,
         ontology_weight: float = 0.05,
         graph_candidate_weight: float = 1.0,
+        graph_include_related: bool = False,
     ) -> None:
         self.bm25 = InMemoryBM25Retriever()
         self.semantic = InMemorySemanticRetriever(semantic_encoder)
@@ -213,6 +214,7 @@ class InMemoryHybridRetriever:
         self.rrf_k = rrf_k
         self.ontology_weight = ontology_weight
         self.graph_candidate_weight = graph_candidate_weight
+        self.graph_include_related = graph_include_related
         self._chunks_by_id: dict[str, Chunk] = {}
 
     def add(self, chunks: list[Chunk]) -> None:
@@ -295,6 +297,7 @@ class InMemoryHybridRetriever:
         graph = self.ontology.graph_chunk_candidates(
             query,
             document_id=document_id,
+            include_related=self.graph_include_related,
             limit=candidate_limit,
         )
         if not graph:
