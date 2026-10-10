@@ -724,6 +724,11 @@ trang và đoạn bằng chứng. Nếu tài liệu không có đủ bằng ch�
   Query coverage tăng 7/74 -> 10/74; quan hệ query-gold tăng 2/74 -> 4/74. Graph exact
   tăng MRR@5 0,3818 -> 0,3851 và nDCG@5 0,4140 -> 0,4158, cải thiện một câu và không
   làm xấu câu nào. Candidate đã được chọn để chạy đúng một lần trên validation mới.
+- [x] Tạo và chạy đúng một lần validation v11 paper-disjoint: 20 paper/1.157 chunk/73 câu,
+  overlap 0 với 265 paper trước. Graph exact không khái quát (1 câu xấu, 0 cải thiện).
+  Expansion cứu 2 câu vào top-5; Expansion + Re-ranking đạt Recall@5 0,4566, MRR@5
+  0,3438 và nDCG@5 0,3520 so với Hybrid 0,4452/0,3283/0,3372. Do expansion từng
+  giảm điểm development, chưa đổi pipeline mặc định và chưa mở final-test.
 - [x] Đã có baseline development 22 câu đánh giá Answer-F1, Evidence-F1,
   citation precision/recall và unanswerable; chưa phải kết quả held-out cuối.
 - [x] Đã tích hợp adapter và chạy end-to-end với LLM local thật trên QASPER.
@@ -754,9 +759,9 @@ Milestone tiếp theo: kiểm chứng khả năng khái quát của semantic con
 1. Giữ nguyên kết quả held-out v3 và validation v7; không tiếp tục tuning theo các tập đã xem.
 2. Giữ nguyên validation v9; không tuning scoring theo tập này. Tạo development split mới
    và thiết lập baseline document-scoped trước khi kết luận thêm về concept coverage.
-3. Tập trung cải thiện concept linking/candidate generation trên chính câu hỏi QASPER
-   trước khi tăng trọng số graph. Không mở rộng vocabulary thủ công chỉ để khớp development;
-   ưu tiên mapping tự động có confidence và đánh giá trên nhãn concept riêng.
+3. Đánh giá thủ công hoặc gán nhãn các query links mới ở threshold 0,55, đặc biệt các case
+   expansion cứu/xấu đi. Không tăng trọng số graph và không mở rộng vocabulary theo v11;
+   ưu tiên mapping có confidence được đánh giá trên nhãn concept riêng.
 4. Khi retrieval ổn định, xác nhận answer correctness/citation/unanswerable trên mẫu lớn hơn.
 
 Chưa ưu tiên trong milestone này: mở rộng giao diện, PostgreSQL, pgvector, OCR và

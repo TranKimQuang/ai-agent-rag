@@ -1,0 +1,766 @@
+{
+  "dataset": "evaluation\\qasper_query_linking_validation_v11\\qasper_validation.json",
+  "purpose": "descriptive ontology coverage analysis",
+  "linking_method": "hybrid",
+  "linking_threshold": 0.65,
+  "query_linking_threshold": 0.55,
+  "query_type_intent": false,
+  "summary": {
+    "questions": 73,
+    "query_with_concept": 9,
+    "gold_evidence_with_concept": 31,
+    "query_and_gold_with_relation": 0,
+    "query_without_concept": 64,
+    "gold_without_concept": 42
+  },
+  "questions": [
+    {
+      "question_id": "f7817b949605fb04b1e4fec9dd9ca8804fb92ae9",
+      "query": "Why does not the approach from English work on other languages?",
+      "query_concepts": [],
+      "gold_concepts": [
+        "NaturalLanguageProcessing"
+      ],
+      "gold_has_ontology_relation": false,
+      "hybrid_rank": 2,
+      "ontology_rank": 2
+    },
+    {
+      "question_id": "8255f74cae1352e5acb2144fb857758dda69be02",
+      "query": "How do they measure grammaticality?",
+      "query_concepts": [],
+      "gold_concepts": [],
+      "gold_has_ontology_relation": false,
+      "hybrid_rank": null,
+      "ontology_rank": null
+    },
+    {
+      "question_id": "db62d5d83ec187063b57425affe73fef8733dd28",
+      "query": "Which model do they use to convert between masculine-inflected and feminine-inflected sentences?",
+      "query_concepts": [],
+      "gold_concepts": [
+        "LanguageModel"
+      ],
+      "gold_has_ontology_relation": false,
+      "hybrid_rank": 1,
+      "ontology_rank": 1
+    },
+    {
+      "question_id": "c69f4df4943a2ca4c10933683a02b179a5e76f64",
+      "query": "What approach performs better in experiments global latent or sequence of fine-grained latent variables?",
+      "query_concepts": [],
+      "gold_concepts": [],
+      "gold_has_ontology_relation": false,
+      "hybrid_rank": 1,
+      "ontology_rank": 1
+    },
+    {
+      "question_id": "6aed1122050b2d508dc1790c13cdbe38ff126089",
+      "query": "What baselines other than standard transformers are used in experiments?",
+      "query_concepts": [],
+      "gold_concepts": [
+        "RecurrentNeuralNetwork"
+      ],
+      "gold_has_ontology_relation": false,
+      "hybrid_rank": null,
+      "ontology_rank": null
+    },
+    {
+      "question_id": "8740c3000e740ac5c0bc8f329d908309f7ffeff6",
+      "query": "What three conversational datasets are used for evaluation?",
+      "query_concepts": [],
+      "gold_concepts": [],
+      "gold_has_ontology_relation": false,
+      "hybrid_rank": 3,
+      "ontology_rank": 3
+    },
+    {
+      "question_id": "544e29937e0c972abcdd27c953dc494b2376dd76",
+      "query": "What model was used by the top team?",
+      "query_concepts": [],
+      "gold_concepts": [],
+      "gold_has_ontology_relation": false,
+      "hybrid_rank": null,
+      "ontology_rank": null
+    },
+    {
+      "question_id": "bdc93ac1b8643617c966e91d09c01766f7503872",
+      "query": "What is the size of the second dataset?",
+      "query_concepts": [],
+      "gold_concepts": [],
+      "gold_has_ontology_relation": false,
+      "hybrid_rank": 1,
+      "ontology_rank": 1
+    },
+    {
+      "question_id": "4ca0d52f655bb9b4bc25310f3a76c5d744830043",
+      "query": "How large is the first dataset?",
+      "query_concepts": [],
+      "gold_concepts": [],
+      "gold_has_ontology_relation": false,
+      "hybrid_rank": 1,
+      "ontology_rank": 1
+    },
+    {
+      "question_id": "d2fbf34cf4b5b1fd82394124728b03003884409c",
+      "query": "Who was the top-scoring team?",
+      "query_concepts": [],
+      "gold_concepts": [
+        "NaturalLanguageProcessing"
+      ],
+      "gold_has_ontology_relation": false,
+      "hybrid_rank": 1,
+      "ontology_rank": 1
+    },
+    {
+      "question_id": "04f72eddb1fc73dd11135a80ca1cf31e9db75578",
+      "query": "How much more coverage is in the new dataset?",
+      "query_concepts": [],
+      "gold_concepts": [
+        "QuestionAnswering",
+        "SemanticRoleInduction"
+      ],
+      "gold_has_ontology_relation": false,
+      "hybrid_rank": 2,
+      "ontology_rank": 2
+    },
+    {
+      "question_id": "f74eaee72cbd727a6dffa1600cdf1208672d713e",
+      "query": "How was coverage measured?",
+      "query_concepts": [],
+      "gold_concepts": [
+        "QuestionAnswering",
+        "SemanticRoleInduction"
+      ],
+      "gold_has_ontology_relation": false,
+      "hybrid_rank": null,
+      "ontology_rank": null
+    },
+    {
+      "question_id": "068dbcc117c93fa84c002d3424bafb071575f431",
+      "query": "How was quality measured?",
+      "query_concepts": [],
+      "gold_concepts": [
+        "QuestionAnswering",
+        "SemanticRoleInduction"
+      ],
+      "gold_has_ontology_relation": false,
+      "hybrid_rank": 3,
+      "ontology_rank": 3
+    },
+    {
+      "question_id": "96526a14820b7debfd6f7c5beeade0a854b93d1a",
+      "query": "How was the corpus obtained?",
+      "query_concepts": [],
+      "gold_concepts": [
+        "Crowdsourcing",
+        "QuestionAnswering",
+        "SemanticRoleInduction"
+      ],
+      "gold_has_ontology_relation": false,
+      "hybrid_rank": null,
+      "ontology_rank": null
+    },
+    {
+      "question_id": "32ba4d2d15194e889cbc9aa1d21ff1aa6fa27679",
+      "query": "How are workers trained?",
+      "query_concepts": [],
+      "gold_concepts": [
+        "Crowdsourcing"
+      ],
+      "gold_has_ontology_relation": false,
+      "hybrid_rank": null,
+      "ontology_rank": null
+    },
+    {
+      "question_id": "e6c163f80a11bd057bbd0b6e1451ac82edddc78d",
+      "query": "Do they test their approach on large-resource tasks?",
+      "query_concepts": [],
+      "gold_concepts": [],
+      "gold_has_ontology_relation": false,
+      "hybrid_rank": 3,
+      "ontology_rank": 3
+    },
+    {
+      "question_id": "6adfa9eee76b96953a76c03356bf41d8a9378851",
+      "query": "By how much do they, on average, outperform the baseline multilingual model on 16 low-resource tasks?",
+      "query_concepts": [],
+      "gold_concepts": [],
+      "gold_has_ontology_relation": false,
+      "hybrid_rank": 5,
+      "ontology_rank": 5
+    },
+    {
+      "question_id": "450a359d117bcfa2de4ffd987f787945f25b3b25",
+      "query": "How do they compute corpus-level embeddings?",
+      "query_concepts": [],
+      "gold_concepts": [
+        "LongShortTermMemory"
+      ],
+      "gold_has_ontology_relation": false,
+      "hybrid_rank": 2,
+      "ontology_rank": 2
+    },
+    {
+      "question_id": "591231d75ff492160958f8aa1e6bfcbbcd85a776",
+      "query": "Which vision-based approaches does this approach outperform?",
+      "query_concepts": [],
+      "gold_concepts": [
+        "ConvolutionalNeuralNetwork"
+      ],
+      "gold_has_ontology_relation": false,
+      "hybrid_rank": 1,
+      "ontology_rank": 2
+    },
+    {
+      "question_id": "9e805020132d950b54531b1a2620f61552f06114",
+      "query": "What baseline is used for the experimental setup?",
+      "query_concepts": [],
+      "gold_concepts": [
+        "ConvolutionalNeuralNetwork"
+      ],
+      "gold_has_ontology_relation": false,
+      "hybrid_rank": 1,
+      "ontology_rank": 1
+    },
+    {
+      "question_id": "95abda842c4df95b4c5e84ac7d04942f1250b571",
+      "query": "Which languages are used in the multi-lingual caption model?",
+      "query_concepts": [
+        "BidirectionalLanguageModel",
+        "LanguageModel"
+      ],
+      "gold_concepts": [],
+      "gold_has_ontology_relation": false,
+      "hybrid_rank": 5,
+      "ontology_rank": 5
+    },
+    {
+      "question_id": "c8f11561fc4da90bcdd72f76414421e1527c0287",
+      "query": "Which dataset(s) do they evaluate on?",
+      "query_concepts": [],
+      "gold_concepts": [
+        "RecurrentNeuralNetwork"
+      ],
+      "gold_has_ontology_relation": false,
+      "hybrid_rank": 3,
+      "ontology_rank": 3
+    },
+    {
+      "question_id": "51de39c8bad62d3cbfbec1deb74bd8a3ac5e69a8",
+      "query": "Which modifications do they make to well-established Seq2seq architectures?",
+      "query_concepts": [],
+      "gold_concepts": [
+        "RecurrentNeuralNetwork"
+      ],
+      "gold_has_ontology_relation": false,
+      "hybrid_rank": null,
+      "ontology_rank": null
+    },
+    {
+      "question_id": "d9cbcaf8f0457b4be59178446f1a280d17a923fa",
+      "query": "How do they measure the size of models?",
+      "query_concepts": [],
+      "gold_concepts": [
+        "RecurrentNeuralNetwork"
+      ],
+      "gold_has_ontology_relation": false,
+      "hybrid_rank": null,
+      "ontology_rank": null
+    },
+    {
+      "question_id": "fc69f5d9464cdba6db43a525cecde2bf6ddaaa57",
+      "query": "Do they reduce the number of parameters in their architecture compared to other direct text-to-speech models?",
+      "query_concepts": [],
+      "gold_concepts": [
+        "RecurrentNeuralNetwork"
+      ],
+      "gold_has_ontology_relation": false,
+      "hybrid_rank": 4,
+      "ontology_rank": 4
+    },
+    {
+      "question_id": "871c34219eb623bde9ac3937aa0f28fc3ad69445",
+      "query": "Which model have the smallest Character Error Rate and which have the smallest Word Error Rate?",
+      "query_concepts": [],
+      "gold_concepts": [
+        "LanguageModel",
+        "RecurrentNeuralNetwork"
+      ],
+      "gold_has_ontology_relation": false,
+      "hybrid_rank": null,
+      "ontology_rank": null
+    },
+    {
+      "question_id": "285858416b1583aa3d8ba0494fd01c0d4332659f",
+      "query": "What will be in focus for future work?",
+      "query_concepts": [],
+      "gold_concepts": [],
+      "gold_has_ontology_relation": false,
+      "hybrid_rank": 1,
+      "ontology_rank": 1
+    },
+    {
+      "question_id": "acc512c57aef4d5a15c15e3593f0a9b3e7e7e8b8",
+      "query": "What are the existing end-to-end ASR approaches for the French language?",
+      "query_concepts": [],
+      "gold_concepts": [
+        "LanguageModel",
+        "RecurrentNeuralNetwork"
+      ],
+      "gold_has_ontology_relation": false,
+      "hybrid_rank": null,
+      "ontology_rank": null
+    },
+    {
+      "question_id": "1d9b953a324fe0cfbe8e59dcff7a44a2f93c568d",
+      "query": "Does API provide ability to connect to models written in some other deep learning framework?",
+      "query_concepts": [],
+      "gold_concepts": [],
+      "gold_has_ontology_relation": false,
+      "hybrid_rank": null,
+      "ontology_rank": null
+    },
+    {
+      "question_id": "093039f974805952636c19c12af3549aa422ec43",
+      "query": "Is this library implemented into Torch or is framework agnostic?",
+      "query_concepts": [],
+      "gold_concepts": [],
+      "gold_has_ontology_relation": false,
+      "hybrid_rank": null,
+      "ontology_rank": null
+    },
+    {
+      "question_id": "8df89988adff57279db10992846728ec4f500eaa",
+      "query": "What baselines are used in experiments?",
+      "query_concepts": [],
+      "gold_concepts": [],
+      "gold_has_ontology_relation": false,
+      "hybrid_rank": null,
+      "ontology_rank": null
+    },
+    {
+      "question_id": "94edac71eea1e78add678fb5ed2d08526b51016b",
+      "query": "What general-purpose optimizations are included?",
+      "query_concepts": [],
+      "gold_concepts": [],
+      "gold_has_ontology_relation": false,
+      "hybrid_rank": 1,
+      "ontology_rank": 1
+    },
+    {
+      "question_id": "86e3136271a7b93991c8de5d310ab15a6ac5ab8c",
+      "query": "How is human evaluation performed, what were the criteria?",
+      "query_concepts": [],
+      "gold_concepts": [],
+      "gold_has_ontology_relation": false,
+      "hybrid_rank": 1,
+      "ontology_rank": 1
+    },
+    {
+      "question_id": "b48cd91219429f910b1ea6fcd6f4bd143ddf096f",
+      "query": "What automatic metrics are used?",
+      "query_concepts": [],
+      "gold_concepts": [],
+      "gold_has_ontology_relation": false,
+      "hybrid_rank": 2,
+      "ontology_rank": 2
+    },
+    {
+      "question_id": "4f1a5eed730fdcf0e570f9118fc09ef2173c6a1b",
+      "query": "What other kinds of generation models are used in experiments?",
+      "query_concepts": [],
+      "gold_concepts": [
+        "BeamSearch"
+      ],
+      "gold_has_ontology_relation": false,
+      "hybrid_rank": 3,
+      "ontology_rank": 3
+    },
+    {
+      "question_id": "4bdad5a20750c878d1a891ef255621f6172b6a79",
+      "query": "How does discrete latent variable has an explicit semantic meaning to improve the CVAE on short-text conversation?",
+      "query_concepts": [
+        "SemanticRoleInduction"
+      ],
+      "gold_concepts": [],
+      "gold_has_ontology_relation": false,
+      "hybrid_rank": 4,
+      "ontology_rank": 4
+    },
+    {
+      "question_id": "526ae24fa861d52536b66bcc2d2ddfce483511d6",
+      "query": "How big are improvements with multilingual ASR training vs single language training?",
+      "query_concepts": [],
+      "gold_concepts": [],
+      "gold_has_ontology_relation": false,
+      "hybrid_rank": 3,
+      "ontology_rank": 3
+    },
+    {
+      "question_id": "8a5254ca726a2914214a4c0b6b42811a007ecfc6",
+      "query": "How much transcribed data is available for for Ainu language?",
+      "query_concepts": [],
+      "gold_concepts": [],
+      "gold_has_ontology_relation": false,
+      "hybrid_rank": null,
+      "ontology_rank": null
+    },
+    {
+      "question_id": "3c0d66f9e55a89d13187da7b7128666df9a742ce",
+      "query": "What is the difference between speaker-open and speaker-closed setting?",
+      "query_concepts": [],
+      "gold_concepts": [],
+      "gold_has_ontology_relation": false,
+      "hybrid_rank": 3,
+      "ontology_rank": 3
+    },
+    {
+      "question_id": "e2a637f1d93e1ea9f29c96ff0fc6bc017209065b",
+      "query": "How do they gather data for the query explanation problem?",
+      "query_concepts": [],
+      "gold_concepts": [
+        "QuestionAnswering"
+      ],
+      "gold_has_ontology_relation": false,
+      "hybrid_rank": null,
+      "ontology_rank": null
+    },
+    {
+      "question_id": "b3bd217287b8c765b0d461dc283afec779dbf039",
+      "query": "Which query explanation method was preffered by the users in terms of correctness?",
+      "query_concepts": [],
+      "gold_concepts": [],
+      "gold_has_ontology_relation": false,
+      "hybrid_rank": null,
+      "ontology_rank": null
+    },
+    {
+      "question_id": "e8647f9dc0986048694c34ab9ce763b3167c3deb",
+      "query": "Do they conduct a user study where they show an NL interface with and without their explanation?",
+      "query_concepts": [],
+      "gold_concepts": [],
+      "gold_has_ontology_relation": false,
+      "hybrid_rank": 1,
+      "ontology_rank": 1
+    },
+    {
+      "question_id": "f5db12cd0a8cd706a232c69d94b2258596aa068c",
+      "query": "How much in experiments is performance improved for models trained with generated adversarial examples?",
+      "query_concepts": [],
+      "gold_concepts": [
+        "LanguageModel"
+      ],
+      "gold_has_ontology_relation": false,
+      "hybrid_rank": 2,
+      "ontology_rank": 2
+    },
+    {
+      "question_id": "2c8d5e3941a6cc5697b242e64222f5d97dba453c",
+      "query": "How much dramatically results drop for models on generated adversarial examples?",
+      "query_concepts": [],
+      "gold_concepts": [
+        "LanguageModel"
+      ],
+      "gold_has_ontology_relation": false,
+      "hybrid_rank": 3,
+      "ontology_rank": 1
+    },
+    {
+      "question_id": "78102422a5dc99812739b8dd2541e4fdb5fe3c7a",
+      "query": "What is discriminator in this generative adversarial setup?",
+      "query_concepts": [],
+      "gold_concepts": [],
+      "gold_has_ontology_relation": false,
+      "hybrid_rank": null,
+      "ontology_rank": null
+    },
+    {
+      "question_id": "930c51b9f3936d936ee745716536a4b40f531c7f",
+      "query": "What are benhmark datasets for paraphrase identification?",
+      "query_concepts": [
+        "ParaphraseGeneration"
+      ],
+      "gold_concepts": [],
+      "gold_has_ontology_relation": false,
+      "hybrid_rank": null,
+      "ontology_rank": null
+    },
+    {
+      "question_id": "269b05b74d5215b09c16e95a91ae50caedd9e2aa",
+      "query": "Which inter-annotator metric do they use?",
+      "query_concepts": [],
+      "gold_concepts": [],
+      "gold_has_ontology_relation": false,
+      "hybrid_rank": 2,
+      "ontology_rank": 2
+    },
+    {
+      "question_id": "0d7f514f04150468b2d1de9174c12c28e52c5511",
+      "query": "How high is the inter-annotator agreement?",
+      "query_concepts": [],
+      "gold_concepts": [],
+      "gold_has_ontology_relation": false,
+      "hybrid_rank": 1,
+      "ontology_rank": 1
+    },
+    {
+      "question_id": "4d223225dbf84a80e2235448a4d7ba67bfb12490",
+      "query": "How are resources adapted to properties of Chinese text?",
+      "query_concepts": [],
+      "gold_concepts": [],
+      "gold_has_ontology_relation": false,
+      "hybrid_rank": null,
+      "ontology_rank": null
+    },
+    {
+      "question_id": "557d1874f736d9d487eb823fe8f6dab4b17c3c42",
+      "query": "Which language family does Mboshi belong to?",
+      "query_concepts": [],
+      "gold_concepts": [],
+      "gold_has_ontology_relation": false,
+      "hybrid_rank": 1,
+      "ontology_rank": 1
+    },
+    {
+      "question_id": "f41c401a4c6e1be768f8e68f774af3661c890ffd",
+      "query": "Does the paper report any alignment-only baseline?",
+      "query_concepts": [],
+      "gold_concepts": [
+        "WordSegmentation"
+      ],
+      "gold_has_ontology_relation": false,
+      "hybrid_rank": null,
+      "ontology_rank": null
+    },
+    {
+      "question_id": "09cd7ae01fe97bba230c109d0234fee80a1f013b",
+      "query": "What is the dataset used in the paper?",
+      "query_concepts": [],
+      "gold_concepts": [],
+      "gold_has_ontology_relation": false,
+      "hybrid_rank": null,
+      "ontology_rank": null
+    },
+    {
+      "question_id": "be3e020ba84bc53dfb90b8acaf549004b66e31e2",
+      "query": "How is the word segmentation task evaluated?",
+      "query_concepts": [
+        "WordSegmentation"
+      ],
+      "gold_concepts": [],
+      "gold_has_ontology_relation": false,
+      "hybrid_rank": null,
+      "ontology_rank": null
+    },
+    {
+      "question_id": "97dac7092cf8082a6238aaa35f4b185343b914af",
+      "query": "What insights into the relationship between demographics and mental health are provided?",
+      "query_concepts": [],
+      "gold_concepts": [],
+      "gold_has_ontology_relation": false,
+      "hybrid_rank": null,
+      "ontology_rank": null
+    },
+    {
+      "question_id": "195611926760d1ceec00bd043dfdc8eba2df5ad1",
+      "query": "What model is used to achieve 5% improvement on F1 for identifying depressed individuals on Twitter?",
+      "query_concepts": [],
+      "gold_concepts": [],
+      "gold_has_ontology_relation": false,
+      "hybrid_rank": null,
+      "ontology_rank": null
+    },
+    {
+      "question_id": "445e792ce7e699e960e2cb4fe217aeacdd88d392",
+      "query": "How do this framework facilitate demographic inference from social media?",
+      "query_concepts": [],
+      "gold_concepts": [],
+      "gold_has_ontology_relation": false,
+      "hybrid_rank": 4,
+      "ontology_rank": 4
+    },
+    {
+      "question_id": "a3b1520e3da29d64af2b6e22ff15d330026d0b36",
+      "query": "What types of features are used from each data type?",
+      "query_concepts": [],
+      "gold_concepts": [],
+      "gold_has_ontology_relation": false,
+      "hybrid_rank": 2,
+      "ontology_rank": 2
+    },
+    {
+      "question_id": "2cf8825639164a842c3172af039ff079a8448592",
+      "query": "How is the data annotated?",
+      "query_concepts": [],
+      "gold_concepts": [],
+      "gold_has_ontology_relation": false,
+      "hybrid_rank": null,
+      "ontology_rank": null
+    },
+    {
+      "question_id": "4059c6f395640a6acf20a0ed451d0ad8681bc59b",
+      "query": "How is the delta-softmax calculated?",
+      "query_concepts": [],
+      "gold_concepts": [],
+      "gold_has_ontology_relation": false,
+      "hybrid_rank": null,
+      "ontology_rank": null
+    },
+    {
+      "question_id": "99d7bef0ef395360b939a3f446eff67239551a9d",
+      "query": "Are some models evaluated using this metric, what are the findings?",
+      "query_concepts": [],
+      "gold_concepts": [
+        "WordEmbedding"
+      ],
+      "gold_has_ontology_relation": false,
+      "hybrid_rank": null,
+      "ontology_rank": null
+    },
+    {
+      "question_id": "a1097ce59270d6f521d92df8d2e3a279abee3e67",
+      "query": "Where does proposed metric differ from juman judgement?",
+      "query_concepts": [],
+      "gold_concepts": [],
+      "gold_has_ontology_relation": false,
+      "hybrid_rank": null,
+      "ontology_rank": null
+    },
+    {
+      "question_id": "56e58bdf0df76ad1599021801f6d4c7b77953e29",
+      "query": "Where does proposed metric overlap with juman judgement?",
+      "query_concepts": [],
+      "gold_concepts": [],
+      "gold_has_ontology_relation": false,
+      "hybrid_rank": null,
+      "ontology_rank": null
+    },
+    {
+      "question_id": "13d92cbc2c77134626e26166c64ca5c00aec0bf5",
+      "query": "What baseline approaches do they compare against?",
+      "query_concepts": [],
+      "gold_concepts": [
+        "EvidenceF1"
+      ],
+      "gold_has_ontology_relation": false,
+      "hybrid_rank": null,
+      "ontology_rank": null
+    },
+    {
+      "question_id": "9df4a7bd0abb99ae81f0ebb29c488f1caa0f268f",
+      "query": "How do they train the retrieval modules?",
+      "query_concepts": [
+        "RetrievalAugmentedGeneration"
+      ],
+      "gold_concepts": [
+        "SemanticSearch"
+      ],
+      "gold_has_ontology_relation": false,
+      "hybrid_rank": null,
+      "ontology_rank": null
+    },
+    {
+      "question_id": "b7291845ccf08313e09195befd3c8030f28f6a9e",
+      "query": "How do they model the neural retrieval modules?",
+      "query_concepts": [
+        "NeuralMachineTranslation"
+      ],
+      "gold_concepts": [
+        "SemanticSearch"
+      ],
+      "gold_has_ontology_relation": false,
+      "hybrid_rank": 5,
+      "ontology_rank": 5
+    },
+    {
+      "question_id": "ac54a9c30c968e5225978a37032158a6ffd4ddb8",
+      "query": "Retrieval at what level performs better, sentence level or paragraph level?",
+      "query_concepts": [],
+      "gold_concepts": [
+        "QuestionAnswering"
+      ],
+      "gold_has_ontology_relation": false,
+      "hybrid_rank": 4,
+      "ontology_rank": 4
+    },
+    {
+      "question_id": "182b6d77b51fa83102719a81862891f49c23a025",
+      "query": "What limitations are mentioned?",
+      "query_concepts": [],
+      "gold_concepts": [
+        "Crowdsourcing"
+      ],
+      "gold_has_ontology_relation": false,
+      "hybrid_rank": 1,
+      "ontology_rank": 1
+    },
+    {
+      "question_id": "441886f0497dc84f46ed8c32e8fa32983b5db42e",
+      "query": "What examples of applications are mentioned?",
+      "query_concepts": [],
+      "gold_concepts": [
+        "SupervisedLearning"
+      ],
+      "gold_has_ontology_relation": false,
+      "hybrid_rank": null,
+      "ontology_rank": null
+    },
+    {
+      "question_id": "62afbf8b1090e56fdd2a2fa2bdb687c3995477f6",
+      "query": "Did they crowdsource the annotations?",
+      "query_concepts": [
+        "Crowdsourcing"
+      ],
+      "gold_concepts": [],
+      "gold_has_ontology_relation": false,
+      "hybrid_rank": null,
+      "ontology_rank": null
+    },
+    {
+      "question_id": "b124137e62178a2bd3b5570d73b1652dfefa2457",
+      "query": "What new interesting tasks can be solved based on the uncanny semantic structures of the embedding space?",
+      "query_concepts": [],
+      "gold_concepts": [],
+      "gold_has_ontology_relation": false,
+      "hybrid_rank": 5,
+      "ontology_rank": 5
+    },
+    {
+      "question_id": "c6aa8a02597fea802890945f0b4be8d631e4d5cd",
+      "query": "What are the uncanny semantic structures of the embedding space?",
+      "query_concepts": [],
+      "gold_concepts": [
+        "SemanticRoleInduction"
+      ],
+      "gold_has_ontology_relation": false,
+      "hybrid_rank": 1,
+      "ontology_rank": 1
+    },
+    {
+      "question_id": "bfad30f51ce3deea8a178944fa4c6e8acdd83a48",
+      "query": "What is the general framework for data exploration by semantic queries?",
+      "query_concepts": [
+        "InformationRetrieval",
+        "KeywordSearch",
+        "SemanticSearch"
+      ],
+      "gold_concepts": [],
+      "gold_has_ontology_relation": false,
+      "hybrid_rank": 1,
+      "ontology_rank": 1
+    },
+    {
+      "question_id": "dd9883f4adf7be072d314d7ed13fe4518c5500e0",
+      "query": "What data exploration is supported by the analysis of these semantic structures?",
+      "query_concepts": [
+        "SemanticRoleInduction",
+        "SemanticSearch"
+      ],
+      "gold_concepts": [],
+      "gold_has_ontology_relation": false,
+      "hybrid_rank": null,
+      "ontology_rank": null
+    }
+  ]
+}
