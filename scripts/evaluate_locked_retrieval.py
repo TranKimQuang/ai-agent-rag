@@ -61,6 +61,11 @@ def main() -> None:
             config.get("query_concept_linking_threshold", config["concept_linking_threshold"])
         ),
         query_type_intent=bool(config["query_type_intent"]),
+        query_phrase_linking=bool(config.get("query_phrase_linking", False)),
+        query_phrase_margin=float(config.get("query_phrase_margin", 0.03)),
+        query_phrase_secondary_threshold_delta=float(
+            config.get("query_phrase_secondary_threshold_delta", 0.05)
+        ),
     )
     chunks, concept_links = ontology.index_chunks(chunks)
     retriever = InMemoryHybridRetriever(
