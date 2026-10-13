@@ -1,6 +1,24 @@
 # THEO DÕI TIẾN ĐỘ ĐỒ ÁN AI AGENT + RAG
 
-Cập nhật gần nhất: 09/10/2026
+Cập nhật gần nhất: 13/10/2026
+
+### Mới nhất: Phrase-first query concept linking
+
+- [x] Xác định lại nút thắt sau validation v11: chỉ 9/73 câu hỏi có concept và graph
+  retrieval không khái quát; vì vậy chưa tăng graph weight hoặc mở rộng vocabulary.
+- [x] Bổ sung candidate linker theo hai tầng nhẹ: giữ exact alias, tách các cụm nội dung
+  nhiều từ, lấy Top-2 semantic concept cho mỗi cụm, kiểm tra threshold và khoảng cách
+  Top-1/Top-2 trước khi chấp nhận.
+- [x] Thêm điều kiện semantic concept bổ sung phải cao hơn threshold thường 0,05 khi câu
+  hỏi đã có exact alias, nhằm hạn chế query drift từ các concept rộng.
+- [x] Trên bộ nhãn concept-linking development 16 câu, baseline Hybrid đạt precision
+  0,8000, recall 0,8889, F1 0,8421 và exact match 0,8125; phrase-first đạt đồng đều
+  0,9444/0,9444/0,9444 và exact match 0,8750.
+- [x] Candidate tìm thêm đúng `ArgumentMining` và loại semantic noise quanh câu hỏi
+  `RecurrentNeuralNetwork`. Kết quả và từng dự đoán được lưu tại
+  `evaluation/qasper_phrase_linking_development_v12/`.
+- [~] Chưa bật mặc định và chưa chạy lại validation/final-test đã khóa. Bước kế tiếp là
+  khóa candidate rồi chạy đúng một lần trên một tập paper-disjoint hoàn toàn mới.
 
 ### Mới nhất: Audit và sửa precision cho Result-centric scoring v2
 

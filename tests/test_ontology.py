@@ -273,6 +273,85 @@ def test_query_and_chunk_linking_can_use_separate_thresholds() -> None:
     ] == ["RetrievalAugmentedGeneration"]
 
 
+def test_query_phrases_remove_question_scaffolding_and_keep_multiword_terms() -> None:
+    phrases = OntologyService().query_phrases(
+        "Which machine learning methods are used in experiments?"
+    )
+
+    assert phrases[0] == "which machine learning methods are used in experiments"
+    assert "machine learning methods" in phrases
+    assert "used experiments" not in phrases
+    assert all(len(phrase.split()) > 1 for phrase in phrases[1:])
+
+
+def test_phrase_linking_accepts_clear_phrase_candidate_and_rejects_ambiguous_one() -> None:
+    class PhraseEncoder:
+        def encode(self, texts: list[str]) -> np.ndarray:
+            vectors = []
+            for text in texts:
+                normalized = text.lower()
+                if (
+                    "retrieve external evidence" in normalized
+                    or "retrieval augmented generation" in normalized
+                ):
+                    vectors.append([1.0, 0.0, 0.0])
+                elif "unclear wording" in normalized:
+                    vectors.append([0.0, 0.71, 0.70])
+                elif "question answering" in normalized:
+                    vectors.append([0.0, 1.0, 0.0])
+                else:
+                    vectors.append([0.0, 0.0, 1.0])
+            return np.asarray(vectors, dtype=np.float32)
+
+    service = OntologyService(
+        semantic_encoder=PhraseEncoder(),
+        linking_method=ConceptLinkingMethod.HYBRID,
+        query_phrase_linking=True,
+        query_linking_threshold=0.55,
+        query_phrase_margin=0.03,
+    )
+
+    clear = {
+        local_name(concept)
+        for concept in service.configured_query_concepts(
+            "How does the system retrieve external evidence before answering?"
+        )
+    }
+    ambiguous = service.link_query_concepts("What is unclear wording?")
+
+    assert "RetrievalAugmentedGeneration" in clear
+    assert all(link.score != 0.71 for link in ambiguous)
+
+
+def test_phrase_linking_requires_stronger_semantic_score_after_exact_alias() -> None:
+    class AnchoredPhraseEncoder:
+        def encode(self, texts: list[str]) -> np.ndarray:
+            vectors = []
+            for text in texts:
+                normalized = text.lower()
+                if "semantic search" in normalized:
+                    vectors.append([1.0, 0.0])
+                elif "supervised learning" in normalized:
+                    vectors.append([0.0, 1.0])
+                elif "weak extra phrase" in normalized:
+                    vectors.append([0.0, 0.56])
+                else:
+                    vectors.append([0.0, 0.0])
+            return np.asarray(vectors, dtype=np.float32)
+
+    service = OntologyService(
+        semantic_encoder=AnchoredPhraseEncoder(),
+        linking_method=ConceptLinkingMethod.HYBRID,
+        query_phrase_linking=True,
+        query_linking_threshold=0.55,
+        query_phrase_margin=0.03,
+    )
+
+    links = service.link_query_concepts("semantic search with weak extra phrase")
+
+    assert {link.concept for link in links} == {"SemanticSearch"}
+
+
 def test_graph_chunk_candidates_follow_concepts_and_document_scope() -> None:
     service = OntologyService()
     service.index_chunks(

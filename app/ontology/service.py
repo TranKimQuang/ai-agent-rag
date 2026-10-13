@@ -159,6 +159,42 @@ _QUERY_TYPE_ALIASES = {
     QA.Task: {"task", "tasks", "problem", "problems"},
 }
 
+_QUERY_PHRASE_BOUNDARIES = {
+    "a",
+    "an",
+    "are",
+    "as",
+    "at",
+    "be",
+    "by",
+    "did",
+    "do",
+    "does",
+    "for",
+    "from",
+    "how",
+    "in",
+    "is",
+    "it",
+    "of",
+    "on",
+    "or",
+    "the",
+    "their",
+    "they",
+    "this",
+    "to",
+    "was",
+    "were",
+    "what",
+    "when",
+    "where",
+    "which",
+    "who",
+    "why",
+    "with",
+}
+
 
 def normalize_text(text: str) -> str:
     lowered = text.lower().replace("đ", "d")
@@ -217,6 +253,9 @@ class OntologyService:
         query_linking_threshold: float | None = None,
         linking_limit: int = 5,
         query_type_intent: bool = False,
+        query_phrase_linking: bool = False,
+        query_phrase_margin: float = 0.03,
+        query_phrase_secondary_threshold_delta: float = 0.05,
     ) -> None:
         self.graph = Graph()
         self.graph.parse(ontology_path, format="turtle")
@@ -230,6 +269,9 @@ class OntologyService:
         )
         self.linking_limit = linking_limit
         self.query_type_intent = query_type_intent
+        self.query_phrase_linking = query_phrase_linking
+        self.query_phrase_margin = query_phrase_margin
+        self.query_phrase_secondary_threshold_delta = query_phrase_secondary_threshold_delta
         self._concept_embeddings: NDArray[np.float32] | None = None
         self._concept_aliases = self._load_concept_aliases()
         self._configured_concept_cache: dict[str, tuple[URIRef, ...]] = {}
@@ -381,6 +423,93 @@ class OntologyService:
             limit=limit,
         )
 
+    def query_phrases(self, text: str, *, max_ngram: int = 5) -> list[str]:
+        """Extract conservative content phrases without requiring a POS tagger.
+
+        The full normalized query is retained as a fallback. Additional candidates are
+        contiguous content spans and multi-word n-grams whose boundary tokens are not
+        common question/function words. Single-token semantic phrases are intentionally
+        excluded because they create too many ambiguous ontology matches.
+        """
+        normalized = normalize_text(text)
+        if not normalized:
+            return []
+        tokens = normalized.split()
+        phrases = [normalized]
+
+        segments: list[list[str]] = []
+        current: list[str] = []
+        for token in tokens:
+            if token in _QUERY_PHRASE_BOUNDARIES:
+                if current:
+                    segments.append(current)
+                    current = []
+            else:
+                current.append(token)
+        if current:
+            segments.append(current)
+
+        for segment in segments:
+            upper = min(max_ngram, len(segment))
+            for size in range(upper, 1, -1):
+                for start in range(len(segment) - size + 1):
+                    phrases.append(" ".join(segment[start : start + size]))
+
+        return list(dict.fromkeys(phrases))
+
+    def link_query_concepts(
+        self,
+        text: str,
+        *,
+        threshold: float | None = None,
+        limit: int | None = None,
+        margin: float | None = None,
+    ) -> list[ConceptLink]:
+        """Link a question using exact aliases plus phrase-level semantic candidates."""
+        active_threshold = self.query_linking_threshold if threshold is None else threshold
+        active_limit = self.linking_limit if limit is None else limit
+        active_margin = self.query_phrase_margin if margin is None else margin
+
+        links: dict[str, ConceptLink] = {
+            link.concept: link
+            for link in self.link_concepts(
+                text,
+                ConceptLinkingMethod.ALIAS,
+                threshold=active_threshold,
+                limit=active_limit,
+            )
+        }
+        if (
+            self.linking_method not in {ConceptLinkingMethod.SEMANTIC, ConceptLinkingMethod.HYBRID}
+            or self._semantic_encoder is None
+        ):
+            return sorted(links.values(), key=lambda link: (-link.score, link.concept))[
+                :active_limit
+            ]
+
+        phrases = self.query_phrases(text)
+        candidates_by_phrase = self.semantic_candidates_batch(phrases, limit=2)
+        for candidates in candidates_by_phrase:
+            if not candidates:
+                continue
+            best = candidates[0]
+            runner_up_score = candidates[1].score if len(candidates) > 1 else 0.0
+            semantic_threshold = active_threshold + (
+                self.query_phrase_secondary_threshold_delta if links else 0.0
+            )
+            if (
+                best.score < semantic_threshold
+                or best.score - runner_up_score < active_margin
+            ):
+                continue
+            existing = links.get(best.concept)
+            if existing is None or best.score > existing.score:
+                links[best.concept] = best
+
+        return sorted(links.values(), key=lambda link: (-link.score, link.concept))[
+            :active_limit
+        ]
+
     def configured_concepts(self, text: str) -> list[URIRef]:
         """Link text using the strategy configured for the retrieval pipeline."""
         return self.configured_concepts_batch([text])[0]
@@ -401,11 +530,15 @@ class OntologyService:
         """Link a query and optionally include its requested ontology entity type."""
         cached = self._configured_query_concept_cache.get(text)
         if cached is None:
-            links = self.link_concepts(
-                text,
-                self.linking_method,
-                threshold=self.query_linking_threshold,
-                limit=self.linking_limit,
+            links = (
+                self.link_query_concepts(text)
+                if self.query_phrase_linking
+                else self.link_concepts(
+                    text,
+                    self.linking_method,
+                    threshold=self.query_linking_threshold,
+                    limit=self.linking_limit,
+                )
             )
             known_by_name = {
                 local_name(concept): concept for concept in self._concept_aliases
