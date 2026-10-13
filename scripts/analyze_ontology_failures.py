@@ -24,6 +24,11 @@ def main() -> None:
     parser.add_argument("--linking-threshold", type=float, default=0.65)
     parser.add_argument("--query-linking-threshold", type=float)
     parser.add_argument("--query-type-intent", action="store_true")
+    parser.add_argument("--query-phrase-linking", action="store_true")
+    parser.add_argument("--query-phrase-margin", type=float, default=0.03)
+    parser.add_argument(
+        "--query-phrase-secondary-threshold-delta", type=float, default=0.05
+    )
     args = parser.parse_args()
 
     chunks, questions = load_dataset(args.dataset)
@@ -39,6 +44,11 @@ def main() -> None:
         linking_threshold=args.linking_threshold,
         query_linking_threshold=args.query_linking_threshold,
         query_type_intent=args.query_type_intent,
+        query_phrase_linking=args.query_phrase_linking,
+        query_phrase_margin=args.query_phrase_margin,
+        query_phrase_secondary_threshold_delta=(
+            args.query_phrase_secondary_threshold_delta
+        ),
     )
     chunks, _ = ontology.index_chunks(chunks)
     chunks_by_id = {chunk.id: chunk for chunk in chunks}
@@ -113,6 +123,11 @@ def main() -> None:
             else args.linking_threshold
         ),
         "query_type_intent": args.query_type_intent,
+        "query_phrase_linking": args.query_phrase_linking,
+        "query_phrase_margin": args.query_phrase_margin,
+        "query_phrase_secondary_threshold_delta": (
+            args.query_phrase_secondary_threshold_delta
+        ),
         "summary": summary,
         "questions": rows,
     }

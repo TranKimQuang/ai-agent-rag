@@ -19,7 +19,7 @@ from scripts.run_benchmark import load_dataset
 
 def render_markdown(payload: dict[str, object]) -> str:
     lines = [
-        "# Paired bootstrap: Hybrid vs Ontology re-ranking",
+        f"# Paired bootstrap: Hybrid vs {payload['candidate_method']}",
         "",
         f"- Dataset: `{payload['dataset']}`",
         f"- Số câu hỏi: {payload['questions']}",
@@ -68,6 +68,11 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--samples", type=int, default=10_000)
     parser.add_argument("--seed", type=int, default=20261003)
     parser.add_argument(
+        "--split-role",
+        choices=("development", "validation", "heldout", "final_test"),
+        default="development",
+    )
+    parser.add_argument(
         "--details",
         type=Path,
         help="Existing detailed benchmark JSON; skips model inference when provided.",
@@ -76,6 +81,12 @@ def parse_args() -> argparse.Namespace:
         "--query-type-intent",
         action="store_true",
         help="Record that supplied details used the experimental query-type linker",
+    )
+    parser.add_argument(
+        "--candidate-method",
+        type=SearchMethod,
+        default=SearchMethod.HYBRID_ONTOLOGY_RERANK,
+        help="Ontology retrieval method to compare with Hybrid",
     )
     parser.add_argument(
         "--json-output",
@@ -92,8 +103,16 @@ def parse_args() -> argparse.Namespace:
 
 def main() -> None:
     args = parse_args()
+    supplied_configuration: dict[str, object] = {}
     if args.details:
-        details = json.loads(args.details.read_text(encoding="utf-8"))
+        details_payload = json.loads(args.details.read_text(encoding="utf-8"))
+        if isinstance(details_payload, dict):
+            supplied_configuration = details_payload.get("configuration", {})
+        details = (
+            details_payload["details"]
+            if isinstance(details_payload, dict) and "details" in details_payload
+            else details_payload
+        )
         concept_links = None
         details_source = args.details.as_posix()
     else:
@@ -121,20 +140,25 @@ def main() -> None:
     report = paired_bootstrap_comparison(
         details,
         baseline_method=SearchMethod.HYBRID.value,
-        candidate_method=SearchMethod.HYBRID_ONTOLOGY_RERANK.value,
+        candidate_method=args.candidate_method.value,
         k=args.k,
         samples=args.samples,
         seed=args.seed,
     )
     payload = {
         "dataset": args.dataset.as_posix(),
-        "split_role": "development",
+        "split_role": args.split_role,
         "details_source": details_source,
         "concept_links": concept_links,
         "linking_method": "hybrid",
-        "linking_threshold": 0.65,
-        "ontology_weight": 0.05,
+        "linking_threshold": supplied_configuration.get(
+            "concept_linking_threshold", 0.65
+        ),
+        "ontology_weight": supplied_configuration.get("ontology_weight", 0.05),
         "query_type_intent": args.query_type_intent,
+        "query_phrase_linking": supplied_configuration.get(
+            "query_phrase_linking", False
+        ),
         **report,
     }
     args.json_output.parent.mkdir(parents=True, exist_ok=True)

@@ -17,8 +17,18 @@ Cập nhật gần nhất: 13/10/2026
 - [x] Candidate tìm thêm đúng `ArgumentMining` và loại semantic noise quanh câu hỏi
   `RecurrentNeuralNetwork`. Kết quả và từng dự đoán được lưu tại
   `evaluation/qasper_phrase_linking_development_v12/`.
-- [~] Chưa bật mặc định và chưa chạy lại validation/final-test đã khóa. Bước kế tiếp là
-  khóa candidate rồi chạy đúng một lần trên một tập paper-disjoint hoàn toàn mới.
+- [x] Đã khóa candidate và chạy đúng một lần validation v13 mới: 20 paper/1.184 chunk/
+  76 câu, overlap 0 với 285 paper trước. Hybrid Recall@5/MRR@5/nDCG@5 là
+  0,4451/0,3371/0,3300; Phrase-first + Expansion + Re-ranking đạt
+  **0,4692/0,3513/0,3456**.
+- [x] Coverage trên validation mới: 18/76 query có concept, 33/76 gold evidence có
+  concept và 9/76 cặp query-gold có quan hệ. Re-ranking riêng cải thiện 1 câu, không
+  làm xấu câu nào; bản kết hợp cải thiện/cứu 5 nhưng làm xấu/mất 2.
+- [x] Paired bootstrap 10.000 mẫu cho bản kết hợp có chênh Recall@5 +0,0241,
+  MRR@5 +0,0143 và nDCG@5 +0,0157 nhưng CI 95% vẫn chứa 0. Ghi nhận hướng cải thiện,
+  chưa tuyên bố ý nghĩa thống kê và chưa mở final-test.
+- [x] Bật đúng candidate đã validation cho server demo: query threshold 0,55,
+  phrase-first, margin 0,03 và secondary threshold delta 0,05.
 
 ### Mới nhất: Audit và sửa precision cho Result-centric scoring v2
 

@@ -43,6 +43,8 @@ ontology = OntologyService(
     semantic_encoder=embedding_encoder,
     linking_method=ConceptLinkingMethod.HYBRID,
     linking_threshold=0.65,
+    query_linking_threshold=0.55,
+    query_phrase_linking=True,
 )
 app = FastAPI(title="AI Agent + RAG")
 retriever = InMemoryHybridRetriever(

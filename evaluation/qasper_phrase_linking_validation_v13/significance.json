@@ -1,0 +1,76 @@
+{
+  "dataset": "evaluation/qasper_phrase_linking_validation_v13/qasper_validation.json",
+  "split_role": "validation",
+  "details_source": "evaluation/qasper_phrase_linking_validation_v13/locked_result_once.json",
+  "concept_links": null,
+  "linking_method": "hybrid",
+  "linking_threshold": 0.65,
+  "ontology_weight": 0.2,
+  "query_type_intent": false,
+  "query_phrase_linking": true,
+  "baseline_method": "hybrid",
+  "candidate_method": "hybrid_ontology",
+  "questions": 76,
+  "k": 5,
+  "bootstrap_samples": 10000,
+  "confidence": 0.95,
+  "seed": 20261013,
+  "metrics": {
+    "precision_at_k": {
+      "baseline_mean": 0.13421052631578945,
+      "candidate_mean": 0.13684210526315788,
+      "observed_difference": 0.0026315789473684206,
+      "confidence_interval": [
+        -0.007894736842105265,
+        0.013157894736842108
+      ],
+      "two_sided_p_value": 0.8057194280571943,
+      "improved_questions": 3,
+      "unchanged_questions": 71,
+      "worsened_questions": 2,
+      "significant_at_0_05": false
+    },
+    "recall_at_k": {
+      "baseline_mean": 0.44505582137161087,
+      "candidate_mean": 0.4691786283891547,
+      "observed_difference": 0.024122807017543862,
+      "confidence_interval": [
+        -0.010964912280701754,
+        0.07017543859649124
+      ],
+      "two_sided_p_value": 0.24077592240775922,
+      "improved_questions": 3,
+      "unchanged_questions": 71,
+      "worsened_questions": 2,
+      "significant_at_0_05": false
+    },
+    "mrr_at_k": {
+      "baseline_mean": 0.3370614035087719,
+      "candidate_mean": 0.3513157894736842,
+      "observed_difference": 0.014254385964912283,
+      "confidence_interval": [
+        -0.005482456140350878,
+        0.041447368421052636
+      ],
+      "two_sided_p_value": 0.2131786821317868,
+      "improved_questions": 5,
+      "unchanged_questions": 69,
+      "worsened_questions": 2,
+      "significant_at_0_05": false
+    },
+    "ndcg_at_k": {
+      "baseline_mean": 0.3299703299020861,
+      "candidate_mean": 0.34564625168762136,
+      "observed_difference": 0.01567592178553522,
+      "confidence_interval": [
+        -0.005303252683794548,
+        0.042592074332878545
+      ],
+      "two_sided_p_value": 0.17398260173982602,
+      "improved_questions": 5,
+      "unchanged_questions": 68,
+      "worsened_questions": 3,
+      "significant_at_0_05": false
+    }
+  }
+}
