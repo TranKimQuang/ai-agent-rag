@@ -38,6 +38,10 @@ Cập nhật gần nhất: 13/10/2026
   development. Cấu hình tốt nhất chỉ bằng phrase-first (precision/recall/F1 0,9444,
   exact match 0,875); threshold cao hơn làm giảm recall. Đã loại candidate khỏi pipeline,
   giữ hạ tầng pair-scoring để thử model entity-linking/NLI phù hợp hơn trong tương lai.
+- [x] Audit phrase-first trên document-scoped development v10: coverage tăng 10/74 ->
+  17/74 nhưng query-gold relation giữ 4/74; 6/7 link mới không được gold evidence hỗ trợ.
+  Kết luận bước tiếp theo là paper-topic/context prior để tăng precision, không tiếp tục
+  tối ưu coverage hoặc thêm vocabulary trực tiếp từ validation.
 
 ### Mới nhất: Audit và sửa precision cho Result-centric scoring v2
 

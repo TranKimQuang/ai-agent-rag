@@ -36,3 +36,16 @@ Chi tiết từng câu, score và source nằm trong `phrase_linking_margin_003.
 Candidate vượt development gate nhưng chưa đủ để thay pipeline mặc định. Không dùng lại
 validation v11 để tune. Cần commit/khóa code và đánh giá đúng một lần trên một split QASPER
 paper-disjoint mới; final-test v4 tiếp tục sealed.
+
+## Audit coverage trên document-scoped development
+
+Sau validation v13, candidate được phân tích lại trên development v10 để hiểu lỗi, không
+thay đổi kết quả validation. Query coverage tăng từ 10/74 lên 17/74, nhưng số query-gold
+có quan hệ vẫn là 4/74: một quan hệ đúng mới (`rare words` -> `WordEmbedding`) bù cho
+một quan hệ bị mất ở câu hỏi neural classifiers.
+
+Trong bảy query mới có concept, sáu query không có quan hệ với concept của gold evidence.
+Các lỗi điển hình là “authors” -> `AuthorProfiling`, “Entity-GCN” -> `EntityLinking`, và
+“languages” -> `NaturalLanguageProcessing`. Điều này xác nhận coverage thô không phải mục
+tiêu đủ tốt; bước paper-topic/context prior cần tối ưu precision của query links thay vì
+tiếp tục nhận thêm mọi candidate trên threshold.
