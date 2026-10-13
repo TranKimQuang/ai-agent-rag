@@ -1,0 +1,820 @@
+{
+  "dataset": "evaluation\\qasper\\concept_linking_validation.json",
+  "semantic_threshold": 0.55,
+  "candidate_limit": 5,
+  "link_limit": 5,
+  "reranker_model": "cross-encoder/ms-marco-MiniLM-L6-v2",
+  "selection_policy": "highest F1, then precision, exact match, threshold and margin",
+  "phrase_first_baseline": {
+    "precision": 0.9444444444444444,
+    "recall": 0.9444444444444444,
+    "f1": 0.9444444444444444,
+    "exact_match": 0.875
+  },
+  "best": {
+    "cross_threshold": -4.0,
+    "cross_margin": 0.0,
+    "precision": 0.9444444444444444,
+    "recall": 0.9444444444444444,
+    "f1": 0.9444444444444444,
+    "exact_match": 0.875
+  },
+  "configurations": [
+    {
+      "cross_threshold": -4.0,
+      "cross_margin": 0.0,
+      "precision": 0.9444444444444444,
+      "recall": 0.9444444444444444,
+      "f1": 0.9444444444444444,
+      "exact_match": 0.875
+    },
+    {
+      "cross_threshold": -4.0,
+      "cross_margin": 0.5,
+      "precision": 0.9444444444444444,
+      "recall": 0.9444444444444444,
+      "f1": 0.9444444444444444,
+      "exact_match": 0.875
+    },
+    {
+      "cross_threshold": -4.0,
+      "cross_margin": 1.0,
+      "precision": 0.9444444444444444,
+      "recall": 0.9444444444444444,
+      "f1": 0.9444444444444444,
+      "exact_match": 0.875
+    },
+    {
+      "cross_threshold": -4.0,
+      "cross_margin": 2.0,
+      "precision": 0.9444444444444444,
+      "recall": 0.9444444444444444,
+      "f1": 0.9444444444444444,
+      "exact_match": 0.875
+    },
+    {
+      "cross_threshold": -2.0,
+      "cross_margin": 0.0,
+      "precision": 0.9411764705882353,
+      "recall": 0.8888888888888888,
+      "f1": 0.9142857142857143,
+      "exact_match": 0.8125
+    },
+    {
+      "cross_threshold": -2.0,
+      "cross_margin": 0.5,
+      "precision": 0.9411764705882353,
+      "recall": 0.8888888888888888,
+      "f1": 0.9142857142857143,
+      "exact_match": 0.8125
+    },
+    {
+      "cross_threshold": -2.0,
+      "cross_margin": 1.0,
+      "precision": 0.9411764705882353,
+      "recall": 0.8888888888888888,
+      "f1": 0.9142857142857143,
+      "exact_match": 0.8125
+    },
+    {
+      "cross_threshold": -2.0,
+      "cross_margin": 2.0,
+      "precision": 0.9411764705882353,
+      "recall": 0.8888888888888888,
+      "f1": 0.9142857142857143,
+      "exact_match": 0.8125
+    },
+    {
+      "cross_threshold": 0.0,
+      "cross_margin": 0.0,
+      "precision": 0.9411764705882353,
+      "recall": 0.8888888888888888,
+      "f1": 0.9142857142857143,
+      "exact_match": 0.8125
+    },
+    {
+      "cross_threshold": 0.0,
+      "cross_margin": 0.5,
+      "precision": 0.9411764705882353,
+      "recall": 0.8888888888888888,
+      "f1": 0.9142857142857143,
+      "exact_match": 0.8125
+    },
+    {
+      "cross_threshold": 0.0,
+      "cross_margin": 1.0,
+      "precision": 0.9411764705882353,
+      "recall": 0.8888888888888888,
+      "f1": 0.9142857142857143,
+      "exact_match": 0.8125
+    },
+    {
+      "cross_threshold": 0.0,
+      "cross_margin": 2.0,
+      "precision": 0.9411764705882353,
+      "recall": 0.8888888888888888,
+      "f1": 0.9142857142857143,
+      "exact_match": 0.8125
+    },
+    {
+      "cross_threshold": 2.0,
+      "cross_margin": 0.0,
+      "precision": 0.9285714285714286,
+      "recall": 0.7222222222222222,
+      "f1": 0.8125000000000001,
+      "exact_match": 0.625
+    },
+    {
+      "cross_threshold": 2.0,
+      "cross_margin": 0.5,
+      "precision": 0.9285714285714286,
+      "recall": 0.7222222222222222,
+      "f1": 0.8125000000000001,
+      "exact_match": 0.625
+    },
+    {
+      "cross_threshold": 2.0,
+      "cross_margin": 1.0,
+      "precision": 0.9285714285714286,
+      "recall": 0.7222222222222222,
+      "f1": 0.8125000000000001,
+      "exact_match": 0.625
+    },
+    {
+      "cross_threshold": 2.0,
+      "cross_margin": 2.0,
+      "precision": 0.9285714285714286,
+      "recall": 0.7222222222222222,
+      "f1": 0.8125000000000001,
+      "exact_match": 0.625
+    },
+    {
+      "cross_threshold": 4.0,
+      "cross_margin": 0.0,
+      "precision": 0.9166666666666666,
+      "recall": 0.6111111111111112,
+      "f1": 0.7333333333333334,
+      "exact_match": 0.5
+    },
+    {
+      "cross_threshold": 4.0,
+      "cross_margin": 0.5,
+      "precision": 0.9166666666666666,
+      "recall": 0.6111111111111112,
+      "f1": 0.7333333333333334,
+      "exact_match": 0.5
+    },
+    {
+      "cross_threshold": 4.0,
+      "cross_margin": 1.0,
+      "precision": 0.9166666666666666,
+      "recall": 0.6111111111111112,
+      "f1": 0.7333333333333334,
+      "exact_match": 0.5
+    },
+    {
+      "cross_threshold": 4.0,
+      "cross_margin": 2.0,
+      "precision": 0.9166666666666666,
+      "recall": 0.6111111111111112,
+      "f1": 0.7333333333333334,
+      "exact_match": 0.5
+    }
+  ],
+  "rows": [
+    {
+      "source_question_id": "50be4a737dc0951b35d139f51075011095d77f2a",
+      "text": "What background knowledge do they leverage?",
+      "gold_concepts": [],
+      "predicted_concepts": [],
+      "candidates": []
+    },
+    {
+      "source_question_id": "76121e359dfe3f16c2a352bd35f28005f2a40da3",
+      "text": "What NLP tasks do they consider?",
+      "gold_concepts": [
+        "NaturalLanguageProcessing"
+      ],
+      "predicted_concepts": [
+        "NaturalLanguageProcessing"
+      ],
+      "candidates": []
+    },
+    {
+      "source_question_id": "eac9dae3492e17bc49c842fb566f464ff18c049b",
+      "text": "What argument components do the ML methods aim to identify?",
+      "gold_concepts": [
+        "ArgumentMining",
+        "MachineLearning"
+      ],
+      "predicted_concepts": [
+        "ArgumentMining",
+        "MachineLearning"
+      ],
+      "candidates": [
+        {
+          "phrase": "what argument components do the ml methods aim to identify",
+          "concept": "ArgumentMining",
+          "semantic_score": 0.6245629787445068,
+          "cross_score": 1.1925740242004395
+        },
+        {
+          "phrase": "argument components",
+          "concept": "ArgumentMining",
+          "semantic_score": 0.6295377612113953,
+          "cross_score": 1.5981345176696777
+        }
+      ]
+    },
+    {
+      "source_question_id": "7697baf8d8d582c1f664a614f6332121061f87db",
+      "text": "Which machine learning methods are used in experiments?",
+      "gold_concepts": [
+        "MachineLearning"
+      ],
+      "predicted_concepts": [
+        "MachineLearning"
+      ],
+      "candidates": [
+        {
+          "phrase": "which machine learning methods are used in experiments",
+          "concept": "MachineLearning",
+          "semantic_score": 0.7511246204376221,
+          "cross_score": -0.2761598825454712
+        },
+        {
+          "phrase": "machine learning methods",
+          "concept": "MachineLearning",
+          "semantic_score": 0.8401893973350525,
+          "cross_score": 0.5332449674606323
+        },
+        {
+          "phrase": "machine learning methods",
+          "concept": "SupervisedLearning",
+          "semantic_score": 0.6053706407546997,
+          "cross_score": -2.9729340076446533
+        },
+        {
+          "phrase": "machine learning methods",
+          "concept": "NeuralNetwork",
+          "semantic_score": 0.5757772922515869,
+          "cross_score": -7.960684776306152
+        },
+        {
+          "phrase": "machine learning",
+          "concept": "MachineLearning",
+          "semantic_score": 0.8169582486152649,
+          "cross_score": 0.9034672975540161
+        },
+        {
+          "phrase": "machine learning",
+          "concept": "SupervisedLearning",
+          "semantic_score": 0.6326135396957397,
+          "cross_score": -2.935748338699341
+        },
+        {
+          "phrase": "machine learning",
+          "concept": "NeuralNetwork",
+          "semantic_score": 0.564193844795227,
+          "cross_score": -8.721453666687012
+        },
+        {
+          "phrase": "learning methods",
+          "concept": "SupervisedLearning",
+          "semantic_score": 0.5514382123947144,
+          "cross_score": -3.318089008331299
+        }
+      ]
+    },
+    {
+      "source_question_id": "747b847d687f703cc20a87877c5b138f26ff137d",
+      "text": "Which parallel corpora are used?",
+      "gold_concepts": [
+        "ParallelCorpus"
+      ],
+      "predicted_concepts": [
+        "ParallelCorpus"
+      ],
+      "candidates": [
+        {
+          "phrase": "which parallel corpora are used",
+          "concept": "ParallelCorpus",
+          "semantic_score": 0.6628125905990601,
+          "cross_score": 2.553845167160034
+        },
+        {
+          "phrase": "parallel corpora",
+          "concept": "ParallelCorpus",
+          "semantic_score": 0.6676340103149414,
+          "cross_score": 3.3420143127441406
+        }
+      ]
+    },
+    {
+      "source_question_id": "111afb77cfbf4c98e0458606378fa63a0e965e36",
+      "text": "Overall, does having parallel data improve semantic role induction across multiple languages?",
+      "gold_concepts": [
+        "ParallelCorpus",
+        "SemanticRoleInduction"
+      ],
+      "predicted_concepts": [
+        "ParallelCorpus",
+        "SemanticRoleInduction"
+      ],
+      "candidates": [
+        {
+          "phrase": "overall does having parallel data improve semantic role induction across multiple languages",
+          "concept": "ParallelCorpus",
+          "semantic_score": 0.613219678401947,
+          "cross_score": -2.5490787029266357
+        },
+        {
+          "phrase": "overall does having parallel data improve semantic role induction across multiple languages",
+          "concept": "SemanticRoleInduction",
+          "semantic_score": 0.5588463544845581,
+          "cross_score": -0.23589155077934265
+        },
+        {
+          "phrase": "having parallel data improve semantic",
+          "concept": "ParallelCorpus",
+          "semantic_score": 0.6219059228897095,
+          "cross_score": -3.128431797027588
+        },
+        {
+          "phrase": "parallel data improve semantic role",
+          "concept": "ParallelCorpus",
+          "semantic_score": 0.6165524125099182,
+          "cross_score": -2.891139030456543
+        },
+        {
+          "phrase": "parallel data improve semantic role",
+          "concept": "SemanticSearch",
+          "semantic_score": 0.5508546829223633,
+          "cross_score": -6.870424270629883
+        },
+        {
+          "phrase": "data improve semantic role induction",
+          "concept": "SemanticRoleInduction",
+          "semantic_score": 0.7601702213287354,
+          "cross_score": -0.7097225189208984
+        },
+        {
+          "phrase": "improve semantic role induction across",
+          "concept": "SemanticRoleInduction",
+          "semantic_score": 0.8068817257881165,
+          "cross_score": -0.4977756142616272
+        },
+        {
+          "phrase": "improve semantic role induction across",
+          "concept": "WordEmbedding",
+          "semantic_score": 0.5674432516098022,
+          "cross_score": -9.269804000854492
+        },
+        {
+          "phrase": "semantic role induction across multiple",
+          "concept": "SemanticRoleInduction",
+          "semantic_score": 0.7631689310073853,
+          "cross_score": -0.04883880168199539
+        },
+        {
+          "phrase": "parallel data improve semantic",
+          "concept": "ParallelCorpus",
+          "semantic_score": 0.6426101922988892,
+          "cross_score": -3.1975860595703125
+        },
+        {
+          "phrase": "data improve semantic role",
+          "concept": "SemanticRoleInduction",
+          "semantic_score": 0.7005271911621094,
+          "cross_score": -1.6277062892913818
+        },
+        {
+          "phrase": "data improve semantic role",
+          "concept": "SemanticSearch",
+          "semantic_score": 0.6451590657234192,
+          "cross_score": -7.531072616577148
+        },
+        {
+          "phrase": "improve semantic role induction",
+          "concept": "SemanticRoleInduction",
+          "semantic_score": 0.8090255260467529,
+          "cross_score": -0.24865446984767914
+        },
+        {
+          "phrase": "semantic role induction across",
+          "concept": "SemanticRoleInduction",
+          "semantic_score": 0.8119088411331177,
+          "cross_score": 0.030169745907187462
+        },
+        {
+          "phrase": "having parallel data",
+          "concept": "ParallelCorpus",
+          "semantic_score": 0.6531872749328613,
+          "cross_score": -3.1836347579956055
+        },
+        {
+          "phrase": "data improve semantic",
+          "concept": "SemanticSearch",
+          "semantic_score": 0.637799859046936,
+          "cross_score": -8.082189559936523
+        },
+        {
+          "phrase": "data improve semantic",
+          "concept": "SemanticRoleInduction",
+          "semantic_score": 0.6106470227241516,
+          "cross_score": -2.736098289489746
+        },
+        {
+          "phrase": "improve semantic role",
+          "concept": "SemanticRoleInduction",
+          "semantic_score": 0.7910010814666748,
+          "cross_score": -1.1851404905319214
+        },
+        {
+          "phrase": "improve semantic role",
+          "concept": "SemanticSearch",
+          "semantic_score": 0.632567286491394,
+          "cross_score": -7.684404373168945
+        },
+        {
+          "phrase": "semantic role induction",
+          "concept": "SemanticRoleInduction",
+          "semantic_score": 0.7913528084754944,
+          "cross_score": 0.4398358464241028
+        },
+        {
+          "phrase": "across multiple languages",
+          "concept": "MultilingualNaturalLanguageProcessing",
+          "semantic_score": 0.5809837579727173,
+          "cross_score": -7.279468536376953
+        },
+        {
+          "phrase": "having parallel",
+          "concept": "ParallelCorpus",
+          "semantic_score": 0.6254386305809021,
+          "cross_score": -3.4693398475646973
+        },
+        {
+          "phrase": "parallel data",
+          "concept": "ParallelCorpus",
+          "semantic_score": 0.6587750911712646,
+          "cross_score": -3.0982532501220703
+        },
+        {
+          "phrase": "improve semantic",
+          "concept": "SemanticRoleInduction",
+          "semantic_score": 0.6779320240020752,
+          "cross_score": -2.4124510288238525
+        },
+        {
+          "phrase": "improve semantic",
+          "concept": "SemanticSearch",
+          "semantic_score": 0.6231180429458618,
+          "cross_score": -8.370813369750977
+        },
+        {
+          "phrase": "semantic role",
+          "concept": "SemanticRoleInduction",
+          "semantic_score": 0.786376416683197,
+          "cross_score": -0.2581835985183716
+        },
+        {
+          "phrase": "semantic role",
+          "concept": "SemanticSearch",
+          "semantic_score": 0.5928425788879395,
+          "cross_score": -8.074258804321289
+        }
+      ]
+    },
+    {
+      "source_question_id": "bf52c01bf82612d0c7bbf2e6a5bb2570c322936f",
+      "text": "What different correlations result when using different variants of ROUGE scores?",
+      "gold_concepts": [
+        "ROUGE"
+      ],
+      "predicted_concepts": [
+        "ROUGE"
+      ],
+      "candidates": [
+        {
+          "phrase": "what different correlations result when using different variants of rouge scores",
+          "concept": "ROUGE",
+          "semantic_score": 0.654888391494751,
+          "cross_score": -1.1890606880187988
+        },
+        {
+          "phrase": "rouge scores",
+          "concept": "ROUGE",
+          "semantic_score": 0.6091787815093994,
+          "cross_score": -1.0674641132354736
+        }
+      ]
+    },
+    {
+      "source_question_id": "74e866137b3452ec50fb6feaf5753c8637459e62",
+      "text": "What manual Pyramid scores are used?",
+      "gold_concepts": [
+        "PyramidMethod"
+      ],
+      "predicted_concepts": [
+        "PyramidMethod"
+      ],
+      "candidates": [
+        {
+          "phrase": "what manual pyramid scores are used",
+          "concept": "PyramidMethod",
+          "semantic_score": 0.7593460083007812,
+          "cross_score": -0.8374370336532593
+        },
+        {
+          "phrase": "manual pyramid scores",
+          "concept": "PyramidMethod",
+          "semantic_score": 0.7323687672615051,
+          "cross_score": -0.8323091268539429
+        },
+        {
+          "phrase": "manual pyramid",
+          "concept": "PyramidMethod",
+          "semantic_score": 0.6119685769081116,
+          "cross_score": -1.483453392982483
+        },
+        {
+          "phrase": "pyramid scores",
+          "concept": "PyramidMethod",
+          "semantic_score": 0.7533717155456543,
+          "cross_score": 0.4084557890892029
+        }
+      ]
+    },
+    {
+      "source_question_id": "dac087e1328e65ca08f66d8b5307d6624bf3943f",
+      "text": "LDA is an unsupervised method; is this paper introducing an unsupervised approach to spam detection?",
+      "gold_concepts": [
+        "LatentDirichletAllocation",
+        "SpamDetection"
+      ],
+      "predicted_concepts": [
+        "LatentDirichletAllocation",
+        "SpamDetection"
+      ],
+      "candidates": [
+        {
+          "phrase": "lda is an unsupervised method is this paper introducing an unsupervised approach to spam detection",
+          "concept": "SpamDetection",
+          "semantic_score": 0.5898486971855164,
+          "cross_score": 4.321872711181641
+        },
+        {
+          "phrase": "spam detection",
+          "concept": "SpamDetection",
+          "semantic_score": 0.8376884460449219,
+          "cross_score": -6.296984672546387
+        }
+      ]
+    },
+    {
+      "source_question_id": "3cd185b7adc835e1c4449eff81222f5fc15c8500",
+      "text": "How do they detect spammers?",
+      "gold_concepts": [
+        "SpamDetection"
+      ],
+      "predicted_concepts": [
+        "SpamDetection"
+      ],
+      "candidates": [
+        {
+          "phrase": "how do they detect spammers",
+          "concept": "SpamDetection",
+          "semantic_score": 0.767061710357666,
+          "cross_score": -0.17711812257766724
+        },
+        {
+          "phrase": "detect spammers",
+          "concept": "SpamDetection",
+          "semantic_score": 0.7774732112884521,
+          "cross_score": 0.238474041223526
+        }
+      ]
+    },
+    {
+      "source_question_id": "792f6d76d2befba2af07198584aac1b189583ae4",
+      "text": "Is this hashtag prediction task an established task, or something new?",
+      "gold_concepts": [
+        "HashtagPrediction"
+      ],
+      "predicted_concepts": [
+        "HashtagPrediction"
+      ],
+      "candidates": [
+        {
+          "phrase": "is this hashtag prediction task an established task or something new",
+          "concept": "HashtagPrediction",
+          "semantic_score": 0.7482818365097046,
+          "cross_score": 1.637815237045288
+        },
+        {
+          "phrase": "hashtag prediction task",
+          "concept": "HashtagPrediction",
+          "semantic_score": 0.8737914562225342,
+          "cross_score": 1.950459361076355
+        },
+        {
+          "phrase": "hashtag prediction",
+          "concept": "HashtagPrediction",
+          "semantic_score": 0.8621299266815186,
+          "cross_score": 1.9572457075119019
+        }
+      ]
+    },
+    {
+      "source_question_id": "6d4400f45bd97b812e946b8a682b018826e841f1",
+      "text": "Which methods are considered to find examples of biases and unwarranted inferences?",
+      "gold_concepts": [
+        "DatasetBias"
+      ],
+      "predicted_concepts": [
+        "DatasetBias"
+      ],
+      "candidates": [
+        {
+          "phrase": "which methods are considered to find examples of biases and unwarranted inferences",
+          "concept": "DatasetBias",
+          "semantic_score": 0.6680598258972168,
+          "cross_score": 2.796391487121582
+        },
+        {
+          "phrase": "biases and unwarranted inferences",
+          "concept": "DatasetBias",
+          "semantic_score": 0.6662811040878296,
+          "cross_score": 2.4888358116149902
+        },
+        {
+          "phrase": "biases and unwarranted",
+          "concept": "DatasetBias",
+          "semantic_score": 0.6253801584243774,
+          "cross_score": 2.6315064430236816
+        },
+        {
+          "phrase": "biases and",
+          "concept": "DatasetBias",
+          "semantic_score": 0.5980813503265381,
+          "cross_score": 1.8254215717315674
+        }
+      ]
+    },
+    {
+      "source_question_id": "26c2e1eb12143d985e4fb50543cf0d1eb4395e67",
+      "text": "What biases are found in the dataset?",
+      "gold_concepts": [
+        "DatasetBias"
+      ],
+      "predicted_concepts": [
+        "DatasetBias"
+      ],
+      "candidates": [
+        {
+          "phrase": "what biases are found in the dataset",
+          "concept": "DatasetBias",
+          "semantic_score": 0.804459273815155,
+          "cross_score": 4.379528999328613
+        }
+      ]
+    },
+    {
+      "source_question_id": "e2e977d7222654ee8d983fd8ba63b930e9a5a691",
+      "text": "Which variant of the recurrent neural network do they use?",
+      "gold_concepts": [
+        "RecurrentNeuralNetwork"
+      ],
+      "predicted_concepts": [
+        "NeuralNetwork",
+        "RecurrentNeuralNetwork"
+      ],
+      "candidates": [
+        {
+          "phrase": "which variant of the recurrent neural network do they use",
+          "concept": "RecurrentNeuralNetwork",
+          "semantic_score": 0.8311618566513062,
+          "cross_score": 0.8753049373626709
+        },
+        {
+          "phrase": "which variant of the recurrent neural network do they use",
+          "concept": "ConvolutionalNeuralNetwork",
+          "semantic_score": 0.6614375114440918,
+          "cross_score": -2.6560022830963135
+        },
+        {
+          "phrase": "which variant of the recurrent neural network do they use",
+          "concept": "NeuralNetwork",
+          "semantic_score": 0.6221103668212891,
+          "cross_score": -3.3926374912261963
+        },
+        {
+          "phrase": "which variant of the recurrent neural network do they use",
+          "concept": "NeuralMachineTranslation",
+          "semantic_score": 0.5768693089485168,
+          "cross_score": -3.8550233840942383
+        },
+        {
+          "phrase": "which variant of the recurrent neural network do they use",
+          "concept": "MemoryNetwork",
+          "semantic_score": 0.574448823928833,
+          "cross_score": -4.300201416015625
+        },
+        {
+          "phrase": "recurrent neural network",
+          "concept": "RecurrentNeuralNetwork",
+          "semantic_score": 0.8666235208511353,
+          "cross_score": 2.43855619430542
+        },
+        {
+          "phrase": "recurrent neural network",
+          "concept": "NeuralNetwork",
+          "semantic_score": 0.7063966393470764,
+          "cross_score": -3.9865689277648926
+        },
+        {
+          "phrase": "recurrent neural network",
+          "concept": "ConvolutionalNeuralNetwork",
+          "semantic_score": 0.7003986239433289,
+          "cross_score": -3.758638381958008
+        },
+        {
+          "phrase": "recurrent neural network",
+          "concept": "MemoryNetwork",
+          "semantic_score": 0.627592146396637,
+          "cross_score": -5.969531536102295
+        },
+        {
+          "phrase": "recurrent neural network",
+          "concept": "NeuralMachineTranslation",
+          "semantic_score": 0.6126210689544678,
+          "cross_score": -6.019753456115723
+        },
+        {
+          "phrase": "recurrent neural",
+          "concept": "RecurrentNeuralNetwork",
+          "semantic_score": 0.568986713886261,
+          "cross_score": 2.3546977043151855
+        },
+        {
+          "phrase": "neural network",
+          "concept": "NeuralNetwork",
+          "semantic_score": 0.8066973686218262,
+          "cross_score": -3.4625401496887207
+        },
+        {
+          "phrase": "neural network",
+          "concept": "ConvolutionalNeuralNetwork",
+          "semantic_score": 0.7028765082359314,
+          "cross_score": -3.393218994140625
+        },
+        {
+          "phrase": "neural network",
+          "concept": "RecurrentNeuralNetwork",
+          "semantic_score": 0.6811397075653076,
+          "cross_score": 1.187488317489624
+        },
+        {
+          "phrase": "neural network",
+          "concept": "NeuralMachineTranslation",
+          "semantic_score": 0.6685505509376526,
+          "cross_score": -6.638716220855713
+        },
+        {
+          "phrase": "neural network",
+          "concept": "MemoryNetwork",
+          "semantic_score": 0.6197507381439209,
+          "cross_score": -5.94512414932251
+        }
+      ]
+    },
+    {
+      "source_question_id": "88e62ea7a4d1d2921624b8480b5c6b50cfa5ad42",
+      "text": "What is a second order co-ocurrence matrix?",
+      "gold_concepts": [
+        "CooccurrenceMatrix"
+      ],
+      "predicted_concepts": [
+        "CooccurrenceMatrix"
+      ],
+      "candidates": [
+        {
+          "phrase": "what is a second order co ocurrence matrix",
+          "concept": "CooccurrenceMatrix",
+          "semantic_score": 0.6229119300842285,
+          "cross_score": 2.07859206199646
+        }
+      ]
+    },
+    {
+      "source_question_id": "8b3d3953454c88bde88181897a7a2c0c8dd87e23",
+      "text": "What embedding techniques are explored in the paper?",
+      "gold_concepts": [
+        "WordEmbedding"
+      ],
+      "predicted_concepts": [],
+      "candidates": []
+    }
+  ]
+}

@@ -34,6 +34,10 @@ Cập nhật gần nhất: 13/10/2026
   `CooccurrenceMatrix`, active learning bị gán `TransferLearning`, và NMT bị mở rộng thêm
   `PhraseBasedMachineTranslation`. Không tuning lại theo validation; lưu audit để thiết kế
   cross-encoder trên development/nhãn mới.
+- [x] Thử cross-encoder `ms-marco-MiniLM-L6-v2` để re-rank Top-5 concept trên bộ nhãn
+  development. Cấu hình tốt nhất chỉ bằng phrase-first (precision/recall/F1 0,9444,
+  exact match 0,875); threshold cao hơn làm giảm recall. Đã loại candidate khỏi pipeline,
+  giữ hạ tầng pair-scoring để thử model entity-linking/NLI phù hợp hơn trong tương lai.
 
 ### Mới nhất: Audit và sửa precision cho Result-centric scoring v2
 

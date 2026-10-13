@@ -1,6 +1,8 @@
+import numpy as np
 import pytest
 
 from app.models import SearchMethod, SearchResult
+from app.rag.reranker import SentenceTransformerCrossEncoderReranker
 from scripts.evaluate_cross_encoder_reranker import (
     find_gold_rank,
     reciprocal_rank,
@@ -38,3 +40,17 @@ def test_reranker_rejects_mismatched_scores() -> None:
 def test_reciprocal_rank_handles_missing_result() -> None:
     assert reciprocal_rank(4) == 0.25
     assert reciprocal_rank(None) == 0.0
+
+
+def test_pair_scoring_reuses_loaded_cross_encoder() -> None:
+    class FakeModel:
+        def predict(
+            self, pairs: list[tuple[str, str]], *, show_progress_bar: bool
+        ) -> np.ndarray:
+            assert show_progress_bar is False
+            return np.asarray([len(left) - len(right) for left, right in pairs])
+
+    reranker = SentenceTransformerCrossEncoderReranker()
+    reranker._model = FakeModel()
+
+    assert reranker.score_pairs([("abcd", "a"), ("a", "abcd")]) == [3.0, -3.0]

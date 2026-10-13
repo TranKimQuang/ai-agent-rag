@@ -235,6 +235,17 @@ class SemanticTextEncoder(Protocol):
     def encode(self, texts: list[str]) -> NDArray[np.float32]: ...
 
 
+class TextPairScorer(Protocol):
+    def score_pairs(self, pairs: list[tuple[str, str]]) -> list[float]: ...
+
+
+@dataclass(frozen=True)
+class CrossEncoderConceptCandidate:
+    phrase: str
+    link: ConceptLink
+    cross_score: float
+
+
 def local_name(value: URIRef) -> str:
     """Return the readable last component of an RDF URI."""
     text = str(value)
@@ -508,6 +519,56 @@ class OntologyService:
 
         return sorted(links.values(), key=lambda link: (-link.score, link.concept))[
             :active_limit
+        ]
+
+    def cross_encoder_query_candidates(
+        self,
+        text: str,
+        scorer: TextPairScorer,
+        *,
+        semantic_threshold: float | None = None,
+        candidate_limit: int = 5,
+    ) -> list[CrossEncoderConceptCandidate]:
+        """Score phrase-level semantic candidates against complete concept descriptions."""
+        if candidate_limit < 1:
+            raise ValueError("candidate_limit must be at least 1")
+        active_threshold = (
+            self.query_linking_threshold
+            if semantic_threshold is None
+            else semantic_threshold
+        )
+        phrases = self.query_phrases(text)
+        candidates_by_phrase = self.semantic_candidates_batch(
+            phrases, limit=candidate_limit
+        )
+        concepts, documents = self._concept_documents()
+        documents_by_name = {
+            local_name(concept): document
+            for concept, document in zip(concepts, documents, strict=True)
+        }
+
+        records: list[tuple[str, ConceptLink, str]] = []
+        for phrase, candidates in zip(phrases, candidates_by_phrase, strict=True):
+            for candidate in candidates:
+                if candidate.score < active_threshold:
+                    continue
+                records.append(
+                    (phrase, candidate, documents_by_name[candidate.concept])
+                )
+        pairs = [
+            (f"Question: {text}\nKey phrase: {phrase}", document)
+            for phrase, _, document in records
+        ]
+        scores = scorer.score_pairs(pairs)
+        if len(scores) != len(records):
+            raise ValueError("Pair scorer must return one score for every candidate")
+        return [
+            CrossEncoderConceptCandidate(
+                phrase=phrase,
+                link=link,
+                cross_score=score,
+            )
+            for (phrase, link, _), score in zip(records, scores, strict=True)
         ]
 
     def configured_concepts(self, text: str) -> list[URIRef]:

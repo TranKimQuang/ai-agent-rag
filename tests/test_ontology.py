@@ -352,6 +352,33 @@ def test_phrase_linking_requires_stronger_semantic_score_after_exact_alias() -> 
     assert {link.concept for link in links} == {"SemanticSearch"}
 
 
+def test_cross_encoder_concept_candidates_keep_phrase_and_both_scores() -> None:
+    class CandidateScorer:
+        def score_pairs(self, pairs: list[tuple[str, str]]) -> list[float]:
+            return [float("retrieval augmented generation" in right.lower()) for _, right in pairs]
+
+    service = OntologyService(
+        semantic_encoder=ConceptLinkingEncoder(),
+        linking_method=ConceptLinkingMethod.HYBRID,
+        query_linking_threshold=0.55,
+    )
+
+    candidates = service.cross_encoder_query_candidates(
+        "How does the system retrieves external evidence before producing answers?",
+        CandidateScorer(),
+        semantic_threshold=0.8,
+    )
+
+    rag = next(
+        candidate
+        for candidate in candidates
+        if candidate.link.concept == "RetrievalAugmentedGeneration"
+    )
+    assert "retrieves external evidence" in rag.phrase
+    assert rag.link.score == 1.0
+    assert rag.cross_score == 1.0
+
+
 def test_graph_chunk_candidates_follow_concepts_and_document_scope() -> None:
     service = OntologyService()
     service.index_chunks(

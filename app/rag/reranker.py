@@ -22,10 +22,9 @@ class SentenceTransformerCrossEncoderReranker:
         self.device = device
         self._model: object | None = None
 
-    def rerank(
-        self, query: str, candidates: list[SearchResult]
-    ) -> list[SearchResult]:
-        if not candidates:
+    def score_pairs(self, pairs: list[tuple[str, str]]) -> list[float]:
+        """Score arbitrary text pairs without applying retrieval-specific ordering."""
+        if not pairs:
             return []
         try:
             if self._model is None:
@@ -33,15 +32,22 @@ class SentenceTransformerCrossEncoderReranker:
 
                 self._model = CrossEncoder(self.model_name, device=self.device)
             scores = self._model.predict(  # type: ignore[attr-defined]
-                [(query, candidate.text) for candidate in candidates],
+                pairs,
                 show_progress_bar=False,
             )
         except Exception as exc:
             raise CrossEncoderModelError(
                 f"Could not load or run reranker model '{self.model_name}'"
             ) from exc
+        return [float(score) for score in scores.tolist()]
 
-        paired = zip(candidates, scores.tolist(), strict=True)
+    def rerank(
+        self, query: str, candidates: list[SearchResult]
+    ) -> list[SearchResult]:
+        if not candidates:
+            return []
+        scores = self.score_pairs([(query, candidate.text) for candidate in candidates])
+        paired = zip(candidates, scores, strict=True)
         return [
             candidate.model_copy(update={"score": float(score)})
             for candidate, score in sorted(
