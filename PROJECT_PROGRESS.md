@@ -29,6 +29,11 @@ Cập nhật gần nhất: 13/10/2026
   chưa tuyên bố ý nghĩa thống kê và chưa mở final-test.
 - [x] Bật đúng candidate đã validation cho server demo: query threshold 0,55,
   phrase-first, margin 0,03 và secondary threshold delta 0,05.
+- [x] Rà 7 câu đổi gold rank cho thấy 3 liên kết đúng (`LanguageModel`, CNN,
+  `Crowdsourcing`) và 3 cảnh báo query drift/vocabulary gap: coreference bị gán nhầm
+  `CooccurrenceMatrix`, active learning bị gán `TransferLearning`, và NMT bị mở rộng thêm
+  `PhraseBasedMachineTranslation`. Không tuning lại theo validation; lưu audit để thiết kế
+  cross-encoder trên development/nhãn mới.
 
 ### Mới nhất: Audit và sửa precision cho Result-centric scoring v2
 
