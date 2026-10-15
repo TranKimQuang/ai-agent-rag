@@ -1,10 +1,11 @@
 from pathlib import Path
 
 import numpy as np
+import pytest
 from rdflib import OWL, RDF, RDFS, XSD, Literal, Namespace, URIRef
 from rdflib.namespace import DCTERMS, SKOS
 
-from app.models import Chunk, ConceptLinkingMethod
+from app.models import Chunk, ConceptLink, ConceptLinkingMethod
 from app.ontology.service import QA, OntologyService, local_name
 
 CSO = Namespace("https://cso.kmi.open.ac.uk/topics/")
@@ -377,6 +378,46 @@ def test_cross_encoder_concept_candidates_keep_phrase_and_both_scores() -> None:
     assert "retrieves external evidence" in rag.phrase
     assert rag.link.score == 1.0
     assert rag.cross_score == 1.0
+
+
+def test_document_topic_prior_rewards_supported_and_penalizes_unrelated_links() -> None:
+    service = OntologyService(
+        document_topic_prior=True,
+        document_topic_bonus=0.05,
+        document_topic_penalty=0.05,
+    )
+    service._document_topic_concepts["paper"] = (QA.InformationRetrieval,)
+    supported = service._apply_document_topic_prior(
+        ConceptLink(
+            concept="InformationRetrieval",
+            label="information retrieval",
+            score=0.58,
+            source=ConceptLinkingMethod.SEMANTIC,
+        ),
+        "paper",
+    )
+    unrelated = service._apply_document_topic_prior(
+        ConceptLink(
+            concept="AuthorProfiling",
+            label="author profiling",
+            score=0.58,
+            source=ConceptLinkingMethod.SEMANTIC,
+        ),
+        "paper",
+    )
+    explicit = service._apply_document_topic_prior(
+        ConceptLink(
+            concept="AuthorProfiling",
+            label="author profiling",
+            score=1.0,
+            source=ConceptLinkingMethod.ALIAS,
+        ),
+        "paper",
+    )
+
+    assert supported.score == pytest.approx(0.63)
+    assert unrelated.score == pytest.approx(0.53)
+    assert explicit.score == 1.0
 
 
 def test_graph_chunk_candidates_follow_concepts_and_document_scope() -> None:

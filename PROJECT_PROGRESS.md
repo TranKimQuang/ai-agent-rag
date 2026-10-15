@@ -1,6 +1,20 @@
 # THEO DÕI TIẾN ĐỘ ĐỒ ÁN AI AGENT + RAG
 
-Cập nhật gần nhất: 13/10/2026
+Cập nhật gần nhất: 14/10/2026
+
+### Mới nhất: Document-topic prior cho Ontology scoring
+
+- [x] Bổ sung document-aware query linking: hồ sơ concept được lập trong đúng paper,
+  exact alias giữ nguyên, semantic candidate được thưởng/phạt bằng tham số cấu hình.
+- [x] Thử đối chứng trên development v10 (20 paper/824 chunk/74 câu), không mở lại
+  validation v13 hoặc final-test. Bản lấy ba chunk đầu làm query coverage giảm 17/74
+  xuống 13/74 và làm chất lượng retrieval giảm; candidate này bị loại.
+- [x] Thử hồ sơ toàn bài. Expansion tiếp tục query drift và bản kết hợp giảm điểm; không
+  chọn. Riêng re-ranking giữ Recall@5 0,6164, tăng MRR@5 từ 0,3818 lên 0,3840 và
+  nDCG@5 từ 0,4140 lên 0,4158 (2 câu tốt hơn, 1 câu xấu hơn).
+- [x] Paired bootstrap 10.000 mẫu cho re-ranking toàn bài chưa có ý nghĩa thống kê:
+  MRR p=0,6485, nDCG p=0,6517; tính năng tiếp tục tắt mặc định và chưa được đưa vào
+  pipeline chính. Artifact được lưu ở `evaluation/qasper_document_topic_development_v15/`.
 
 ### Mới nhất: Phrase-first query concept linking
 
@@ -800,10 +814,13 @@ Milestone tiếp theo: kiểm chứng khả năng khái quát của semantic con
 1. Giữ nguyên kết quả held-out v3 và validation v7; không tiếp tục tuning theo các tập đã xem.
 2. Giữ nguyên validation v9; không tuning scoring theo tập này. Tạo development split mới
    và thiết lập baseline document-scoped trước khi kết luận thêm về concept coverage.
-3. Đánh giá thủ công hoặc gán nhãn các query links mới ở threshold 0,55, đặc biệt các case
+3. Không dùng document-topic prior cho query expansion. Nếu tiếp tục candidate này, chỉ khóa
+   biến thể re-ranking-only dùng hồ sơ toàn bài và kiểm tra đúng một lần trên validation
+   paper-disjoint mới; không tuyên bố cải thiện từ chênh lệch development rất nhỏ hiện tại.
+4. Đánh giá thủ công hoặc gán nhãn các query links mới ở threshold 0,55, đặc biệt các case
    expansion cứu/xấu đi. Không tăng trọng số graph và không mở rộng vocabulary theo v11;
    ưu tiên mapping có confidence được đánh giá trên nhãn concept riêng.
-4. Khi retrieval ổn định, xác nhận answer correctness/citation/unanswerable trên mẫu lớn hơn.
+5. Khi retrieval ổn định, xác nhận answer correctness/citation/unanswerable trên mẫu lớn hơn.
 
 Chưa ưu tiên trong milestone này: mở rộng giao diện, PostgreSQL, pgvector, OCR và
 framework Agent phức tạp.

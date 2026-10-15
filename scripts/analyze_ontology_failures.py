@@ -29,6 +29,10 @@ def main() -> None:
     parser.add_argument(
         "--query-phrase-secondary-threshold-delta", type=float, default=0.05
     )
+    parser.add_argument("--document-topic-prior", action="store_true")
+    parser.add_argument("--document-topic-bonus", type=float, default=0.05)
+    parser.add_argument("--document-topic-penalty", type=float, default=0.05)
+    parser.add_argument("--document-topic-chunk-limit", type=int, default=3)
     args = parser.parse_args()
 
     chunks, questions = load_dataset(args.dataset)
@@ -49,6 +53,10 @@ def main() -> None:
         query_phrase_secondary_threshold_delta=(
             args.query_phrase_secondary_threshold_delta
         ),
+        document_topic_prior=args.document_topic_prior,
+        document_topic_bonus=args.document_topic_bonus,
+        document_topic_penalty=args.document_topic_penalty,
+        document_topic_chunk_limit=args.document_topic_chunk_limit,
     )
     chunks, _ = ontology.index_chunks(chunks)
     chunks_by_id = {chunk.id: chunk for chunk in chunks}
@@ -66,7 +74,9 @@ def main() -> None:
     for question in questions:
         query_concepts = [
             local_name(concept)
-            for concept in ontology.configured_query_concepts(question.query)
+            for concept in ontology.configured_query_concepts(
+                question.query, document_id=question.document_id
+            )
         ]
         gold_chunks = [
             chunks_by_id[chunk_id]
@@ -128,6 +138,10 @@ def main() -> None:
         "query_phrase_secondary_threshold_delta": (
             args.query_phrase_secondary_threshold_delta
         ),
+        "document_topic_prior": args.document_topic_prior,
+        "document_topic_bonus": args.document_topic_bonus,
+        "document_topic_penalty": args.document_topic_penalty,
+        "document_topic_chunk_limit": args.document_topic_chunk_limit,
         "summary": summary,
         "questions": rows,
     }

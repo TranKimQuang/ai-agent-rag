@@ -267,6 +267,10 @@ class OntologyService:
         query_phrase_linking: bool = False,
         query_phrase_margin: float = 0.03,
         query_phrase_secondary_threshold_delta: float = 0.05,
+        document_topic_prior: bool = False,
+        document_topic_bonus: float = 0.05,
+        document_topic_penalty: float = 0.05,
+        document_topic_chunk_limit: int = 3,
     ) -> None:
         self.graph = Graph()
         self.graph.parse(ontology_path, format="turtle")
@@ -283,10 +287,17 @@ class OntologyService:
         self.query_phrase_linking = query_phrase_linking
         self.query_phrase_margin = query_phrase_margin
         self.query_phrase_secondary_threshold_delta = query_phrase_secondary_threshold_delta
+        self.document_topic_prior = document_topic_prior
+        self.document_topic_bonus = document_topic_bonus
+        self.document_topic_penalty = document_topic_penalty
+        self.document_topic_chunk_limit = document_topic_chunk_limit
         self._concept_embeddings: NDArray[np.float32] | None = None
         self._concept_aliases = self._load_concept_aliases()
         self._configured_concept_cache: dict[str, tuple[URIRef, ...]] = {}
-        self._configured_query_concept_cache: dict[str, tuple[URIRef, ...]] = {}
+        self._configured_query_concept_cache: dict[
+            tuple[str, str | None], tuple[URIRef, ...]
+        ] = {}
+        self._document_topic_concepts: dict[str, tuple[URIRef, ...]] = {}
 
     def _load_concept_aliases(self) -> dict[URIRef, set[str]]:
         concept_types = {
@@ -472,6 +483,7 @@ class OntologyService:
         self,
         text: str,
         *,
+        document_id: str | None = None,
         threshold: float | None = None,
         limit: int | None = None,
         margin: float | None = None,
@@ -503,8 +515,16 @@ class OntologyService:
         for candidates in candidates_by_phrase:
             if not candidates:
                 continue
-            best = candidates[0]
-            runner_up_score = candidates[1].score if len(candidates) > 1 else 0.0
+            adjusted = sorted(
+                (
+                    self._apply_document_topic_prior(candidate, document_id)
+                    for candidate in candidates
+                ),
+                key=lambda candidate: candidate.score,
+                reverse=True,
+            )
+            best = adjusted[0]
+            runner_up_score = adjusted[1].score if len(adjusted) > 1 else 0.0
             semantic_threshold = active_threshold + (
                 self.query_phrase_secondary_threshold_delta if links else 0.0
             )
@@ -520,6 +540,33 @@ class OntologyService:
         return sorted(links.values(), key=lambda link: (-link.score, link.concept))[
             :active_limit
         ]
+
+    def _apply_document_topic_prior(
+        self, link: ConceptLink, document_id: str | None
+    ) -> ConceptLink:
+        if (
+            not self.document_topic_prior
+            or document_id is None
+            or link.source == ConceptLinkingMethod.ALIAS
+        ):
+            return link
+        topics = self._document_topic_concepts.get(document_id, ())
+        if not topics:
+            return link
+        known_by_name = {local_name(concept): concept for concept in self._concept_aliases}
+        concept = known_by_name.get(link.concept)
+        supported = concept is not None and any(
+            concept == topic
+            or concept in self._neighbors(topic)
+            or topic in self._neighbors(concept)
+            for topic in topics
+        )
+        adjustment = (
+            self.document_topic_bonus if supported else -self.document_topic_penalty
+        )
+        return link.model_copy(
+            update={"score": min(max(link.score + adjustment, 0.0), 1.0)}
+        )
 
     def cross_encoder_query_candidates(
         self,
@@ -587,12 +634,15 @@ class OntologyService:
             key=local_name,
         )
 
-    def configured_query_concepts(self, text: str) -> list[URIRef]:
+    def configured_query_concepts(
+        self, text: str, document_id: str | None = None
+    ) -> list[URIRef]:
         """Link a query and optionally include its requested ontology entity type."""
-        cached = self._configured_query_concept_cache.get(text)
+        cache_key = (text, document_id)
+        cached = self._configured_query_concept_cache.get(cache_key)
         if cached is None:
             links = (
-                self.link_query_concepts(text)
+                self.link_query_concepts(text, document_id=document_id)
                 if self.query_phrase_linking
                 else self.link_concepts(
                     text,
@@ -609,7 +659,7 @@ class OntologyService:
                 for link in links
                 if link.concept in known_by_name
             )
-            self._configured_query_concept_cache[text] = cached
+            self._configured_query_concept_cache[cache_key] = cached
         concepts = list(cached)
         if self.query_type_intent:
             concepts.extend(self.identify_query_type_concepts(text))
@@ -643,6 +693,8 @@ class OntologyService:
         concept_links = 0
 
         linked_chunks = self.configured_concepts_batch([chunk.text for chunk in chunks])
+        document_topics: dict[str, list[URIRef]] = {}
+        document_topic_counts: dict[str, int] = {}
         for chunk, concepts in zip(chunks, linked_chunks, strict=True):
             document = URIRef(f"{QA}document-{chunk.document_id}")
             section = URIRef(f"{QA}section-{chunk.document_id}-page-{chunk.page}")
@@ -663,11 +715,19 @@ class OntologyService:
                 concept_links += 1
 
             self._index_result_context(document, chunk_resource, chunk.text, concepts)
+            seen = document_topic_counts.get(chunk.document_id, 0)
+            if seen < self.document_topic_chunk_limit:
+                document_topics.setdefault(chunk.document_id, []).extend(concepts)
+                document_topic_counts[chunk.document_id] = seen + 1
 
             annotated.append(
                 chunk.model_copy(update={"concepts": [local_name(value) for value in concepts]})
             )
 
+        for document_id, concepts in document_topics.items():
+            self._document_topic_concepts[document_id] = tuple(
+                sorted(set(concepts), key=local_name)
+            )
         return annotated, concept_links
 
     def _index_result_context(
@@ -871,7 +931,7 @@ class OntologyService:
         """
         if limit < 1:
             raise ValueError("limit must be at least 1")
-        query_concepts = self.configured_query_concepts(query)
+        query_concepts = self.configured_query_concepts(query, document_id=document_id)
         if not query_concepts:
             return []
 
@@ -950,8 +1010,10 @@ class OntologyService:
         label = next(iter(self.graph.objects(concept, SKOS.prefLabel)), None)
         return str(label) if isinstance(label, Literal) else local_name(concept)
 
-    def expand_query(self, query: str) -> QueryExpansion:
-        concepts = self.configured_query_concepts(query)
+    def expand_query(
+        self, query: str, document_id: str | None = None
+    ) -> QueryExpansion:
+        concepts = self.configured_query_concepts(query, document_id=document_id)
         terms: set[str] = set()
         for concept in concepts:
             terms.update(str(value) for value in self.graph.objects(concept, SKOS.altLabel))

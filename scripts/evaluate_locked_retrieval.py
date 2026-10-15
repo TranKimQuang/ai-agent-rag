@@ -66,6 +66,10 @@ def main() -> None:
         query_phrase_secondary_threshold_delta=float(
             config.get("query_phrase_secondary_threshold_delta", 0.05)
         ),
+        document_topic_prior=bool(config.get("document_topic_prior", False)),
+        document_topic_bonus=float(config.get("document_topic_bonus", 0.05)),
+        document_topic_penalty=float(config.get("document_topic_penalty", 0.05)),
+        document_topic_chunk_limit=int(config.get("document_topic_chunk_limit", 3)),
     )
     chunks, concept_links = ontology.index_chunks(chunks)
     retriever = InMemoryHybridRetriever(

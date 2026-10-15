@@ -410,7 +410,7 @@ class InMemoryHybridRetriever:
         if self.ontology is None:
             return self._search_hybrid(query, limit, document_id)
 
-        expansion = self.ontology.expand_query(query)
+        expansion = self.ontology.expand_query(query, document_id=document_id)
         retrieval_query = expansion.expanded_query if use_expansion else query
         candidate_limit = max(limit * 4, 20)
         candidates = self._rank_hybrid_candidates(
