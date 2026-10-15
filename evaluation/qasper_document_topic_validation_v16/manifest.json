@@ -33,7 +33,14 @@
     "chunks": 1494,
     "questions": 77,
     "sha256": "8e172b89c3d64de265bce247b97f0e12405766b489acbf4a4f9e3c4e208dc5eb",
-    "evaluation_status": "prepared_not_evaluated"
+    "evaluation_status": "evaluated_once",
+    "evaluated_on": "2026-10-15",
+    "result": "locked_result_once.json",
+    "result_sha256": "f6ca2b7b3717731cf806714d5b2e01af22801e73fca619f1748ff7a38700968e",
+    "coverage": "ontology_coverage.json",
+    "coverage_sha256": "3b5dc2305fdf184ec1bab20cdcb1b04a16a898a4e2c418cfa0ee01f3142d8903",
+    "significance": "significance.json",
+    "significance_sha256": "374085982d59e575c82bbe9eeb813a209c66b01b8d1b018f4175536ab08a01f4"
   },
   "policy": "Run the frozen retrieval configuration exactly once. Do not tune on this validation after observing results. Final-test v4 remains sealed."
 }

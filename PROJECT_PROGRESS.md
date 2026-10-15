@@ -1,6 +1,19 @@
 # THEO DÕI TIẾN ĐỘ ĐỒ ÁN AI AGENT + RAG
 
-Cập nhật gần nhất: 14/10/2026
+Cập nhật gần nhất: 15/10/2026
+
+### Mới nhất: Validation v16 loại document-topic prior
+
+- [x] Khóa code ở commit `38ccd4e`, tạo validation mới 20 paper/1.494 chunk/77 câu;
+  overlap 0 với 305 paper đã dùng trước và giữ final-test v4 đóng.
+- [x] Chạy đúng một lần candidate re-ranking-only. Hybrid đạt Recall@5/MRR@5/nDCG@5
+  `0,5569/0,4035/0,4066`; document-topic prior đạt `0,5580/0,4004/0,4045`.
+- [x] Candidate cứu/cải thiện 3 câu nhưng làm xấu/mất 4 câu. Bootstrap 10.000 mẫu không
+  có ý nghĩa thống kê (MRR p=0,8135; nDCG p=0,8373), nên candidate bị loại và không
+  được tuning lại theo validation này.
+- [x] Coverage v16: 19/77 query có concept, 25/77 gold evidence có concept và chỉ 3/77
+  cặp query-gold có quan hệ. Nút thắt là độ chính xác/độ phủ của quan hệ Ontology có ích,
+  không phải thiếu thêm prior heuristic.
 
 ### Mới nhất: Document-topic prior cho Ontology scoring
 
@@ -814,9 +827,9 @@ Milestone tiếp theo: kiểm chứng khả năng khái quát của semantic con
 1. Giữ nguyên kết quả held-out v3 và validation v7; không tiếp tục tuning theo các tập đã xem.
 2. Giữ nguyên validation v9; không tuning scoring theo tập này. Tạo development split mới
    và thiết lập baseline document-scoped trước khi kết luận thêm về concept coverage.
-3. Không dùng document-topic prior cho query expansion. Nếu tiếp tục candidate này, chỉ khóa
-   biến thể re-ranking-only dùng hồ sơ toàn bài và kiểm tra đúng một lần trên validation
-   paper-disjoint mới; không tuyên bố cải thiện từ chênh lệch development rất nhỏ hiện tại.
+3. Dừng document-topic prior sau validation v16; không đổi threshold/trọng số theo split này.
+   Chuyển trọng tâm sang phân tích 3/77 quan hệ query-gold thực sự có ích và lỗi linking
+   trong các câu bị regression, thay vì bổ sung heuristic prior mới.
 4. Đánh giá thủ công hoặc gán nhãn các query links mới ở threshold 0,55, đặc biệt các case
    expansion cứu/xấu đi. Không tăng trọng số graph và không mở rộng vocabulary theo v11;
    ưu tiên mapping có confidence được đánh giá trên nhãn concept riêng.
