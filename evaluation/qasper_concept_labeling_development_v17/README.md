@@ -46,7 +46,8 @@ dùng trực tiếp làm nhãn train/dev**. Kết quả gồm 8 `exact`, 2 `rela
 Spot-check cũng phát hiện model còn gán topic quá rộng cho câu hỏi chung chung như “mô
 hình nào”, “baseline nào” hoặc “ngôn ngữ nào”. Vì vậy reviewer local chỉ có tác dụng gợi
 ý thứ tự review, không thay thế người gán nhãn. Chi tiết và quyết định được ghi trong
-`PROVISIONAL_LLM_REVIEW.md`.
+`PROVISIONAL_LLM_REVIEW.md`. Cổng surface-form bảo thủ chỉ xác nhận 3/25 query có tên
+concept trực tiếp; mọi hàng vẫn giữ `auto_promote_to_gold=false`.
 
 ## Quy trình tiếp theo
 

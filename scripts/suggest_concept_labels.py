@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import re
 from pathlib import Path
 from typing import Literal
 
@@ -22,6 +23,61 @@ class ConceptLabelSuggestion(BaseModel):
 class ConceptLabelBatch(BaseModel):
     model_config = ConfigDict(extra="forbid", strict=True)
     suggestions: list[ConceptLabelSuggestion]
+
+
+GENERIC_CONCEPT_TAILS = {
+    "analysis",
+    "learning",
+    "method",
+    "model",
+    "network",
+    "processing",
+    "retrieval",
+    "search",
+}
+
+
+def concept_surface_forms(concept: str) -> set[str]:
+    """Return conservative English forms usable as direct textual evidence."""
+    words = re.findall(r"[A-Z]+(?=[A-Z][a-z]|\d|$)|[A-Z]?[a-z]+|\d+", concept)
+    if not words:
+        return {concept.casefold()}
+    lowered = [word.casefold() for word in words]
+    phrase = " ".join(lowered)
+    forms = {phrase}
+    tail = lowered[-1]
+    if tail not in GENERIC_CONCEPT_TAILS and len(tail) >= 4:
+        forms.add(tail)
+        forms.add(f"{tail}s")
+    return forms
+
+
+def concept_is_explicit(concept: str, text: str) -> bool:
+    normalized = " ".join(re.findall(r"[a-z0-9]+", text.casefold()))
+    padded = f" {normalized} "
+    return any(f" {form} " in padded for form in concept_surface_forms(concept))
+
+
+def triage_suggestion(
+    suggestion: ConceptLabelSuggestion,
+    *,
+    question: str,
+) -> dict[str, object]:
+    explicit = [
+        concept
+        for concept in suggestion.query_concepts
+        if concept_is_explicit(concept, question)
+    ]
+    unsupported = [
+        concept for concept in suggestion.query_concepts if concept not in explicit
+    ]
+    return {
+        "question_id": suggestion.question_id,
+        "explicit_query_concepts": explicit,
+        "unsupported_query_concepts": unsupported,
+        "manual_review_required": True,
+        "auto_promote_to_gold": False,
+    }
 
 
 def validate_allowed_concepts(
@@ -262,6 +318,25 @@ def main() -> None:
         ]
 
     payload = json.loads(args.output.read_text(encoding="utf-8"))
+    record_by_id = {str(record["question_id"]): record for record in records}
+    ordered_suggestions = [
+        ConceptLabelSuggestion.model_validate(value)
+        for value in payload.get("suggestions", [])
+    ]
+    payload["triage_policy"] = (
+        "Conservative surface-form check only; every suggestion still requires manual "
+        "review and is never promoted automatically."
+    )
+    payload["triage"] = [
+        triage_suggestion(
+            suggestion,
+            question=str(record_by_id[suggestion.question_id]["question"]),
+        )
+        for suggestion in ordered_suggestions
+    ]
+    args.output.write_text(
+        json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8"
+    )
     print(json.dumps({key: value for key, value in payload.items() if key != "suggestions"}, indent=2))
 
 

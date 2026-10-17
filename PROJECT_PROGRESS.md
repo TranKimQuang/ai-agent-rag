@@ -19,7 +19,8 @@ Cập nhật gần nhất: 17/10/2026
 - [x] Thử reviewer Qwen3:4b local trên đủ 25 câu ưu tiên với structured output và
   candidate constraint. Kết quả 8 exact/2 related/6 none/9 uncertain; 7 câu bị loại
   concept ngoài danh sách. Spot-check cho thấy model vẫn gán topic quá rộng cho câu hỏi
-  chung chung, nên chỉ giữ đây là gợi ý tạm thời, không đưa tự động vào gold label.
+  chung chung. Cổng surface-form bảo thủ chỉ xác nhận 3/25 query có concept trực tiếp;
+  toàn bộ vẫn để `auto_promote_to_gold=false`, không đưa tự động vào gold label.
 
 ### Mới nhất: Validation v16 loại document-topic prior
 

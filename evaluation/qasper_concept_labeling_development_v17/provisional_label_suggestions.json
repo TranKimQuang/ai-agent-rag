@@ -288,5 +288,209 @@
       "confidence": 0.5,
       "rationale": "Constraint adjusted: removed concepts outside the supplied candidate lists. The question asks about data cleaning and filtering process, and the evidence excerpt mentions removing articles with top three sentences not forming a relevant summary, which relates to text summarization. The evidence concepts list includes 'TextSummarization' but the excerpt uses a metric for summarization relevance."
     }
+  ],
+  "triage_policy": "Conservative surface-form check only; every suggestion still requires manual review and is never promoted automatically.",
+  "triage": [
+    {
+      "question_id": "85abd60094c92eb16f39f861c6de8c2064807d02",
+      "explicit_query_concepts": [],
+      "unsupported_query_concepts": [
+        "LanguageModel"
+      ],
+      "manual_review_required": true,
+      "auto_promote_to_gold": false
+    },
+    {
+      "question_id": "100cf8b72d46da39fedfe77ec939fb44f25de77f",
+      "explicit_query_concepts": [],
+      "unsupported_query_concepts": [],
+      "manual_review_required": true,
+      "auto_promote_to_gold": false
+    },
+    {
+      "question_id": "14e78db206a8180ea637774aa572b073e3ffa219",
+      "explicit_query_concepts": [],
+      "unsupported_query_concepts": [],
+      "manual_review_required": true,
+      "auto_promote_to_gold": false
+    },
+    {
+      "question_id": "17988d65e46ff7d756076e9191890aec177b081e",
+      "explicit_query_concepts": [],
+      "unsupported_query_concepts": [
+        "DistributionalSemantics"
+      ],
+      "manual_review_required": true,
+      "auto_promote_to_gold": false
+    },
+    {
+      "question_id": "235c156d9c2adc895c9113f53c60f2dd8df45834",
+      "explicit_query_concepts": [],
+      "unsupported_query_concepts": [],
+      "manual_review_required": true,
+      "auto_promote_to_gold": false
+    },
+    {
+      "question_id": "2677b88c2def3ed94e25a776599555a788d197f2",
+      "explicit_query_concepts": [],
+      "unsupported_query_concepts": [
+        "BidirectionalLanguageModel"
+      ],
+      "manual_review_required": true,
+      "auto_promote_to_gold": false
+    },
+    {
+      "question_id": "284ea817fd79bc10b7a82c88d353e8f8a9d7e93c",
+      "explicit_query_concepts": [],
+      "unsupported_query_concepts": [
+        "NaturalLanguageProcessing"
+      ],
+      "manual_review_required": true,
+      "auto_promote_to_gold": false
+    },
+    {
+      "question_id": "4d5f112874250d48eb49649c4abe31d6c9236700",
+      "explicit_query_concepts": [],
+      "unsupported_query_concepts": [
+        "NeuralNetwork"
+      ],
+      "manual_review_required": true,
+      "auto_promote_to_gold": false
+    },
+    {
+      "question_id": "562a2feeba9580f5435a94396f2a8751f79a4d5c",
+      "explicit_query_concepts": [
+        "WordEmbedding"
+      ],
+      "unsupported_query_concepts": [],
+      "manual_review_required": true,
+      "auto_promote_to_gold": false
+    },
+    {
+      "question_id": "5758ebff49807a51d080b0ce10ba3f86dcf71925",
+      "explicit_query_concepts": [],
+      "unsupported_query_concepts": [],
+      "manual_review_required": true,
+      "auto_promote_to_gold": false
+    },
+    {
+      "question_id": "7e328cc3cffa521e73f111d6796aaa9661c8eb07",
+      "explicit_query_concepts": [
+        "WordEmbedding"
+      ],
+      "unsupported_query_concepts": [],
+      "manual_review_required": true,
+      "auto_promote_to_gold": false
+    },
+    {
+      "question_id": "80f19be1cbe1f0ec89bbafb9c5f7a8ded37881fb",
+      "explicit_query_concepts": [
+        "WordEmbedding"
+      ],
+      "unsupported_query_concepts": [],
+      "manual_review_required": true,
+      "auto_promote_to_gold": false
+    },
+    {
+      "question_id": "892c346617a3391c7dafc9da1b65e5ea3890294d",
+      "explicit_query_concepts": [],
+      "unsupported_query_concepts": [
+        "NeuralNetwork"
+      ],
+      "manual_review_required": true,
+      "auto_promote_to_gold": false
+    },
+    {
+      "question_id": "8985ead714236458a7496075bc15054df0e3234e",
+      "explicit_query_concepts": [],
+      "unsupported_query_concepts": [],
+      "manual_review_required": true,
+      "auto_promote_to_gold": false
+    },
+    {
+      "question_id": "8b51db1f7a6293b5bd8be49386cce45989b8079f",
+      "explicit_query_concepts": [],
+      "unsupported_query_concepts": [],
+      "manual_review_required": true,
+      "auto_promote_to_gold": false
+    },
+    {
+      "question_id": "b72264a73eea36c828e7de778a8b4599a5d02b39",
+      "explicit_query_concepts": [],
+      "unsupported_query_concepts": [
+        "LanguageModel"
+      ],
+      "manual_review_required": true,
+      "auto_promote_to_gold": false
+    },
+    {
+      "question_id": "b7708cbb50085eb41e306bd2248f1515a5ebada8",
+      "explicit_query_concepts": [],
+      "unsupported_query_concepts": [
+        "LanguageModel"
+      ],
+      "manual_review_required": true,
+      "auto_promote_to_gold": false
+    },
+    {
+      "question_id": "b99948ac4810a7fe3477f6591b8cf211d6398e67",
+      "explicit_query_concepts": [],
+      "unsupported_query_concepts": [],
+      "manual_review_required": true,
+      "auto_promote_to_gold": false
+    },
+    {
+      "question_id": "bb8a0035b767688a98602c33f4714f8ac8ae60db",
+      "explicit_query_concepts": [],
+      "unsupported_query_concepts": [
+        "ROUGE"
+      ],
+      "manual_review_required": true,
+      "auto_promote_to_gold": false
+    },
+    {
+      "question_id": "c0122190119027dc3eb51f0d4b4483d2dbedc696",
+      "explicit_query_concepts": [],
+      "unsupported_query_concepts": [],
+      "manual_review_required": true,
+      "auto_promote_to_gold": false
+    },
+    {
+      "question_id": "da2b43d7d048f3f59adf26a67ce66bd2d8a06326",
+      "explicit_query_concepts": [],
+      "unsupported_query_concepts": [],
+      "manual_review_required": true,
+      "auto_promote_to_gold": false
+    },
+    {
+      "question_id": "db291d734524fa51fb314628b64ebe1bac7f7e1e",
+      "explicit_query_concepts": [],
+      "unsupported_query_concepts": [
+        "ROUGE"
+      ],
+      "manual_review_required": true,
+      "auto_promote_to_gold": false
+    },
+    {
+      "question_id": "f6496b8d09911cdf3a9b72aec0b0be6232a6dba1",
+      "explicit_query_concepts": [],
+      "unsupported_query_concepts": [],
+      "manual_review_required": true,
+      "auto_promote_to_gold": false
+    },
+    {
+      "question_id": "f95097cf4a0dc036fd8b80c007cd8d7a157b7816",
+      "explicit_query_concepts": [],
+      "unsupported_query_concepts": [],
+      "manual_review_required": true,
+      "auto_promote_to_gold": false
+    },
+    {
+      "question_id": "fd6c194632230e392088fc1f574c8626c6a2fa96",
+      "explicit_query_concepts": [],
+      "unsupported_query_concepts": [],
+      "manual_review_required": true,
+      "auto_promote_to_gold": false
+    }
   ]
 }

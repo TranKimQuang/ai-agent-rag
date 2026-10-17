@@ -22,6 +22,9 @@
 - 12/25 câu được để trống concept phía query.
 - 2/25 câu được để trống concept phía evidence.
 - 7/25 câu chứa concept ngoài candidate list và đã bị constraint loại bỏ.
+- Cổng surface-form bảo thủ chỉ tìm thấy 3/25 câu có query concept được nêu trực tiếp;
+  cả ba đều là `WordEmbedding` trong câu hỏi chứa “embedding/embeddings”. Các candidate
+  còn lại vẫn phải review và không được tự động nâng thành nhãn chuẩn.
 
 ## Spot-check chất lượng
 
