@@ -1,0 +1,167 @@
+{
+  "selection_metric": "hybrid_f1",
+  "selected_threshold": 0.45,
+  "selected_results": {
+    "alias": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "exact_match": 0.76,
+      "examples": 25.0
+    },
+    "semantic": {
+      "precision": 0.07142857142857142,
+      "recall": 0.16666666666666666,
+      "f1": 0.1,
+      "exact_match": 0.64,
+      "examples": 25.0
+    },
+    "hybrid": {
+      "precision": 0.07142857142857142,
+      "recall": 0.16666666666666666,
+      "f1": 0.1,
+      "exact_match": 0.64,
+      "examples": 25.0
+    }
+  },
+  "by_threshold": {
+    "0.45": {
+      "alias": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "exact_match": 0.76,
+        "examples": 25.0
+      },
+      "semantic": {
+        "precision": 0.07142857142857142,
+        "recall": 0.16666666666666666,
+        "f1": 0.1,
+        "exact_match": 0.64,
+        "examples": 25.0
+      },
+      "hybrid": {
+        "precision": 0.07142857142857142,
+        "recall": 0.16666666666666666,
+        "f1": 0.1,
+        "exact_match": 0.64,
+        "examples": 25.0
+      }
+    },
+    "0.50": {
+      "alias": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "exact_match": 0.76,
+        "examples": 25.0
+      },
+      "semantic": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "exact_match": 0.68,
+        "examples": 25.0
+      },
+      "hybrid": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "exact_match": 0.68,
+        "examples": 25.0
+      }
+    },
+    "0.55": {
+      "alias": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "exact_match": 0.76,
+        "examples": 25.0
+      },
+      "semantic": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "exact_match": 0.76,
+        "examples": 25.0
+      },
+      "hybrid": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "exact_match": 0.76,
+        "examples": 25.0
+      }
+    },
+    "0.60": {
+      "alias": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "exact_match": 0.76,
+        "examples": 25.0
+      },
+      "semantic": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "exact_match": 0.76,
+        "examples": 25.0
+      },
+      "hybrid": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "exact_match": 0.76,
+        "examples": 25.0
+      }
+    },
+    "0.65": {
+      "alias": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "exact_match": 0.76,
+        "examples": 25.0
+      },
+      "semantic": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "exact_match": 0.76,
+        "examples": 25.0
+      },
+      "hybrid": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "exact_match": 0.76,
+        "examples": 25.0
+      }
+    },
+    "0.70": {
+      "alias": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "exact_match": 0.76,
+        "examples": 25.0
+      },
+      "semantic": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "exact_match": 0.76,
+        "examples": 25.0
+      },
+      "hybrid": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "exact_match": 0.76,
+        "examples": 25.0
+      }
+    }
+  }
+}

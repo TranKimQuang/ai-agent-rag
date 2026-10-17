@@ -245,6 +245,8 @@
   <rdf:Description rdf:about="https://example.org/document-qa#WordEmbedding">
     <rdf:type rdf:resource="https://example.org/document-qa#Method"/>
     <skos:prefLabel xml:lang="en">word embedding</skos:prefLabel>
+    <skos:altLabel xml:lang="en">embedding</skos:altLabel>
+    <skos:altLabel xml:lang="en">embeddings</skos:altLabel>
     <skos:altLabel xml:lang="en">word embeddings</skos:altLabel>
     <skos:altLabel xml:lang="en">word vector</skos:altLabel>
     <skos:altLabel xml:lang="en">distributed word representation</skos:altLabel>

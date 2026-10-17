@@ -540,6 +540,20 @@ def test_validation_driven_vocabulary_links_real_research_phrases() -> None:
     } <= concepts
 
 
+def test_alias_concept_linking_recognizes_repeated_embedding_shorthand() -> None:
+    service = OntologyService()
+
+    singular = service.link_concepts(
+        "What embedding algorithm is used?", ConceptLinkingMethod.ALIAS
+    )
+    plural = service.link_concepts(
+        "What embeddings do they use?", ConceptLinkingMethod.ALIAS
+    )
+
+    assert {link.concept for link in singular} == {"WordEmbedding"}
+    assert {link.concept for link in plural} == {"WordEmbedding"}
+
+
 def test_validation_driven_query_expansion_uses_domain_relations() -> None:
     expansion = OntologyService().expand_query(
         "How is semantic role induction evaluated on a parallel corpus?"

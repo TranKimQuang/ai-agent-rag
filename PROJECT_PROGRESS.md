@@ -21,6 +21,13 @@ Cập nhật gần nhất: 17/10/2026
   concept ngoài danh sách. Spot-check cho thấy model vẫn gán topic quá rộng cho câu hỏi
   chung chung. Cổng surface-form bảo thủ chỉ xác nhận 3/25 query có concept trực tiếp;
   toàn bộ vẫn để `auto_promote_to_gold=false`, không đưa tự động vào gold label.
+- [x] Tiền kiểm bảo thủ 25 câu ưu tiên thành seed development: 6 câu dương/19 câu âm,
+  có ghi lý do và trạng thái `assistant_pre_review`. Trước sửa, Alias F1 0,000 và
+  Semantic/Hybrid tốt nhất chỉ đạt F1 0,100.
+- [x] Chỉ bổ sung alias có bằng chứng lặp lại `embedding/embeddings` cho WordEmbedding.
+  Sau sửa, Alias/Hybrid đạt Precision 1,000, Recall 0,500, F1 0,667 và exact match 0,880;
+  phrase-first F1 0,600 do thêm false positive. Ba nhãn dương chỉ có một ví dụ vẫn để mở,
+  không tiếp tục thêm alias theo từng câu.
 
 ### Mới nhất: Validation v16 loại document-topic prior
 

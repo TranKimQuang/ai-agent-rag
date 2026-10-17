@@ -259,7 +259,7 @@ qa:RecurrentNeuralNetwork a qa:Model ;
 
 qa:WordEmbedding a qa:Method ;
     skos:prefLabel "word embedding"@en ;
-    skos:altLabel "word embeddings"@en, "word vector"@en,
+    skos:altLabel "embedding"@en, "embeddings"@en, "word embeddings"@en, "word vector"@en,
         "distributed word representation"@en ;
     skos:definition "A dense vector representation of a word learned from language data."@en ;
     qa:relatedTo qa:DistributionalSemantics, qa:NaturalLanguageProcessing .

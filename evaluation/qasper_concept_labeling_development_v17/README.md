@@ -49,6 +49,17 @@ hình nào”, “baseline nào” hoặc “ngôn ngữ nào”. Vì vậy revi
 `PROVISIONAL_LLM_REVIEW.md`. Cổng surface-form bảo thủ chỉ xác nhận 3/25 query có tên
 concept trực tiếp; mọi hàng vẫn giữ `auto_promote_to_gold=false`.
 
+`concept_linking_seed_review_25.json` là bản tiền kiểm bảo thủ của 25 câu này theo cùng
+tiêu chí với tập concept-linking cũ: chỉ nhãn được biểu đạt bởi chính câu hỏi, không suy
+ngược từ evidence. Bản này có 6 câu dương và 19 câu âm; trạng thái từng hàng là
+`assistant_pre_review`, vì vậy kết quả benchmark từ file này chỉ mang tính development
+descriptive cho đến khi chủ nhiệm đề tài xác nhận.
+
+`CONCEPT_LINKING_SEED_REPORT.md` ghi kết quả trước/sau cập nhật vocabulary. Ba ví dụ độc
+lập hỗ trợ thêm alias `embedding/embeddings` cho `WordEmbedding`; Alias/Hybrid sau sửa đạt
+Precision 1,000, Recall 0,500 và F1 0,667 ở ngưỡng 0,55. Phrase-first đạt F1 0,600 do còn
+gán sai `LanguageModel` cho “bilingual models”. Không thêm alias chỉ dựa trên một ví dụ.
+
 ## Quy trình tiếp theo
 
 1. Review thủ công 25 hàng có `review_hint=review_candidate_related_to_gold`; dùng gợi ý
