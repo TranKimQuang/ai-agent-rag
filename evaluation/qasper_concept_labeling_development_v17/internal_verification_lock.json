@@ -1,0 +1,22 @@
+{
+  "status": "locked_before_internal_verification",
+  "locked_at": "2026-10-17",
+  "code_commit": "01b6791bd8ebfca1c111b1ca64d7bf9b5939ec33",
+  "development_examples_used_for_selection": 55,
+  "verification_examples_reserved": 57,
+  "method": "hybrid",
+  "semantic_threshold": 0.55,
+  "phrase_first": false,
+  "linking_limit": 20,
+  "selection_metric": "f1_then_precision_then_exact_match",
+  "ontology_ttl_git_blob": "efc54bfaf9ab8284680d86c28188cb2dde9cfdb4",
+  "ontology_owl_git_blob": "ef661922dbc889406ddfe8c0603a7eebd652f033",
+  "rules": [
+    "Label all reserved questions before running predictions.",
+    "Run the reserved verification set exactly once.",
+    "Do not change aliases, threshold, phrase-first policy or ontology from verification results.",
+    "Do not treat assistant_pre_review labels as final human gold labels."
+  ],
+  "verification_run_completed": false,
+  "verification_result_file": null
+}
