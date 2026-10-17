@@ -1,6 +1,21 @@
 # THEO DÕI TIẾN ĐỘ ĐỒ ÁN AI AGENT + RAG
 
-Cập nhật gần nhất: 15/10/2026
+Cập nhật gần nhất: 17/10/2026
+
+### Mới nhất: Concept-linking supervision v17
+
+- [x] Tạo công cụ audit tổng quát phân loại lỗi query/evidence, sinh Top-5 semantic
+  proposal cho cả hai phía và xuất JSON/Markdown/CSV có hàng đợi review.
+- [x] Audit validation v16 chỉ để mô tả: 38/77 thiếu concept cả hai phía, 20 thiếu query,
+  14 thiếu evidence, 2 thiếu quan hệ/phù hợp và 3 có quan hệ hữu ích. Không dùng nhãn
+  validation này để tuning hoặc chạy lại v16.
+- [x] Tạo development v17 riêng: 30 paper/1.483 chunk/112 câu, overlap 0 với 325 paper
+  đã dùng trước. Pool này được phép gán nhãn và phát triển concept linking.
+- [x] Baseline v17: query coverage 30/112, evidence coverage 57/112, quan hệ hữu ích
+  7/112. Hàng đợi gồm 11 thiếu quan hệ/query mismatch, 39 thiếu query, 12 thiếu evidence,
+  43 thiếu cả hai và 7 case hữu ích cần xác minh.
+- [x] Sinh `concept_labeling_review.csv`; 25 câu có semantic candidate liên hệ được với
+  concept evidence và được ưu tiên review, 55 câu cần rà concept evidence trước.
 
 ### Mới nhất: Validation v16 loại document-topic prior
 
@@ -827,13 +842,12 @@ Milestone tiếp theo: kiểm chứng khả năng khái quát của semantic con
 1. Giữ nguyên kết quả held-out v3 và validation v7; không tiếp tục tuning theo các tập đã xem.
 2. Giữ nguyên validation v9; không tuning scoring theo tập này. Tạo development split mới
    và thiết lập baseline document-scoped trước khi kết luận thêm về concept coverage.
-3. Dừng document-topic prior sau validation v16; không đổi threshold/trọng số theo split này.
-   Chuyển trọng tâm sang phân tích 3/77 quan hệ query-gold thực sự có ích và lỗi linking
-   trong các câu bị regression, thay vì bổ sung heuristic prior mới.
-4. Đánh giá thủ công hoặc gán nhãn các query links mới ở threshold 0,55, đặc biệt các case
-   expansion cứu/xấu đi. Không tăng trọng số graph và không mở rộng vocabulary theo v11;
-   ưu tiên mapping có confidence được đánh giá trên nhãn concept riêng.
-5. Khi retrieval ổn định, xác nhận answer correctness/citation/unanswerable trên mẫu lớn hơn.
+3. Review 25 câu ưu tiên trong development v17, sau đó mở rộng dần đến 112 câu; tuyệt đối
+   không dùng validation v16 làm training data.
+4. Dùng nhãn v17 để so sánh alias/semantic/phrase-first và chỉ bổ sung concept/quan hệ có
+   bằng chứng lặp lại; không tiếp tục tăng graph weight hoặc thêm heuristic prior.
+5. Khi concept linking cải thiện rõ trên dev nội bộ, khóa candidate và tạo validation
+   paper-disjoint mới; chỉ sau đó mới quay lại retrieval/Answer Agent.
 
 Chưa ưu tiên trong milestone này: mở rộng giao diện, PostgreSQL, pgvector, OCR và
 framework Agent phức tạp.

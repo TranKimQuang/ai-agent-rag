@@ -13,7 +13,11 @@ def main() -> None:
         description="Describe Ontology coverage without tuning on the evaluated split"
     )
     parser.add_argument("--dataset", type=Path, required=True)
-    parser.add_argument("--details", type=Path, required=True)
+    parser.add_argument(
+        "--details",
+        type=Path,
+        help="Optional detailed retrieval result used only to attach rank columns",
+    )
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument(
         "--linking-method",
@@ -60,7 +64,9 @@ def main() -> None:
     )
     chunks, _ = ontology.index_chunks(chunks)
     chunks_by_id = {chunk.id: chunk for chunk in chunks}
-    details_payload = json.loads(args.details.read_text(encoding="utf-8"))
+    details_payload = (
+        json.loads(args.details.read_text(encoding="utf-8")) if args.details else []
+    )
     details = (
         details_payload["details"]
         if isinstance(details_payload, dict) and "details" in details_payload
@@ -124,6 +130,7 @@ def main() -> None:
     }
     payload = {
         "dataset": str(args.dataset),
+        "details_source": str(args.details) if args.details else None,
         "purpose": "descriptive ontology coverage analysis",
         "linking_method": args.linking_method.value,
         "linking_threshold": args.linking_threshold,

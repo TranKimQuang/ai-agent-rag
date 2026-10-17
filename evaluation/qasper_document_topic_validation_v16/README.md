@@ -40,3 +40,10 @@ nDCG có CI [-0,0206; +0,0142], p=0,8373. Không metric nào có ý nghĩa thố
 **Không chọn document-topic prior.** Tính năng tiếp tục tắt mặc định; không tuning theo
 validation v16 và không chạy lại split này. Nút thắt còn lại là chất lượng/độ phủ quan hệ
 query–evidence, không phải thiếu thêm một prior heuristic.
+
+## Phân tích lỗi sau khi khóa
+
+Audit mô tả trong `CONCEPT_ERROR_AUDIT.md` và `concept_error_review.csv` chia 77 câu thành:
+38 thiếu concept cả hai phía, 20 thiếu query concept, 14 thiếu evidence concept, 2 có
+concept nhưng thiếu quan hệ/phù hợp và 3 có quan hệ hữu ích. Các proposal trong audit chỉ
+dùng để hiểu lỗi; tuyệt đối không dùng làm nhãn training rồi chạy lại validation v16.
