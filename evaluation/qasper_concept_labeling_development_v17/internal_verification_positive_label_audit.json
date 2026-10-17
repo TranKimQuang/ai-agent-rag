@@ -1,0 +1,103 @@
+{
+  "scope": "10 positive assistant_pre_review labels from the locked 57-question internal verification set",
+  "audit_type": "assistant_manual_audit",
+  "audit_date": "2026-10-17",
+  "policy": {
+    "query_only": true,
+    "evidence_used_for_context_check_only": true,
+    "ontology_definition_required": true,
+    "locked_predictions_rerun": false,
+    "original_artifacts_modified": false
+  },
+  "summary": {
+    "reviewed": 10,
+    "accepted": 7,
+    "rejected": 3,
+    "corrected_positive_labels": 7
+  },
+  "items": [
+    {
+      "source_question_id": "3b7798a6bce1a5faf411bb12e2e011dbab1e279d",
+      "question": "Do any of the evaluations show that adversarial learning improves performance in at least two different language families?",
+      "original_concepts": ["MultilingualNaturalLanguageProcessing"],
+      "audited_concepts": ["MultilingualNaturalLanguageProcessing"],
+      "decision": "accepted",
+      "reason": "The question explicitly compares performance across different language families; the evidence confirms a cross-lingual evaluation setting."
+    },
+    {
+      "source_question_id": "5cb3d69607f60e1c5be2120462726a477ead9570",
+      "question": "Does adversarial learning have stronger performance gains for text classification, or for NER?",
+      "original_concepts": ["NaturalLanguageProcessing"],
+      "audited_concepts": ["NaturalLanguageProcessing"],
+      "decision": "accepted",
+      "reason": "Text classification and named-entity recognition are explicitly named NLP tasks; the ontology currently has no narrower task concepts for them."
+    },
+    {
+      "source_question_id": "86f24ecc89e743bb1534ac160d08859493afafe9",
+      "question": "What different approaches of encoding syntactic information authors present?",
+      "original_concepts": ["NaturalLanguageProcessing"],
+      "audited_concepts": ["NaturalLanguageProcessing"],
+      "decision": "accepted",
+      "reason": "Encoding syntactic dependencies is directly within NLP; a narrower syntax concept is absent from the local vocabulary."
+    },
+    {
+      "source_question_id": "14421b7ae4459b647033b3ccba635d4ba7bb114b",
+      "question": "How do you establish the ground truth of who won a debate?",
+      "original_concepts": ["ArgumentMining"],
+      "audited_concepts": [],
+      "decision": "rejected",
+      "reason": "The ontology defines ArgumentMining as identifying argumentative structures and components. Determining a debate winner from sentiment trends does not state that task in the query.",
+      "vocabulary_gap": "Debate outcome or sentiment-based outcome prediction"
+    },
+    {
+      "source_question_id": "657edbf39c500b2446edb9cca18de2912c628b7d",
+      "question": "What was their perplexity score?",
+      "original_concepts": ["LanguageModel"],
+      "audited_concepts": ["LanguageModel"],
+      "decision": "accepted",
+      "reason": "Perplexity is a standard language-model evaluation measure, and the evidence explicitly identifies the reported result as language modeling."
+    },
+    {
+      "source_question_id": "790ed4458a23aa23e2b5399259e50083c86d9e14",
+      "question": "Do all the instances contain code-switching?",
+      "original_concepts": ["MultilingualNaturalLanguageProcessing"],
+      "audited_concepts": ["MultilingualNaturalLanguageProcessing"],
+      "decision": "accepted",
+      "reason": "Code-switching is intrinsically a multilingual language phenomenon, and the evidence concerns Hinglish processing."
+    },
+    {
+      "source_question_id": "b67420da975689e47d3ea1c12b601851018c4071",
+      "question": "How is their model different from BERT?",
+      "original_concepts": ["BidirectionalLanguageModel"],
+      "audited_concepts": [],
+      "decision": "rejected",
+      "reason": "Mentioning BERT does not justify replacing the named model with the broader local BidirectionalLanguageModel concept; the ontology has no explicit BERT mapping.",
+      "vocabulary_gap": "BERT"
+    },
+    {
+      "source_question_id": "d325a3c21660dbc481b4e839ff1a2d37dcc7ca46",
+      "question": "What hypernymy tasks do they study?",
+      "original_concepts": ["NaturalLanguageProcessing"],
+      "audited_concepts": ["NaturalLanguageProcessing"],
+      "decision": "accepted",
+      "reason": "Hypernymy prediction and graded entailment are lexical-semantic NLP tasks; the local vocabulary has no narrower hypernymy concept."
+    },
+    {
+      "source_question_id": "f5cf8738e8d211095bb89350ed05ee7f9997eb19",
+      "question": "By how much do they outperform standard BERT?",
+      "original_concepts": ["BidirectionalLanguageModel"],
+      "audited_concepts": [],
+      "decision": "rejected",
+      "reason": "The query names BERT, but the ontology does not assert that BERT is the BidirectionalLanguageModel individual or an exact synonym of that concept.",
+      "vocabulary_gap": "BERT"
+    },
+    {
+      "source_question_id": "50f09a044f0c0795cc636c3e25a4f7c3231fb08d",
+      "question": "How does the well-resourced language impact the quality of the output?",
+      "original_concepts": ["MultilingualNaturalLanguageProcessing"],
+      "audited_concepts": ["MultilingualNaturalLanguageProcessing"],
+      "decision": "accepted",
+      "reason": "The question concerns transfer from a well-resourced language; the evidence confirms bilingual models and cross-language alignment."
+    }
+  ]
+}

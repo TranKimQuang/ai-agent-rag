@@ -76,6 +76,18 @@ Cấu hình Hybrid 0,55 được chạy đúng một lần và thất bại: Pre
 match 0,737. Không tuning hoặc thêm alias theo tập này. Xem
 `INTERNAL_VERIFICATION_57_REPORT.md` và `internal_verification_lock.json`.
 
+Audit tiếp theo đối chiếu 10 nhãn dương với câu hỏi, evidence và định nghĩa ontology:
+giữ 7, loại 3 nhãn gán quá rộng. Chi tiết ở
+`INTERNAL_VERIFICATION_POSITIVE_LABEL_AUDIT.md` và
+`internal_verification_positive_label_audit.json`. Audit không chạy lại prediction và
+không dùng tập đã mở để tuning.
+
+102 nhãn còn lại sau đó cũng được audit theo cùng quy tắc. Có 97 nhãn giữ nguyên và 5
+nhãn sửa (loại 2 nhãn gán quá rộng, thêm 3 trường hợp multilingual bị bỏ sót). Sau hai
+audit, pool 112 câu có 30 câu dương và 82 câu `NONE`; trạng thái là
+`assistant_audited_not_independent_human_gold`. Xem `REMAINING_102_LABEL_AUDIT.md` và
+`remaining_102_label_audit.json`.
+
 ## Quy trình tiếp theo
 
 1. Review thủ công 25 hàng có `review_hint=review_candidate_related_to_gold`; dùng gợi ý

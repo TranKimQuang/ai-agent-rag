@@ -1,0 +1,76 @@
+{
+  "scope": "The 102 assistant_pre_review rows not covered by internal_verification_positive_label_audit.json",
+  "audit_type": "assistant_manual_audit",
+  "audit_date": "2026-10-17",
+  "source_files": [
+    "concept_linking_seed_review_25.json",
+    "concept_linking_seed_review_batch2_30.json",
+    "concept_linking_internal_verification_57.json"
+  ],
+  "selection_rule": "All 55 rows from the two selection files plus the 47 originally negative rows from the locked internal verification file",
+  "policy": {
+    "query_only": true,
+    "evidence_used_for_context_check_only": true,
+    "ontology_definition_required": true,
+    "original_label_files_modified": false,
+    "locked_predictions_rerun": false,
+    "unchanged_rows": "Every selected source row is accepted as written except the five corrections listed below."
+  },
+  "summary": {
+    "reviewed": 102,
+    "unchanged": 97,
+    "corrected": 5,
+    "removed_positive_labels": 2,
+    "added_positive_labels": 3,
+    "audited_positive_rows": 23,
+    "audited_negative_rows": 79
+  },
+  "corrections": [
+    {
+      "source_question_id": "e84ba95c9a188fda4563f45e53fbc8728d8b5dab",
+      "question": "Do they build one model per topic or on all topics?",
+      "original_concepts": ["TopicModeling"],
+      "audited_concepts": [],
+      "decision": "remove_overbroad_label",
+      "reason": "A model trained per content topic is not necessarily a topic-modeling method. The paper and evidence concern summarization evaluation, not latent topic discovery."
+    },
+    {
+      "source_question_id": "38e11663b03ac585863742044fd15a0e875ae9ab",
+      "question": "Who is the crowd in these experiments?",
+      "original_concepts": ["Crowdsourcing"],
+      "audited_concepts": [],
+      "decision": "remove_overbroad_label",
+      "reason": "Crowd means the aggregate opinion of social-media users in this paper. It is not the Crowdsourcing method defined in the ontology."
+    },
+    {
+      "source_question_id": "6e76f114209f59b027ec3b3c8c9cdfc3e682589f",
+      "question": "Is pivot language used in experiments English or some other language?",
+      "original_concepts": [],
+      "audited_concepts": ["MultilingualNaturalLanguageProcessing"],
+      "decision": "add_missing_label",
+      "reason": "Pivot language is a technical cross-language setting rather than a generic mention of a language."
+    },
+    {
+      "source_question_id": "191d4fe8a37611b2485e715bb55ff1a30038ad6a",
+      "question": "Are experiments performed with any other pair of languages, how did proposed method perform compared to other models?",
+      "original_concepts": [],
+      "audited_concepts": ["MultilingualNaturalLanguageProcessing"],
+      "decision": "add_missing_label",
+      "reason": "An experimental pair of languages explicitly states a bilingual or multilingual evaluation setting."
+    },
+    {
+      "source_question_id": "ef07ec34433221d4da79d5923fb00d8ac446b92c",
+      "question": "How do they quantify alignment between the embeddings of a document and its translation?",
+      "original_concepts": [],
+      "audited_concepts": ["MultilingualNaturalLanguageProcessing"],
+      "decision": "add_missing_label",
+      "reason": "Alignment between a document and its translation explicitly describes a cross-language representation problem; it is not WordEmbedding."
+    }
+  ],
+  "whole_pool_after_both_audits": {
+    "questions": 112,
+    "positive_rows": 30,
+    "negative_rows": 82,
+    "status": "assistant_audited_not_independent_human_gold"
+  }
+}

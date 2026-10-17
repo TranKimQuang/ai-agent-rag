@@ -45,6 +45,14 @@ Cập nhật gần nhất: 17/10/2026
   alias, threshold hoặc ontology theo tập này và chưa mở validation mới. Kết quả 55 câu
   trước không khái quát; bước bắt buộc tiếp theo là xác nhận nhãn pre-review và phát triển
   linker mới trên selection development khác.
+- [x] Audit riêng 10 nhãn dương của internal verification bằng câu hỏi, evidence và định
+  nghĩa ontology: giữ 7, loại 3 nhãn gán quá rộng (1 `ArgumentMining`, 2 ánh xạ BERT sang
+  `BidirectionalLanguageModel`). Không chạy lại prediction hoặc tính lại exact match;
+  kết luận linker thất bại trên paraphrase khó không đổi.
+- [x] Audit 102 nhãn còn lại: giữ nguyên 97, sửa 5 (loại `TopicModeling` và
+  `Crowdsourcing` do trùng chữ nhưng sai nghĩa; thêm 3 trường hợp
+  `MultilingualNaturalLanguageProcessing`). Toàn bộ 112 câu hiện có 30 câu dương/82 câu
+  `NONE` ở trạng thái assistant-audited; chưa gọi là independent human gold.
 
 ### Mới nhất: Validation v16 loại document-topic prior
 
@@ -871,8 +879,8 @@ Milestone tiếp theo: kiểm chứng khả năng khái quát của semantic con
 1. Giữ nguyên kết quả held-out v3 và validation v7; không tiếp tục tuning theo các tập đã xem.
 2. Giữ nguyên validation v9; không tuning scoring theo tập này. Tạo development split mới
    và thiết lập baseline document-scoped trước khi kết luận thêm về concept coverage.
-3. Xác nhận thủ công nhãn `assistant_pre_review` của 112 câu trước khi coi đây là gold;
-   ưu tiên kiểm tra 10 nhãn dương của internal verification.
+3. Đã audit đủ 112 nhãn ở mức nội bộ. Trước khi coi là gold chính thức, cần người thứ hai
+   kiểm tra độc lập, tối thiểu toàn bộ 30 câu dương và một mẫu ngẫu nhiên từ 82 câu âm.
 4. Không tuning tiếp trên 57 câu internal verification đã mở. Phát triển linker mới chỉ
    trên 55 câu selection hoặc một development pool mới, đồng thời xuất prediction từng
    câu ngay trong lần đánh giá đầu tiên.

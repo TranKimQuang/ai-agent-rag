@@ -17,6 +17,12 @@ hình. Tập dự trữ có 10 nhãn dương và 47 câu âm. Nó được chạ
 Nhãn vẫn có trạng thái `assistant_pre_review`, vì vậy kết quả cần được xác nhận thủ công
 trước khi dùng trong báo cáo chính thức.
 
+Audit riêng ngày 17/10/2026 đã kiểm tra 10 nhãn dương: giữ 7 và loại 3 nhãn gán quá
+rộng (`ArgumentMining` cho câu hỏi người thắng tranh luận và hai ánh xạ BERT sang
+`BidirectionalLanguageModel`). Xem `INTERNAL_VERIFICATION_POSITIVE_LABEL_AUDIT.md` và
+`internal_verification_positive_label_audit.json`. Artifact prediction khóa không được
+chạy lại hoặc sửa hồi tố.
+
 ## Kết quả một lần duy nhất
 
 | Phương pháp | Precision | Recall | F1 | Exact match |
@@ -50,6 +56,8 @@ toàn. Giảm threshold có nguy cơ lặp lại false positive đã thấy trê
 - Không mở validation paper-disjoint mới ở trạng thái hiện tại.
 - Giữ kết quả âm để báo cáo trung thực giới hạn khả năng khái quát.
 - Trước thử nghiệm tiếp theo, cần xác nhận thủ công các nhãn `assistant_pre_review`.
+- Đã audit tiếp 102 nhãn còn lại; toàn bộ 112 câu hiện ở trạng thái assistant-audited
+  nhưng chưa phải gold do người gán nhãn độc lập xác nhận.
 - Sau khi nhãn được xác nhận, phát triển một candidate linker mới chỉ trên 55 câu selection
   hoặc tạo development mới; 57 câu này không được dùng tiếp để chọn mô hình.
 
