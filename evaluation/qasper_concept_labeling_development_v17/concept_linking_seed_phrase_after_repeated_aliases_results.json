@@ -1,0 +1,316 @@
+{
+  "dataset": "evaluation\\qasper_concept_labeling_development_v17\\concept_linking_seed_review_25.json",
+  "threshold": 0.55,
+  "top1_top2_margin": 0.03,
+  "limit": 5,
+  "baseline": {
+    "precision": 1.0,
+    "recall": 0.8333333333333334,
+    "f1": 0.9090909090909091,
+    "exact_match": 0.96,
+    "linked_examples": 5,
+    "examples": 25
+  },
+  "phrase_first": {
+    "precision": 1.0,
+    "recall": 0.8333333333333334,
+    "f1": 0.9090909090909091,
+    "exact_match": 0.96,
+    "linked_examples": 5,
+    "examples": 25
+  },
+  "rows": [
+    {
+      "source_question_id": "85abd60094c92eb16f39f861c6de8c2064807d02",
+      "text": "What are the different bilingual models employed?",
+      "gold_concepts": [
+        "MultilingualNaturalLanguageProcessing"
+      ],
+      "baseline_concepts": [
+        "MultilingualNaturalLanguageProcessing"
+      ],
+      "phrase_concepts": [
+        "MultilingualNaturalLanguageProcessing"
+      ],
+      "phrase_details": [
+        {
+          "concept": "MultilingualNaturalLanguageProcessing",
+          "label": "multilingual natural language processing",
+          "score": 1.0,
+          "source": "alias"
+        }
+      ],
+      "changed": false
+    },
+    {
+      "source_question_id": "100cf8b72d46da39fedfe77ec939fb44f25de77f",
+      "text": "Which paired corpora did they use in the other experiment?",
+      "gold_concepts": [
+        "ParallelCorpus"
+      ],
+      "baseline_concepts": [
+        "ParallelCorpus"
+      ],
+      "phrase_concepts": [
+        "ParallelCorpus"
+      ],
+      "phrase_details": [
+        {
+          "concept": "ParallelCorpus",
+          "label": "parallel corpus",
+          "score": 1.0,
+          "source": "alias"
+        }
+      ],
+      "changed": false
+    },
+    {
+      "source_question_id": "14e78db206a8180ea637774aa572b073e3ffa219",
+      "text": "What kind of encoders are used for the parsed source sentence?",
+      "gold_concepts": [],
+      "baseline_concepts": [],
+      "phrase_concepts": [],
+      "phrase_details": [],
+      "changed": false
+    },
+    {
+      "source_question_id": "17988d65e46ff7d756076e9191890aec177b081e",
+      "text": "Are the unobserved samples from the same distribution as the training data?",
+      "gold_concepts": [],
+      "baseline_concepts": [],
+      "phrase_concepts": [],
+      "phrase_details": [],
+      "changed": false
+    },
+    {
+      "source_question_id": "235c156d9c2adc895c9113f53c60f2dd8df45834",
+      "text": "What languages are explored in this paper?",
+      "gold_concepts": [],
+      "baseline_concepts": [],
+      "phrase_concepts": [],
+      "phrase_details": [],
+      "changed": false
+    },
+    {
+      "source_question_id": "2677b88c2def3ed94e25a776599555a788d197f2",
+      "text": "Which architecture is their best model?",
+      "gold_concepts": [],
+      "baseline_concepts": [],
+      "phrase_concepts": [],
+      "phrase_details": [],
+      "changed": false
+    },
+    {
+      "source_question_id": "284ea817fd79bc10b7a82c88d353e8f8a9d7e93c",
+      "text": "Is the data all in Vietnamese?",
+      "gold_concepts": [],
+      "baseline_concepts": [],
+      "phrase_concepts": [],
+      "phrase_details": [],
+      "changed": false
+    },
+    {
+      "source_question_id": "4d5f112874250d48eb49649c4abe31d6c9236700",
+      "text": "Which of the model yields the best performance?",
+      "gold_concepts": [],
+      "baseline_concepts": [],
+      "phrase_concepts": [],
+      "phrase_details": [],
+      "changed": false
+    },
+    {
+      "source_question_id": "562a2feeba9580f5435a94396f2a8751f79a4d5c",
+      "text": "What embeddings do they use?",
+      "gold_concepts": [
+        "WordEmbedding"
+      ],
+      "baseline_concepts": [
+        "WordEmbedding"
+      ],
+      "phrase_concepts": [
+        "WordEmbedding"
+      ],
+      "phrase_details": [
+        {
+          "concept": "WordEmbedding",
+          "label": "word embedding",
+          "score": 1.0,
+          "source": "alias"
+        }
+      ],
+      "changed": false
+    },
+    {
+      "source_question_id": "5758ebff49807a51d080b0ce10ba3f86dcf71925",
+      "text": "What do they constrain using integer linear programming?",
+      "gold_concepts": [],
+      "baseline_concepts": [],
+      "phrase_concepts": [],
+      "phrase_details": [],
+      "changed": false
+    },
+    {
+      "source_question_id": "7e328cc3cffa521e73f111d6796aaa9661c8eb07",
+      "text": "What is specific about the specific embeddings?",
+      "gold_concepts": [
+        "WordEmbedding"
+      ],
+      "baseline_concepts": [
+        "WordEmbedding"
+      ],
+      "phrase_concepts": [
+        "WordEmbedding"
+      ],
+      "phrase_details": [
+        {
+          "concept": "WordEmbedding",
+          "label": "word embedding",
+          "score": 1.0,
+          "source": "alias"
+        }
+      ],
+      "changed": false
+    },
+    {
+      "source_question_id": "80f19be1cbe1f0ec89bbafb9c5f7a8ded37881fb",
+      "text": "What embedding algorithm is used to build the embeddings?",
+      "gold_concepts": [
+        "WordEmbedding"
+      ],
+      "baseline_concepts": [
+        "WordEmbedding"
+      ],
+      "phrase_concepts": [
+        "WordEmbedding"
+      ],
+      "phrase_details": [
+        {
+          "concept": "WordEmbedding",
+          "label": "word embedding",
+          "score": 1.0,
+          "source": "alias"
+        }
+      ],
+      "changed": false
+    },
+    {
+      "source_question_id": "892c346617a3391c7dafc9da1b65e5ea3890294d",
+      "text": "What network architecture do they use for SIM?",
+      "gold_concepts": [
+        "NeuralNetwork"
+      ],
+      "baseline_concepts": [],
+      "phrase_concepts": [],
+      "phrase_details": [],
+      "changed": false
+    },
+    {
+      "source_question_id": "8985ead714236458a7496075bc15054df0e3234e",
+      "text": "What is the performance of the models on the tasks?",
+      "gold_concepts": [],
+      "baseline_concepts": [],
+      "phrase_concepts": [],
+      "phrase_details": [],
+      "changed": false
+    },
+    {
+      "source_question_id": "8b51db1f7a6293b5bd8be49386cce45989b8079f",
+      "text": "Do they use dropout?",
+      "gold_concepts": [],
+      "baseline_concepts": [],
+      "phrase_concepts": [],
+      "phrase_details": [],
+      "changed": false
+    },
+    {
+      "source_question_id": "b72264a73eea36c828e7de778a8b4599a5d02b39",
+      "text": "Is the model evaluated against any baseline?",
+      "gold_concepts": [],
+      "baseline_concepts": [],
+      "phrase_concepts": [],
+      "phrase_details": [],
+      "changed": false
+    },
+    {
+      "source_question_id": "b7708cbb50085eb41e306bd2248f1515a5ebada8",
+      "text": "How do they get the formal languages?",
+      "gold_concepts": [],
+      "baseline_concepts": [],
+      "phrase_concepts": [],
+      "phrase_details": [],
+      "changed": false
+    },
+    {
+      "source_question_id": "b99948ac4810a7fe3477f6591b8cf211d6398e67",
+      "text": "How many models were used?",
+      "gold_concepts": [],
+      "baseline_concepts": [],
+      "phrase_concepts": [],
+      "phrase_details": [],
+      "changed": false
+    },
+    {
+      "source_question_id": "bb8a0035b767688a98602c33f4714f8ac8ae60db",
+      "text": "What metric was used in the evaluation step?",
+      "gold_concepts": [],
+      "baseline_concepts": [],
+      "phrase_concepts": [],
+      "phrase_details": [],
+      "changed": false
+    },
+    {
+      "source_question_id": "c0122190119027dc3eb51f0d4b4483d2dbedc696",
+      "text": "What classifier do they use?",
+      "gold_concepts": [],
+      "baseline_concepts": [],
+      "phrase_concepts": [],
+      "phrase_details": [],
+      "changed": false
+    },
+    {
+      "source_question_id": "da2b43d7d048f3f59adf26a67ce66bd2d8a06326",
+      "text": "What training settings did they try?",
+      "gold_concepts": [],
+      "baseline_concepts": [],
+      "phrase_concepts": [],
+      "phrase_details": [],
+      "changed": false
+    },
+    {
+      "source_question_id": "db291d734524fa51fb314628b64ebe1bac7f7e1e",
+      "text": "How is the performance of the model evaluated?",
+      "gold_concepts": [],
+      "baseline_concepts": [],
+      "phrase_concepts": [],
+      "phrase_details": [],
+      "changed": false
+    },
+    {
+      "source_question_id": "f6496b8d09911cdf3a9b72aec0b0be6232a6dba1",
+      "text": "Do they train their own RE model?",
+      "gold_concepts": [],
+      "baseline_concepts": [],
+      "phrase_concepts": [],
+      "phrase_details": [],
+      "changed": false
+    },
+    {
+      "source_question_id": "f95097cf4a0dc036fd8b80c007cd8d7a157b7816",
+      "text": "What were the baselines?",
+      "gold_concepts": [],
+      "baseline_concepts": [],
+      "phrase_concepts": [],
+      "phrase_details": [],
+      "changed": false
+    },
+    {
+      "source_question_id": "fd6c194632230e392088fc1f574c8626c6a2fa96",
+      "text": "What does the data cleaning and filtering process consist of?",
+      "gold_concepts": [],
+      "baseline_concepts": [],
+      "phrase_concepts": [],
+      "phrase_details": [],
+      "changed": false
+    }
+  ]
+}

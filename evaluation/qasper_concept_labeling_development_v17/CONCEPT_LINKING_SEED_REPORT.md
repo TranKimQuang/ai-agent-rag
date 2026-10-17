@@ -59,3 +59,30 @@ ví dụ mỗi loại trong seed, nên cần thêm câu được review trước
 
 Các file JSON trong cùng thư mục lưu đầy đủ sweep và prediction theo từng câu. Không dùng
 seed này để tuyên bố khả năng khái quát hoặc làm kết quả final-test.
+
+## Kiểm tra bằng chứng lặp lại trên 87 câu còn lại
+
+Không dùng nhãn evidence để sửa query. Việc kiểm tra chỉ tìm các cách diễn đạt tương ứng
+trong câu hỏi và cho thấy hai nhóm lặp lại độc lập:
+
+- `multilingual models` đã được link đúng, trong khi `bilingual models` bị gán sai sang
+  `LanguageModel`;
+- `parallel corpus` đã được link đúng, trong khi `paired corpora` bị bỏ sót.
+
+Do đó vocabulary được bổ sung các alt label `bilingual model(s)`, `multilingual model(s)`
+cho `MultilingualNaturalLanguageProcessing` và `paired corpus/corpora` cho
+`ParallelCorpus`. Các cách nói chỉ xuất hiện một lần như `network architecture`, `dropout`,
+`formal language`, `RE model` vẫn không được thêm.
+
+Sau cập nhật alias lặp lại, kết quả seed ở ngưỡng 0,55 là:
+
+| Phương pháp | Precision | Recall | F1 | Exact match |
+|---|---:|---:|---:|---:|
+| Alias | 1,000 | 0,833 | 0,909 | 0,960 |
+| Semantic | 1,000 | 0,167 | 0,286 | 0,800 |
+| Hybrid | 1,000 | 0,833 | 0,909 | 0,960 |
+| Phrase-first | 1,000 | 0,833 | 0,909 | 0,960 |
+
+Năm trong sáu nhãn dương được tìm đúng và không có false positive. Trường hợp còn bỏ sót
+là `NeuralNetwork` từ “network architecture”; chưa có ví dụ lặp lại nên không thêm alias.
+Kết quả này vẫn là development pre-review, chưa phải validation độc lập.

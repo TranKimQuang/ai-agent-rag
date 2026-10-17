@@ -554,6 +554,22 @@ def test_alias_concept_linking_recognizes_repeated_embedding_shorthand() -> None
     assert {link.concept for link in plural} == {"WordEmbedding"}
 
 
+def test_alias_concept_linking_recognizes_repeated_multilingual_phrases() -> None:
+    service = OntologyService()
+
+    bilingual = service.link_concepts(
+        "Which bilingual models were employed?", ConceptLinkingMethod.ALIAS
+    )
+    paired = service.link_concepts(
+        "Which paired corpora were used?", ConceptLinkingMethod.ALIAS
+    )
+
+    assert {link.concept for link in bilingual} == {
+        "MultilingualNaturalLanguageProcessing"
+    }
+    assert {link.concept for link in paired} == {"ParallelCorpus"}
+
+
 def test_validation_driven_query_expansion_uses_domain_relations() -> None:
     expansion = OntologyService().expand_query(
         "How is semantic role induction evaluated on a parallel corpus?"

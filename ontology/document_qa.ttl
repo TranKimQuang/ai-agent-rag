@@ -278,7 +278,8 @@ qa:CooccurrenceMatrix a qa:Method ;
 
 qa:ParallelCorpus a qa:Dataset ;
     skos:prefLabel "parallel corpus"@en ;
-    skos:altLabel "parallel corpora"@en, "multilingual parallel corpus"@en ;
+    skos:altLabel "paired corpus"@en, "paired corpora"@en,
+        "parallel corpora"@en, "multilingual parallel corpus"@en ;
     skos:definition "A collection containing aligned texts in two or more languages."@en ;
     qa:relatedTo qa:NaturalLanguageProcessing, qa:SemanticRoleInduction .
 
@@ -470,8 +471,10 @@ qa:TransferLearning a qa:Method ;
 
 qa:MultilingualNaturalLanguageProcessing a qa:ResearchTopic ;
     skos:prefLabel "multilingual natural language processing"@en ;
-    skos:altLabel "multilingual NLP"@en, "multilingual dataset"@en,
-        "multilingual data"@en ;
+    skos:altLabel "bilingual model"@en, "bilingual models"@en,
+        "multilingual NLP"@en, "multilingual dataset"@en,
+        "multilingual data"@en, "multilingual model"@en,
+        "multilingual models"@en ;
     skos:broader qa:NaturalLanguageProcessing ;
     qa:relatedTo qa:ParallelCorpus .
 

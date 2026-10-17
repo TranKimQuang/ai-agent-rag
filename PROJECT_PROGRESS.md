@@ -28,6 +28,12 @@ Cập nhật gần nhất: 17/10/2026
   Sau sửa, Alias/Hybrid đạt Precision 1,000, Recall 0,500, F1 0,667 và exact match 0,880;
   phrase-first F1 0,600 do thêm false positive. Ba nhãn dương chỉ có một ví dụ vẫn để mở,
   không tiếp tục thêm alias theo từng câu.
+- [x] Quét 87 câu development còn lại tìm được bằng chứng lặp lại cho
+  `bilingual/multilingual models` và `paired/parallel corpus`; bổ sung synonym tương ứng
+  cho MultilingualNaturalLanguageProcessing và ParallelCorpus. Seed 25 câu tăng lên
+  Precision 1,000, Recall 0,833, F1 0,909, exact match 0,960; chỉ còn bỏ sót một
+  `NeuralNetwork` không có ví dụ lặp lại. Đây vẫn là pre-review development, chưa dùng làm
+  validation chính thức.
 
 ### Mới nhất: Validation v16 loại document-topic prior
 

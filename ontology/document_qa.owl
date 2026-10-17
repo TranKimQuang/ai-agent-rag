@@ -330,9 +330,13 @@
   <rdf:Description rdf:about="https://example.org/document-qa#MultilingualNaturalLanguageProcessing">
     <rdf:type rdf:resource="https://example.org/document-qa#ResearchTopic"/>
     <skos:prefLabel xml:lang="en">multilingual natural language processing</skos:prefLabel>
+    <skos:altLabel xml:lang="en">bilingual model</skos:altLabel>
+    <skos:altLabel xml:lang="en">bilingual models</skos:altLabel>
     <skos:altLabel xml:lang="en">multilingual NLP</skos:altLabel>
     <skos:altLabel xml:lang="en">multilingual dataset</skos:altLabel>
     <skos:altLabel xml:lang="en">multilingual data</skos:altLabel>
+    <skos:altLabel xml:lang="en">multilingual model</skos:altLabel>
+    <skos:altLabel xml:lang="en">multilingual models</skos:altLabel>
     <skos:broader rdf:resource="https://example.org/document-qa#NaturalLanguageProcessing"/>
     <qa:relatedTo rdf:resource="https://example.org/document-qa#ParallelCorpus"/>
   </rdf:Description>
@@ -394,6 +398,8 @@
   <rdf:Description rdf:about="https://example.org/document-qa#ParallelCorpus">
     <rdf:type rdf:resource="https://example.org/document-qa#Dataset"/>
     <skos:prefLabel xml:lang="en">parallel corpus</skos:prefLabel>
+    <skos:altLabel xml:lang="en">paired corpus</skos:altLabel>
+    <skos:altLabel xml:lang="en">paired corpora</skos:altLabel>
     <skos:altLabel xml:lang="en">parallel corpora</skos:altLabel>
     <skos:altLabel xml:lang="en">multilingual parallel corpus</skos:altLabel>
     <skos:definition xml:lang="en">A collection containing aligned texts in two or more languages.</skos:definition>

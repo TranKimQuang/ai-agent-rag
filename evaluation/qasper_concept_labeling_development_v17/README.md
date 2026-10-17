@@ -60,6 +60,12 @@ lập hỗ trợ thêm alias `embedding/embeddings` cho `WordEmbedding`; Alias/H
 Precision 1,000, Recall 0,500 và F1 0,667 ở ngưỡng 0,55. Phrase-first đạt F1 0,600 do còn
 gán sai `LanguageModel` cho “bilingual models”. Không thêm alias chỉ dựa trên một ví dụ.
 
+Kiểm tra 87 câu còn lại cung cấp bằng chứng lặp lại cho `bilingual/multilingual models` và
+`paired/parallel corpus`, nên các synonym tương ứng được thêm vào ontology. Kết quả seed
+sau vòng này đạt Precision 1,000, Recall 0,833, F1 0,909 và exact match 0,960 cho
+Alias/Hybrid/Phrase-first. Chỉ còn bỏ sót `NeuralNetwork` từ một ví dụ “network
+architecture”; chưa thêm alias vì chưa có lặp lại.
+
 ## Quy trình tiếp theo
 
 1. Review thủ công 25 hàng có `review_hint=review_candidate_related_to_gold`; dùng gợi ý
