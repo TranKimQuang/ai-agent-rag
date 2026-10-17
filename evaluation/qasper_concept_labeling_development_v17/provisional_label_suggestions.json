@@ -1,0 +1,292 @@
+{
+  "source_audit": "evaluation\\qasper_concept_labeling_development_v17\\concept_error_audit.json",
+  "status": "provisional_machine_suggestions_not_gold_labels",
+  "model": "qwen3:4b",
+  "review_hint": "review_candidate_related_to_gold",
+  "questions": 25,
+  "target_questions": 25,
+  "complete": true,
+  "suggestions": [
+    {
+      "question_id": "85abd60094c92eb16f39f861c6de8c2064807d02",
+      "query_concepts": [
+        "LanguageModel"
+      ],
+      "evidence_concepts": [
+        "NeuralMachineTranslation"
+      ],
+      "relation": "uncertain",
+      "confidence": 0.65,
+      "rationale": "Question asks for bilingual models, evidence mentions 'bilingual models' but only lists NeuralMachineTranslation as a concept. LanguageModel is in query but evidence doesn't explicitly support it. Relation is uncertain as evidence doesn't specify which models are bilingual."
+    },
+    {
+      "question_id": "100cf8b72d46da39fedfe77ec939fb44f25de77f",
+      "query_concepts": [],
+      "evidence_concepts": [
+        "InformationRetrieval"
+      ],
+      "relation": "none",
+      "confidence": 0.95,
+      "rationale": "Question asks for paired corpora, evidence mentions paired data but no specific corpus names. Evidence concepts are InformationRetrieval, which is unrelated to paired corpora. Query concepts are empty as no concepts match the question."
+    },
+    {
+      "question_id": "14e78db206a8180ea637774aa572b073e3ffa219",
+      "query_concepts": [],
+      "evidence_concepts": [
+        "RecurrentNeuralNetwork"
+      ],
+      "relation": "uncertain",
+      "confidence": 0.5,
+      "rationale": "Constraint adjusted: removed concepts outside the supplied candidate lists. The question asks about encoders for parsed source sentences. Evidence mentions 'two identical RNN encoders' which directly matches 'RecurrentNeuralNetwork' in allowed lists."
+    },
+    {
+      "question_id": "17988d65e46ff7d756076e9191890aec177b081e",
+      "query_concepts": [
+        "DistributionalSemantics"
+      ],
+      "evidence_concepts": [
+        "DistributionalSemantics"
+      ],
+      "relation": "exact",
+      "confidence": 0.85,
+      "rationale": "The question asks about unobserved samples and distribution. Evidence mentions 'data distribution' which aligns with 'DistributionalSemantics' in allowed lists."
+    },
+    {
+      "question_id": "235c156d9c2adc895c9113f53c60f2dd8df45834",
+      "query_concepts": [],
+      "evidence_concepts": [
+        "NaturalLanguageProcessing"
+      ],
+      "relation": "uncertain",
+      "confidence": 0.5,
+      "rationale": "Constraint adjusted: removed concepts outside the supplied candidate lists. The excerpt explicitly mentions 'Mandarin-English code-switching' in SEAME Phase II corpus, so the languages are Mandarin and English. NaturalLanguageProcessing is directly stated in evidence."
+    },
+    {
+      "question_id": "2677b88c2def3ed94e25a776599555a788d197f2",
+      "query_concepts": [
+        "BidirectionalLanguageModel"
+      ],
+      "evidence_concepts": [
+        "HiddenMarkovModel"
+      ],
+      "relation": "uncertain",
+      "confidence": 0.65,
+      "rationale": "The evidence mentions a 6-layer bLSTM (bidirectional LSTM) but the query allows 'BidirectionalLanguageModel'. HiddenMarkovModel is explicitly stated in evidence, but the model described is a neural network variant, not a traditional HMM. The relation is uncertain as the evidence doesn't specify the model type."
+    },
+    {
+      "question_id": "284ea817fd79bc10b7a82c88d353e8f8a9d7e93c",
+      "query_concepts": [
+        "NaturalLanguageProcessing"
+      ],
+      "evidence_concepts": [
+        "NaturalLanguageProcessing"
+      ],
+      "relation": "exact",
+      "confidence": 0.85,
+      "rationale": "The question asks about data language, but the evidence mentions VLSP 2019 (Vietnamese Language and Speech Processing) which directly relates to NaturalLanguageProcessing. The query concepts must be explicitly expressed by the question itself, so NaturalLanguageProcessing is the only relevant concept from the allowed list."
+    },
+    {
+      "question_id": "4d5f112874250d48eb49649c4abe31d6c9236700",
+      "query_concepts": [
+        "NeuralNetwork"
+      ],
+      "evidence_concepts": [
+        "NeuralNetwork"
+      ],
+      "relation": "exact",
+      "confidence": 0.95,
+      "rationale": "The question asks which model yields best performance, and the evidence explicitly mentions NeuralNetwork as a model type. The query concepts must be explicitly expressed by the question itself, so NeuralNetwork is the only relevant concept from the allowed list."
+    },
+    {
+      "question_id": "562a2feeba9580f5435a94396f2a8751f79a4d5c",
+      "query_concepts": [
+        "WordEmbedding"
+      ],
+      "evidence_concepts": [
+        "Word2Vec",
+        "WordEmbedding"
+      ],
+      "relation": "related",
+      "confidence": 0.85,
+      "rationale": "The question asks about embeddings used, and the evidence mentions 'Glove' and 'Twitter word2vec' as embedding methods. 'WordEmbedding' is explicitly named in the evidence and matches the query's focus on embeddings."
+    },
+    {
+      "question_id": "5758ebff49807a51d080b0ce10ba3f86dcf71925",
+      "query_concepts": [],
+      "evidence_concepts": [
+        "CooccurrenceMatrix",
+        "LexicalDiversity",
+        "TextSummarization"
+      ],
+      "relation": "none",
+      "confidence": 0.95,
+      "rationale": "The question asks about constraints using integer linear programming, but the evidence excerpt discusses co-occurrence matrices and lexical diversity in summarization, not ILP constraints. No concepts from the evidence directly relate to ILP constraints."
+    },
+    {
+      "question_id": "7e328cc3cffa521e73f111d6796aaa9661c8eb07",
+      "query_concepts": [
+        "WordEmbedding"
+      ],
+      "evidence_concepts": [
+        "WordEmbedding"
+      ],
+      "relation": "exact",
+      "confidence": 0.85,
+      "rationale": "The question asks about 'specific embeddings' which directly relates to WordEmbedding as the only concept in query_allowed_concepts that matches the context of embeddings. Evidence excerpt mentions 'neural networks based on dense vector' which implies WordEmbedding."
+    },
+    {
+      "question_id": "80f19be1cbe1f0ec89bbafb9c5f7a8ded37881fb",
+      "query_concepts": [
+        "WordEmbedding"
+      ],
+      "evidence_concepts": [
+        "WordEmbedding"
+      ],
+      "relation": "exact",
+      "confidence": 0.95,
+      "rationale": "The question asks about the embedding algorithm used to build embeddings, and evidence explicitly mentions 'word embeddings' and 'WordEmbedding' as a concept. The evidence excerpt directly references WordEmbedding in the context of building models."
+    },
+    {
+      "question_id": "892c346617a3391c7dafc9da1b65e5ea3890294d",
+      "query_concepts": [
+        "NeuralNetwork"
+      ],
+      "evidence_concepts": [
+        "NeuralNetwork"
+      ],
+      "relation": "exact",
+      "confidence": 0.95,
+      "rationale": "The question asks about the network architecture for SIM. The evidence excerpt mentions 'NeuralNetwork' as a supported concept, and the query allows 'NeuralNetwork' as a valid concept. The model is described as a 'Slot-Independent Model (SIM)' which is a neural network approach."
+    },
+    {
+      "question_id": "8985ead714236458a7496075bc15054df0e3234e",
+      "query_concepts": [],
+      "evidence_concepts": [
+        "LanguageModel"
+      ],
+      "relation": "none",
+      "confidence": 0.85,
+      "rationale": "The question asks about model performance on tasks, but the evidence excerpt does not explicitly mention performance metrics like accuracy or scores. It mentions 'LanguageModel' as a concept, but the query does not ask about the model type itself, so no direct relation to performance metrics."
+    },
+    {
+      "question_id": "8b51db1f7a6293b5bd8be49386cce45989b8079f",
+      "query_concepts": [],
+      "evidence_concepts": [],
+      "relation": "uncertain",
+      "confidence": 0.5,
+      "rationale": "Constraint adjusted: removed concepts outside the supplied candidate lists. The question asks about dropout usage, but the evidence mentions LSTM classifier model. LSTM is a type of neural network that may use dropout, but the excerpt doesn't explicitly mention dropout. The query concepts are empty, so we infer the topic is LSTM model from the question context."
+    },
+    {
+      "question_id": "b72264a73eea36c828e7de778a8b4599a5d02b39",
+      "query_concepts": [
+        "LanguageModel"
+      ],
+      "evidence_concepts": [
+        "LanguageModel"
+      ],
+      "relation": "exact",
+      "confidence": 0.95,
+      "rationale": "The question asks if the model is evaluated against a baseline, and the evidence mentions LanguageModel. The evidence explicitly states 'LanguageModel' as a concept, so the relation is exact."
+    },
+    {
+      "question_id": "b7708cbb50085eb41e306bd2248f1515a5ebada8",
+      "query_concepts": [
+        "LanguageModel"
+      ],
+      "evidence_concepts": [
+        "LongShortTermMemory",
+        "RecurrentNeuralNetwork"
+      ],
+      "relation": "related",
+      "confidence": 0.75,
+      "rationale": "The question asks about formal languages, but the evidence mentions LSTM networks learning context-free languages (e.g., $a^n b^n$), which implies language modeling. Query allows 'LanguageModel' as a direct match to the context of formal languages."
+    },
+    {
+      "question_id": "b99948ac4810a7fe3477f6591b8cf211d6398e67",
+      "query_concepts": [],
+      "evidence_concepts": [
+        "LanguageModel",
+        "NeuralNetwork",
+        "RecurrentNeuralNetwork",
+        "WordEmbedding"
+      ],
+      "relation": "none",
+      "confidence": 0.95,
+      "rationale": "The question asks for the number of models used, but the evidence describes two neural variants (non-context and context models) without explicitly stating a count. Query concepts don't match any named topics in the evidence."
+    },
+    {
+      "question_id": "bb8a0035b767688a98602c33f4714f8ac8ae60db",
+      "query_concepts": [
+        "ROUGE"
+      ],
+      "evidence_concepts": [
+        "ROUGE"
+      ],
+      "relation": "exact",
+      "confidence": 0.95,
+      "rationale": "The question asks for the metric used in evaluation, and the evidence explicitly states 'ROUGE-1, ROUGE-2 and ROUGE-L metrics' as the evaluation metrics. ROUGE is directly named in the evidence."
+    },
+    {
+      "question_id": "c0122190119027dc3eb51f0d4b4483d2dbedc696",
+      "query_concepts": [],
+      "evidence_concepts": [
+        "LongShortTermMemory"
+      ],
+      "relation": "none",
+      "confidence": 0.85,
+      "rationale": "The question asks for a classifier, but the evidence mentions 'VDCNN' and 'LSTMCNN' models. LSTMCNN contains 'LongShortTermMemory', which is a component, not a classifier. The query concepts list does not include any classifiers (e.g., 'Classifier' is not in allowed concepts), so no direct match exists."
+    },
+    {
+      "question_id": "da2b43d7d048f3f59adf26a67ce66bd2d8a06326",
+      "query_concepts": [],
+      "evidence_concepts": [
+        "LongShortTermMemory",
+        "NeuralNetwork",
+        "RecurrentNeuralNetwork"
+      ],
+      "relation": "uncertain",
+      "confidence": 0.5,
+      "rationale": "Constraint adjusted: removed concepts outside the supplied candidate lists. The question asks about training settings, and the evidence mentions LSTMs (a type of RNN) learning patterns with specific hidden units. The excerpt explicitly references RNN architectures, so RecurrentNeuralNetwork is directly relevant to training settings."
+    },
+    {
+      "question_id": "db291d734524fa51fb314628b64ebe1bac7f7e1e",
+      "query_concepts": [
+        "ROUGE"
+      ],
+      "evidence_concepts": [
+        "LanguageModel"
+      ],
+      "relation": "none",
+      "confidence": 0.85,
+      "rationale": "The question asks about performance evaluation, but the evidence excerpt only mentions extracting confident alignments and doesn't reference ROUGE or any evaluation metric. ROUGE is a query concept but not supported by the evidence."
+    },
+    {
+      "question_id": "f6496b8d09911cdf3a9b72aec0b0be6232a6dba1",
+      "query_concepts": [],
+      "evidence_concepts": [
+        "NeuralNetwork"
+      ],
+      "relation": "uncertain",
+      "confidence": 0.5,
+      "rationale": "Constraint adjusted: removed concepts outside the supplied candidate lists. The question asks if they train their own RE model. The evidence mentions 'We learn the model parameters using Adam' and 'apply dropout to the hidden layers', indicating a neural network model. 'NeuralNetwork' is explicitly in both query and evidence allowed lists."
+    },
+    {
+      "question_id": "f95097cf4a0dc036fd8b80c007cd8d7a157b7816",
+      "query_concepts": [],
+      "evidence_concepts": [
+        "TextSummarization"
+      ],
+      "relation": "uncertain",
+      "confidence": 0.5,
+      "rationale": "Constraint adjusted: removed concepts outside the supplied candidate lists. The question asks for baselines. The evidence mentions selecting 'strong summarization models as baseline systems' and references $\\textsc {Lead-X}$ and $\\textsc {PTGen}$, which are text summarization models. 'TextSummarization' is explicitly in both query and evidence allowed lists."
+    },
+    {
+      "question_id": "fd6c194632230e392088fc1f574c8626c6a2fa96",
+      "query_concepts": [],
+      "evidence_concepts": [],
+      "relation": "uncertain",
+      "confidence": 0.5,
+      "rationale": "Constraint adjusted: removed concepts outside the supplied candidate lists. The question asks about data cleaning and filtering process, and the evidence excerpt mentions removing articles with top three sentences not forming a relevant summary, which relates to text summarization. The evidence concepts list includes 'TextSummarization' but the excerpt uses a metric for summarization relevance."
+    }
+  ]
+}

@@ -16,6 +16,10 @@ Cập nhật gần nhất: 17/10/2026
   43 thiếu cả hai và 7 case hữu ích cần xác minh.
 - [x] Sinh `concept_labeling_review.csv`; 25 câu có semantic candidate liên hệ được với
   concept evidence và được ưu tiên review, 55 câu cần rà concept evidence trước.
+- [x] Thử reviewer Qwen3:4b local trên đủ 25 câu ưu tiên với structured output và
+  candidate constraint. Kết quả 8 exact/2 related/6 none/9 uncertain; 7 câu bị loại
+  concept ngoài danh sách. Spot-check cho thấy model vẫn gán topic quá rộng cho câu hỏi
+  chung chung, nên chỉ giữ đây là gợi ý tạm thời, không đưa tự động vào gold label.
 
 ### Mới nhất: Validation v16 loại document-topic prior
 
@@ -842,8 +846,9 @@ Milestone tiếp theo: kiểm chứng khả năng khái quát của semantic con
 1. Giữ nguyên kết quả held-out v3 và validation v7; không tiếp tục tuning theo các tập đã xem.
 2. Giữ nguyên validation v9; không tuning scoring theo tập này. Tạo development split mới
    và thiết lập baseline document-scoped trước khi kết luận thêm về concept coverage.
-3. Review 25 câu ưu tiên trong development v17, sau đó mở rộng dần đến 112 câu; tuyệt đối
-   không dùng validation v16 làm training data.
+3. Review thủ công 25 câu ưu tiên trong development v17, dùng artifact Qwen local chỉ để
+   tham khảo; sau đó mở rộng dần đến 112 câu. Tuyệt đối không dùng validation v16 làm
+   training data.
 4. Dùng nhãn v17 để so sánh alias/semantic/phrase-first và chỉ bổ sung concept/quan hệ có
    bằng chứng lặp lại; không tiếp tục tăng graph weight hoặc thêm heuristic prior.
 5. Khi concept linking cải thiện rõ trên dev nội bộ, khóa candidate và tạo validation
