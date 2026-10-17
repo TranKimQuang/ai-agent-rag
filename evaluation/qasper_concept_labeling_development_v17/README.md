@@ -66,6 +66,11 @@ sau vòng này đạt Precision 1,000, Recall 0,833, F1 0,909 và exact match 0,
 Alias/Hybrid/Phrase-first. Chỉ còn bỏ sót `NeuralNetwork` từ một ví dụ “network
 architecture”; chưa thêm alias vì chưa có lặp lại.
 
+Batch tiền kiểm thứ hai gồm 30 câu (16 nhãn dương, 14 câu âm). Khi gộp hai batch thành
+55 câu/22 nhãn dương, sweep chung chọn Hybrid threshold 0,55: Precision 1,000, Recall
+0,682, F1 0,811 và exact match 0,873. Phrase-first tăng Recall lên 0,818 nhưng Precision
+giảm còn 0,643, F1 0,720. Chi tiết nằm trong `CONCEPT_LINKING_COMBINED_55_REPORT.md`.
+
 ## Quy trình tiếp theo
 
 1. Review thủ công 25 hàng có `review_hint=review_candidate_related_to_gold`; dùng gợi ý

@@ -34,6 +34,11 @@ Cập nhật gần nhất: 17/10/2026
   Precision 1,000, Recall 0,833, F1 0,909, exact match 0,960; chỉ còn bỏ sót một
   `NeuralNetwork` không có ví dụ lặp lại. Đây vẫn là pre-review development, chưa dùng làm
   validation chính thức.
+- [x] Tiền kiểm batch 2 gồm 30 câu (16 nhãn dương/14 câu âm), sau đó gộp với batch 1
+  thành 55 câu/22 nhãn dương. Sweep chung chọn Hybrid threshold 0,55: Precision 1,000,
+  Recall 0,682, F1 0,811, exact match 0,873. Phrase-first đạt Recall 0,818 nhưng Precision
+  chỉ 0,643 và F1 0,720, nên chưa dùng mặc định. Giữ ngưỡng 0,55 và tiếp tục review
+  development trước validation mới.
 
 ### Mới nhất: Validation v16 loại document-topic prior
 

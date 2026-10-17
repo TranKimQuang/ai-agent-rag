@@ -1,0 +1,575 @@
+{
+  "dataset": "evaluation\\qasper_concept_labeling_development_v17\\concept_linking_seed_review_batch2_30.json",
+  "threshold": 0.5,
+  "top1_top2_margin": 0.03,
+  "limit": 5,
+  "baseline": {
+    "precision": 0.7647058823529411,
+    "recall": 0.8125,
+    "f1": 0.787878787878788,
+    "exact_match": 0.7666666666666667,
+    "linked_examples": 15,
+    "examples": 30
+  },
+  "phrase_first": {
+    "precision": 0.52,
+    "recall": 0.8125,
+    "f1": 0.6341463414634146,
+    "exact_match": 0.5666666666666667,
+    "linked_examples": 21,
+    "examples": 30
+  },
+  "rows": [
+    {
+      "source_question_id": "084fb7c80a24b341093d4bf968120e3aff56f693",
+      "text": "How is state to learn and complete tasks represented via natural language?",
+      "gold_concepts": [
+        "NaturalLanguageProcessing"
+      ],
+      "baseline_concepts": [
+        "NaturalLanguageProcessing",
+        "QuestionAnswering"
+      ],
+      "phrase_concepts": [
+        "NaturalLanguageProcessing"
+      ],
+      "phrase_details": [
+        {
+          "concept": "NaturalLanguageProcessing",
+          "label": "natural language processing",
+          "score": 0.7180697321891785,
+          "source": "semantic"
+        }
+      ],
+      "changed": true
+    },
+    {
+      "source_question_id": "6583e8bfa7bcc3a792a90b30abb316e6d423f49b",
+      "text": "What are multilingual models that were outperformed in performed experiment?",
+      "gold_concepts": [
+        "MultilingualNaturalLanguageProcessing"
+      ],
+      "baseline_concepts": [
+        "MultilingualNaturalLanguageProcessing"
+      ],
+      "phrase_concepts": [
+        "MultilingualNaturalLanguageProcessing"
+      ],
+      "phrase_details": [
+        {
+          "concept": "MultilingualNaturalLanguageProcessing",
+          "label": "multilingual natural language processing",
+          "score": 1.0,
+          "source": "alias"
+        }
+      ],
+      "changed": false
+    },
+    {
+      "source_question_id": "fa2ffc6b4b046e17bc41e199855c4941673e2caf",
+      "text": "What parallel corpus did they use?",
+      "gold_concepts": [
+        "ParallelCorpus"
+      ],
+      "baseline_concepts": [
+        "ParallelCorpus"
+      ],
+      "phrase_concepts": [
+        "ParallelCorpus"
+      ],
+      "phrase_details": [
+        {
+          "concept": "ParallelCorpus",
+          "label": "parallel corpus",
+          "score": 1.0,
+          "source": "alias"
+        }
+      ],
+      "changed": false
+    },
+    {
+      "source_question_id": "12eaaf3b6ebc51846448c6e1ad210dbef7d25a96",
+      "text": "How many convolutional layers does their model have?",
+      "gold_concepts": [
+        "ConvolutionalNeuralNetwork"
+      ],
+      "baseline_concepts": [
+        "ConvolutionalNeuralNetwork"
+      ],
+      "phrase_concepts": [
+        "ConvolutionalNeuralNetwork"
+      ],
+      "phrase_details": [
+        {
+          "concept": "ConvolutionalNeuralNetwork",
+          "label": "convolutional neural network",
+          "score": 0.6167126297950745,
+          "source": "semantic"
+        }
+      ],
+      "changed": false
+    },
+    {
+      "source_question_id": "670c464a5dba78e0be7ec168fe36db604e172ea7",
+      "text": "Which word embeddings do they use to represent medical visits?",
+      "gold_concepts": [
+        "WordEmbedding"
+      ],
+      "baseline_concepts": [
+        "WordEmbedding"
+      ],
+      "phrase_concepts": [
+        "WordEmbedding"
+      ],
+      "phrase_details": [
+        {
+          "concept": "WordEmbedding",
+          "label": "word embedding",
+          "score": 1.0,
+          "source": "alias"
+        }
+      ],
+      "changed": false
+    },
+    {
+      "source_question_id": "cdf7e60150a166d41baed9dad539e3b93b544624",
+      "text": "Which distributional methods did they consider?",
+      "gold_concepts": [
+        "DistributionalSemantics"
+      ],
+      "baseline_concepts": [
+        "DistributionalSemantics"
+      ],
+      "phrase_concepts": [
+        "DistributionalSemantics"
+      ],
+      "phrase_details": [
+        {
+          "concept": "DistributionalSemantics",
+          "label": "distributional semantics",
+          "score": 0.644298791885376,
+          "source": "semantic"
+        }
+      ],
+      "changed": false
+    },
+    {
+      "source_question_id": "e84ba95c9a188fda4563f45e53fbc8728d8b5dab",
+      "text": "Do they build one model per topic or on all topics?",
+      "gold_concepts": [
+        "TopicModeling"
+      ],
+      "baseline_concepts": [
+        "TopicModeling"
+      ],
+      "phrase_concepts": [
+        "TopicModeling"
+      ],
+      "phrase_details": [
+        {
+          "concept": "TopicModeling",
+          "label": "topic modeling",
+          "score": 0.8088699579238892,
+          "source": "semantic"
+        }
+      ],
+      "changed": false
+    },
+    {
+      "source_question_id": "0fec9da2bc80a12a7a6d6600b9ecf3e122732b60",
+      "text": "Are PIEs extracted automatically subjected to human evaluation?",
+      "gold_concepts": [
+        "HumanEvaluation"
+      ],
+      "baseline_concepts": [],
+      "phrase_concepts": [],
+      "phrase_details": [],
+      "changed": false
+    },
+    {
+      "source_question_id": "38e11663b03ac585863742044fd15a0e875ae9ab",
+      "text": "Who is the crowd in these experiments?",
+      "gold_concepts": [
+        "Crowdsourcing"
+      ],
+      "baseline_concepts": [],
+      "phrase_concepts": [],
+      "phrase_details": [],
+      "changed": false
+    },
+    {
+      "source_question_id": "7358a1ce2eae380af423d4feeaa67d2bd23ae9dd",
+      "text": "How do their train their embeddings?",
+      "gold_concepts": [
+        "WordEmbedding"
+      ],
+      "baseline_concepts": [
+        "WordEmbedding"
+      ],
+      "phrase_concepts": [
+        "WordEmbedding"
+      ],
+      "phrase_details": [
+        {
+          "concept": "WordEmbedding",
+          "label": "word embedding",
+          "score": 1.0,
+          "source": "alias"
+        }
+      ],
+      "changed": false
+    },
+    {
+      "source_question_id": "0153f563f5e2680c2de1a5f6d0e443454dc1ef2a",
+      "text": "Do they fine-tune the used word embeddings on their medical texts?",
+      "gold_concepts": [
+        "WordEmbedding"
+      ],
+      "baseline_concepts": [
+        "WordEmbedding"
+      ],
+      "phrase_concepts": [
+        "WordEmbedding"
+      ],
+      "phrase_details": [
+        {
+          "concept": "WordEmbedding",
+          "label": "word embedding",
+          "score": 1.0,
+          "source": "alias"
+        }
+      ],
+      "changed": false
+    },
+    {
+      "source_question_id": "2965c86467d12b79abc16e1457d848cb6ca88973",
+      "text": "How were dialogue act labels defined?",
+      "gold_concepts": [
+        "DiscourseAnalysis"
+      ],
+      "baseline_concepts": [
+        "DiscourseAnalysis"
+      ],
+      "phrase_concepts": [
+        "DiscourseAnalysis",
+        "LabelPropagation"
+      ],
+      "phrase_details": [
+        {
+          "concept": "LabelPropagation",
+          "label": "label propagation",
+          "score": 0.6429204344749451,
+          "source": "semantic"
+        },
+        {
+          "concept": "DiscourseAnalysis",
+          "label": "discourse analysis",
+          "score": 0.5798801183700562,
+          "source": "semantic"
+        }
+      ],
+      "changed": true
+    },
+    {
+      "source_question_id": "6da2cb3187d3f28b75ac0a61f6562a8adf716109",
+      "text": "What are previous state-of-the-art document summarization methods used?",
+      "gold_concepts": [
+        "TextSummarization"
+      ],
+      "baseline_concepts": [
+        "TextSummarization"
+      ],
+      "phrase_concepts": [
+        "TextSummarization"
+      ],
+      "phrase_details": [
+        {
+          "concept": "TextSummarization",
+          "label": "text summarization",
+          "score": 1.0,
+          "source": "alias"
+        }
+      ],
+      "changed": false
+    },
+    {
+      "source_question_id": "d5f8707ddc21741d52b3c2a9ab1af2871dc6c90b",
+      "text": "What automatic and human evaluation metrics are used to compare SPNet to its counterparts?",
+      "gold_concepts": [
+        "HumanEvaluation"
+      ],
+      "baseline_concepts": [],
+      "phrase_concepts": [
+        "ROUGE"
+      ],
+      "phrase_details": [
+        {
+          "concept": "ROUGE",
+          "label": "ROUGE",
+          "score": 0.580173134803772,
+          "source": "semantic"
+        }
+      ],
+      "changed": true
+    },
+    {
+      "source_question_id": "d79d897f94e666d5a6fcda3b0c7e807c8fad109e",
+      "text": "What result from experiments suggest that natural language based agents are more robust?",
+      "gold_concepts": [
+        "NaturalLanguageProcessing"
+      ],
+      "baseline_concepts": [
+        "NaturalLanguageProcessing"
+      ],
+      "phrase_concepts": [
+        "LanguageModel",
+        "NaturalLanguageProcessing"
+      ],
+      "phrase_details": [
+        {
+          "concept": "NaturalLanguageProcessing",
+          "label": "natural language processing",
+          "score": 0.7441792488098145,
+          "source": "semantic"
+        },
+        {
+          "concept": "LanguageModel",
+          "label": "language model",
+          "score": 0.6795042157173157,
+          "source": "semantic"
+        }
+      ],
+      "changed": true
+    },
+    {
+      "source_question_id": "f398587b9a0008628278a5ea858e01d3f5559f65",
+      "text": "By how much does SPNet outperforms state-of-the-art abstractive summarization methods on evaluation metrics?",
+      "gold_concepts": [
+        "TextSummarization"
+      ],
+      "baseline_concepts": [
+        "ROUGE",
+        "TextSummarization"
+      ],
+      "phrase_concepts": [
+        "ROUGE",
+        "TextSummarization"
+      ],
+      "phrase_details": [
+        {
+          "concept": "TextSummarization",
+          "label": "text summarization",
+          "score": 1.0,
+          "source": "alias"
+        },
+        {
+          "concept": "ROUGE",
+          "label": "ROUGE",
+          "score": 0.580173134803772,
+          "source": "semantic"
+        }
+      ],
+      "changed": false
+    },
+    {
+      "source_question_id": "5b029ad0d20b516ec11967baaf7d2006e8d7199f",
+      "text": "How many label options are there in the multi-label task?",
+      "gold_concepts": [],
+      "baseline_concepts": [
+        "MultipleChoiceQuestionAnswering"
+      ],
+      "phrase_concepts": [
+        "LabelPropagation"
+      ],
+      "phrase_details": [
+        {
+          "concept": "LabelPropagation",
+          "label": "label propagation",
+          "score": 0.5993756055831909,
+          "source": "semantic"
+        }
+      ],
+      "changed": true
+    },
+    {
+      "source_question_id": "6e76f114209f59b027ec3b3c8c9cdfc3e682589f",
+      "text": "Is pivot language used in experiments English or some other language?",
+      "gold_concepts": [],
+      "baseline_concepts": [],
+      "phrase_concepts": [
+        "LanguageModel"
+      ],
+      "phrase_details": [
+        {
+          "concept": "LanguageModel",
+          "label": "language model",
+          "score": 0.606796145439148,
+          "source": "semantic"
+        }
+      ],
+      "changed": true
+    },
+    {
+      "source_question_id": "73633afbefa191b36cca594977204c6511f9dad4",
+      "text": "Is it expected to have speaker role, semantic slot and dialog domain annotations in real world datasets?",
+      "gold_concepts": [],
+      "baseline_concepts": [],
+      "phrase_concepts": [
+        "SemanticRoleInduction"
+      ],
+      "phrase_details": [
+        {
+          "concept": "SemanticRoleInduction",
+          "label": "semantic role induction",
+          "score": 0.7877631187438965,
+          "source": "semantic"
+        }
+      ],
+      "changed": true
+    },
+    {
+      "source_question_id": "8cc56fc44136498471754186cfa04056017b4e54",
+      "text": "By how much does their system outperform the lexicon-based models?",
+      "gold_concepts": [],
+      "baseline_concepts": [
+        "LanguageModel"
+      ],
+      "phrase_concepts": [
+        "LanguageModel"
+      ],
+      "phrase_details": [
+        {
+          "concept": "LanguageModel",
+          "label": "language model",
+          "score": 0.711715579032898,
+          "source": "semantic"
+        }
+      ],
+      "changed": false
+    },
+    {
+      "source_question_id": "9257c578ee19a7d93e2fba866be7b0bf1142c393",
+      "text": "Did they use other evaluation metrics?",
+      "gold_concepts": [],
+      "baseline_concepts": [],
+      "phrase_concepts": [
+        "ROUGE"
+      ],
+      "phrase_details": [
+        {
+          "concept": "ROUGE",
+          "label": "ROUGE",
+          "score": 0.590484619140625,
+          "source": "semantic"
+        }
+      ],
+      "changed": true
+    },
+    {
+      "source_question_id": "caf9819be516d2c5a7bfafc80882b07517752dfa",
+      "text": "Do they quantitavely or qualitatively evalute the output of their low-rank approximation to verify the grouping of lexical items?",
+      "gold_concepts": [],
+      "baseline_concepts": [],
+      "phrase_concepts": [
+        "LexicalDiversity",
+        "ReciprocalRankFusion"
+      ],
+      "phrase_details": [
+        {
+          "concept": "LexicalDiversity",
+          "label": "lexical diversity",
+          "score": 0.6433405876159668,
+          "source": "semantic"
+        },
+        {
+          "concept": "ReciprocalRankFusion",
+          "label": "reciprocal rank fusion",
+          "score": 0.5971740484237671,
+          "source": "semantic"
+        }
+      ],
+      "changed": true
+    },
+    {
+      "source_question_id": "191d4fe8a37611b2485e715bb55ff1a30038ad6a",
+      "text": "Are experiments performed with any other pair of languages, how did proposed method perform compared to other models?",
+      "gold_concepts": [],
+      "baseline_concepts": [],
+      "phrase_concepts": [],
+      "phrase_details": [],
+      "changed": false
+    },
+    {
+      "source_question_id": "1b9119813ea637974d21862a8ace83bc1acbab8e",
+      "text": "What dataset do they use?",
+      "gold_concepts": [],
+      "baseline_concepts": [],
+      "phrase_concepts": [
+        "DatasetBias"
+      ],
+      "phrase_details": [
+        {
+          "concept": "DatasetBias",
+          "label": "dataset bias",
+          "score": 0.5142906308174133,
+          "source": "semantic"
+        }
+      ],
+      "changed": true
+    },
+    {
+      "source_question_id": "24cc1586e5411a7f8574796d3c576b7c677d6e21",
+      "text": "Does the paper report the accuracy of the model?",
+      "gold_concepts": [],
+      "baseline_concepts": [],
+      "phrase_concepts": [],
+      "phrase_details": [],
+      "changed": false
+    },
+    {
+      "source_question_id": "33ccbc401b224a48fba4b167e86019ffad1787fb",
+      "text": "How many comments were used?",
+      "gold_concepts": [],
+      "baseline_concepts": [],
+      "phrase_concepts": [],
+      "phrase_details": [],
+      "changed": false
+    },
+    {
+      "source_question_id": "33d864153822bd378a98a732ace720e2c06a6bc6",
+      "text": "What is new state-of-the-art performance on CoNLL-2009 dataset?",
+      "gold_concepts": [],
+      "baseline_concepts": [],
+      "phrase_concepts": [],
+      "phrase_details": [],
+      "changed": false
+    },
+    {
+      "source_question_id": "36feaac9d9dee5ae09aaebc2019b014e57f61fbf",
+      "text": "How do they measure model size?",
+      "gold_concepts": [],
+      "baseline_concepts": [],
+      "phrase_concepts": [],
+      "phrase_details": [],
+      "changed": false
+    },
+    {
+      "source_question_id": "3af9156b95a4c2d67cc54b80b92cc7b918fea2a9",
+      "text": "What experiments are presented?",
+      "gold_concepts": [],
+      "baseline_concepts": [],
+      "phrase_concepts": [],
+      "phrase_details": [],
+      "changed": false
+    },
+    {
+      "source_question_id": "4dad15fee1fe01c3eadce8f0914781ca0a6e3f23",
+      "text": "How do they prevent the model complexity increasing with the increased number of slots?",
+      "gold_concepts": [],
+      "baseline_concepts": [],
+      "phrase_concepts": [],
+      "phrase_details": [],
+      "changed": false
+    }
+  ]
+}

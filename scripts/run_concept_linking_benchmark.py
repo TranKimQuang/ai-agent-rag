@@ -7,12 +7,29 @@ from app.ontology.service import OntologyService
 from app.rag.retriever import SentenceTransformerEncoder
 
 
+def load_examples(paths: list[Path]) -> list[ConceptLinkingExample]:
+    examples: list[ConceptLinkingExample] = []
+    seen_ids: set[str] = set()
+    for path in paths:
+        rows = json.loads(path.read_text(encoding="utf-8"))
+        for row in rows:
+            source_id = str(row.get("source_question_id", ""))
+            if source_id and source_id in seen_ids:
+                raise ValueError(f"Duplicate source_question_id: {source_id}")
+            if source_id:
+                seen_ids.add(source_id)
+            examples.append(row)
+    return examples
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description="Compare ontology concept-linking methods")
     parser.add_argument(
         "--dataset",
         type=Path,
-        default=Path("evaluation/concept_linking_sample.json"),
+        nargs="+",
+        default=[Path("evaluation/concept_linking_sample.json")],
+        help="One or more disjoint labelled concept-linking datasets.",
     )
     parser.add_argument(
         "--thresholds",
@@ -28,9 +45,7 @@ def main() -> None:
     )
     args = parser.parse_args()
 
-    examples: list[ConceptLinkingExample] = json.loads(
-        args.dataset.read_text(encoding="utf-8")
-    )
+    examples = load_examples(args.dataset)
     service = OntologyService(semantic_encoder=SentenceTransformerEncoder())
     by_threshold = {
         f"{threshold:.2f}": evaluate_concept_linking(
@@ -50,6 +65,7 @@ def main() -> None:
         ),
     )
     results = {
+        "datasets": [str(path) for path in args.dataset],
         "selection_metric": "hybrid_f1",
         "selected_threshold": float(selected_threshold),
         "selected_results": by_threshold[selected_threshold],

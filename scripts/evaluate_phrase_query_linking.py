@@ -6,6 +6,7 @@ from typing import Any
 from app.models import ConceptLinkingMethod
 from app.ontology.service import OntologyService
 from app.rag.retriever import SentenceTransformerEncoder
+from scripts.run_concept_linking_benchmark import load_examples
 
 
 def score_predictions(
@@ -41,14 +42,20 @@ def main() -> None:
     parser = argparse.ArgumentParser(
         description="Compare whole-query and phrase-first ontology concept linking"
     )
-    parser.add_argument("--dataset", type=Path, required=True)
+    parser.add_argument(
+        "--dataset",
+        type=Path,
+        nargs="+",
+        required=True,
+        help="One or more disjoint labelled concept-linking datasets.",
+    )
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--threshold", type=float, default=0.55)
     parser.add_argument("--margin", type=float, default=0.03)
     parser.add_argument("--limit", type=int, default=5)
     args = parser.parse_args()
 
-    examples = json.loads(args.dataset.read_text(encoding="utf-8"))
+    examples = load_examples(args.dataset)
     service = OntologyService(
         semantic_encoder=SentenceTransformerEncoder(),
         linking_method=ConceptLinkingMethod.HYBRID,
@@ -91,7 +98,7 @@ def main() -> None:
         )
 
     payload = {
-        "dataset": str(args.dataset),
+        "datasets": [str(path) for path in args.dataset],
         "threshold": args.threshold,
         "top1_top2_margin": args.margin,
         "limit": args.limit,

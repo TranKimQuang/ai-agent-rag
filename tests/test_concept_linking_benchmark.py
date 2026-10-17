@@ -1,8 +1,13 @@
+import json
+from pathlib import Path
+
 import numpy as np
+import pytest
 
 from app.evaluation.concept_linking import evaluate_concept_linking
 from app.models import ConceptLinkingMethod
 from app.ontology.service import OntologyService
+from scripts.run_concept_linking_benchmark import load_examples
 
 
 class BenchmarkEncoder:
@@ -43,3 +48,47 @@ def test_concept_linking_benchmark_compares_all_three_methods() -> None:
     assert set(results) == {method.value for method in ConceptLinkingMethod}
     assert results["semantic"]["recall"] > results["alias"]["recall"]
     assert results["hybrid"]["recall"] == 1.0
+
+
+def test_load_examples_merges_disjoint_review_batches(tmp_path: Path) -> None:
+    first = tmp_path / "first.json"
+    second = tmp_path / "second.json"
+    first.write_text(
+        json.dumps(
+            [
+                {
+                    "source_question_id": "q1",
+                    "text": "First",
+                    "gold_concepts": [],
+                }
+            ]
+        ),
+        encoding="utf-8",
+    )
+    second.write_text(
+        json.dumps(
+            [
+                {
+                    "source_question_id": "q2",
+                    "text": "Second",
+                    "gold_concepts": ["WordEmbedding"],
+                }
+            ]
+        ),
+        encoding="utf-8",
+    )
+
+    examples = load_examples([first, second])
+
+    assert [item["text"] for item in examples] == ["First", "Second"]
+
+
+def test_load_examples_rejects_duplicate_question_ids(tmp_path: Path) -> None:
+    first = tmp_path / "first.json"
+    second = tmp_path / "second.json"
+    row = {"source_question_id": "q1", "text": "Question", "gold_concepts": []}
+    first.write_text(json.dumps([row]), encoding="utf-8")
+    second.write_text(json.dumps([row]), encoding="utf-8")
+
+    with pytest.raises(ValueError, match="Duplicate source_question_id: q1"):
+        load_examples([first, second])
