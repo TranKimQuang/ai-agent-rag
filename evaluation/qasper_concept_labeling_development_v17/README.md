@@ -82,18 +82,36 @@ giữ 7, loại 3 nhãn gán quá rộng. Chi tiết ở
 `internal_verification_positive_label_audit.json`. Audit không chạy lại prediction và
 không dùng tập đã mở để tuning.
 
-102 nhãn còn lại sau đó cũng được audit theo cùng quy tắc. Có 97 nhãn giữ nguyên và 5
-nhãn sửa (loại 2 nhãn gán quá rộng, thêm 3 trường hợp multilingual bị bỏ sót). Sau hai
-audit, pool 112 câu có 30 câu dương và 82 câu `NONE`; trạng thái là
+102 nhãn còn lại sau đó cũng được audit theo cùng quy tắc. Có 95 nhãn giữ nguyên và 7
+nhãn sửa (loại 2 nhãn gán quá rộng, loại 2 nhãn `HumanEvaluation` đang bị tắt khỏi
+vocabulary hoạt động, thêm 3 trường hợp multilingual bị bỏ sót). Sau hai audit, pool 112
+câu có 28 câu dương và 84 câu `NONE`; trạng thái là
 `assistant_audited_not_independent_human_gold`. Xem `REMAINING_102_LABEL_AUDIT.md` và
 `remaining_102_label_audit.json`.
 
+Để chạy model selection mà không chạm 57 câu verification, sáu correction thuộc riêng
+55 câu selection được tách thành `selection_55_label_audit.json`. File này chỉ là overlay
+nhãn; hai file review gốc vẫn được giữ nguyên để truy vết.
+
+## Thử nghiệm NLI tiếp theo
+
+Sau audit, 55 câu selection có 20 nhãn dương. Hybrid ngưỡng 0,55 đạt Precision 0,933,
+Recall 0,700, F1 0,800 và exact match 0,873. Thử nghiệm NLI zero-shot bằng
+`cross-encoder/nli-deberta-v3-small` chỉ đạt F1 0,407 và exact match 0,527 nên bị loại.
+Không chạy lại 57 câu internal verification. Chi tiết và artifact ở
+`../qasper_concept_labeling_development_v18/`.
+
 ## Quy trình tiếp theo
 
-1. Review thủ công 25 hàng có `review_hint=review_candidate_related_to_gold`; dùng gợi ý
-   local LLM như tham khảo, không chép tự động vào cột `review_*`.
-2. Ghi concept đúng hoặc `NONE` vào `review_query_concepts` và
-   `review_gold_concepts`; ghi `exact`, `related`, `none` vào `review_relation`.
-3. Tách nhãn thành train/dev nội bộ; không dùng validation v16 để lựa chọn.
-4. Đo precision/recall/F1 của alias, semantic và phrase-first trước khi sửa Ontology.
-5. Chỉ tạo validation paper-disjoint mới nếu concept-linking cải thiện rõ trên v17.
+1. Người thứ hai kiểm tra độc lập toàn bộ 28 câu dương và một mẫu từ 84 câu âm.
+2. Tách nhãn đã xác nhận thành train/development theo paper; không dùng validation v16.
+3. Thử linker có supervision trực tiếp cho taxonomy của dự án, giữ Hybrid 0,55 làm
+   baseline.
+4. Chỉ tạo validation paper-disjoint mới nếu candidate mới cải thiện rõ trên development.
+
+## Trạng thái mới hơn
+
+Các con số assistant-audited trong thư mục này đã được independent LLM review và
+third-reviewer adjudication ở `../qasper_concept_labeling_development_v18/`. Policy cuối
+có 25 câu dương/87 câu âm; Hybrid 0,55 sau thu hẹp alias đạt F1 0,720 trên 55 câu
+selection. Khi báo cáo kết quả mới, dùng artifact v18 và giữ v17 chỉ để truy vết lịch sử.

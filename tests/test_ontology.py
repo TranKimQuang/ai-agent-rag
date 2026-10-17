@@ -540,34 +540,42 @@ def test_validation_driven_vocabulary_links_real_research_phrases() -> None:
     } <= concepts
 
 
-def test_alias_concept_linking_recognizes_repeated_embedding_shorthand() -> None:
+def test_alias_concept_linking_requires_word_embedding_subtype() -> None:
     service = OntologyService()
 
-    singular = service.link_concepts(
+    generic_singular = service.link_concepts(
         "What embedding algorithm is used?", ConceptLinkingMethod.ALIAS
     )
-    plural = service.link_concepts(
+    generic_plural = service.link_concepts(
         "What embeddings do they use?", ConceptLinkingMethod.ALIAS
     )
+    explicit = service.link_concepts(
+        "Which word embeddings do they use?", ConceptLinkingMethod.ALIAS
+    )
 
-    assert {link.concept for link in singular} == {"WordEmbedding"}
-    assert {link.concept for link in plural} == {"WordEmbedding"}
+    assert {link.concept for link in generic_singular} == set()
+    assert {link.concept for link in generic_plural} == set()
+    assert {link.concept for link in explicit} == {"WordEmbedding"}
 
 
-def test_alias_concept_linking_recognizes_repeated_multilingual_phrases() -> None:
+def test_alias_concept_linking_keeps_specific_multilingual_phrases() -> None:
     service = OntologyService()
 
     bilingual = service.link_concepts(
         "Which bilingual models were employed?", ConceptLinkingMethod.ALIAS
     )
-    paired = service.link_concepts(
+    ambiguous_paired = service.link_concepts(
         "Which paired corpora were used?", ConceptLinkingMethod.ALIAS
+    )
+    explicit_parallel = service.link_concepts(
+        "Which parallel corpora were used?", ConceptLinkingMethod.ALIAS
     )
 
     assert {link.concept for link in bilingual} == {
         "MultilingualNaturalLanguageProcessing"
     }
-    assert {link.concept for link in paired} == {"ParallelCorpus"}
+    assert {link.concept for link in ambiguous_paired} == set()
+    assert {link.concept for link in explicit_parallel} == {"ParallelCorpus"}
 
 
 def test_validation_driven_query_expansion_uses_domain_relations() -> None:

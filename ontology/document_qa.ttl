@@ -259,7 +259,7 @@ qa:RecurrentNeuralNetwork a qa:Model ;
 
 qa:WordEmbedding a qa:Method ;
     skos:prefLabel "word embedding"@en ;
-    skos:altLabel "embedding"@en, "embeddings"@en, "word embeddings"@en, "word vector"@en,
+    skos:altLabel "word embeddings"@en, "word vector"@en,
         "distributed word representation"@en ;
     skos:definition "A dense vector representation of a word learned from language data."@en ;
     qa:relatedTo qa:DistributionalSemantics, qa:NaturalLanguageProcessing .
@@ -278,8 +278,7 @@ qa:CooccurrenceMatrix a qa:Method ;
 
 qa:ParallelCorpus a qa:Dataset ;
     skos:prefLabel "parallel corpus"@en ;
-    skos:altLabel "paired corpus"@en, "paired corpora"@en,
-        "parallel corpora"@en, "multilingual parallel corpus"@en ;
+    skos:altLabel "parallel corpora"@en, "multilingual parallel corpus"@en ;
     skos:definition "A collection containing aligned texts in two or more languages."@en ;
     qa:relatedTo qa:NaturalLanguageProcessing, qa:SemanticRoleInduction .
 

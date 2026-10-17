@@ -18,12 +18,12 @@
   },
   "summary": {
     "reviewed": 102,
-    "unchanged": 97,
-    "corrected": 5,
-    "removed_positive_labels": 2,
+    "unchanged": 95,
+    "corrected": 7,
+    "removed_positive_labels": 4,
     "added_positive_labels": 3,
-    "audited_positive_rows": 23,
-    "audited_negative_rows": 79
+    "audited_positive_rows": 21,
+    "audited_negative_rows": 81
   },
   "corrections": [
     {
@@ -41,6 +41,22 @@
       "audited_concepts": [],
       "decision": "remove_overbroad_label",
       "reason": "Crowd means the aggregate opinion of social-media users in this paper. It is not the Crowdsourcing method defined in the ontology."
+    },
+    {
+      "source_question_id": "0fec9da2bc80a12a7a6d6600b9ecf3e122732b60",
+      "question": "Are PIEs extracted automatically subjected to human evaluation?",
+      "original_concepts": ["HumanEvaluation"],
+      "audited_concepts": [],
+      "decision": "remove_disabled_concept",
+      "reason": "HumanEvaluation is mapped in the ontology but explicitly has retrievalEnabled=false, so it is outside the active linker vocabulary."
+    },
+    {
+      "source_question_id": "d5f8707ddc21741d52b3c2a9ab1af2871dc6c90b",
+      "question": "What automatic and human evaluation metrics are used to compare SPNet to its counterparts?",
+      "original_concepts": ["HumanEvaluation"],
+      "audited_concepts": [],
+      "decision": "remove_disabled_concept",
+      "reason": "HumanEvaluation is mapped in the ontology but explicitly has retrievalEnabled=false, so it cannot be a gold label for the active linker."
     },
     {
       "source_question_id": "6e76f114209f59b027ec3b3c8c9cdfc3e682589f",
@@ -69,8 +85,8 @@
   ],
   "whole_pool_after_both_audits": {
     "questions": 112,
-    "positive_rows": 30,
-    "negative_rows": 82,
+    "positive_rows": 28,
+    "negative_rows": 84,
     "status": "assistant_audited_not_independent_human_gold"
   }
 }

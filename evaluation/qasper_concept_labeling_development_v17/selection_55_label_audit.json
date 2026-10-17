@@ -1,0 +1,41 @@
+{
+  "scope": "Audited corrections restricted to the 55-question selection development set",
+  "audit_date": "2026-10-17",
+  "usage_policy": "development_model_selection_only",
+  "source_files": [
+    "concept_linking_seed_review_25.json",
+    "concept_linking_seed_review_batch2_30.json"
+  ],
+  "summary": {
+    "questions": 55,
+    "original_positive_rows": 22,
+    "audited_positive_rows": 20,
+    "corrections": 6
+  },
+  "corrections": [
+    {
+      "source_question_id": "e84ba95c9a188fda4563f45e53fbc8728d8b5dab",
+      "audited_concepts": []
+    },
+    {
+      "source_question_id": "38e11663b03ac585863742044fd15a0e875ae9ab",
+      "audited_concepts": []
+    },
+    {
+      "source_question_id": "0fec9da2bc80a12a7a6d6600b9ecf3e122732b60",
+      "audited_concepts": []
+    },
+    {
+      "source_question_id": "d5f8707ddc21741d52b3c2a9ab1af2871dc6c90b",
+      "audited_concepts": []
+    },
+    {
+      "source_question_id": "6e76f114209f59b027ec3b3c8c9cdfc3e682589f",
+      "audited_concepts": ["MultilingualNaturalLanguageProcessing"]
+    },
+    {
+      "source_question_id": "191d4fe8a37611b2485e715bb55ff1a30038ad6a",
+      "audited_concepts": ["MultilingualNaturalLanguageProcessing"]
+    }
+  ]
+}

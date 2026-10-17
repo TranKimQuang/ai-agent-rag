@@ -1,0 +1,622 @@
+{
+  "status": "assistant_audited_reference_key_not_for_reviewer",
+  "questions": 112,
+  "items": [
+    {
+      "review_id": "CR-001",
+      "source_question_id": "f398587b9a0008628278a5ea858e01d3f5559f65",
+      "audited_concepts": [
+        "TextSummarization"
+      ]
+    },
+    {
+      "review_id": "CR-002",
+      "source_question_id": "b99948ac4810a7fe3477f6591b8cf211d6398e67",
+      "audited_concepts": []
+    },
+    {
+      "review_id": "CR-003",
+      "source_question_id": "4d5f112874250d48eb49649c4abe31d6c9236700",
+      "audited_concepts": []
+    },
+    {
+      "review_id": "CR-004",
+      "source_question_id": "33ccbc401b224a48fba4b167e86019ffad1787fb",
+      "audited_concepts": []
+    },
+    {
+      "review_id": "CR-005",
+      "source_question_id": "db39a71080e323ba2ddf958f93778e2b875dcd24",
+      "audited_concepts": []
+    },
+    {
+      "review_id": "CR-006",
+      "source_question_id": "f2c5da398e601e53f9f545947f61de5f40ede1ee",
+      "audited_concepts": []
+    },
+    {
+      "review_id": "CR-007",
+      "source_question_id": "864b5c1fe8c744f80a55e87421b29d6485b7efd0",
+      "audited_concepts": []
+    },
+    {
+      "review_id": "CR-008",
+      "source_question_id": "657edbf39c500b2446edb9cca18de2912c628b7d",
+      "audited_concepts": [
+        "LanguageModel"
+      ]
+    },
+    {
+      "review_id": "CR-009",
+      "source_question_id": "bed527bcb0dd5424e69563fba4ae7e6ea1fca26a",
+      "audited_concepts": []
+    },
+    {
+      "review_id": "CR-010",
+      "source_question_id": "c0122190119027dc3eb51f0d4b4483d2dbedc696",
+      "audited_concepts": []
+    },
+    {
+      "review_id": "CR-011",
+      "source_question_id": "5758ebff49807a51d080b0ce10ba3f86dcf71925",
+      "audited_concepts": []
+    },
+    {
+      "review_id": "CR-012",
+      "source_question_id": "5fa431b14732b3c47ab6eec373f51f2bca04f614",
+      "audited_concepts": []
+    },
+    {
+      "review_id": "CR-013",
+      "source_question_id": "828615a874512844ede9d7f7d92bdc48bb48b18d",
+      "audited_concepts": []
+    },
+    {
+      "review_id": "CR-014",
+      "source_question_id": "5a33ec23b4341584a8079db459d89a4e23420494",
+      "audited_concepts": []
+    },
+    {
+      "review_id": "CR-015",
+      "source_question_id": "f95097cf4a0dc036fd8b80c007cd8d7a157b7816",
+      "audited_concepts": []
+    },
+    {
+      "review_id": "CR-016",
+      "source_question_id": "d4e78d3205e98cafdf93ddaa95627ea00b7c4d55",
+      "audited_concepts": []
+    },
+    {
+      "review_id": "CR-017",
+      "source_question_id": "5ea87432b9166d6a4ab8806599cd2b1f9178622f",
+      "audited_concepts": []
+    },
+    {
+      "review_id": "CR-018",
+      "source_question_id": "5c90e1ed208911dbcae7e760a553e912f8c237a5",
+      "audited_concepts": []
+    },
+    {
+      "review_id": "CR-019",
+      "source_question_id": "b7708cbb50085eb41e306bd2248f1515a5ebada8",
+      "audited_concepts": []
+    },
+    {
+      "review_id": "CR-020",
+      "source_question_id": "b67420da975689e47d3ea1c12b601851018c4071",
+      "audited_concepts": []
+    },
+    {
+      "review_id": "CR-021",
+      "source_question_id": "9257c578ee19a7d93e2fba866be7b0bf1142c393",
+      "audited_concepts": []
+    },
+    {
+      "review_id": "CR-022",
+      "source_question_id": "9bffc9a9c527e938b2a95ba60c483a916dbd1f6b",
+      "audited_concepts": []
+    },
+    {
+      "review_id": "CR-023",
+      "source_question_id": "4d4739682d540878a94d8227412e9e1ec1bb3d39",
+      "audited_concepts": []
+    },
+    {
+      "review_id": "CR-024",
+      "source_question_id": "11e6b79f1f48ddc6c580c4d0a3cb9bcb42decb17",
+      "audited_concepts": []
+    },
+    {
+      "review_id": "CR-025",
+      "source_question_id": "41fd359b8c1402b31b6f5efd660143d1414783a0",
+      "audited_concepts": []
+    },
+    {
+      "review_id": "CR-026",
+      "source_question_id": "b3238158392684a5a6b62a7eabaa2a10fbecf3e6",
+      "audited_concepts": []
+    },
+    {
+      "review_id": "CR-027",
+      "source_question_id": "14e78db206a8180ea637774aa572b073e3ffa219",
+      "audited_concepts": []
+    },
+    {
+      "review_id": "CR-028",
+      "source_question_id": "94ec0e205790ec663a5353f3c68c8d77701573c7",
+      "audited_concepts": []
+    },
+    {
+      "review_id": "CR-029",
+      "source_question_id": "d79d897f94e666d5a6fcda3b0c7e807c8fad109e",
+      "audited_concepts": [
+        "NaturalLanguageProcessing"
+      ]
+    },
+    {
+      "review_id": "CR-030",
+      "source_question_id": "49aecc50823a60c852165e121dbc0ca54304e40f",
+      "audited_concepts": []
+    },
+    {
+      "review_id": "CR-031",
+      "source_question_id": "1b9119813ea637974d21862a8ace83bc1acbab8e",
+      "audited_concepts": []
+    },
+    {
+      "review_id": "CR-032",
+      "source_question_id": "346f10ddb34503dfba72b0e49afcdf6a08ecacfa",
+      "audited_concepts": []
+    },
+    {
+      "review_id": "CR-033",
+      "source_question_id": "caf9819be516d2c5a7bfafc80882b07517752dfa",
+      "audited_concepts": []
+    },
+    {
+      "review_id": "CR-034",
+      "source_question_id": "cca74448ab0c518edd5fc53454affd67ac1a201c",
+      "audited_concepts": []
+    },
+    {
+      "review_id": "CR-035",
+      "source_question_id": "f91835f17c0086baec65ebd99d12326ae1ae87d2",
+      "audited_concepts": []
+    },
+    {
+      "review_id": "CR-036",
+      "source_question_id": "3af9156b95a4c2d67cc54b80b92cc7b918fea2a9",
+      "audited_concepts": []
+    },
+    {
+      "review_id": "CR-037",
+      "source_question_id": "8e857e44e4233193c7b2d538e520d37be3ae1552",
+      "audited_concepts": []
+    },
+    {
+      "review_id": "CR-038",
+      "source_question_id": "191d4fe8a37611b2485e715bb55ff1a30038ad6a",
+      "audited_concepts": [
+        "MultilingualNaturalLanguageProcessing"
+      ]
+    },
+    {
+      "review_id": "CR-039",
+      "source_question_id": "2a0a44f169ad61774d77df65f8846bd57685bfcf",
+      "audited_concepts": []
+    },
+    {
+      "review_id": "CR-040",
+      "source_question_id": "6583e8bfa7bcc3a792a90b30abb316e6d423f49b",
+      "audited_concepts": [
+        "MultilingualNaturalLanguageProcessing"
+      ]
+    },
+    {
+      "review_id": "CR-041",
+      "source_question_id": "5b029ad0d20b516ec11967baaf7d2006e8d7199f",
+      "audited_concepts": []
+    },
+    {
+      "review_id": "CR-042",
+      "source_question_id": "c45a160d31ca8eddbfea79907ec8e59f543aab86",
+      "audited_concepts": []
+    },
+    {
+      "review_id": "CR-043",
+      "source_question_id": "1165fb0b400ec1c521c1aef7a4e590f76fee1279",
+      "audited_concepts": []
+    },
+    {
+      "review_id": "CR-044",
+      "source_question_id": "fd6c194632230e392088fc1f574c8626c6a2fa96",
+      "audited_concepts": []
+    },
+    {
+      "review_id": "CR-045",
+      "source_question_id": "562a2feeba9580f5435a94396f2a8751f79a4d5c",
+      "audited_concepts": [
+        "WordEmbedding"
+      ]
+    },
+    {
+      "review_id": "CR-046",
+      "source_question_id": "24cc1586e5411a7f8574796d3c576b7c677d6e21",
+      "audited_concepts": []
+    },
+    {
+      "review_id": "CR-047",
+      "source_question_id": "da2b43d7d048f3f59adf26a67ce66bd2d8a06326",
+      "audited_concepts": []
+    },
+    {
+      "review_id": "CR-048",
+      "source_question_id": "36feaac9d9dee5ae09aaebc2019b014e57f61fbf",
+      "audited_concepts": []
+    },
+    {
+      "review_id": "CR-049",
+      "source_question_id": "670c464a5dba78e0be7ec168fe36db604e172ea7",
+      "audited_concepts": [
+        "WordEmbedding"
+      ]
+    },
+    {
+      "review_id": "CR-050",
+      "source_question_id": "b72264a73eea36c828e7de778a8b4599a5d02b39",
+      "audited_concepts": []
+    },
+    {
+      "review_id": "CR-051",
+      "source_question_id": "3b7798a6bce1a5faf411bb12e2e011dbab1e279d",
+      "audited_concepts": [
+        "MultilingualNaturalLanguageProcessing"
+      ]
+    },
+    {
+      "review_id": "CR-052",
+      "source_question_id": "d20d6c8ecd7cb0126479305d27deb0c8b642b09f",
+      "audited_concepts": []
+    },
+    {
+      "review_id": "CR-053",
+      "source_question_id": "1ed6acb88954f31b78d2821bb230b722374792ed",
+      "audited_concepts": []
+    },
+    {
+      "review_id": "CR-054",
+      "source_question_id": "aeab5797b541850e692f11e79167928db80de1ea",
+      "audited_concepts": []
+    },
+    {
+      "review_id": "CR-055",
+      "source_question_id": "8434974090491a3c00eed4f22a878f0b70970713",
+      "audited_concepts": []
+    },
+    {
+      "review_id": "CR-056",
+      "source_question_id": "f5cf8738e8d211095bb89350ed05ee7f9997eb19",
+      "audited_concepts": []
+    },
+    {
+      "review_id": "CR-057",
+      "source_question_id": "aaf50a6a9f449389ef212d25d0fae59c10b0df92",
+      "audited_concepts": []
+    },
+    {
+      "review_id": "CR-058",
+      "source_question_id": "50f09a044f0c0795cc636c3e25a4f7c3231fb08d",
+      "audited_concepts": [
+        "MultilingualNaturalLanguageProcessing"
+      ]
+    },
+    {
+      "review_id": "CR-059",
+      "source_question_id": "85abd60094c92eb16f39f861c6de8c2064807d02",
+      "audited_concepts": [
+        "MultilingualNaturalLanguageProcessing"
+      ]
+    },
+    {
+      "review_id": "CR-060",
+      "source_question_id": "8b51db1f7a6293b5bd8be49386cce45989b8079f",
+      "audited_concepts": []
+    },
+    {
+      "review_id": "CR-061",
+      "source_question_id": "ef07ec34433221d4da79d5923fb00d8ac446b92c",
+      "audited_concepts": [
+        "MultilingualNaturalLanguageProcessing"
+      ]
+    },
+    {
+      "review_id": "CR-062",
+      "source_question_id": "2965c86467d12b79abc16e1457d848cb6ca88973",
+      "audited_concepts": [
+        "DiscourseAnalysis"
+      ]
+    },
+    {
+      "review_id": "CR-063",
+      "source_question_id": "0fec9da2bc80a12a7a6d6600b9ecf3e122732b60",
+      "audited_concepts": []
+    },
+    {
+      "review_id": "CR-064",
+      "source_question_id": "38e11663b03ac585863742044fd15a0e875ae9ab",
+      "audited_concepts": []
+    },
+    {
+      "review_id": "CR-065",
+      "source_question_id": "6da2cb3187d3f28b75ac0a61f6562a8adf716109",
+      "audited_concepts": [
+        "TextSummarization"
+      ]
+    },
+    {
+      "review_id": "CR-066",
+      "source_question_id": "e84ba95c9a188fda4563f45e53fbc8728d8b5dab",
+      "audited_concepts": []
+    },
+    {
+      "review_id": "CR-067",
+      "source_question_id": "084fb7c80a24b341093d4bf968120e3aff56f693",
+      "audited_concepts": [
+        "NaturalLanguageProcessing"
+      ]
+    },
+    {
+      "review_id": "CR-068",
+      "source_question_id": "0153f563f5e2680c2de1a5f6d0e443454dc1ef2a",
+      "audited_concepts": [
+        "WordEmbedding"
+      ]
+    },
+    {
+      "review_id": "CR-069",
+      "source_question_id": "2677b88c2def3ed94e25a776599555a788d197f2",
+      "audited_concepts": []
+    },
+    {
+      "review_id": "CR-070",
+      "source_question_id": "86f24ecc89e743bb1534ac160d08859493afafe9",
+      "audited_concepts": [
+        "NaturalLanguageProcessing"
+      ]
+    },
+    {
+      "review_id": "CR-071",
+      "source_question_id": "d3a1a53521f252f869fdae944db986931d9ffe48",
+      "audited_concepts": []
+    },
+    {
+      "review_id": "CR-072",
+      "source_question_id": "d325a3c21660dbc481b4e839ff1a2d37dcc7ca46",
+      "audited_concepts": [
+        "NaturalLanguageProcessing"
+      ]
+    },
+    {
+      "review_id": "CR-073",
+      "source_question_id": "8cc56fc44136498471754186cfa04056017b4e54",
+      "audited_concepts": []
+    },
+    {
+      "review_id": "CR-074",
+      "source_question_id": "d5f8707ddc21741d52b3c2a9ab1af2871dc6c90b",
+      "audited_concepts": []
+    },
+    {
+      "review_id": "CR-075",
+      "source_question_id": "c06b5623c35b6fa7938340fa340269dc81d061e1",
+      "audited_concepts": []
+    },
+    {
+      "review_id": "CR-076",
+      "source_question_id": "2480dfe2d996afef840a81bd920aeb9c26e5b31d",
+      "audited_concepts": []
+    },
+    {
+      "review_id": "CR-077",
+      "source_question_id": "cb4727cd5643dabc3f5c95e851d5313f5d979bdc",
+      "audited_concepts": []
+    },
+    {
+      "review_id": "CR-078",
+      "source_question_id": "a91878129583fcb6d16067ba8ba3600e39d70021",
+      "audited_concepts": []
+    },
+    {
+      "review_id": "CR-079",
+      "source_question_id": "cdf7e60150a166d41baed9dad539e3b93b544624",
+      "audited_concepts": [
+        "DistributionalSemantics"
+      ]
+    },
+    {
+      "review_id": "CR-080",
+      "source_question_id": "574f17134e4dd041c357ebb75a7ef590da294d22",
+      "audited_concepts": []
+    },
+    {
+      "review_id": "CR-081",
+      "source_question_id": "235c156d9c2adc895c9113f53c60f2dd8df45834",
+      "audited_concepts": []
+    },
+    {
+      "review_id": "CR-082",
+      "source_question_id": "5937ebbf04f62d41b48cbc6b5c38fc309e5c2328",
+      "audited_concepts": []
+    },
+    {
+      "review_id": "CR-083",
+      "source_question_id": "dcd6f18922ac5c00c22cef33c53ff5ae08b42298",
+      "audited_concepts": []
+    },
+    {
+      "review_id": "CR-084",
+      "source_question_id": "73633afbefa191b36cca594977204c6511f9dad4",
+      "audited_concepts": []
+    },
+    {
+      "review_id": "CR-085",
+      "source_question_id": "284ea817fd79bc10b7a82c88d353e8f8a9d7e93c",
+      "audited_concepts": []
+    },
+    {
+      "review_id": "CR-086",
+      "source_question_id": "100cf8b72d46da39fedfe77ec939fb44f25de77f",
+      "audited_concepts": [
+        "ParallelCorpus"
+      ]
+    },
+    {
+      "review_id": "CR-087",
+      "source_question_id": "80f19be1cbe1f0ec89bbafb9c5f7a8ded37881fb",
+      "audited_concepts": [
+        "WordEmbedding"
+      ]
+    },
+    {
+      "review_id": "CR-088",
+      "source_question_id": "62736ad71c76a20aee8e003c462869bab4ab4b1e",
+      "audited_concepts": []
+    },
+    {
+      "review_id": "CR-089",
+      "source_question_id": "7e328cc3cffa521e73f111d6796aaa9661c8eb07",
+      "audited_concepts": [
+        "WordEmbedding"
+      ]
+    },
+    {
+      "review_id": "CR-090",
+      "source_question_id": "fa2ffc6b4b046e17bc41e199855c4941673e2caf",
+      "audited_concepts": [
+        "ParallelCorpus"
+      ]
+    },
+    {
+      "review_id": "CR-091",
+      "source_question_id": "12eaaf3b6ebc51846448c6e1ad210dbef7d25a96",
+      "audited_concepts": [
+        "ConvolutionalNeuralNetwork"
+      ]
+    },
+    {
+      "review_id": "CR-092",
+      "source_question_id": "17988d65e46ff7d756076e9191890aec177b081e",
+      "audited_concepts": []
+    },
+    {
+      "review_id": "CR-093",
+      "source_question_id": "487dc65bf8a8ecbf052cf05641caf1b90a502853",
+      "audited_concepts": []
+    },
+    {
+      "review_id": "CR-094",
+      "source_question_id": "bb8a0035b767688a98602c33f4714f8ac8ae60db",
+      "audited_concepts": []
+    },
+    {
+      "review_id": "CR-095",
+      "source_question_id": "5cb3d69607f60e1c5be2120462726a477ead9570",
+      "audited_concepts": [
+        "NaturalLanguageProcessing"
+      ]
+    },
+    {
+      "review_id": "CR-096",
+      "source_question_id": "892c346617a3391c7dafc9da1b65e5ea3890294d",
+      "audited_concepts": [
+        "NeuralNetwork"
+      ]
+    },
+    {
+      "review_id": "CR-097",
+      "source_question_id": "f6496b8d09911cdf3a9b72aec0b0be6232a6dba1",
+      "audited_concepts": []
+    },
+    {
+      "review_id": "CR-098",
+      "source_question_id": "db291d734524fa51fb314628b64ebe1bac7f7e1e",
+      "audited_concepts": []
+    },
+    {
+      "review_id": "CR-099",
+      "source_question_id": "ad67ca844c63bf8ac9fdd0fa5f58c5a438f16211",
+      "audited_concepts": []
+    },
+    {
+      "review_id": "CR-100",
+      "source_question_id": "14421b7ae4459b647033b3ccba635d4ba7bb114b",
+      "audited_concepts": []
+    },
+    {
+      "review_id": "CR-101",
+      "source_question_id": "fd80a7162fde83077ed82ae41d521d774f74340a",
+      "audited_concepts": []
+    },
+    {
+      "review_id": "CR-102",
+      "source_question_id": "a7d72f308444616a0befc8db7ad388b3216e2143",
+      "audited_concepts": []
+    },
+    {
+      "review_id": "CR-103",
+      "source_question_id": "3c3b4797e2b21e2c31cf117ad9e52f327721790f",
+      "audited_concepts": []
+    },
+    {
+      "review_id": "CR-104",
+      "source_question_id": "5499527beadb7f5dd908bd659cad83d6a81119bd",
+      "audited_concepts": []
+    },
+    {
+      "review_id": "CR-105",
+      "source_question_id": "7358a1ce2eae380af423d4feeaa67d2bd23ae9dd",
+      "audited_concepts": [
+        "WordEmbedding"
+      ]
+    },
+    {
+      "review_id": "CR-106",
+      "source_question_id": "790ed4458a23aa23e2b5399259e50083c86d9e14",
+      "audited_concepts": [
+        "MultilingualNaturalLanguageProcessing"
+      ]
+    },
+    {
+      "review_id": "CR-107",
+      "source_question_id": "33d864153822bd378a98a732ace720e2c06a6bc6",
+      "audited_concepts": []
+    },
+    {
+      "review_id": "CR-108",
+      "source_question_id": "8985ead714236458a7496075bc15054df0e3234e",
+      "audited_concepts": []
+    },
+    {
+      "review_id": "CR-109",
+      "source_question_id": "4dad15fee1fe01c3eadce8f0914781ca0a6e3f23",
+      "audited_concepts": []
+    },
+    {
+      "review_id": "CR-110",
+      "source_question_id": "6e76f114209f59b027ec3b3c8c9cdfc3e682589f",
+      "audited_concepts": [
+        "MultilingualNaturalLanguageProcessing"
+      ]
+    },
+    {
+      "review_id": "CR-111",
+      "source_question_id": "bc1e3f67d607bfc7c4c56d6b9763d3ae7f56ad5b",
+      "audited_concepts": []
+    },
+    {
+      "review_id": "CR-112",
+      "source_question_id": "a1917232441890a89b9a268ad8f987184fa50f7a",
+      "audited_concepts": []
+    }
+  ]
+}

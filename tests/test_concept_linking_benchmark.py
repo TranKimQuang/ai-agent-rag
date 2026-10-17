@@ -10,7 +10,11 @@ from app.evaluation.concept_linking import (
 )
 from app.models import ConceptLinkingMethod
 from app.ontology.service import OntologyService
-from scripts.run_concept_linking_benchmark import load_examples
+from scripts.run_concept_linking_benchmark import (
+    load_examples,
+    load_label_overrides,
+    validate_gold_concepts,
+)
 
 
 class BenchmarkEncoder:
@@ -114,3 +118,85 @@ def test_load_examples_rejects_duplicate_question_ids(tmp_path: Path) -> None:
 
     with pytest.raises(ValueError, match="Duplicate source_question_id: q1"):
         load_examples([first, second])
+
+
+def test_load_examples_applies_audited_label_overrides(tmp_path: Path) -> None:
+    dataset = tmp_path / "dataset.json"
+    audit = tmp_path / "audit.json"
+    dataset.write_text(
+        json.dumps(
+            [{"source_question_id": "q1", "text": "Question", "gold_concepts": []}]
+        ),
+        encoding="utf-8",
+    )
+    audit.write_text(
+        json.dumps(
+            {
+                "corrections": [
+                    {
+                        "source_question_id": "q1",
+                        "audited_concepts": ["NaturalLanguageProcessing"],
+                    }
+                ]
+            }
+        ),
+        encoding="utf-8",
+    )
+
+    examples = load_examples([dataset], label_audits=[audit])
+
+    assert examples[0]["gold_concepts"] == ["NaturalLanguageProcessing"]
+    assert load_label_overrides([audit]) == {
+        "q1": ["NaturalLanguageProcessing"]
+    }
+
+
+def test_load_examples_rejects_unused_label_override(tmp_path: Path) -> None:
+    dataset = tmp_path / "dataset.json"
+    audit = tmp_path / "audit.json"
+    dataset.write_text(
+        json.dumps(
+            [{"source_question_id": "q1", "text": "Question", "gold_concepts": []}]
+        ),
+        encoding="utf-8",
+    )
+    audit.write_text(
+        json.dumps(
+            {
+                "corrections": [
+                    {"source_question_id": "q2", "audited_concepts": []}
+                ]
+            }
+        ),
+        encoding="utf-8",
+    )
+
+    with pytest.raises(ValueError, match="Label overrides do not match loaded examples"):
+        load_examples([dataset], label_audits=[audit])
+
+
+def test_validate_gold_concepts_rejects_disabled_concept() -> None:
+    service = OntologyService()
+    examples = [
+        {
+            "source_question_id": "q-disabled",
+            "text": "Was the system evaluated by people?",
+            "gold_concepts": ["HumanEvaluation"],
+        }
+    ]
+
+    with pytest.raises(ValueError, match="HumanEvaluation"):
+        validate_gold_concepts(service, examples)
+
+
+def test_validate_gold_concepts_accepts_active_concept() -> None:
+    service = OntologyService()
+    examples = [
+        {
+            "source_question_id": "q-active",
+            "text": "Does this use natural language processing?",
+            "gold_concepts": ["NaturalLanguageProcessing"],
+        }
+    ]
+
+    validate_gold_concepts(service, examples)

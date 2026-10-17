@@ -15,18 +15,20 @@ Artifact JSON lưu quy tắc “giữ nguyên tất cả trừ năm ngoại lệ
 
 ## Kết quả
 
-- Giữ nguyên: **97/102** câu.
-- Sửa nhãn: **5/102** câu.
-- Loại 2 nhãn dương bị gán quá rộng.
+- Giữ nguyên: **95/102** câu.
+- Sửa nhãn: **7/102** câu.
+- Loại 2 nhãn dương bị gán quá rộng và 2 nhãn nằm ngoài vocabulary đang hoạt động.
 - Bổ sung 3 nhãn dương bị bỏ sót.
-- Sau audit: 23 câu dương và 79 câu `NONE` trong nhóm 102 câu này.
+- Sau audit: 21 câu dương và 81 câu `NONE` trong nhóm 102 câu này.
 
-### Năm nhãn được sửa
+### Bảy nhãn được sửa
 
 | ID rút gọn | Nhãn cũ | Nhãn sau audit | Lý do |
 |---|---|---|---|
 | `e84ba95c` | TopicModeling | NONE | “Một model cho mỗi topic” là cách chia dữ liệu/model, không chứng minh dùng phương pháp topic modeling. Bài báo đang đánh giá summarization. |
 | `38e11663` | Crowdsourcing | NONE | “Crowd” là ý kiến tổng hợp của người dùng mạng xã hội, không phải phương pháp thuê/thu thập nhãn bằng crowdsourcing. |
+| `0fec9da2` | HumanEvaluation | NONE | Concept có trong ontology nhưng `retrievalEnabled=false`, nằm ngoài vocabulary của linker đang đánh giá. |
+| `d5f8707d` | HumanEvaluation | NONE | Concept có trong ontology nhưng `retrievalEnabled=false`, nên hệ thống hiện tại không thể dự đoán nhãn này. |
 | `6e76f114` | NONE | MultilingualNaturalLanguageProcessing | “Pivot language” là ngữ cảnh kỹ thuật xuyên ngôn ngữ, không phải một tên ngôn ngữ chung chung. |
 | `191d4fe8` | NONE | MultilingualNaturalLanguageProcessing | Thử nghiệm trên một cặp ngôn ngữ nêu trực tiếp bối cảnh song/đa ngôn ngữ. |
 | `ef07ec34` | NONE | MultilingualNaturalLanguageProcessing | Căn chỉnh tài liệu với bản dịch là bài toán biểu diễn xuyên ngôn ngữ; không phải WordEmbedding. |
@@ -42,12 +44,12 @@ Kết hợp với audit 10 nhãn dương trước đó:
 
 | Trạng thái sau audit | Số câu |
 |---|---:|
-| Có ít nhất một concept | 30 |
-| `NONE` | 82 |
+| Có ít nhất một concept | 28 |
+| `NONE` | 84 |
 | Tổng | 112 |
 
 Đây là bộ nhãn **assistant-audited**, chưa phải independent human gold. Muốn dùng làm số
 liệu đánh giá chính thức, cần một người thứ hai kiểm tra độc lập hoặc ít nhất kiểm tra toàn
-bộ 30 câu dương và một mẫu ngẫu nhiên đủ lớn trong 82 câu âm.
+bộ 28 câu dương và một mẫu ngẫu nhiên đủ lớn trong 84 câu âm.
 
 File máy đọc tương ứng: `remaining_102_label_audit.json`.

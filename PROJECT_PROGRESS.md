@@ -49,10 +49,41 @@ Cập nhật gần nhất: 17/10/2026
   nghĩa ontology: giữ 7, loại 3 nhãn gán quá rộng (1 `ArgumentMining`, 2 ánh xạ BERT sang
   `BidirectionalLanguageModel`). Không chạy lại prediction hoặc tính lại exact match;
   kết luận linker thất bại trên paraphrase khó không đổi.
-- [x] Audit 102 nhãn còn lại: giữ nguyên 97, sửa 5 (loại `TopicModeling` và
-  `Crowdsourcing` do trùng chữ nhưng sai nghĩa; thêm 3 trường hợp
-  `MultilingualNaturalLanguageProcessing`). Toàn bộ 112 câu hiện có 30 câu dương/82 câu
-  `NONE` ở trạng thái assistant-audited; chưa gọi là independent human gold.
+- [x] Audit 102 nhãn còn lại: giữ nguyên 95, sửa 7 (loại `TopicModeling` và
+  `Crowdsourcing` do trùng chữ nhưng sai nghĩa; loại 2 `HumanEvaluation` đang bị tắt khỏi
+  vocabulary hoạt động; thêm 3 trường hợp `MultilingualNaturalLanguageProcessing`). Toàn
+  bộ 112 câu hiện có 28 câu dương/84 câu `NONE` ở trạng thái assistant-audited; chưa gọi
+  là independent human gold.
+- [x] Chạy lại 55 câu selection với overlay đã audit. Hybrid ngưỡng 0,55 đạt Precision
+  0,933, Recall 0,700, F1 0,800 và exact match 0,873; tiếp tục là baseline tốt nhất.
+- [x] Thử `cross-encoder/nli-deberta-v3-small` làm cổng xác nhận semantic candidate trên
+  đúng 55 câu selection. Cấu hình tốt nhất chỉ đạt Precision 0,308, Recall 0,600,
+  F1 0,407 và exact match 0,527, nên bị loại và không đưa vào pipeline. Không chạy lại
+  57 câu internal verification.
+- [x] Benchmark hiện từ chối ngay nếu gold label chứa concept không thuộc vocabulary
+  retrieval đang hoạt động, tránh lặp lại lỗi nhãn không thể dự đoán.
+- [x] Thử linker supervised bằng logistic regression trên sentence embedding, đánh giá
+  5-fold tách theo 25 paper. Candidate tốt nhất chỉ bằng Alias (Precision 1,000, Recall
+  0,600, F1 0,750) và kém Hybrid F1 0,800; ở ngưỡng thấp chỉ thêm false positive. Không
+  đưa vào pipeline. Nút thắt hiện tại là chỉ có 20 nhãn dương/9 concept, trong đó 4
+  concept chỉ xuất hiện một lần.
+- [x] Tạo gói xác nhận nhãn độc lập gồm 112 câu đã che nhãn/xáo thứ tự, catalog concept
+  đang hoạt động và reference key tách riêng. Reviewer chỉ nhận CSV mù và catalog; key
+  được giữ lại để tính agreement và xử lý disagreement sau khi nhận kết quả.
+- [x] Thêm công cụ reconciliation: kiểm tra reviewer đã điền đủ, chặn concept ngoài
+  catalog/ID thiếu-trùng, tính exact và label agreement, rồi xuất danh sách disagreement.
+  Reviewer LLM ở thread độc lập đã hoàn thành 112/112 câu: exact agreement 0,8214,
+  label precision/recall/F1 so với audit đầu là 0,8333/0,3571/0,5000 và có 20 câu bất
+  đồng. Chưa tự động hợp nhất; cần adjudication theo một policy thống nhất trước khi tạo
+  gold cuối. Kết quả này là independent LLM review, không gọi là human annotation.
+- [x] Reviewer LLM thứ ba phân xử đủ 20 disagreement theo policy query-first. Bộ cuối có
+  25/112 câu dương; selection có 15/55, verification có 10/57. Trạng thái là
+  `llm_adjudicated_not_human_gold`; không tuyên bố human gold.
+- [x] Chạy lại đúng selection sau phân xử: Hybrid 0,55 ban đầu chỉ đạt Precision/Recall/F1
+  0,600/0,600/0,600, cho thấy nhãn cũ ưu ái alias rộng. Loại alias chung
+  `embedding(s)` và `paired corpus/corpora` nhưng giữ alias subtype rõ. Hybrid 0,55 tăng
+  lên Precision 0,900, Recall 0,600, F1 0,720, exact match 0,873. Không chạy lại 57 câu
+  verification và không thêm alias BERT từ phần đã khóa.
 
 ### Mới nhất: Validation v16 loại document-topic prior
 
@@ -879,13 +910,16 @@ Milestone tiếp theo: kiểm chứng khả năng khái quát của semantic con
 1. Giữ nguyên kết quả held-out v3 và validation v7; không tiếp tục tuning theo các tập đã xem.
 2. Giữ nguyên validation v9; không tuning scoring theo tập này. Tạo development split mới
    và thiết lập baseline document-scoped trước khi kết luận thêm về concept coverage.
-3. Đã audit đủ 112 nhãn ở mức nội bộ. Trước khi coi là gold chính thức, cần người thứ hai
-   kiểm tra độc lập, tối thiểu toàn bộ 30 câu dương và một mẫu ngẫu nhiên từ 82 câu âm.
+3. Đã có independent LLM review và third-reviewer adjudication: 25 câu dương/87 câu âm,
+   agreement trước phân xử là 0,8214. Vẫn cần human verification trước khi gọi là gold
+   chính thức, nhưng bộ nhãn hiện đủ dùng cho development có ghi rõ giới hạn.
 4. Không tuning tiếp trên 57 câu internal verification đã mở. Phát triển linker mới chỉ
    trên 55 câu selection hoặc một development pool mới, đồng thời xuất prediction từng
    câu ngay trong lần đánh giá đầu tiên.
-5. Chỉ khi candidate mới cải thiện trên development độc lập mới tạo validation
-   paper-disjoint mới; sau đó mới quay lại retrieval/Answer Agent.
+5. Chưa thử thêm candidate model trên cùng 55 câu vì NLI và supervised classifier đều
+   không vượt Hybrid. Cần xác nhận độc lập và bổ sung ví dụ dương cho từng concept trước;
+   chỉ khi candidate mới cải thiện trên development độc lập mới tạo validation
+   paper-disjoint mới, sau đó mới quay lại retrieval/Answer Agent.
 
 Chưa ưu tiên trong milestone này: mở rộng giao diện, PostgreSQL, pgvector, OCR và
 framework Agent phức tạp.

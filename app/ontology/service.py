@@ -345,6 +345,10 @@ class OntologyService:
         """Return preferred labels for concepts available to the local linker."""
         return {self.preferred_label(concept) for concept in self._concept_aliases}
 
+    def vocabulary_concept_names(self) -> set[str]:
+        """Return stable local names for concepts available to the local linker."""
+        return {local_name(concept) for concept in self._concept_aliases}
+
     def _concept_documents(self) -> tuple[list[URIRef], list[str]]:
         concepts = sorted(self._concept_aliases, key=local_name)
         documents = []

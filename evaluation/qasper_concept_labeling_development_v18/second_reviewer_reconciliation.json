@@ -1,0 +1,252 @@
+{
+  "status": "requires_disagreement_resolution",
+  "questions": 112,
+  "exact_agreement": 0.8214285714285714,
+  "positive_negative_agreement": 0.8214285714285714,
+  "label_precision_against_assistant_audit": 0.8333333333333334,
+  "label_recall_against_assistant_audit": 0.35714285714285715,
+  "label_f1_against_assistant_audit": 0.5,
+  "disagreement_count": 20,
+  "disagreements": [
+    {
+      "review_id": "CR-008",
+      "source_question_id": "657edbf39c500b2446edb9cca18de2912c628b7d",
+      "paper_id": "1810.10254",
+      "question": "What was their perplexity score?",
+      "gold_evidence_excerpt": "Results. UTF8gbsn The pointer-generator significantly outperforms the Seq2Seq with attention model by 3.58 BLEU points on the test set as shown in Table TABREF8 . Our language modeling result is given in Table TABREF9 . Based on the empirical result, adding generated samples consistently improve the performance of all models with a moderate margin around 10% in perplexity. After all, our proposed method still slightly outperforms the heuristic from linguistic constraint. In addition, we get a cr",
+      "assistant_audited_concepts": [
+        "LanguageModel"
+      ],
+      "second_reviewer_concepts": [],
+      "reviewer_notes": ""
+    },
+    {
+      "review_id": "CR-020",
+      "source_question_id": "b67420da975689e47d3ea1c12b601851018c4071",
+      "paper_id": "1902.09314",
+      "question": "How is their model different from BERT?",
+      "gold_evidence_excerpt": "Proposed Methodology. Figure FIGREF9 illustrates the overall architecture of the proposed Attentional Encoder Network (AEN), which mainly consists of an embedding layer, an attentional encoder layer, a target-specific attention layer, and an output layer. Embedding layer has two types: GloVe embedding and BERT embedding. Accordingly, the models are named AEN-GloVe and AEN-BERT.",
+      "assistant_audited_concepts": [],
+      "second_reviewer_concepts": [
+        "BidirectionalLanguageModel"
+      ],
+      "reviewer_notes": "BERT refers to a bidirectional language model; mapping is based on BERT named in the question."
+    },
+    {
+      "review_id": "CR-029",
+      "source_question_id": "d79d897f94e666d5a6fcda3b0c7e807c8fad109e",
+      "paper_id": "1910.02789",
+      "question": "What result from experiments suggest that natural language based agents are more robust?",
+      "gold_evidence_excerpt": "Semantic State Representations in the Doom Environment ::: Experiments. Results of the DQN-based agent are presented in fig: scenario comparison. Each plot depicts the average reward (across 5 seeds) of all representations methods. It can be seen that the NLP representation outperforms the other methods. This is contrary to the fact that it contains the same information as the semantic segmentation maps. More interestingly, comparing the vision-based and feature-based representations render inco",
+      "assistant_audited_concepts": [
+        "NaturalLanguageProcessing"
+      ],
+      "second_reviewer_concepts": [],
+      "reviewer_notes": ""
+    },
+    {
+      "review_id": "CR-045",
+      "source_question_id": "562a2feeba9580f5435a94396f2a8751f79a4d5c",
+      "paper_id": "1809.08652",
+      "question": "What embeddings do they use?",
+      "gold_evidence_excerpt": "Training Word Embeddings. We tried Glove BIBREF2 and Twitter word2vec BIBREF3 code for training embeddings for the processed tweets. The embeddings were trained on both the datasets provided by BIBREF1 and HEOT. These embeddings help to learn distributed representations of tweets. After experimentation, we kept the size of embeddings fixed to 100.",
+      "assistant_audited_concepts": [
+        "WordEmbedding"
+      ],
+      "second_reviewer_concepts": [],
+      "reviewer_notes": "Embeddings are not specified as word embeddings in the question; no subtype inferred from evidence."
+    },
+    {
+      "review_id": "CR-051",
+      "source_question_id": "3b7798a6bce1a5faf411bb12e2e011dbab1e279d",
+      "paper_id": "1909.00153",
+      "question": "Do any of the evaluations show that adversarial learning improves performance in at least two different language families?",
+      "gold_evidence_excerpt": "MLDoc Classification Results. In Figure FIGREF15 , we plot the zero-resource German and Japanese test set accuracy as a function of the number of steps taken, with and without adversarial training. The plot shows that the variation in the test accuracy is reduced with adversarial training, which suggests that the cross-lingual performance is more consistent when adversarial training is applied. (We note that the batch size and learning rates are the same for all the languages in MLDoc, so the va",
+      "assistant_audited_concepts": [
+        "MultilingualNaturalLanguageProcessing"
+      ],
+      "second_reviewer_concepts": [],
+      "reviewer_notes": ""
+    },
+    {
+      "review_id": "CR-056",
+      "source_question_id": "f5cf8738e8d211095bb89350ed05ee7f9997eb19",
+      "paper_id": "1909.08402",
+      "question": "By how much do they outperform standard BERT?",
+      "gold_evidence_excerpt": "Conclusions and Future Work. In this paper we presented a way of enriching BERT with knowledge graph embeddings and additional metadata. Exploiting the linked knowledge that underlies Wikidata improves performance for our task of document classification. With this approach we improve the standard BERT models by up to four percentage points in accuracy. Furthermore, our results reveal that with task-specific information such as author names and publication metadata improves the classification tas",
+      "assistant_audited_concepts": [],
+      "second_reviewer_concepts": [
+        "BidirectionalLanguageModel"
+      ],
+      "reviewer_notes": "BERT is explicitly mentioned; mapped to bidirectional language model rather than generic model evaluation."
+    },
+    {
+      "review_id": "CR-058",
+      "source_question_id": "50f09a044f0c0795cc636c3e25a4f7c3231fb08d",
+      "paper_id": "1910.05154",
+      "question": "How does the well-resourced language impact the quality of the output?",
+      "gold_evidence_excerpt": "Conclusion. In this work we train bilingual UWS models using the endangered language Mboshi as target and different well-resourced languages as aligned information. Results show that similar languages rank better in terms of segmentation performance, and that by combining the information learned by different models, segmentation is further improved. This might be due to the different language-dependent structures that are captured by using more than one language. Lastly, we extend the bilingual ",
+      "assistant_audited_concepts": [
+        "MultilingualNaturalLanguageProcessing"
+      ],
+      "second_reviewer_concepts": [],
+      "reviewer_notes": ""
+    },
+    {
+      "review_id": "CR-061",
+      "source_question_id": "ef07ec34433221d4da79d5923fb00d8ac446b92c",
+      "paper_id": "1909.00153",
+      "question": "How do they quantify alignment between the embeddings of a document and its translation?",
+      "gold_evidence_excerpt": "Alignment of Embeddings for Parallel Documents. We construct the embeddings for each document using BERT models finetuned on MLDoc. We mean-pool each document embedding to create a single vector per document. We then calculate the cosine similarity between the embeddings for the English document and its translation. In Table TABREF21 , we observe that the median cosine similarity increases dramatically with adversarial training, which suggests that the embeddings became more language-independent",
+      "assistant_audited_concepts": [
+        "MultilingualNaturalLanguageProcessing"
+      ],
+      "second_reviewer_concepts": [],
+      "reviewer_notes": "Document-level embeddings are not WordEmbedding; the presence of a translated document is not itself a parallel corpus."
+    },
+    {
+      "review_id": "CR-062",
+      "source_question_id": "2965c86467d12b79abc16e1457d848cb6ca88973",
+      "paper_id": "1912.00819",
+      "question": "How were dialogue act labels defined?",
+      "gold_evidence_excerpt": "Annotation of Emotional Dialogue Acts ::: Dialogue Act Tagset and SwDA Corpus. There have been many taxonomies for dialogue acts: speech acts BIBREF14 refer to the utterance, not only to present information but to the action at is performed. Speech acts were later modified into five classes (Assertive, Directive, Commissive, Expressive, Declarative) BIBREF15. There are many such standard taxonomies and schemes to annotate conversational data, and most of them follow the discourse compositionalit",
+      "assistant_audited_concepts": [
+        "DiscourseAnalysis"
+      ],
+      "second_reviewer_concepts": [],
+      "reviewer_notes": ""
+    },
+    {
+      "review_id": "CR-067",
+      "source_question_id": "084fb7c80a24b341093d4bf968120e3aff56f693",
+      "paper_id": "1910.02789",
+      "question": "How is state to learn and complete tasks represented via natural language?",
+      "gold_evidence_excerpt": "Introduction. The term representation is used differently in different contexts. For the purpose of this paper we define a semantic representation of a state as one that reflects its meaning as it is understood by an expert. The semantic representation of a state should thus be paired with a reliable and computationally efficient method for extracting information from it. Previous success in RL has mainly focused on representing the state in its raw form (e.g., visual input in Atari-based games ",
+      "assistant_audited_concepts": [
+        "NaturalLanguageProcessing"
+      ],
+      "second_reviewer_concepts": [],
+      "reviewer_notes": ""
+    },
+    {
+      "review_id": "CR-070",
+      "source_question_id": "86f24ecc89e743bb1534ac160d08859493afafe9",
+      "paper_id": "1910.11204",
+      "question": "What different approaches of encoding syntactic information authors present?",
+      "gold_evidence_excerpt": "Approaches ::: Representation of the Syntactic Dependencies ::: Dependency Head & Relation. The most intuitive way to represent syntactic information is to use individual dependency relations directly, like dependency head and dependency relation label, denoted as Dep and Rel for short. Approaches ::: Representation of the Syntactic Dependencies ::: Dependency Path & Relation Path. In order to preserve the structural information of dependency trees as much as possible, we take the syntactic path",
+      "assistant_audited_concepts": [
+        "NaturalLanguageProcessing"
+      ],
+      "second_reviewer_concepts": [],
+      "reviewer_notes": ""
+    },
+    {
+      "review_id": "CR-072",
+      "source_question_id": "d325a3c21660dbc481b4e839ff1a2d37dcc7ca46",
+      "paper_id": "1806.03191",
+      "question": "What hypernymy tasks do they study?",
+      "gold_evidence_excerpt": "Tasks. Graded Entailment: In graded entailment, the task is to quantify the degree to which a hypernymy relation holds. For this task, we follow prior work BIBREF19 , BIBREF18 and use the noun part of hyperlex BIBREF20 , consisting of 2,163 noun pairs which are annotated to what degree INLINEFORM0 is-a INLINEFORM1 holds on a scale of INLINEFORM2 . For all models, we report Spearman's rank correlation INLINEFORM3 . We handle out-of-vocabulary (OOV) words by assigning the median of the scores (com",
+      "assistant_audited_concepts": [
+        "NaturalLanguageProcessing"
+      ],
+      "second_reviewer_concepts": [],
+      "reviewer_notes": ""
+    },
+    {
+      "review_id": "CR-086",
+      "source_question_id": "100cf8b72d46da39fedfe77ec939fb44f25de77f",
+      "paper_id": "1809.04960",
+      "question": "Which paired corpora did they use in the other experiment?",
+      "gold_evidence_excerpt": "Analysis and Discussion. We analyze the performance of the proposed method under the semi-supervised setting. We train the supervised IR model with different numbers of paired data. Figure FIGREF39 shows the curve (blue) of the recall1 score. As expected, the performance grows as the paired dataset becomes larger. We further combine the supervised IR with our unsupervised model, which is trained with full unpaired data (4.8M) and different number of paired data (from 50K to 4.8M). It shows that ",
+      "assistant_audited_concepts": [
+        "ParallelCorpus"
+      ],
+      "second_reviewer_concepts": [],
+      "reviewer_notes": ""
+    },
+    {
+      "review_id": "CR-087",
+      "source_question_id": "80f19be1cbe1f0ec89bbafb9c5f7a8ded37881fb",
+      "paper_id": "1904.04055",
+      "question": "What embedding algorithm is used to build the embeddings?",
+      "gold_evidence_excerpt": "KGR10 word embeddings. We created a new Polish word embeddings models using the KGR10 corpus. We built 16 models of word embeddings using the implementation of CBOW and Skip-gram methods in the FastText tool BIBREF9 . These models are available under an open license in the CLARIN-PL project DSpace repository. The internal encoding solution based on embeddings of n-grams composing each word makes it possible to obtain FastText vector representations, also for words which were not processed during",
+      "assistant_audited_concepts": [
+        "WordEmbedding"
+      ],
+      "second_reviewer_concepts": [],
+      "reviewer_notes": "Embedding algorithm is unspecified in the question; not enough to infer WordEmbedding or Word2Vec."
+    },
+    {
+      "review_id": "CR-089",
+      "source_question_id": "7e328cc3cffa521e73f111d6796aaa9661c8eb07",
+      "paper_id": "1904.04055",
+      "question": "What is specific about the specific embeddings?",
+      "gold_evidence_excerpt": "Introduction. Recent studies in information extraction domain (but also in other natural language processing fields) show that deep learning models produce state-of-the-art results BIBREF0 . Deep architectures employ multiple layers to learn hierarchical representations of the input data. In the last few years, neural networks based on dense vector representations provided the best results in various NLP tasks, including named entities recognition BIBREF1 , semantic role labelling BIBREF2 , ques",
+      "assistant_audited_concepts": [
+        "WordEmbedding"
+      ],
+      "second_reviewer_concepts": [],
+      "reviewer_notes": ""
+    },
+    {
+      "review_id": "CR-095",
+      "source_question_id": "5cb3d69607f60e1c5be2120462726a477ead9570",
+      "paper_id": "1909.00153",
+      "question": "Does adversarial learning have stronger performance gains for text classification, or for NER?",
+      "gold_evidence_excerpt": "CoNLL NER Results. In Table TABREF19 , we report the F1 scores for all of the CoNLL NER languages. When combined with adversarial learning, the BERT cross-lingual F1 scores increased for German over the non-adversarial baseline, and the scores remained largely the same for Spanish and Dutch. Regardless, the BERT zero-resource performance far exceeds the results published in previous work. MLDoc Classification Results. In Table TABREF13 , we report the classification accuracy for all of the langu",
+      "assistant_audited_concepts": [
+        "NaturalLanguageProcessing"
+      ],
+      "second_reviewer_concepts": [],
+      "reviewer_notes": ""
+    },
+    {
+      "review_id": "CR-096",
+      "source_question_id": "892c346617a3391c7dafc9da1b65e5ea3890294d",
+      "paper_id": "1909.11833",
+      "question": "What network architecture do they use for SIM?",
+      "gold_evidence_excerpt": "Introduction. To solve this problem, we need a state tracking model independent of dialogue slots. In other words, the network should depend on the semantic similarity between slots and utterance instead of slot-specific modules. To this end, we propose the Slot-Independent Model (SIM). Our model complexity does not increase when the number of slots in dialogue tasks go up. Thus, SIM has many fewer parameters than existing dialogue state tracking models. To compensate for the exclusion of slot-s",
+      "assistant_audited_concepts": [
+        "NeuralNetwork"
+      ],
+      "second_reviewer_concepts": [],
+      "reviewer_notes": ""
+    },
+    {
+      "review_id": "CR-105",
+      "source_question_id": "7358a1ce2eae380af423d4feeaa67d2bd23ae9dd",
+      "paper_id": "1909.00154",
+      "question": "How do their train their embeddings?",
+      "gold_evidence_excerpt": "Travel behaviour embeddings ::: The general idea. For each variable in encoding set, learn the new embeddings using the embeddings train set . This should be done simultaneously (all variable embeddings estimated at once, as explained in the next section). Travel behaviour embeddings ::: The general idea. Since there is stochasticity in the embeddings training model, we will repeat the above multiple times, for the different experiments in the paper (and report the respective mean and standard d",
+      "assistant_audited_concepts": [
+        "WordEmbedding"
+      ],
+      "second_reviewer_concepts": [],
+      "reviewer_notes": ""
+    },
+    {
+      "review_id": "CR-106",
+      "source_question_id": "790ed4458a23aa23e2b5399259e50083c86d9e14",
+      "paper_id": "1809.08652",
+      "question": "Do all the instances contain code-switching?",
+      "gold_evidence_excerpt": "Pre-Processing. In this work, we use the datasets released by BIBREF1 and HEOT dataset provided by BIBREF0 . The datasets obtained pass through these steps of processing: (i) Removal of punctuatios, stopwords, URLs, numbers, emoticons, etc. This was then followed by transliteration using the Xlit-Crowd conversion dictionary and translation of each word to English using Hindi to English dictionary. To deal with the spelling variations, we manually added some common variations of popular Hinglish ",
+      "assistant_audited_concepts": [
+        "MultilingualNaturalLanguageProcessing"
+      ],
+      "second_reviewer_concepts": [],
+      "reviewer_notes": ""
+    },
+    {
+      "review_id": "CR-110",
+      "source_question_id": "6e76f114209f59b027ec3b3c8c9cdfc3e682589f",
+      "paper_id": "1909.09524",
+      "question": "Is pivot language used in experiments English or some other language?",
+      "gold_evidence_excerpt": "Pivot-based Transfer Learning. Nonetheless, the main caveat of this basic pre-training is that the source encoder is trained to be used by an English decoder, while the target decoder is trained to use the outputs of an English encoder — not of a source encoder. In the following, we propose three techniques to mitigate the inconsistency of source$\\rightarrow $pivot and pivot$\\rightarrow $target pre-training stages. Note that these techniques are not exclusive and some of them can complement othe",
+      "assistant_audited_concepts": [
+        "MultilingualNaturalLanguageProcessing"
+      ],
+      "second_reviewer_concepts": [],
+      "reviewer_notes": ""
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "status": "independent_llm_adjudication_not_human_gold",
+  "policy_summary": "Ưu tiên nội dung nêu trong câu hỏi; evidence chỉ giải nghĩa tham chiếu hoặc thuật ngữ đã có. Không suy subtype từ evidence. Chỉ ánh xạ subtype khi câu hỏi nêu trực tiếp subtype hoặc alias rõ; acronym chuẩn như BERT được ánh xạ khi catalog có concept tương ứng.",
+  "counts": {"positive": 15, "negative": 5, "total": 20},
+  "adjudications": [
+    {"review_id": "CR-008", "adjudicated_concepts": ["LanguageModel"], "reason": "Perplexity là thước đo gắn trực tiếp với mô hình ngôn ngữ; evidence chỉ xác nhận cách dùng này."},
+    {"review_id": "CR-020", "adjudicated_concepts": ["BidirectionalLanguageModel"], "reason": "BERT được nêu trực tiếp và là acronym rõ cho mô hình ngôn ngữ hai chiều trong catalog."},
+    {"review_id": "CR-029", "adjudicated_concepts": ["NaturalLanguageProcessing"], "reason": "Câu hỏi nêu trực tiếp các agent dựa trên ngôn ngữ tự nhiên."},
+    {"review_id": "CR-045", "adjudicated_concepts": [], "reason": "Câu hỏi chỉ nói embeddings nói chung, không nêu word embeddings hay alias tương đương."},
+    {"review_id": "CR-051", "adjudicated_concepts": ["MultilingualNaturalLanguageProcessing"], "reason": "So sánh kết quả trên ít nhất hai họ ngôn ngữ thể hiện trực tiếp bối cảnh NLP đa ngôn ngữ."},
+    {"review_id": "CR-056", "adjudicated_concepts": ["BidirectionalLanguageModel"], "reason": "BERT được nêu trực tiếp và ánh xạ rõ tới concept tương ứng trong catalog."},
+    {"review_id": "CR-058", "adjudicated_concepts": ["MultilingualNaturalLanguageProcessing"], "reason": "Vai trò của một ngôn ngữ giàu tài nguyên đối với đầu ra hàm ý trực tiếp thiết lập liên ngôn ngữ; evidence chỉ làm rõ thiết lập đó."},
+    {"review_id": "CR-061", "adjudicated_concepts": ["MultilingualNaturalLanguageProcessing"], "reason": "Câu hỏi đo alignment giữa tài liệu và bản dịch của nó, một quan hệ liên ngôn ngữ rõ ràng."},
+    {"review_id": "CR-062", "adjudicated_concepts": ["DiscourseAnalysis"], "reason": "Dialogue acts là đơn vị chức năng diễn ngôn và câu hỏi trực tiếp hỏi cách định nghĩa nhãn dialogue act."},
+    {"review_id": "CR-067", "adjudicated_concepts": ["NaturalLanguageProcessing"], "reason": "Câu hỏi nêu trực tiếp việc biểu diễn trạng thái bằng ngôn ngữ tự nhiên."},
+    {"review_id": "CR-070", "adjudicated_concepts": ["NaturalLanguageProcessing"], "reason": "Mã hóa thông tin cú pháp là một vấn đề NLP được thể hiện trực tiếp trong câu hỏi; catalog không có subtype cú pháp phù hợp."},
+    {"review_id": "CR-072", "adjudicated_concepts": ["NaturalLanguageProcessing"], "reason": "Hypernymy là quan hệ ngữ nghĩa từ vựng thuộc NLP; không gán subtype NaturalLanguageInference."},
+    {"review_id": "CR-086", "adjudicated_concepts": [], "reason": "Paired corpora không tự thân đồng nghĩa với parallel corpus đa ngôn ngữ; câu hỏi không nêu bản dịch hoặc alignment liên ngôn ngữ."},
+    {"review_id": "CR-087", "adjudicated_concepts": [], "reason": "Câu hỏi chỉ nói embedding algorithm nói chung, không nêu word embedding hoặc Word2Vec."},
+    {"review_id": "CR-089", "adjudicated_concepts": [], "reason": "Câu hỏi chỉ nói embeddings chung chung và không biểu đạt concept WordEmbedding."},
+    {"review_id": "CR-095", "adjudicated_concepts": ["NaturalLanguageProcessing"], "reason": "Text classification và NER được nêu trực tiếp như các tác vụ NLP; catalog không có subtype riêng."},
+    {"review_id": "CR-096", "adjudicated_concepts": ["NeuralNetwork"], "reason": "Cụm network architecture trong câu hỏi trực tiếp hỏi kiến trúc mạng của mô hình."},
+    {"review_id": "CR-105", "adjudicated_concepts": [], "reason": "Embeddings được nêu chung, không phải word embeddings; evidence không được dùng để thêm subtype."},
+    {"review_id": "CR-106", "adjudicated_concepts": ["MultilingualNaturalLanguageProcessing"], "reason": "Code-switching trực tiếp biểu đạt việc sử dụng nhiều ngôn ngữ trong cùng dữ liệu."},
+    {"review_id": "CR-110", "adjudicated_concepts": ["MultilingualNaturalLanguageProcessing"], "reason": "Pivot language là thuật ngữ liên ngôn ngữ được nêu trực tiếp; chưa đủ để gán NeuralMachineTranslation."}
+  ]
+}

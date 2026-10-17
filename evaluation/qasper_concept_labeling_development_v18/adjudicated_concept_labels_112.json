@@ -1,0 +1,836 @@
+[
+  {
+    "source_question_id": "85abd60094c92eb16f39f861c6de8c2064807d02",
+    "text": "What are the different bilingual models employed?",
+    "gold_concepts": [
+      "MultilingualNaturalLanguageProcessing"
+    ],
+    "review_status": "llm_adjudicated_not_human_gold",
+    "review_note": "Bilingual models expresses multilingual NLP, but not LanguageModel specifically."
+  },
+  {
+    "source_question_id": "100cf8b72d46da39fedfe77ec939fb44f25de77f",
+    "text": "Which paired corpora did they use in the other experiment?",
+    "gold_concepts": [],
+    "review_status": "llm_adjudicated_not_human_gold",
+    "review_note": "Paired corpora is a direct paraphrase of ParallelCorpus."
+  },
+  {
+    "source_question_id": "14e78db206a8180ea637774aa572b073e3ffa219",
+    "text": "What kind of encoders are used for the parsed source sentence?",
+    "gold_concepts": [],
+    "review_status": "llm_adjudicated_not_human_gold",
+    "review_note": "Encoder is not represented by a sufficiently specific local concept."
+  },
+  {
+    "source_question_id": "17988d65e46ff7d756076e9191890aec177b081e",
+    "text": "Are the unobserved samples from the same distribution as the training data?",
+    "gold_concepts": [],
+    "review_status": "llm_adjudicated_not_human_gold",
+    "review_note": "Distribution shift or out-of-distribution data is missing from the vocabulary; DistributionalSemantics is not equivalent."
+  },
+  {
+    "source_question_id": "235c156d9c2adc895c9113f53c60f2dd8df45834",
+    "text": "What languages are explored in this paper?",
+    "gold_concepts": [],
+    "review_status": "llm_adjudicated_not_human_gold",
+    "review_note": "The question does not itself state an NLP topic or multilingual method."
+  },
+  {
+    "source_question_id": "2677b88c2def3ed94e25a776599555a788d197f2",
+    "text": "Which architecture is their best model?",
+    "gold_concepts": [],
+    "review_status": "llm_adjudicated_not_human_gold",
+    "review_note": "Generic model and architecture references do not identify a local concept."
+  },
+  {
+    "source_question_id": "284ea817fd79bc10b7a82c88d353e8f8a9d7e93c",
+    "text": "Is the data all in Vietnamese?",
+    "gold_concepts": [],
+    "review_status": "llm_adjudicated_not_human_gold",
+    "review_note": "A language name alone is insufficient for NaturalLanguageProcessing."
+  },
+  {
+    "source_question_id": "4d5f112874250d48eb49649c4abe31d6c9236700",
+    "text": "Which of the model yields the best performance?",
+    "gold_concepts": [],
+    "review_status": "llm_adjudicated_not_human_gold",
+    "review_note": "Generic model and performance wording carries no topical concept."
+  },
+  {
+    "source_question_id": "562a2feeba9580f5435a94396f2a8751f79a4d5c",
+    "text": "What embeddings do they use?",
+    "gold_concepts": [],
+    "review_status": "llm_adjudicated_not_human_gold",
+    "review_note": "Embeddings directly denotes WordEmbedding."
+  },
+  {
+    "source_question_id": "5758ebff49807a51d080b0ce10ba3f86dcf71925",
+    "text": "What do they constrain using integer linear programming?",
+    "gold_concepts": [],
+    "review_status": "llm_adjudicated_not_human_gold",
+    "review_note": "IntegerLinearProgramming is absent from the local vocabulary; unrelated candidates are rejected."
+  },
+  {
+    "source_question_id": "7e328cc3cffa521e73f111d6796aaa9661c8eb07",
+    "text": "What is specific about the specific embeddings?",
+    "gold_concepts": [],
+    "review_status": "llm_adjudicated_not_human_gold",
+    "review_note": "Embeddings directly denotes WordEmbedding."
+  },
+  {
+    "source_question_id": "80f19be1cbe1f0ec89bbafb9c5f7a8ded37881fb",
+    "text": "What embedding algorithm is used to build the embeddings?",
+    "gold_concepts": [],
+    "review_status": "llm_adjudicated_not_human_gold",
+    "review_note": "Embedding and embeddings directly denote WordEmbedding; the algorithm name is the requested answer, not a query concept."
+  },
+  {
+    "source_question_id": "892c346617a3391c7dafc9da1b65e5ea3890294d",
+    "text": "What network architecture do they use for SIM?",
+    "gold_concepts": [
+      "NeuralNetwork"
+    ],
+    "review_status": "llm_adjudicated_not_human_gold",
+    "review_note": "Network architecture denotes the neural-network family, without identifying a narrower architecture."
+  },
+  {
+    "source_question_id": "8985ead714236458a7496075bc15054df0e3234e",
+    "text": "What is the performance of the models on the tasks?",
+    "gold_concepts": [],
+    "review_status": "llm_adjudicated_not_human_gold",
+    "review_note": "Generic models, tasks and performance do not identify a topical concept."
+  },
+  {
+    "source_question_id": "8b51db1f7a6293b5bd8be49386cce45989b8079f",
+    "text": "Do they use dropout?",
+    "gold_concepts": [],
+    "review_status": "llm_adjudicated_not_human_gold",
+    "review_note": "Dropout is not represented as a local concept."
+  },
+  {
+    "source_question_id": "b72264a73eea36c828e7de778a8b4599a5d02b39",
+    "text": "Is the model evaluated against any baseline?",
+    "gold_concepts": [],
+    "review_status": "llm_adjudicated_not_human_gold",
+    "review_note": "Model and baseline are generic references."
+  },
+  {
+    "source_question_id": "b7708cbb50085eb41e306bd2248f1515a5ebada8",
+    "text": "How do they get the formal languages?",
+    "gold_concepts": [],
+    "review_status": "llm_adjudicated_not_human_gold",
+    "review_note": "FormalLanguage is absent from the vocabulary and is not equivalent to LanguageModel."
+  },
+  {
+    "source_question_id": "b99948ac4810a7fe3477f6591b8cf211d6398e67",
+    "text": "How many models were used?",
+    "gold_concepts": [],
+    "review_status": "llm_adjudicated_not_human_gold",
+    "review_note": "Generic model reference carries no topical concept."
+  },
+  {
+    "source_question_id": "bb8a0035b767688a98602c33f4714f8ac8ae60db",
+    "text": "What metric was used in the evaluation step?",
+    "gold_concepts": [],
+    "review_status": "llm_adjudicated_not_human_gold",
+    "review_note": "The metric name is requested rather than stated; ROUGE cannot be inferred from the query alone."
+  },
+  {
+    "source_question_id": "c0122190119027dc3eb51f0d4b4483d2dbedc696",
+    "text": "What classifier do they use?",
+    "gold_concepts": [],
+    "review_status": "llm_adjudicated_not_human_gold",
+    "review_note": "Classifier is generic and does not identify a specific local concept."
+  },
+  {
+    "source_question_id": "da2b43d7d048f3f59adf26a67ce66bd2d8a06326",
+    "text": "What training settings did they try?",
+    "gold_concepts": [],
+    "review_status": "llm_adjudicated_not_human_gold",
+    "review_note": "Training settings is generic and does not entail SupervisedLearning."
+  },
+  {
+    "source_question_id": "db291d734524fa51fb314628b64ebe1bac7f7e1e",
+    "text": "How is the performance of the model evaluated?",
+    "gold_concepts": [],
+    "review_status": "llm_adjudicated_not_human_gold",
+    "review_note": "The evaluation method is requested rather than named in the query."
+  },
+  {
+    "source_question_id": "f6496b8d09911cdf3a9b72aec0b0be6232a6dba1",
+    "text": "Do they train their own RE model?",
+    "gold_concepts": [],
+    "review_status": "llm_adjudicated_not_human_gold",
+    "review_note": "RelationExtraction is a vocabulary gap; approximate neural-model labels are not substituted."
+  },
+  {
+    "source_question_id": "f95097cf4a0dc036fd8b80c007cd8d7a157b7816",
+    "text": "What were the baselines?",
+    "gold_concepts": [],
+    "review_status": "llm_adjudicated_not_human_gold",
+    "review_note": "Baseline is a generic reference and the query does not state TextSummarization."
+  },
+  {
+    "source_question_id": "fd6c194632230e392088fc1f574c8626c6a2fa96",
+    "text": "What does the data cleaning and filtering process consist of?",
+    "gold_concepts": [],
+    "review_status": "llm_adjudicated_not_human_gold",
+    "review_note": "Data cleaning and filtering do not identify a specific local concept."
+  },
+  {
+    "source_question_id": "084fb7c80a24b341093d4bf968120e3aff56f693",
+    "text": "How is state to learn and complete tasks represented via natural language?",
+    "gold_concepts": [
+      "NaturalLanguageProcessing"
+    ],
+    "review_status": "llm_adjudicated_not_human_gold",
+    "review_note": "Natural language directly denotes NLP."
+  },
+  {
+    "source_question_id": "6583e8bfa7bcc3a792a90b30abb316e6d423f49b",
+    "text": "What are multilingual models that were outperformed in performed experiment?",
+    "gold_concepts": [
+      "MultilingualNaturalLanguageProcessing"
+    ],
+    "review_status": "llm_adjudicated_not_human_gold",
+    "review_note": "Multilingual models directly denotes multilingual NLP."
+  },
+  {
+    "source_question_id": "fa2ffc6b4b046e17bc41e199855c4941673e2caf",
+    "text": "What parallel corpus did they use?",
+    "gold_concepts": [
+      "ParallelCorpus"
+    ],
+    "review_status": "llm_adjudicated_not_human_gold",
+    "review_note": "Parallel corpus is an exact concept mention."
+  },
+  {
+    "source_question_id": "12eaaf3b6ebc51846448c6e1ad210dbef7d25a96",
+    "text": "How many convolutional layers does their model have?",
+    "gold_concepts": [
+      "ConvolutionalNeuralNetwork"
+    ],
+    "review_status": "llm_adjudicated_not_human_gold",
+    "review_note": "Convolutional layers denotes a CNN architecture."
+  },
+  {
+    "source_question_id": "670c464a5dba78e0be7ec168fe36db604e172ea7",
+    "text": "Which word embeddings do they use to represent medical visits?",
+    "gold_concepts": [
+      "WordEmbedding"
+    ],
+    "review_status": "llm_adjudicated_not_human_gold",
+    "review_note": "Word embeddings is an exact concept mention."
+  },
+  {
+    "source_question_id": "cdf7e60150a166d41baed9dad539e3b93b544624",
+    "text": "Which distributional methods did they consider?",
+    "gold_concepts": [
+      "DistributionalSemantics"
+    ],
+    "review_status": "llm_adjudicated_not_human_gold",
+    "review_note": "Distributional methods denotes the local distributional-semantics family."
+  },
+  {
+    "source_question_id": "e84ba95c9a188fda4563f45e53fbc8728d8b5dab",
+    "text": "Do they build one model per topic or on all topics?",
+    "gold_concepts": [],
+    "review_status": "llm_adjudicated_not_human_gold",
+    "review_note": "Model per topic directly expresses topic modeling."
+  },
+  {
+    "source_question_id": "0fec9da2bc80a12a7a6d6600b9ecf3e122732b60",
+    "text": "Are PIEs extracted automatically subjected to human evaluation?",
+    "gold_concepts": [],
+    "review_status": "llm_adjudicated_not_human_gold",
+    "review_note": "Human evaluation is an exact concept mention."
+  },
+  {
+    "source_question_id": "38e11663b03ac585863742044fd15a0e875ae9ab",
+    "text": "Who is the crowd in these experiments?",
+    "gold_concepts": [],
+    "review_status": "llm_adjudicated_not_human_gold",
+    "review_note": "Crowd in an experimental annotation context denotes crowdsourcing."
+  },
+  {
+    "source_question_id": "7358a1ce2eae380af423d4feeaa67d2bd23ae9dd",
+    "text": "How do their train their embeddings?",
+    "gold_concepts": [],
+    "review_status": "llm_adjudicated_not_human_gold",
+    "review_note": "Embeddings directly denotes WordEmbedding."
+  },
+  {
+    "source_question_id": "0153f563f5e2680c2de1a5f6d0e443454dc1ef2a",
+    "text": "Do they fine-tune the used word embeddings on their medical texts?",
+    "gold_concepts": [
+      "WordEmbedding"
+    ],
+    "review_status": "llm_adjudicated_not_human_gold",
+    "review_note": "Word embeddings is an exact concept mention."
+  },
+  {
+    "source_question_id": "2965c86467d12b79abc16e1457d848cb6ca88973",
+    "text": "How were dialogue act labels defined?",
+    "gold_concepts": [
+      "DiscourseAnalysis"
+    ],
+    "review_status": "llm_adjudicated_not_human_gold",
+    "review_note": "Dialogue acts are discourse-analysis annotations; label propagation is not stated."
+  },
+  {
+    "source_question_id": "6da2cb3187d3f28b75ac0a61f6562a8adf716109",
+    "text": "What are previous state-of-the-art document summarization methods used?",
+    "gold_concepts": [
+      "TextSummarization"
+    ],
+    "review_status": "llm_adjudicated_not_human_gold",
+    "review_note": "Document summarization is an exact topic mention."
+  },
+  {
+    "source_question_id": "d5f8707ddc21741d52b3c2a9ab1af2871dc6c90b",
+    "text": "What automatic and human evaluation metrics are used to compare SPNet to its counterparts?",
+    "gold_concepts": [],
+    "review_status": "llm_adjudicated_not_human_gold",
+    "review_note": "Human evaluation is stated; no named automatic metric occurs in the query."
+  },
+  {
+    "source_question_id": "d79d897f94e666d5a6fcda3b0c7e807c8fad109e",
+    "text": "What result from experiments suggest that natural language based agents are more robust?",
+    "gold_concepts": [
+      "NaturalLanguageProcessing"
+    ],
+    "review_status": "llm_adjudicated_not_human_gold",
+    "review_note": "Natural-language-based agents directly invokes NLP."
+  },
+  {
+    "source_question_id": "f398587b9a0008628278a5ea858e01d3f5559f65",
+    "text": "By how much does SPNet outperforms state-of-the-art abstractive summarization methods on evaluation metrics?",
+    "gold_concepts": [
+      "TextSummarization"
+    ],
+    "review_status": "llm_adjudicated_not_human_gold",
+    "review_note": "Abstractive summarization directly denotes TextSummarization."
+  },
+  {
+    "source_question_id": "5b029ad0d20b516ec11967baaf7d2006e8d7199f",
+    "text": "How many label options are there in the multi-label task?",
+    "gold_concepts": [],
+    "review_status": "llm_adjudicated_not_human_gold",
+    "review_note": "Multi-label classification is not LabelPropagation or MultitaskLearning."
+  },
+  {
+    "source_question_id": "6e76f114209f59b027ec3b3c8c9cdfc3e682589f",
+    "text": "Is pivot language used in experiments English or some other language?",
+    "gold_concepts": [
+      "MultilingualNaturalLanguageProcessing"
+    ],
+    "review_status": "llm_adjudicated_not_human_gold",
+    "review_note": "A language choice alone does not identify LanguageModel or NLP."
+  },
+  {
+    "source_question_id": "73633afbefa191b36cca594977204c6511f9dad4",
+    "text": "Is it expected to have speaker role, semantic slot and dialog domain annotations in real world datasets?",
+    "gold_concepts": [],
+    "review_status": "llm_adjudicated_not_human_gold",
+    "review_note": "Semantic slots are not SemanticRoleInduction."
+  },
+  {
+    "source_question_id": "8cc56fc44136498471754186cfa04056017b4e54",
+    "text": "By how much does their system outperform the lexicon-based models?",
+    "gold_concepts": [],
+    "review_status": "llm_adjudicated_not_human_gold",
+    "review_note": "Lexicon-based models does not identify a local concept."
+  },
+  {
+    "source_question_id": "9257c578ee19a7d93e2fba866be7b0bf1142c393",
+    "text": "Did they use other evaluation metrics?",
+    "gold_concepts": [],
+    "review_status": "llm_adjudicated_not_human_gold",
+    "review_note": "The metric is requested rather than named; ROUGE cannot be inferred."
+  },
+  {
+    "source_question_id": "caf9819be516d2c5a7bfafc80882b07517752dfa",
+    "text": "Do they quantitavely or qualitatively evalute the output of their low-rank approximation to verify the grouping of lexical items?",
+    "gold_concepts": [],
+    "review_status": "llm_adjudicated_not_human_gold",
+    "review_note": "Low-rank approximation and lexical grouping do not entail the proposed local concepts."
+  },
+  {
+    "source_question_id": "191d4fe8a37611b2485e715bb55ff1a30038ad6a",
+    "text": "Are experiments performed with any other pair of languages, how did proposed method perform compared to other models?",
+    "gold_concepts": [
+      "MultilingualNaturalLanguageProcessing"
+    ],
+    "review_status": "llm_adjudicated_not_human_gold",
+    "review_note": "Generic language pairs and models do not state a topical concept."
+  },
+  {
+    "source_question_id": "1b9119813ea637974d21862a8ace83bc1acbab8e",
+    "text": "What dataset do they use?",
+    "gold_concepts": [],
+    "review_status": "llm_adjudicated_not_human_gold",
+    "review_note": "Generic dataset reference is not DatasetBias or QASPER."
+  },
+  {
+    "source_question_id": "24cc1586e5411a7f8574796d3c576b7c677d6e21",
+    "text": "Does the paper report the accuracy of the model?",
+    "gold_concepts": [],
+    "review_status": "llm_adjudicated_not_human_gold",
+    "review_note": "Generic accuracy and model wording states no local concept."
+  },
+  {
+    "source_question_id": "33ccbc401b224a48fba4b167e86019ffad1787fb",
+    "text": "How many comments were used?",
+    "gold_concepts": [],
+    "review_status": "llm_adjudicated_not_human_gold",
+    "review_note": "Comment count states no local concept."
+  },
+  {
+    "source_question_id": "33d864153822bd378a98a732ace720e2c06a6bc6",
+    "text": "What is new state-of-the-art performance on CoNLL-2009 dataset?",
+    "gold_concepts": [],
+    "review_status": "llm_adjudicated_not_human_gold",
+    "review_note": "Dataset name and generic performance do not identify a local concept."
+  },
+  {
+    "source_question_id": "36feaac9d9dee5ae09aaebc2019b014e57f61fbf",
+    "text": "How do they measure model size?",
+    "gold_concepts": [],
+    "review_status": "llm_adjudicated_not_human_gold",
+    "review_note": "Model size states no topical concept."
+  },
+  {
+    "source_question_id": "3af9156b95a4c2d67cc54b80b92cc7b918fea2a9",
+    "text": "What experiments are presented?",
+    "gold_concepts": [],
+    "review_status": "llm_adjudicated_not_human_gold",
+    "review_note": "Generic experiment wording states no concept."
+  },
+  {
+    "source_question_id": "4dad15fee1fe01c3eadce8f0914781ca0a6e3f23",
+    "text": "How do they prevent the model complexity increasing with the increased number of slots?",
+    "gold_concepts": [],
+    "review_status": "llm_adjudicated_not_human_gold",
+    "review_note": "Generic model and slot references do not identify a local concept."
+  },
+  {
+    "source_question_id": "db39a71080e323ba2ddf958f93778e2b875dcd24",
+    "text": "How does SPNet utilize additional speaker role, semantic slot and dialog domain annotations?",
+    "gold_concepts": [],
+    "review_status": "llm_adjudicated_not_human_gold",
+    "review_note": "Semantic slots are not SemanticRoleInduction."
+  },
+  {
+    "source_question_id": "5ea87432b9166d6a4ab8806599cd2b1f9178622f",
+    "text": "What conclusions are drawn from these experiments?",
+    "gold_concepts": [],
+    "review_status": "llm_adjudicated_not_human_gold",
+    "review_note": "Generic experiment wording states no local concept."
+  },
+  {
+    "source_question_id": "828615a874512844ede9d7f7d92bdc48bb48b18d",
+    "text": "Do they explore how much traning data is needed for which magnitude of improvement for WER? ",
+    "gold_concepts": [],
+    "review_status": "llm_adjudicated_not_human_gold",
+    "review_note": "WER and training-size analysis are vocabulary gaps."
+  },
+  {
+    "source_question_id": "9bffc9a9c527e938b2a95ba60c483a916dbd1f6b",
+    "text": "Do they use multi-attention heads?",
+    "gold_concepts": [],
+    "review_status": "llm_adjudicated_not_human_gold",
+    "review_note": "Multi-head attention is absent from the local vocabulary."
+  },
+  {
+    "source_question_id": "a7d72f308444616a0befc8db7ad388b3216e2143",
+    "text": "What datasets are used?",
+    "gold_concepts": [],
+    "review_status": "llm_adjudicated_not_human_gold",
+    "review_note": "Generic dataset reference states no local concept."
+  },
+  {
+    "source_question_id": "bc1e3f67d607bfc7c4c56d6b9763d3ae7f56ad5b",
+    "text": "Whas is the performance drop of their model when there is no parsed input?",
+    "gold_concepts": [],
+    "review_status": "llm_adjudicated_not_human_gold",
+    "review_note": "Generic model performance and parsed input state no local concept."
+  },
+  {
+    "source_question_id": "cb4727cd5643dabc3f5c95e851d5313f5d979bdc",
+    "text": "How big is improvement over the old  state-of-the-art performance on CoNLL-2009 dataset?",
+    "gold_concepts": [],
+    "review_status": "llm_adjudicated_not_human_gold",
+    "review_note": "Dataset name and generic performance state no local concept."
+  },
+  {
+    "source_question_id": "d4e78d3205e98cafdf93ddaa95627ea00b7c4d55",
+    "text": "Do they perform some annotation?",
+    "gold_concepts": [],
+    "review_status": "llm_adjudicated_not_human_gold",
+    "review_note": "Generic annotation states no local concept."
+  },
+  {
+    "source_question_id": "2480dfe2d996afef840a81bd920aeb9c26e5b31d",
+    "text": "What compleentary PIE extraction methods are used to increase reliability further?",
+    "gold_concepts": [],
+    "review_status": "llm_adjudicated_not_human_gold",
+    "review_note": "PIE extraction is not equivalent to OpenInformationExtraction."
+  },
+  {
+    "source_question_id": "3b7798a6bce1a5faf411bb12e2e011dbab1e279d",
+    "text": "Do any of the evaluations show that adversarial learning improves performance in at least two different language families?",
+    "gold_concepts": [
+      "MultilingualNaturalLanguageProcessing"
+    ],
+    "review_status": "llm_adjudicated_not_human_gold",
+    "review_note": "Comparison across language families expresses multilingual NLP; adversarial learning itself is a vocabulary gap."
+  },
+  {
+    "source_question_id": "3c3b4797e2b21e2c31cf117ad9e52f327721790f",
+    "text": "What languages do they experiment on?",
+    "gold_concepts": [],
+    "review_status": "llm_adjudicated_not_human_gold",
+    "review_note": "A generic language choice alone states no NLP concept."
+  },
+  {
+    "source_question_id": "5cb3d69607f60e1c5be2120462726a477ead9570",
+    "text": "Does adversarial learning have stronger performance gains for text classification, or for NER?",
+    "gold_concepts": [
+      "NaturalLanguageProcessing"
+    ],
+    "review_status": "llm_adjudicated_not_human_gold",
+    "review_note": "Text classification and named-entity recognition are explicit NLP tasks."
+  },
+  {
+    "source_question_id": "5fa431b14732b3c47ab6eec373f51f2bca04f614",
+    "text": "Which lexicon-based models did they compare with?",
+    "gold_concepts": [],
+    "review_status": "llm_adjudicated_not_human_gold",
+    "review_note": "Lexicon-based models does not identify a local concept."
+  },
+  {
+    "source_question_id": "864b5c1fe8c744f80a55e87421b29d6485b7efd0",
+    "text": "What evaluation metrics do they use?",
+    "gold_concepts": [],
+    "review_status": "llm_adjudicated_not_human_gold",
+    "review_note": "The metrics are requested rather than named."
+  },
+  {
+    "source_question_id": "86f24ecc89e743bb1534ac160d08859493afafe9",
+    "text": "What different approaches of encoding syntactic information authors present?",
+    "gold_concepts": [
+      "NaturalLanguageProcessing"
+    ],
+    "review_status": "llm_adjudicated_not_human_gold",
+    "review_note": "Encoding syntactic linguistic information is an NLP task."
+  },
+  {
+    "source_question_id": "aeab5797b541850e692f11e79167928db80de1ea",
+    "text": "How do they combine text representations with the knowledge graph embeddings?",
+    "gold_concepts": [],
+    "review_status": "llm_adjudicated_not_human_gold",
+    "review_note": "Knowledge-graph embeddings are not WordEmbedding."
+  },
+  {
+    "source_question_id": "1165fb0b400ec1c521c1aef7a4e590f76fee1279",
+    "text": "How do they model travel behavior?",
+    "gold_concepts": [],
+    "review_status": "llm_adjudicated_not_human_gold",
+    "review_note": "Travel behavior modeling is outside the local vocabulary."
+  },
+  {
+    "source_question_id": "11e6b79f1f48ddc6c580c4d0a3cb9bcb42decb17",
+    "text": "What features do they experiment with?",
+    "gold_concepts": [],
+    "review_status": "llm_adjudicated_not_human_gold",
+    "review_note": "Generic feature wording states no local concept."
+  },
+  {
+    "source_question_id": "14421b7ae4459b647033b3ccba635d4ba7bb114b",
+    "text": "How do you establish the ground truth of who won a debate?",
+    "gold_concepts": [],
+    "review_status": "llm_adjudicated_not_human_gold",
+    "review_note": "Determining debate outcomes is an argument-mining task."
+  },
+  {
+    "source_question_id": "1ed6acb88954f31b78d2821bb230b722374792ed",
+    "text": "What is private dashboard?",
+    "gold_concepts": [],
+    "review_status": "llm_adjudicated_not_human_gold",
+    "review_note": "Dashboard is outside the local vocabulary."
+  },
+  {
+    "source_question_id": "2a0a44f169ad61774d77df65f8846bd57685bfcf",
+    "text": "What did they pretrain the model on?",
+    "gold_concepts": [],
+    "review_status": "llm_adjudicated_not_human_gold",
+    "review_note": "Generic pretraining and model wording state no concept."
+  },
+  {
+    "source_question_id": "346f10ddb34503dfba72b0e49afcdf6a08ecacfa",
+    "text": "How big PIE datasets are obtained from dictionaries?",
+    "gold_concepts": [],
+    "review_status": "llm_adjudicated_not_human_gold",
+    "review_note": "PIE and dictionary dataset construction are not represented locally."
+  },
+  {
+    "source_question_id": "41fd359b8c1402b31b6f5efd660143d1414783a0",
+    "text": "How was performance of previously proposed rules at very large scale?",
+    "gold_concepts": [],
+    "review_status": "llm_adjudicated_not_human_gold",
+    "review_note": "Generic rule performance states no concept."
+  },
+  {
+    "source_question_id": "487dc65bf8a8ecbf052cf05641caf1b90a502853",
+    "text": "What unlabeled corpus did they use?",
+    "gold_concepts": [],
+    "review_status": "llm_adjudicated_not_human_gold",
+    "review_note": "Unlabeled corpus is not necessarily ParallelCorpus."
+  },
+  {
+    "source_question_id": "49aecc50823a60c852165e121dbc0ca54304e40f",
+    "text": "How is the data automatically generated?",
+    "gold_concepts": [],
+    "review_status": "llm_adjudicated_not_human_gold",
+    "review_note": "Generic data generation states no local concept."
+  },
+  {
+    "source_question_id": "4d4739682d540878a94d8227412e9e1ec1bb3d39",
+    "text": "Which two datasets is the system tested on?",
+    "gold_concepts": [],
+    "review_status": "llm_adjudicated_not_human_gold",
+    "review_note": "Generic datasets and system wording state no concept."
+  },
+  {
+    "source_question_id": "5499527beadb7f5dd908bd659cad83d6a81119bd",
+    "text": "What dictionaries are used for automatic extraction of PIEs?",
+    "gold_concepts": [],
+    "review_status": "llm_adjudicated_not_human_gold",
+    "review_note": "PIE extraction is not equivalent to OpenInformationExtraction."
+  },
+  {
+    "source_question_id": "574f17134e4dd041c357ebb75a7ef590da294d22",
+    "text": "What new model is proposed for binomial lists?",
+    "gold_concepts": [],
+    "review_status": "llm_adjudicated_not_human_gold",
+    "review_note": "Binomial-list modeling is outside the local vocabulary."
+  },
+  {
+    "source_question_id": "5937ebbf04f62d41b48cbc6b5c38fc309e5c2328",
+    "text": "What other relations were found in the datasets?",
+    "gold_concepts": [],
+    "review_status": "llm_adjudicated_not_human_gold",
+    "review_note": "Generic relations and datasets state no local concept."
+  },
+  {
+    "source_question_id": "5a33ec23b4341584a8079db459d89a4e23420494",
+    "text": "What is public dashboard?",
+    "gold_concepts": [],
+    "review_status": "llm_adjudicated_not_human_gold",
+    "review_note": "Dashboard is outside the local vocabulary."
+  },
+  {
+    "source_question_id": "5c90e1ed208911dbcae7e760a553e912f8c237a5",
+    "text": "How big are the datasets?",
+    "gold_concepts": [],
+    "review_status": "llm_adjudicated_not_human_gold",
+    "review_note": "Dataset size states no topical concept."
+  },
+  {
+    "source_question_id": "62736ad71c76a20aee8e003c462869bab4ab4b1e",
+    "text": "How is order of binomials tracked across time?",
+    "gold_concepts": [],
+    "review_status": "llm_adjudicated_not_human_gold",
+    "review_note": "Diachronic binomial ordering is outside the vocabulary."
+  },
+  {
+    "source_question_id": "657edbf39c500b2446edb9cca18de2912c628b7d",
+    "text": "What was their perplexity score?",
+    "gold_concepts": [
+      "LanguageModel"
+    ],
+    "review_status": "llm_adjudicated_not_human_gold",
+    "review_note": "Perplexity is a characteristic language-model evaluation metric."
+  },
+  {
+    "source_question_id": "790ed4458a23aa23e2b5399259e50083c86d9e14",
+    "text": "Do all the instances contain code-switching?",
+    "gold_concepts": [
+      "MultilingualNaturalLanguageProcessing"
+    ],
+    "review_status": "llm_adjudicated_not_human_gold",
+    "review_note": "Code-switching is a multilingual NLP phenomenon."
+  },
+  {
+    "source_question_id": "8434974090491a3c00eed4f22a878f0b70970713",
+    "text": "How big is their model?",
+    "gold_concepts": [],
+    "review_status": "llm_adjudicated_not_human_gold",
+    "review_note": "Generic model size states no concept."
+  },
+  {
+    "source_question_id": "8e857e44e4233193c7b2d538e520d37be3ae1552",
+    "text": "What experiments authors perform?",
+    "gold_concepts": [],
+    "review_status": "llm_adjudicated_not_human_gold",
+    "review_note": "Generic experiment wording states no concept."
+  },
+  {
+    "source_question_id": "94ec0e205790ec663a5353f3c68c8d77701573c7",
+    "text": "Do they explore similarity of texts across different doctors?",
+    "gold_concepts": [],
+    "review_status": "llm_adjudicated_not_human_gold",
+    "review_note": "Text similarity alone is not SemanticSearch."
+  },
+  {
+    "source_question_id": "a1917232441890a89b9a268ad8f987184fa50f7a",
+    "text": "Are there any new finding in analasys of trinomials that was not present binomials?",
+    "gold_concepts": [],
+    "review_status": "llm_adjudicated_not_human_gold",
+    "review_note": "Trinomial and binomial analysis is outside the vocabulary."
+  },
+  {
+    "source_question_id": "a91878129583fcb6d16067ba8ba3600e39d70021",
+    "text": "Which clustering technique do they use on partients' visits texts?",
+    "gold_concepts": [],
+    "review_status": "llm_adjudicated_not_human_gold",
+    "review_note": "Clustering is absent from the local vocabulary."
+  },
+  {
+    "source_question_id": "aaf50a6a9f449389ef212d25d0fae59c10b0df92",
+    "text": "What types of various community texts have been investigated for exploring global structure of binomials?",
+    "gold_concepts": [],
+    "review_status": "llm_adjudicated_not_human_gold",
+    "review_note": "Community texts and binomial structure state no local concept."
+  },
+  {
+    "source_question_id": "ad67ca844c63bf8ac9fdd0fa5f58c5a438f16211",
+    "text": "Which unlabeled data do they pretrain with?",
+    "gold_concepts": [],
+    "review_status": "llm_adjudicated_not_human_gold",
+    "review_note": "Generic unlabeled data and pretraining state no concept."
+  },
+  {
+    "source_question_id": "b3238158392684a5a6b62a7eabaa2a10fbecf3e6",
+    "text": "How was the KGR10 corpus created?",
+    "gold_concepts": [],
+    "review_status": "llm_adjudicated_not_human_gold",
+    "review_note": "KGR10 corpus construction is outside the local vocabulary."
+  },
+  {
+    "source_question_id": "b67420da975689e47d3ea1c12b601851018c4071",
+    "text": "How is their model different from BERT?",
+    "gold_concepts": [
+      "BidirectionalLanguageModel"
+    ],
+    "review_status": "llm_adjudicated_not_human_gold",
+    "review_note": "BERT denotes the bidirectional language-model family."
+  },
+  {
+    "source_question_id": "bed527bcb0dd5424e69563fba4ae7e6ea1fca26a",
+    "text": "What dataset do they use?",
+    "gold_concepts": [],
+    "review_status": "llm_adjudicated_not_human_gold",
+    "review_note": "Generic dataset reference states no concept."
+  },
+  {
+    "source_question_id": "c06b5623c35b6fa7938340fa340269dc81d061e1",
+    "text": "Which benchmark datasets are used?",
+    "gold_concepts": [],
+    "review_status": "llm_adjudicated_not_human_gold",
+    "review_note": "Generic benchmark datasets state no concept."
+  },
+  {
+    "source_question_id": "c45a160d31ca8eddbfea79907ec8e59f543aab86",
+    "text": "What datasets are used for evaluation?",
+    "gold_concepts": [],
+    "review_status": "llm_adjudicated_not_human_gold",
+    "review_note": "Generic evaluation datasets state no concept."
+  },
+  {
+    "source_question_id": "cca74448ab0c518edd5fc53454affd67ac1a201c",
+    "text": "How many articles did they have?",
+    "gold_concepts": [],
+    "review_status": "llm_adjudicated_not_human_gold",
+    "review_note": "Article count states no concept."
+  },
+  {
+    "source_question_id": "d20d6c8ecd7cb0126479305d27deb0c8b642b09f",
+    "text": "What normalization techniques are mentioned?",
+    "gold_concepts": [],
+    "review_status": "llm_adjudicated_not_human_gold",
+    "review_note": "Normalization is absent from the local vocabulary."
+  },
+  {
+    "source_question_id": "d325a3c21660dbc481b4e839ff1a2d37dcc7ca46",
+    "text": "What hypernymy tasks do they study?",
+    "gold_concepts": [
+      "NaturalLanguageProcessing"
+    ],
+    "review_status": "llm_adjudicated_not_human_gold",
+    "review_note": "Hypernymy prediction is an NLP lexical-semantic task."
+  },
+  {
+    "source_question_id": "d3a1a53521f252f869fdae944db986931d9ffe48",
+    "text": "Who are the experts?",
+    "gold_concepts": [],
+    "review_status": "llm_adjudicated_not_human_gold",
+    "review_note": "Expert identity states no concept."
+  },
+  {
+    "source_question_id": "dcd6f18922ac5c00c22cef33c53ff5ae08b42298",
+    "text": "How does the ensemble annotator extract the final label?",
+    "gold_concepts": [],
+    "review_status": "llm_adjudicated_not_human_gold",
+    "review_note": "Ensemble annotation and label extraction state no local concept."
+  },
+  {
+    "source_question_id": "ef07ec34433221d4da79d5923fb00d8ac446b92c",
+    "text": "How do they quantify alignment between the embeddings of a document and its translation?",
+    "gold_concepts": [
+      "MultilingualNaturalLanguageProcessing"
+    ],
+    "review_status": "llm_adjudicated_not_human_gold",
+    "review_note": "Document or translation embeddings are not necessarily WordEmbedding."
+  },
+  {
+    "source_question_id": "f2c5da398e601e53f9f545947f61de5f40ede1ee",
+    "text": "How do their interpret the coefficients?",
+    "gold_concepts": [],
+    "review_status": "llm_adjudicated_not_human_gold",
+    "review_note": "Generic coefficients state no local concept."
+  },
+  {
+    "source_question_id": "f5cf8738e8d211095bb89350ed05ee7f9997eb19",
+    "text": "By how much do they outperform standard BERT?",
+    "gold_concepts": [
+      "BidirectionalLanguageModel"
+    ],
+    "review_status": "llm_adjudicated_not_human_gold",
+    "review_note": "BERT denotes the bidirectional language-model family."
+  },
+  {
+    "source_question_id": "f91835f17c0086baec65ebd99d12326ae1ae87d2",
+    "text": "How do they obtain parsed source sentences?",
+    "gold_concepts": [],
+    "review_status": "llm_adjudicated_not_human_gold",
+    "review_note": "Parsed source sentences state no sufficiently specific local concept."
+  },
+  {
+    "source_question_id": "fd80a7162fde83077ed82ae41d521d774f74340a",
+    "text": "What is their baseline?",
+    "gold_concepts": [],
+    "review_status": "llm_adjudicated_not_human_gold",
+    "review_note": "Generic baseline reference states no concept."
+  },
+  {
+    "source_question_id": "50f09a044f0c0795cc636c3e25a4f7c3231fb08d",
+    "text": "How does the well-resourced language impact the quality of the output?",
+    "gold_concepts": [
+      "MultilingualNaturalLanguageProcessing"
+    ],
+    "review_status": "llm_adjudicated_not_human_gold",
+    "review_note": "A well-resourced language affecting another output expresses a multilingual NLP setting."
+  }
+]
