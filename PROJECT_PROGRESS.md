@@ -2,7 +2,19 @@
 
 Cập nhật gần nhất: 17/10/2026
 
-### Mới nhất: Concept-linking supervision v17
+### Mới nhất: Concept-linking validation v19
+
+- [x] Đối chiếu 112 nhãn bằng reviewer độc lập và phân xử 20 bất đồng: nhãn cuối có
+  25 câu dương/87 câu `NONE`; agreement trước phân xử là 0,8214.
+- [x] Thu hẹp alias quá rộng trên development selection: Hybrid 0,55 tăng F1 từ 0,6000
+  lên 0,7200, precision 0,9000, recall 0,6000 và exact match 0,8727. Không chạy lại
+  57 câu internal verification đã mở.
+- [x] Tạo validation v19 hoàn toàn mới: 20 paper/1.029 chunk/72 câu, overlap 0 với
+  355 paper từng dùng. Đã sinh packet gán nhãn mù và catalog; prediction chưa chạy,
+  final test vẫn niêm phong.
+- [ ] Hoàn tất nhãn độc lập v19, khóa hash rồi chạy Hybrid 0,55 đúng một lần.
+
+### Concept-linking supervision v17
 
 - [x] Tạo công cụ audit tổng quát phân loại lỗi query/evidence, sinh Top-5 semantic
   proposal cho cả hai phía và xuất JSON/Markdown/CSV có hàng đợi review.

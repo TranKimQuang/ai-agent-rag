@@ -1,0 +1,66 @@
+﻿concept_id,preferred_label,definition
+ArgumentMining,argument mining,The task of identifying argumentative structures and components in text.
+AuthorProfiling,author profiling,
+BeamSearch,beam search,
+BidirectionalLanguageModel,bidirectional language model,
+CausalityExtraction,causality extraction,
+ComputationalSocialScience,computational social science,
+ConvolutionalNeuralNetwork,convolutional neural network,
+CooccurrenceMatrix,co-occurrence matrix,A matrix recording how frequently linguistic units occur in shared contexts.
+Crowdsourcing,crowdsourcing,
+DatasetBias,dataset bias,Systematic patterns in a dataset that can distort evaluation or model behavior.
+DiscourseAnalysis,discourse analysis,
+DistantSupervision,distant supervision,
+DistributionalSemantics,distributional semantics,An approach that represents meaning through patterns of linguistic co-occurrence.
+DynamicMemoryNetwork,dynamic memory network,
+EntityLinking,entity linking,
+EvidenceF1,evidence F1,
+GrammaticalErrorCorrection,grammatical error correction,
+HashtagPrediction,hashtag prediction,The task of predicting relevant hashtags for social-media text.
+HiddenMarkovModel,hidden Markov model,
+HybridSearch,hybrid search,A retrieval method that combines lexical keyword search and semantic search.
+ImageCaptioning,image captioning,
+InformationRetrieval,information retrieval,The study of finding relevant documents or information for a user's information need.
+KeywordSearch,keyword search,A lexical retrieval method that matches query terms with words in documents.
+LabelPropagation,label propagation,
+LanguageModel,language model,
+LatentDirichletAllocation,latent Dirichlet allocation,A probabilistic latent-topic model for collections of documents.
+LexicalDiversity,lexical diversity,
+LongShortTermMemory,long short-term memory,
+MachineLearning,machine learning,The study of algorithms that learn patterns from data.
+MachineReadingComprehension,machine reading comprehension,
+MeanReciprocalRank,mean reciprocal rank,
+MemoryNetwork,memory network,
+MorphologicalTokenization,morphological tokenization,
+MultiHopQuestionAnswering,multi-hop question answering,
+MultilingualNaturalLanguageProcessing,multilingual natural language processing,
+MultipleChoiceQuestionAnswering,multiple-choice question answering,
+MultitaskLearning,multitask learning,
+NaturalLanguageInference,natural language inference,"The task of determining whether one text entails, contradicts, or is neutral toward another."
+NaturalLanguageProcessing,natural language processing,The field concerned with computers processing and understanding human language.
+NeuralMachineTranslation,neural machine translation,
+NeuralNetwork,neural network,
+OpenInformationExtraction,open information extraction,
+ParallelCorpus,parallel corpus,A collection containing aligned texts in two or more languages.
+ParaphraseGeneration,paraphrase generation,
+PhraseBasedMachineTranslation,phrase-based machine translation,
+ProbabilisticContextFreeGrammar,probabilistic context-free grammar,
+PyramidMethod,Pyramid method,A content-unit based method for evaluating summaries.
+QASPER,QASPER,
+QuestionAnswering,question answering,The task of producing answers to questions expressed in natural language.
+ROUGE,ROUGE,A family of overlap-based metrics for evaluating generated summaries.
+ReciprocalRankFusion,reciprocal rank fusion,
+RecurrentNeuralNetwork,recurrent neural network,A neural network architecture for processing sequential data.
+RetrievalAugmentedGeneration,retrieval augmented generation,A method that retrieves external evidence before generating a grounded answer.
+RevisionDetection,revision detection,
+SemanticRoleInduction,semantic role induction,The task of discovering or assigning semantic roles to sentence arguments.
+SemanticSearch,semantic search,A retrieval method that matches the meaning of a query and documents using semantic representations.
+SentimentAnalysis,sentiment analysis,
+SpamDetection,spam detection,The task of detecting unwanted or deceptive messages.
+SupervisedLearning,supervised learning,
+TextSummarization,text summarization,The task of producing a shorter representation of a source text.
+TopicModeling,topic modeling,
+TransferLearning,transfer learning,
+Word2Vec,word2vec,
+WordEmbedding,word embedding,A dense vector representation of a word learned from language data.
+WordSegmentation,word segmentation,
