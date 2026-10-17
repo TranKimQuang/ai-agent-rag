@@ -71,6 +71,11 @@ Batch tiền kiểm thứ hai gồm 30 câu (16 nhãn dương, 14 câu âm). Khi
 0,682, F1 0,811 và exact match 0,873. Phrase-first tăng Recall lên 0,818 nhưng Precision
 giảm còn 0,643, F1 0,720. Chi tiết nằm trong `CONCEPT_LINKING_COMBINED_55_REPORT.md`.
 
+57 câu còn lại được khóa làm internal verification trước prediction ở commit `d1d49c4`.
+Cấu hình Hybrid 0,55 được chạy đúng một lần và thất bại: Precision/Recall/F1 đều 0, exact
+match 0,737. Không tuning hoặc thêm alias theo tập này. Xem
+`INTERNAL_VERIFICATION_57_REPORT.md` và `internal_verification_lock.json`.
+
 ## Quy trình tiếp theo
 
 1. Review thủ công 25 hàng có `review_hint=review_candidate_related_to_gold`; dùng gợi ý

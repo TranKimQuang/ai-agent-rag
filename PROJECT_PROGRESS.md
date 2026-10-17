@@ -39,6 +39,12 @@ Cập nhật gần nhất: 17/10/2026
   Recall 0,682, F1 0,811, exact match 0,873. Phrase-first đạt Recall 0,818 nhưng Precision
   chỉ 0,643 và F1 0,720, nên chưa dùng mặc định. Giữ ngưỡng 0,55 và tiếp tục review
   development trước validation mới.
+- [x] Khóa Hybrid threshold 0,55 ở commit `d1d49c4` rồi gán nhãn trước và chạy đúng một
+  lần trên 57 câu development dự trữ (10 nhãn dương). Internal verification thất bại:
+  Alias/Semantic/Hybrid đều Precision=Recall=F1=0; Hybrid exact match 0,737. Không sửa
+  alias, threshold hoặc ontology theo tập này và chưa mở validation mới. Kết quả 55 câu
+  trước không khái quát; bước bắt buộc tiếp theo là xác nhận nhãn pre-review và phát triển
+  linker mới trên selection development khác.
 
 ### Mới nhất: Validation v16 loại document-topic prior
 
@@ -865,13 +871,13 @@ Milestone tiếp theo: kiểm chứng khả năng khái quát của semantic con
 1. Giữ nguyên kết quả held-out v3 và validation v7; không tiếp tục tuning theo các tập đã xem.
 2. Giữ nguyên validation v9; không tuning scoring theo tập này. Tạo development split mới
    và thiết lập baseline document-scoped trước khi kết luận thêm về concept coverage.
-3. Review thủ công 25 câu ưu tiên trong development v17, dùng artifact Qwen local chỉ để
-   tham khảo; sau đó mở rộng dần đến 112 câu. Tuyệt đối không dùng validation v16 làm
-   training data.
-4. Dùng nhãn v17 để so sánh alias/semantic/phrase-first và chỉ bổ sung concept/quan hệ có
-   bằng chứng lặp lại; không tiếp tục tăng graph weight hoặc thêm heuristic prior.
-5. Khi concept linking cải thiện rõ trên dev nội bộ, khóa candidate và tạo validation
-   paper-disjoint mới; chỉ sau đó mới quay lại retrieval/Answer Agent.
+3. Xác nhận thủ công nhãn `assistant_pre_review` của 112 câu trước khi coi đây là gold;
+   ưu tiên kiểm tra 10 nhãn dương của internal verification.
+4. Không tuning tiếp trên 57 câu internal verification đã mở. Phát triển linker mới chỉ
+   trên 55 câu selection hoặc một development pool mới, đồng thời xuất prediction từng
+   câu ngay trong lần đánh giá đầu tiên.
+5. Chỉ khi candidate mới cải thiện trên development độc lập mới tạo validation
+   paper-disjoint mới; sau đó mới quay lại retrieval/Answer Agent.
 
 Chưa ưu tiên trong milestone này: mở rộng giao diện, PostgreSQL, pgvector, OCR và
 framework Agent phức tạp.

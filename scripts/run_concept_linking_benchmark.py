@@ -2,7 +2,10 @@ import argparse
 import json
 from pathlib import Path
 
-from app.evaluation.concept_linking import ConceptLinkingExample, evaluate_concept_linking
+from app.evaluation.concept_linking import (
+    ConceptLinkingExample,
+    evaluate_concept_linking_with_rows,
+)
 from app.ontology.service import OntologyService
 from app.rag.retriever import SentenceTransformerEncoder
 
@@ -47,13 +50,17 @@ def main() -> None:
 
     examples = load_examples(args.dataset)
     service = OntologyService(semantic_encoder=SentenceTransformerEncoder())
-    by_threshold = {
-        f"{threshold:.2f}": evaluate_concept_linking(
+    detailed_by_threshold = {
+        f"{threshold:.2f}": evaluate_concept_linking_with_rows(
             service,
             examples,
             threshold=threshold,
         )
         for threshold in sorted(set(args.thresholds))
+    }
+    by_threshold = {
+        threshold: details["results"]
+        for threshold, details in detailed_by_threshold.items()
     }
     selected_threshold = max(
         by_threshold,
@@ -69,6 +76,7 @@ def main() -> None:
         "selection_metric": "hybrid_f1",
         "selected_threshold": float(selected_threshold),
         "selected_results": by_threshold[selected_threshold],
+        "selected_predictions": detailed_by_threshold[selected_threshold]["rows"],
         "by_threshold": by_threshold,
     }
     args.output.parent.mkdir(parents=True, exist_ok=True)

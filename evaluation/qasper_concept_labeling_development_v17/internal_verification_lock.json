@@ -17,6 +17,16 @@
     "Do not change aliases, threshold, phrase-first policy or ontology from verification results.",
     "Do not treat assistant_pre_review labels as final human gold labels."
   ],
-  "verification_run_completed": false,
-  "verification_result_file": null
+  "verification_run_completed": true,
+  "verification_runs": 1,
+  "verification_result_file": "concept_linking_internal_verification_once.json",
+  "verification_summary": {
+    "examples": 57,
+    "positive_labels": 10,
+    "hybrid_precision": 0.0,
+    "hybrid_recall": 0.0,
+    "hybrid_f1": 0.0,
+    "hybrid_exact_match": 0.7368421052631579,
+    "decision": "failed_internal_verification_no_retuning_on_reserved_set"
+  }
 }

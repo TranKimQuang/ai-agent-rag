@@ -1,0 +1,55 @@
+{
+  "datasets": [
+    "evaluation\\qasper_concept_labeling_development_v17\\concept_linking_internal_verification_57.json"
+  ],
+  "selection_metric": "hybrid_f1",
+  "selected_threshold": 0.55,
+  "selected_results": {
+    "alias": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "exact_match": 0.7894736842105263,
+      "examples": 57.0
+    },
+    "semantic": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "exact_match": 0.7719298245614035,
+      "examples": 57.0
+    },
+    "hybrid": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "exact_match": 0.7368421052631579,
+      "examples": 57.0
+    }
+  },
+  "by_threshold": {
+    "0.55": {
+      "alias": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "exact_match": 0.7894736842105263,
+        "examples": 57.0
+      },
+      "semantic": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "exact_match": 0.7719298245614035,
+        "examples": 57.0
+      },
+      "hybrid": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "exact_match": 0.7368421052631579,
+        "examples": 57.0
+      }
+    }
+  }
+}

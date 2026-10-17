@@ -4,7 +4,10 @@ from pathlib import Path
 import numpy as np
 import pytest
 
-from app.evaluation.concept_linking import evaluate_concept_linking
+from app.evaluation.concept_linking import (
+    evaluate_concept_linking,
+    evaluate_concept_linking_with_rows,
+)
 from app.models import ConceptLinkingMethod
 from app.ontology.service import OntologyService
 from scripts.run_concept_linking_benchmark import load_examples
@@ -48,6 +51,25 @@ def test_concept_linking_benchmark_compares_all_three_methods() -> None:
     assert set(results) == {method.value for method in ConceptLinkingMethod}
     assert results["semantic"]["recall"] > results["alias"]["recall"]
     assert results["hybrid"]["recall"] == 1.0
+
+
+def test_detailed_benchmark_retains_predictions_from_same_run() -> None:
+    service = OntologyService(semantic_encoder=BenchmarkEncoder())
+    examples = [
+        {
+            "source_question_id": "q1",
+            "text": "RAG retrieves evidence",
+            "gold_concepts": ["RetrievalAugmentedGeneration"],
+        }
+    ]
+
+    details = evaluate_concept_linking_with_rows(service, examples, threshold=0.8)
+
+    assert details["results"]["hybrid"]["f1"] == 1.0
+    assert details["rows"][0]["source_question_id"] == "q1"
+    assert details["rows"][0]["predictions"]["hybrid"]["concepts"] == [
+        "RetrievalAugmentedGeneration"
+    ]
 
 
 def test_load_examples_merges_disjoint_review_batches(tmp_path: Path) -> None:
