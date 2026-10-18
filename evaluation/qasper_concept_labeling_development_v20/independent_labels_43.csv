@@ -1,0 +1,44 @@
+review_id,reviewer_concepts,reviewer_none,reviewer_notes
+CV-001,NaturalLanguageProcessing,0,Open-domain multi-turn conversational agents clearly involve natural-language processing.
+CV-002,,1,The question asks generically why one model performs better.
+CV-003,,1,The compared models are unspecified in the question.
+CV-004,NaturalLanguageProcessing,0,Determining whether a tweet is racist is clearly a text-understanding task.
+CV-005,,1,The question asks only which evaluation datasets were used.
+CV-006,NaturalLanguageProcessing,0,Event and temporal-relation extraction are explicit NLP tasks; temporal relations are not necessarily causal.
+CV-007,,1,The question asks only which datasets were used.
+CV-008,BidirectionalLanguageModel|TransferLearning,0,BERT and task-specific fine-tuning are both explicit.
+CV-009,,1,Pre-training loss and pruning levels do not directly identify a catalog concept.
+CV-010,,1,The evaluation metrics are unspecified in the question.
+CV-011,WordEmbedding,0,Word vectors is a direct alias for word embeddings.
+CV-012,MultilingualNaturalLanguageProcessing,0,Matching author names across Japanese and English is explicitly cross-lingual language processing.
+CV-013,,1,The baseline model is unspecified in the question.
+CV-014,MultilingualNaturalLanguageProcessing,0,Speech translation directly entails processing across languages; the question does not establish a neural subtype.
+CV-015,,1,The question asks only which dataset was used.
+CV-016,,1,Gated attention and concatenation do not match catalog concepts.
+CV-017,,1,Customization features are unspecified and have no direct catalog match.
+CV-018,WordEmbedding,0,Word embeddings are explicitly named.
+CV-019,WordEmbedding,0,Word embeddings are explicitly named.
+CV-020,NeuralNetwork,0,Neural networks are explicitly named.
+CV-021,,1,Domain tags do not match a catalog concept.
+CV-022,InformationRetrieval|NeuralNetwork,0,Retrieval and a neural model are both explicit in the question.
+CV-023,,1,The question asks only for a performance improvement.
+CV-024,,1,An auxiliary sentence does not by itself identify paraphrase generation or another catalog concept.
+CV-025,NaturalLanguageProcessing,0,Speech transcription is clearly a natural-language processing task.
+CV-026,,1,The evaluation method is unspecified in the question.
+CV-027,,1,The number of experimental domains has no catalog match.
+CV-028,,1,The pretrained models are unspecified in the question.
+CV-029,NaturalLanguageProcessing,0,SRL is a standard NLP task; it is semantic role labeling rather than semantic role induction.
+CV-030,,1,A biaffine scorer is not a catalog concept.
+CV-031,,1,The evaluation metrics are unspecified in the question.
+CV-032,,1,The state-of-the-art methods are unspecified in the question.
+CV-033,,1,A German sub-task alone does not establish multilingual NLP or another catalog concept.
+CV-034,MultilingualNaturalLanguageProcessing,0,Testing a model across multiple languages directly expresses multilingual NLP.
+CV-035,,1,Dataset size has no catalog match.
+CV-036,QuestionAnswering,0,QA is explicitly named; span-based extractive describes the QA task form.
+CV-037,,1,Criteria for a metric have no catalog match without a named metric.
+CV-038,,1,The question does not name the metrics whose limitations are requested.
+CV-039,,1,The method is wholly unspecified in the question.
+CV-040,,1,Transfer across architectures is not task-to-task transfer learning and no specific sequence architecture is named.
+CV-041,,1,Inference-speed improvement has no catalog match.
+CV-042,LanguageModel,0,LM is the standard acronym for language model and is explicitly requested.
+CV-043,QuestionAnswering,0,SQuAD is the Stanford Question Answering Dataset and directly identifies question answering.

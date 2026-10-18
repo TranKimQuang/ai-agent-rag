@@ -16,15 +16,16 @@ from scripts.evaluate_cross_encoder_concept_linking import metrics
 from scripts.run_concept_linking_benchmark import load_examples, validate_gold_concepts
 
 
-def load_question_groups(path: Path) -> dict[str, str]:
+def load_question_groups(paths: list[Path]) -> dict[str, str]:
     """Map QASPER question IDs to papers for leakage-safe grouped evaluation."""
-    payload = json.loads(path.read_text(encoding="utf-8"))
     mapping: dict[str, str] = {}
-    for row in payload["questions"]:
-        question_id = str(row["id"])
-        if question_id in mapping:
-            raise ValueError(f"Duplicate QASPER question ID: {question_id}")
-        mapping[question_id] = str(row["paper_id"])
+    for path in paths:
+        payload = json.loads(path.read_text(encoding="utf-8"))
+        for row in payload["questions"]:
+            question_id = str(row["id"])
+            if question_id in mapping:
+                raise ValueError(f"Duplicate QASPER question ID: {question_id}")
+            mapping[question_id] = str(row["paper_id"])
     return mapping
 
 
@@ -102,7 +103,7 @@ def main() -> None:
     )
     parser.add_argument("--dataset", type=Path, nargs="+", required=True)
     parser.add_argument("--label-audit", type=Path, nargs="*", default=[])
-    parser.add_argument("--qasper-data", type=Path, required=True)
+    parser.add_argument("--qasper-data", type=Path, nargs="+", required=True)
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--folds", type=int, default=5)
     parser.add_argument(
@@ -192,7 +193,7 @@ def main() -> None:
         "protocol": "paper-disjoint out-of-fold logistic regression over sentence embeddings",
         "datasets": [str(path) for path in args.dataset],
         "label_audits": [str(path) for path in args.label_audit],
-        "qasper_data": str(args.qasper_data),
+        "qasper_data": [str(path) for path in args.qasper_data],
         "folds": len(set(fold_ids)),
         "papers": len(set(groups)),
         "examples": len(examples),

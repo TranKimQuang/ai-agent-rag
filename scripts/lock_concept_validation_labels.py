@@ -82,6 +82,12 @@ def main() -> None:
     parser.add_argument("--catalog", type=Path, required=True)
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--manifest", type=Path, required=True)
+    parser.add_argument(
+        "--section",
+        choices=("development", "validation"),
+        default="validation",
+        help="Manifest section to update.",
+    )
     args = parser.parse_args()
 
     packet_rows = read_csv(args.packet)
@@ -95,10 +101,12 @@ def main() -> None:
         encoding="utf-8",
     )
     manifest = json.loads(args.manifest.read_text(encoding="utf-8"))
-    validation = manifest["validation"]
-    if validation.get("prediction_status") != "not_run":
-        raise ValueError("Cannot relock labels after validation prediction was run")
-    validation.update(
+    target = manifest[args.section]
+    if target.get("prediction_status") != "not_run":
+        raise ValueError(
+            f"Cannot relock labels after {args.section} prediction was run"
+        )
+    target.update(
         {
             "label_status": "independent_labels_locked_before_prediction",
             "independent_labels": args.labels.name,

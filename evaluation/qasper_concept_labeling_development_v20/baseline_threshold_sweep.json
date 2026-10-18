@@ -1,0 +1,1160 @@
+{
+  "datasets": [
+    "evaluation\\qasper_concept_labeling_development_v20\\locked_labels_43.json"
+  ],
+  "selection_metric": "hybrid_f1",
+  "selected_threshold": 0.65,
+  "selected_results": {
+    "alias": {
+      "precision": 0.7142857142857143,
+      "recall": 0.2631578947368421,
+      "f1": 0.3846153846153846,
+      "exact_match": 0.7209302325581395,
+      "examples": 43.0
+    },
+    "semantic": {
+      "precision": 1.0,
+      "recall": 0.05263157894736842,
+      "f1": 0.1,
+      "exact_match": 0.627906976744186,
+      "examples": 43.0
+    },
+    "hybrid": {
+      "precision": 0.7142857142857143,
+      "recall": 0.2631578947368421,
+      "f1": 0.3846153846153846,
+      "exact_match": 0.7209302325581395,
+      "examples": 43.0
+    }
+  },
+  "selected_predictions": [
+    {
+      "source_question_id": "65e6a1cc2590b139729e7e44dce6d9af5dd2c3b5",
+      "text": "Why mixed initiative multi-turn dialogs are the greatest challenge in building open-domain conversational agents?",
+      "gold_concepts": [
+        "NaturalLanguageProcessing"
+      ],
+      "predictions": {
+        "alias": {
+          "concepts": [],
+          "links": []
+        },
+        "semantic": {
+          "concepts": [],
+          "links": []
+        },
+        "hybrid": {
+          "concepts": [],
+          "links": []
+        }
+      }
+    },
+    {
+      "source_question_id": "bb570d4a1b814f508a07e74baac735bf6ca0f040",
+      "text": "Why does their model do better than prior models?",
+      "gold_concepts": [],
+      "predictions": {
+        "alias": {
+          "concepts": [],
+          "links": []
+        },
+        "semantic": {
+          "concepts": [],
+          "links": []
+        },
+        "hybrid": {
+          "concepts": [],
+          "links": []
+        }
+      }
+    },
+    {
+      "source_question_id": "81669c550d32d756f516dab5d2b76ff5f21c0f36",
+      "text": "what are the existing models they compared with?",
+      "gold_concepts": [],
+      "predictions": {
+        "alias": {
+          "concepts": [],
+          "links": []
+        },
+        "semantic": {
+          "concepts": [],
+          "links": []
+        },
+        "hybrid": {
+          "concepts": [],
+          "links": []
+        }
+      }
+    },
+    {
+      "source_question_id": "a71ebd8dc907d470f6bd3829fa949b15b29a0631",
+      "text": "how did they ask if a tweet was racist?",
+      "gold_concepts": [
+        "NaturalLanguageProcessing"
+      ],
+      "predictions": {
+        "alias": {
+          "concepts": [],
+          "links": []
+        },
+        "semantic": {
+          "concepts": [],
+          "links": []
+        },
+        "hybrid": {
+          "concepts": [],
+          "links": []
+        }
+      }
+    },
+    {
+      "source_question_id": "52e8c9ed66ace1780e41815260af1309064d20de",
+      "text": "What datasets are used to evaluate the model?",
+      "gold_concepts": [],
+      "predictions": {
+        "alias": {
+          "concepts": [],
+          "links": []
+        },
+        "semantic": {
+          "concepts": [],
+          "links": []
+        },
+        "hybrid": {
+          "concepts": [],
+          "links": []
+        }
+      }
+    },
+    {
+      "source_question_id": "cfb5ab893ed77f9df7eeb4940b6bacdef5acccea",
+      "text": "Is this the first paper to propose a joint model for event and temporal relation extraction?",
+      "gold_concepts": [
+        "NaturalLanguageProcessing"
+      ],
+      "predictions": {
+        "alias": {
+          "concepts": [],
+          "links": []
+        },
+        "semantic": {
+          "concepts": [],
+          "links": []
+        },
+        "hybrid": {
+          "concepts": [],
+          "links": []
+        }
+      }
+    },
+    {
+      "source_question_id": "a5abd4dd91e6f2855e9098bd6ae1481c0fdb0d4a",
+      "text": "What datasets were used for this work?",
+      "gold_concepts": [],
+      "predictions": {
+        "alias": {
+          "concepts": [],
+          "links": []
+        },
+        "semantic": {
+          "concepts": [],
+          "links": []
+        },
+        "hybrid": {
+          "concepts": [],
+          "links": []
+        }
+      }
+    },
+    {
+      "source_question_id": "dc4096b8bab0afcbbd4fbb015da2bea5d38251cd",
+      "text": "How they observe that fine-tuning BERT on a specific task does not improve its prunability?",
+      "gold_concepts": [
+        "BidirectionalLanguageModel",
+        "TransferLearning"
+      ],
+      "predictions": {
+        "alias": {
+          "concepts": [],
+          "links": []
+        },
+        "semantic": {
+          "concepts": [],
+          "links": []
+        },
+        "hybrid": {
+          "concepts": [],
+          "links": []
+        }
+      }
+    },
+    {
+      "source_question_id": "c4c9c7900a0480743acc7599efb359bc81cf3a4d",
+      "text": "How much is pre-training loss increased in Low/Medium/Hard level of pruning?",
+      "gold_concepts": [],
+      "predictions": {
+        "alias": {
+          "concepts": [],
+          "links": []
+        },
+        "semantic": {
+          "concepts": [],
+          "links": []
+        },
+        "hybrid": {
+          "concepts": [],
+          "links": []
+        }
+      }
+    },
+    {
+      "source_question_id": "be9cadaebfa0ff1a3c5a5ed56ff3aae76cf5e0a4",
+      "text": "What are the evaluation metrics used?",
+      "gold_concepts": [],
+      "predictions": {
+        "alias": {
+          "concepts": [],
+          "links": []
+        },
+        "semantic": {
+          "concepts": [],
+          "links": []
+        },
+        "hybrid": {
+          "concepts": [],
+          "links": []
+        }
+      }
+    },
+    {
+      "source_question_id": "e51d0c2c336f255e342b5f6c3cf2a13231789fed",
+      "text": "Which Twitter corpus was used to train the word vectors?",
+      "gold_concepts": [
+        "WordEmbedding"
+      ],
+      "predictions": {
+        "alias": {
+          "concepts": [],
+          "links": []
+        },
+        "semantic": {
+          "concepts": [],
+          "links": []
+        },
+        "hybrid": {
+          "concepts": [],
+          "links": []
+        }
+      }
+    },
+    {
+      "source_question_id": "70e596dd4334a94844454fa7b565889556e2358d",
+      "text": "How successful are they at matching names of authors in Japanese and English?",
+      "gold_concepts": [
+        "MultilingualNaturalLanguageProcessing"
+      ],
+      "predictions": {
+        "alias": {
+          "concepts": [],
+          "links": []
+        },
+        "semantic": {
+          "concepts": [],
+          "links": []
+        },
+        "hybrid": {
+          "concepts": [],
+          "links": []
+        }
+      }
+    },
+    {
+      "source_question_id": "3213529b6405339dfd0c1d2a0f15719cdff0fa93",
+      "text": "What is the baseline model used?",
+      "gold_concepts": [],
+      "predictions": {
+        "alias": {
+          "concepts": [],
+          "links": []
+        },
+        "semantic": {
+          "concepts": [],
+          "links": []
+        },
+        "hybrid": {
+          "concepts": [],
+          "links": []
+        }
+      }
+    },
+    {
+      "source_question_id": "98eb245c727c0bd050d7686d133fa7cd9d25a0fb",
+      "text": "Was evaluation metrics and criteria were used to evaluate the output of the cascaded multimodal speech translation?",
+      "gold_concepts": [
+        "MultilingualNaturalLanguageProcessing"
+      ],
+      "predictions": {
+        "alias": {
+          "concepts": [],
+          "links": []
+        },
+        "semantic": {
+          "concepts": [],
+          "links": []
+        },
+        "hybrid": {
+          "concepts": [],
+          "links": []
+        }
+      }
+    },
+    {
+      "source_question_id": "537a786794604ecc473fb3ef6222e0c3cb81f772",
+      "text": "What dataset was used in this work?",
+      "gold_concepts": [],
+      "predictions": {
+        "alias": {
+          "concepts": [],
+          "links": []
+        },
+        "semantic": {
+          "concepts": [],
+          "links": []
+        },
+        "hybrid": {
+          "concepts": [],
+          "links": []
+        }
+      }
+    },
+    {
+      "source_question_id": "d3341eefe4188ee8a68914a2e8c9047334997e84",
+      "text": "Why they conclude that the usage of Gated-Attention provides no competitive advantage against concatenation in this setting?",
+      "gold_concepts": [],
+      "predictions": {
+        "alias": {
+          "concepts": [],
+          "links": []
+        },
+        "semantic": {
+          "concepts": [],
+          "links": []
+        },
+        "hybrid": {
+          "concepts": [],
+          "links": []
+        }
+      }
+    },
+    {
+      "source_question_id": "d2473c039ab85f8e9e99066894658381ae852e16",
+      "text": "What are the features of used to customize target user interaction? ",
+      "gold_concepts": [],
+      "predictions": {
+        "alias": {
+          "concepts": [],
+          "links": []
+        },
+        "semantic": {
+          "concepts": [],
+          "links": []
+        },
+        "hybrid": {
+          "concepts": [],
+          "links": []
+        }
+      }
+    },
+    {
+      "source_question_id": "99a10823623f78dbff9ccecb210f187105a196e9",
+      "text": "What were the word embeddings trained on?",
+      "gold_concepts": [
+        "WordEmbedding"
+      ],
+      "predictions": {
+        "alias": {
+          "concepts": [
+            "WordEmbedding"
+          ],
+          "links": [
+            {
+              "concept": "WordEmbedding",
+              "label": "word embedding",
+              "score": 1.0,
+              "source": "alias"
+            }
+          ]
+        },
+        "semantic": {
+          "concepts": [],
+          "links": []
+        },
+        "hybrid": {
+          "concepts": [
+            "WordEmbedding"
+          ],
+          "links": [
+            {
+              "concept": "WordEmbedding",
+              "label": "word embedding",
+              "score": 1.0,
+              "source": "alias"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "source_question_id": "09f0dce416a1e40cc6a24a8b42a802747d2c9363",
+      "text": "Which word embeddings are analysed?",
+      "gold_concepts": [
+        "WordEmbedding"
+      ],
+      "predictions": {
+        "alias": {
+          "concepts": [
+            "WordEmbedding"
+          ],
+          "links": [
+            {
+              "concept": "WordEmbedding",
+              "label": "word embedding",
+              "score": 1.0,
+              "source": "alias"
+            }
+          ]
+        },
+        "semantic": {
+          "concepts": [
+            "WordEmbedding"
+          ],
+          "links": [
+            {
+              "concept": "WordEmbedding",
+              "label": "word embedding",
+              "score": 0.6796772480010986,
+              "source": "semantic"
+            }
+          ]
+        },
+        "hybrid": {
+          "concepts": [
+            "WordEmbedding"
+          ],
+          "links": [
+            {
+              "concept": "WordEmbedding",
+              "label": "word embedding",
+              "score": 1.0,
+              "source": "alias"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "source_question_id": "46ee1cbbfbf0067747b28bdf4c8c2f7dc8955650",
+      "text": "What kinds of neural networks did they use in this paper?",
+      "gold_concepts": [
+        "NeuralNetwork"
+      ],
+      "predictions": {
+        "alias": {
+          "concepts": [
+            "NeuralNetwork"
+          ],
+          "links": [
+            {
+              "concept": "NeuralNetwork",
+              "label": "neural network",
+              "score": 1.0,
+              "source": "alias"
+            }
+          ]
+        },
+        "semantic": {
+          "concepts": [],
+          "links": []
+        },
+        "hybrid": {
+          "concepts": [
+            "NeuralNetwork"
+          ],
+          "links": [
+            {
+              "concept": "NeuralNetwork",
+              "label": "neural network",
+              "score": 1.0,
+              "source": "alias"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "source_question_id": "4f12b41bd3bb2610abf7d7835291496aa69fb78c",
+      "text": "How did they use the domain tags?",
+      "gold_concepts": [],
+      "predictions": {
+        "alias": {
+          "concepts": [],
+          "links": []
+        },
+        "semantic": {
+          "concepts": [],
+          "links": []
+        },
+        "hybrid": {
+          "concepts": [],
+          "links": []
+        }
+      }
+    },
+    {
+      "source_question_id": "73e715e485942859e1db75bfb5f35f1d5eb79d2e",
+      "text": "How can a neural model be used for a retrieval if the input is the entire Wikipedia?",
+      "gold_concepts": [
+        "InformationRetrieval",
+        "NeuralNetwork"
+      ],
+      "predictions": {
+        "alias": {
+          "concepts": [],
+          "links": []
+        },
+        "semantic": {
+          "concepts": [],
+          "links": []
+        },
+        "hybrid": {
+          "concepts": [],
+          "links": []
+        }
+      }
+    },
+    {
+      "source_question_id": "e9d9bb87a5c4faa965ceddd98d8b80d4b99e339e",
+      "text": "How much do they outperform previous state-of-the-art?",
+      "gold_concepts": [],
+      "predictions": {
+        "alias": {
+          "concepts": [],
+          "links": []
+        },
+        "semantic": {
+          "concepts": [],
+          "links": []
+        },
+        "hybrid": {
+          "concepts": [],
+          "links": []
+        }
+      }
+    },
+    {
+      "source_question_id": "3554ac92d4f2d00dbf58f7b4ff2b36a852854e95",
+      "text": "How do they generate the auxiliary sentence?",
+      "gold_concepts": [],
+      "predictions": {
+        "alias": {
+          "concepts": [],
+          "links": []
+        },
+        "semantic": {
+          "concepts": [],
+          "links": []
+        },
+        "hybrid": {
+          "concepts": [],
+          "links": []
+        }
+      }
+    },
+    {
+      "source_question_id": "95d8368b1055d97250df38d1e8c4a2b283d2b57e",
+      "text": "what standard speech transcription pipeline was used?",
+      "gold_concepts": [
+        "NaturalLanguageProcessing"
+      ],
+      "predictions": {
+        "alias": {
+          "concepts": [],
+          "links": []
+        },
+        "semantic": {
+          "concepts": [],
+          "links": []
+        },
+        "hybrid": {
+          "concepts": [],
+          "links": []
+        }
+      }
+    },
+    {
+      "source_question_id": "fac052c4ad6b19a64d7db32fd08df38ad2e22118",
+      "text": "How do they evaluate their method?",
+      "gold_concepts": [],
+      "predictions": {
+        "alias": {
+          "concepts": [],
+          "links": []
+        },
+        "semantic": {
+          "concepts": [],
+          "links": []
+        },
+        "hybrid": {
+          "concepts": [],
+          "links": []
+        }
+      }
+    },
+    {
+      "source_question_id": "4d5e2a83b517e9c082421f11a68a604269642f29",
+      "text": "how many domains did they experiment with?",
+      "gold_concepts": [],
+      "predictions": {
+        "alias": {
+          "concepts": [],
+          "links": []
+        },
+        "semantic": {
+          "concepts": [],
+          "links": []
+        },
+        "hybrid": {
+          "concepts": [],
+          "links": []
+        }
+      }
+    },
+    {
+      "source_question_id": "2c3b2c3bab6d18cb0895462e3cfd91cd0dee7f7d",
+      "text": "what pretrained models were used?",
+      "gold_concepts": [],
+      "predictions": {
+        "alias": {
+          "concepts": [],
+          "links": []
+        },
+        "semantic": {
+          "concepts": [],
+          "links": []
+        },
+        "hybrid": {
+          "concepts": [],
+          "links": []
+        }
+      }
+    },
+    {
+      "source_question_id": "06c340c7c2ad57d7621c3e8baba6a3d0ed9f4696",
+      "text": "Are there syntax-agnostic SRL models before?",
+      "gold_concepts": [
+        "NaturalLanguageProcessing"
+      ],
+      "predictions": {
+        "alias": {
+          "concepts": [
+            "SemanticRoleInduction"
+          ],
+          "links": [
+            {
+              "concept": "SemanticRoleInduction",
+              "label": "semantic role induction",
+              "score": 1.0,
+              "source": "alias"
+            }
+          ]
+        },
+        "semantic": {
+          "concepts": [],
+          "links": []
+        },
+        "hybrid": {
+          "concepts": [
+            "SemanticRoleInduction"
+          ],
+          "links": [
+            {
+              "concept": "SemanticRoleInduction",
+              "label": "semantic role induction",
+              "score": 1.0,
+              "source": "alias"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "source_question_id": "4c88441f8a1b5fce0ca55a6fced34f97260206ae",
+      "text": "What is the biaffine scorer?",
+      "gold_concepts": [],
+      "predictions": {
+        "alias": {
+          "concepts": [],
+          "links": []
+        },
+        "semantic": {
+          "concepts": [],
+          "links": []
+        },
+        "hybrid": {
+          "concepts": [],
+          "links": []
+        }
+      }
+    },
+    {
+      "source_question_id": "7c792cda220916df40edb3107e405c86455822ed",
+      "text": "what metrics were used for evaluation?",
+      "gold_concepts": [],
+      "predictions": {
+        "alias": {
+          "concepts": [],
+          "links": []
+        },
+        "semantic": {
+          "concepts": [],
+          "links": []
+        },
+        "hybrid": {
+          "concepts": [],
+          "links": []
+        }
+      }
+    },
+    {
+      "source_question_id": "b3fcab006a9e51a0178a1f64d1d084a895bd8d5c",
+      "text": "what are the state of the art methods?",
+      "gold_concepts": [],
+      "predictions": {
+        "alias": {
+          "concepts": [],
+          "links": []
+        },
+        "semantic": {
+          "concepts": [],
+          "links": []
+        },
+        "hybrid": {
+          "concepts": [],
+          "links": []
+        }
+      }
+    },
+    {
+      "source_question_id": "d10e256f2f724ad611fd3ff82ce88f7a78bad7f7",
+      "text": "What is the performance of the model for the German sub-task A?",
+      "gold_concepts": [],
+      "predictions": {
+        "alias": {
+          "concepts": [],
+          "links": []
+        },
+        "semantic": {
+          "concepts": [],
+          "links": []
+        },
+        "hybrid": {
+          "concepts": [],
+          "links": []
+        }
+      }
+    },
+    {
+      "source_question_id": "dc69256bdfe76fa30ce4404b697f1bedfd6125fe",
+      "text": "What are the languages used to test the model?",
+      "gold_concepts": [
+        "MultilingualNaturalLanguageProcessing"
+      ],
+      "predictions": {
+        "alias": {
+          "concepts": [],
+          "links": []
+        },
+        "semantic": {
+          "concepts": [],
+          "links": []
+        },
+        "hybrid": {
+          "concepts": [],
+          "links": []
+        }
+      }
+    },
+    {
+      "source_question_id": "3fb4334e5a4702acd44bd24eb1831bb7e9b98d31",
+      "text": "How big are the datasets used?",
+      "gold_concepts": [],
+      "predictions": {
+        "alias": {
+          "concepts": [],
+          "links": []
+        },
+        "semantic": {
+          "concepts": [],
+          "links": []
+        },
+        "hybrid": {
+          "concepts": [],
+          "links": []
+        }
+      }
+    },
+    {
+      "source_question_id": "a9acd1af4a869c17b95ec489cdb1ba7d76715ea4",
+      "text": "Is this a span-based (extractive) QA task?",
+      "gold_concepts": [
+        "QuestionAnswering"
+      ],
+      "predictions": {
+        "alias": {
+          "concepts": [
+            "QuestionAnswering"
+          ],
+          "links": [
+            {
+              "concept": "QuestionAnswering",
+              "label": "question answering",
+              "score": 1.0,
+              "source": "alias"
+            }
+          ]
+        },
+        "semantic": {
+          "concepts": [],
+          "links": []
+        },
+        "hybrid": {
+          "concepts": [
+            "QuestionAnswering"
+          ],
+          "links": [
+            {
+              "concept": "QuestionAnswering",
+              "label": "question answering",
+              "score": 1.0,
+              "source": "alias"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "source_question_id": "1244cf6d75e3aa6d605a0f4b141c015923a3f2e7",
+      "text": "What is the criteria for a good metric?",
+      "gold_concepts": [],
+      "predictions": {
+        "alias": {
+          "concepts": [],
+          "links": []
+        },
+        "semantic": {
+          "concepts": [],
+          "links": []
+        },
+        "hybrid": {
+          "concepts": [],
+          "links": []
+        }
+      }
+    },
+    {
+      "source_question_id": "c8b9b962e4d40c50150b2f8873a4004f25398464",
+      "text": "What are the three limitations?",
+      "gold_concepts": [],
+      "predictions": {
+        "alias": {
+          "concepts": [],
+          "links": []
+        },
+        "semantic": {
+          "concepts": [],
+          "links": []
+        },
+        "hybrid": {
+          "concepts": [],
+          "links": []
+        }
+      }
+    },
+    {
+      "source_question_id": "0b411f942c6e2e34e3d81cc855332f815b6bc123",
+      "text": "What's the method used here?",
+      "gold_concepts": [],
+      "predictions": {
+        "alias": {
+          "concepts": [],
+          "links": []
+        },
+        "semantic": {
+          "concepts": [],
+          "links": []
+        },
+        "hybrid": {
+          "concepts": [],
+          "links": []
+        }
+      }
+    },
+    {
+      "source_question_id": "54c9147ffd57f1f7238917b013444a9743f0deb8",
+      "text": "Which are the sequence model architectures this method can be transferred across?",
+      "gold_concepts": [],
+      "predictions": {
+        "alias": {
+          "concepts": [],
+          "links": []
+        },
+        "semantic": {
+          "concepts": [],
+          "links": []
+        },
+        "hybrid": {
+          "concepts": [],
+          "links": []
+        }
+      }
+    },
+    {
+      "source_question_id": "16f71391335a5d574f01235a9c37631893cd3bb0",
+      "text": " What percentage of improvement in inference speed is obtained by the proposed method over the newest state-of-the-art methods?",
+      "gold_concepts": [],
+      "predictions": {
+        "alias": {
+          "concepts": [],
+          "links": []
+        },
+        "semantic": {
+          "concepts": [],
+          "links": []
+        },
+        "hybrid": {
+          "concepts": [],
+          "links": []
+        }
+      }
+    },
+    {
+      "source_question_id": "1f1a9f2dd8c4c10b671cb8affe56e181948e229e",
+      "text": "What pretrained LM is used?",
+      "gold_concepts": [
+        "LanguageModel"
+      ],
+      "predictions": {
+        "alias": {
+          "concepts": [
+            "LanguageModel"
+          ],
+          "links": [
+            {
+              "concept": "LanguageModel",
+              "label": "language model",
+              "score": 1.0,
+              "source": "alias"
+            }
+          ]
+        },
+        "semantic": {
+          "concepts": [],
+          "links": []
+        },
+        "hybrid": {
+          "concepts": [
+            "LanguageModel"
+          ],
+          "links": [
+            {
+              "concept": "LanguageModel",
+              "label": "language model",
+              "score": 1.0,
+              "source": "alias"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "source_question_id": "39a450ac15688199575798e72a2cc016ef4316b5",
+      "text": "How much performance improvements they achieve on SQuAD?",
+      "gold_concepts": [
+        "QuestionAnswering"
+      ],
+      "predictions": {
+        "alias": {
+          "concepts": [
+            "MachineReadingComprehension"
+          ],
+          "links": [
+            {
+              "concept": "MachineReadingComprehension",
+              "label": "machine reading comprehension",
+              "score": 1.0,
+              "source": "alias"
+            }
+          ]
+        },
+        "semantic": {
+          "concepts": [],
+          "links": []
+        },
+        "hybrid": {
+          "concepts": [
+            "MachineReadingComprehension"
+          ],
+          "links": [
+            {
+              "concept": "MachineReadingComprehension",
+              "label": "machine reading comprehension",
+              "score": 1.0,
+              "source": "alias"
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "by_threshold": {
+    "0.45": {
+      "alias": {
+        "precision": 0.7142857142857143,
+        "recall": 0.2631578947368421,
+        "f1": 0.3846153846153846,
+        "exact_match": 0.7209302325581395,
+        "examples": 43.0
+      },
+      "semantic": {
+        "precision": 0.14814814814814814,
+        "recall": 0.21052631578947367,
+        "f1": 0.17391304347826086,
+        "exact_match": 0.5348837209302325,
+        "examples": 43.0
+      },
+      "hybrid": {
+        "precision": 0.1935483870967742,
+        "recall": 0.3157894736842105,
+        "f1": 0.24000000000000002,
+        "exact_match": 0.5581395348837209,
+        "examples": 43.0
+      }
+    },
+    "0.50": {
+      "alias": {
+        "precision": 0.7142857142857143,
+        "recall": 0.2631578947368421,
+        "f1": 0.3846153846153846,
+        "exact_match": 0.7209302325581395,
+        "examples": 43.0
+      },
+      "semantic": {
+        "precision": 0.13333333333333333,
+        "recall": 0.10526315789473684,
+        "f1": 0.11764705882352941,
+        "exact_match": 0.5348837209302325,
+        "examples": 43.0
+      },
+      "hybrid": {
+        "precision": 0.25,
+        "recall": 0.2631578947368421,
+        "f1": 0.25641025641025644,
+        "exact_match": 0.5813953488372093,
+        "examples": 43.0
+      }
+    },
+    "0.55": {
+      "alias": {
+        "precision": 0.7142857142857143,
+        "recall": 0.2631578947368421,
+        "f1": 0.3846153846153846,
+        "exact_match": 0.7209302325581395,
+        "examples": 43.0
+      },
+      "semantic": {
+        "precision": 0.25,
+        "recall": 0.10526315789473684,
+        "f1": 0.14814814814814814,
+        "exact_match": 0.6046511627906976,
+        "examples": 43.0
+      },
+      "hybrid": {
+        "precision": 0.38461538461538464,
+        "recall": 0.2631578947368421,
+        "f1": 0.3125,
+        "exact_match": 0.6511627906976745,
+        "examples": 43.0
+      }
+    },
+    "0.60": {
+      "alias": {
+        "precision": 0.7142857142857143,
+        "recall": 0.2631578947368421,
+        "f1": 0.3846153846153846,
+        "exact_match": 0.7209302325581395,
+        "examples": 43.0
+      },
+      "semantic": {
+        "precision": 0.5,
+        "recall": 0.05263157894736842,
+        "f1": 0.09523809523809525,
+        "exact_match": 0.627906976744186,
+        "examples": 43.0
+      },
+      "hybrid": {
+        "precision": 0.625,
+        "recall": 0.2631578947368421,
+        "f1": 0.37037037037037035,
+        "exact_match": 0.7209302325581395,
+        "examples": 43.0
+      }
+    },
+    "0.65": {
+      "alias": {
+        "precision": 0.7142857142857143,
+        "recall": 0.2631578947368421,
+        "f1": 0.3846153846153846,
+        "exact_match": 0.7209302325581395,
+        "examples": 43.0
+      },
+      "semantic": {
+        "precision": 1.0,
+        "recall": 0.05263157894736842,
+        "f1": 0.1,
+        "exact_match": 0.627906976744186,
+        "examples": 43.0
+      },
+      "hybrid": {
+        "precision": 0.7142857142857143,
+        "recall": 0.2631578947368421,
+        "f1": 0.3846153846153846,
+        "exact_match": 0.7209302325581395,
+        "examples": 43.0
+      }
+    },
+    "0.70": {
+      "alias": {
+        "precision": 0.7142857142857143,
+        "recall": 0.2631578947368421,
+        "f1": 0.3846153846153846,
+        "exact_match": 0.7209302325581395,
+        "examples": 43.0
+      },
+      "semantic": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "exact_match": 0.6046511627906976,
+        "examples": 43.0
+      },
+      "hybrid": {
+        "precision": 0.7142857142857143,
+        "recall": 0.2631578947368421,
+        "f1": 0.3846153846153846,
+        "exact_match": 0.7209302325581395,
+        "examples": 43.0
+      }
+    }
+  }
+}

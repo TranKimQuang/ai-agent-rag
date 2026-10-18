@@ -8,6 +8,11 @@ from pathlib import Path
 
 from app.evaluation.qasper import build_split, select_qasper_papers
 from app.evaluation.qasper_protocol import collect_excluded_paper_ids
+from scripts.prepare_qasper_concept_validation import (
+    build_blinded_review_rows,
+    build_concept_catalog_rows,
+    write_csv,
+)
 from scripts.prepare_qasper_parquet_subset import parquet_row_to_original
 from scripts.prepare_qasper_result_validation import (
     EXPECTED_SOURCE_SHA256,
@@ -71,6 +76,10 @@ def main() -> None:
         json.dumps(development, ensure_ascii=False, indent=2) + "\n"
     ).encode()
     development_path.write_bytes(development_content)
+    review_path = args.output_dir / "blinded_labeling_packet.csv"
+    review_content = write_csv(review_path, build_blinded_review_rows(development))
+    catalog_path = args.output_dir / "active_concept_catalog.csv"
+    catalog_content = write_csv(catalog_path, build_concept_catalog_rows())
 
     selected_ids = set(development["metadata"]["paper_ids"])
     overlap = sorted(selected_ids & excluded)
@@ -94,6 +103,12 @@ def main() -> None:
             "questions": len(development["questions"]),
             "sha256": hashlib.sha256(development_content).hexdigest(),
             "status": "prepared_for_labeling",
+            "labeling_packet": review_path.name,
+            "labeling_packet_sha256": hashlib.sha256(review_content).hexdigest(),
+            "concept_catalog": catalog_path.name,
+            "concept_catalog_sha256": hashlib.sha256(catalog_content).hexdigest(),
+            "label_status": "awaiting_independent_labels",
+            "prediction_status": "not_run",
         },
         "policy": (
             "This pool may be labeled and used for concept-linking development. "

@@ -1,0 +1,28 @@
+{
+  "status": "locked_before_new_validation",
+  "selected_on": "development_v18_plus_v20",
+  "examples": 98,
+  "papers": 55,
+  "gold_concept_assignments": 34,
+  "configuration": {
+    "method": "hybrid_phrase_first",
+    "semantic_threshold": 0.65,
+    "top1_top2_margin": 0.03,
+    "limit": 5
+  },
+  "combined_result": {
+    "precision": 0.75,
+    "recall": 0.4411764705882353,
+    "f1": 0.5555555555555556,
+    "exact_match": 0.7959183673469388
+  },
+  "comparison_hybrid_whole_query": {
+    "semantic_threshold": 0.6,
+    "precision": 0.8125,
+    "recall": 0.38235294117647056,
+    "f1": 0.52,
+    "exact_match": 0.8061224489795918
+  },
+  "policy": "Evaluate once on a fresh paper-disjoint validation. Do not tune on v19 or the new validation. Keep final test sealed."
+}
+

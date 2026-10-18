@@ -2,7 +2,19 @@
 
 Cập nhật gần nhất: 17/10/2026
 
-### Mới nhất: Concept-linking validation v19
+### Mới nhất: Phrase-first concept-linking candidate v20
+
+- [x] Tạo development v20 từ 30 paper/1.694 chunk/43 câu, overlap 0 với 375 paper
+  trước; reviewer độc lập gán 17 câu dương/26 `NONE`, tổng 19 assignment.
+- [x] Baseline v20 tốt nhất chỉ F1 0,3846. Gộp v18+v20 thành 98 câu/55 paper:
+  supervised OOF đạt F1 0,5000, không vượt Hybrid whole-query F1 0,5200.
+- [x] Phrase-first 0,65, margin 0,03 cải thiện nhất quán: v18 F1 0,6364 -> 0,6667,
+  v20 F1 0,3846 -> 0,4444; toàn bộ 98 câu đạt Precision 0,7500, Recall 0,4412,
+  F1 0,5556. Đã khóa candidate trước validation mới.
+- [ ] Tạo validation v21 paper-disjoint và chạy candidate phrase-first đúng một lần;
+  không tuning theo v19/v21, final test vẫn niêm phong.
+
+### Concept-linking validation v19
 
 - [x] Đối chiếu 112 nhãn bằng reviewer độc lập và phân xử 20 bất đồng: nhãn cuối có
   25 câu dương/87 câu `NONE`; agreement trước phân xử là 0,8214.

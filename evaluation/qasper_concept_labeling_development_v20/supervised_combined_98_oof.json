@@ -1,0 +1,2673 @@
+{
+  "status": "development_only_assistant_audited_labels",
+  "protocol": "paper-disjoint out-of-fold logistic regression over sentence embeddings",
+  "datasets": [
+    "evaluation\\qasper_concept_labeling_development_v18\\adjudicated_selection_55.json",
+    "evaluation\\qasper_concept_labeling_development_v20\\locked_labels_43.json"
+  ],
+  "label_audits": [],
+  "qasper_data": [
+    "evaluation\\qasper_concept_labeling_development_v17\\qasper_development.json",
+    "evaluation\\qasper_concept_labeling_development_v20\\qasper_development.json"
+  ],
+  "folds": 5,
+  "papers": 55,
+  "examples": 98,
+  "label_counts": {
+    "BidirectionalLanguageModel": 1,
+    "ConvolutionalNeuralNetwork": 1,
+    "DiscourseAnalysis": 1,
+    "DistributionalSemantics": 1,
+    "InformationRetrieval": 1,
+    "LanguageModel": 1,
+    "MultilingualNaturalLanguageProcessing": 7,
+    "NaturalLanguageProcessing": 7,
+    "NeuralNetwork": 3,
+    "ParallelCorpus": 1,
+    "QuestionAnswering": 2,
+    "TextSummarization": 2,
+    "TransferLearning": 1,
+    "WordEmbedding": 5
+  },
+  "trained_fold_counts": {
+    "MultilingualNaturalLanguageProcessing": 5,
+    "NaturalLanguageProcessing": 5,
+    "NeuralNetwork": 5,
+    "QuestionAnswering": 3,
+    "TextSummarization": 4,
+    "WordEmbedding": 5
+  },
+  "selection_policy": "highest out-of-fold F1, then precision and exact match",
+  "best": {
+    "threshold": 0.9,
+    "precision": 0.8571428571428571,
+    "recall": 0.35294117647058826,
+    "f1": 0.5,
+    "exact_match": 0.7959183673469388
+  },
+  "configurations": [
+    {
+      "threshold": 0.9,
+      "precision": 0.8571428571428571,
+      "recall": 0.35294117647058826,
+      "f1": 0.5,
+      "exact_match": 0.7959183673469388
+    },
+    {
+      "threshold": 0.8,
+      "precision": 0.8571428571428571,
+      "recall": 0.35294117647058826,
+      "f1": 0.5,
+      "exact_match": 0.7959183673469388
+    },
+    {
+      "threshold": 0.7,
+      "precision": 0.8571428571428571,
+      "recall": 0.35294117647058826,
+      "f1": 0.5,
+      "exact_match": 0.7959183673469388
+    },
+    {
+      "threshold": 0.6,
+      "precision": 0.6842105263157895,
+      "recall": 0.38235294117647056,
+      "f1": 0.49056603773584906,
+      "exact_match": 0.7755102040816326
+    },
+    {
+      "threshold": 0.5,
+      "precision": 0.46875,
+      "recall": 0.4411764705882353,
+      "f1": 0.45454545454545453,
+      "exact_match": 0.7551020408163265
+    },
+    {
+      "threshold": 0.4,
+      "precision": 0.3064516129032258,
+      "recall": 0.5588235294117647,
+      "f1": 0.39583333333333337,
+      "exact_match": 0.5816326530612245
+    },
+    {
+      "threshold": 0.3,
+      "precision": 0.17518248175182483,
+      "recall": 0.7058823529411765,
+      "f1": 0.28070175438596495,
+      "exact_match": 0.23469387755102042
+    }
+  ],
+  "rows": [
+    {
+      "source_question_id": "85abd60094c92eb16f39f861c6de8c2064807d02",
+      "paper_id": "1910.05154",
+      "fold": 0,
+      "text": "What are the different bilingual models employed?",
+      "gold_concepts": [
+        "MultilingualNaturalLanguageProcessing"
+      ],
+      "alias_concepts": [
+        "MultilingualNaturalLanguageProcessing"
+      ],
+      "predicted_concepts": [
+        "MultilingualNaturalLanguageProcessing"
+      ],
+      "supervised_scores": {
+        "BidirectionalLanguageModel": 0.0,
+        "ConvolutionalNeuralNetwork": 0.0,
+        "DiscourseAnalysis": 0.0,
+        "DistributionalSemantics": 0.0,
+        "InformationRetrieval": 0.0,
+        "LanguageModel": 0.0,
+        "MultilingualNaturalLanguageProcessing": 0.7424247860908508,
+        "NaturalLanguageProcessing": 0.5773603320121765,
+        "NeuralNetwork": 0.2034313827753067,
+        "ParallelCorpus": 0.0,
+        "QuestionAnswering": 0.14749561250209808,
+        "TextSummarization": 0.09596213698387146,
+        "TransferLearning": 0.0,
+        "WordEmbedding": 0.19064153730869293
+      }
+    },
+    {
+      "source_question_id": "100cf8b72d46da39fedfe77ec939fb44f25de77f",
+      "paper_id": "1809.04960",
+      "fold": 1,
+      "text": "Which paired corpora did they use in the other experiment?",
+      "gold_concepts": [],
+      "alias_concepts": [],
+      "predicted_concepts": [],
+      "supervised_scores": {
+        "BidirectionalLanguageModel": 0.0,
+        "ConvolutionalNeuralNetwork": 0.0,
+        "DiscourseAnalysis": 0.0,
+        "DistributionalSemantics": 0.0,
+        "InformationRetrieval": 0.0,
+        "LanguageModel": 0.0,
+        "MultilingualNaturalLanguageProcessing": 0.3929522633552551,
+        "NaturalLanguageProcessing": 0.2333465814590454,
+        "NeuralNetwork": 0.17845341563224792,
+        "ParallelCorpus": 0.0,
+        "QuestionAnswering": 0.0,
+        "TextSummarization": 0.0,
+        "TransferLearning": 0.0,
+        "WordEmbedding": 0.16548539698123932
+      }
+    },
+    {
+      "source_question_id": "14e78db206a8180ea637774aa572b073e3ffa219",
+      "paper_id": "1808.10267",
+      "fold": 0,
+      "text": "What kind of encoders are used for the parsed source sentence?",
+      "gold_concepts": [],
+      "alias_concepts": [],
+      "predicted_concepts": [],
+      "supervised_scores": {
+        "BidirectionalLanguageModel": 0.0,
+        "ConvolutionalNeuralNetwork": 0.0,
+        "DiscourseAnalysis": 0.0,
+        "DistributionalSemantics": 0.0,
+        "InformationRetrieval": 0.0,
+        "LanguageModel": 0.0,
+        "MultilingualNaturalLanguageProcessing": 0.34158647060394287,
+        "NaturalLanguageProcessing": 0.5883009433746338,
+        "NeuralNetwork": 0.1690569818019867,
+        "ParallelCorpus": 0.0,
+        "QuestionAnswering": 0.20023904740810394,
+        "TextSummarization": 0.2898902893066406,
+        "TransferLearning": 0.0,
+        "WordEmbedding": 0.6148055791854858
+      }
+    },
+    {
+      "source_question_id": "17988d65e46ff7d756076e9191890aec177b081e",
+      "paper_id": "1811.01001",
+      "fold": 4,
+      "text": "Are the unobserved samples from the same distribution as the training data?",
+      "gold_concepts": [],
+      "alias_concepts": [],
+      "predicted_concepts": [],
+      "supervised_scores": {
+        "BidirectionalLanguageModel": 0.0,
+        "ConvolutionalNeuralNetwork": 0.0,
+        "DiscourseAnalysis": 0.0,
+        "DistributionalSemantics": 0.0,
+        "InformationRetrieval": 0.0,
+        "LanguageModel": 0.0,
+        "MultilingualNaturalLanguageProcessing": 0.26855480670928955,
+        "NaturalLanguageProcessing": 0.18268395960330963,
+        "NeuralNetwork": 0.2101646214723587,
+        "ParallelCorpus": 0.0,
+        "QuestionAnswering": 0.2107773721218109,
+        "TextSummarization": 0.17012807726860046,
+        "TransferLearning": 0.0,
+        "WordEmbedding": 0.2424813061952591
+      }
+    },
+    {
+      "source_question_id": "235c156d9c2adc895c9113f53c60f2dd8df45834",
+      "paper_id": "1810.10254",
+      "fold": 0,
+      "text": "What languages are explored in this paper?",
+      "gold_concepts": [],
+      "alias_concepts": [],
+      "predicted_concepts": [],
+      "supervised_scores": {
+        "BidirectionalLanguageModel": 0.0,
+        "ConvolutionalNeuralNetwork": 0.0,
+        "DiscourseAnalysis": 0.0,
+        "DistributionalSemantics": 0.0,
+        "InformationRetrieval": 0.0,
+        "LanguageModel": 0.0,
+        "MultilingualNaturalLanguageProcessing": 0.5369117856025696,
+        "NaturalLanguageProcessing": 0.5895569920539856,
+        "NeuralNetwork": 0.4004737436771393,
+        "ParallelCorpus": 0.0,
+        "QuestionAnswering": 0.0839051902294159,
+        "TextSummarization": 0.23239575326442719,
+        "TransferLearning": 0.0,
+        "WordEmbedding": 0.31993260979652405
+      }
+    },
+    {
+      "source_question_id": "2677b88c2def3ed94e25a776599555a788d197f2",
+      "paper_id": "1807.00868",
+      "fold": 2,
+      "text": "Which architecture is their best model?",
+      "gold_concepts": [],
+      "alias_concepts": [],
+      "predicted_concepts": [],
+      "supervised_scores": {
+        "BidirectionalLanguageModel": 0.0,
+        "ConvolutionalNeuralNetwork": 0.0,
+        "DiscourseAnalysis": 0.0,
+        "DistributionalSemantics": 0.0,
+        "InformationRetrieval": 0.0,
+        "LanguageModel": 0.0,
+        "MultilingualNaturalLanguageProcessing": 0.16624318063259125,
+        "NaturalLanguageProcessing": 0.22936727106571198,
+        "NeuralNetwork": 0.380534291267395,
+        "ParallelCorpus": 0.0,
+        "QuestionAnswering": 0.2439960092306137,
+        "TextSummarization": 0.13594269752502441,
+        "TransferLearning": 0.0,
+        "WordEmbedding": 0.0955611914396286
+      }
+    },
+    {
+      "source_question_id": "284ea817fd79bc10b7a82c88d353e8f8a9d7e93c",
+      "paper_id": "1910.05608",
+      "fold": 3,
+      "text": "Is the data all in Vietnamese?",
+      "gold_concepts": [],
+      "alias_concepts": [],
+      "predicted_concepts": [],
+      "supervised_scores": {
+        "BidirectionalLanguageModel": 0.0,
+        "ConvolutionalNeuralNetwork": 0.0,
+        "DiscourseAnalysis": 0.0,
+        "DistributionalSemantics": 0.0,
+        "InformationRetrieval": 0.0,
+        "LanguageModel": 0.0,
+        "MultilingualNaturalLanguageProcessing": 0.39738979935646057,
+        "NaturalLanguageProcessing": 0.3477495014667511,
+        "NeuralNetwork": 0.3181309401988983,
+        "ParallelCorpus": 0.0,
+        "QuestionAnswering": 0.0,
+        "TextSummarization": 0.1523752361536026,
+        "TransferLearning": 0.0,
+        "WordEmbedding": 0.1925812065601349
+      }
+    },
+    {
+      "source_question_id": "4d5f112874250d48eb49649c4abe31d6c9236700",
+      "paper_id": "1912.00582",
+      "fold": 1,
+      "text": "Which of the model yields the best performance?",
+      "gold_concepts": [],
+      "alias_concepts": [],
+      "predicted_concepts": [],
+      "supervised_scores": {
+        "BidirectionalLanguageModel": 0.0,
+        "ConvolutionalNeuralNetwork": 0.0,
+        "DiscourseAnalysis": 0.0,
+        "DistributionalSemantics": 0.0,
+        "InformationRetrieval": 0.0,
+        "LanguageModel": 0.0,
+        "MultilingualNaturalLanguageProcessing": 0.26301464438438416,
+        "NaturalLanguageProcessing": 0.2744787931442261,
+        "NeuralNetwork": 0.2045787125825882,
+        "ParallelCorpus": 0.0,
+        "QuestionAnswering": 0.0,
+        "TextSummarization": 0.0,
+        "TransferLearning": 0.0,
+        "WordEmbedding": 0.09459060430526733
+      }
+    },
+    {
+      "source_question_id": "562a2feeba9580f5435a94396f2a8751f79a4d5c",
+      "paper_id": "1809.08652",
+      "fold": 4,
+      "text": "What embeddings do they use?",
+      "gold_concepts": [],
+      "alias_concepts": [],
+      "predicted_concepts": [],
+      "supervised_scores": {
+        "BidirectionalLanguageModel": 0.0,
+        "ConvolutionalNeuralNetwork": 0.0,
+        "DiscourseAnalysis": 0.0,
+        "DistributionalSemantics": 0.0,
+        "InformationRetrieval": 0.0,
+        "LanguageModel": 0.0,
+        "MultilingualNaturalLanguageProcessing": 0.10800673812627792,
+        "NaturalLanguageProcessing": 0.16588886082172394,
+        "NeuralNetwork": 0.11841104924678802,
+        "ParallelCorpus": 0.0,
+        "QuestionAnswering": 0.2054738849401474,
+        "TextSummarization": 0.18731196224689484,
+        "TransferLearning": 0.0,
+        "WordEmbedding": 0.571051299571991
+      }
+    },
+    {
+      "source_question_id": "5758ebff49807a51d080b0ce10ba3f86dcf71925",
+      "paper_id": "1807.09671",
+      "fold": 2,
+      "text": "What do they constrain using integer linear programming?",
+      "gold_concepts": [],
+      "alias_concepts": [],
+      "predicted_concepts": [],
+      "supervised_scores": {
+        "BidirectionalLanguageModel": 0.0,
+        "ConvolutionalNeuralNetwork": 0.0,
+        "DiscourseAnalysis": 0.0,
+        "DistributionalSemantics": 0.0,
+        "InformationRetrieval": 0.0,
+        "LanguageModel": 0.0,
+        "MultilingualNaturalLanguageProcessing": 0.1522868573665619,
+        "NaturalLanguageProcessing": 0.26617899537086487,
+        "NeuralNetwork": 0.2002832442522049,
+        "ParallelCorpus": 0.0,
+        "QuestionAnswering": 0.14357246458530426,
+        "TextSummarization": 0.15923281013965607,
+        "TransferLearning": 0.0,
+        "WordEmbedding": 0.1470956802368164
+      }
+    },
+    {
+      "source_question_id": "7e328cc3cffa521e73f111d6796aaa9661c8eb07",
+      "paper_id": "1904.04055",
+      "fold": 3,
+      "text": "What is specific about the specific embeddings?",
+      "gold_concepts": [],
+      "alias_concepts": [],
+      "predicted_concepts": [],
+      "supervised_scores": {
+        "BidirectionalLanguageModel": 0.0,
+        "ConvolutionalNeuralNetwork": 0.0,
+        "DiscourseAnalysis": 0.0,
+        "DistributionalSemantics": 0.0,
+        "InformationRetrieval": 0.0,
+        "LanguageModel": 0.0,
+        "MultilingualNaturalLanguageProcessing": 0.10718683153390884,
+        "NaturalLanguageProcessing": 0.24069175124168396,
+        "NeuralNetwork": 0.25984495878219604,
+        "ParallelCorpus": 0.0,
+        "QuestionAnswering": 0.0,
+        "TextSummarization": 0.22829818725585938,
+        "TransferLearning": 0.0,
+        "WordEmbedding": 0.2734549939632416
+      }
+    },
+    {
+      "source_question_id": "80f19be1cbe1f0ec89bbafb9c5f7a8ded37881fb",
+      "paper_id": "1904.04055",
+      "fold": 3,
+      "text": "What embedding algorithm is used to build the embeddings?",
+      "gold_concepts": [],
+      "alias_concepts": [],
+      "predicted_concepts": [],
+      "supervised_scores": {
+        "BidirectionalLanguageModel": 0.0,
+        "ConvolutionalNeuralNetwork": 0.0,
+        "DiscourseAnalysis": 0.0,
+        "DistributionalSemantics": 0.0,
+        "InformationRetrieval": 0.0,
+        "LanguageModel": 0.0,
+        "MultilingualNaturalLanguageProcessing": 0.1371569037437439,
+        "NaturalLanguageProcessing": 0.24165748059749603,
+        "NeuralNetwork": 0.3754478096961975,
+        "ParallelCorpus": 0.0,
+        "QuestionAnswering": 0.0,
+        "TextSummarization": 0.27159637212753296,
+        "TransferLearning": 0.0,
+        "WordEmbedding": 0.22311338782310486
+      }
+    },
+    {
+      "source_question_id": "892c346617a3391c7dafc9da1b65e5ea3890294d",
+      "paper_id": "1909.11833",
+      "fold": 4,
+      "text": "What network architecture do they use for SIM?",
+      "gold_concepts": [
+        "NeuralNetwork"
+      ],
+      "alias_concepts": [],
+      "predicted_concepts": [],
+      "supervised_scores": {
+        "BidirectionalLanguageModel": 0.0,
+        "ConvolutionalNeuralNetwork": 0.0,
+        "DiscourseAnalysis": 0.0,
+        "DistributionalSemantics": 0.0,
+        "InformationRetrieval": 0.0,
+        "LanguageModel": 0.0,
+        "MultilingualNaturalLanguageProcessing": 0.19755174219608307,
+        "NaturalLanguageProcessing": 0.2803927958011627,
+        "NeuralNetwork": 0.18145118653774261,
+        "ParallelCorpus": 0.0,
+        "QuestionAnswering": 0.2292529195547104,
+        "TextSummarization": 0.09679271280765533,
+        "TransferLearning": 0.0,
+        "WordEmbedding": 0.18245887756347656
+      }
+    },
+    {
+      "source_question_id": "8985ead714236458a7496075bc15054df0e3234e",
+      "paper_id": "1912.00582",
+      "fold": 1,
+      "text": "What is the performance of the models on the tasks?",
+      "gold_concepts": [],
+      "alias_concepts": [],
+      "predicted_concepts": [],
+      "supervised_scores": {
+        "BidirectionalLanguageModel": 0.0,
+        "ConvolutionalNeuralNetwork": 0.0,
+        "DiscourseAnalysis": 0.0,
+        "DistributionalSemantics": 0.0,
+        "InformationRetrieval": 0.0,
+        "LanguageModel": 0.0,
+        "MultilingualNaturalLanguageProcessing": 0.2376660257577896,
+        "NaturalLanguageProcessing": 0.22379623353481293,
+        "NeuralNetwork": 0.2195444256067276,
+        "ParallelCorpus": 0.0,
+        "QuestionAnswering": 0.0,
+        "TextSummarization": 0.0,
+        "TransferLearning": 0.0,
+        "WordEmbedding": 0.0816822499036789
+      }
+    },
+    {
+      "source_question_id": "8b51db1f7a6293b5bd8be49386cce45989b8079f",
+      "paper_id": "1809.08652",
+      "fold": 4,
+      "text": "Do they use dropout?",
+      "gold_concepts": [],
+      "alias_concepts": [],
+      "predicted_concepts": [],
+      "supervised_scores": {
+        "BidirectionalLanguageModel": 0.0,
+        "ConvolutionalNeuralNetwork": 0.0,
+        "DiscourseAnalysis": 0.0,
+        "DistributionalSemantics": 0.0,
+        "InformationRetrieval": 0.0,
+        "LanguageModel": 0.0,
+        "MultilingualNaturalLanguageProcessing": 0.16222746670246124,
+        "NaturalLanguageProcessing": 0.36054670810699463,
+        "NeuralNetwork": 0.09470096230506897,
+        "ParallelCorpus": 0.0,
+        "QuestionAnswering": 0.4166126847267151,
+        "TextSummarization": 0.1545296311378479,
+        "TransferLearning": 0.0,
+        "WordEmbedding": 0.21258367598056793
+      }
+    },
+    {
+      "source_question_id": "b72264a73eea36c828e7de778a8b4599a5d02b39",
+      "paper_id": "1910.05154",
+      "fold": 0,
+      "text": "Is the model evaluated against any baseline?",
+      "gold_concepts": [],
+      "alias_concepts": [],
+      "predicted_concepts": [],
+      "supervised_scores": {
+        "BidirectionalLanguageModel": 0.0,
+        "ConvolutionalNeuralNetwork": 0.0,
+        "DiscourseAnalysis": 0.0,
+        "DistributionalSemantics": 0.0,
+        "InformationRetrieval": 0.0,
+        "LanguageModel": 0.0,
+        "MultilingualNaturalLanguageProcessing": 0.23663094639778137,
+        "NaturalLanguageProcessing": 0.1950380653142929,
+        "NeuralNetwork": 0.10962842404842377,
+        "ParallelCorpus": 0.0,
+        "QuestionAnswering": 0.2322964370250702,
+        "TextSummarization": 0.16087858378887177,
+        "TransferLearning": 0.0,
+        "WordEmbedding": 0.08271072804927826
+      }
+    },
+    {
+      "source_question_id": "b7708cbb50085eb41e306bd2248f1515a5ebada8",
+      "paper_id": "1811.01001",
+      "fold": 4,
+      "text": "How do they get the formal languages?",
+      "gold_concepts": [],
+      "alias_concepts": [],
+      "predicted_concepts": [],
+      "supervised_scores": {
+        "BidirectionalLanguageModel": 0.0,
+        "ConvolutionalNeuralNetwork": 0.0,
+        "DiscourseAnalysis": 0.0,
+        "DistributionalSemantics": 0.0,
+        "InformationRetrieval": 0.0,
+        "LanguageModel": 0.0,
+        "MultilingualNaturalLanguageProcessing": 0.656627357006073,
+        "NaturalLanguageProcessing": 0.44931915402412415,
+        "NeuralNetwork": 0.15849344432353973,
+        "ParallelCorpus": 0.0,
+        "QuestionAnswering": 0.12100052088499069,
+        "TextSummarization": 0.19445683062076569,
+        "TransferLearning": 0.0,
+        "WordEmbedding": 0.2985196113586426
+      }
+    },
+    {
+      "source_question_id": "b99948ac4810a7fe3477f6591b8cf211d6398e67",
+      "paper_id": "1912.00819",
+      "fold": 0,
+      "text": "How many models were used?",
+      "gold_concepts": [],
+      "alias_concepts": [],
+      "predicted_concepts": [],
+      "supervised_scores": {
+        "BidirectionalLanguageModel": 0.0,
+        "ConvolutionalNeuralNetwork": 0.0,
+        "DiscourseAnalysis": 0.0,
+        "DistributionalSemantics": 0.0,
+        "InformationRetrieval": 0.0,
+        "LanguageModel": 0.0,
+        "MultilingualNaturalLanguageProcessing": 0.30854564905166626,
+        "NaturalLanguageProcessing": 0.15454325079917908,
+        "NeuralNetwork": 0.2588823735713959,
+        "ParallelCorpus": 0.0,
+        "QuestionAnswering": 0.12798623740673065,
+        "TextSummarization": 0.1297474056482315,
+        "TransferLearning": 0.0,
+        "WordEmbedding": 0.1296340525150299
+      }
+    },
+    {
+      "source_question_id": "bb8a0035b767688a98602c33f4714f8ac8ae60db",
+      "paper_id": "1912.11602",
+      "fold": 2,
+      "text": "What metric was used in the evaluation step?",
+      "gold_concepts": [],
+      "alias_concepts": [],
+      "predicted_concepts": [],
+      "supervised_scores": {
+        "BidirectionalLanguageModel": 0.0,
+        "ConvolutionalNeuralNetwork": 0.0,
+        "DiscourseAnalysis": 0.0,
+        "DistributionalSemantics": 0.0,
+        "InformationRetrieval": 0.0,
+        "LanguageModel": 0.0,
+        "MultilingualNaturalLanguageProcessing": 0.27246445417404175,
+        "NaturalLanguageProcessing": 0.11341910809278488,
+        "NeuralNetwork": 0.1994197815656662,
+        "ParallelCorpus": 0.0,
+        "QuestionAnswering": 0.2367551475763321,
+        "TextSummarization": 0.3537052273750305,
+        "TransferLearning": 0.0,
+        "WordEmbedding": 0.11867500096559525
+      }
+    },
+    {
+      "source_question_id": "c0122190119027dc3eb51f0d4b4483d2dbedc696",
+      "paper_id": "1910.05608",
+      "fold": 3,
+      "text": "What classifier do they use?",
+      "gold_concepts": [],
+      "alias_concepts": [],
+      "predicted_concepts": [],
+      "supervised_scores": {
+        "BidirectionalLanguageModel": 0.0,
+        "ConvolutionalNeuralNetwork": 0.0,
+        "DiscourseAnalysis": 0.0,
+        "DistributionalSemantics": 0.0,
+        "InformationRetrieval": 0.0,
+        "LanguageModel": 0.0,
+        "MultilingualNaturalLanguageProcessing": 0.19403164088726044,
+        "NaturalLanguageProcessing": 0.3092166781425476,
+        "NeuralNetwork": 0.2704208493232727,
+        "ParallelCorpus": 0.0,
+        "QuestionAnswering": 0.0,
+        "TextSummarization": 0.14884163439273834,
+        "TransferLearning": 0.0,
+        "WordEmbedding": 0.345867782831192
+      }
+    },
+    {
+      "source_question_id": "da2b43d7d048f3f59adf26a67ce66bd2d8a06326",
+      "paper_id": "1811.01001",
+      "fold": 4,
+      "text": "What training settings did they try?",
+      "gold_concepts": [],
+      "alias_concepts": [],
+      "predicted_concepts": [],
+      "supervised_scores": {
+        "BidirectionalLanguageModel": 0.0,
+        "ConvolutionalNeuralNetwork": 0.0,
+        "DiscourseAnalysis": 0.0,
+        "DistributionalSemantics": 0.0,
+        "InformationRetrieval": 0.0,
+        "LanguageModel": 0.0,
+        "MultilingualNaturalLanguageProcessing": 0.25891152024269104,
+        "NaturalLanguageProcessing": 0.1819584220647812,
+        "NeuralNetwork": 0.2134060114622116,
+        "ParallelCorpus": 0.0,
+        "QuestionAnswering": 0.2823507487773895,
+        "TextSummarization": 0.124526746571064,
+        "TransferLearning": 0.0,
+        "WordEmbedding": 0.2670782804489136
+      }
+    },
+    {
+      "source_question_id": "db291d734524fa51fb314628b64ebe1bac7f7e1e",
+      "paper_id": "1910.05154",
+      "fold": 0,
+      "text": "How is the performance of the model evaluated?",
+      "gold_concepts": [],
+      "alias_concepts": [],
+      "predicted_concepts": [],
+      "supervised_scores": {
+        "BidirectionalLanguageModel": 0.0,
+        "ConvolutionalNeuralNetwork": 0.0,
+        "DiscourseAnalysis": 0.0,
+        "DistributionalSemantics": 0.0,
+        "InformationRetrieval": 0.0,
+        "LanguageModel": 0.0,
+        "MultilingualNaturalLanguageProcessing": 0.25530529022216797,
+        "NaturalLanguageProcessing": 0.15617801249027252,
+        "NeuralNetwork": 0.15316179394721985,
+        "ParallelCorpus": 0.0,
+        "QuestionAnswering": 0.35862869024276733,
+        "TextSummarization": 0.15697325766086578,
+        "TransferLearning": 0.0,
+        "WordEmbedding": 0.08103533834218979
+      }
+    },
+    {
+      "source_question_id": "f6496b8d09911cdf3a9b72aec0b0be6232a6dba1",
+      "paper_id": "1911.00069",
+      "fold": 4,
+      "text": "Do they train their own RE model?",
+      "gold_concepts": [],
+      "alias_concepts": [],
+      "predicted_concepts": [],
+      "supervised_scores": {
+        "BidirectionalLanguageModel": 0.0,
+        "ConvolutionalNeuralNetwork": 0.0,
+        "DiscourseAnalysis": 0.0,
+        "DistributionalSemantics": 0.0,
+        "InformationRetrieval": 0.0,
+        "LanguageModel": 0.0,
+        "MultilingualNaturalLanguageProcessing": 0.3153388798236847,
+        "NaturalLanguageProcessing": 0.29404956102371216,
+        "NeuralNetwork": 0.17384034395217896,
+        "ParallelCorpus": 0.0,
+        "QuestionAnswering": 0.18671615421772003,
+        "TextSummarization": 0.08220381289720535,
+        "TransferLearning": 0.0,
+        "WordEmbedding": 0.2973197400569916
+      }
+    },
+    {
+      "source_question_id": "f95097cf4a0dc036fd8b80c007cd8d7a157b7816",
+      "paper_id": "1912.11602",
+      "fold": 2,
+      "text": "What were the baselines?",
+      "gold_concepts": [],
+      "alias_concepts": [],
+      "predicted_concepts": [],
+      "supervised_scores": {
+        "BidirectionalLanguageModel": 0.0,
+        "ConvolutionalNeuralNetwork": 0.0,
+        "DiscourseAnalysis": 0.0,
+        "DistributionalSemantics": 0.0,
+        "InformationRetrieval": 0.0,
+        "LanguageModel": 0.0,
+        "MultilingualNaturalLanguageProcessing": 0.15862712264060974,
+        "NaturalLanguageProcessing": 0.1717943400144577,
+        "NeuralNetwork": 0.1774229109287262,
+        "ParallelCorpus": 0.0,
+        "QuestionAnswering": 0.23903772234916687,
+        "TextSummarization": 0.2608134150505066,
+        "TransferLearning": 0.0,
+        "WordEmbedding": 0.1453389674425125
+      }
+    },
+    {
+      "source_question_id": "fd6c194632230e392088fc1f574c8626c6a2fa96",
+      "paper_id": "1912.11602",
+      "fold": 2,
+      "text": "What does the data cleaning and filtering process consist of?",
+      "gold_concepts": [],
+      "alias_concepts": [],
+      "predicted_concepts": [],
+      "supervised_scores": {
+        "BidirectionalLanguageModel": 0.0,
+        "ConvolutionalNeuralNetwork": 0.0,
+        "DiscourseAnalysis": 0.0,
+        "DistributionalSemantics": 0.0,
+        "InformationRetrieval": 0.0,
+        "LanguageModel": 0.0,
+        "MultilingualNaturalLanguageProcessing": 0.14531220495700836,
+        "NaturalLanguageProcessing": 0.21310926973819733,
+        "NeuralNetwork": 0.2966037690639496,
+        "ParallelCorpus": 0.0,
+        "QuestionAnswering": 0.21164089441299438,
+        "TextSummarization": 0.16473813354969025,
+        "TransferLearning": 0.0,
+        "WordEmbedding": 0.16110271215438843
+      }
+    },
+    {
+      "source_question_id": "084fb7c80a24b341093d4bf968120e3aff56f693",
+      "paper_id": "1910.02789",
+      "fold": 4,
+      "text": "How is state to learn and complete tasks represented via natural language?",
+      "gold_concepts": [
+        "NaturalLanguageProcessing"
+      ],
+      "alias_concepts": [],
+      "predicted_concepts": [],
+      "supervised_scores": {
+        "BidirectionalLanguageModel": 0.0,
+        "ConvolutionalNeuralNetwork": 0.0,
+        "DiscourseAnalysis": 0.0,
+        "DistributionalSemantics": 0.0,
+        "InformationRetrieval": 0.0,
+        "LanguageModel": 0.0,
+        "MultilingualNaturalLanguageProcessing": 0.41863834857940674,
+        "NaturalLanguageProcessing": 0.29986491799354553,
+        "NeuralNetwork": 0.23041866719722748,
+        "ParallelCorpus": 0.0,
+        "QuestionAnswering": 0.2045840471982956,
+        "TextSummarization": 0.18188519775867462,
+        "TransferLearning": 0.0,
+        "WordEmbedding": 0.25907832384109497
+      }
+    },
+    {
+      "source_question_id": "6583e8bfa7bcc3a792a90b30abb316e6d423f49b",
+      "paper_id": "1909.09524",
+      "fold": 2,
+      "text": "What are multilingual models that were outperformed in performed experiment?",
+      "gold_concepts": [
+        "MultilingualNaturalLanguageProcessing"
+      ],
+      "alias_concepts": [
+        "MultilingualNaturalLanguageProcessing"
+      ],
+      "predicted_concepts": [
+        "MultilingualNaturalLanguageProcessing"
+      ],
+      "supervised_scores": {
+        "BidirectionalLanguageModel": 0.0,
+        "ConvolutionalNeuralNetwork": 0.0,
+        "DiscourseAnalysis": 0.0,
+        "DistributionalSemantics": 0.0,
+        "InformationRetrieval": 0.0,
+        "LanguageModel": 0.0,
+        "MultilingualNaturalLanguageProcessing": 0.640173614025116,
+        "NaturalLanguageProcessing": 0.40639352798461914,
+        "NeuralNetwork": 0.20179297029972076,
+        "ParallelCorpus": 0.0,
+        "QuestionAnswering": 0.19811920821666718,
+        "TextSummarization": 0.1342426836490631,
+        "TransferLearning": 0.0,
+        "WordEmbedding": 0.15657101571559906
+      }
+    },
+    {
+      "source_question_id": "fa2ffc6b4b046e17bc41e199855c4941673e2caf",
+      "paper_id": "1810.10254",
+      "fold": 0,
+      "text": "What parallel corpus did they use?",
+      "gold_concepts": [
+        "ParallelCorpus"
+      ],
+      "alias_concepts": [
+        "ParallelCorpus"
+      ],
+      "predicted_concepts": [
+        "ParallelCorpus"
+      ],
+      "supervised_scores": {
+        "BidirectionalLanguageModel": 0.0,
+        "ConvolutionalNeuralNetwork": 0.0,
+        "DiscourseAnalysis": 0.0,
+        "DistributionalSemantics": 0.0,
+        "InformationRetrieval": 0.0,
+        "LanguageModel": 0.0,
+        "MultilingualNaturalLanguageProcessing": 0.3770601749420166,
+        "NaturalLanguageProcessing": 0.3456425666809082,
+        "NeuralNetwork": 0.23907051980495453,
+        "ParallelCorpus": 0.0,
+        "QuestionAnswering": 0.15748222172260284,
+        "TextSummarization": 0.22038428485393524,
+        "TransferLearning": 0.0,
+        "WordEmbedding": 0.3195418417453766
+      }
+    },
+    {
+      "source_question_id": "12eaaf3b6ebc51846448c6e1ad210dbef7d25a96",
+      "paper_id": "1904.05862",
+      "fold": 2,
+      "text": "How many convolutional layers does their model have?",
+      "gold_concepts": [
+        "ConvolutionalNeuralNetwork"
+      ],
+      "alias_concepts": [],
+      "predicted_concepts": [],
+      "supervised_scores": {
+        "BidirectionalLanguageModel": 0.0,
+        "ConvolutionalNeuralNetwork": 0.0,
+        "DiscourseAnalysis": 0.0,
+        "DistributionalSemantics": 0.0,
+        "InformationRetrieval": 0.0,
+        "LanguageModel": 0.0,
+        "MultilingualNaturalLanguageProcessing": 0.21732766926288605,
+        "NaturalLanguageProcessing": 0.22083108127117157,
+        "NeuralNetwork": 0.37444180250167847,
+        "ParallelCorpus": 0.0,
+        "QuestionAnswering": 0.17884662747383118,
+        "TextSummarization": 0.10977155715227127,
+        "TransferLearning": 0.0,
+        "WordEmbedding": 0.10605637729167938
+      }
+    },
+    {
+      "source_question_id": "670c464a5dba78e0be7ec168fe36db604e172ea7",
+      "paper_id": "1907.04152",
+      "fold": 0,
+      "text": "Which word embeddings do they use to represent medical visits?",
+      "gold_concepts": [
+        "WordEmbedding"
+      ],
+      "alias_concepts": [
+        "WordEmbedding"
+      ],
+      "predicted_concepts": [
+        "WordEmbedding"
+      ],
+      "supervised_scores": {
+        "BidirectionalLanguageModel": 0.0,
+        "ConvolutionalNeuralNetwork": 0.0,
+        "DiscourseAnalysis": 0.0,
+        "DistributionalSemantics": 0.0,
+        "InformationRetrieval": 0.0,
+        "LanguageModel": 0.0,
+        "MultilingualNaturalLanguageProcessing": 0.2916569411754608,
+        "NaturalLanguageProcessing": 0.3263530433177948,
+        "NeuralNetwork": 0.13714483380317688,
+        "ParallelCorpus": 0.0,
+        "QuestionAnswering": 0.1923721432685852,
+        "TextSummarization": 0.20146659016609192,
+        "TransferLearning": 0.0,
+        "WordEmbedding": 0.6084066033363342
+      }
+    },
+    {
+      "source_question_id": "cdf7e60150a166d41baed9dad539e3b93b544624",
+      "paper_id": "1806.03191",
+      "fold": 3,
+      "text": "Which distributional methods did they consider?",
+      "gold_concepts": [
+        "DistributionalSemantics"
+      ],
+      "alias_concepts": [],
+      "predicted_concepts": [],
+      "supervised_scores": {
+        "BidirectionalLanguageModel": 0.0,
+        "ConvolutionalNeuralNetwork": 0.0,
+        "DiscourseAnalysis": 0.0,
+        "DistributionalSemantics": 0.0,
+        "InformationRetrieval": 0.0,
+        "LanguageModel": 0.0,
+        "MultilingualNaturalLanguageProcessing": 0.2276095449924469,
+        "NaturalLanguageProcessing": 0.27089202404022217,
+        "NeuralNetwork": 0.1856541484594345,
+        "ParallelCorpus": 0.0,
+        "QuestionAnswering": 0.0,
+        "TextSummarization": 0.22478826344013214,
+        "TransferLearning": 0.0,
+        "WordEmbedding": 0.13892465829849243
+      }
+    },
+    {
+      "source_question_id": "e84ba95c9a188fda4563f45e53fbc8728d8b5dab",
+      "paper_id": "1807.09671",
+      "fold": 2,
+      "text": "Do they build one model per topic or on all topics?",
+      "gold_concepts": [],
+      "alias_concepts": [],
+      "predicted_concepts": [],
+      "supervised_scores": {
+        "BidirectionalLanguageModel": 0.0,
+        "ConvolutionalNeuralNetwork": 0.0,
+        "DiscourseAnalysis": 0.0,
+        "DistributionalSemantics": 0.0,
+        "InformationRetrieval": 0.0,
+        "LanguageModel": 0.0,
+        "MultilingualNaturalLanguageProcessing": 0.18755453824996948,
+        "NaturalLanguageProcessing": 0.3546469211578369,
+        "NeuralNetwork": 0.2711297869682312,
+        "ParallelCorpus": 0.0,
+        "QuestionAnswering": 0.19487586617469788,
+        "TextSummarization": 0.16062955558300018,
+        "TransferLearning": 0.0,
+        "WordEmbedding": 0.135628342628479
+      }
+    },
+    {
+      "source_question_id": "0fec9da2bc80a12a7a6d6600b9ecf3e122732b60",
+      "paper_id": "1911.08829",
+      "fold": 3,
+      "text": "Are PIEs extracted automatically subjected to human evaluation?",
+      "gold_concepts": [],
+      "alias_concepts": [],
+      "predicted_concepts": [],
+      "supervised_scores": {
+        "BidirectionalLanguageModel": 0.0,
+        "ConvolutionalNeuralNetwork": 0.0,
+        "DiscourseAnalysis": 0.0,
+        "DistributionalSemantics": 0.0,
+        "InformationRetrieval": 0.0,
+        "LanguageModel": 0.0,
+        "MultilingualNaturalLanguageProcessing": 0.25269952416419983,
+        "NaturalLanguageProcessing": 0.41233769059181213,
+        "NeuralNetwork": 0.13416500389575958,
+        "ParallelCorpus": 0.0,
+        "QuestionAnswering": 0.0,
+        "TextSummarization": 0.16560402512550354,
+        "TransferLearning": 0.0,
+        "WordEmbedding": 0.21063758432865143
+      }
+    },
+    {
+      "source_question_id": "38e11663b03ac585863742044fd15a0e875ae9ab",
+      "paper_id": "1912.05066",
+      "fold": 4,
+      "text": "Who is the crowd in these experiments?",
+      "gold_concepts": [],
+      "alias_concepts": [],
+      "predicted_concepts": [],
+      "supervised_scores": {
+        "BidirectionalLanguageModel": 0.0,
+        "ConvolutionalNeuralNetwork": 0.0,
+        "DiscourseAnalysis": 0.0,
+        "DistributionalSemantics": 0.0,
+        "InformationRetrieval": 0.0,
+        "LanguageModel": 0.0,
+        "MultilingualNaturalLanguageProcessing": 0.3251299560070038,
+        "NaturalLanguageProcessing": 0.2919429540634155,
+        "NeuralNetwork": 0.2957735061645508,
+        "ParallelCorpus": 0.0,
+        "QuestionAnswering": 0.1511179506778717,
+        "TextSummarization": 0.10362876951694489,
+        "TransferLearning": 0.0,
+        "WordEmbedding": 0.15457458794116974
+      }
+    },
+    {
+      "source_question_id": "7358a1ce2eae380af423d4feeaa67d2bd23ae9dd",
+      "paper_id": "1909.00154",
+      "fold": 4,
+      "text": "How do their train their embeddings?",
+      "gold_concepts": [],
+      "alias_concepts": [],
+      "predicted_concepts": [],
+      "supervised_scores": {
+        "BidirectionalLanguageModel": 0.0,
+        "ConvolutionalNeuralNetwork": 0.0,
+        "DiscourseAnalysis": 0.0,
+        "DistributionalSemantics": 0.0,
+        "InformationRetrieval": 0.0,
+        "LanguageModel": 0.0,
+        "MultilingualNaturalLanguageProcessing": 0.19905851781368256,
+        "NaturalLanguageProcessing": 0.18558073043823242,
+        "NeuralNetwork": 0.21648195385932922,
+        "ParallelCorpus": 0.0,
+        "QuestionAnswering": 0.23313778638839722,
+        "TextSummarization": 0.11688334494829178,
+        "TransferLearning": 0.0,
+        "WordEmbedding": 0.47830745577812195
+      }
+    },
+    {
+      "source_question_id": "0153f563f5e2680c2de1a5f6d0e443454dc1ef2a",
+      "paper_id": "1907.04152",
+      "fold": 0,
+      "text": "Do they fine-tune the used word embeddings on their medical texts?",
+      "gold_concepts": [
+        "WordEmbedding"
+      ],
+      "alias_concepts": [
+        "WordEmbedding"
+      ],
+      "predicted_concepts": [
+        "WordEmbedding"
+      ],
+      "supervised_scores": {
+        "BidirectionalLanguageModel": 0.0,
+        "ConvolutionalNeuralNetwork": 0.0,
+        "DiscourseAnalysis": 0.0,
+        "DistributionalSemantics": 0.0,
+        "InformationRetrieval": 0.0,
+        "LanguageModel": 0.0,
+        "MultilingualNaturalLanguageProcessing": 0.401050865650177,
+        "NaturalLanguageProcessing": 0.4390631914138794,
+        "NeuralNetwork": 0.1688157320022583,
+        "ParallelCorpus": 0.0,
+        "QuestionAnswering": 0.2074611335992813,
+        "TextSummarization": 0.24340316653251648,
+        "TransferLearning": 0.0,
+        "WordEmbedding": 0.4970804750919342
+      }
+    },
+    {
+      "source_question_id": "2965c86467d12b79abc16e1457d848cb6ca88973",
+      "paper_id": "1912.00819",
+      "fold": 0,
+      "text": "How were dialogue act labels defined?",
+      "gold_concepts": [
+        "DiscourseAnalysis"
+      ],
+      "alias_concepts": [],
+      "predicted_concepts": [],
+      "supervised_scores": {
+        "BidirectionalLanguageModel": 0.0,
+        "ConvolutionalNeuralNetwork": 0.0,
+        "DiscourseAnalysis": 0.0,
+        "DistributionalSemantics": 0.0,
+        "InformationRetrieval": 0.0,
+        "LanguageModel": 0.0,
+        "MultilingualNaturalLanguageProcessing": 0.2520434856414795,
+        "NaturalLanguageProcessing": 0.6422819495201111,
+        "NeuralNetwork": 0.16362521052360535,
+        "ParallelCorpus": 0.0,
+        "QuestionAnswering": 0.2423640638589859,
+        "TextSummarization": 0.14301978051662445,
+        "TransferLearning": 0.0,
+        "WordEmbedding": 0.36564937233924866
+      }
+    },
+    {
+      "source_question_id": "6da2cb3187d3f28b75ac0a61f6562a8adf716109",
+      "paper_id": "1910.00825",
+      "fold": 1,
+      "text": "What are previous state-of-the-art document summarization methods used?",
+      "gold_concepts": [
+        "TextSummarization"
+      ],
+      "alias_concepts": [
+        "TextSummarization"
+      ],
+      "predicted_concepts": [
+        "TextSummarization"
+      ],
+      "supervised_scores": {
+        "BidirectionalLanguageModel": 0.0,
+        "ConvolutionalNeuralNetwork": 0.0,
+        "DiscourseAnalysis": 0.0,
+        "DistributionalSemantics": 0.0,
+        "InformationRetrieval": 0.0,
+        "LanguageModel": 0.0,
+        "MultilingualNaturalLanguageProcessing": 0.1936497688293457,
+        "NaturalLanguageProcessing": 0.31611213088035583,
+        "NeuralNetwork": 0.11636722832918167,
+        "ParallelCorpus": 0.0,
+        "QuestionAnswering": 0.0,
+        "TextSummarization": 0.0,
+        "TransferLearning": 0.0,
+        "WordEmbedding": 0.31980428099632263
+      }
+    },
+    {
+      "source_question_id": "d5f8707ddc21741d52b3c2a9ab1af2871dc6c90b",
+      "paper_id": "1910.00825",
+      "fold": 1,
+      "text": "What automatic and human evaluation metrics are used to compare SPNet to its counterparts?",
+      "gold_concepts": [],
+      "alias_concepts": [],
+      "predicted_concepts": [],
+      "supervised_scores": {
+        "BidirectionalLanguageModel": 0.0,
+        "ConvolutionalNeuralNetwork": 0.0,
+        "DiscourseAnalysis": 0.0,
+        "DistributionalSemantics": 0.0,
+        "InformationRetrieval": 0.0,
+        "LanguageModel": 0.0,
+        "MultilingualNaturalLanguageProcessing": 0.2234327644109726,
+        "NaturalLanguageProcessing": 0.2717643976211548,
+        "NeuralNetwork": 0.3458115756511688,
+        "ParallelCorpus": 0.0,
+        "QuestionAnswering": 0.0,
+        "TextSummarization": 0.0,
+        "TransferLearning": 0.0,
+        "WordEmbedding": 0.22598713636398315
+      }
+    },
+    {
+      "source_question_id": "d79d897f94e666d5a6fcda3b0c7e807c8fad109e",
+      "paper_id": "1910.02789",
+      "fold": 4,
+      "text": "What result from experiments suggest that natural language based agents are more robust?",
+      "gold_concepts": [
+        "NaturalLanguageProcessing"
+      ],
+      "alias_concepts": [],
+      "predicted_concepts": [],
+      "supervised_scores": {
+        "BidirectionalLanguageModel": 0.0,
+        "ConvolutionalNeuralNetwork": 0.0,
+        "DiscourseAnalysis": 0.0,
+        "DistributionalSemantics": 0.0,
+        "InformationRetrieval": 0.0,
+        "LanguageModel": 0.0,
+        "MultilingualNaturalLanguageProcessing": 0.5785362124443054,
+        "NaturalLanguageProcessing": 0.437822550535202,
+        "NeuralNetwork": 0.2473757266998291,
+        "ParallelCorpus": 0.0,
+        "QuestionAnswering": 0.18315716087818146,
+        "TextSummarization": 0.12276357412338257,
+        "TransferLearning": 0.0,
+        "WordEmbedding": 0.32655683159828186
+      }
+    },
+    {
+      "source_question_id": "f398587b9a0008628278a5ea858e01d3f5559f65",
+      "paper_id": "1910.00825",
+      "fold": 1,
+      "text": "By how much does SPNet outperforms state-of-the-art abstractive summarization methods on evaluation metrics?",
+      "gold_concepts": [
+        "TextSummarization"
+      ],
+      "alias_concepts": [
+        "TextSummarization"
+      ],
+      "predicted_concepts": [
+        "TextSummarization"
+      ],
+      "supervised_scores": {
+        "BidirectionalLanguageModel": 0.0,
+        "ConvolutionalNeuralNetwork": 0.0,
+        "DiscourseAnalysis": 0.0,
+        "DistributionalSemantics": 0.0,
+        "InformationRetrieval": 0.0,
+        "LanguageModel": 0.0,
+        "MultilingualNaturalLanguageProcessing": 0.1930004209280014,
+        "NaturalLanguageProcessing": 0.28539592027664185,
+        "NeuralNetwork": 0.22021570801734924,
+        "ParallelCorpus": 0.0,
+        "QuestionAnswering": 0.0,
+        "TextSummarization": 0.0,
+        "TransferLearning": 0.0,
+        "WordEmbedding": 0.21118654310703278
+      }
+    },
+    {
+      "source_question_id": "5b029ad0d20b516ec11967baaf7d2006e8d7199f",
+      "paper_id": "1912.05066",
+      "fold": 4,
+      "text": "How many label options are there in the multi-label task?",
+      "gold_concepts": [],
+      "alias_concepts": [],
+      "predicted_concepts": [],
+      "supervised_scores": {
+        "BidirectionalLanguageModel": 0.0,
+        "ConvolutionalNeuralNetwork": 0.0,
+        "DiscourseAnalysis": 0.0,
+        "DistributionalSemantics": 0.0,
+        "InformationRetrieval": 0.0,
+        "LanguageModel": 0.0,
+        "MultilingualNaturalLanguageProcessing": 0.19532187283039093,
+        "NaturalLanguageProcessing": 0.2148689180612564,
+        "NeuralNetwork": 0.12840555608272552,
+        "ParallelCorpus": 0.0,
+        "QuestionAnswering": 0.30407941341400146,
+        "TextSummarization": 0.23536568880081177,
+        "TransferLearning": 0.0,
+        "WordEmbedding": 0.17551447451114655
+      }
+    },
+    {
+      "source_question_id": "6e76f114209f59b027ec3b3c8c9cdfc3e682589f",
+      "paper_id": "1909.09524",
+      "fold": 2,
+      "text": "Is pivot language used in experiments English or some other language?",
+      "gold_concepts": [
+        "MultilingualNaturalLanguageProcessing"
+      ],
+      "alias_concepts": [],
+      "predicted_concepts": [],
+      "supervised_scores": {
+        "BidirectionalLanguageModel": 0.0,
+        "ConvolutionalNeuralNetwork": 0.0,
+        "DiscourseAnalysis": 0.0,
+        "DistributionalSemantics": 0.0,
+        "InformationRetrieval": 0.0,
+        "LanguageModel": 0.0,
+        "MultilingualNaturalLanguageProcessing": 0.5565875768661499,
+        "NaturalLanguageProcessing": 0.508532702922821,
+        "NeuralNetwork": 0.21898657083511353,
+        "ParallelCorpus": 0.0,
+        "QuestionAnswering": 0.1765250712633133,
+        "TextSummarization": 0.1035691499710083,
+        "TransferLearning": 0.0,
+        "WordEmbedding": 0.32787439227104187
+      }
+    },
+    {
+      "source_question_id": "73633afbefa191b36cca594977204c6511f9dad4",
+      "paper_id": "1910.00825",
+      "fold": 1,
+      "text": "Is it expected to have speaker role, semantic slot and dialog domain annotations in real world datasets?",
+      "gold_concepts": [],
+      "alias_concepts": [],
+      "predicted_concepts": [],
+      "supervised_scores": {
+        "BidirectionalLanguageModel": 0.0,
+        "ConvolutionalNeuralNetwork": 0.0,
+        "DiscourseAnalysis": 0.0,
+        "DistributionalSemantics": 0.0,
+        "InformationRetrieval": 0.0,
+        "LanguageModel": 0.0,
+        "MultilingualNaturalLanguageProcessing": 0.23406074941158295,
+        "NaturalLanguageProcessing": 0.6996378302574158,
+        "NeuralNetwork": 0.43249645829200745,
+        "ParallelCorpus": 0.0,
+        "QuestionAnswering": 0.0,
+        "TextSummarization": 0.0,
+        "TransferLearning": 0.0,
+        "WordEmbedding": 0.25914835929870605
+      }
+    },
+    {
+      "source_question_id": "8cc56fc44136498471754186cfa04056017b4e54",
+      "paper_id": "1809.04960",
+      "fold": 1,
+      "text": "By how much does their system outperform the lexicon-based models?",
+      "gold_concepts": [],
+      "alias_concepts": [],
+      "predicted_concepts": [],
+      "supervised_scores": {
+        "BidirectionalLanguageModel": 0.0,
+        "ConvolutionalNeuralNetwork": 0.0,
+        "DiscourseAnalysis": 0.0,
+        "DistributionalSemantics": 0.0,
+        "InformationRetrieval": 0.0,
+        "LanguageModel": 0.0,
+        "MultilingualNaturalLanguageProcessing": 0.3843274712562561,
+        "NaturalLanguageProcessing": 0.3965873122215271,
+        "NeuralNetwork": 0.2383882999420166,
+        "ParallelCorpus": 0.0,
+        "QuestionAnswering": 0.0,
+        "TextSummarization": 0.0,
+        "TransferLearning": 0.0,
+        "WordEmbedding": 0.279291033744812
+      }
+    },
+    {
+      "source_question_id": "9257c578ee19a7d93e2fba866be7b0bf1142c393",
+      "paper_id": "1810.10254",
+      "fold": 0,
+      "text": "Did they use other evaluation metrics?",
+      "gold_concepts": [],
+      "alias_concepts": [],
+      "predicted_concepts": [],
+      "supervised_scores": {
+        "BidirectionalLanguageModel": 0.0,
+        "ConvolutionalNeuralNetwork": 0.0,
+        "DiscourseAnalysis": 0.0,
+        "DistributionalSemantics": 0.0,
+        "InformationRetrieval": 0.0,
+        "LanguageModel": 0.0,
+        "MultilingualNaturalLanguageProcessing": 0.29593855142593384,
+        "NaturalLanguageProcessing": 0.13404227793216705,
+        "NeuralNetwork": 0.18967889249324799,
+        "ParallelCorpus": 0.0,
+        "QuestionAnswering": 0.21777716279029846,
+        "TextSummarization": 0.35012540221214294,
+        "TransferLearning": 0.0,
+        "WordEmbedding": 0.17702849209308624
+      }
+    },
+    {
+      "source_question_id": "caf9819be516d2c5a7bfafc80882b07517752dfa",
+      "paper_id": "1807.09671",
+      "fold": 2,
+      "text": "Do they quantitavely or qualitatively evalute the output of their low-rank approximation to verify the grouping of lexical items?",
+      "gold_concepts": [],
+      "alias_concepts": [],
+      "predicted_concepts": [],
+      "supervised_scores": {
+        "BidirectionalLanguageModel": 0.0,
+        "ConvolutionalNeuralNetwork": 0.0,
+        "DiscourseAnalysis": 0.0,
+        "DistributionalSemantics": 0.0,
+        "InformationRetrieval": 0.0,
+        "LanguageModel": 0.0,
+        "MultilingualNaturalLanguageProcessing": 0.30914705991744995,
+        "NaturalLanguageProcessing": 0.3204241096973419,
+        "NeuralNetwork": 0.22084327042102814,
+        "ParallelCorpus": 0.0,
+        "QuestionAnswering": 0.22454212605953217,
+        "TextSummarization": 0.40123772621154785,
+        "TransferLearning": 0.0,
+        "WordEmbedding": 0.2832331359386444
+      }
+    },
+    {
+      "source_question_id": "191d4fe8a37611b2485e715bb55ff1a30038ad6a",
+      "paper_id": "1909.09524",
+      "fold": 2,
+      "text": "Are experiments performed with any other pair of languages, how did proposed method perform compared to other models?",
+      "gold_concepts": [
+        "MultilingualNaturalLanguageProcessing"
+      ],
+      "alias_concepts": [],
+      "predicted_concepts": [],
+      "supervised_scores": {
+        "BidirectionalLanguageModel": 0.0,
+        "ConvolutionalNeuralNetwork": 0.0,
+        "DiscourseAnalysis": 0.0,
+        "DistributionalSemantics": 0.0,
+        "InformationRetrieval": 0.0,
+        "LanguageModel": 0.0,
+        "MultilingualNaturalLanguageProcessing": 0.6589968204498291,
+        "NaturalLanguageProcessing": 0.4813152253627777,
+        "NeuralNetwork": 0.22136329114437103,
+        "ParallelCorpus": 0.0,
+        "QuestionAnswering": 0.12944407761096954,
+        "TextSummarization": 0.11560098826885223,
+        "TransferLearning": 0.0,
+        "WordEmbedding": 0.1445450335741043
+      }
+    },
+    {
+      "source_question_id": "1b9119813ea637974d21862a8ace83bc1acbab8e",
+      "paper_id": "1910.05608",
+      "fold": 3,
+      "text": "What dataset do they use?",
+      "gold_concepts": [],
+      "alias_concepts": [],
+      "predicted_concepts": [],
+      "supervised_scores": {
+        "BidirectionalLanguageModel": 0.0,
+        "ConvolutionalNeuralNetwork": 0.0,
+        "DiscourseAnalysis": 0.0,
+        "DistributionalSemantics": 0.0,
+        "InformationRetrieval": 0.0,
+        "LanguageModel": 0.0,
+        "MultilingualNaturalLanguageProcessing": 0.1490301489830017,
+        "NaturalLanguageProcessing": 0.15213806927204132,
+        "NeuralNetwork": 0.3104493021965027,
+        "ParallelCorpus": 0.0,
+        "QuestionAnswering": 0.0,
+        "TextSummarization": 0.15287081897258759,
+        "TransferLearning": 0.0,
+        "WordEmbedding": 0.1652764528989792
+      }
+    },
+    {
+      "source_question_id": "24cc1586e5411a7f8574796d3c576b7c677d6e21",
+      "paper_id": "1910.05154",
+      "fold": 0,
+      "text": "Does the paper report the accuracy of the model?",
+      "gold_concepts": [],
+      "alias_concepts": [],
+      "predicted_concepts": [],
+      "supervised_scores": {
+        "BidirectionalLanguageModel": 0.0,
+        "ConvolutionalNeuralNetwork": 0.0,
+        "DiscourseAnalysis": 0.0,
+        "DistributionalSemantics": 0.0,
+        "InformationRetrieval": 0.0,
+        "LanguageModel": 0.0,
+        "MultilingualNaturalLanguageProcessing": 0.3104046583175659,
+        "NaturalLanguageProcessing": 0.21590390801429749,
+        "NeuralNetwork": 0.2398015707731247,
+        "ParallelCorpus": 0.0,
+        "QuestionAnswering": 0.22435753047466278,
+        "TextSummarization": 0.25908762216567993,
+        "TransferLearning": 0.0,
+        "WordEmbedding": 0.08532500267028809
+      }
+    },
+    {
+      "source_question_id": "33ccbc401b224a48fba4b167e86019ffad1787fb",
+      "paper_id": "1809.04960",
+      "fold": 1,
+      "text": "How many comments were used?",
+      "gold_concepts": [],
+      "alias_concepts": [],
+      "predicted_concepts": [],
+      "supervised_scores": {
+        "BidirectionalLanguageModel": 0.0,
+        "ConvolutionalNeuralNetwork": 0.0,
+        "DiscourseAnalysis": 0.0,
+        "DistributionalSemantics": 0.0,
+        "InformationRetrieval": 0.0,
+        "LanguageModel": 0.0,
+        "MultilingualNaturalLanguageProcessing": 0.30362921953201294,
+        "NaturalLanguageProcessing": 0.336021363735199,
+        "NeuralNetwork": 0.18612855672836304,
+        "ParallelCorpus": 0.0,
+        "QuestionAnswering": 0.0,
+        "TextSummarization": 0.0,
+        "TransferLearning": 0.0,
+        "WordEmbedding": 0.35612988471984863
+      }
+    },
+    {
+      "source_question_id": "33d864153822bd378a98a732ace720e2c06a6bc6",
+      "paper_id": "1910.11204",
+      "fold": 1,
+      "text": "What is new state-of-the-art performance on CoNLL-2009 dataset?",
+      "gold_concepts": [],
+      "alias_concepts": [],
+      "predicted_concepts": [],
+      "supervised_scores": {
+        "BidirectionalLanguageModel": 0.0,
+        "ConvolutionalNeuralNetwork": 0.0,
+        "DiscourseAnalysis": 0.0,
+        "DistributionalSemantics": 0.0,
+        "InformationRetrieval": 0.0,
+        "LanguageModel": 0.0,
+        "MultilingualNaturalLanguageProcessing": 0.16411149501800537,
+        "NaturalLanguageProcessing": 0.2904309332370758,
+        "NeuralNetwork": 0.29356029629707336,
+        "ParallelCorpus": 0.0,
+        "QuestionAnswering": 0.0,
+        "TextSummarization": 0.0,
+        "TransferLearning": 0.0,
+        "WordEmbedding": 0.11575702577829361
+      }
+    },
+    {
+      "source_question_id": "36feaac9d9dee5ae09aaebc2019b014e57f61fbf",
+      "paper_id": "1909.11833",
+      "fold": 4,
+      "text": "How do they measure model size?",
+      "gold_concepts": [],
+      "alias_concepts": [],
+      "predicted_concepts": [],
+      "supervised_scores": {
+        "BidirectionalLanguageModel": 0.0,
+        "ConvolutionalNeuralNetwork": 0.0,
+        "DiscourseAnalysis": 0.0,
+        "DistributionalSemantics": 0.0,
+        "InformationRetrieval": 0.0,
+        "LanguageModel": 0.0,
+        "MultilingualNaturalLanguageProcessing": 0.17888681590557098,
+        "NaturalLanguageProcessing": 0.1693301498889923,
+        "NeuralNetwork": 0.17182904481887817,
+        "ParallelCorpus": 0.0,
+        "QuestionAnswering": 0.16046641767024994,
+        "TextSummarization": 0.18532778322696686,
+        "TransferLearning": 0.0,
+        "WordEmbedding": 0.09579171985387802
+      }
+    },
+    {
+      "source_question_id": "3af9156b95a4c2d67cc54b80b92cc7b918fea2a9",
+      "paper_id": "1904.04055",
+      "fold": 3,
+      "text": "What experiments are presented?",
+      "gold_concepts": [],
+      "alias_concepts": [],
+      "predicted_concepts": [],
+      "supervised_scores": {
+        "BidirectionalLanguageModel": 0.0,
+        "ConvolutionalNeuralNetwork": 0.0,
+        "DiscourseAnalysis": 0.0,
+        "DistributionalSemantics": 0.0,
+        "InformationRetrieval": 0.0,
+        "LanguageModel": 0.0,
+        "MultilingualNaturalLanguageProcessing": 0.43204641342163086,
+        "NaturalLanguageProcessing": 0.325814425945282,
+        "NeuralNetwork": 0.2223251760005951,
+        "ParallelCorpus": 0.0,
+        "QuestionAnswering": 0.0,
+        "TextSummarization": 0.11411838978528976,
+        "TransferLearning": 0.0,
+        "WordEmbedding": 0.14146661758422852
+      }
+    },
+    {
+      "source_question_id": "4dad15fee1fe01c3eadce8f0914781ca0a6e3f23",
+      "paper_id": "1909.11833",
+      "fold": 4,
+      "text": "How do they prevent the model complexity increasing with the increased number of slots?",
+      "gold_concepts": [],
+      "alias_concepts": [],
+      "predicted_concepts": [],
+      "supervised_scores": {
+        "BidirectionalLanguageModel": 0.0,
+        "ConvolutionalNeuralNetwork": 0.0,
+        "DiscourseAnalysis": 0.0,
+        "DistributionalSemantics": 0.0,
+        "InformationRetrieval": 0.0,
+        "LanguageModel": 0.0,
+        "MultilingualNaturalLanguageProcessing": 0.16569161415100098,
+        "NaturalLanguageProcessing": 0.24610644578933716,
+        "NeuralNetwork": 0.1580037772655487,
+        "ParallelCorpus": 0.0,
+        "QuestionAnswering": 0.3066968023777008,
+        "TextSummarization": 0.1890476495027542,
+        "TransferLearning": 0.0,
+        "WordEmbedding": 0.10624481737613678
+      }
+    },
+    {
+      "source_question_id": "65e6a1cc2590b139729e7e44dce6d9af5dd2c3b5",
+      "paper_id": "1709.05411",
+      "fold": 3,
+      "text": "Why mixed initiative multi-turn dialogs are the greatest challenge in building open-domain conversational agents?",
+      "gold_concepts": [
+        "NaturalLanguageProcessing"
+      ],
+      "alias_concepts": [],
+      "predicted_concepts": [],
+      "supervised_scores": {
+        "BidirectionalLanguageModel": 0.0,
+        "ConvolutionalNeuralNetwork": 0.0,
+        "DiscourseAnalysis": 0.0,
+        "DistributionalSemantics": 0.0,
+        "InformationRetrieval": 0.0,
+        "LanguageModel": 0.0,
+        "MultilingualNaturalLanguageProcessing": 0.23969057202339172,
+        "NaturalLanguageProcessing": 0.49711647629737854,
+        "NeuralNetwork": 0.30872842669487,
+        "ParallelCorpus": 0.0,
+        "QuestionAnswering": 0.0,
+        "TextSummarization": 0.15713229775428772,
+        "TransferLearning": 0.0,
+        "WordEmbedding": 0.23482301831245422
+      }
+    },
+    {
+      "source_question_id": "bb570d4a1b814f508a07e74baac735bf6ca0f040",
+      "paper_id": "1807.05154",
+      "fold": 1,
+      "text": "Why does their model do better than prior models?",
+      "gold_concepts": [],
+      "alias_concepts": [],
+      "predicted_concepts": [],
+      "supervised_scores": {
+        "BidirectionalLanguageModel": 0.0,
+        "ConvolutionalNeuralNetwork": 0.0,
+        "DiscourseAnalysis": 0.0,
+        "DistributionalSemantics": 0.0,
+        "InformationRetrieval": 0.0,
+        "LanguageModel": 0.0,
+        "MultilingualNaturalLanguageProcessing": 0.2888941466808319,
+        "NaturalLanguageProcessing": 0.312973290681839,
+        "NeuralNetwork": 0.16658128798007965,
+        "ParallelCorpus": 0.0,
+        "QuestionAnswering": 0.0,
+        "TextSummarization": 0.0,
+        "TransferLearning": 0.0,
+        "WordEmbedding": 0.13236744701862335
+      }
+    },
+    {
+      "source_question_id": "81669c550d32d756f516dab5d2b76ff5f21c0f36",
+      "paper_id": "1910.06701",
+      "fold": 2,
+      "text": "what are the existing models they compared with?",
+      "gold_concepts": [],
+      "alias_concepts": [],
+      "predicted_concepts": [],
+      "supervised_scores": {
+        "BidirectionalLanguageModel": 0.0,
+        "ConvolutionalNeuralNetwork": 0.0,
+        "DiscourseAnalysis": 0.0,
+        "DistributionalSemantics": 0.0,
+        "InformationRetrieval": 0.0,
+        "LanguageModel": 0.0,
+        "MultilingualNaturalLanguageProcessing": 0.30842748284339905,
+        "NaturalLanguageProcessing": 0.14780913293361664,
+        "NeuralNetwork": 0.226258784532547,
+        "ParallelCorpus": 0.0,
+        "QuestionAnswering": 0.14611336588859558,
+        "TextSummarization": 0.13196951150894165,
+        "TransferLearning": 0.0,
+        "WordEmbedding": 0.11132457852363586
+      }
+    },
+    {
+      "source_question_id": "a71ebd8dc907d470f6bd3829fa949b15b29a0631",
+      "paper_id": "1608.08738",
+      "fold": 1,
+      "text": "how did they ask if a tweet was racist?",
+      "gold_concepts": [
+        "NaturalLanguageProcessing"
+      ],
+      "alias_concepts": [],
+      "predicted_concepts": [],
+      "supervised_scores": {
+        "BidirectionalLanguageModel": 0.0,
+        "ConvolutionalNeuralNetwork": 0.0,
+        "DiscourseAnalysis": 0.0,
+        "DistributionalSemantics": 0.0,
+        "InformationRetrieval": 0.0,
+        "LanguageModel": 0.0,
+        "MultilingualNaturalLanguageProcessing": 0.35989850759506226,
+        "NaturalLanguageProcessing": 0.3295990824699402,
+        "NeuralNetwork": 0.2616899013519287,
+        "ParallelCorpus": 0.0,
+        "QuestionAnswering": 0.0,
+        "TextSummarization": 0.0,
+        "TransferLearning": 0.0,
+        "WordEmbedding": 0.4730621576309204
+      }
+    },
+    {
+      "source_question_id": "52e8c9ed66ace1780e41815260af1309064d20de",
+      "paper_id": "1905.10702",
+      "fold": 1,
+      "text": "What datasets are used to evaluate the model?",
+      "gold_concepts": [],
+      "alias_concepts": [],
+      "predicted_concepts": [],
+      "supervised_scores": {
+        "BidirectionalLanguageModel": 0.0,
+        "ConvolutionalNeuralNetwork": 0.0,
+        "DiscourseAnalysis": 0.0,
+        "DistributionalSemantics": 0.0,
+        "InformationRetrieval": 0.0,
+        "LanguageModel": 0.0,
+        "MultilingualNaturalLanguageProcessing": 0.24209965765476227,
+        "NaturalLanguageProcessing": 0.22152753174304962,
+        "NeuralNetwork": 0.22849594056606293,
+        "ParallelCorpus": 0.0,
+        "QuestionAnswering": 0.0,
+        "TextSummarization": 0.0,
+        "TransferLearning": 0.0,
+        "WordEmbedding": 0.09222837537527084
+      }
+    },
+    {
+      "source_question_id": "cfb5ab893ed77f9df7eeb4940b6bacdef5acccea",
+      "paper_id": "1909.05360",
+      "fold": 2,
+      "text": "Is this the first paper to propose a joint model for event and temporal relation extraction?",
+      "gold_concepts": [
+        "NaturalLanguageProcessing"
+      ],
+      "alias_concepts": [],
+      "predicted_concepts": [],
+      "supervised_scores": {
+        "BidirectionalLanguageModel": 0.0,
+        "ConvolutionalNeuralNetwork": 0.0,
+        "DiscourseAnalysis": 0.0,
+        "DistributionalSemantics": 0.0,
+        "InformationRetrieval": 0.0,
+        "LanguageModel": 0.0,
+        "MultilingualNaturalLanguageProcessing": 0.22079402208328247,
+        "NaturalLanguageProcessing": 0.3311004042625427,
+        "NeuralNetwork": 0.39495840668678284,
+        "ParallelCorpus": 0.0,
+        "QuestionAnswering": 0.20444996654987335,
+        "TextSummarization": 0.2529544532299042,
+        "TransferLearning": 0.0,
+        "WordEmbedding": 0.12683017551898956
+      }
+    },
+    {
+      "source_question_id": "a5abd4dd91e6f2855e9098bd6ae1481c0fdb0d4a",
+      "paper_id": "1909.05360",
+      "fold": 2,
+      "text": "What datasets were used for this work?",
+      "gold_concepts": [],
+      "alias_concepts": [],
+      "predicted_concepts": [],
+      "supervised_scores": {
+        "BidirectionalLanguageModel": 0.0,
+        "ConvolutionalNeuralNetwork": 0.0,
+        "DiscourseAnalysis": 0.0,
+        "DistributionalSemantics": 0.0,
+        "InformationRetrieval": 0.0,
+        "LanguageModel": 0.0,
+        "MultilingualNaturalLanguageProcessing": 0.2303035855293274,
+        "NaturalLanguageProcessing": 0.15937399864196777,
+        "NeuralNetwork": 0.28237250447273254,
+        "ParallelCorpus": 0.0,
+        "QuestionAnswering": 0.198040172457695,
+        "TextSummarization": 0.2248864471912384,
+        "TransferLearning": 0.0,
+        "WordEmbedding": 0.09272480010986328
+      }
+    },
+    {
+      "source_question_id": "dc4096b8bab0afcbbd4fbb015da2bea5d38251cd",
+      "paper_id": "2002.08307",
+      "fold": 3,
+      "text": "How they observe that fine-tuning BERT on a specific task does not improve its prunability?",
+      "gold_concepts": [
+        "BidirectionalLanguageModel",
+        "TransferLearning"
+      ],
+      "alias_concepts": [],
+      "predicted_concepts": [],
+      "supervised_scores": {
+        "BidirectionalLanguageModel": 0.0,
+        "ConvolutionalNeuralNetwork": 0.0,
+        "DiscourseAnalysis": 0.0,
+        "DistributionalSemantics": 0.0,
+        "InformationRetrieval": 0.0,
+        "LanguageModel": 0.0,
+        "MultilingualNaturalLanguageProcessing": 0.24832813441753387,
+        "NaturalLanguageProcessing": 0.3264094889163971,
+        "NeuralNetwork": 0.18564876914024353,
+        "ParallelCorpus": 0.0,
+        "QuestionAnswering": 0.0,
+        "TextSummarization": 0.1684999316930771,
+        "TransferLearning": 0.0,
+        "WordEmbedding": 0.14608913660049438
+      }
+    },
+    {
+      "source_question_id": "c4c9c7900a0480743acc7599efb359bc81cf3a4d",
+      "paper_id": "2002.08307",
+      "fold": 3,
+      "text": "How much is pre-training loss increased in Low/Medium/Hard level of pruning?",
+      "gold_concepts": [],
+      "alias_concepts": [],
+      "predicted_concepts": [],
+      "supervised_scores": {
+        "BidirectionalLanguageModel": 0.0,
+        "ConvolutionalNeuralNetwork": 0.0,
+        "DiscourseAnalysis": 0.0,
+        "DistributionalSemantics": 0.0,
+        "InformationRetrieval": 0.0,
+        "LanguageModel": 0.0,
+        "MultilingualNaturalLanguageProcessing": 0.17138926684856415,
+        "NaturalLanguageProcessing": 0.19773267209529877,
+        "NeuralNetwork": 0.1546562761068344,
+        "ParallelCorpus": 0.0,
+        "QuestionAnswering": 0.0,
+        "TextSummarization": 0.18277908861637115,
+        "TransferLearning": 0.0,
+        "WordEmbedding": 0.24900923669338226
+      }
+    },
+    {
+      "source_question_id": "be9cadaebfa0ff1a3c5a5ed56ff3aae76cf5e0a4",
+      "paper_id": "1805.03122",
+      "fold": 4,
+      "text": "What are the evaluation metrics used?",
+      "gold_concepts": [],
+      "alias_concepts": [],
+      "predicted_concepts": [],
+      "supervised_scores": {
+        "BidirectionalLanguageModel": 0.0,
+        "ConvolutionalNeuralNetwork": 0.0,
+        "DiscourseAnalysis": 0.0,
+        "DistributionalSemantics": 0.0,
+        "InformationRetrieval": 0.0,
+        "LanguageModel": 0.0,
+        "MultilingualNaturalLanguageProcessing": 0.1728561967611313,
+        "NaturalLanguageProcessing": 0.1016581654548645,
+        "NeuralNetwork": 0.14197757840156555,
+        "ParallelCorpus": 0.0,
+        "QuestionAnswering": 0.21369841694831848,
+        "TextSummarization": 0.42214998602867126,
+        "TransferLearning": 0.0,
+        "WordEmbedding": 0.18342652916908264
+      }
+    },
+    {
+      "source_question_id": "e51d0c2c336f255e342b5f6c3cf2a13231789fed",
+      "paper_id": "1602.08741",
+      "fold": 2,
+      "text": "Which Twitter corpus was used to train the word vectors?",
+      "gold_concepts": [
+        "WordEmbedding"
+      ],
+      "alias_concepts": [],
+      "predicted_concepts": [],
+      "supervised_scores": {
+        "BidirectionalLanguageModel": 0.0,
+        "ConvolutionalNeuralNetwork": 0.0,
+        "DiscourseAnalysis": 0.0,
+        "DistributionalSemantics": 0.0,
+        "InformationRetrieval": 0.0,
+        "LanguageModel": 0.0,
+        "MultilingualNaturalLanguageProcessing": 0.2631419897079468,
+        "NaturalLanguageProcessing": 0.5916979312896729,
+        "NeuralNetwork": 0.34759634733200073,
+        "ParallelCorpus": 0.0,
+        "QuestionAnswering": 0.12419254332780838,
+        "TextSummarization": 0.17580923438072205,
+        "TransferLearning": 0.0,
+        "WordEmbedding": 0.38892707228660583
+      }
+    },
+    {
+      "source_question_id": "70e596dd4334a94844454fa7b565889556e2358d",
+      "paper_id": "1709.09119",
+      "fold": 2,
+      "text": "How successful are they at matching names of authors in Japanese and English?",
+      "gold_concepts": [
+        "MultilingualNaturalLanguageProcessing"
+      ],
+      "alias_concepts": [],
+      "predicted_concepts": [],
+      "supervised_scores": {
+        "BidirectionalLanguageModel": 0.0,
+        "ConvolutionalNeuralNetwork": 0.0,
+        "DiscourseAnalysis": 0.0,
+        "DistributionalSemantics": 0.0,
+        "InformationRetrieval": 0.0,
+        "LanguageModel": 0.0,
+        "MultilingualNaturalLanguageProcessing": 0.3076363503932953,
+        "NaturalLanguageProcessing": 0.3608909845352173,
+        "NeuralNetwork": 0.2327299565076828,
+        "ParallelCorpus": 0.0,
+        "QuestionAnswering": 0.1566593050956726,
+        "TextSummarization": 0.2742616832256317,
+        "TransferLearning": 0.0,
+        "WordEmbedding": 0.3512062728404999
+      }
+    },
+    {
+      "source_question_id": "3213529b6405339dfd0c1d2a0f15719cdff0fa93",
+      "paper_id": "1902.00821",
+      "fold": 3,
+      "text": "What is the baseline model used?",
+      "gold_concepts": [],
+      "alias_concepts": [],
+      "predicted_concepts": [],
+      "supervised_scores": {
+        "BidirectionalLanguageModel": 0.0,
+        "ConvolutionalNeuralNetwork": 0.0,
+        "DiscourseAnalysis": 0.0,
+        "DistributionalSemantics": 0.0,
+        "InformationRetrieval": 0.0,
+        "LanguageModel": 0.0,
+        "MultilingualNaturalLanguageProcessing": 0.1564142256975174,
+        "NaturalLanguageProcessing": 0.17997121810913086,
+        "NeuralNetwork": 0.21937718987464905,
+        "ParallelCorpus": 0.0,
+        "QuestionAnswering": 0.0,
+        "TextSummarization": 0.17946237325668335,
+        "TransferLearning": 0.0,
+        "WordEmbedding": 0.07407084852457047
+      }
+    },
+    {
+      "source_question_id": "98eb245c727c0bd050d7686d133fa7cd9d25a0fb",
+      "paper_id": "1910.13215",
+      "fold": 3,
+      "text": "Was evaluation metrics and criteria were used to evaluate the output of the cascaded multimodal speech translation?",
+      "gold_concepts": [
+        "MultilingualNaturalLanguageProcessing"
+      ],
+      "alias_concepts": [],
+      "predicted_concepts": [],
+      "supervised_scores": {
+        "BidirectionalLanguageModel": 0.0,
+        "ConvolutionalNeuralNetwork": 0.0,
+        "DiscourseAnalysis": 0.0,
+        "DistributionalSemantics": 0.0,
+        "InformationRetrieval": 0.0,
+        "LanguageModel": 0.0,
+        "MultilingualNaturalLanguageProcessing": 0.4567990303039551,
+        "NaturalLanguageProcessing": 0.5190063714981079,
+        "NeuralNetwork": 0.1724298596382141,
+        "ParallelCorpus": 0.0,
+        "QuestionAnswering": 0.0,
+        "TextSummarization": 0.24236266314983368,
+        "TransferLearning": 0.0,
+        "WordEmbedding": 0.19038058817386627
+      }
+    },
+    {
+      "source_question_id": "537a786794604ecc473fb3ef6222e0c3cb81f772",
+      "paper_id": "1910.13215",
+      "fold": 3,
+      "text": "What dataset was used in this work?",
+      "gold_concepts": [],
+      "alias_concepts": [],
+      "predicted_concepts": [],
+      "supervised_scores": {
+        "BidirectionalLanguageModel": 0.0,
+        "ConvolutionalNeuralNetwork": 0.0,
+        "DiscourseAnalysis": 0.0,
+        "DistributionalSemantics": 0.0,
+        "InformationRetrieval": 0.0,
+        "LanguageModel": 0.0,
+        "MultilingualNaturalLanguageProcessing": 0.19578318297863007,
+        "NaturalLanguageProcessing": 0.22792157530784607,
+        "NeuralNetwork": 0.3020870089530945,
+        "ParallelCorpus": 0.0,
+        "QuestionAnswering": 0.0,
+        "TextSummarization": 0.22012384235858917,
+        "TransferLearning": 0.0,
+        "WordEmbedding": 0.10561962425708771
+      }
+    },
+    {
+      "source_question_id": "d3341eefe4188ee8a68914a2e8c9047334997e84",
+      "paper_id": "1910.12354",
+      "fold": 0,
+      "text": "Why they conclude that the usage of Gated-Attention provides no competitive advantage against concatenation in this setting?",
+      "gold_concepts": [],
+      "alias_concepts": [],
+      "predicted_concepts": [],
+      "supervised_scores": {
+        "BidirectionalLanguageModel": 0.0,
+        "ConvolutionalNeuralNetwork": 0.0,
+        "DiscourseAnalysis": 0.0,
+        "DistributionalSemantics": 0.0,
+        "InformationRetrieval": 0.0,
+        "LanguageModel": 0.0,
+        "MultilingualNaturalLanguageProcessing": 0.26324447989463806,
+        "NaturalLanguageProcessing": 0.41433459520339966,
+        "NeuralNetwork": 0.20017968118190765,
+        "ParallelCorpus": 0.0,
+        "QuestionAnswering": 0.3422172963619232,
+        "TextSummarization": 0.1743757277727127,
+        "TransferLearning": 0.0,
+        "WordEmbedding": 0.19808250665664673
+      }
+    },
+    {
+      "source_question_id": "d2473c039ab85f8e9e99066894658381ae852e16",
+      "paper_id": "1805.00460",
+      "fold": 0,
+      "text": "What are the features of used to customize target user interaction? ",
+      "gold_concepts": [],
+      "alias_concepts": [],
+      "predicted_concepts": [],
+      "supervised_scores": {
+        "BidirectionalLanguageModel": 0.0,
+        "ConvolutionalNeuralNetwork": 0.0,
+        "DiscourseAnalysis": 0.0,
+        "DistributionalSemantics": 0.0,
+        "InformationRetrieval": 0.0,
+        "LanguageModel": 0.0,
+        "MultilingualNaturalLanguageProcessing": 0.1789717823266983,
+        "NaturalLanguageProcessing": 0.420705646276474,
+        "NeuralNetwork": 0.19100090861320496,
+        "ParallelCorpus": 0.0,
+        "QuestionAnswering": 0.265687495470047,
+        "TextSummarization": 0.13249698281288147,
+        "TransferLearning": 0.0,
+        "WordEmbedding": 0.20999762415885925
+      }
+    },
+    {
+      "source_question_id": "99a10823623f78dbff9ccecb210f187105a196e9",
+      "paper_id": "1810.04528",
+      "fold": 3,
+      "text": "What were the word embeddings trained on?",
+      "gold_concepts": [
+        "WordEmbedding"
+      ],
+      "alias_concepts": [
+        "WordEmbedding"
+      ],
+      "predicted_concepts": [
+        "WordEmbedding"
+      ],
+      "supervised_scores": {
+        "BidirectionalLanguageModel": 0.0,
+        "ConvolutionalNeuralNetwork": 0.0,
+        "DiscourseAnalysis": 0.0,
+        "DistributionalSemantics": 0.0,
+        "InformationRetrieval": 0.0,
+        "LanguageModel": 0.0,
+        "MultilingualNaturalLanguageProcessing": 0.24529089033603668,
+        "NaturalLanguageProcessing": 0.4269733130931854,
+        "NeuralNetwork": 0.2576483488082886,
+        "ParallelCorpus": 0.0,
+        "QuestionAnswering": 0.0,
+        "TextSummarization": 0.1958424597978592,
+        "TransferLearning": 0.0,
+        "WordEmbedding": 0.5692057609558105
+      }
+    },
+    {
+      "source_question_id": "09f0dce416a1e40cc6a24a8b42a802747d2c9363",
+      "paper_id": "1810.04528",
+      "fold": 3,
+      "text": "Which word embeddings are analysed?",
+      "gold_concepts": [
+        "WordEmbedding"
+      ],
+      "alias_concepts": [
+        "WordEmbedding"
+      ],
+      "predicted_concepts": [
+        "WordEmbedding"
+      ],
+      "supervised_scores": {
+        "BidirectionalLanguageModel": 0.0,
+        "ConvolutionalNeuralNetwork": 0.0,
+        "DiscourseAnalysis": 0.0,
+        "DistributionalSemantics": 0.0,
+        "InformationRetrieval": 0.0,
+        "LanguageModel": 0.0,
+        "MultilingualNaturalLanguageProcessing": 0.25525370240211487,
+        "NaturalLanguageProcessing": 0.37158671021461487,
+        "NeuralNetwork": 0.22787927091121674,
+        "ParallelCorpus": 0.0,
+        "QuestionAnswering": 0.0,
+        "TextSummarization": 0.3211241066455841,
+        "TransferLearning": 0.0,
+        "WordEmbedding": 0.5209290385246277
+      }
+    },
+    {
+      "source_question_id": "46ee1cbbfbf0067747b28bdf4c8c2f7dc8955650",
+      "paper_id": "1701.03214",
+      "fold": 1,
+      "text": "What kinds of neural networks did they use in this paper?",
+      "gold_concepts": [
+        "NeuralNetwork"
+      ],
+      "alias_concepts": [
+        "NeuralNetwork"
+      ],
+      "predicted_concepts": [
+        "NeuralNetwork"
+      ],
+      "supervised_scores": {
+        "BidirectionalLanguageModel": 0.0,
+        "ConvolutionalNeuralNetwork": 0.0,
+        "DiscourseAnalysis": 0.0,
+        "DistributionalSemantics": 0.0,
+        "InformationRetrieval": 0.0,
+        "LanguageModel": 0.0,
+        "MultilingualNaturalLanguageProcessing": 0.275887131690979,
+        "NaturalLanguageProcessing": 0.32533758878707886,
+        "NeuralNetwork": 0.4075605273246765,
+        "ParallelCorpus": 0.0,
+        "QuestionAnswering": 0.0,
+        "TextSummarization": 0.0,
+        "TransferLearning": 0.0,
+        "WordEmbedding": 0.27928638458251953
+      }
+    },
+    {
+      "source_question_id": "4f12b41bd3bb2610abf7d7835291496aa69fb78c",
+      "paper_id": "1701.03214",
+      "fold": 1,
+      "text": "How did they use the domain tags?",
+      "gold_concepts": [],
+      "alias_concepts": [],
+      "predicted_concepts": [],
+      "supervised_scores": {
+        "BidirectionalLanguageModel": 0.0,
+        "ConvolutionalNeuralNetwork": 0.0,
+        "DiscourseAnalysis": 0.0,
+        "DistributionalSemantics": 0.0,
+        "InformationRetrieval": 0.0,
+        "LanguageModel": 0.0,
+        "MultilingualNaturalLanguageProcessing": 0.13434898853302002,
+        "NaturalLanguageProcessing": 0.2942434251308441,
+        "NeuralNetwork": 0.42368119955062866,
+        "ParallelCorpus": 0.0,
+        "QuestionAnswering": 0.0,
+        "TextSummarization": 0.0,
+        "TransferLearning": 0.0,
+        "WordEmbedding": 0.38610175251960754
+      }
+    },
+    {
+      "source_question_id": "73e715e485942859e1db75bfb5f35f1d5eb79d2e",
+      "paper_id": "1703.08885",
+      "fold": 0,
+      "text": "How can a neural model be used for a retrieval if the input is the entire Wikipedia?",
+      "gold_concepts": [
+        "InformationRetrieval",
+        "NeuralNetwork"
+      ],
+      "alias_concepts": [],
+      "predicted_concepts": [],
+      "supervised_scores": {
+        "BidirectionalLanguageModel": 0.0,
+        "ConvolutionalNeuralNetwork": 0.0,
+        "DiscourseAnalysis": 0.0,
+        "DistributionalSemantics": 0.0,
+        "InformationRetrieval": 0.0,
+        "LanguageModel": 0.0,
+        "MultilingualNaturalLanguageProcessing": 0.2644136846065521,
+        "NaturalLanguageProcessing": 0.555909276008606,
+        "NeuralNetwork": 0.2919957637786865,
+        "ParallelCorpus": 0.0,
+        "QuestionAnswering": 0.17975366115570068,
+        "TextSummarization": 0.21794305741786957,
+        "TransferLearning": 0.0,
+        "WordEmbedding": 0.22585441172122955
+      }
+    },
+    {
+      "source_question_id": "e9d9bb87a5c4faa965ceddd98d8b80d4b99e339e",
+      "paper_id": "1903.09588",
+      "fold": 2,
+      "text": "How much do they outperform previous state-of-the-art?",
+      "gold_concepts": [],
+      "alias_concepts": [],
+      "predicted_concepts": [],
+      "supervised_scores": {
+        "BidirectionalLanguageModel": 0.0,
+        "ConvolutionalNeuralNetwork": 0.0,
+        "DiscourseAnalysis": 0.0,
+        "DistributionalSemantics": 0.0,
+        "InformationRetrieval": 0.0,
+        "LanguageModel": 0.0,
+        "MultilingualNaturalLanguageProcessing": 0.16547593474388123,
+        "NaturalLanguageProcessing": 0.17535904049873352,
+        "NeuralNetwork": 0.14349499344825745,
+        "ParallelCorpus": 0.0,
+        "QuestionAnswering": 0.4243956506252289,
+        "TextSummarization": 0.2701905071735382,
+        "TransferLearning": 0.0,
+        "WordEmbedding": 0.15671351552009583
+      }
+    },
+    {
+      "source_question_id": "3554ac92d4f2d00dbf58f7b4ff2b36a852854e95",
+      "paper_id": "1903.09588",
+      "fold": 2,
+      "text": "How do they generate the auxiliary sentence?",
+      "gold_concepts": [],
+      "alias_concepts": [],
+      "predicted_concepts": [],
+      "supervised_scores": {
+        "BidirectionalLanguageModel": 0.0,
+        "ConvolutionalNeuralNetwork": 0.0,
+        "DiscourseAnalysis": 0.0,
+        "DistributionalSemantics": 0.0,
+        "InformationRetrieval": 0.0,
+        "LanguageModel": 0.0,
+        "MultilingualNaturalLanguageProcessing": 0.19079671800136566,
+        "NaturalLanguageProcessing": 0.42407143115997314,
+        "NeuralNetwork": 0.18771977722644806,
+        "ParallelCorpus": 0.0,
+        "QuestionAnswering": 0.18035128712654114,
+        "TextSummarization": 0.30958816409111023,
+        "TransferLearning": 0.0,
+        "WordEmbedding": 0.41748133301734924
+      }
+    },
+    {
+      "source_question_id": "95d8368b1055d97250df38d1e8c4a2b283d2b57e",
+      "paper_id": "1708.08615",
+      "fold": 4,
+      "text": "what standard speech transcription pipeline was used?",
+      "gold_concepts": [
+        "NaturalLanguageProcessing"
+      ],
+      "alias_concepts": [],
+      "predicted_concepts": [],
+      "supervised_scores": {
+        "BidirectionalLanguageModel": 0.0,
+        "ConvolutionalNeuralNetwork": 0.0,
+        "DiscourseAnalysis": 0.0,
+        "DistributionalSemantics": 0.0,
+        "InformationRetrieval": 0.0,
+        "LanguageModel": 0.0,
+        "MultilingualNaturalLanguageProcessing": 0.5245945453643799,
+        "NaturalLanguageProcessing": 0.3453902304172516,
+        "NeuralNetwork": 0.2192135453224182,
+        "ParallelCorpus": 0.0,
+        "QuestionAnswering": 0.21087929606437683,
+        "TextSummarization": 0.18291454017162323,
+        "TransferLearning": 0.0,
+        "WordEmbedding": 0.3524796962738037
+      }
+    },
+    {
+      "source_question_id": "fac052c4ad6b19a64d7db32fd08df38ad2e22118",
+      "paper_id": "1901.00439",
+      "fold": 4,
+      "text": "How do they evaluate their method?",
+      "gold_concepts": [],
+      "alias_concepts": [],
+      "predicted_concepts": [],
+      "supervised_scores": {
+        "BidirectionalLanguageModel": 0.0,
+        "ConvolutionalNeuralNetwork": 0.0,
+        "DiscourseAnalysis": 0.0,
+        "DistributionalSemantics": 0.0,
+        "InformationRetrieval": 0.0,
+        "LanguageModel": 0.0,
+        "MultilingualNaturalLanguageProcessing": 0.2687509059906006,
+        "NaturalLanguageProcessing": 0.195816770195961,
+        "NeuralNetwork": 0.12803056836128235,
+        "ParallelCorpus": 0.0,
+        "QuestionAnswering": 0.2206432819366455,
+        "TextSummarization": 0.2293206751346588,
+        "TransferLearning": 0.0,
+        "WordEmbedding": 0.1629672795534134
+      }
+    },
+    {
+      "source_question_id": "4d5e2a83b517e9c082421f11a68a604269642f29",
+      "paper_id": "1907.00854",
+      "fold": 1,
+      "text": "how many domains did they experiment with?",
+      "gold_concepts": [],
+      "alias_concepts": [],
+      "predicted_concepts": [],
+      "supervised_scores": {
+        "BidirectionalLanguageModel": 0.0,
+        "ConvolutionalNeuralNetwork": 0.0,
+        "DiscourseAnalysis": 0.0,
+        "DistributionalSemantics": 0.0,
+        "InformationRetrieval": 0.0,
+        "LanguageModel": 0.0,
+        "MultilingualNaturalLanguageProcessing": 0.256197988986969,
+        "NaturalLanguageProcessing": 0.2938617467880249,
+        "NeuralNetwork": 0.3145068883895874,
+        "ParallelCorpus": 0.0,
+        "QuestionAnswering": 0.0,
+        "TextSummarization": 0.0,
+        "TransferLearning": 0.0,
+        "WordEmbedding": 0.23517516255378723
+      }
+    },
+    {
+      "source_question_id": "2c3b2c3bab6d18cb0895462e3cfd91cd0dee7f7d",
+      "paper_id": "1907.00854",
+      "fold": 1,
+      "text": "what pretrained models were used?",
+      "gold_concepts": [],
+      "alias_concepts": [],
+      "predicted_concepts": [],
+      "supervised_scores": {
+        "BidirectionalLanguageModel": 0.0,
+        "ConvolutionalNeuralNetwork": 0.0,
+        "DiscourseAnalysis": 0.0,
+        "DistributionalSemantics": 0.0,
+        "InformationRetrieval": 0.0,
+        "LanguageModel": 0.0,
+        "MultilingualNaturalLanguageProcessing": 0.29193246364593506,
+        "NaturalLanguageProcessing": 0.23701252043247223,
+        "NeuralNetwork": 0.13048408925533295,
+        "ParallelCorpus": 0.0,
+        "QuestionAnswering": 0.0,
+        "TextSummarization": 0.0,
+        "TransferLearning": 0.0,
+        "WordEmbedding": 0.21144019067287445
+      }
+    },
+    {
+      "source_question_id": "06c340c7c2ad57d7621c3e8baba6a3d0ed9f4696",
+      "paper_id": "1808.03815",
+      "fold": 0,
+      "text": "Are there syntax-agnostic SRL models before?",
+      "gold_concepts": [
+        "NaturalLanguageProcessing"
+      ],
+      "alias_concepts": [
+        "SemanticRoleInduction"
+      ],
+      "predicted_concepts": [
+        "SemanticRoleInduction"
+      ],
+      "supervised_scores": {
+        "BidirectionalLanguageModel": 0.0,
+        "ConvolutionalNeuralNetwork": 0.0,
+        "DiscourseAnalysis": 0.0,
+        "DistributionalSemantics": 0.0,
+        "InformationRetrieval": 0.0,
+        "LanguageModel": 0.0,
+        "MultilingualNaturalLanguageProcessing": 0.4199333190917969,
+        "NaturalLanguageProcessing": 0.4723220765590668,
+        "NeuralNetwork": 0.17659641802310944,
+        "ParallelCorpus": 0.0,
+        "QuestionAnswering": 0.13782218098640442,
+        "TextSummarization": 0.2471763640642166,
+        "TransferLearning": 0.0,
+        "WordEmbedding": 0.38106176257133484
+      }
+    },
+    {
+      "source_question_id": "4c88441f8a1b5fce0ca55a6fced34f97260206ae",
+      "paper_id": "1808.03815",
+      "fold": 0,
+      "text": "What is the biaffine scorer?",
+      "gold_concepts": [],
+      "alias_concepts": [],
+      "predicted_concepts": [],
+      "supervised_scores": {
+        "BidirectionalLanguageModel": 0.0,
+        "ConvolutionalNeuralNetwork": 0.0,
+        "DiscourseAnalysis": 0.0,
+        "DistributionalSemantics": 0.0,
+        "InformationRetrieval": 0.0,
+        "LanguageModel": 0.0,
+        "MultilingualNaturalLanguageProcessing": 0.24904166162014008,
+        "NaturalLanguageProcessing": 0.292131632566452,
+        "NeuralNetwork": 0.1295061707496643,
+        "ParallelCorpus": 0.0,
+        "QuestionAnswering": 0.2887633144855499,
+        "TextSummarization": 0.19905704259872437,
+        "TransferLearning": 0.0,
+        "WordEmbedding": 0.18657518923282623
+      }
+    },
+    {
+      "source_question_id": "7c792cda220916df40edb3107e405c86455822ed",
+      "paper_id": "1606.04631",
+      "fold": 2,
+      "text": "what metrics were used for evaluation?",
+      "gold_concepts": [],
+      "alias_concepts": [],
+      "predicted_concepts": [],
+      "supervised_scores": {
+        "BidirectionalLanguageModel": 0.0,
+        "ConvolutionalNeuralNetwork": 0.0,
+        "DiscourseAnalysis": 0.0,
+        "DistributionalSemantics": 0.0,
+        "InformationRetrieval": 0.0,
+        "LanguageModel": 0.0,
+        "MultilingualNaturalLanguageProcessing": 0.29152530431747437,
+        "NaturalLanguageProcessing": 0.1240369901061058,
+        "NeuralNetwork": 0.20098501443862915,
+        "ParallelCorpus": 0.0,
+        "QuestionAnswering": 0.18328292667865753,
+        "TextSummarization": 0.4450569450855255,
+        "TransferLearning": 0.0,
+        "WordEmbedding": 0.16342633962631226
+      }
+    },
+    {
+      "source_question_id": "b3fcab006a9e51a0178a1f64d1d084a895bd8d5c",
+      "paper_id": "1606.04631",
+      "fold": 2,
+      "text": "what are the state of the art methods?",
+      "gold_concepts": [],
+      "alias_concepts": [],
+      "predicted_concepts": [],
+      "supervised_scores": {
+        "BidirectionalLanguageModel": 0.0,
+        "ConvolutionalNeuralNetwork": 0.0,
+        "DiscourseAnalysis": 0.0,
+        "DistributionalSemantics": 0.0,
+        "InformationRetrieval": 0.0,
+        "LanguageModel": 0.0,
+        "MultilingualNaturalLanguageProcessing": 0.16667774319648743,
+        "NaturalLanguageProcessing": 0.31389930844306946,
+        "NeuralNetwork": 0.14912739396095276,
+        "ParallelCorpus": 0.0,
+        "QuestionAnswering": 0.2275983989238739,
+        "TextSummarization": 0.3050471246242523,
+        "TransferLearning": 0.0,
+        "WordEmbedding": 0.23275470733642578
+      }
+    },
+    {
+      "source_question_id": "d10e256f2f724ad611fd3ff82ce88f7a78bad7f7",
+      "paper_id": "1909.12642",
+      "fold": 0,
+      "text": "What is the performance of the model for the German sub-task A?",
+      "gold_concepts": [],
+      "alias_concepts": [],
+      "predicted_concepts": [],
+      "supervised_scores": {
+        "BidirectionalLanguageModel": 0.0,
+        "ConvolutionalNeuralNetwork": 0.0,
+        "DiscourseAnalysis": 0.0,
+        "DistributionalSemantics": 0.0,
+        "InformationRetrieval": 0.0,
+        "LanguageModel": 0.0,
+        "MultilingualNaturalLanguageProcessing": 0.3506242036819458,
+        "NaturalLanguageProcessing": 0.28825485706329346,
+        "NeuralNetwork": 0.14423224329948425,
+        "ParallelCorpus": 0.0,
+        "QuestionAnswering": 0.3497421443462372,
+        "TextSummarization": 0.16823770105838776,
+        "TransferLearning": 0.0,
+        "WordEmbedding": 0.09506634622812271
+      }
+    },
+    {
+      "source_question_id": "dc69256bdfe76fa30ce4404b697f1bedfd6125fe",
+      "paper_id": "1909.12642",
+      "fold": 0,
+      "text": "What are the languages used to test the model?",
+      "gold_concepts": [
+        "MultilingualNaturalLanguageProcessing"
+      ],
+      "alias_concepts": [],
+      "predicted_concepts": [],
+      "supervised_scores": {
+        "BidirectionalLanguageModel": 0.0,
+        "ConvolutionalNeuralNetwork": 0.0,
+        "DiscourseAnalysis": 0.0,
+        "DistributionalSemantics": 0.0,
+        "InformationRetrieval": 0.0,
+        "LanguageModel": 0.0,
+        "MultilingualNaturalLanguageProcessing": 0.5603873133659363,
+        "NaturalLanguageProcessing": 0.3778724670410156,
+        "NeuralNetwork": 0.21694821119308472,
+        "ParallelCorpus": 0.0,
+        "QuestionAnswering": 0.07616501301527023,
+        "TextSummarization": 0.10868655890226364,
+        "TransferLearning": 0.0,
+        "WordEmbedding": 0.21801058948040009
+      }
+    },
+    {
+      "source_question_id": "3fb4334e5a4702acd44bd24eb1831bb7e9b98d31",
+      "paper_id": "1909.00361",
+      "fold": 3,
+      "text": "How big are the datasets used?",
+      "gold_concepts": [],
+      "alias_concepts": [],
+      "predicted_concepts": [],
+      "supervised_scores": {
+        "BidirectionalLanguageModel": 0.0,
+        "ConvolutionalNeuralNetwork": 0.0,
+        "DiscourseAnalysis": 0.0,
+        "DistributionalSemantics": 0.0,
+        "InformationRetrieval": 0.0,
+        "LanguageModel": 0.0,
+        "MultilingualNaturalLanguageProcessing": 0.12231007218360901,
+        "NaturalLanguageProcessing": 0.12497556954622269,
+        "NeuralNetwork": 0.23322415351867676,
+        "ParallelCorpus": 0.0,
+        "QuestionAnswering": 0.0,
+        "TextSummarization": 0.23422345519065857,
+        "TransferLearning": 0.0,
+        "WordEmbedding": 0.15805044770240784
+      }
+    },
+    {
+      "source_question_id": "a9acd1af4a869c17b95ec489cdb1ba7d76715ea4",
+      "paper_id": "1909.00361",
+      "fold": 3,
+      "text": "Is this a span-based (extractive) QA task?",
+      "gold_concepts": [
+        "QuestionAnswering"
+      ],
+      "alias_concepts": [
+        "QuestionAnswering"
+      ],
+      "predicted_concepts": [
+        "QuestionAnswering"
+      ],
+      "supervised_scores": {
+        "BidirectionalLanguageModel": 0.0,
+        "ConvolutionalNeuralNetwork": 0.0,
+        "DiscourseAnalysis": 0.0,
+        "DistributionalSemantics": 0.0,
+        "InformationRetrieval": 0.0,
+        "LanguageModel": 0.0,
+        "MultilingualNaturalLanguageProcessing": 0.17433461546897888,
+        "NaturalLanguageProcessing": 0.41819655895233154,
+        "NeuralNetwork": 0.17949643731117249,
+        "ParallelCorpus": 0.0,
+        "QuestionAnswering": 0.0,
+        "TextSummarization": 0.1791420578956604,
+        "TransferLearning": 0.0,
+        "WordEmbedding": 0.19566139578819275
+      }
+    },
+    {
+      "source_question_id": "1244cf6d75e3aa6d605a0f4b141c015923a3f2e7",
+      "paper_id": "1909.09268",
+      "fold": 1,
+      "text": "What is the criteria for a good metric?",
+      "gold_concepts": [],
+      "alias_concepts": [],
+      "predicted_concepts": [],
+      "supervised_scores": {
+        "BidirectionalLanguageModel": 0.0,
+        "ConvolutionalNeuralNetwork": 0.0,
+        "DiscourseAnalysis": 0.0,
+        "DistributionalSemantics": 0.0,
+        "InformationRetrieval": 0.0,
+        "LanguageModel": 0.0,
+        "MultilingualNaturalLanguageProcessing": 0.20231278240680695,
+        "NaturalLanguageProcessing": 0.19611240923404694,
+        "NeuralNetwork": 0.20329362154006958,
+        "ParallelCorpus": 0.0,
+        "QuestionAnswering": 0.0,
+        "TextSummarization": 0.0,
+        "TransferLearning": 0.0,
+        "WordEmbedding": 0.14360424876213074
+      }
+    },
+    {
+      "source_question_id": "c8b9b962e4d40c50150b2f8873a4004f25398464",
+      "paper_id": "1909.09268",
+      "fold": 1,
+      "text": "What are the three limitations?",
+      "gold_concepts": [],
+      "alias_concepts": [],
+      "predicted_concepts": [],
+      "supervised_scores": {
+        "BidirectionalLanguageModel": 0.0,
+        "ConvolutionalNeuralNetwork": 0.0,
+        "DiscourseAnalysis": 0.0,
+        "DistributionalSemantics": 0.0,
+        "InformationRetrieval": 0.0,
+        "LanguageModel": 0.0,
+        "MultilingualNaturalLanguageProcessing": 0.16097982227802277,
+        "NaturalLanguageProcessing": 0.2303338646888733,
+        "NeuralNetwork": 0.14028723537921906,
+        "ParallelCorpus": 0.0,
+        "QuestionAnswering": 0.0,
+        "TextSummarization": 0.0,
+        "TransferLearning": 0.0,
+        "WordEmbedding": 0.14435304701328278
+      }
+    },
+    {
+      "source_question_id": "0b411f942c6e2e34e3d81cc855332f815b6bc123",
+      "paper_id": "1909.08752",
+      "fold": 3,
+      "text": "What's the method used here?",
+      "gold_concepts": [],
+      "alias_concepts": [],
+      "predicted_concepts": [],
+      "supervised_scores": {
+        "BidirectionalLanguageModel": 0.0,
+        "ConvolutionalNeuralNetwork": 0.0,
+        "DiscourseAnalysis": 0.0,
+        "DistributionalSemantics": 0.0,
+        "InformationRetrieval": 0.0,
+        "LanguageModel": 0.0,
+        "MultilingualNaturalLanguageProcessing": 0.230145663022995,
+        "NaturalLanguageProcessing": 0.34348025918006897,
+        "NeuralNetwork": 0.2447347342967987,
+        "ParallelCorpus": 0.0,
+        "QuestionAnswering": 0.0,
+        "TextSummarization": 0.2245534211397171,
+        "TransferLearning": 0.0,
+        "WordEmbedding": 0.19735558331012726
+      }
+    },
+    {
+      "source_question_id": "54c9147ffd57f1f7238917b013444a9743f0deb8",
+      "paper_id": "1908.05969",
+      "fold": 4,
+      "text": "Which are the sequence model architectures this method can be transferred across?",
+      "gold_concepts": [],
+      "alias_concepts": [],
+      "predicted_concepts": [],
+      "supervised_scores": {
+        "BidirectionalLanguageModel": 0.0,
+        "ConvolutionalNeuralNetwork": 0.0,
+        "DiscourseAnalysis": 0.0,
+        "DistributionalSemantics": 0.0,
+        "InformationRetrieval": 0.0,
+        "LanguageModel": 0.0,
+        "MultilingualNaturalLanguageProcessing": 0.3168788254261017,
+        "NaturalLanguageProcessing": 0.35383540391921997,
+        "NeuralNetwork": 0.16183556616306305,
+        "ParallelCorpus": 0.0,
+        "QuestionAnswering": 0.27047595381736755,
+        "TextSummarization": 0.1518877148628235,
+        "TransferLearning": 0.0,
+        "WordEmbedding": 0.09362830221652985
+      }
+    },
+    {
+      "source_question_id": "16f71391335a5d574f01235a9c37631893cd3bb0",
+      "paper_id": "1908.05969",
+      "fold": 4,
+      "text": " What percentage of improvement in inference speed is obtained by the proposed method over the newest state-of-the-art methods?",
+      "gold_concepts": [],
+      "alias_concepts": [],
+      "predicted_concepts": [],
+      "supervised_scores": {
+        "BidirectionalLanguageModel": 0.0,
+        "ConvolutionalNeuralNetwork": 0.0,
+        "DiscourseAnalysis": 0.0,
+        "DistributionalSemantics": 0.0,
+        "InformationRetrieval": 0.0,
+        "LanguageModel": 0.0,
+        "MultilingualNaturalLanguageProcessing": 0.3002128601074219,
+        "NaturalLanguageProcessing": 0.21592743694782257,
+        "NeuralNetwork": 0.1951986700296402,
+        "ParallelCorpus": 0.0,
+        "QuestionAnswering": 0.47417885065078735,
+        "TextSummarization": 0.30679941177368164,
+        "TransferLearning": 0.0,
+        "WordEmbedding": 0.12133341282606125
+      }
+    },
+    {
+      "source_question_id": "1f1a9f2dd8c4c10b671cb8affe56e181948e229e",
+      "paper_id": "1907.12108",
+      "fold": 0,
+      "text": "What pretrained LM is used?",
+      "gold_concepts": [
+        "LanguageModel"
+      ],
+      "alias_concepts": [
+        "LanguageModel"
+      ],
+      "predicted_concepts": [
+        "LanguageModel"
+      ],
+      "supervised_scores": {
+        "BidirectionalLanguageModel": 0.0,
+        "ConvolutionalNeuralNetwork": 0.0,
+        "DiscourseAnalysis": 0.0,
+        "DistributionalSemantics": 0.0,
+        "InformationRetrieval": 0.0,
+        "LanguageModel": 0.0,
+        "MultilingualNaturalLanguageProcessing": 0.1540810614824295,
+        "NaturalLanguageProcessing": 0.2882528305053711,
+        "NeuralNetwork": 0.16727817058563232,
+        "ParallelCorpus": 0.0,
+        "QuestionAnswering": 0.18073275685310364,
+        "TextSummarization": 0.14552074670791626,
+        "TransferLearning": 0.0,
+        "WordEmbedding": 0.2827835977077484
+      }
+    },
+    {
+      "source_question_id": "39a450ac15688199575798e72a2cc016ef4316b5",
+      "paper_id": "1712.03556",
+      "fold": 1,
+      "text": "How much performance improvements they achieve on SQuAD?",
+      "gold_concepts": [
+        "QuestionAnswering"
+      ],
+      "alias_concepts": [
+        "MachineReadingComprehension"
+      ],
+      "predicted_concepts": [
+        "MachineReadingComprehension"
+      ],
+      "supervised_scores": {
+        "BidirectionalLanguageModel": 0.0,
+        "ConvolutionalNeuralNetwork": 0.0,
+        "DiscourseAnalysis": 0.0,
+        "DistributionalSemantics": 0.0,
+        "InformationRetrieval": 0.0,
+        "LanguageModel": 0.0,
+        "MultilingualNaturalLanguageProcessing": 0.18564040958881378,
+        "NaturalLanguageProcessing": 0.18406954407691956,
+        "NeuralNetwork": 0.18806250393390656,
+        "ParallelCorpus": 0.0,
+        "QuestionAnswering": 0.0,
+        "TextSummarization": 0.0,
+        "TransferLearning": 0.0,
+        "WordEmbedding": 0.1495627760887146
+      }
+    }
+  ]
+}
