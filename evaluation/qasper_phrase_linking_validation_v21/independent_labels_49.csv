@@ -1,0 +1,50 @@
+review_id,reviewer_concepts,reviewer_none,reviewer_notes
+CV-001,,1,Recall errors in an unspecified mapping do not match a catalog concept.
+CV-002,MultilingualNaturalLanguageProcessing,0,The question explicitly compares annotations across different languages.
+CV-003,NaturalLanguageProcessing,0,UD treebanks are explicitly linguistic dependency resources within NLP.
+CV-004,MultilingualNaturalLanguageProcessing,0,Validation over multiple languages directly expresses multilingual NLP.
+CV-005,DiscourseAnalysis,0,Dialogue acts are explicit discourse-level units.
+CV-006,DiscourseAnalysis,0,Dialogue act recognition is directly a discourse-analysis task.
+CV-007,,1,The matching features are unspecified in the question.
+CV-008,,1,The question asks only which datasets were used.
+CV-009,,1,Manual evaluation is not a catalog concept.
+CV-010,,1,Embeddings are generic and the question does not specify word embeddings.
+CV-011,,1,NED and emotional bond correlation do not match a catalog concept.
+CV-012,LongShortTermMemory|SentimentAnalysis,0,BiLSTM and sentiment analysis are both explicitly named.
+CV-013,,1,Model parameter count has no catalog match.
+CV-014,,1,The question asks only which datasets were used.
+CV-015,,1,The question asks only which dataset was used.
+CV-016,BidirectionalLanguageModel|NaturalLanguageProcessing|TransferLearning,0,BERT NLP and task-specific fine-tuning are all explicit.
+CV-017,,1,The question asks only for the training dataset.
+CV-018,,1,Emergency categorization does not directly identify a catalog concept.
+CV-019,,1,Tweet authorship provenance is not author profiling.
+CV-020,,1,English evaluation domains do not by themselves express multilingual NLP.
+CV-021,,1,The shared components of the joint model are unspecified in the question.
+CV-022,DatasetBias,0,Intent-label imbalance is an explicit systematic dataset imbalance.
+CV-023,,1,Interpretive bias is not the catalog concept dataset bias.
+CV-024,,1,Interpretive bias is not the catalog concept dataset bias.
+CV-025,,1,Interpretability evaluation is not a catalog concept.
+CV-026,,1,DCG denotes definite clause grammar and is not probabilistic context-free grammar.
+CV-027,NaturalLanguageProcessing,0,Tenses modal verbs and negation are explicit natural-language phenomena.
+CV-028,,1,Training-domain performance has no catalog match.
+CV-029,TransferLearning,0,Fine-tuning a model on an end task directly expresses transfer learning.
+CV-030,,1,The question asks only which datasets were used.
+CV-031,,1,Comparison with other teams has no catalog match.
+CV-032,,1,The question asks only which datasets were used.
+CV-033,,1,The evaluation metrics are unspecified in the question.
+CV-034,,1,The models' prediction target is unspecified in the question.
+CV-035,,1,The baseline model is unspecified in the question.
+CV-036,,1,The main contribution is wholly unspecified in the question.
+CV-037,NaturalLanguageProcessing,0,Slot filling is explicitly a natural-language processing task but is not necessarily open information extraction.
+CV-038,NaturalLanguageProcessing,0,Corpus normalization is explicitly linguistic text processing.
+CV-039,MultilingualNaturalLanguageProcessing,0,Joint character representations across multiple languages directly express multilingual NLP.
+CV-040,,1,The question asks only which dataset was used.
+CV-041,NaturalLanguageProcessing,0,Coreference resolution is explicitly an NLP task.
+CV-042,,1,The performance metrics are unspecified in the question.
+CV-043,,1,The games used for testing do not match a catalog concept.
+CV-044,TransferLearning,0,Domain knowledge transfer is explicitly named; knowledge graph itself is not a catalog concept.
+CV-045,,1,The question asks only which datasets were used.
+CV-046,,1,Dataset size has no catalog match.
+CV-047,NaturalLanguageProcessing,0,Completing a user query prefix is directly a language-processing task and is not image captioning.
+CV-048,SupervisedLearning,0,Logical-form supervision directly expresses supervised learning.
+CV-049,,1,The distinction between test subsets has no catalog match.
