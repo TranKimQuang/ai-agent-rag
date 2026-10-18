@@ -1,0 +1,73 @@
+review_id,reviewer_concepts,reviewer_none,reviewer_notes
+CV-001,SentimentAnalysis,0,Sentiment is explicit in the named corpus.
+CV-002,,1,SemEval dataset is not a catalog concept and the question names no task.
+CV-003,,1,The question asks generically for systems.
+CV-004,MultitaskLearning,0,Multi-tasking is a direct alias of multitask learning.
+CV-005,,1,The question asks only for comparative performance.
+CV-006,,1,The question asks generically for a previous approach.
+CV-007,CausalityExtraction|NeuralNetwork,0,Causality inference and a Relation network are both explicit.
+CV-008,,1,Back-translation is not itself a catalog concept and the question does not establish neural machine translation.
+CV-009,,1,Dataset-specific rules do not match a catalog concept.
+CV-010,,1,The number of rules does not match a catalog concept.
+CV-011,,1,The question asks only which datasets were used.
+CV-012,NaturalLanguageProcessing,0,Dependency parsing is a canonical NLP task.
+CV-013,NeuralNetwork,0,Network components directly denote parts of a network architecture.
+CV-014,,1,PTB and CTB performance is requested without a catalog concept in the question.
+CV-015,NaturalLanguageProcessing,0,Constituency and dependency parsing are explicit NLP tasks.
+CV-016,,1,The question refers only to an unspecified previous model.
+CV-017,,1,The question asks only which dataset was used.
+CV-018,,1,Dataset size does not match a catalog concept.
+CV-019,,1,The collection method is not stated in the question.
+CV-020,,1,The baseline is unspecified in the question.
+CV-021,DatasetBias,0,Counterfactual data augmentation is explicitly framed as tackling bias in data.
+CV-022,,1,Targeted data collection has no matching catalog concept in the question.
+CV-023,,1,Placement in a shared-task evaluation has no catalog match.
+CV-024,,1,Continued pre-training alone does not explicitly state transfer learning.
+CV-025,BidirectionalLanguageModel,0,BERT is explicitly named and maps clearly to a bidirectional language model.
+CV-026,MultitaskLearning,0,Multi-task learning is explicitly named.
+CV-027,,1,Training and test dataset size has no catalog match.
+CV-028,DistributionalSemantics,0,Context-based similarity between words directly expresses the distributional view of meaning.
+CV-029,,1,Embeddings are generic; the question does not specify word embeddings.
+CV-030,,1,A model trained only on text is not by itself a catalog concept.
+CV-031,,1,The question asks only for the dataset source.
+CV-032,,1,Data augmentation is not a catalog concept and no specific technique appears in the question.
+CV-033,,1,The evaluation method is unspecified in the question.
+CV-034,,1,Clustering is not a catalog concept and the question does not name topic modeling.
+CV-035,NaturalLanguageProcessing,0,Annotation of lexical senses is clearly an NLP task.
+CV-036,,1,Extrinsic evaluation is not a catalog concept.
+CV-037,,1,Robustness demonstration is not a catalog concept.
+CV-038,,1,Baseline and classification systems are generic references.
+CV-039,ArgumentMining,0,EAU denotes an elementary argumentative unit and is an explicit argument component.
+CV-040,,1,Category balance alone does not explicitly express dataset bias.
+CV-041,SupervisedLearning,0,Supervised methods directly express supervised learning.
+CV-042,,1,Dataset categories have no catalog match.
+CV-043,,1,The experiments are unspecified in the question.
+CV-044,,1,The highlighted opportunities are unspecified in the question.
+CV-045,,1,Discussion quality alone does not directly express discourse analysis.
+CV-046,Crowdsourcing,0,Crowdsourcing is explicitly named.
+CV-047,Crowdsourcing,0,Crowdsourcing is explicitly named.
+CV-048,,1,The question does not state how collection was performed.
+CV-049,,1,Asking which language agents use does not itself express multilingual NLP.
+CV-050,,1,The evaluation metrics are unspecified in the question.
+CV-051,,1,Face and audio analysis has no matching catalog concept.
+CV-052,,1,The baseline method is unspecified in the question.
+CV-053,,1,Emotion detection is distinct from the catalog concept sentiment analysis.
+CV-054,,1,Macro F1 is not Evidence F1 and has no catalog match.
+CV-055,,1,Annotation evaluation is generic.
+CV-056,,1,Aesthetic emotion is not a catalog concept.
+CV-057,,1,The challenge metrics are unspecified in the question.
+CV-058,,1,Visual Dialog and its winning model are not catalog concepts.
+CV-059,,1,Ensemble and consensus dropout fusion are not catalog concepts.
+CV-060,,1,Challenge dataset size has no catalog match.
+CV-061,LongShortTermMemory,0,LSTM is explicitly named and is the standard acronym for long short-term memory.
+CV-062,,1,PIEWi annotation does not directly express a catalog concept.
+CV-063,,1,The methods are unspecified in the question.
+CV-064,GrammaticalErrorCorrection,0,Error correction in specialized language corpora clearly denotes linguistic error correction.
+CV-065,LanguageModel,0,Language model is explicitly named.
+CV-066,,1,The compared baselines are unspecified in the question.
+CV-067,NaturalLanguageProcessing,0,Structuring clinical text is clearly a natural-language processing task.
+CV-068,,1,The unified tasks are unspecified in the question.
+CV-069,,1,State-of-the-art measures are generic and unnamed.
+CV-070,,1,Controversial topics alone do not directly express computational social science.
+CV-071,,1,The question asks only which datasets were used.
+CV-072,,1,A social-media platform alone does not directly express a catalog concept.

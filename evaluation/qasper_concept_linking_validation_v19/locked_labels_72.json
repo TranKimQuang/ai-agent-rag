@@ -1,0 +1,473 @@
+[
+  {
+    "source_question_id": "3e839783d8a4f2fe50ece4a9b476546f0842b193",
+    "text": "What was their result on Stance Sentiment Emotion Corpus?",
+    "gold_concepts": [
+      "SentimentAnalysis"
+    ],
+    "review_id": "CV-001"
+  },
+  {
+    "source_question_id": "2869d19e54fb554fcf1d6888e526135803bb7d75",
+    "text": "What performance did they obtain on the SemEval dataset?",
+    "gold_concepts": [],
+    "review_id": "CV-002"
+  },
+  {
+    "source_question_id": "894c086a2cbfe64aa094c1edabbb1932a3d7c38a",
+    "text": "What are the state-of-the-art systems?",
+    "gold_concepts": [],
+    "review_id": "CV-003"
+  },
+  {
+    "source_question_id": "722e9b6f55971b4c48a60f7a9fe37372f5bf3742",
+    "text": "How is multi-tasking performed?",
+    "gold_concepts": [
+      "MultitaskLearning"
+    ],
+    "review_id": "CV-004"
+  },
+  {
+    "source_question_id": "d4ce220dcdabcf9ebf4da9bdd3ad778e2d79fc07",
+    "text": "What performance did proposed method achieve, how much better is than previous state-of-the-art?",
+    "gold_concepts": [],
+    "review_id": "CV-005"
+  },
+  {
+    "source_question_id": "c806e891324af5d10a72c3b4b9b91177ae6446fb",
+    "text": "What was previous state-of-the-art approach?",
+    "gold_concepts": [],
+    "review_id": "CV-006"
+  },
+  {
+    "source_question_id": "e1132564b0dd916a522e7690bc7719d2bba3fe68",
+    "text": "How is Relation network used to infer causality at segment level?",
+    "gold_concepts": [
+      "CausalityExtraction",
+      "NeuralNetwork"
+    ],
+    "review_id": "CV-007"
+  },
+  {
+    "source_question_id": "d7aed39c359fd381495b12996c4dfc1d3da38ed5",
+    "text": "How is the back-translation model trained?",
+    "gold_concepts": [],
+    "review_id": "CV-008"
+  },
+  {
+    "source_question_id": "9c423e3b44e3acc2d4b0606688d4ac9d6285ed0f",
+    "text": "Are the rules dataset specific?",
+    "gold_concepts": [],
+    "review_id": "CV-009"
+  },
+  {
+    "source_question_id": "b6fb72437e3779b0e523b9710e36b966c23a2a40",
+    "text": "How many rules had to be defined?",
+    "gold_concepts": [],
+    "review_id": "CV-010"
+  },
+  {
+    "source_question_id": "e6469135e0273481cf11a6c737923630bc7ccfca",
+    "text": "What datasets are used in this paper?",
+    "gold_concepts": [],
+    "review_id": "CV-011"
+  },
+  {
+    "source_question_id": "42be49b883eba268e3dbc5c3ff4631442657dcbb",
+    "text": "How is dependency parsing empirically verified?",
+    "gold_concepts": [
+      "NaturalLanguageProcessing"
+    ],
+    "review_id": "CV-012"
+  },
+  {
+    "source_question_id": "8d4f0815f8a23fe45c298c161fc7a27f3bb0d338",
+    "text": "How are different network components evaluated?",
+    "gold_concepts": [
+      "NeuralNetwork"
+    ],
+    "review_id": "CV-013"
+  },
+  {
+    "source_question_id": "a6665074b067abb2676d5464f36b2cb07f6919d3",
+    "text": "What are the performances obtained for PTB and CTB?",
+    "gold_concepts": [],
+    "review_id": "CV-014"
+  },
+  {
+    "source_question_id": "b0fbd4b0f02b877a0d3df1d8ccc47d90dd49147c",
+    "text": "What are the models used to perform constituency and dependency parsing?",
+    "gold_concepts": [
+      "NaturalLanguageProcessing"
+    ],
+    "review_id": "CV-015"
+  },
+  {
+    "source_question_id": "792d7b579cbf7bfad8fe125b0d66c2059a174cf9",
+    "text": "What is the previous work's model?",
+    "gold_concepts": [],
+    "review_id": "CV-016"
+  },
+  {
+    "source_question_id": "44a2a8e187f8adbd7d63a51cd2f9d2d324d0c98d",
+    "text": "What dataset is used?",
+    "gold_concepts": [],
+    "review_id": "CV-017"
+  },
+  {
+    "source_question_id": "5908d7fb6c48f975c5dfc5b19bb0765581df2b25",
+    "text": "How big is the dataset?",
+    "gold_concepts": [],
+    "review_id": "CV-018"
+  },
+  {
+    "source_question_id": "cca3301f20db16f82b5d65a102436bebc88a2026",
+    "text": "How is the dataset collected?",
+    "gold_concepts": [],
+    "review_id": "CV-019"
+  },
+  {
+    "source_question_id": "d0b005cb7ed6d4c307745096b2ed8762612480d2",
+    "text": "What baseline is used to compare the experimental results against?",
+    "gold_concepts": [],
+    "review_id": "CV-020"
+  },
+  {
+    "source_question_id": "9d9b11f86a96c6d3dd862453bf240d6e018e75af",
+    "text": "How does counterfactual data augmentation aim to tackle bias?",
+    "gold_concepts": [
+      "DatasetBias"
+    ],
+    "review_id": "CV-021"
+  },
+  {
+    "source_question_id": "415f35adb0ef746883fb9c33aa53b79cc4e723c3",
+    "text": "In the targeted data collection approach, what type of data is targetted?",
+    "gold_concepts": [],
+    "review_id": "CV-022"
+  },
+  {
+    "source_question_id": "18412237f7faafc6befe975d5bcd348e2b499b55",
+    "text": "Where did this model place in the final evaluation of the shared task?",
+    "gold_concepts": [],
+    "review_id": "CV-023"
+  },
+  {
+    "source_question_id": "02945c85d6cc4cdd1757b2f2bfa5e92ee4ed14a0",
+    "text": "What in-domain data is used to continue pre-training?",
+    "gold_concepts": [],
+    "review_id": "CV-024"
+  },
+  {
+    "source_question_id": "6e51af9088c390829703c6fa966e98c3a53114c1",
+    "text": "What dialect is used in the Google BERT model and what is used in the task data?",
+    "gold_concepts": [
+      "BidirectionalLanguageModel"
+    ],
+    "review_id": "CV-025"
+  },
+  {
+    "source_question_id": "07ee4e0277ad1083270131d32a71c3fe062a916d",
+    "text": "What are the tasks used in the mulit-task learning setup?",
+    "gold_concepts": [
+      "MultitaskLearning"
+    ],
+    "review_id": "CV-026"
+  },
+  {
+    "source_question_id": "07c59824f5e7c5399d15491da3543905cfa5f751",
+    "text": "How big is dataset used for training/testing?",
+    "gold_concepts": [],
+    "review_id": "CV-027"
+  },
+  {
+    "source_question_id": "77f04cd553df691e8f4ecbe19da89bc32c7ac734",
+    "text": "Is there any example where geometric property is visible for context similarity between words?",
+    "gold_concepts": [
+      "DistributionalSemantics"
+    ],
+    "review_id": "CV-028"
+  },
+  {
+    "source_question_id": "728a55c0f628f2133306b6bd88af00eb54017b12",
+    "text": "What geometric properties do embeddings display?",
+    "gold_concepts": [],
+    "review_id": "CV-029"
+  },
+  {
+    "source_question_id": "d5498d16e8350c9785782b57b1e5a82212dbdaad",
+    "text": "How accurate is model trained on text exclusively?",
+    "gold_concepts": [],
+    "review_id": "CV-030"
+  },
+  {
+    "source_question_id": "5f0bb32d70ee8e4c4c59dc5c193bc0735fd751cc",
+    "text": "Where is the dataset from?",
+    "gold_concepts": [],
+    "review_id": "CV-031"
+  },
+  {
+    "source_question_id": "a88a454ac1a1230263166fd824e5daebb91cb05a",
+    "text": "What data augmentation techniques are used?",
+    "gold_concepts": [],
+    "review_id": "CV-032"
+  },
+  {
+    "source_question_id": "a6b99b7f32fb79a7db996fef76e9d83def05c64b",
+    "text": "How are the models evaluated?",
+    "gold_concepts": [],
+    "review_id": "CV-033"
+  },
+  {
+    "source_question_id": "d94ac550dfdb9e4bbe04392156065c072b9d75e1",
+    "text": "Is the method described in this work a clustering-based method?",
+    "gold_concepts": [],
+    "review_id": "CV-034"
+  },
+  {
+    "source_question_id": "eeb6e0caa4cf5fdd887e1930e22c816b99306473",
+    "text": "How are the different senses annotated/labeled? ",
+    "gold_concepts": [
+      "NaturalLanguageProcessing"
+    ],
+    "review_id": "CV-035"
+  },
+  {
+    "source_question_id": "3c0eaa2e24c1442d988814318de5f25729696ef5",
+    "text": "Was any extrinsic evaluation carried out?",
+    "gold_concepts": [],
+    "review_id": "CV-036"
+  },
+  {
+    "source_question_id": "fb2593de1f5cc632724e39d92e4dd82477f06ea1",
+    "text": "How do they demonstrate the robustness of their results?",
+    "gold_concepts": [],
+    "review_id": "CV-037"
+  },
+  {
+    "source_question_id": "476d0b5579deb9199423bb843e584e606d606bc7",
+    "text": "What baseline and classification systems are used in experiments?",
+    "gold_concepts": [],
+    "review_id": "CV-038"
+  },
+  {
+    "source_question_id": "eddabb24bc6de6451bcdaa7940f708e925010912",
+    "text": "How are the EAU text spans annotated?",
+    "gold_concepts": [
+      "ArgumentMining"
+    ],
+    "review_id": "CV-039"
+  },
+  {
+    "source_question_id": "4e8233826f9e04f5763b307988298e73f841af74",
+    "text": "Is the dataset balanced across categories?",
+    "gold_concepts": [],
+    "review_id": "CV-040"
+  },
+  {
+    "source_question_id": "adae0c32a69928929101d0ba37d36c0a45298ad6",
+    "text": "What supervised methods are used?",
+    "gold_concepts": [
+      "SupervisedLearning"
+    ],
+    "review_id": "CV-041"
+  },
+  {
+    "source_question_id": "1ccfd288f746c35006f5847297ab52020729f523",
+    "text": "What categories does the dataset come from?",
+    "gold_concepts": [],
+    "review_id": "CV-042"
+  },
+  {
+    "source_question_id": "65ebed1971dca992c3751ed985fbe294cbe140d7",
+    "text": "what experiments are conducted?",
+    "gold_concepts": [],
+    "review_id": "CV-043"
+  },
+  {
+    "source_question_id": "b24b56ccc5d4b04fee85579b2dee77306ec829b2",
+    "text": "what opportunities are highlighted?",
+    "gold_concepts": [],
+    "review_id": "CV-044"
+  },
+  {
+    "source_question_id": "3bfdbf2d4d68e01bef39dc3371960e25489e510e",
+    "text": "how do they measure discussion quality?",
+    "gold_concepts": [],
+    "review_id": "CV-045"
+  },
+  {
+    "source_question_id": "9378b41f7e888e78d667e9763883dd64ddb48728",
+    "text": "do they use a crowdsourcing platform?",
+    "gold_concepts": [
+      "Crowdsourcing"
+    ],
+    "review_id": "CV-046"
+  },
+  {
+    "source_question_id": "0cd0755ac458c3bafbc70e4268c1e37b87b9721b",
+    "text": "Did the authors use crowdsourcing platforms?",
+    "gold_concepts": [
+      "Crowdsourcing"
+    ],
+    "review_id": "CV-047"
+  },
+  {
+    "source_question_id": "c1ce652085ef9a7f02cb5c363ce2b8757adbe213",
+    "text": "How was the dataset collected?",
+    "gold_concepts": [],
+    "review_id": "CV-048"
+  },
+  {
+    "source_question_id": "96be67b1729c3a91ddf0ec7d6a80f2aa75e30a30",
+    "text": "What language do the agents talk in?",
+    "gold_concepts": [],
+    "review_id": "CV-049"
+  },
+  {
+    "source_question_id": "b85ab5f862221fac819cf2fef239bcb08b9cafc6",
+    "text": "What evaluation metrics did the authors look at?",
+    "gold_concepts": [],
+    "review_id": "CV-050"
+  },
+  {
+    "source_question_id": "9b1d789398f1f1a603e4741a5eee63ccaf0d4a4f",
+    "text": "How is face and audio data analysis evaluated?",
+    "gold_concepts": [],
+    "review_id": "CV-051"
+  },
+  {
+    "source_question_id": "00bcdffff7e055f99aaf1b05cf41c98e2748e948",
+    "text": "What is the baseline method for the task?",
+    "gold_concepts": [],
+    "review_id": "CV-052"
+  },
+  {
+    "source_question_id": "f92ee3c5fce819db540bded3cfcc191e21799cb1",
+    "text": "What are the emotion detection tools used for audio and face input?",
+    "gold_concepts": [],
+    "review_id": "CV-053"
+  },
+  {
+    "source_question_id": "3a9d391d25cde8af3334ac62d478b36b30079d74",
+    "text": "Does the paper report macro F1?",
+    "gold_concepts": [],
+    "review_id": "CV-054"
+  },
+  {
+    "source_question_id": "8d8300d88283c73424c8f301ad9fdd733845eb47",
+    "text": "How is the annotation experiment evaluated?",
+    "gold_concepts": [],
+    "review_id": "CV-055"
+  },
+  {
+    "source_question_id": "48b12eb53e2d507343f19b8a667696a39b719807",
+    "text": "What are the aesthetic emotions formalized?",
+    "gold_concepts": [],
+    "review_id": "CV-056"
+  },
+  {
+    "source_question_id": "68edb6a483cdec669c9130c928994654f1c19839",
+    "text": "What metrics are used in challenge?",
+    "gold_concepts": [],
+    "review_id": "CV-057"
+  },
+  {
+    "source_question_id": "cee29acec4da1b247795daa4e2e82ef8a7b25a64",
+    "text": "What model was winner of the Visual Dialog challenge 2018?",
+    "gold_concepts": [],
+    "review_id": "CV-058"
+  },
+  {
+    "source_question_id": "7e54c7751dbd50d9d14b9f8b13dc94947a46e42f",
+    "text": "Which method for integration peforms better ensemble or consensus dropout fusion with shared parameters?",
+    "gold_concepts": [],
+    "review_id": "CV-059"
+  },
+  {
+    "source_question_id": "d3bcfcea00dec99fa26283cdd74ba565bc907632",
+    "text": "How big is dataset for this challenge?",
+    "gold_concepts": [],
+    "review_id": "CV-060"
+  },
+  {
+    "source_question_id": "44104668796a6ca10e2ea3ecf706541da1cec2cf",
+    "text": "What is the difference in performance between the interpretable system (e.g. vectors and cosine distance) and LSTM with ELMo system?",
+    "gold_concepts": [
+      "LongShortTermMemory"
+    ],
+    "review_id": "CV-061"
+  },
+  {
+    "source_question_id": "6a31bd676054222faf46229fc1d283322478a020",
+    "text": "How is PIEWi annotated?",
+    "gold_concepts": [],
+    "review_id": "CV-062"
+  },
+  {
+    "source_question_id": "e4d16050f0b457c93e590261732a20401def9cde",
+    "text": "What methods are tested in PIEWi?",
+    "gold_concepts": [],
+    "review_id": "CV-063"
+  },
+  {
+    "source_question_id": "b25e7137f49f77e7e67ee2f40ca585d3a377f8b5",
+    "text": "Which specific error correction solutions have been proposed for specialized corpora in the past?",
+    "gold_concepts": [
+      "GrammaticalErrorCorrection"
+    ],
+    "review_id": "CV-064"
+  },
+  {
+    "source_question_id": "71a7153e12879defa186bfb6dbafe79c74265e10",
+    "text": "What data is the language model pretrained on?",
+    "gold_concepts": [
+      "LanguageModel"
+    ],
+    "review_id": "CV-065"
+  },
+  {
+    "source_question_id": "85d1831c28d3c19c84472589a252e28e9884500f",
+    "text": "What baselines is the proposed model compared against?",
+    "gold_concepts": [],
+    "review_id": "CV-066"
+  },
+  {
+    "source_question_id": "1959e0ebc21fafdf1dd20c6ea054161ba7446f61",
+    "text": "How is the clinical text structuring task defined?",
+    "gold_concepts": [
+      "NaturalLanguageProcessing"
+    ],
+    "review_id": "CV-067"
+  },
+  {
+    "source_question_id": "77cf4379106463b6ebcb5eb8fa5bb25450fa5fb8",
+    "text": "What are the specific tasks being unified?",
+    "gold_concepts": [],
+    "review_id": "CV-068"
+  },
+  {
+    "source_question_id": "bf25a202ac713a34e09bf599b3601058d9cace46",
+    "text": "What are the state of the art measures?",
+    "gold_concepts": [],
+    "review_id": "CV-069"
+  },
+  {
+    "source_question_id": "abebf9c8c9cf70ae222ecb1d3cabf8115b9fc8ac",
+    "text": "What controversial topics are experimented with?",
+    "gold_concepts": [],
+    "review_id": "CV-070"
+  },
+  {
+    "source_question_id": "2df910c9806f0c379d7bb1bc2be2610438e487dc",
+    "text": "What datasets did they use?",
+    "gold_concepts": [],
+    "review_id": "CV-071"
+  },
+  {
+    "source_question_id": "a2a3af59f3f18a28eb2ca7055e1613948f395052",
+    "text": "What social media platform is observed?",
+    "gold_concepts": [],
+    "review_id": "CV-072"
+  }
+]

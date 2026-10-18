@@ -39,8 +39,18 @@
     "labeling_packet_sha256": "b52eac6bcb97e3d3163aaf1ff3bf91e21f3998f330b243b0d46f40be32ca7db9",
     "concept_catalog": "active_concept_catalog.csv",
     "concept_catalog_sha256": "0c6984e945cdb5b816eb49b7dffe5493e757d5a5db0a4ab1b91423c5fe843ef4",
-    "label_status": "awaiting_independent_labels",
-    "prediction_status": "not_run"
+    "label_status": "independent_labels_locked_before_prediction",
+    "prediction_status": "not_run",
+    "independent_labels": "independent_labels_72.csv",
+    "independent_labels_sha256": "db1af0de04c9f5c0b308da99e4b285afd28652db64b5fd4570de10124b996456",
+    "locked_labels": "locked_labels_72.json",
+    "locked_labels_sha256": "b0b0043020d20394572083ca952b858b631bc40536b674fdd7854e0f1c0f315f",
+    "label_summary": {
+      "questions": 72,
+      "positive_questions": 19,
+      "none_questions": 53,
+      "concept_assignments": 20
+    }
   },
   "policy": "Label the blinded packet before running any linker prediction. Do not tune on this validation after results are opened. The locked final test remains sealed."
 }
