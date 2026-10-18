@@ -13,7 +13,7 @@ evidence. Không có paper nào trùng với 355 paper đã xuất hiện trong 
   `paired corpus/corpora`; chỉ giữ cụm từ chỉ rõ subtype.
 - Code/config tham chiếu trước khi tạo tập: commit `7d8adea`.
 - Nhãn độc lập đã khóa: 19 câu dương, 53 câu `NONE`, tổng 20 concept assignment.
-- Prediction: **chưa chạy**.
+- Prediction đã chạy đúng một lần ngày 18/10/2026; không tuning sau kết quả.
 - Final test: vẫn niêm phong.
 
 ## File
@@ -24,11 +24,18 @@ evidence. Không có paper nào trùng với 355 paper đã xuất hiện trong 
 - `active_concept_catalog.csv`: danh mục concept hợp lệ để người review tra cứu.
 - `independent_labels_72.csv`: nhãn nguyên bản từ reviewer độc lập.
 - `locked_labels_72.json`: nhãn đã kiểm tra, chuẩn hóa và khóa cho benchmark.
+- `locked_result_once.json`: prediction và chỉ số của lần chạy duy nhất.
+- `VALIDATION_RESULT.md`: tóm tắt kết quả và nhóm lỗi.
 - `manifest.json`: hash, danh sách dữ liệu loại trừ và trạng thái khóa.
 
 ## Quy trình bắt buộc tiếp theo
 
-1. Chạy đúng một lần cấu hình Hybrid 0,55; báo cáo Precision, Recall, F1 và exact match.
-2. Không sửa alias, threshold hoặc model dựa trên v19; mọi cải tiến sau đó phải chuyển
+1. Không sửa alias, threshold hoặc model dựa trên v19; mọi cải tiến sau đó phải chuyển
    sang development mới. Không mở final test ở bước này.
+
+## Kết quả khóa
+
+Hybrid 0,55 đạt Precision 0,7273, Recall 0,4000, F1 0,5161 và exact match 0,7917.
+Kết quả thấp hơn development cho thấy nút thắt chính vẫn là recall và khả năng khái quát
+sang cách diễn đạt/concept mới. Xem `VALIDATION_RESULT.md`; không dùng v19 để tuning.
 

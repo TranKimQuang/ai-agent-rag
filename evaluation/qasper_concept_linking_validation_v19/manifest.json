@@ -40,7 +40,24 @@
     "concept_catalog": "active_concept_catalog.csv",
     "concept_catalog_sha256": "0c6984e945cdb5b816eb49b7dffe5493e757d5a5db0a4ab1b91423c5fe843ef4",
     "label_status": "independent_labels_locked_before_prediction",
-    "prediction_status": "not_run",
+    "prediction_status": "evaluated_once_no_tuning",
+    "evaluated_on": "2026-10-18",
+    "result": "locked_result_once.json",
+    "result_sha256": "0c2ec0e7e66c6eedaaece0073703984b3b3c99ccdeaf68444d2ab046ae6a22cb",
+    "fixed_configuration": {
+      "method": "hybrid",
+      "semantic_threshold": 0.55,
+      "threshold_sweep": false
+    },
+    "hybrid_result": {
+      "precision": 0.7272727272727273,
+      "recall": 0.4,
+      "f1": 0.5161290322580645,
+      "exact_match": 0.7916666666666666,
+      "true_positive_assignments": 8,
+      "false_positive_assignments": 3,
+      "false_negative_assignments": 12
+    },
     "independent_labels": "independent_labels_72.csv",
     "independent_labels_sha256": "db1af0de04c9f5c0b308da99e4b285afd28652db64b5fd4570de10124b996456",
     "locked_labels": "locked_labels_72.json",

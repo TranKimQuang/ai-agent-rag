@@ -12,7 +12,9 @@ Cập nhật gần nhất: 17/10/2026
 - [x] Tạo validation v19 hoàn toàn mới: 20 paper/1.029 chunk/72 câu, overlap 0 với
   355 paper từng dùng. Đã sinh packet gán nhãn mù và catalog; prediction chưa chạy,
   final test vẫn niêm phong.
-- [ ] Hoàn tất nhãn độc lập v19, khóa hash rồi chạy Hybrid 0,55 đúng một lần.
+- [x] Hoàn tất nhãn độc lập v19 (19 dương/53 `NONE`), khóa ở commit `bc7ec27` rồi chạy
+  Hybrid 0,55 đúng một lần: Precision 0,7273, Recall 0,4000, F1 0,5161, exact match
+  0,7917. Không tuning theo v19; final test vẫn niêm phong.
 
 ### Concept-linking supervision v17
 
