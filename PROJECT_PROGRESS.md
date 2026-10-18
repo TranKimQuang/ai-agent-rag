@@ -11,8 +11,11 @@ Cập nhật gần nhất: 17/10/2026
 - [x] Phrase-first 0,65, margin 0,03 cải thiện nhất quán: v18 F1 0,6364 -> 0,6667,
   v20 F1 0,3846 -> 0,4444; toàn bộ 98 câu đạt Precision 0,7500, Recall 0,4412,
   F1 0,5556. Đã khóa candidate trước validation mới.
-- [ ] Tạo validation v21 paper-disjoint và chạy candidate phrase-first đúng một lần;
-  không tuning theo v19/v21, final test vẫn niêm phong.
+- [x] Validation v21 mới 30 paper/49 câu, overlap 0 với 405 paper trước. Phrase-first
+  chạy đúng một lần nhưng không khái quát: F1 0,1739, thấp hơn whole-query 0,1818;
+  recall cùng 0,1000. Candidate bị loại, không tuning theo v21, final test vẫn niêm phong.
+- [ ] Dừng chuỗi validation QASPER; thiết kế tập concept trọng tâm có đủ ví dụ dương
+  hoặc chuyển sang dataset entity-linking chuyên biệt trước khi thử model mới.
 
 ### Concept-linking validation v19
 

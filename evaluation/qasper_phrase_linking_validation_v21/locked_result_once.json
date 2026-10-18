@@ -1,0 +1,535 @@
+{
+  "datasets": [
+    "evaluation\\qasper_phrase_linking_validation_v21\\locked_labels_49.json"
+  ],
+  "threshold": 0.65,
+  "top1_top2_margin": 0.03,
+  "limit": 5,
+  "baseline": {
+    "precision": 1.0,
+    "recall": 0.1,
+    "f1": 0.18181818181818182,
+    "exact_match": 0.6530612244897959,
+    "linked_examples": 2,
+    "examples": 49
+  },
+  "phrase_first": {
+    "precision": 0.6666666666666666,
+    "recall": 0.1,
+    "f1": 0.1739130434782609,
+    "exact_match": 0.6326530612244898,
+    "linked_examples": 3,
+    "examples": 49
+  },
+  "rows": [
+    {
+      "source_question_id": "642c4704a71fd01b922a0ef003f234dcc7b223cd",
+      "text": "What are the main sources of recall errors in the mapping?",
+      "gold_concepts": [],
+      "baseline_concepts": [],
+      "phrase_concepts": [],
+      "phrase_details": [],
+      "changed": false
+    },
+    {
+      "source_question_id": "e477e494fe15a978ff9c0a5f1c88712cdaec0c5c",
+      "text": "Do they look for inconsistencies between different languages' annotations in UniMorph?",
+      "gold_concepts": [
+        "MultilingualNaturalLanguageProcessing"
+      ],
+      "baseline_concepts": [],
+      "phrase_concepts": [],
+      "phrase_details": [],
+      "changed": false
+    },
+    {
+      "source_question_id": "04495845251b387335bf2e77e2c423130f43c7d9",
+      "text": "Do they look for inconsistencies between different UD treebanks?",
+      "gold_concepts": [
+        "NaturalLanguageProcessing"
+      ],
+      "baseline_concepts": [],
+      "phrase_concepts": [],
+      "phrase_details": [],
+      "changed": false
+    },
+    {
+      "source_question_id": "564dcaf8d0bcc274ab64c784e4c0f50d7a2c17ee",
+      "text": "Which languages do they validate on?",
+      "gold_concepts": [
+        "MultilingualNaturalLanguageProcessing"
+      ],
+      "baseline_concepts": [],
+      "phrase_concepts": [],
+      "phrase_details": [],
+      "changed": false
+    },
+    {
+      "source_question_id": "a3a871ca2417b2ada9df1438d282c45e4b4ad668",
+      "text": "How do previous methods perform on the Switchboard Dialogue Act and DailyDialog datasets?",
+      "gold_concepts": [
+        "DiscourseAnalysis"
+      ],
+      "baseline_concepts": [],
+      "phrase_concepts": [],
+      "phrase_details": [],
+      "changed": false
+    },
+    {
+      "source_question_id": "4e841138f307839fd2c212e9f02489e27a5f830c",
+      "text": "What is dialogue act recognition?",
+      "gold_concepts": [
+        "DiscourseAnalysis"
+      ],
+      "baseline_concepts": [],
+      "phrase_concepts": [],
+      "phrase_details": [],
+      "changed": false
+    },
+    {
+      "source_question_id": "5067e5eb2cddbb34b71e8b74ab9210cd46bb09c5",
+      "text": "Which matching features do they employ?",
+      "gold_concepts": [],
+      "baseline_concepts": [],
+      "phrase_concepts": [],
+      "phrase_details": [],
+      "changed": false
+    },
+    {
+      "source_question_id": "f62c78be58983ef1d77049738785ec7ab9f2a3ee",
+      "text": "what datasets did the authors use?",
+      "gold_concepts": [],
+      "baseline_concepts": [],
+      "phrase_concepts": [],
+      "phrase_details": [],
+      "changed": false
+    },
+    {
+      "source_question_id": "b3ac67232c8c7d5a759ae025aee85e9c838584eb",
+      "text": "Do the authors do manual evaluation?",
+      "gold_concepts": [],
+      "baseline_concepts": [],
+      "phrase_concepts": [],
+      "phrase_details": [],
+      "changed": false
+    },
+    {
+      "source_question_id": "b653f55d1dad5cd262a99502f63bf44c58ccc8cf",
+      "text": "Which dataset do they use to learn embeddings?",
+      "gold_concepts": [],
+      "baseline_concepts": [],
+      "phrase_concepts": [],
+      "phrase_details": [],
+      "changed": false
+    },
+    {
+      "source_question_id": "22c802872b556996dd7d09eb1e15989d003f30c0",
+      "text": "How do they correlate NED with emotional bond levels?",
+      "gold_concepts": [],
+      "baseline_concepts": [],
+      "phrase_concepts": [],
+      "phrase_details": [],
+      "changed": false
+    },
+    {
+      "source_question_id": "602396d1f5a3c172e60a10c7022bcfa08fa6cbc9",
+      "text": "By how much do they outperform BiLSTMs in Sentiment Analysis?",
+      "gold_concepts": [
+        "LongShortTermMemory",
+        "SentimentAnalysis"
+      ],
+      "baseline_concepts": [
+        "SentimentAnalysis"
+      ],
+      "phrase_concepts": [
+        "SentimentAnalysis"
+      ],
+      "phrase_details": [
+        {
+          "concept": "SentimentAnalysis",
+          "label": "sentiment analysis",
+          "score": 1.0,
+          "source": "alias"
+        }
+      ],
+      "changed": false
+    },
+    {
+      "source_question_id": "b984612ceac5b4cf5efd841af2afddd244ee497a",
+      "text": "Does their model have more parameters than other models?",
+      "gold_concepts": [],
+      "baseline_concepts": [],
+      "phrase_concepts": [],
+      "phrase_details": [],
+      "changed": false
+    },
+    {
+      "source_question_id": "eac042734f76e787cb98ba3d0c13a916a49bdfb3",
+      "text": "Which datasets are used in this work?",
+      "gold_concepts": [],
+      "baseline_concepts": [],
+      "phrase_concepts": [],
+      "phrase_details": [],
+      "changed": false
+    },
+    {
+      "source_question_id": "70f84c73172211186de1a27b98f5f5ae25a94e55",
+      "text": "Which dataset do they use?",
+      "gold_concepts": [],
+      "baseline_concepts": [],
+      "phrase_concepts": [],
+      "phrase_details": [],
+      "changed": false
+    },
+    {
+      "source_question_id": "48cf360a7753a23342f53f116eeccc2014bcc8eb",
+      "text": "Is Aristo just some modern NLP model (ex. BERT) finetuned od data specific for this task?",
+      "gold_concepts": [
+        "BidirectionalLanguageModel",
+        "NaturalLanguageProcessing",
+        "TransferLearning"
+      ],
+      "baseline_concepts": [
+        "NaturalLanguageProcessing"
+      ],
+      "phrase_concepts": [
+        "NaturalLanguageProcessing"
+      ],
+      "phrase_details": [
+        {
+          "concept": "NaturalLanguageProcessing",
+          "label": "natural language processing",
+          "score": 1.0,
+          "source": "alias"
+        }
+      ],
+      "changed": false
+    },
+    {
+      "source_question_id": "384d571e4017628ebb72f3debb2846efaf0cb0cb",
+      "text": "On what dataset is Aristo system trained?",
+      "gold_concepts": [],
+      "baseline_concepts": [],
+      "phrase_concepts": [],
+      "phrase_details": [],
+      "changed": false
+    },
+    {
+      "source_question_id": "17de58c17580350c9da9c2f3612784b432154d11",
+      "text": "What classifier is used for emergency categorization?",
+      "gold_concepts": [],
+      "baseline_concepts": [],
+      "phrase_concepts": [],
+      "phrase_details": [],
+      "changed": false
+    },
+    {
+      "source_question_id": "29772ba04886bee2d26b7320e1c6d9b156078891",
+      "text": "Do the tweets come from any individual?",
+      "gold_concepts": [],
+      "baseline_concepts": [],
+      "phrase_concepts": [],
+      "phrase_details": [],
+      "changed": false
+    },
+    {
+      "source_question_id": "c38a48d65bb21c314194090d0cc3f1a45c549dd6",
+      "text": "Which English domains do they evaluate on?",
+      "gold_concepts": [],
+      "baseline_concepts": [],
+      "phrase_concepts": [],
+      "phrase_details": [],
+      "changed": false
+    },
+    {
+      "source_question_id": "ab78f066144936444ecd164dc695bec1cb356762",
+      "text": "What is shared in the joint model?",
+      "gold_concepts": [],
+      "baseline_concepts": [],
+      "phrase_concepts": [],
+      "phrase_details": [],
+      "changed": false
+    },
+    {
+      "source_question_id": "e659ceb184777015c12db2da5ae396635192f0b0",
+      "text": "Are the intent labels imbalanced in the dataset?",
+      "gold_concepts": [
+        "DatasetBias"
+      ],
+      "baseline_concepts": [],
+      "phrase_concepts": [],
+      "phrase_details": [],
+      "changed": false
+    },
+    {
+      "source_question_id": "7426a6e800d6c11795941616fc4a243e75716a10",
+      "text": "What factors contribute to interpretive biases according to this research?",
+      "gold_concepts": [],
+      "baseline_concepts": [],
+      "phrase_concepts": [
+        "DatasetBias"
+      ],
+      "phrase_details": [
+        {
+          "concept": "DatasetBias",
+          "label": "dataset bias",
+          "score": 0.6558095216751099,
+          "source": "semantic"
+        }
+      ],
+      "changed": true
+    },
+    {
+      "source_question_id": "da4535b75e360604e3ce4bb3631b0ba96f4dadd3",
+      "text": "Which interpretative biases are analyzed in this paper?",
+      "gold_concepts": [],
+      "baseline_concepts": [],
+      "phrase_concepts": [],
+      "phrase_details": [],
+      "changed": false
+    },
+    {
+      "source_question_id": "92cfac12d9583747bd9be8604275b4a9ddd8afe6",
+      "text": "How do they evaluate interpretability in this paper?",
+      "gold_concepts": [],
+      "baseline_concepts": [],
+      "phrase_concepts": [],
+      "phrase_details": [],
+      "changed": false
+    },
+    {
+      "source_question_id": "a56fbe90d5d349336f94ef034ba0d46450525d19",
+      "text": "What DCGs are used?",
+      "gold_concepts": [],
+      "baseline_concepts": [],
+      "phrase_concepts": [],
+      "phrase_details": [],
+      "changed": false
+    },
+    {
+      "source_question_id": "b1f2db88a6f89d0f048803e38a0a568f5ba38fc5",
+      "text": "What else is tried to be solved other than 12 tenses, model verbs and negative form?",
+      "gold_concepts": [
+        "NaturalLanguageProcessing"
+      ],
+      "baseline_concepts": [],
+      "phrase_concepts": [],
+      "phrase_details": [],
+      "changed": false
+    },
+    {
+      "source_question_id": "05bb75a1e1202850efa9191d6901de0a34744af0",
+      "text": "Which of their training domains improves performance the most?",
+      "gold_concepts": [],
+      "baseline_concepts": [],
+      "phrase_concepts": [],
+      "phrase_details": [],
+      "changed": false
+    },
+    {
+      "source_question_id": "770aeff30846cd3d0d5963f527691f3685e8af02",
+      "text": "Do they fine-tune their model on the end task?",
+      "gold_concepts": [
+        "TransferLearning"
+      ],
+      "baseline_concepts": [],
+      "phrase_concepts": [],
+      "phrase_details": [],
+      "changed": false
+    },
+    {
+      "source_question_id": "01d91d356568fca79e47873bd0541bd22ba66ec0",
+      "text": "What datasets were used?",
+      "gold_concepts": [],
+      "baseline_concepts": [],
+      "phrase_concepts": [],
+      "phrase_details": [],
+      "changed": false
+    },
+    {
+      "source_question_id": "37e45a3439b048a80c762418099a183b05772e6a",
+      "text": "How did they do compared to other teams?",
+      "gold_concepts": [],
+      "baseline_concepts": [],
+      "phrase_concepts": [],
+      "phrase_details": [],
+      "changed": false
+    },
+    {
+      "source_question_id": "749a307c3736c5b06d7b605dc228d80de36cbabe",
+      "text": "Which datasets were used in the experiment?",
+      "gold_concepts": [],
+      "baseline_concepts": [],
+      "phrase_concepts": [],
+      "phrase_details": [],
+      "changed": false
+    },
+    {
+      "source_question_id": "102de97c123bb1e247efec0f1d958f8a3a86e2f6",
+      "text": "What evaluation metrics did they use?",
+      "gold_concepts": [],
+      "baseline_concepts": [],
+      "phrase_concepts": [],
+      "phrase_details": [],
+      "changed": false
+    },
+    {
+      "source_question_id": "43d8057ff0d3f0c745a7164aed7ed146674630e0",
+      "text": "What do the models that they compare predict?",
+      "gold_concepts": [],
+      "baseline_concepts": [],
+      "phrase_concepts": [],
+      "phrase_details": [],
+      "changed": false
+    },
+    {
+      "source_question_id": "7b89515d731d04dd5cbfe9c2ace2eb905c119cbc",
+      "text": "Which is the baseline model?",
+      "gold_concepts": [],
+      "baseline_concepts": [],
+      "phrase_concepts": [],
+      "phrase_details": [],
+      "changed": false
+    },
+    {
+      "source_question_id": "79a28839fee776d2fed01e4ac39f6fedd6c6a143",
+      "text": "What is the main contribution of the paper? ",
+      "gold_concepts": [],
+      "baseline_concepts": [],
+      "phrase_concepts": [],
+      "phrase_details": [],
+      "changed": false
+    },
+    {
+      "source_question_id": "b8ffb81e74c1c1ad552051aca8741b0141ae6e97",
+      "text": "What is the task of slot filling?",
+      "gold_concepts": [
+        "NaturalLanguageProcessing"
+      ],
+      "baseline_concepts": [],
+      "phrase_concepts": [],
+      "phrase_details": [],
+      "changed": false
+    },
+    {
+      "source_question_id": "9d9f6cc0f026f7168fcea461baff4b8a925a185f",
+      "text": "How is the corpus normalized?",
+      "gold_concepts": [
+        "NaturalLanguageProcessing"
+      ],
+      "baseline_concepts": [],
+      "phrase_concepts": [],
+      "phrase_details": [],
+      "changed": false
+    },
+    {
+      "source_question_id": "a43c400ae37a8705ff2effb4828f4b0b177a74c4",
+      "text": "How are character representations from various languages joint?",
+      "gold_concepts": [
+        "MultilingualNaturalLanguageProcessing"
+      ],
+      "baseline_concepts": [],
+      "phrase_concepts": [],
+      "phrase_details": [],
+      "changed": false
+    },
+    {
+      "source_question_id": "4056ee2fd7a0a0f444275e627bb881134a1c2a10",
+      "text": "On which dataset is the experiment conducted?",
+      "gold_concepts": [],
+      "baseline_concepts": [],
+      "phrase_concepts": [],
+      "phrase_details": [],
+      "changed": false
+    },
+    {
+      "source_question_id": "c2553166463b7b5ae4d9786f0446eb06a90af458",
+      "text": "Which coreference resolution systems are tested?",
+      "gold_concepts": [
+        "NaturalLanguageProcessing"
+      ],
+      "baseline_concepts": [],
+      "phrase_concepts": [],
+      "phrase_details": [],
+      "changed": false
+    },
+    {
+      "source_question_id": "b540cd4fe9dc4394f64d5b76b0eaa4d9e30fb728",
+      "text": "Could you tell me more about the metrics used for performance evaluation?",
+      "gold_concepts": [],
+      "baseline_concepts": [],
+      "phrase_concepts": [],
+      "phrase_details": [],
+      "changed": false
+    },
+    {
+      "source_question_id": "5c26388a2c0b0452d529d5dd565a5375fdabdb70",
+      "text": "What games are used to test author's methods?",
+      "gold_concepts": [],
+      "baseline_concepts": [],
+      "phrase_concepts": [],
+      "phrase_details": [],
+      "changed": false
+    },
+    {
+      "source_question_id": "184e1f28f96babf468f2bb4e1734f69646590cda",
+      "text": "How is the domain knowledge transfer represented as knowledge graph?",
+      "gold_concepts": [
+        "TransferLearning"
+      ],
+      "baseline_concepts": [],
+      "phrase_concepts": [],
+      "phrase_details": [],
+      "changed": false
+    },
+    {
+      "source_question_id": "c84590ba32df470a7c5343d8b99e541b217f10cf",
+      "text": "What datasets are used?",
+      "gold_concepts": [],
+      "baseline_concepts": [],
+      "phrase_concepts": [],
+      "phrase_details": [],
+      "changed": false
+    },
+    {
+      "source_question_id": "a130aa735de3b65c71f27018f20d3c068bafb826",
+      "text": "How big is data provided by this research?",
+      "gold_concepts": [],
+      "baseline_concepts": [],
+      "phrase_concepts": [],
+      "phrase_details": [],
+      "changed": false
+    },
+    {
+      "source_question_id": "0c1663a7f7750b399f40ef7b4bf19d5c598890ff",
+      "text": "How they complete a user query prefix conditioned upon an image?",
+      "gold_concepts": [
+        "NaturalLanguageProcessing"
+      ],
+      "baseline_concepts": [],
+      "phrase_concepts": [],
+      "phrase_details": [],
+      "changed": false
+    },
+    {
+      "source_question_id": "9595bf228c9e859b0dc745e6c74070be2468d2cf",
+      "text": "Does the training dataset provide logical form supervision?",
+      "gold_concepts": [
+        "SupervisedLearning"
+      ],
+      "baseline_concepts": [],
+      "phrase_concepts": [],
+      "phrase_details": [],
+      "changed": false
+    },
+    {
+      "source_question_id": "94c5f5b1eb8414ad924c3568cedd81dc35f29c48",
+      "text": "What is the difference between the full test set and the hard test set?",
+      "gold_concepts": [],
+      "baseline_concepts": [],
+      "phrase_concepts": [],
+      "phrase_details": [],
+      "changed": false
+    }
+  ]
+}
