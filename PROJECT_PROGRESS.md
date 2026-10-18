@@ -1,6 +1,20 @@
 # THEO DÕI TIẾN ĐỘ ĐỒ ÁN AI AGENT + RAG
 
-Cập nhật gần nhất: 17/10/2026
+Cập nhật gần nhất: 18/10/2026
+
+### Mới nhất: Đánh giá concept linking theo phân cấp Ontology
+
+- [x] Giữ nguyên exact Precision/Recall/F1 và bổ sung chỉ số chẩn đoán taxonomy-aware
+  trên development v18+v20; chỉ quan hệ `skos:broader` cha-con trực tiếp được 0,5 điểm,
+  ghép một-một để không cộng trùng và không dùng quan hệ bắc cầu quá rộng.
+- [x] Whole-query tăng từ exact F1 0,5000 lên taxonomy-aware F1 0,5417; phrase-first
+  tăng từ 0,5556 lên 0,5926. Hai trường hợp lệch mức khái quát được xác định:
+  `SemanticRoleInduction`/`NaturalLanguageProcessing` và
+  `MachineReadingComprehension`/`QuestionAnswering`.
+- [x] Lưu đầy đủ JSON và báo cáo Markdown; không dùng chỉ số này để thay exact F1,
+  không tuning theo validation v19/v21 và final test vẫn niêm phong.
+- [ ] Bước tiếp theo: tạo tập development trọng tâm theo từng nhánh taxonomy có đủ ví dụ
+  dương cho mỗi concept, sau đó mới thử cơ chế dự đoán/phóng chiếu concept cha-con.
 
 ### Mới nhất: Phrase-first concept-linking candidate v20
 
@@ -14,8 +28,8 @@ Cập nhật gần nhất: 17/10/2026
 - [x] Validation v21 mới 30 paper/49 câu, overlap 0 với 405 paper trước. Phrase-first
   chạy đúng một lần nhưng không khái quát: F1 0,1739, thấp hơn whole-query 0,1818;
   recall cùng 0,1000. Candidate bị loại, không tuning theo v21, final test vẫn niêm phong.
-- [ ] Dừng chuỗi validation QASPER; thiết kế tập concept trọng tâm có đủ ví dụ dương
-  hoặc chuyển sang dataset entity-linking chuyên biệt trước khi thử model mới.
+- [x] Dừng chuỗi validation QASPER ngẫu nhiên; chuyển sang chẩn đoán phân cấp và thiết kế
+  tập concept trọng tâm có đủ ví dụ dương trước khi thử model mới.
 
 ### Concept-linking validation v19
 

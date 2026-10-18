@@ -349,6 +349,42 @@ class OntologyService:
         """Return stable local names for concepts available to the local linker."""
         return {local_name(concept) for concept in self._concept_aliases}
 
+    def broader_concept_names(
+        self, concept_name: str, *, transitive: bool = False
+    ) -> set[str]:
+        """Return active SKOS parents for a named concept.
+
+        Direct parents are the conservative default used by concept-linking
+        evaluation.  Transitive traversal is available for diagnostics, but is not
+        used for partial credit because very broad ancestors would otherwise make
+        unrelated predictions appear correct.
+        """
+        concepts_by_name = {
+            local_name(concept): concept for concept in self._concept_aliases
+        }
+        concept = concepts_by_name.get(concept_name)
+        if concept is None:
+            return set()
+
+        parents: set[URIRef] = set()
+        pending = [concept]
+        visited = {concept}
+        while pending:
+            current = pending.pop()
+            direct_parents = {
+                value
+                for value in self.graph.objects(current, SKOS.broader)
+                if isinstance(value, URIRef)
+                and value in self._concept_aliases
+                and self._retrieval_enabled(value)
+            }
+            parents.update(direct_parents)
+            if transitive:
+                unseen = direct_parents - visited
+                pending.extend(unseen)
+                visited.update(unseen)
+        return {local_name(parent) for parent in parents}
+
     def _concept_documents(self) -> tuple[list[URIRef], list[str]]:
         concepts = sorted(self._concept_aliases, key=local_name)
         documents = []

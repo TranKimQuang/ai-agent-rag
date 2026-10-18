@@ -1,0 +1,125 @@
+{
+  "source_artifact": "evaluation\\qasper_concept_labeling_development_v20\\phrase_combined_98_threshold_065.json",
+  "policy": {
+    "exact_credit": 1.0,
+    "direct_parent_child_credit": 0.5,
+    "transitive_credit": 0.0,
+    "matching": "maximum-credit one-to-one"
+  },
+  "baseline": {
+    "exact": {
+      "precision": 0.8571428571428571,
+      "recall": 0.35294117647058826,
+      "f1": 0.5,
+      "exact_match": 0.7959183673469388
+    },
+    "taxonomy_aware": {
+      "precision": 0.9285714285714286,
+      "recall": 0.38235294117647056,
+      "f1": 0.5416666666666667
+    },
+    "counts": {
+      "examples": 98,
+      "predicted": 14,
+      "gold": 34,
+      "exact_true_positive": 12,
+      "taxonomy_credit": 13.0
+    },
+    "taxonomy_matched_rows": [
+      {
+        "source_question_id": "06c340c7c2ad57d7621c3e8baba6a3d0ed9f4696",
+        "text": "Are there syntax-agnostic SRL models before?",
+        "gold_concepts": [
+          "NaturalLanguageProcessing"
+        ],
+        "predicted_concepts": [
+          "SemanticRoleInduction"
+        ],
+        "taxonomy_matches": [
+          {
+            "predicted": "SemanticRoleInduction",
+            "gold": "NaturalLanguageProcessing",
+            "credit": 0.5,
+            "relation": "predicted_is_narrower"
+          }
+        ]
+      },
+      {
+        "source_question_id": "39a450ac15688199575798e72a2cc016ef4316b5",
+        "text": "How much performance improvements they achieve on SQuAD?",
+        "gold_concepts": [
+          "QuestionAnswering"
+        ],
+        "predicted_concepts": [
+          "MachineReadingComprehension"
+        ],
+        "taxonomy_matches": [
+          {
+            "predicted": "MachineReadingComprehension",
+            "gold": "QuestionAnswering",
+            "credit": 0.5,
+            "relation": "predicted_is_narrower"
+          }
+        ]
+      }
+    ]
+  },
+  "phrase_first": {
+    "exact": {
+      "precision": 0.75,
+      "recall": 0.4411764705882353,
+      "f1": 0.5555555555555556,
+      "exact_match": 0.7959183673469388
+    },
+    "taxonomy_aware": {
+      "precision": 0.8,
+      "recall": 0.47058823529411764,
+      "f1": 0.5925925925925927
+    },
+    "counts": {
+      "examples": 98,
+      "predicted": 20,
+      "gold": 34,
+      "exact_true_positive": 15,
+      "taxonomy_credit": 16.0
+    },
+    "taxonomy_matched_rows": [
+      {
+        "source_question_id": "06c340c7c2ad57d7621c3e8baba6a3d0ed9f4696",
+        "text": "Are there syntax-agnostic SRL models before?",
+        "gold_concepts": [
+          "NaturalLanguageProcessing"
+        ],
+        "predicted_concepts": [
+          "SemanticRoleInduction"
+        ],
+        "taxonomy_matches": [
+          {
+            "predicted": "SemanticRoleInduction",
+            "gold": "NaturalLanguageProcessing",
+            "credit": 0.5,
+            "relation": "predicted_is_narrower"
+          }
+        ]
+      },
+      {
+        "source_question_id": "39a450ac15688199575798e72a2cc016ef4316b5",
+        "text": "How much performance improvements they achieve on SQuAD?",
+        "gold_concepts": [
+          "QuestionAnswering"
+        ],
+        "predicted_concepts": [
+          "MachineReadingComprehension"
+        ],
+        "taxonomy_matches": [
+          {
+            "predicted": "MachineReadingComprehension",
+            "gold": "QuestionAnswering",
+            "credit": 0.5,
+            "relation": "predicted_is_narrower"
+          }
+        ]
+      }
+    ]
+  }
+}
