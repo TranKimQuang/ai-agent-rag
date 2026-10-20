@@ -2,6 +2,18 @@
 
 Cập nhật gần nhất: 20/10/2026
 
+### Mới nhất: Khóa phạm vi và chuẩn bị đóng mốc báo cáo
+
+- [x] Tạo `PROJECT_FINISH_PLAN.md` và `FINAL_EXPERIMENT_SUMMARY.md`; dừng tạo thêm
+  dataset/linker thiếu giả thuyết mới và không chạy lại held-out đã mở.
+- [x] Chọn năm ví dụ định tính từ QASPER validation v7: ba ca re-ranking cải thiện
+  gold rank và hai ca làm xấu/rơi khỏi top 5; ghi rõ đây là diagnostic, không tuning.
+- [x] Đồng bộ Google Docs báo cáo với kết quả held-out v3, Answer Agent 52 case,
+  taxonomy diagnostic và kế hoạch hoàn thành.
+- [x] Kiểm tra toàn bộ: 205 test passed trong 36,59 giây; Ruff passed. Còn một cảnh
+  báo deprecation Starlette/httpx không ảnh hưởng kết quả.
+- [ ] Tạo tag/release mốc báo cáo cuối sau commit này.
+
 ### Mới nhất: Taxonomy-focused development v22
 
 - [x] Tạo bộ chọn mẫu cân bằng theo concept tham gia quan hệ `skos:broader`; alias và

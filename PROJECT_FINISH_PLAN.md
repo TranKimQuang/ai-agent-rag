@@ -55,9 +55,13 @@ che hoặc tiếp tục tuning theo test.
 - [x] Ghi nhận kết quả âm của projection cha–con trên development v22.
 - [x] Tạo một bảng tổng hợp cuối duy nhất từ các artifact đã có; không chạy thêm model
   (`FINAL_EXPERIMENT_SUMMARY.md`).
-- [ ] Chọn 3–5 ví dụ định tính: Ontology giúp, không đổi thứ hạng và gây query drift.
-- [ ] Đồng bộ báo cáo Word với kết quả held-out v3 và Answer Agent 52 case.
-- [ ] Chạy toàn bộ test, đóng tag/release mốc báo cáo cuối.
+- [x] Chọn năm ví dụ QASPER thật: ba trường hợp re-ranking cải thiện và hai trường
+  hợp làm xấu thứ hạng/query drift.
+- [x] Đồng bộ Google Docs với kết quả held-out v3, Answer Agent 52 case, kế hoạch khóa
+  phạm vi và phân tích định tính.
+- [x] Chạy toàn bộ test: 205 test passed, Ruff passed; còn một cảnh báo deprecation
+  Starlette/httpx không làm thay đổi kết quả.
+- [ ] Tạo tag/release mốc báo cáo cuối.
 
 ## 5. Việc dừng làm
 
