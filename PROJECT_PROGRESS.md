@@ -968,25 +968,20 @@ PDF
 
 ## 5. Bước tiếp theo ưu tiên
 
-Milestone tiếp theo: kiểm chứng khả năng khái quát của semantic concept linking và hoàn thiện
-đánh giá khoa học cho Ontology/Agent.
+Đã khóa phạm vi trong `PROJECT_FINISH_PLAN.md`. Không tiếp tục tạo dataset/linker mới.
+Milestone còn lại là tổng hợp kết quả đã có thành gói báo cáo cuối:
 
-1. Giữ nguyên kết quả held-out v3 và validation v7; không tiếp tục tuning theo các tập đã xem.
-2. Giữ nguyên validation v9; không tuning scoring theo tập này. Tạo development split mới
-   và thiết lập baseline document-scoped trước khi kết luận thêm về concept coverage.
-3. Đã có independent LLM review và third-reviewer adjudication: 25 câu dương/87 câu âm,
-   agreement trước phân xử là 0,8214. Vẫn cần human verification trước khi gọi là gold
-   chính thức, nhưng bộ nhãn hiện đủ dùng cho development có ghi rõ giới hạn.
-4. Không tuning tiếp trên 57 câu internal verification đã mở. Phát triển linker mới chỉ
-   trên 55 câu selection hoặc một development pool mới, đồng thời xuất prediction từng
-   câu ngay trong lần đánh giá đầu tiên.
-5. Chưa thử thêm candidate model trên cùng 55 câu vì NLI và supervised classifier đều
-   không vượt Hybrid. Cần xác nhận độc lập và bổ sung ví dụ dương cho từng concept trước;
-   chỉ khi candidate mới cải thiện trên development độc lập mới tạo validation
-   paper-disjoint mới, sau đó mới quay lại retrieval/Answer Agent.
+1. Giữ nguyên held-out v3 đã chạy đúng một lần; không chạy lại hoặc tuning theo test.
+2. Tổng hợp một bảng cuối cho BM25, Semantic, Hybrid, Ontology re-ranking và expansion.
+3. Chọn 3–5 ví dụ định tính cho trường hợp Ontology giúp, không tác động và query drift.
+4. Đồng bộ báo cáo Word với kết quả retrieval held-out và Answer Agent 52 case.
+5. Chạy toàn bộ test và tạo tag/release mốc báo cáo.
 
-Chưa ưu tiên trong milestone này: mở rộng giao diện, PostgreSQL, pgvector, OCR và
-framework Agent phức tạp.
+Bảng kết quả chuẩn đã được gom tại `FINAL_EXPERIMENT_SUMMARY.md`; từ đây không lấy số
+từ các lần chạy thử rời rạc nếu không ghi rõ chúng chỉ là diagnostic/development.
+
+Ngoài phạm vi: dataset v23/v24, thêm linker/threshold thiếu giả thuyết mới, PostgreSQL,
+pgvector, OCR, mở rộng giao diện và framework Agent phức tạp.
 
 ## 6. Nội dung cần có trong lần báo cáo tiếp theo
 
@@ -1012,8 +1007,11 @@ framework Agent phức tạp.
 - AI Agent và answer generation: đã chạy Qwen3:4b cục bộ end-to-end trên QASPER
   thật, có baseline Answer-F1/Evidence-F1/citation và thử nghiệm direct-answer;
   chất lượng còn phụ thuộc mạnh vào retrieval và chưa phải kết quả held-out cuối.
-- Mức độ hoàn thành ước lượng của toàn đồ án: khoảng 60%.
-- Đã đủ cho báo cáo tiến độ về Ontology-aware retrieval; chưa phải kết quả thực nghiệm cuối cùng.
+- Phần triển khai cốt lõi đã hoàn thành; phần còn lại là tổng hợp kết quả, đồng bộ báo cáo
+  và đóng mốc. Không dùng phần trăm tiến độ vì dễ nhầm giữa số lượng tính năng và độ mạnh
+  của bằng chứng thực nghiệm.
+- Đã đủ cho báo cáo tiến độ và prototype theo yêu cầu. Kết quả held-out cho thấy Ontology
+  chưa vượt Hybrid trên dữ liệu chưa thấy; phải báo cáo trung thực thay vì tiếp tục tuning.
 - Bộ PDF 16 trang/24 câu chỉ dùng để debug pipeline, không dùng làm kết quả chính thức.
 
 ## 8. Lệnh kiểm tra nhanh
