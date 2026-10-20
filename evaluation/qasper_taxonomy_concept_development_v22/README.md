@@ -31,10 +31,15 @@ Tập này tạo hàng đợi gán nhãn có chủ đích cho các concept tham 
 - `taxonomy_concept_catalog.csv`: toàn bộ concept thuộc các cạnh taxonomy, dùng cho
   reviewer độc lập để giảm context mà không tiết lộ strata của từng câu.
 - `selection_strata.json`: strata ứng viên phục vụ kiểm toán selection bias.
+- `locked_labels_40.json`: nhãn development đã khóa trước prediction.
+- `fixed_prediction_once.json`: lần chạy prediction cố định duy nhất sau khi khóa nhãn.
+- `RESULT_SUMMARY.md`: kết quả exact, taxonomy-scoped và kết luận kỹ thuật.
 - `manifest.json`: hash, danh sách loại trừ và trạng thái giao thức.
 
 ## Trạng thái
 
 Đã khóa nhãn trước prediction: 17 câu dương, 23 câu `NONE`, 17 assignment. Nhãn do
-Qwen3:4b review mù rồi được assistant audit, không phải human gold. Chưa chạy benchmark
-trên tập này tại thời điểm khóa nhãn.
+Qwen3:4b review mù rồi được assistant audit, không phải human gold. Cấu hình cố định
+đã chạy đúng một lần: whole-query F1 0,5714 và phrase-first F1 0,5789 trên toàn
+vocabulary. Khi giới hạn theo 22 concept taxonomy được gán nhãn, F1 lần lượt là 0,7407
+và 0,7586. Không có trường hợp cha–con trực tiếp nên projection không đem lại lợi ích.

@@ -89,7 +89,7 @@
     "selection_strata": "selection_strata.json",
     "selection_strata_sha256": "6480d75bfc80fc749b652f250f5ecd889e0ee1d95df3aad6ee33c9c76f37bd0d",
     "label_status": "independent_labels_locked_before_prediction",
-    "prediction_status": "not_run",
+    "prediction_status": "development_evaluated_once",
     "independent_labels": "audited_labels_40.csv",
     "independent_labels_sha256": "651a3856c2e3010ed7ea22ca30aa7c1c0b85887eeedfa1c97142a4fd060a0e09",
     "locked_labels": "locked_labels_40.json",
@@ -102,7 +102,35 @@
     },
     "label_provenance": "Qwen3:4b blind independent review followed by assistant audit; development labels, not human gold",
     "label_audit": "LABEL_AUDIT.md",
-    "rejected_full_catalog_review": "independent_review_full_catalog_rejected.json"
+    "rejected_full_catalog_review": "independent_review_full_catalog_rejected.json",
+    "prediction_evaluated_on": "2026-10-20",
+    "prediction_configuration": {
+      "method": "hybrid whole-query and phrase-first comparison",
+      "threshold": 0.65,
+      "top1_top2_margin": 0.03,
+      "limit": 5,
+      "locked_before_run_commit": "85b8de0"
+    },
+    "fixed_prediction": "fixed_prediction_once.json",
+    "fixed_prediction_sha256": "f1f691b7345efed97b3106ecac5e8b80e768c9a7e21bb5e6d547b02ef67e9de4",
+    "fixed_prediction_metrics": {
+      "whole_query_f1": 0.5714285714285715,
+      "phrase_first_f1": 0.5789473684210527
+    },
+    "hierarchical_evaluation": "hierarchical_prediction_once.json",
+    "hierarchical_evaluation_sha256": "be7e76650331df37ad50d846b3caf03c75b5561ac20a9d2d1cd68e5a48db819e",
+    "taxonomy_scoped_evaluation": "taxonomy_scoped_hierarchical_result.json",
+    "taxonomy_scoped_evaluation_sha256": "dfa5e2fc9e9963429e6e8afa4cb695e917bf07d03f8f8c556a84d5e462475d64",
+    "taxonomy_scoped_metrics": {
+      "whole_query_f1": 0.7407407407407407,
+      "phrase_first_f1": 0.7586206896551724,
+      "whole_query_excluded_assignments": 8,
+      "phrase_first_excluded_assignments": 9,
+      "direct_parent_child_matches": 0
+    },
+    "result_summary": "RESULT_SUMMARY.md",
+    "result_summary_sha256": "c0feead2e66c3e09f49de7b51be4d9d8a7561154f976289f4e742dbf7c3fa019",
+    "conclusion": "No direct parent-child mismatch was observed; taxonomy-aware scores equal exact scores, so the run does not support implementing taxonomy projection."
   },
   "policy": "Use only for taxonomy mechanism development. Keep labeling packet blind, do not tune on validation v19/v21, and keep final test sealed."
 }

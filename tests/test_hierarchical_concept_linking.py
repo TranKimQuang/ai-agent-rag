@@ -4,6 +4,7 @@ from app.evaluation.hierarchical_concept_linking import (
     score_hierarchical_predictions,
 )
 from app.ontology.service import OntologyService
+from scripts.evaluate_hierarchical_concept_linking import evaluate_rows
 
 
 def test_exact_concept_match_receives_full_credit() -> None:
@@ -54,3 +55,22 @@ def test_hierarchical_score_preserves_exact_metrics_and_adds_partial_credit() ->
     assert result["exact"]["f1"] == 0.5
     assert result["taxonomy_aware"]["f1"] == 0.75
     assert result["counts"]["taxonomy_credit"] == 1.5
+
+
+def test_scoped_evaluation_excludes_predictions_outside_label_catalog() -> None:
+    result = evaluate_rows(
+        OntologyService(),
+        [
+            {
+                "source_question_id": "q1",
+                "text": "Which QA method?",
+                "gold_concepts": ["QuestionAnswering"],
+                "predicted": ["QuestionAnswering", "WordEmbedding"],
+            }
+        ],
+        "predicted",
+        {"QuestionAnswering"},
+    )
+
+    assert result["exact"]["precision"] == 1.0
+    assert result["excluded_prediction_assignments"] == 1

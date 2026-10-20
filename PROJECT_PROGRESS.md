@@ -14,8 +14,14 @@ Cập nhật gần nhất: 20/10/2026
 - [x] Qwen3:4b review mù đủ 40 câu; audit phát hiện reviewer suy topic từ evidence nên
   điều chỉnh từ 37 xuống 17 câu dương/23 `NONE`. Đã khóa 17 assignment trước prediction;
   ghi rõ đây là LLM review + assistant audit, không phải human gold.
-- [ ] Chạy cấu hình cố định trên v22 rồi so sánh exact với cơ chế projection concept
-  cha-con; không dùng v19/v21 để chọn cấu hình.
+- [x] Chạy cấu hình cố định đúng một lần sau commit khóa nhãn: whole-query F1 0,5714,
+  phrase-first F1 0,5789 trên toàn vocabulary. Khi giới hạn theo 22 concept taxonomy
+  được gán nhãn, F1 lần lượt 0,7407 và 0,7586; 8/9 assignment ngoài scope được báo cáo
+  riêng thay vì tính sai thành false positive.
+- [x] Taxonomy-aware F1 trùng exact F1 vì không có prediction–gold nào là quan hệ
+  cha-con trực tiếp. Kết quả âm được giữ nguyên: chưa có bằng chứng để triển khai
+  projection; nút thắt v22 là recall/disambiguation. Không tuning theo v19/v21 và
+  final test vẫn niêm phong.
 
 ### Mới nhất: Đánh giá concept linking theo phân cấp Ontology
 
@@ -28,8 +34,8 @@ Cập nhật gần nhất: 20/10/2026
   `MachineReadingComprehension`/`QuestionAnswering`.
 - [x] Lưu đầy đủ JSON và báo cáo Markdown; không dùng chỉ số này để thay exact F1,
   không tuning theo validation v19/v21 và final test vẫn niêm phong.
-- [x] Đã tạo tập development trọng tâm v22; đang chờ khóa nhãn trước khi thử cơ chế
-  dự đoán/phóng chiếu concept cha-con.
+- [x] Đã khóa nhãn và chạy prediction cố định trên v22. Không xuất hiện lệch cha-con;
+  vì vậy không tiếp tục cơ chế projection trên bằng chứng hiện tại.
 
 ### Mới nhất: Phrase-first concept-linking candidate v20
 
