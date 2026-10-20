@@ -61,7 +61,7 @@ che hoặc tiếp tục tuning theo test.
   phạm vi và phân tích định tính.
 - [x] Chạy toàn bộ test: 205 test passed, Ruff passed; còn một cảnh báo deprecation
   Starlette/httpx không làm thay đổi kết quả.
-- [ ] Tạo tag/release mốc báo cáo cuối.
+- [x] Tạo tag `ontology-agent-report-v2` cho mốc báo cáo đã kiểm thử.
 
 ## 5. Việc dừng làm
 

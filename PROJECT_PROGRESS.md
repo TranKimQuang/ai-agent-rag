@@ -12,7 +12,7 @@ Cập nhật gần nhất: 20/10/2026
   taxonomy diagnostic và kế hoạch hoàn thành.
 - [x] Kiểm tra toàn bộ: 205 test passed trong 36,59 giây; Ruff passed. Còn một cảnh
   báo deprecation Starlette/httpx không ảnh hưởng kết quả.
-- [ ] Tạo tag/release mốc báo cáo cuối sau commit này.
+- [x] Tạo và push tag `ontology-agent-report-v2` cho mốc báo cáo đã kiểm thử.
 
 ### Mới nhất: Taxonomy-focused development v22
 
