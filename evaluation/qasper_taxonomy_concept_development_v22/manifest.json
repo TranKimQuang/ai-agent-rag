@@ -84,10 +84,25 @@
     "labeling_packet_sha256": "b71ac24335d06ccf2bb6921bd4dbe600b44c691da05c765dee1eb61dd8ac2bfe",
     "concept_catalog": "active_concept_catalog.csv",
     "concept_catalog_sha256": "0c6984e945cdb5b816eb49b7dffe5493e757d5a5db0a4ab1b91423c5fe843ef4",
+    "taxonomy_concept_catalog": "taxonomy_concept_catalog.csv",
+    "taxonomy_concept_catalog_sha256": "673ebe79fbfc521513616c4119f94017432a757d3ff7a69a11fd5e0f4114cbca",
     "selection_strata": "selection_strata.json",
     "selection_strata_sha256": "6480d75bfc80fc749b652f250f5ecd889e0ee1d95df3aad6ee33c9c76f37bd0d",
-    "label_status": "awaiting_independent_labels",
-    "prediction_status": "not_run"
+    "label_status": "independent_labels_locked_before_prediction",
+    "prediction_status": "not_run",
+    "independent_labels": "audited_labels_40.csv",
+    "independent_labels_sha256": "651a3856c2e3010ed7ea22ca30aa7c1c0b85887eeedfa1c97142a4fd060a0e09",
+    "locked_labels": "locked_labels_40.json",
+    "locked_labels_sha256": "878b3fa220ab57210e44dc6fa576ea3eb8a0ede4b5a89c545dbdfd4024a0c16f",
+    "label_summary": {
+      "questions": 40,
+      "positive_questions": 17,
+      "none_questions": 23,
+      "concept_assignments": 17
+    },
+    "label_provenance": "Qwen3:4b blind independent review followed by assistant audit; development labels, not human gold",
+    "label_audit": "LABEL_AUDIT.md",
+    "rejected_full_catalog_review": "independent_review_full_catalog_rejected.json"
   },
   "policy": "Use only for taxonomy mechanism development. Keep labeling packet blind, do not tune on validation v19/v21, and keep final test sealed."
 }

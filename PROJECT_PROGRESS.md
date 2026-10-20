@@ -11,8 +11,11 @@ Cập nhật gần nhất: 20/10/2026
   question ID đã dùng; overlap với paper được bảo vệ bằng 0.
 - [x] Xuất gói gán nhãn mù, catalog, selection strata, manifest/hash và ghi rõ selection
   bias: đây là tập development chẩn đoán, không phải benchmark tổng quát.
-- [ ] Gán nhãn độc lập 40 câu và khóa nhãn trước prediction; sau đó so sánh exact với
-  cơ chế projection concept cha-con chỉ trên development v22.
+- [x] Qwen3:4b review mù đủ 40 câu; audit phát hiện reviewer suy topic từ evidence nên
+  điều chỉnh từ 37 xuống 17 câu dương/23 `NONE`. Đã khóa 17 assignment trước prediction;
+  ghi rõ đây là LLM review + assistant audit, không phải human gold.
+- [ ] Chạy cấu hình cố định trên v22 rồi so sánh exact với cơ chế projection concept
+  cha-con; không dùng v19/v21 để chọn cấu hình.
 
 ### Mới nhất: Đánh giá concept linking theo phân cấp Ontology
 

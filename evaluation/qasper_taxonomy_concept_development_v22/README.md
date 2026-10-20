@@ -28,9 +28,13 @@ Tập này tạo hàng đợi gán nhãn có chủ đích cho các concept tham 
 - `qasper_taxonomy_development.json`: dữ liệu retrieval/evidence.
 - `blinded_labeling_packet.csv`: 40 câu cần gán nhãn độc lập.
 - `active_concept_catalog.csv`: danh mục concept hợp lệ.
+- `taxonomy_concept_catalog.csv`: toàn bộ concept thuộc các cạnh taxonomy, dùng cho
+  reviewer độc lập để giảm context mà không tiết lộ strata của từng câu.
 - `selection_strata.json`: strata ứng viên phục vụ kiểm toán selection bias.
 - `manifest.json`: hash, danh sách loại trừ và trạng thái giao thức.
 
 ## Trạng thái
 
-Đã chuẩn bị xong dữ liệu; đang chờ nhãn độc lập. Chưa chạy benchmark trên tập này.
+Đã khóa nhãn trước prediction: 17 câu dương, 23 câu `NONE`, 17 assignment. Nhãn do
+Qwen3:4b review mù rồi được assistant audit, không phải human gold. Chưa chạy benchmark
+trên tập này tại thời điểm khóa nhãn.

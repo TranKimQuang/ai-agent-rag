@@ -221,8 +221,18 @@ def main() -> None:
     dataset_path.write_bytes(dataset_content)
     packet_path = args.output_dir / "blinded_labeling_packet.csv"
     packet_content = write_csv(packet_path, build_blinded_review_rows(dataset))
+    catalog_rows = build_concept_catalog_rows()
     catalog_path = args.output_dir / "active_concept_catalog.csv"
-    catalog_content = write_csv(catalog_path, build_concept_catalog_rows())
+    catalog_content = write_csv(catalog_path, catalog_rows)
+    taxonomy_catalog_path = args.output_dir / "taxonomy_concept_catalog.csv"
+    taxonomy_catalog_content = write_csv(
+        taxonomy_catalog_path,
+        [
+            row
+            for row in catalog_rows
+            if row["concept_id"] in taxonomy_concepts(service)
+        ],
+    )
     strata_path = args.output_dir / "selection_strata.json"
     strata_content = (json.dumps(strata, ensure_ascii=False, indent=2) + "\n").encode()
     strata_path.write_bytes(strata_content)
@@ -273,6 +283,10 @@ def main() -> None:
             "labeling_packet_sha256": hashlib.sha256(packet_content).hexdigest(),
             "concept_catalog": catalog_path.name,
             "concept_catalog_sha256": hashlib.sha256(catalog_content).hexdigest(),
+            "taxonomy_concept_catalog": taxonomy_catalog_path.name,
+            "taxonomy_concept_catalog_sha256": hashlib.sha256(
+                taxonomy_catalog_content
+            ).hexdigest(),
             "selection_strata": strata_path.name,
             "selection_strata_sha256": hashlib.sha256(strata_content).hexdigest(),
             "label_status": "awaiting_independent_labels",

@@ -1,0 +1,41 @@
+review_id,reviewer_concepts,reviewer_none,reviewer_notes
+CV-001,,1,Entity descriptions are retrieved from a KB; the question does not express entity linking.
+CV-002,OpenInformationExtraction,0,OpenIE is an explicit standard abbreviation.
+CV-003,OpenInformationExtraction,0,OpenIE is explicit in the question.
+CV-004,QuestionAnswering,0,Selecting and aggregating answers to reformulated questions clearly paraphrases a QA pipeline.
+CV-005,,1,The question asks generically about baselines without naming a taxonomy topic.
+CV-006,QuestionAnswering,0,QA is explicit in the question.
+CV-007,NaturalLanguageProcessing,0,Natural-language generated text is explicit in the question.
+CV-008,NaturalLanguageProcessing,0,The question explicitly says natural language processing; text summarization was evidence leakage.
+CV-009,MachineReadingComprehension,0,Chinese reading comprehension is explicit and evidence confirms the MRC task.
+CV-010,,1,The question concerns word embeddings; WordSegmentation is unsupported and WordEmbedding is outside this taxonomy catalog.
+CV-011,SentimentAnalysis,0,Sentiment analysis is explicit.
+CV-012,SentimentAnalysis,0,Sentiment analysis is explicit.
+CV-013,,1,Combining word and character representations does not by itself express a taxonomy concept.
+CV-014,,1,Sentence-representation evaluation is generic; QA was inferred only from one evidence benchmark.
+CV-015,MultilingualNaturalLanguageProcessing,0,Multilingual encoder is explicit.
+CV-016,,1,The question asks only for a dataset; text summarization came from paper context.
+CV-017,,1,The question asks generically which datasets were used.
+CV-018,,1,LanguageModel is outside the focused taxonomy catalog; do not force its broad NLP parent.
+CV-019,,1,Word embeddings are explicit but WordSegmentation is unsupported and WordEmbedding is outside this catalog.
+CV-020,,1,Causal attribution networks represent cause-effect links; the question does not ask about extracting causality from text.
+CV-021,MultilingualNaturalLanguageProcessing,0,Multilingual versus monolingual annotation is explicit.
+CV-022,OpenInformationExtraction,0,OpenIE is explicit.
+CV-023,,1,Sentence embeddings and speech recognition do not directly express one of the focused taxonomy concepts.
+CV-024,,1,Contextual features is generic; causality was inferred from unrelated paper context.
+CV-025,QuestionAnswering,0,OpenBookQA and natural-language QA are explicit.
+CV-026,QuestionAnswering,0,QA task and answer candidates are explicit.
+CV-027,,1,Word representations are generic and no focused taxonomy concept is explicit.
+CV-028,,1,Twitter-message features do not by themselves express sentiment analysis or text summarization.
+CV-029,,1,Question generation is distinct from QuestionAnswering and is absent from the focused catalog.
+CV-030,,1,A language model is explicit but multilingual processing is not.
+CV-031,,1,Similarity between predicted words and topics is not semantic-role induction.
+CV-032,MultilingualNaturalLanguageProcessing,0,The plural languages and evidence about eight languages establish multilingual evaluation.
+CV-033,,1,Topic extraction is not text summarization.
+CV-034,,1,Automated metrics is generic; QA was inferred from the paper rather than the question.
+CV-035,MultilingualNaturalLanguageProcessing,0,Multilingual parallel training data is explicit.
+CV-036,CausalityExtraction,0,Causal mapping methods that extract cause-effect relations are a clear paraphrase.
+CV-037,,1,Word embeddings do not imply word segmentation.
+CV-038,,1,Phases of language formation do not express natural-language inference.
+CV-039,,1,Neural language models do not imply question answering.
+CV-040,,1,Word-frequency analysis of Twitter users does not express hashtag prediction.

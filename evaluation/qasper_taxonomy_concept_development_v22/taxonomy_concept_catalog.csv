@@ -1,0 +1,23 @@
+﻿concept_id,preferred_label,definition
+ArgumentMining,argument mining,The task of identifying argumentative structures and components in text.
+AuthorProfiling,author profiling,
+CausalityExtraction,causality extraction,
+EntityLinking,entity linking,
+GrammaticalErrorCorrection,grammatical error correction,
+HashtagPrediction,hashtag prediction,The task of predicting relevant hashtags for social-media text.
+MachineReadingComprehension,machine reading comprehension,
+MorphologicalTokenization,morphological tokenization,
+MultiHopQuestionAnswering,multi-hop question answering,
+MultilingualNaturalLanguageProcessing,multilingual natural language processing,
+MultipleChoiceQuestionAnswering,multiple-choice question answering,
+NaturalLanguageInference,natural language inference,"The task of determining whether one text entails, contradicts, or is neutral toward another."
+NaturalLanguageProcessing,natural language processing,The field concerned with computers processing and understanding human language.
+OpenInformationExtraction,open information extraction,
+ParaphraseGeneration,paraphrase generation,
+QuestionAnswering,question answering,The task of producing answers to questions expressed in natural language.
+RevisionDetection,revision detection,
+SemanticRoleInduction,semantic role induction,The task of discovering or assigning semantic roles to sentence arguments.
+SentimentAnalysis,sentiment analysis,
+SpamDetection,spam detection,The task of detecting unwanted or deceptive messages.
+TextSummarization,text summarization,The task of producing a shorter representation of a source text.
+WordSegmentation,word segmentation,

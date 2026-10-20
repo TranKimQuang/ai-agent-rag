@@ -1,0 +1,91 @@
+{
+  "source_packet": "evaluation\\qasper_taxonomy_concept_development_v22\\blinded_labeling_packet.csv",
+  "model": "qwen3:4b",
+  "status": "independent_machine_review_pending_human_audit",
+  "reviewed": 9,
+  "target": 40,
+  "complete": false,
+  "labels": [
+    {
+      "review_id": "CV-001",
+      "concepts": [
+        "EntityLinking"
+      ],
+      "none": false,
+      "confidence": 0.95,
+      "rationale": "The question asks about 'entity descriptions', and the evidence mentions extracting Wikipedia descriptions of entities. EntityLinking is the task of linking entities to their descriptions, which matches the context of using entity descriptions from KBs."
+    },
+    {
+      "review_id": "CV-002",
+      "concepts": [
+        "OpenInformationExtraction"
+      ],
+      "none": false,
+      "confidence": 0.95,
+      "rationale": "The question asks about the textual source for OpenIE, and the evidence explicitly states 'run Open IE v4' and 'aggregate the resulting tuples'. OpenInformationExtraction is the standard term for OpenIE, which is used for extracting relations between entities."
+    },
+    {
+      "review_id": "CV-003",
+      "concepts": [
+        "OpenInformationExtraction"
+      ],
+      "none": false,
+      "confidence": 0.95,
+      "rationale": "The question asks about the OpenIE method used for extractions, and the evidence states 'run Open IE v4' and 'aggregate the resulting tuples'. OpenInformationExtraction is the standard term for OpenIE, which is used for extracting relations between entities."
+    },
+    {
+      "review_id": "CV-004",
+      "concepts": [
+        "BeamSearch"
+      ],
+      "none": false,
+      "confidence": 0.95,
+      "rationale": "The question asks about aggregating multiple answers from reformulated questions. The evidence excerpt mentions: 'We train the answer with either beam search or sampling.' This explicitly references 'beam search' as a method for selecting answers, which matches the concept_id 'BeamSearch' in the catalog."
+    },
+    {
+      "review_id": "CV-005",
+      "concepts": [
+        "KeywordSearch"
+      ],
+      "none": false,
+      "confidence": 0.95,
+      "rationale": "The question asks about non-neural baselines. The evidence excerpt mentions: 'Baseline Models. is the standard word counting method whereby the feature vector represents the term frequency of the words in a sentence.' This describes a keyword-based approach (term frequency), which aligns with 'KeywordSearch' (a lexical retrieval method that matches query terms with words in documents)."
+    },
+    {
+      "review_id": "CV-006",
+      "concepts": [
+        "QuestionAnswering"
+      ],
+      "none": false,
+      "confidence": 0.95,
+      "rationale": "The question asks about shared components between QA and QG models. The evidence excerpt states: 'We proposed a neural machine comprehension model that can jointly ask and answer questions given a document.' This explicitly refers to 'question answering' as a core component, matching the concept_id 'QuestionAnswering' in the catalog."
+    },
+    {
+      "review_id": "CV-007",
+      "concepts": [
+        "NaturalLanguageProcessing"
+      ],
+      "none": false,
+      "confidence": 0.95,
+      "rationale": "The question asks whether the Agent uses natural language generated text to ask for variable values. The evidence excerpt describes interactions where the Agent asks for values (e.g., 'the Agent asks for the value of $V0'), which involves natural language processing. This aligns with 'NaturalLanguageProcessing' (the field concerned with computers processing and understanding human language)."
+    },
+    {
+      "review_id": "CV-008",
+      "concepts": [
+        "NaturalLanguageProcessing"
+      ],
+      "none": false,
+      "confidence": 0.95,
+      "rationale": "The question asks about NLP techniques for qualitative data analysis. The evidence excerpt mentions: 'The remaining words were stemmed to remove plural forms of nouns or conjugations of verbs.' Stemming is a natural language processing technique, confirming 'NaturalLanguageProcessing' as the relevant concept."
+    },
+    {
+      "review_id": "CV-009",
+      "concepts": [
+        "MachineReadingComprehension"
+      ],
+      "none": false,
+      "confidence": 0.95,
+      "rationale": "The question asks about the two types of the Chinese reading comprehension dataset. The evidence excerpt describes 'Cloze Track' and 'User Query Track' for CMRC-2017, which are specific to machine reading comprehension tasks. This matches 'MachineReadingComprehension' (the task of determining whether one text entails, contradicts, or is neutral toward another)."
+    }
+  ]
+}

@@ -1,0 +1,276 @@
+[
+  {
+    "source_question_id": "4c7b29f6e3cc1e902959a1985146ccc0b15fe521",
+    "text": "How do you find the entity descriptions?",
+    "gold_concepts": [],
+    "review_id": "CV-001"
+  },
+  {
+    "source_question_id": "417dabd43d6266044d38ed88dbcb5fdd7a426b22",
+    "text": "What was the textual source to which OpenIE was applied?",
+    "gold_concepts": [
+      "OpenInformationExtraction"
+    ],
+    "review_id": "CV-002"
+  },
+  {
+    "source_question_id": "fed230cef7c130f6040fb04304a33bbc17ca3a36",
+    "text": "What OpenIE method was used to generate the extractions?",
+    "gold_concepts": [
+      "OpenInformationExtraction"
+    ],
+    "review_id": "CV-003"
+  },
+  {
+    "source_question_id": "33d2919f3400cd3c6fbb6960d74187ec80b41cd6",
+    "text": "how are multiple answers from multiple reformulated questions aggregated?",
+    "gold_concepts": [
+      "QuestionAnswering"
+    ],
+    "review_id": "CV-004"
+  },
+  {
+    "source_question_id": "2df2f6e4efd19023434c84f5b4f29a2f00bfc9fb",
+    "text": "What other non-neural baselines do the authors compare to? ",
+    "gold_concepts": [],
+    "review_id": "CV-005"
+  },
+  {
+    "source_question_id": "0fa81adf00662694e1dc74475ae2b9283c50748c",
+    "text": "Which components of QA and QG models are shared during training?",
+    "gold_concepts": [
+      "QuestionAnswering"
+    ],
+    "review_id": "CV-006"
+  },
+  {
+    "source_question_id": "41174d8b176cb8549c2d83429d94ba8218335c84",
+    "text": "Does the Agent ask for a value of a variable using natural language generated text?",
+    "gold_concepts": [
+      "NaturalLanguageProcessing"
+    ],
+    "review_id": "CV-007"
+  },
+  {
+    "source_question_id": "3aa43a0d543b88d40e4f3500c7471e263515be40",
+    "text": "What elements of natural language processing are proposed to analyze qualitative data?",
+    "gold_concepts": [
+      "NaturalLanguageProcessing"
+    ],
+    "review_id": "CV-008"
+  },
+  {
+    "source_question_id": "7a7e279170e7a2f3bc953c37ee393de8ea7bd82f",
+    "text": "What two types the Chinese reading comprehension dataset consists of?",
+    "gold_concepts": [
+      "MachineReadingComprehension"
+    ],
+    "review_id": "CV-009"
+  },
+  {
+    "source_question_id": "ae60079da9d3d039965368acbb23c6283bc3da94",
+    "text": "Does this approach perform better than context-based word embeddings?",
+    "gold_concepts": [],
+    "review_id": "CV-010"
+  },
+  {
+    "source_question_id": "7997b9971f864a504014110a708f215c84815941",
+    "text": "What difficulties does sentiment analysis on Twitter have, compared to sentiment analysis in other domains?",
+    "gold_concepts": [
+      "SentimentAnalysis"
+    ],
+    "review_id": "CV-011"
+  },
+  {
+    "source_question_id": "fa3663567c48c27703e09c42930e51bacfa54905",
+    "text": "What is the current SOTA for sentiment analysis on Twitter at the time of writing?",
+    "gold_concepts": [
+      "SentimentAnalysis"
+    ],
+    "review_id": "CV-012"
+  },
+  {
+    "source_question_id": "0e9c08b635c1ebfd36472550d619095541bb5af1",
+    "text": "How does the gatint mechanism combine word and character information?",
+    "gold_concepts": [],
+    "review_id": "CV-013"
+  },
+  {
+    "source_question_id": "dc5ff2adbe1a504122e3800c9ca1d348de391c94",
+    "text": "How do they evaluate the sentence representations?",
+    "gold_concepts": [],
+    "review_id": "CV-014"
+  },
+  {
+    "source_question_id": "545ff2f76913866304bfacdb4cc10d31dbbd2f37",
+    "text": "What data were they used to train the multilingual encoder?",
+    "gold_concepts": [
+      "MultilingualNaturalLanguageProcessing"
+    ],
+    "review_id": "CV-015"
+  },
+  {
+    "source_question_id": "b69ffec1c607bfe5aa4d39254e0770a3433a191b",
+    "text": "What news comment dataset was used?",
+    "gold_concepts": [],
+    "review_id": "CV-016"
+  },
+  {
+    "source_question_id": "39cf0b3974e8a19f3745ad0bcd1e916bf20eeab8",
+    "text": "What datasets did the authors use?",
+    "gold_concepts": [],
+    "review_id": "CV-017"
+  },
+  {
+    "source_question_id": "3ac30bd7476d759ea5d9a5abf696d4dfc480175b",
+    "text": "what language models do they use?",
+    "gold_concepts": [],
+    "review_id": "CV-018"
+  },
+  {
+    "source_question_id": "7f2fd7ab968de720082133c42c2052d351589a67",
+    "text": "What type and size of word embeddings were used?",
+    "gold_concepts": [],
+    "review_id": "CV-019"
+  },
+  {
+    "source_question_id": "593e307d9a9d7361eba49484099c7a8147d3dade",
+    "text": "What are causal attribution networks?",
+    "gold_concepts": [],
+    "review_id": "CV-020"
+  },
+  {
+    "source_question_id": "c33d0bc5484c38de0119c8738ffa985d1bd64424",
+    "text": "Do the images have multilingual annotations or monolingual ones?",
+    "gold_concepts": [
+      "MultilingualNaturalLanguageProcessing"
+    ],
+    "review_id": "CV-021"
+  },
+  {
+    "source_question_id": "d77c9ede2727c28e0b5a240b2521fd49a19442e0",
+    "text": "What's the input representation of OpenIE tuples into the model?",
+    "gold_concepts": [
+      "OpenInformationExtraction"
+    ],
+    "review_id": "CV-022"
+  },
+  {
+    "source_question_id": "0bd864f83626a0c60f5e96b73fb269607afc7c09",
+    "text": "How are sentence embeddings incorporated into the speech recognition system?",
+    "gold_concepts": [],
+    "review_id": "CV-023"
+  },
+  {
+    "source_question_id": "ef872807cb0c9974d18bbb886a7836e793727c3d",
+    "text": "What contextual features are used?",
+    "gold_concepts": [],
+    "review_id": "CV-024"
+  },
+  {
+    "source_question_id": "b34c60eb4738e0439523bcc679fe0fe70ceb8bde",
+    "text": "How is OpenBookQA different from other natural language QA?",
+    "gold_concepts": [
+      "QuestionAnswering"
+    ],
+    "review_id": "CV-025"
+  },
+  {
+    "source_question_id": "3c16d4cf5dc23223980d9c0f924cb9e4e6943f13",
+    "text": "How do they select answer candidates for their QA task?",
+    "gold_concepts": [
+      "QuestionAnswering"
+    ],
+    "review_id": "CV-026"
+  },
+  {
+    "source_question_id": "3b995a7358cefb271b986e8fc6efe807f25d60dc",
+    "text": "What types of word representations are they evaluating?",
+    "gold_concepts": [],
+    "review_id": "CV-027"
+  },
+  {
+    "source_question_id": "12eba1598dca14db64dbc8b73484639363a4618e",
+    "text": "Which features do they use to model Twitter messages?",
+    "gold_concepts": [],
+    "review_id": "CV-028"
+  },
+  {
+    "source_question_id": "2255c36c8c7ed6084da577b480eb01d349f52943",
+    "text": "What is the motivation behind the work? Why question generation is an important task?",
+    "gold_concepts": [],
+    "review_id": "CV-029"
+  },
+  {
+    "source_question_id": "226ae469a65611f041de3ae545be0e386dba7d19",
+    "text": "What is the language model pre-trained on?",
+    "gold_concepts": [],
+    "review_id": "CV-030"
+  },
+  {
+    "source_question_id": "c2432884287dca4af355698a543bc0db67a8c091",
+    "text": "How do they determine similarity between predicted word and topics?",
+    "gold_concepts": [],
+    "review_id": "CV-031"
+  },
+  {
+    "source_question_id": "869aaf397c9b4da7ab52d6dd0961887ae08da9ae",
+    "text": "Which languages are evaluated?",
+    "gold_concepts": [
+      "MultilingualNaturalLanguageProcessing"
+    ],
+    "review_id": "CV-032"
+  },
+  {
+    "source_question_id": "345f65eaff1610deecb02ff785198aa531648e75",
+    "text": "How do they extract topics?",
+    "gold_concepts": [],
+    "review_id": "CV-033"
+  },
+  {
+    "source_question_id": "0a8bc204a76041a25cee7e9f8e2af332a17da67a",
+    "text": "What automated metrics authors investigate?",
+    "gold_concepts": [],
+    "review_id": "CV-034"
+  },
+  {
+    "source_question_id": "b44ce9aae8b1479820555b99ce234443168dc1fe",
+    "text": "What multilingual parallel data is used for training proposed model?",
+    "gold_concepts": [
+      "MultilingualNaturalLanguageProcessing"
+    ],
+    "review_id": "CV-035"
+  },
+  {
+    "source_question_id": "312417675b3dc431eb7e7b16a917b7fed98d4376",
+    "text": "What are the causal mapping methods employed?",
+    "gold_concepts": [
+      "CausalityExtraction"
+    ],
+    "review_id": "CV-036"
+  },
+  {
+    "source_question_id": "30c6d34b878630736f819fd898319ac4e71ee50b",
+    "text": "Are any experiments performed to try this approach to word embeddings?",
+    "gold_concepts": [],
+    "review_id": "CV-037"
+  },
+  {
+    "source_question_id": "639c145f0bcb1dd12d08108bc7a02f9ec181552e",
+    "text": "What are three possible phases for language formation?",
+    "gold_concepts": [],
+    "review_id": "CV-038"
+  },
+  {
+    "source_question_id": "818c89b11471a6ca4f13c838713864fdf282c2ca",
+    "text": "What neural language models are explored?",
+    "gold_concepts": [],
+    "review_id": "CV-039"
+  },
+  {
+    "source_question_id": "1f6666c2c1d1d5f66208a6fa7da3b3442a577dbc",
+    "text": "Which word frequencies reflect on the psychology of the twitter users, according to the authors?",
+    "gold_concepts": [],
+    "review_id": "CV-040"
+  }
+]
