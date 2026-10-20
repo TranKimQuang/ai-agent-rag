@@ -1,0 +1,126 @@
+{
+  "0a8bc204a76041a25cee7e9f8e2af332a17da67a": [
+    "AuthorProfiling"
+  ],
+  "0bd864f83626a0c60f5e96b73fb269607afc7c09": [
+    "SemanticRoleInduction",
+    "WordSegmentation"
+  ],
+  "0e9c08b635c1ebfd36472550d619095541bb5af1": [
+    "SemanticRoleInduction"
+  ],
+  "0fa81adf00662694e1dc74475ae2b9283c50748c": [
+    "QuestionAnswering"
+  ],
+  "12eba1598dca14db64dbc8b73484639363a4618e": [
+    "SentimentAnalysis"
+  ],
+  "1f6666c2c1d1d5f66208a6fa7da3b3442a577dbc": [
+    "SentimentAnalysis"
+  ],
+  "2255c36c8c7ed6084da577b480eb01d349f52943": [
+    "QuestionAnswering"
+  ],
+  "226ae469a65611f041de3ae545be0e386dba7d19": [
+    "NaturalLanguageProcessing"
+  ],
+  "2df2f6e4efd19023434c84f5b4f29a2f00bfc9fb": [
+    "AuthorProfiling"
+  ],
+  "30c6d34b878630736f819fd898319ac4e71ee50b": [
+    "WordSegmentation"
+  ],
+  "312417675b3dc431eb7e7b16a917b7fed98d4376": [
+    "CausalityExtraction"
+  ],
+  "33d2919f3400cd3c6fbb6960d74187ec80b41cd6": [
+    "MultiHopQuestionAnswering",
+    "MultipleChoiceQuestionAnswering"
+  ],
+  "345f65eaff1610deecb02ff785198aa531648e75": [
+    "OpenInformationExtraction"
+  ],
+  "39cf0b3974e8a19f3745ad0bcd1e916bf20eeab8": [
+    "AuthorProfiling"
+  ],
+  "3aa43a0d543b88d40e4f3500c7471e263515be40": [
+    "MultilingualNaturalLanguageProcessing",
+    "NaturalLanguageProcessing",
+    "QuestionAnswering"
+  ],
+  "3ac30bd7476d759ea5d9a5abf696d4dfc480175b": [
+    "NaturalLanguageProcessing"
+  ],
+  "3b995a7358cefb271b986e8fc6efe807f25d60dc": [
+    "WordSegmentation"
+  ],
+  "3c16d4cf5dc23223980d9c0f924cb9e4e6943f13": [
+    "QuestionAnswering"
+  ],
+  "41174d8b176cb8549c2d83429d94ba8218335c84": [
+    "NaturalLanguageInference"
+  ],
+  "417dabd43d6266044d38ed88dbcb5fdd7a426b22": [
+    "OpenInformationExtraction"
+  ],
+  "4c7b29f6e3cc1e902959a1985146ccc0b15fe521": [
+    "EntityLinking"
+  ],
+  "545ff2f76913866304bfacdb4cc10d31dbbd2f37": [
+    "MultilingualNaturalLanguageProcessing"
+  ],
+  "593e307d9a9d7361eba49484099c7a8147d3dade": [
+    "CausalityExtraction"
+  ],
+  "639c145f0bcb1dd12d08108bc7a02f9ec181552e": [
+    "MultilingualNaturalLanguageProcessing"
+  ],
+  "7997b9971f864a504014110a708f215c84815941": [
+    "SentimentAnalysis"
+  ],
+  "7a7e279170e7a2f3bc953c37ee393de8ea7bd82f": [
+    "MachineReadingComprehension"
+  ],
+  "7f2fd7ab968de720082133c42c2052d351589a67": [
+    "WordSegmentation"
+  ],
+  "818c89b11471a6ca4f13c838713864fdf282c2ca": [
+    "NaturalLanguageProcessing"
+  ],
+  "869aaf397c9b4da7ab52d6dd0961887ae08da9ae": [
+    "NaturalLanguageProcessing"
+  ],
+  "ae60079da9d3d039965368acbb23c6283bc3da94": [
+    "SemanticRoleInduction"
+  ],
+  "b34c60eb4738e0439523bcc679fe0fe70ceb8bde": [
+    "QuestionAnswering"
+  ],
+  "b44ce9aae8b1479820555b99ce234443168dc1fe": [
+    "MultilingualNaturalLanguageProcessing"
+  ],
+  "b69ffec1c607bfe5aa4d39254e0770a3433a191b": [
+    "SentimentAnalysis"
+  ],
+  "c2432884287dca4af355698a543bc0db67a8c091": [
+    "WordSegmentation"
+  ],
+  "c33d0bc5484c38de0119c8738ffa985d1bd64424": [
+    "MorphologicalTokenization"
+  ],
+  "d77c9ede2727c28e0b5a240b2521fd49a19442e0": [
+    "OpenInformationExtraction"
+  ],
+  "dc5ff2adbe1a504122e3800c9ca1d348de391c94": [
+    "SemanticRoleInduction"
+  ],
+  "ef872807cb0c9974d18bbb886a7836e793727c3d": [
+    "SemanticRoleInduction"
+  ],
+  "fa3663567c48c27703e09c42930e51bacfa54905": [
+    "SentimentAnalysis"
+  ],
+  "fed230cef7c130f6040fb04304a33bbc17ca3a36": [
+    "OpenInformationExtraction"
+  ]
+}

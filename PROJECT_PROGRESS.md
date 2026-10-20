@@ -1,6 +1,18 @@
 # THEO DÕI TIẾN ĐỘ ĐỒ ÁN AI AGENT + RAG
 
-Cập nhật gần nhất: 18/10/2026
+Cập nhật gần nhất: 20/10/2026
+
+### Mới nhất: Taxonomy-focused development v22
+
+- [x] Tạo bộ chọn mẫu cân bằng theo concept tham gia quan hệ `skos:broader`; alias và
+  semantic candidate chỉ dùng để lập hàng đợi review, không tự trở thành gold label.
+- [x] Tạo development v22 gồm 37 paper/1.858 chunk/40 câu thật, phủ 15 concept strata;
+  tối đa 5 ứng viên mỗi concept. Loại 255 paper validation/final/held-out và 1.480
+  question ID đã dùng; overlap với paper được bảo vệ bằng 0.
+- [x] Xuất gói gán nhãn mù, catalog, selection strata, manifest/hash và ghi rõ selection
+  bias: đây là tập development chẩn đoán, không phải benchmark tổng quát.
+- [ ] Gán nhãn độc lập 40 câu và khóa nhãn trước prediction; sau đó so sánh exact với
+  cơ chế projection concept cha-con chỉ trên development v22.
 
 ### Mới nhất: Đánh giá concept linking theo phân cấp Ontology
 
@@ -13,8 +25,8 @@ Cập nhật gần nhất: 18/10/2026
   `MachineReadingComprehension`/`QuestionAnswering`.
 - [x] Lưu đầy đủ JSON và báo cáo Markdown; không dùng chỉ số này để thay exact F1,
   không tuning theo validation v19/v21 và final test vẫn niêm phong.
-- [ ] Bước tiếp theo: tạo tập development trọng tâm theo từng nhánh taxonomy có đủ ví dụ
-  dương cho mỗi concept, sau đó mới thử cơ chế dự đoán/phóng chiếu concept cha-con.
+- [x] Đã tạo tập development trọng tâm v22; đang chờ khóa nhãn trước khi thử cơ chế
+  dự đoán/phóng chiếu concept cha-con.
 
 ### Mới nhất: Phrase-first concept-linking candidate v20
 
